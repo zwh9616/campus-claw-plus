@@ -1,0 +1,9 @@
+
+> campus-claw-plus@0.0.1 typecheck
+> npm run typecheck --prefix frontend
+
+
+> @campus-claw-plus/frontend@0.0.1 typecheck
+> tsc --noEmit
+
+EXIT_CODE=0

@@ -1,0 +1,8 @@
+
+> campus-claw-plus@0.0.1 check:spec
+> openspec validate 2026-10-28-project-bootstrap --strict
+
+(node:13360) ExperimentalWarning: Importing JSON modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+Change '2026-10-28-project-bootstrap' is valid
+EXIT_CODE=0

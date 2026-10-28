@@ -2,13 +2,15 @@
 
 日期：2026-10-28。目标仓库：zwh9616/campus-claw-plus。基线：d60bb57。分支：docs/openspec。A以提交账户记录贡献，不根据学期角色表替换本次A/B/C分工。
 
-规约PR：https://github.com/zwh9616/campus-claw-plus/pull/1 （已创建，等待B/C评审，未合并）。
+规约PR：https://github.com/zwh9616/campus-claw-plus/pull/1 （已合并为 `a651871`）。
+
+本文件保留规约交付时的历史快照；下文“待实现/待评审”等矩阵状态不表示当前实现状态。当前任务、验收和未完成项分别以 [tasks](../../openspec/changes/2026-10-28-project-bootstrap/tasks.md) 与[第7课证据入口](../lesson-07/README.md)为准。最终场景复核由C承担。
 
 ## 本次交付
 
 规约位于 openspec/changes/2026-10-28-project-bootstrap/：proposal.md说明本轮范围；design.md说明技术/配置/端口；specs/project-bootstrap/spec.md原始包含6个需求和15个场景；B评审修订后共9个需求、23个场景，其中PB-09/SC-20..23仅为后续合同；tasks.md标注负责人、前置条件及证据。严格校验记录见[validation.md](validation.md)。本分支无前后端实现和部署成果。经请求人授权，B直接追加本次修订；不代填A或C的评审。原始变更名project-bootstrap已改为课程日期命名2026-10-28-project-bootstrap，A原始校验记录按历史保留，新结果见docs/lesson-07/spec-review-fixes.md。
 
-两份来源为请求人提供的《CampusClaw 第7课三人任务书 详细版》和《CampusClaw 学期项目说明》。前者约束本轮启动骨架，后者定义长期高校课程平台；未复制源DOCX或其本机私人路径到仓库。README目前写“中小学”，与两份材料的“高校”存在定位差异，交由B在基础文档PR统一并请全组确认。
+两份来源为请求人提供的《CampusClaw 第7课三人任务书 详细版》和《CampusClaw 学期项目说明》。前者约束本轮启动骨架，后者定义长期高校课程平台；未复制源DOCX或其本机私人路径到仓库。规约交付时README曾写“中小学”，B已在基础文档中统一为“高校”；本课页面不写学段。
 
 ## 给 B 的交接
 
@@ -23,13 +25,13 @@
 2. GET /health → 200 + application/json + {"status":"ok","dependencies":{}}，X-Request-ID与请求日志一致，允许JSON换行与charset参数；不需要认证、数据库、模型或密钥。
 3. 缺失/空白/abc/0/-1/65536及监听失败，明确指出HTTP_PORT/监听原因并非零退出；需要合法配置恢复用例。保存直接可执行文件退出码与stderr。
 4. compose.yaml、前后端Dockerfile、仅HTTP_PORT=空值键名的.env.example；README显式填写本机值；backend健康探针在镜像中确实可执行。主机前端5173、后端8080示例，主机发布建议仅127.0.0.1。
-5. 提供实际命令和完整docs/lesson-07/verification.md，由B独立复现、A逐场景核对后，最后才给已验收提交打标签。
+5. 提供实际命令和完整docs/lesson-07/verification.md，由B独立复现、C最终逐场景核对后，最后才给已验收提交打标签。
 
 ## 需求 场景 任务与证据矩阵
 
 | 需求 | 场景 | 实现/执行责任 | 对应任务 | 应提供证据 | 当前状态 |
 | --- | --- | --- | --- | --- | --- |
-| PB-01 | SC-01 首页 | B实现/A复核 | 3.1/3.2/5.1 | 本地及Compose页面地址、截图 | 待实现/运行 |
+| PB-01 | SC-01 首页 | B实现/C复核 | 3.1/3.2/5.1 | 本地及Compose页面地址、截图 | 历史状态：待实现/运行；当前见第7课证据 |
 | PB-02 | SC-02 健康响应 | C | 3.4/5.1 | 状态码、Content-Type、JSON及Go测试 | 待实现/运行 |
 | PB-02 | SC-03 无外部依赖 | C | 3.4/5.1 | 仅HTTP_PORT启动与请求记录 | 待实现/运行 |
 | PB-03 | SC-04 缺失/空白 | C | 3.3/5.1 | 每个值的stderr、非零退出码 | 待实现/运行 |
@@ -61,11 +63,11 @@
 
 ## 运行验收记录字段
 
-每项记录：SC编号、执行人/时间、被验收提交、操作系统及Go/Node/Docker/Compose版本、前置条件与配置、完整命令、预期、实际、退出码/HTTP状态及类型、证据路径、通过/失败、修复责任人与复测。C维护docs/lesson-07/verification.md，docs/verification.md可作索引，A核对追踪关系，B在新目录复现。
+每项记录：SC编号、执行人/时间、被验收提交、操作系统及Go/Node/Docker/Compose版本、前置条件与配置、完整命令、预期、实际、退出码/HTTP状态及类型、证据路径、通过/失败、修复责任人与复测。C维护docs/lesson-07/verification.md并最终核对追踪关系，docs/verification.md可作索引，B在新目录复现。
 
 ## A 本次贡献与后续待办
 
-已完成内容以tasks勾选和严格校验记录为准。尚不能完成：替B/C出具评审、合并规约、核对不存在的前后端运行结果、宣布联合验收完成或打发布标签。A后续收到实现PR与证据后，应逐项更新矩阵与tasks，并留至少一次有实质内容的评审。
+以下为规约交付时的职责边界：A不替B/C出具评审，不将不存在的运行结果、联合验收或标签写成完成。PR #1后来已合并；当前实现与最终复核由C按实际证据更新tasks，不再以A最终复核为前置。其他成员的实质评审仍需真实留证。
 
 
 ## 2026-10-28 B追加修订
