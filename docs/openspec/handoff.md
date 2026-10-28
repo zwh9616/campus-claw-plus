@@ -2,6 +2,8 @@
 
 日期：2026-10-28。目标仓库：zwh9616/campus-claw-plus。基线：d60bb57。分支：docs/openspec。A以提交账户记录贡献，不根据学期角色表替换本次A/B/C分工。
 
+规约PR：https://github.com/zwh9616/campus-claw-plus/pull/1 （已创建，等待B/C评审，未合并）。
+
 ## 本次交付
 
 规约位于 openspec/changes/project-bootstrap/：proposal.md说明本轮范围；design.md说明技术/配置/端口；specs/project-bootstrap/spec.md包含6个需求和15个场景；tasks.md标注负责人、前置条件及证据。严格校验记录见[validation.md](validation.md)。本分支无前后端实现和部署成果。
@@ -40,7 +42,7 @@
 | PB-05 | SC-11 五类规范 | B编写/A/C评审 | 2.1..2.3 | 文档PR、检查办法、实际评审 | 待B交付 |
 | PB-05 | SC-12 无密钥提交 | B/C | 2.3/4.2 | ignore检查、配置示例、提交审查 | 现有ignore已检查；完整项待验收 |
 | PB-06 | SC-13 严格校验 | A | 1.2/1.3 | validation.md与原始输出 | 以校验记录为准 |
-| PB-06 | SC-14 规约PR评审 | A提交/B/C评审 | 1.5..1.7/5.4 | 规约PR与真实评审、合并记录 | 待提交/他人评审 |
+| PB-06 | SC-14 规约PR评审 | A提交/B/C评审 | 1.5..1.7/5.4 | 规约PR与真实评审、合并记录 | PR #1已提交；B/C评审和合并待办 |
 | PB-06 | SC-15 联合验收标签 | 全组/C打标签 | 5.3..5.5 | 同一提交的证据、缺陷闭环、标签 | 待实现/联合验收 |
 
 ## 供 B C 在 PR 中回答的评审表

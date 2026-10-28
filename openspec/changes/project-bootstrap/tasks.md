@@ -6,7 +6,7 @@
 - [x] 1.2 [A] 初始化本仓库OpenSpec并完成proposal/design/specs/tasks；证据：四份产物、PB-01..06及SC-01..15；前置：请求人确认技术草案。
 - [x] 1.3 [A] 严格校验通过并记录工具版本、命令、退出码及修正情况；证据：docs/openspec/validation.md及原始输出；关联SC-13；前置1.2。
 - [x] 1.4 [A] 交付接口/端口/配置/验收矩阵和B/C评审表；证据：docs/openspec/handoff.md；前置1.2。
-- [ ] 1.5 [A] 从docs/openspec推送规约PR，说明范围、验证、任务和交接；证据：PR链接和提交记录；关联SC-14；前置1.3/1.4。
+- [x] 1.5 [A] 从docs/openspec推送规约PR，说明范围、验证、任务和交接；证据：https://github.com/zwh9616/campus-claw-plus/pull/1 和提交记录；关联SC-14；前置1.3/1.4。
 - [ ] 1.6 [B/C评审，A跟进] B检查可读性、C检查实现性；解决公共约定与design待评审项；证据：真实PR评审与修订记录；前置1.5，不能由A代填。
 - [ ] 1.7 [团队] 至少一位他人实质评审后合并规约PR；证据：批准/合并记录；前置1.6；未合并不进入实现阶段。
 
