@@ -1,0 +1,26 @@
+{"ts":"2026-10-28T14:44:45.719072189Z","level":"error","message":"HTTP_PORT is required","module":"config","request_id":null}
+missing config exit=2
+
+Testing HTTP_PORT=[]
+{"ts":"2026-10-28T14:44:45.904114908Z","level":"error","message":"HTTP_PORT is required","module":"config","request_id":null}
+exit=2
+
+Testing HTTP_PORT=[   ]
+{"ts":"2026-10-28T14:44:46.135578428Z","level":"error","message":"HTTP_PORT is required","module":"config","request_id":null}
+exit=2
+
+Testing HTTP_PORT=[abc]
+{"ts":"2026-10-28T14:44:46.369831422Z","level":"error","message":"HTTP_PORT must contain decimal digits only","module":"config","request_id":null}
+exit=2
+
+Testing HTTP_PORT=[0]
+{"ts":"2026-10-28T14:44:46.608830093Z","level":"error","message":"HTTP_PORT must be in range 1..65535","module":"config","request_id":null}
+exit=2
+
+Testing HTTP_PORT=[-1]
+{"ts":"2026-10-28T14:44:46.842887395Z","level":"error","message":"HTTP_PORT must contain decimal digits only","module":"config","request_id":null}
+exit=2
+
+Testing HTTP_PORT=[65536]
+{"ts":"2026-10-28T14:44:47.054420248Z","level":"error","message":"HTTP_PORT must be in range 1..65535","module":"config","request_id":null}
+exit=2

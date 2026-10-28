@@ -1,0 +1,8 @@
+来源：C成员提供的终端输出，2026-10-28。
+应用日志时间：2026-10-28T14:50:43.272460783Z（Asia/Shanghai 22:50:43）。
+
+$ docker compose exec -T backend /server > port-conflict.txt 2>&1
+$ printf 'exit=%s\n' "$?" >> port-conflict.txt
+$ cat port-conflict.txt
+{"ts":"2026-10-28T14:50:43.272460783Z","level":"error","message":"HTTP_PORT listen failed","module":"server","request_id":null}
+exit=1

@@ -1,0 +1,42 @@
+来源：C成员提供的两段终端输出，2026-10-28。
+两段分别为停止检查与重新启动检查；保留观测结果，不推断未提供命令的精确时间顺序。
+
+停止检查：
+$ docker compose down --timeout 15
+$ docker compose ps -a
+$ curl --max-time 3 -i http://localhost:18080/health
+$ curl --max-time 3 -I http://localhost:5173/
+NAME      IMAGE     COMMAND   SERVICE   CREATED   STATUS    PORTS
+curl: (7) Failed to connect to localhost port 18080 after 0 ms: 连接被拒绝
+curl: (7) Failed to connect to localhost port 5173 after 0 ms: 连接被拒绝
+
+重新启动检查：
+$ docker compose up -d --wait
+$ docker compose ps
+$ curl -i http://localhost:18080/health
+[+] Running 3/3
+Network campus-claw-plus_default Created
+Container campus-claw-plus-backend-1 Healthy
+Container campus-claw-plus-frontend-1 Healthy
+NAME                          IMAGE                             COMMAND                   SERVICE    CREATED         STATUS                   PORTS
+campus-claw-plus-backend-1    campus-claw-plus/backend:0.0.1    "/server"                 backend    6 seconds ago   Up 6 seconds (healthy)   127.0.0.1:18080->18080/tcp
+campus-claw-plus-frontend-1   campus-claw-plus/frontend:0.0.1   "nginx -g 'daemon of…"   frontend   6 seconds ago   Up 6 seconds             127.0.0.1:5173->80/tcp
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+X-Request-Id: 08fcd4d5c15c274f64e0bf228b6f0e9e
+Date: Wed, 28 Oct 2026 14:46:01 GMT
+Content-Length: 34
+
+{"status":"ok","dependencies":{}}
+
+版本检查：
+$ git rev-parse HEAD
+0fccbc7e2b66bbd7e091711efffbf1c9d73d1070
+$ git status --short
+?? config-failures.txt
+?? containers.txt
+?? health.txt
+$ docker --version
+Docker version 28.3.3, build 980b856
+$ docker compose version
+Docker Compose version v2.39.1
