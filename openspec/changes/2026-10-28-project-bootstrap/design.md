@@ -17,6 +17,7 @@
 - C：根 compose.yaml 定义 frontend、backend；Dockerfile 分别放在 frontend/、backend/。前端生产构建产物由静态 HTTP 服务运行，容器端口候选80；开发服务本地5173不视为容器固定端口。
 - B 维护 README、AGENTS、五类规范与忽略规则；C 维护镜像、Compose、配置示例和 docs/lesson-07/verification.md；docs/verification.md 可保留为索引。A 负责整体规约，当前经请求人授权由 B 追加本次修订。
 - 五类规范只有一份权威内容（候选 docs/standards/）；AGENTS 必须明确要求按修改范围读取，不仅是可选参考链接。测试流程另提供可发现的仓库技能，后续 B 规范 PR 验证其实际生效。
+- 本轮已落地 npm + frontend/package-lock.json、Go1.27.3、React18.3.1、Vite8.3.5、TypeScript7.0.2；构建镜像摘要记录在Dockerfile与scripts/toolchain.json。健康探针使用同一Go二进制的--healthcheck，不假设curl存在。
 - 不强行分拆大量包或引入微服务框架；以最小骨架降低本课集成成本。C/B 在实现 PR 中固定工具链/镜像版本并记录，Go 声明版本与构建镜像兼容，Node 满足所锁 Vite 版本要求；这些版本不改变对外契约。
 
 ### D2 页面与健康接口
@@ -79,6 +80,7 @@ PB需求、SC场景、tasks编号、PR和证据一一关联。docs/lesson-07/ver
 - 每条日志独占一行合法 JSON；字段 ts（UTC RFC3339）、level、module、message、request_id。启动/配置失败等无请求日志的 request_id=null；HTTP 完成日志的 request_id 必须非空，并包含 method、path（不含查询串）、status、duration_ms。
 - 每次 HTTP 请求由服务端生成新的128位随机标识（32个十六进制字符），响应头 X-Request-ID 与该次完成日志一致；不信任或原样回显客户端提供的标识。健康响应体保持 D2 的两个字段，不强加业务码外层。
 - 日志不得记录配置值、密码、令牌、请求正文、学生资料或原始堆栈。配置失败日志说明键名和脱敏原因，保持非零退出。
+- 上述字段验收对象为Go应用日志；前端Nginx辅助访问日志同样为JSON，其原生耗时单位明确记为duration_seconds，不冒充毫秒。Nginx原生内部诊断不作为Go应用JSON证据。
 - C 用 Go 标准库实现；SIGTERM/SIGINT 后停止接收新请求，最多10秒排空在途请求，Compose 停止宽限15秒。日志验证记录原始单行和解析结果，不以“有输出”替代结构检查。
 
 ### D7 四类失败合同与实现范围
