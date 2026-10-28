@@ -18,6 +18,7 @@ cd campus-claw-plus
 实现PR未合并时先fetch并签出该PR的分支/提交；默认main只有已合并内容。不要在有本地修改时reset --hard或覆盖.env。
 
 ## 从零启动（只需Docker Desktop和Compose）
+同伴只运行系统请看[纯Docker启动与验收指南](docs/lesson-07/peer-docker-guide.md)。无需执行后面的本机开发/npm检查步骤；当前PR #2未合并，指南提供了正确分支的克隆命令。
 先启动Docker Desktop，确认Linux容器引擎可用。所有命令在仓库根目录执行。
 ```powershell
 Copy-Item .env.example .env

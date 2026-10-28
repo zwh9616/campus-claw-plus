@@ -51,3 +51,10 @@
 2. 另一成员自己的机器签出同一提交，按README从零启动并留执行人/环境/结果。
 3. A/C或其他成员对本实现PR进行实质交叉评审，A核对最终场景；本账号不能假装另一成员已批准。
 4. 全部本轮必验项通过后再归档并复核合入、由C打最终骨架标签；当前没有上一已验收运行标签，回滚演练未完成。
+
+## 纯Docker全新源码目录复测
+2026-10-28另建远端克隆目录，基于40af950追加前端Docker安装缓存/有限重试修订。未调用宿主机Node/npm/Go，没有复制宿主机node_modules或dist。
+第一次强制重建在下载Vite时遇到ECONNRESET；在官方npm源下载步骤加入BuildKit依赖缓存及最多5次有限重试后，重新源码构建通过，容器内完成npm ci/build与Go编译。
+docker compose up -d --wait后，前端HTTP200、后端healthy，/health为HTTP200且空依赖契约正确，镜像内/server --healthcheck退出0。构建后宿主机仍不存在frontend/node_modules与frontend/dist。
+结果见[evidence/docker-only-clean-source.json](evidence/docker-only-clean-source.json)。这是同一机器的干净目录复测，不冒充同伴在另一台机器的验收。原预览已恢复。
+同伴可直接照[纯Docker指南](peer-docker-guide.md)执行，不需要运行开发用npm/Go命令。首次构建仍要求Docker能够访问镜像仓库和npm源。

@@ -1,7 +1,7 @@
 FROM node@sha256:fe4f6d74e20370acb04ad889077d14d0f64a9c8ea6a42bc60cddf1e844699914 AS build
 WORKDIR /src
 COPY package.json package-lock.json ./
-RUN npm ci --ignore-scripts
+RUN --mount=type=cache,target=/root/.npm npm ci --ignore-scripts --prefer-offline --fetch-retries=5 --fetch-retry-mintimeout=1000 --fetch-retry-maxtimeout=10000 --fetch-timeout=60000
 COPY index.html tsconfig.json vite.config.ts ./
 COPY src ./src
 COPY public ./public
