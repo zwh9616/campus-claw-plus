@@ -9,37 +9,98 @@
 
 本轮没有登录、真实课程/资料、RAG、模型、数据库或作业功能。前端不调用后端；后续业务失败合同PB-09只交接规约，不能算运行通过。
 
-## 协作者首次获取代码
-协作者可直接克隆原仓库，无需fork；首次使用clone，已有仓库更新使用fetch/pull。推送仍需GitHub协作权限。
+## 基本使用：同伴和教师从零启动
+
+运行系统只需 **Docker Desktop（Linux容器模式）**。Node.js、npm、Go和前端构建都在Docker中执行，不需要在本机安装。Git只用于获取代码，也可下载对应版本的源码ZIP。首次构建需要联网下载镜像和依赖。
+
+### 1. 获取可运行代码
+
+本实现通过[PR #2](https://github.com/zwh9616/campus-claw-plus/pull/2)交付。PR合并前，请在新目录获取以下实现分支：
+
 ```powershell
-git clone https://github.com/zwh9616/campus-claw-plus.git
+git clone --single-branch --branch feat/2026-10-28-member-b-foundation https://github.com/zwh9616/campus-claw-plus.git
 cd campus-claw-plus
 ```
-实现PR未合并时先fetch并签出该PR的分支/提交；默认main只有已合并内容。不要在有本地修改时reset --hard或覆盖.env。
 
-## 从零启动（只需Docker Desktop和Compose）
-同伴只运行系统请看[纯Docker启动与验收指南](docs/lesson-07/peer-docker-guide.md)。无需执行后面的本机开发/npm检查步骤；当前PR #2未合并，指南提供了正确分支的克隆命令。
-先启动Docker Desktop，确认Linux容器引擎可用。所有命令在仓库根目录执行。
+PR #2合并后，可以直接克隆默认main。已有该实现分支的同伴无需重复克隆，在工作区没有未提交代码修改时执行 `git pull --ff-only` 更新。
+
+### 2. 准备本机配置
+
+启动Docker Desktop，等待引擎可用。以下命令均在含有 `compose.yaml` 的仓库根目录执行。
+
+Windows PowerShell：
+
 ```powershell
 Copy-Item .env.example .env
+notepad .env
 ```
-已有.env不要覆盖。样例只有HTTP_PORT=，用编辑器显式填写本机值：
+
+macOS/Linux使用 `cp .env.example .env`，再用文本编辑器打开.env。已有.env不要覆盖。
+
+将本机.env填写为：
+
 ```dotenv
 HTTP_PORT=18080
 ```
-8080也是合法示例；本次验收用18080以避开其他项目。端口范围1..65535，不能缺失、为空或自动回退。前端固定5173，若被其他项目占用先协调，不自动漂移或停止无关进程。
+
+这是后端端口，必须填写1..65535内的空闲端口；前端固定使用5173。若改用其他后端端口，下面健康检查地址也相应修改。.env只保存在本机，不提交Git；.env.example按课程要求只保留空值键名。
+
+### 3. 一条命令构建并启动
+
 ```powershell
-docker compose config --quiet
 docker compose up --build -d --wait
-docker compose ps
+```
+
+Docker会自动安装前端依赖、构建前端、编译Go后端并启动两个服务。首次运行可能需要等待下载和构建；看到命令成功退出后再访问页面。只使用系统时无需运行后面开发者章节中的npm或Go命令。
+
+### 4. 访问与确认启动成功
+
+| 项目 | 地址或命令 | 成功现象 |
+| --- | --- | --- |
+| 首页 | [http://localhost:5173/](http://localhost:5173/) | 显示CampusClawPlus、Hello World和项目启动说明 |
+| 后端健康检查 | [http://localhost:18080/health](http://localhost:18080/health) | HTTP200、JSON响应，含X-Request-ID响应头 |
+| 容器状态 | `docker compose ps` | frontend为Up，backend为Up且healthy |
+
+健康接口响应：
+
+```json
+{"status":"ok","dependencies":{}}
+```
+
+这里的空对象表示没有配置外部依赖，不表示数据库或模型已健康。当前首页是静态启动页，不提供登录、问答或作业操作。
+
+Windows可在终端查看完整HTTP响应：
+
+```powershell
 curl.exe -i http://localhost:18080/health
 ```
-打开[本机首页](http://localhost:5173/)。后端应为healthy；仅看到running不算健康通过。若HTTP_PORT填了其他端口，同步替换访问地址。
-```powershell
-docker compose logs --no-color backend
-docker compose down --timeout 15
-```
-停止只影响本项目。再次执行up可重新启动。没有外部凭据、数据卷或数据库准备步骤。
+
+macOS/Linux将curl.exe替换为curl。同伴需要在自己的电脑执行启动命令；localhost始终指当前执行者自己的电脑。
+
+### 5. 查看日志、停止、重启和更新
+
+| 操作 | 在仓库根目录执行 |
+| --- | --- |
+| 查看后端最近50行日志 | `docker compose logs --no-color --tail 50 backend` |
+| 查看前端最近50行日志 | `docker compose logs --no-color --tail 50 frontend` |
+| 停止系统 | `docker compose down --timeout 15` |
+| 再次启动已构建系统 | `docker compose up -d --wait` |
+| 获取当前分支更新 | `git pull --ff-only`（先保存本地代码修改） |
+| 更新后重新构建启动 | `docker compose up --build -d --wait` |
+
+关闭浏览器不会停止后台容器；停止系统请执行down。停止命令只作用于本项目。
+
+### 常见启动问题
+
+| 现象 | 处理方法 |
+| --- | --- |
+| 无法连接Docker引擎 | 启动Docker Desktop，确认Linux容器引擎已就绪；可用docker info检查 |
+| 提示HTTP_PORT缺失或为空 | 检查仓库根目录.env，按上面的示例填写并重新启动 |
+| 端口被占用 | 停止自己已有的本项目实例；后端可在.env改为空闲端口，前端5173需与占用程序协调 |
+| 下载镜像或npm依赖失败 | 确认Docker能联网后重试同一启动命令；构建已配置依赖缓存和有限重试，无需在本机安装npm |
+| 后端不是healthy或页面打不开 | 先运行docker compose ps，再查看对应服务日志；不要将仅running当作后端验收通过 |
+
+同伴需留交叉验收证据时，可参考[Docker验收记录模板](docs/lesson-07/peer-docker-guide.md#同伴填写的验收记录)；上述基本使用步骤已完整写在本README中。
 
 ## 接口与日志
 GET /health无需认证，HTTP200、application/json：
@@ -50,7 +111,7 @@ GET /health无需认证，HTTP200、application/json：
 Go日志字段：ts、level、module、message、request_id；HTTP日志另含method、path、status、duration_ms。启动/配置日志request_id=null；日志不含查询串、正文或配置原值。
 未知后端路径404，错误方法405。当前没有业务码外层。镜像自带/server --healthcheck，不依赖curl。
 
-## 本机开发与检查
+## 开发者检查（同伴启动系统无需执行）
 要求Node22.12+（推荐22系列最新补丁）、npm、Docker。Go可用本机1.27.3，或自动使用固定摘要的Go1.27.3容器工具链，无需全局安装。
 ```powershell
 npm ci
