@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-28",
+  "operator": "B（GitHub zwh9616，经请求人授权追加修订）",
+  "base_commit": "69f85b4bdb84d3a88427daa54e9fe0dbd883da69",
+  "cli_version": "1.13.0",
+  "command": "openspec validate 2026-10-28-project-bootstrap --strict --json",
+  "exit_code": 0,
+  "stdout": "{\n  \"items\": [\n    {\n      \"id\": \"2026-10-28-project-bootstrap\",\n      \"type\": \"change\",\n      \"valid\": true,\n      \"issues\": [],\n      \"durationMs\": 74\n    }\n  ],\n  \"summary\": {\n    \"totals\": {\n      \"items\": 1,\n      \"passed\": 1,\n      \"failed\": 0\n    },\n    \"byType\": {\n      \"change\": {\n        \"items\": 1,\n        \"passed\": 1,\n        \"failed\": 0\n      }\n    }\n  },\n  \"version\": \"1.0\",\n  \"root\": {\n    \"path\": \"<isolated-review-checkout>\",\n    \"source\": \"nearest\"\n  }\n}",
+  "stderr": "",
+  "runtime_acceptance": "not_run_document_revision_only",
+  "independent_session": "pending",
+  "second_machine": "pending",
+  "redaction": "Only the local absolute checkout path was replaced; validation result and CLI output fields unchanged."
+}
