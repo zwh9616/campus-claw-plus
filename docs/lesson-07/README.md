@@ -7,4 +7,4 @@
 - [规约评审修订](spec-review-fixes.md)、[严格校验结果](spec-validation-results.json)。
 - [A原始规约校验](../openspec/validation.md)：历史证据保留。
 - [规约PR #1](https://github.com/zwh9616/campus-claw-plus/pull/1)已合并为a651871。
-当前采用C已提供的运行/页面/新会话证据和CI结果，取消的三项前置不记为实测通过。本次在B来源分支归档；合并PR和发布标签另行处理。
+课程对应三项已按现有证据勾选：B本机启动、C交叉启动、新会话规范验证；完成状态及证据映射见[归档记录](archive-record.md)。先前取消的是额外复现/补证/逐人评审前置。本次已在B来源分支归档；合并PR和发布标签另行处理。
