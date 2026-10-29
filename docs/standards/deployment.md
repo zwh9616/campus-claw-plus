@@ -8,7 +8,7 @@
 | 健康 | /health免认证，200与status=ok、dependencies={}；镜像内/server --healthcheck检查真实状态/类型/载荷/标识 | 容器healthy而非仅running；不依赖镜像有curl |
 | 停机 | SIGTERM/SIGINT停止接新请求、10秒内排空；Compose停止宽限15秒 | 单元验证在途请求完成；实际容器停止后不再提供本项目响应 |
 | 日志 | stdout每行JSON，ts UTC RFC3339/level/module/message/request_id；请求加method/path/status/duration_ms | 启动request_id=null；HTTP标识非空、同X-Request-ID，禁止敏感值 |
-| 发布留痕 | docs/lesson-07/记录运行；docs/verification.md仅索引；全组验收后归档PR，再给最终提交打标签 | 不提前归档、标签或声称他人批准 |
+| 发布留痕 | docs/lesson-07/记录实际运行及批准的范围调整；docs/verification.md仅索引；本轮由C按调整范围在B分支归档，合并和标签另行处理 | 不跳过自动门禁、不冒称未执行结果或他人批准 |
 | 回滚 | 仅本项目compose down，再用上一已验收提交及其配置构建启动 | 没有上一可运行版本时明确未演练，不用停机当回滚成功 |
 
 ## 后续运维约束
@@ -20,3 +20,6 @@
 
 ## 记录单位例外
 JSON日志正式验收对象为Go应用输出，HTTP完成日志使用duration_ms；Nginx仅提供辅助JSON访问日志，其原生request_time记录为duration_seconds，不冒充毫秒。Nginx内部诊断按原生错误日志处理，不将其作为Go应用JSON证据。
+
+## 本轮归档范围例外（2026-10-29）
+请求人明确取消B本人独立复现、SC-19完整本地门禁补证和其余成员评审记录作为归档前置，采用C真实运行/页面/新会话证据及完整CI结果。取消项不勾成执行成功，历史失败记录保留；CI步骤与失败阻断机制不变。本次只在B现有来源分支归档、同步主规约并严格校验，不包含远端合并或发布标签。此例外优先于发布检查技能中的旧跨机器/逐人验收流程，仅适用于本次变更，详见[归档记录](../lesson-07/archive-record.md)。

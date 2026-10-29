@@ -126,7 +126,7 @@ npm run verify
 - secret-scan：官方Gitleaks8.30.1，首次下载验证SHA256；扫描全部Git历史和暂存内容并全量隐藏原值。当前支持Windows/Linux x64，其他平台可手动使用同版本。
 - verify：真实容器构建/健康、配置失败退出码、占用、恢复、JSON日志、停止再启动；使用单独的campus-claw-plus-verify项目，完成后停止验收容器。开始前先停本项目普通Compose实例以释放5173/HTTP_PORT。
 - 输出：控制台；本机机器报告在output/verification/（忽略）；可审查结论和SC映射在[验收记录](docs/lesson-07/verification.md)。
-- CI在push/PR自动运行同一套检查。未验证的新会话、第二台机器、其他成员批准仍须真实留证，不能以CI或同机新目录代替。
+- CI在push/PR自动运行同一套检查。按2026-10-29确认的归档范围，采用C已提供的运行/页面/新会话证据和CI结果；已取消的三项前置见[归档记录](docs/lesson-07/archive-record.md)，未执行结果不冒充通过。
 
 开发前端：
 ```powershell
@@ -144,7 +144,8 @@ go run ./cmd/server
 ## 目录与分工
 | 目录/文件 | 内容与责任 |
 | --- | --- |
-| openspec/changes/2026-10-28-project-bootstrap/ | A原始规约，B已按授权追加评审修订 |
+| openspec/specs/project-bootstrap/spec.md | 归档同步后的当前主规约 |
+| openspec/changes/archive/2026-10-28-project-bootstrap/ | A原始规约、B评审修订及C最终核对，已在本实现分支归档 |
 | docs/standards/ | B的五类工程规范，唯一权威内容 |
 | AGENTS.md、.agents/skills/ | B的常驻约束和场景流程 |
 | frontend/ | B的最小静态页面、独立package-lock.json |
@@ -153,7 +154,7 @@ go run ./cmd/server
 | scripts/、.github/workflows/ | 本机与CI可复用门禁 |
 | docs/lesson-07/ | 实际验证、场景映射与待办 |
 
-本次B/C技术工作由请求人授权在同一账号完成，不冒用另一成员的提交身份或批准。每位组员的实际交叉评审和其他机器验收另行记录。
+本次B/C技术工作由请求人授权在同一账号完成，不冒用另一成员的提交身份或批准。C负责最终复核，已有实际评审与运行证据保留；不要求其余成员追加评审作为本轮归档前置。
 
 ## 用户与页面
 当前只有/，用于展示项目名和启动阶段；未知前端路径显示404页面并可返回首页。不提供假业务导航和健康面板。
@@ -162,7 +163,7 @@ go run ./cmd/server
 ## 协作、发布与轮换
 - feat/YYYY-MM-DD-short-name或docs/...分支，通过PR评审；提交说明关联PB/SC，不直接推main。
 - 组长核对main保护、教师访问权限；门禁失败即阻断，不伪造他人批准。
-- 最终完成条件包括实际新会话、另一成员自己的机器、问题闭环；之后归档变更、复核合入，再由C为最终提交打v0.0.1-skeleton。
+- 本轮按[归档记录](docs/lesson-07/archive-record.md)调整验收范围，由C最终核对并直接在B的PR来源分支归档、同步主规约和严格校验。合并PR及发布标签另行处理，不包含在本次归档中。
 - 首版无上一已验收运行标签，回滚演练标待办；未来用上一已验收提交/配置重建，不用git reset覆盖协作者工作。
 - 密钥误入历史：持有人立即撤销旧值并轮换、更新环境并验证旧值失效，组长再协调历史清理；删除文件不等于撤销。完整流程见[安全规范](docs/standards/security.md)。
 

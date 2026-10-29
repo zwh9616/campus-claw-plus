@@ -13,7 +13,7 @@
     "typecheck": "npm run typecheck --prefix frontend",
     "check:foundation": "node scripts/check-foundation.mjs",
     "check:backend": "node scripts/check-backend.mjs",
-    "check:spec": "openspec validate 2026-10-28-project-bootstrap --strict",
+    "check:spec": "openspec validate --all --strict",
     "check": "npm run check:foundation && npm run typecheck && npm run build && npm run check:backend && npm run check:spec",
     "test": "npm run check:backend",
     "audit": "npm audit --audit-level=high && npm audit --prefix frontend --audit-level=high",

@@ -1,5 +1,5 @@
 # CampusClawPlus 工程约定
-第7课仅实现最小启动骨架。执行依据为 [proposal](openspec/changes/2026-10-28-project-bootstrap/proposal.md)、[design](openspec/changes/2026-10-28-project-bootstrap/design.md)、[spec](openspec/changes/2026-10-28-project-bootstrap/specs/project-bootstrap/spec.md) 与 [tasks](openspec/changes/2026-10-28-project-bootstrap/tasks.md)。PB-09只交接未来失败合同，本轮不实现教学业务。
+第7课仅实现最小启动骨架。当前主规约为 [spec](openspec/specs/project-bootstrap/spec.md)，归档依据为 [proposal](openspec/changes/archive/2026-10-28-project-bootstrap/proposal.md)、[design](openspec/changes/archive/2026-10-28-project-bootstrap/design.md) 与 [tasks](openspec/changes/archive/2026-10-28-project-bootstrap/tasks.md)。PB-09只交接未来失败合同，本轮不实现教学业务。
 
 ## 每次开始工作
 - 必读 [安全规范](docs/standards/security.md)，按范围必须读取下表规则；这些文件是约束，不是可选参考。

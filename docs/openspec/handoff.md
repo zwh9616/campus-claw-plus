@@ -4,11 +4,11 @@
 
 规约PR：https://github.com/zwh9616/campus-claw-plus/pull/1 （已合并为 `a651871`）。
 
-本文件保留规约交付时的历史快照；下文“待实现/待评审”等矩阵状态不表示当前实现状态。当前任务、验收和未完成项分别以 [tasks](../../openspec/changes/2026-10-28-project-bootstrap/tasks.md) 与[第7课证据入口](../lesson-07/README.md)为准。最终场景复核由C承担。
+本文件保留规约交付时的历史快照；下文“待实现/待评审”和B独立复现、逐人评审、暂不归档等旧约定不表示当前状态。当前任务及验收以 [tasks](../../openspec/changes/archive/2026-10-28-project-bootstrap/tasks.md) 与[第7课证据入口](../lesson-07/README.md)为准。最终场景复核由C承担，2026-10-29归档前置调整见[归档记录](../lesson-07/archive-record.md)。
 
 ## 本次交付
 
-规约位于 openspec/changes/2026-10-28-project-bootstrap/：proposal.md说明本轮范围；design.md说明技术/配置/端口；specs/project-bootstrap/spec.md原始包含6个需求和15个场景；B评审修订后共9个需求、23个场景，其中PB-09/SC-20..23仅为后续合同；tasks.md标注负责人、前置条件及证据。严格校验记录见[validation.md](validation.md)。本分支无前后端实现和部署成果。经请求人授权，B直接追加本次修订；不代填A或C的评审。原始变更名project-bootstrap已改为课程日期命名2026-10-28-project-bootstrap，A原始校验记录按历史保留，新结果见docs/lesson-07/spec-review-fixes.md。
+规约现归档于 openspec/changes/archive/2026-10-28-project-bootstrap/，主规约为 openspec/specs/project-bootstrap/spec.md：proposal.md说明本轮范围；design.md说明技术/配置/端口；specs/project-bootstrap/spec.md原始包含6个需求和15个场景；B评审修订后共9个需求、23个场景，其中PB-09/SC-20..23仅为后续合同；tasks.md标注负责人、前置条件及证据。严格校验记录见[validation.md](validation.md)。A原交付分支无前后端实现和部署成果。经请求人授权，B直接追加本次修订；不代填A或C的评审。原始变更名project-bootstrap已改为课程日期命名2026-10-28-project-bootstrap，A原始校验记录按历史保留，新结果见docs/lesson-07/spec-review-fixes.md及archive-record.md。
 
 两份来源为请求人提供的《CampusClaw 第7课三人任务书 详细版》和《CampusClaw 学期项目说明》。前者约束本轮启动骨架，后者定义长期高校课程平台；未复制源DOCX或其本机私人路径到仓库。规约交付时README曾写“中小学”，B已在基础文档中统一为“高校”；本课页面不写学段。
 

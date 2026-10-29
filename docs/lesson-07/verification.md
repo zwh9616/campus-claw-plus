@@ -1,6 +1,8 @@
 # 第7课 B/C 实现与本机验收
 日期：2026-10-28（Asia/Shanghai）。执行账号：zwh9616；B/C技术工作经请求人授权由同一账号完成，未冒用其他组员身份或批准。
 
+本文件保留实现阶段的历史命令及状态快照，以下“待办/未执行”不是最新归档前置。C补充复核见[c-peer-review.md](c-peer-review.md)与[final-review.md](final-review.md)；2026-10-29调整后的最终范围及归档结果以[archive-record.md](archive-record.md)为准。
+
 ## 范围与源码
 规约PR #1已合并，基线a651871。当前记录为该基线加本实现PR工作树的真实验证；机器报告中的commit字段是执行时Git基线，不能把它误当尚未提交代码的提交号。实现源码、锁文件和镜像构建随本PR提交，CI对PR实际提交重新执行同一套检查。
 当前只有静态前端、Go健康服务、配置失败、日志、探针及双容器。无登录、数据库、模型或教学业务。
@@ -46,7 +48,7 @@
 - 后端Go单元在backend/internal各包，验收脚本scripts/verify-skeleton.mjs，可直接重跑；机器原始报告/变异日志/扫描结果在output/verification/，默认不入Git。
 - Nginx辅助访问日志为JSON，耗时字段duration_seconds；正式Go请求日志duration_ms，单位差异已在部署规范与design D6登记。
 
-## 尚未完成，不能代填
+## 实现阶段历史未完成项（不作为当前归档清单）
 1. 无历史Harness会话仅凭仓库路径/变更名验证SC-18，及后续新会话对产物执行SC-19。
 2. 另一成员自己的机器签出同一提交，按README从零启动并留执行人/环境/结果。
 3. 其他成员对本实现PR进行实质交叉评审，C核对最终场景；本账号不能假装另一成员已批准。C实际提供的运行证据见[c-peer-review.md](c-peer-review.md)，尚未执行的验收仍保持待办。
