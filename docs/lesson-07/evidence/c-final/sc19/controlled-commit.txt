@@ -1,0 +1,10 @@
+commit b329d065c20deb447e5e37c760c6e1dcfdd5f1c7
+Author:     kevco <1935865160@qq.com>
+AuthorDate: Wed Oct 28 23:45:44 2026 +0800
+Commit:     kevco <1935865160@qq.com>
+CommitDate: Wed Oct 28 23:45:44 2026 +0800
+
+    test: verify SC-19 isolated frontend change
+
+ frontend/src/pages/HomePage.tsx | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)

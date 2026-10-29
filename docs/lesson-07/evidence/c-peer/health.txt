@@ -1,0 +1,7 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+X-Request-Id: 506fbbc98b459c3046de939ba9ba1510
+Date: Wed, 28 Oct 2026 14:39:59 GMT
+Content-Length: 34
+
+{"status":"ok","dependencies":{}}

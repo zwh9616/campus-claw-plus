@@ -1,15 +1,10 @@
-# 第7课验证证据入口
-
-当前是规约评审阶段，无前后端运行成果。
-
-| 记录 | 位置与状态 |
-| --- | --- |
-| A原始规约校验 | [validation.md](../openspec/validation.md)、[原始输出](../openspec/validation-results.json)，历史记录不改写 |
-| B追加规约修订 | [spec-review-fixes.md](spec-review-fixes.md) |
-| B追加严格校验原始输出 | [spec-validation-results.json](spec-validation-results.json) |
-| 运行/配置/日志/跨机器验收 | C后续建立本目录verification.md；当前未执行 |
-| 无历史会话与规则实际生效 | 按SC-18/19记录真实输入输出和受控产物；当前待执行 |
-| 最终归档、标签 | 全组实际验收后记录；当前未执行 |
-
-docs/verification.md如后续保留，仅链接本目录的权威记录，不复制维护另一套结论。
-PB-09仅后续失败合同，不得计入本轮运行成功。
+# 第7课证据入口
+- [B/C实现与本机验收](verification.md)：实际命令、场景映射与未完成项。
+- [C成员交叉验收](c-peer-review.md)：同一提交的Docker运行、配置失败、端口占用、启停与首页证据；未完成项单独列出。
+- [C最终页面走查与新会话证据](evidence/c-final/)：1440/360视口、404键盘返回、SC-18/SC-19独立会话记录。
+- [C最终复核结论](final-review.md)：已完成核对、文档修正及保留限制。
+- [归档记录](archive-record.md)：2026-10-29授权范围调整、B分支归档和严格校验结果。
+- [规约评审修订](spec-review-fixes.md)、[严格校验结果](spec-validation-results.json)。
+- [A原始规约校验](../openspec/validation.md)：历史证据保留。
+- [规约PR #1](https://github.com/zwh9616/campus-claw-plus/pull/1)已合并为a651871。
+课程对应三项已按现有证据勾选：B本机启动、C交叉启动、新会话规范验证；完成状态及证据映射见[归档记录](archive-record.md)。先前取消的是额外复现/补证/逐人评审前置。本次已在B来源分支归档；合并PR和发布标签另行处理。

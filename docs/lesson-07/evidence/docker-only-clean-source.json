@@ -1,0 +1,24 @@
+{
+  "Date": "2026-10-28",
+  "BaseCommit": "40af9504148744b8362df729c666c94ba489c15c",
+  "Patch": "frontend Docker npm cache and bounded retry",
+  "Build": "docker compose build --no-cache",
+  "Start": "docker compose up -d --wait",
+  "HostNodeNpmGoInvoked": false,
+  "HostNodeModulesExists": false,
+  "HostDistExists": false,
+  "BackendHTTP": 200,
+  "Health": {
+    "status": "ok",
+    "dependencies": {}
+  },
+  "RequestID": [
+    "57ca526991767791aa78298ac922b457"
+  ],
+  "FrontendHTTP": 200,
+  "SelfcheckExitCode": 0,
+  "SameMachine": true,
+  "IndependentPeerAcceptance": false,
+  "FirstAttempt": "ECONNRESET while downloading Vite",
+  "Retest": "passed after adding cache/retry"
+}

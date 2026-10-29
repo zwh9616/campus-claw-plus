@@ -1,0 +1,8 @@
+来源：C成员提供的终端输出，2026-10-28。
+
+$ review_empty_env=$(mktemp)
+$ env -u HTTP_PORT docker compose --env-file "$review_empty_env" config --quiet > compose-missing.txt 2>&1
+$ printf 'exit=%s\n' "$?" >> compose-missing.txt
+$ cat compose-missing.txt
+error while interpolating services.backend.environment.HTTP_PORT: required variable HTTP_PORT is missing a value: Fill HTTP_PORT in the root .env
+exit=1

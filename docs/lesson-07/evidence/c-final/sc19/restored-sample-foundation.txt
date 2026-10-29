@@ -1,0 +1,7 @@
+
+> campus-claw-plus@0.0.1 check:foundation
+> node scripts/check-foundation.mjs
+
+Foundation: rule/skill entry points exist, sample keys are empty, .env is ignored.
+This check is separate from real authorization review and full-history secret scanning.
+EXIT_CODE=0

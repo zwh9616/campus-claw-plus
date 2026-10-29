@@ -1,0 +1,18 @@
+diff --git a/frontend/src/pages/HomePage.tsx b/frontend/src/pages/HomePage.tsx
+index 96b0c29..641d674 100644
+--- a/frontend/src/pages/HomePage.tsx
++++ b/frontend/src/pages/HomePage.tsx
+@@ -24,11 +24,11 @@ export function HomePage() {
+           <h1 id="welcome-title">课堂，<br />从这里开始。</h1>
+           <p className="welcome-copy">CampusClawPlus 的起点。<br />一个准备好继续生长的课堂教学项目。</p>
+         </div>
+-        <aside className="notebook" aria-label="当前项目阶段">
++        <aside className="notebook" aria-label="当前项目阶段" aria-describedby="stage-description">
+           <div className="book-tab" aria-hidden="true" />
+           <p className="notebook-label">项目启动阶段</p>
+           <h2>先搭好起点，<br />再一起向前。</h2>
+-          <p>前端页面与后端服务的最小骨架正在这里建立。教学功能将在后续迭代中逐步实现。</p>
++          <p id="stage-description">前端页面与后端服务的最小骨架正在这里建立。教学功能将在后续迭代中逐步实现。</p>
+           <div className="ruled-lines" aria-hidden="true"><span /><span /><span /></div>
+         </aside>
+       </section> : <section className="not-found">

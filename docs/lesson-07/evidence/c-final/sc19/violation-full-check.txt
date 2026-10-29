@@ -1,0 +1,17 @@
+
+> campus-claw-plus@0.0.1 check
+> npm run check:foundation && npm run typecheck && npm run build && npm run check:backend && npm run check:spec
+
+
+> campus-claw-plus@0.0.1 check:foundation
+> node scripts/check-foundation.mjs
+
+file:///D:/long/2/grade5/Internet-Software/group_project/output/sc19-independent/checkout/scripts/check-foundation.mjs:10
+if (sample !== 'HTTP_PORT=') throw new Error('.env.example must contain only HTTP_PORT=')
+                                   ^
+
+Error: .env.example must contain only HTTP_PORT=
+    at file:///D:/long/2/grade5/Internet-Software/group_project/output/sc19-independent/checkout/scripts/check-foundation.mjs:10:36
+
+Node.js v20.12.2
+EXIT_CODE=1

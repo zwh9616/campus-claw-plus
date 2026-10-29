@@ -30,3 +30,12 @@ dist/
 
 # Build output
 /build/
+
+# Browser verification artifacts
+output/playwright/
+.playwright-cli/
+*.tsbuildinfo
+
+# Local test binaries and evidence
+output/
+backend/output/
