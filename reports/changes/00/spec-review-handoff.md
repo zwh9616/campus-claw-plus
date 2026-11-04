@@ -2,6 +2,8 @@
 
 2026-11-04，规约人/终审人小葛，实现人/规约审查人小张；base main 2bf12e2。变更2026-11-04-business-contracts。本文是规约交接与AI自审，不是小张批准或新会话验收。
 
+规约PR：https://github.com/zwh9616/campus-claw-plus/pull/3 。当前评审状态以GitHub该PR最新head为准。
+
 ## 请小张审查
 
 1. design D2/D3：Principal、登录/刷新/CSRF/切班、资源ID和错误细节字段是否能直接实现与测试；必须保留跨班404及拒绝无业务副作用。

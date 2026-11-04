@@ -2,7 +2,7 @@
 - [x] 1.1 读取实际main 2bf12e2、手册v2与现有规则，核对健康响应/配置/历史证据；证据design.Context及reports/changes/00/。
 - [x] 1.2 编写proposal/design/两项delta/tasks，明确字段、失败样本、各change门禁与规则迁移；证据BC-01..06/BC-SC-01..12和design D1..D8。
 - [x] 1.3 执行严格校验与四类失败合同自审，保存命令/退出码/定位；证据reports/changes/00/spec-check.json。
-- [ ] 1.4 创建规约PR交小张审查，按实际结果更新reports/progress.md；证据PR和当前head SHA。
+- [x] 1.4 创建规约PR交小张审查，按实际结果更新reports/progress.md；证据PR和当前head SHA。
 - [ ] 1.5 小张对当前head审查、提出具体问题或同意；证据独立会话输入输出与PR评审，BC-SC-01/11；不可由小葛代填。
 - [ ] 1.6 小葛按反馈修改、小张确认关闭，重新严格校验；证据问题清单/修订SHA/真实批准；前置1.5。
 
