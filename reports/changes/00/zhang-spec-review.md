@@ -8,6 +8,7 @@
 - 结论：**需要修改；00尚未获准apply。** 六项问题须由小葛修订、小张复查，不能用OpenSpec校验通过替代关闭问题。
 - 已通过当前连接账号zwh9616提交[REQUEST_CHANGES评审](https://github.com/zwh9616/campus-claw-plus/pull/3#pullrequestreview-5764725986)，包含R1—R6六条行内意见；正文明确为用户授权的AI辅助审查，不冒充无历史新会话或未发生的人工实测。
 - 当前只执行规约审查与进度同步，没有生成公共合同实现、放开业务规则、合并或归档。
+- 审查记录与共享表通过[草稿PR #4](https://github.com/zwh9616/campus-claw-plus/pull/4)交接，目标为PR #3的来源分支；不代表任何规约问题已关闭。
 
 ## 已执行检查与限制
 

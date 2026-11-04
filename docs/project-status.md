@@ -49,7 +49,7 @@
 
 | 事项 | 实际执行与当前阶段 | 下一步 | 证据 / 验证 | 更新日期 |
 | --- | --- | --- | --- | --- |
-| 建立进度表与两人协作规范 | 原提交11b5b62已在codex/project-progress；本审查分支带入并对齐最新主干和00状态，待评审 | 通过正常PR同步到团队基线；业务apply仍等待00规约修订 | 分支codex/review-business-contracts；沿用AGENTS/README/PR同步要求；reports/progress.md只作入口，保留小葛原始日报快照；本轮检查见00审查记录 | 2026-11-04 |
+| 建立进度表与两人协作规范 | 原提交11b5b62已在codex/project-progress；本审查分支带入并对齐最新主干和00状态，待评审 | 小葛查看[草稿PR #4](https://github.com/zwh9616/campus-claw-plus/pull/4)；目标为PR #3来源分支；业务apply仍等待00规约修订 | 分支codex/review-business-contracts已推送；沿用AGENTS/README/PR同步要求；reports/progress.md只作入口，保留小葛原始日报快照；本轮检查见00审查记录 | 2026-11-04 |
 
 第7课完成项与范围例外仍按其归档记录解释，不强行映射成新的两人批准记录。后续若要调整历史范围，需明确修订依据并保留原记录。
 
