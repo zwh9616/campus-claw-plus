@@ -1,0 +1,9 @@
+{
+  "date": "2026-11-04",
+  "base_sha": "2bf12e223e9a1e3bdd9044e32f7e8067df1f7afa",
+  "command": "openspec validate 2026-11-04-business-contracts --strict --json",
+  "exit_code": 0,
+  "stdout": "{\n  \"items\": [\n    {\n      \"id\": \"2026-11-04-business-contracts\",\n      \"type\": \"change\",\n      \"valid\": true,\n      \"issues\": [],\n      \"durationMs\": 23\n    }\n  ],\n  \"summary\": {\n    \"totals\": {\n      \"items\": 1,\n      \"passed\": 1,\n      \"failed\": 0\n    },\n    \"byType\": {\n      \"change\": {\n        \"items\": 1,\n        \"passed\": 1,\n        \"failed\": 0\n      }\n    }\n  },\n  \"version\": \"1.0\",\n  \"root\": {\n    \"path\": \"D:\\\\campusclaw-mygroup\\\\tmp\\\\campus-claw-plus-inspect\",\n    \"source\": \"nearest\"\n  }\n}\n",
+  "stderr": "",
+  "kind": "spec_only_not_runtime_or_peer_approval"
+}
