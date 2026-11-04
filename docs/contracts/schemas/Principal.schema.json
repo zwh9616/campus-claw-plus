@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/v1/Principal.schema.json",
+  "title": "Principal",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "$ref": "ID.schema.json"
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "teacher",
+        "student"
+      ]
+    },
+    "class_id": {
+      "$ref": "ID.schema.json"
+    },
+    "session_id": {
+      "type": "string",
+      "minLength": 32,
+      "maxLength": 32,
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "session_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "expires_at": {
+      "$ref": "Timestamp.schema.json"
+    }
+  },
+  "required": [
+    "user_id",
+    "role",
+    "class_id",
+    "session_id",
+    "session_version",
+    "expires_at"
+  ],
+  "additionalProperties": false
+}

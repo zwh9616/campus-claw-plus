@@ -11,7 +11,8 @@
 
 ## 小组进度与协作入口
 
-- [共享进度表](docs/project-status.md)：查看每个变更的两位负责人、当前阶段、下一步、卡点及证据；00规约已提交并完成首轮审查，当前待修订，尚未apply。
+- [共享进度表](docs/project-status.md)：查看每个变更的两位负责人、当前阶段、下一步、卡点及证据；00修订规约已批准，本分支落实公共合同和检查，本机Docker故障使完整自测待补，尚未进入实现终审；G2/G3尚未成立。
+- [公共合同](docs/contracts/README.md)：OpenAPI3.1、2020-12单源类型与依赖/配置登记；认证只是frozen合同，当前运行仍只有health。npm run check:contracts已接入原检查入口。
 - [协作规范](docs/standards/collaboration.md)：一人写规约并终审，另一人审规约并实现；按变更分工，不按人固定技术模块。
 - 每次代码、测试、配置或脚本修改形成提交时，同一提交更新进度表对应行；阶段不变也记录本次改动和验证情况。PR交接和每日群内同步按协作规范执行。
 
@@ -120,7 +121,7 @@ Go日志字段：ts、level、module、message、request_id；HTTP日志另含me
 未知后端路径404，错误方法405。当前没有业务码外层。镜像自带/server --healthcheck，不依赖curl。
 
 ## 开发者检查（同伴启动系统无需执行）
-要求Node22.12+（推荐22系列最新补丁）、npm、Docker。Go可用本机1.27.3，或自动使用固定摘要的Go1.27.3容器工具链，无需全局安装。
+要求Node22.19+（推荐22系列最新补丁）、npm、Docker。Go可用本机1.27.3，或自动使用固定摘要的Go1.27.3容器工具链，无需全局安装。
 ```powershell
 npm ci
 npm run setup
@@ -129,7 +130,7 @@ npm run audit
 npm run secret-scan
 npm run verify
 ```
-- check：基础配置/规则入口、前端类型和构建、Go vet/test/build、严格OpenSpec。任何失败非零退出。
+- check：基础配置/规则入口、OpenAPI/Schema及语义反例、前端类型和构建、Go vet/test/build、严格OpenSpec。任何失败非零退出。
 - audit：根与前端npm依赖high/critical阻断；不是Go/容器漏洞扫描的替代品。
 - secret-scan：官方Gitleaks8.30.1，首次下载验证SHA256；扫描全部Git历史和暂存内容并全量隐藏原值。当前支持Windows/Linux x64，其他平台可手动使用同版本。
 - verify：真实容器构建/健康、配置失败退出码、占用、恢复、JSON日志、停止再启动；使用单独的campus-claw-plus-verify项目，完成后停止验收容器。开始前先停本项目普通Compose实例以释放5173/HTTP_PORT。

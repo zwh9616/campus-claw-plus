@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/v1/SkillInput.schema.json",
+  "title": "SkillInput",
+  "type": "object",
+  "properties": {
+    "skill_id": {
+      "type": "string",
+      "enum": [
+        "guided-solving",
+        "grading",
+        "error-explanation"
+      ]
+    },
+    "skill_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "principal": {
+      "$ref": "Principal.schema.json"
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 32,
+      "maxLength": 32,
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "question": {
+      "type": "string",
+      "minLength": 1
+    },
+    "submission_id": {
+      "anyOf": [
+        {
+          "$ref": "ID.schema.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "rubric_version": {
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "citations": {
+      "type": "array",
+      "items": {
+        "$ref": "Citation.schema.json"
+      }
+    }
+  },
+  "required": [
+    "skill_id",
+    "skill_version",
+    "principal",
+    "request_id",
+    "question",
+    "submission_id",
+    "rubric_version",
+    "citations"
+  ],
+  "additionalProperties": false
+}

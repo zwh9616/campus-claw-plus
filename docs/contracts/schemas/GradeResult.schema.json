@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/v1/GradeResult.schema.json",
+  "title": "GradeResult",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1"
+    },
+    "submission_id": {
+      "$ref": "ID.schema.json"
+    },
+    "submission_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "rubric_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "skill_id": {
+      "const": "grading"
+    },
+    "skill_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "criterion_id": {
+            "$ref": "ID.schema.json"
+          },
+          "score": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "max_score": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          },
+          "citations": {
+            "type": "array",
+            "items": {
+              "$ref": "Citation.schema.json"
+            }
+          }
+        },
+        "required": [
+          "criterion_id",
+          "score",
+          "max_score",
+          "reason",
+          "citations"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "total_score": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "max_total": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "schema_version",
+    "submission_id",
+    "submission_version",
+    "rubric_version",
+    "skill_id",
+    "skill_version",
+    "items",
+    "total_score",
+    "max_total"
+  ],
+  "additionalProperties": false
+}
