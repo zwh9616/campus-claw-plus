@@ -5,7 +5,7 @@
 ## ADDED Requirements
 
 ### Requirement: BC-01 共同合同可独立使用
-系统公共规约 SHALL 冻结design D1..D8的字段类型、必需项、枚举、边界、端点和前置条件，并由小张转为可解析的OpenAPI及JSON Schema；业务端点 MUST 标记为规划而非已运行。
+系统公共规约 SHALL 按design D1..D9冻结公共基础类型、01/02认证操作及前置条件；候选端点须登记责任change且冻结前禁止接线/生成可调用operation，并由小张转为可解析的OpenAPI及JSON Schema；业务端点 MUST 标记为规划而非已运行。
 #### Scenario: BC-SC-01 独立阅读
 - **WHEN** 小张在无历史上下文会话仅收到仓库和本change名
 - **THEN** 能找到三条主路径（资料答疑、作业批改复核、错题订正）、接口和任务依赖、检查命令，保存真实输入输出；缺少口头约定则退回规约
@@ -52,8 +52,27 @@
 ### Requirement: BC-06 两人门禁与真实进度
 每个change MUST 由表列规约终审人与实现人互审，review绑定当前head SHA，七类AI核查、脚本门禁和必要人工确认均留证；未真实联验 MUST 不归档。
 #### Scenario: BC-SC-11 前置不足不apply
-- **WHEN** 01/02/03/10已有草案但00未获小张审查确认，或07B前置07A尚未终审
-- **THEN** 可继续草案，apply保持阻塞，不把草案/自审当他人批准；10前置门禁与最终运行验收分阶段记录
+- **WHEN** 01/02/03/10已有草案但G2未成立，或07B前置07A尚未终审
+- **THEN** 可继续草案，apply保持阻塞，不把草案/自审当他人批准；G1只允许00自身apply；所有业务合并还须G3，10门禁自身只需G2与自身批准以免循环
 #### Scenario: BC-SC-12 今天进度如实记录
 - **WHEN** 小葛提交00规约并结束本轮工作
 - **THEN** 记录真实base/head、校验与PR，把小张审查、返修确认、实现与小葛终审保留为实际状态；没有反馈不得勾成审查通过，03/10未起草不得宣称完成
+
+#### Scenario: BC-SC-13 截止后重放原受理
+- **WHEN** 截止前已提交事务但202丢失，截止/版本变化后同键同载荷再次请求
+- **THEN** 重新认证与当前授权成功后重放原202/pending快照，当前task另查；同键异载荷409优先，新键逾期409，撤权不返回原受理，05/06须覆盖各自路径
+#### Scenario: BC-SC-14 SSE取消与断网
+- **WHEN** 取消先赢终态且连接可写，或网络已断后调用方查询
+- **THEN** 前者唯一error CANCELLED/retryable=false并持久化cancelled；后者不保证帧送达，未完成非空正文partial/空正文failed；完成先赢则取消409且保留completed
+#### Scenario: BC-SC-15 旧执行者恢复
+- **WHEN** worker A租约过期被B接管后恢复，或租约过期但尚未接管时提交
+- **THEN** epoch/执行者/未过期租约/running条件不符即拒绝，任务/成绩/错题/outbox无副作用；当前代重复结果不重复写，05/08需断言状态与DB数量
+#### Scenario: BC-SC-16 执行预算与取消竞争
+- **WHEN** 首次领取、崩溃接管或手动重试后领取，以及第3次后再次申请执行
+- **THEN** 每次成功领取消耗一次attempt并增加epoch，重复投递不领取不计数，超过3次不得执行；取消标记和成功CAS只允许一个终态，05/08留可重复时序用例
+#### Scenario: BC-SC-17 同源Schema一致
+- **WHEN** 00实现工具将唯一2020-12 Schema引用到OpenAPI3.1并分别校验同批正反例
+- **THEN** 独立与OpenAPI解引用校验对null、额外属性、嵌套Usage和ID边界的接受/拒绝一致；不兼容工具非零失败，不降级为3.0 nullable
+#### Scenario: BC-SC-18 已冻结与候选隔离
+- **WHEN** 小张生成机器合同、01/02准备调用认证接口，其他变更准备使用Material/Grade/Task操作
+- **THEN** D9认证成功/失败/刷新响应完整且可生成；planned操作只有待冻结登记，不使用任意object/空泛items或猜路径；责任change先补00审查再接线
