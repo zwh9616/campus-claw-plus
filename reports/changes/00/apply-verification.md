@@ -56,3 +56,5 @@
 4. 遵守远端门禁合入main，记录集成SHA并复验后才成立G2。10前置门禁成立后才有G3。下游可起草，未达到自身前置不可apply。
 
 验收场景逐项映射见[acceptance-map](../../../docs/contracts/acceptance-map.md)，共享状态以[project-status](../../../docs/project-status.md)为准。
+
+交接：实现提交`9e65f77b5eac18c263072bd418a35bc3b643cdd0`已推送并创建[草稿PR #5](https://github.com/zwh9616/campus-claw-plus/pull/5)，目标为小葛规约分支，仅承载00自身；尚未合并main。CI待结果，本机失败记录保持不变。
