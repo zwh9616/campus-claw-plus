@@ -1,5 +1,7 @@
 # 00 apply：小张实现与自检
 
+最新状态：本机check/verify已在18c3d08通过，00待小葛终审。下文首次失败和修复过程保留，最新结果见末节。
+
 日期：2026-11-04。小张明确授权AI复审并继续apply。依据小葛规约head `221be733194830daa9b35f810c37f035679e51bb`及[实际G1批准](zhang-spec-rereview.md)。实现分支`codex/apply-business-contracts`，整合基线`412cde3`；下述检查针对该基线上的本提交工作树，最终提交由Git历史定位，不能将基线SHA冒称本次产物SHA。
 
 ## 已落实的范围
@@ -12,7 +14,7 @@
 
 未修改frontend、backend、Compose、.env.example、历史archive或docs/lesson-07；与221be73比较这些路径无差异。本轮没有认证/数据库/任务/模型运行实现。Cookie传输名`campus_refresh`、明确的Page<Audit>实例是本实现的具体落地选择，须由小葛在实现终审核对；不提前生成Material/Grade占位类型。
 
-## 本机验证
+## 首次本机验证（历史失败保留）
 
 环境：Windows / PowerShell，Node v25.2.1。Go需现有Docker工具链；本机没有可用Go1.27.3。下面通过与失败分别记录，不能合并为“全部通过”。
 
@@ -48,9 +50,9 @@
 
 ## 交接与未完成项
 
-当前仍为“实现与自测”，本机完整门禁失败，先提交可审查草稿，不能标已完成/归档。
+当前为“待终审”：18c3d08的本机check/verify已通过，原Docker阻塞解除。尚未通过小葛终审，不标已完成/归档。
 
-1. 恢复本机Docker后，重跑`npm run check`与`npm run verify`，补实际输出。此前CI即便成功也只能作为CI环境结果。
+1. 本机check/verify已补齐，见下节恢复记录；保留此前失败和独立CI结果，未混用环境。
 2. BC-SC-01用真实无历史会话，仅输入仓库和change名，保存真实输入输出；当前会话不能代替。
 3. 小葛在实现PR当前head终审合同、规则迁移、红绿和以上限制；不能由小张/AI代填批准。
 4. 遵守远端门禁合入main，记录集成SHA并复验后才成立G2。10前置门禁成立后才有G3。下游可起草，未达到自身前置不可apply。
@@ -68,3 +70,18 @@ GitHub Actions运行[41798776552](https://github.com/zwh9616/campus-claw-plus/ac
 未更改镜像、容器、卷、WSL磁盘、设置或仓库运行代码；未进行factory reset、数据清理或Windows重启。原目录已恢复，当前建议用户保存工作后重启Windows，再打开Docker并检查`docker info`；这只是下一步恢复尝试，不保证解决。若引擎就绪，继续补跑本机check/verify并登记真实结果。
 
 类似问题存在[Docker用户报告](https://github.com/docker/desktop-feedback/issues/675)，但该报告的rename失败不同于本机初始bind失败，不能认定同一根因。此次观察不足以确认残留socket、Windows状态或Docker缺陷中的具体原因。
+
+## 2026-11-04 重启后本机验收通过
+
+验证提交：`18c3d08dedd78c36e7ceaf9e81c5b2870ebe53cd`；开始时Git工作树干净，本次只新增证据与状态文档，运行代码、锁文件和验收断言未修改。Windows/Node v25.2.1，Docker Server 29.8.0恢复可用。原npm ci/setup/audit和合同红绿已在相同代码/依赖版本执行通过，本次补跑受环境阻塞的完整入口；不是独立会话或小葛终审。
+
+- `npm run check`退出0：foundation、22 Schema/82正反例/6语义输入/39操作示例/6组测试、前端类型/构建、固定Go1.27.3容器工具链vet/test/build、OpenSpec严格2项全部通过。
+- 首次`npm run verify`退出1：两镜像构建成功，但默认地址池耗尽，不能创建验收网络；失败输出保留在[local-recovery-results.json](local-recovery-results.json)。
+- 只清理`campus-claw-plus_default`：事前核实标签属于本项目、没有连接端点、本项目无运行容器（旧两个容器已停止六天）。未清理其他网络，未删除容器、镜像、卷或调整Docker全局配置。Compose正常启动时可重建该空网络。
+- 原样重跑`npm run verify`退出0：15条场景记录全部通过，后端healthy、health载荷和请求标识、前端HTTP、7种无效配置退出2、占用端口退出1、有效配置恢复、5行JSON日志关联、停止后不可访问及重启恢复。
+- 两次健康请求45.94ms/5.66ms，均低于原500ms标记阈值；这是本机健康检查耗时，不是业务压测P95。
+- 验收结束后`campus-claw-plus-verify`容器已全部清理，没有停止其他项目运行容器。源码/Compose/检查脚本无变更；原断言保留。
+
+原始命令与退出码见[local-recovery-results.json](local-recovery-results.json)，场景结果见[local-container-results.json](local-container-results.json)（移除本机端口值）。脚本中browserCheck字段是历史固定描述，本轮只做静态页HTTP回归，未新增浏览器视觉截图；00没有UI改动。
+
+2.3完成，00改为待终审并将PR #5转为可审查。BC-SC-01仍未发生，小葛终审、main合入和集成复验未发生，G2/G3不提前成立。

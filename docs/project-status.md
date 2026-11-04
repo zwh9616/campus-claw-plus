@@ -4,8 +4,8 @@
 
 ## 现在做到哪里
 
-- **00规约修订221be73已由小张授权的AI辅助复审通过，G1成立；00合同与规则已落本分支，合同检查及2af9777的完整CI通过，本机完整自测仍受Docker故障阻塞，G2/G3尚未成立。** 详见[复审记录](../reports/changes/00/zhang-spec-rereview.md)和[apply证据](../reports/changes/00/apply-verification.md)。
-- 已获取远端基线main `2bf12e2`：第7课骨架已经合入、规约已归档且存在v0.0.1-skeleton标签；历史范围与例外见[归档记录](lesson-07/archive-record.md)和[归档tasks](../openspec/changes/archive/2026-10-28-project-bootstrap/tasks.md)。本次重跑检查在Docker引擎不可用处失败，未把历史或CI结果当成本机新通过，更不能把骨架成果当后续业务完成。
+- **00规约修订221be73已由小张授权的AI辅助复审通过，G1成立；00合同与规则已落本分支，18c3d08的本机check/verify通过，进入待终审；2af9777的完整CI通过，G2/G3尚未成立。** 详见[复审记录](../reports/changes/00/zhang-spec-rereview.md)和[apply证据](../reports/changes/00/apply-verification.md)。
+- 已获取远端基线main `2bf12e2`：第7课骨架已经合入、规约已归档且存在v0.0.1-skeleton标签；历史范围与例外见[归档记录](lesson-07/archive-record.md)和[归档tasks](../openspec/changes/archive/2026-10-28-project-bootstrap/tasks.md)。本机初次检查因Docker失败；用户重启及本项目空网络清理后，18c3d08的完整检查与15项容器验收通过。历史失败保留，未将骨架回归算作后续业务实现。
 - 00实际change为[2026-11-04-business-contracts](../openspec/changes/2026-11-04-business-contracts/proposal.md)。其余编号仍是规划；本次未核实01/02及其他成员活动，表中的“未开始”仅保留初始登记，待对应负责人同步，不据此代报他人未工作。小葛03/10未起草的记录见[原始交接快照](../reports/changes/00/ge-progress-2026-11-04.md)。
 - 人员按变更分配，不固定前端/后端/AI职责。表中日期记录该行最近实际更新，不代表开工、测试或批准日期。
 
@@ -13,7 +13,7 @@
 
 | 里程碑 | 当前状态 | 什么时候可以说完成 |
 | --- | --- | --- |
-| 规则定好 | 进行中：00合同已实现，自测被本机Docker阻塞 | 00公共契约及需要调整的规则确认、按门禁合入，可指导独立实现 |
+| 规则定好 | 进行中：00合同与本机自测完成，待小葛终审 | 00公共契约及需要调整的规则确认、按门禁合入，可指导独立实现 |
 | 分项开发 | 未开始 | 各功能变更完成约定实现和自测、经搭档终审；真实依赖未接通的保持待集成验收 |
 | 系统接通 | 未开始 | 真实登录、资料、助手、作业与反馈主流程跑通，11全流程和安全回归通过 |
 | 交付完成 | 未开始 | 10运行交付、12发布验证与用户反馈、13报告及展示准备验收完成，必验项无遗留 |
@@ -24,7 +24,7 @@
 
 | 编号 / 变更 | 写规约并终审 | 审规约并实现 | 阶段 | 下一步：谁做什么 | 卡点 / 前置条件 | 最近进展与证据（change / PR / 验证） | 更新日期 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 00 公共业务契约 | 小葛 | 小张 | 实现与自测 | 小张修复本机Docker环境后补全check/verify；小葛可先审草稿合同与规则，完整自检后终审 | G1通过；本机Docker内部socket冲突使Go/容器检查失败；BC-SC-01、实现终审、main集成复验待完成；G2/G3未成立 | [规约批准](https://github.com/zwh9616/campus-claw-plus/pull/3#pullrequestreview-5765025797)，head `221be73`；本提交落实22 Schema/7操作、82正反例+6语义输入/39操作示例/6组测试和规则迁移，红绿恢复通过；audit无漏洞、全历史及暂存秘密扫描通过；[完整证据](../reports/changes/00/apply-verification.md)；实现提交`9e65f77`；[草稿实现PR #5](https://github.com/zwh9616/campus-claw-plus/pull/5)，提交`2af9777`的[完整CI通过](https://github.com/zwh9616/campus-claw-plus/actions/runs/41798776552)；临时run目录隔离无效且已恢复，待用户重启Windows后复查本机 | 2026-11-04 |
+| 00 公共业务契约 | 小葛 | 小张 | 待终审 | 小葛审实现PR当前head并复跑合同/规则/健康兼容；小张另补真实无历史会话，按反馈修复 | 本机环境阻塞已解除；BC-SC-01、实现终审、main合入后复验待完成；G2/G3未成立 | [规约批准](https://github.com/zwh9616/campus-claw-plus/pull/3#pullrequestreview-5765025797)绑定`221be73`；22 Schema、82正反例、6组测试及红绿通过；`18c3d08`本机check/verify退出0、15项容器验收通过；[证据](../reports/changes/00/apply-verification.md)；[实现PR #5](https://github.com/zwh9616/campus-claw-plus/pull/5)；`2af9777`[CI通过](https://github.com/zwh9616/campus-claw-plus/actions/runs/41798776552) | 2026-11-04 |
 | 01 身份与数据基础 | 小陈 | 小张 | 未开始 | 小陈写登录、班级权限和数据规约 | 00确认后实施 | 仅登记计划；规约未创建、未验证 | 2026-11-04 |
 | 02 前端应用基础 | 小张 | 小葛 | 未开始 | 小张写页面流程及接口要求 | 00及02规约确认可开发；真实登录验收等01 | 仅登记计划；规约未创建、未验证 | 2026-11-04 |
 | 03 独立MCP工具服务 | 小葛 | 小陈 | 未开始 | 小葛写工具、协议和失败场景 | 00及03规约确认；宿主接入另由07C验收 | 仅登记计划；规约未创建、未验证 | 2026-11-04 |
