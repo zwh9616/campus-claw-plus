@@ -57,4 +57,14 @@
 
 验收场景逐项映射见[acceptance-map](../../../docs/contracts/acceptance-map.md)，共享状态以[project-status](../../../docs/project-status.md)为准。
 
-交接：实现提交`9e65f77b5eac18c263072bd418a35bc3b643cdd0`已推送并创建[草稿PR #5](https://github.com/zwh9616/campus-claw-plus/pull/5)，目标为小葛规约分支，仅承载00自身；尚未合并main。CI待结果，本机失败记录保持不变。
+交接：实现提交`9e65f77b5eac18c263072bd418a35bc3b643cdd0`已推送并创建[草稿PR #5](https://github.com/zwh9616/campus-claw-plus/pull/5)，目标为小葛规约分支，仅承载00自身；尚未合并main。提交`2af97777d525c7fbb041a08919b34e08cac1303c`的CI已通过，见下节；本机失败记录保持不变。
+
+## 2026-11-04 16:30后续诊断与CI结果
+
+GitHub Actions运行[41798776552](https://github.com/zwh9616/campus-claw-plus/actions/runs/41798776552)，关联head `2af97777d525c7fbb041a08919b34e08cac1303c`，job `126469560617`为success；安装、check、audit、secret-scan及真实容器/进程退出码验收步骤均success。此为CI环境结果，本机Docker失败仍保留，不据此成立G2。
+
+本机Docker Desktop版本4.92.0.240144。用户贴出同一Ingest启动错误后，只读检查确认Desktop/backend均已退出，run目录为普通目录，内部14个零字节`.stale`对象。将该临时目录保留改名为`run-preserved-20261104-163035`并新建run，尝试一次启动；仍失败，错误变为创建run时已存在/监听路径找不到，Linux引擎未创建。结束此次启动的故障进程，确认全部退出且run原位置已空，再将保留目录恢复原名；恢复成功，没有删除原文件。
+
+未更改镜像、容器、卷、WSL磁盘、设置或仓库运行代码；未进行factory reset、数据清理或Windows重启。原目录已恢复，当前建议用户保存工作后重启Windows，再打开Docker并检查`docker info`；这只是下一步恢复尝试，不保证解决。若引擎就绪，继续补跑本机check/verify并登记真实结果。
+
+类似问题存在[Docker用户报告](https://github.com/docker/desktop-feedback/issues/675)，但该报告的rename失败不同于本机初始bind失败，不能认定同一根因。此次观察不足以确认残留socket、Windows状态或Docker缺陷中的具体原因。
