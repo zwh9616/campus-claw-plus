@@ -3,6 +3,7 @@
 
 ## 每次开始工作
 - 必读 [安全规范](docs/standards/security.md)，按范围必须读取下表规则；这些文件是约束，不是可选参考。
+- 必读 [共享进度表](docs/project-status.md) 与 [协作规范](docs/standards/collaboration.md)，先确认本次变更、两位负责人、前置条件和下一步；不得按人固定前端/后端/AI职责。
 - 前端/文案：[产品规范](docs/standards/product.md)。
 - Go/HTTP：[后端规范](docs/standards/backend.md)。
 - 行为或用例变更：[测试规范](docs/standards/testing.md)，使用 [.agents/skills/campus-add-tests/SKILL.md](.agents/skills/campus-add-tests/SKILL.md)。
@@ -15,6 +16,7 @@
 - cmd/server只装配；config负责配置；httpserver负责HTTP边界；后续业务/存储不得反向依赖HTTP，不为骨架创建空业务层。
 - 失败退出非零；不能删断言、放宽门禁、伪造新会话或跨机器通过。
 - 分支和PR协作，提交说明关联PB/SC；用户明确授权的合并仍须遵守远端门禁，不伪造其他成员批准。
+- 每次代码、测试、配置或脚本修改形成提交时，必须在同一提交更新共享进度表的对应行；阶段没变也写明本次改动、验证结果及下一步。交接、阻塞、返工、验收或规约变化也须同步；AI结束工作前同样检查，未测只能写未验证。详见协作规范。
 - 规约与规则不一致先同步明确约定，例外登记在具体规范中；不能默许两套健康契约。
 
 ## 当前命令
