@@ -27,12 +27,14 @@
 - **WHEN** POST refresh并重新GET csrf
 - **THEN** 返回200及新访问凭证/刷新Cookie/CSRF，原刷新凭证401；持久化无原始凭证，过期时间按D3更新
 - **AND** 新Cookie配旧CSRF发起状态变更403，新的CSRF可用；既有访问凭证仅在有效期且未被撤销时继续有效
+- **AND** 有效Cookie的重复/并发GET csrf在页面重载、多标签下返回同一个派生值且no-store；旧Cookie的GET为401，日志/存储不含CSRF原值
 
 #### Scenario: IDF-SC-05 Concurrent refresh has exactly one winner
 - **GIVEN** 同一个有效刷新凭证与CSRF，并发请求由屏障同时开始
 - **WHEN** 两次refresh竞争同一持久状态
 - **THEN** 恰有一次200、一次401；真实MySQL只产生一套新凭证，失败者不撤销成功者
 - **AND** 重放旧凭证继续401且不写新凭证，成功者的会话仍可用
+- **AND** refresh与switch-class使用同一旧Cookie竞争时也只有一个事务赢家；败者401，不覆盖新Cookie或新班级
 
 #### Scenario: IDF-SC-06 Logout revokes both credential kinds
 - **GIVEN** 同会话有效Bearer、刷新Cookie、Origin及CSRF
@@ -77,11 +79,12 @@
 - **WHEN** 切到其有效成员班级
 - **THEN** 返回200及对应班级Principal、新访问/刷新/CSRF，session_version递增；旧班访问/刷新立即401
 - **AND** 切到非成员班级403，事务失败503，失败均保持原上下文/凭证且不创建成员关系；学生不能切到别班
+- **AND** 切班后新Cookie重新GET csrf可用，旧Cookie的GET为401、新Cookie配旧CSRF为403；事务超时按00返回504
 
 #### Scenario: IDF-SC-13 Origin CSRF and cookie-session binding
-- **WHEN** 以有效Cookie分别发送缺失/null/错误Origin、缺失/错误/旧CSRF，或logout/switch-class携带其他会话Bearer
-- **THEN** 403且无会话、刷新或业务变化；无效刷新Cookie优先401
-- **AND** 正确凭据通过；Cookie保持HttpOnly/Secure/SameSite=Strict/准确Path，HTTP便利模式不得静默放宽；敏感响应no-store
+- **WHEN** refresh分别携带缺失/无效/过期Cookie、错误Origin/CSRF及任意Bearer；logout/switch-class分别携带缺失/无效/过期Cookie、缺失/无效/过期Bearer、有效但另一会话的Bearer，或缺失/null/错误Origin、缺失/错误/旧CSRF
+- **THEN** refresh无效Cookie为401，完全不要求Bearer；logout/switch-class任一凭证无效均401且优先于Origin/CSRF错误；两凭证均有效但会话不一致为403；两凭证有效且同会话时Origin/CSRF错误为403
+- **AND** 每组复合错误也按此顺序返回，均无会话、刷新或业务变化；me只用Bearer；正确凭据通过。Cookie保持HttpOnly/Secure/SameSite=Strict/准确Path，HTTP便利模式不得静默放宽；敏感响应no-store
 
 ### Requirement: IDF-04 Durable migrations and safe initialization
 数据基础 SHALL 按design D2/D6使用真实MySQL、编号迁移和受控初始化；正常/重复/失败/部分迁移必须有可复验结果，不能用内存替代集成或把部分DDL当事务已回滚。
@@ -113,16 +116,16 @@
 身份基础 SHALL 按design D7/D8/D9在必需配置缺失、依赖故障及未授权动作时失败关闭；runtime-plan R1..R6的版本/许可/参数、迁移、配置/超时/HTTPS及健康候选必须经对应两人确认。公共健康/配置先对齐00，不得默许两套合同或把文档准备写成实现通过。
 
 #### Scenario: IDF-SC-18 Configuration and database failure
-- **WHEN** 移除已冻结的必需配置，或在运行中断开MySQL，再请求依赖数据库的登录/刷新/me
-- **THEN** 配置缺失启动非零且不打印值；运行故障503 DEPENDENCY_UNAVAILABLE，不签发/修改凭证、不放宽授权
+- **WHEN** 移除已冻结的必需配置，或在运行中使MySQL明确不可达/操作超过共用5秒预算，再请求依赖数据库的登录/刷新/me
+- **THEN** 配置缺失启动非零且不打印值；明确不可达503 DEPENDENCY_UNAVAILABLE，截止到期504 UPSTREAM_TIMEOUT；提交前失败回滚、不返回新Cookie/访问凭证、不放宽授权
 - **AND** 恢复后正常路径可用；数据库健康及探针只按先经00批准的唯一合同验收，批准前本草案不改变原health
-- **AND** 覆盖runtime-plan R2每个生效必需键的缺失/空白/非法/证书不可信及时间边界；任何TLS故障不允许降级或跳过证书校验，实际冻结超时后断言总预算内失败
+- **AND** 覆盖runtime-plan R2每个生效必需键的缺失/空白/非法/证书不可信及时间边界；任何TLS故障不允许降级或跳过证书校验；提交结果不明单列核查、不盲重试或声称数据库无变更
 
 #### Scenario: IDF-SC-19 Login rate and window boundaries
-- **GIVEN** 使用小张审定的D7阈值与可控时钟，对存在和不存在账号同样计数
-- **WHEN** 在限额以内、超出一次、并发跨限额及窗口恰好释放时尝试
-- **THEN** 限额内按认证结果处理，超过429及有效整数Retry-After，窗口释放后恢复；不会因并发突破限额
-- **AND** 不信任任意转发源头，不泄露账号存在性、不签发额外会话，限流记录有界
+- **GIVEN** 使用小张审定的D7阈值与可控时钟，对存在和不存在账号同样计数；源地址桶与精确用户名桶独立，单实例精确滑动60秒
+- **WHEN** 在限额以内、第11次、并发跨限额、时钟恰好到最早记录+60秒、用户名轮换/来源轮换、4096活跃桶满及释放时尝试
+- **THEN** 两桶均未满才原子计数，满桶/新键容量满429且Retry-After为有效整数，拒绝尝试不计数；释放后恢复，并发不突破单实例限额
+- **AND** 不信任任意转发源头，不泄露账号存在性、不签发额外会话；重启清空计数及多实例不具全局保证被明确记录，扩容前另审共享限流
 
 #### Scenario: IDF-SC-20 Personal ownership and default deny
 - **GIVEN** 同班两名学生、跨班身份和一项未登记动作
