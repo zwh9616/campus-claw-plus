@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/v1/Audit.schema.json",
+  "title": "Audit",
+  "type": "object",
+  "properties": {
+    "audit_id": {
+      "$ref": "ID.schema.json"
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 32,
+      "maxLength": 32,
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "actor_id": {
+      "anyOf": [
+        {
+          "$ref": "ID.schema.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "class_id": {
+      "anyOf": [
+        {
+          "$ref": "ID.schema.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "action": {
+      "type": "string",
+      "minLength": 1
+    },
+    "object_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "object_id": {
+      "anyOf": [
+        {
+          "$ref": "ID.schema.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "result": {
+      "type": "string",
+      "enum": [
+        "ok",
+        "denied",
+        "error"
+      ]
+    },
+    "skill_id": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "skill_version": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "usage": {
+      "anyOf": [
+        {
+          "$ref": "Usage.schema.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "duration_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "created_at": {
+      "$ref": "Timestamp.schema.json"
+    }
+  },
+  "required": [
+    "audit_id",
+    "request_id",
+    "actor_id",
+    "class_id",
+    "action",
+    "object_type",
+    "object_id",
+    "result",
+    "skill_id",
+    "skill_version",
+    "usage",
+    "duration_ms",
+    "created_at"
+  ],
+  "additionalProperties": false
+}

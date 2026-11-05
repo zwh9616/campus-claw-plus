@@ -1,0 +1,98 @@
+{
+  "citation": {
+    "material_id": "3",
+    "chunk_id": "4",
+    "material_version": 1,
+    "title": "演示资料",
+    "ordinal": 0,
+    "char_start": 0,
+    "char_end": 2,
+    "quote": "资料",
+    "url": "/materials/3"
+  },
+  "grade": {
+    "schema_version": "1",
+    "submission_id": "6",
+    "submission_version": 1,
+    "rubric_version": 1,
+    "skill_id": "grading",
+    "skill_version": "v1",
+    "items": [
+      {
+        "criterion_id": "7",
+        "score": 600,
+        "max_score": 1000,
+        "reason": "示例反馈",
+        "citations": [
+          {
+            "material_id": "3",
+            "chunk_id": "4",
+            "material_version": 1,
+            "title": "演示资料",
+            "ordinal": 0,
+            "char_start": 0,
+            "char_end": 2,
+            "quote": "资料",
+            "url": "/materials/3"
+          }
+        ]
+      }
+    ],
+    "total_score": 600,
+    "max_total": 1000
+  },
+  "rubric": {
+    "submission_id": "6",
+    "submission_version": 1,
+    "rubric_version": 1,
+    "items": [
+      {
+        "criterion_id": "7",
+        "max_score": 1000
+      }
+    ]
+  },
+  "sse": {
+    "meta": {
+      "request_id": "0123456789abcdef0123456789abcdef",
+      "turn_id": "9",
+      "conversation_id": "10",
+      "assistant_version": 1,
+      "citations": [
+        {
+          "material_id": "3",
+          "chunk_id": "4",
+          "material_version": 1,
+          "title": "演示资料",
+          "ordinal": 0,
+          "char_start": 0,
+          "char_end": 2,
+          "quote": "资料",
+          "url": "/materials/3"
+        }
+      ],
+      "skill": null
+    },
+    "token": {
+      "turn_id": "9",
+      "seq": 1,
+      "text": "演示"
+    },
+    "done": {
+      "turn_id": "9",
+      "status": "completed",
+      "usage": {
+        "input_tokens": 12,
+        "output_tokens": 3
+      },
+      "usage_unavailable_reason": null,
+      "duration_ms": 30
+    },
+    "error": {
+      "turn_id": "9",
+      "code": "CANCELLED",
+      "message": "已取消",
+      "retryable": false
+    }
+  }
+}

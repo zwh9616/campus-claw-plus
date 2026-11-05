@@ -1,0 +1,25 @@
+{
+  "date": "2026-11-04T08:17:38.058Z",
+  "node": "v25.2.1",
+  "baseCommit": "412cde337c2572a341913395b29c131eaa6b3e67",
+  "scope": "Uncommitted 00 implementation working tree; local contract gate, not business runtime or CI",
+  "mutation": "docs/contracts/schemas/Principal.schema.json",
+  "beforeSHA256": "5a8f66a0600f8f54992fafec4a4a3a9b5d38e6e78264cce39ab76ebe7908d3e1",
+  "restoredSHA256": "5a8f66a0600f8f54992fafec4a4a3a9b5d38e6e78264cce39ab76ebe7908d3e1",
+  "records": [
+    {
+      "phase": "red: remove Principal role allowlist",
+      "command": "npm run check:contracts",
+      "exitCode": 1,
+      "stdout": "\n> campus-claw-plus@0.0.1 check:contracts\n> node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs\n\n",
+      "stderr": "node:internal/modules/run_main:107\r\n    triggerUncaughtException(\r\n    ^\r\n\r\nAssertionError [ERR_ASSERTION]: Standalone: invalid role: null\r\n\r\ntrue !== false\r\n\r\n    at file:///C:/Users/lenovo/Desktop/SoftwareDevelopment/group_project/scripts/check-contracts.mjs:96:10 {\r\n  generatedMessage: false,\r\n  code: 'ERR_ASSERTION',\r\n  actual: true,\r\n  expected: false,\r\n  operator: 'strictEqual',\r\n  diff: 'simple'\r\n}\r\n\r\nNode.js v25.2.1\r\n"
+    },
+    {
+      "phase": "green: restore exact original bytes",
+      "command": "npm run check:contracts",
+      "exitCode": 0,
+      "stdout": "\n> campus-claw-plus@0.0.1 check:contracts\n> node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs\n\nContracts: 22 schemas; 82 positive/negative fixtures and 6 semantic inputs agree in both paths; 39 operation examples; 7 current/frozen operations. Planned operations absent.\n✔ BC-SC-06 accepts trusted rubric, rejects incorrect grading, stale and missing context (2.6055ms)\n✔ BC-SC-05 nonempty Citation codepoint range (0.187ms)\n✔ BC-SC-08/14 terminal sequence, cancellation and disconnected persistence (0.6523ms)\n✔ BC-SC-10 MCP exception remains exact, disabled and subject to both future reviews (0.8527ms)\n✔ BC-SC-09 registered empty keys only; no weakening historical HTTP_PORT requirement (5.4012ms)\n✔ BC-SC-18 planned operations and anonymous auth bypass cannot enter OpenAPI (29.8917ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 307.8195\n",
+      "stderr": ""
+    }
+  ]
+}

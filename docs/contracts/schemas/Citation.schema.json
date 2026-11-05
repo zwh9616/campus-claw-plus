@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/v1/Citation.schema.json",
+  "title": "Citation",
+  "type": "object",
+  "properties": {
+    "material_id": {
+      "$ref": "ID.schema.json"
+    },
+    "chunk_id": {
+      "$ref": "ID.schema.json"
+    },
+    "material_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "ordinal": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "char_start": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "char_end": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "quote": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "url": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^/(?!/)[^\\s\\\\?#]*$"
+    }
+  },
+  "required": [
+    "material_id",
+    "chunk_id",
+    "material_version",
+    "title",
+    "ordinal",
+    "char_start",
+    "char_end",
+    "quote",
+    "url"
+  ],
+  "additionalProperties": false
+}
