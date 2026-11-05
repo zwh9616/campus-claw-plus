@@ -1,6 +1,6 @@
 # PR #6 五项返修记录（小陈，2026-11-05）
 
-小张在[正式审查](https://github.com/zwh9616/campus-claw-plus/pull/6#pullrequestreview-5785063604)对`7fa3946`提出R1—R5。候选修订始于`b29f2be`，随后合入main `4cfd61d`以使用00生效机器合同；本记录不表示审查通过、G2成立或01获准apply。最终head以PR #6新提交和逐条回帖为准。
+小张在[正式审查](https://github.com/zwh9616/campus-claw-plus/pull/6#pullrequestreview-5785063604)对`7fa3946`提出R1—R5。候选修订始于`b29f2be`，随后合入main `4cfd61d`以使用00生效机器合同，推送后的PR #6 head为`bdd0809ac8471bf52ea5d200df685a6b2c09fade`。已在原五条意见处逐条回复并重新请求`zwh9616`审查；这不表示审查通过、G2成立或01获准apply。
 
 | 意见 | 对应修订 | 仍需确认 |
 | --- | --- | --- |
@@ -9,6 +9,8 @@
 | [R3 DB超时](https://github.com/zwh9616/campus-claw-plus/pull/6#discussion_r4480541557) | D1/D8、runtime-plan R2及SC-18：明确不可达503、共用预算到期504；提交结果不明须核查，禁止盲重试 | 小张确认预算起点和故障注入判据；沿用00已有504 |
 | [R4 限流](https://github.com/zwh9616/campus-claw-plus/pull/6#discussion_r4480541568) | D7及SC-19：源地址和用户名独立桶，精确60秒滑窗，429不计数，容量满拒绝，并发原子，单实例范围 | 小张确认阈值/容量与可信代理方案；多实例限额另审 |
 | [R5 公共接线](https://github.com/zwh9616/campus-claw-plus/pull/6#discussion_r4480541572) | D8、runtime-plan R2/R5及PCR-IDF-01..03：00合入SHA、公共修订路径、版本/许可/迁移登记和01接线责任明确 | 00原两人审批新公共修订；小张确认候选，G2/01批准前不apply |
+
+对应回帖：[R1](https://github.com/zwh9616/campus-claw-plus/pull/6#discussion_r4480939870)、[R2](https://github.com/zwh9616/campus-claw-plus/pull/6#discussion_r4480940221)、[R3](https://github.com/zwh9616/campus-claw-plus/pull/6#discussion_r4480940600)、[R4](https://github.com/zwh9616/campus-claw-plus/pull/6#discussion_r4480940967)、[R5](https://github.com/zwh9616/campus-claw-plus/pull/6#discussion_r4480941358)，均引用`bdd0809`并请求复审。R5公共修订仍须00原两人另行批准，不能因回帖标关闭。
 
 核对时main=`4cfd61d8119c51bc3bf2870a17c9754f0975b3dc`，PR #5已合入；main的该SHA CI成功，但远端main有效规则为空，尚不能以合入证明G2。PR #7仍是`5e5f299`，待小葛修订；PR #8为02规约待审。没有修改00生效合同、Compose、真实配置或业务代码。
 
