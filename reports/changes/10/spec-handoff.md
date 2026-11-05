@@ -22,3 +22,5 @@
 请小陈先审本规约；小张负责00新会话/main集成及01审查，并交02规约。小葛收到02后优先首个可用20分钟审查，不提前apply；03保留后续。当前G2/G3均未成立。共享表继承PR #5未合入版本；合并前逐行与其他活动PR核对，不覆盖他人进度。
 
 正式交接：[PR #7](https://github.com/zwh9616/campus-claw-plus/pull/7)，GitHub requested_reviewers 已选择 Kevcco。初始规约提交 f1052f07416e93237e1a16e0ba7b8d1961f6411a；本提交只补真实PR/请求状态，最终审查须绑定最新head。CI结果按远端当前运行查询，不沿用00的成功。
+
+CI历史：7a14db7的check/audit通过，secret-scan因官方工具下载失败退出1、verify未执行，见[实际失败记录](ci-download-failure.md)。本提交仅保留事实，由原CI重新运行；不改脚本或降低检查。
