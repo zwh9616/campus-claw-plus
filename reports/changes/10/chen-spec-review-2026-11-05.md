@@ -1,5 +1,13 @@
 # 小陈对10规约的审查
 
+## 新head 4fb1403复审（2026-11-05）
+
+小葛已在design D5、DO-06/DO-SC-15和tasks5.2修正原P2：20样本仅作质量标记，19个请求全部5xx仍按100%错误率触发告警；20请求1/2个5xx、19/20样本500/501ms、0样本及依赖2/3次均有明确预期。我在隔离工作树对该head独立执行锁定OpenSpec全量strict，2 passed/0 failed、退出0；git diff --check退出0；没有运行尚不存在的真实告警。
+
+当前[PR #7正式复审](https://github.com/zwh9616/campus-claw-plus/pull/7#pullrequestreview-5786421487)仍为REQUEST_CHANGES：head `4fb1403`与main `4cfd61d`冲突，GitHub该head没有check run，不能沿用旧head `5e5f299`的CI成功；已在[原意见位置](https://github.com/zwh9616/campus-claw-plus/pull/7#discussion_r4481603676)确认内容修复。请小葛同步main、逐行整合共享进度表、让新head CI成功，再交小陈绑定新head复审。G2已成立，但10自身规约未批准、G3未成立，不开始10 apply。
+
+## 初审快照
+
 审查人：小陈（Kevcco，用户授权AI辅助）；时间：2026-11-05 19:35（UTC+8）。
 
 对象：[PR #7](https://github.com/zwh9616/campus-claw-plus/pull/7)，head `5e5f2997b0d17c35a675188eed493172be61732c`，基线main `2bf12e223e9a1e3bdd9044e32f7e8067df1f7afa`。已用Kevcco提交[正式请求修改](https://github.com/zwh9616/campus-claw-plus/pull/7#pullrequestreview-5784225566)，未批准规约，未apply。
