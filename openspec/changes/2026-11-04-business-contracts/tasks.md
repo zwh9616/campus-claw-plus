@@ -5,7 +5,7 @@
 - [x] 1.4 创建规约PR交小张审查，按实际结果更新docs/project-status.md；证据PR和当前head SHA。
 - [ ] 1.5 小张对当前head审查及独立阅读的全部证据齐备（以下子项都完成才勾选）；不可由小葛代填。
   - [x] 1.5a 小张授权AI复审head 221be733194830daa9b35f810c37f035679e51bb，APPROVE 5765025797；BC-SC-11的G1已成立，仅允许00 apply。
-  - [ ] 1.5b BC-SC-01真实无历史会话输入输出；本会话有历史，不算该证据。按D8在00归档前完成，不能冒充通过。
+  - [ ] 1.5b BC-SC-01真实无历史会话输入输出已在2026-11-05首次执行，结果未通过：错题订正路径缺项；[证据](../../../reports/changes/00/independent-reading-2026-11-05.md)。小葛补规约、小张审查后重新独立复验；执行不等于通过，按D8归档前须关闭。
 - [x] 1.6 小葛按反馈修订221be73，小张复查R1—R6并确认关闭；严格校验2 passed/0 failed；真实批准见reports/changes/00/zhang-spec-rereview.md。G1依赖1.5a，1.5b仍为归档必验项（D8）。
 
 - [x] 1.7 收到小张绑定旧head 0e9dda3的CHANGES_REQUESTED（R1..R6）；证据PR审查5764725986，不等于批准或BC-SC-01新会话。
@@ -26,3 +26,5 @@
 2026-11-05：用户授权后PR #3/#5已正常合入main，集成SHA 4cfd61d；main CI含check/verify通过。本机check因Docker引擎不可用退出1、verify未运行，未将远端结果代写本机通过。3.2包含归档，因1.5b及本机复验收口未齐仍不勾选；详见reports/changes/00/main-integration-2026-11-05.md。
 
 恢复补记：用户重启Docker后，4cfd61d本机check/verify均退出0、15项容器验收通过，main CI也通过，G2成立。3.2仍含尚未完成的归档，1.5b独立会话未做，均保留未勾。证据main-integration-2026-11-05.md及main-container-results-2026-11-05.json。
+
+独立阅读补记（覆盖以上“未做”历史状态）：2026-11-05新会话01a1ac13-9fed-7c11-bc36-50d08ff7d88c已对4cfd61d执行BC-SC-01，但因错题订正用户路径缺项未通过；已在PR #3评论6660380420交小葛补充。1.5/1.5b/3.2继续不勾选，保留真实失败，未改已批准机器合同或归档历史。

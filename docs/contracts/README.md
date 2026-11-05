@@ -51,4 +51,4 @@ SSE fixture的`{event,data}`只是测试表达：真实wire仍为`event:`与JSON
 
 ## 交接证据
 
-实现证据见[00 apply记录](../../reports/changes/00/apply-verification.md)及[main集成复验](../../reports/changes/00/main-integration-2026-11-05.md)。所有凭据样例都是不可用测试文本，禁止替换为真实值。小葛终审与main集成复验已完成，G2已成立；BC-SC-01真实无历史会话仍待补，00尚不归档；G3仍待10前置门禁验收，不能将G2当作G3。
+实现证据见[00 apply记录](../../reports/changes/00/apply-verification.md)及[main集成复验](../../reports/changes/00/main-integration-2026-11-05.md)。所有凭据样例都是不可用测试文本，禁止替换为真实值。小葛终审与main集成复验已完成，G2已成立；[BC-SC-01真实独立阅读](../../reports/changes/00/independent-reading-2026-11-05.md)首次未通过，错题订正主路径需补充复验，00尚不归档；G3仍待10前置门禁验收，不能将G2当作G3。
