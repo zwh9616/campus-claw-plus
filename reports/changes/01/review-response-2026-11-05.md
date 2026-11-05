@@ -14,4 +14,4 @@
 
 核对时main=`4cfd61d8119c51bc3bf2870a17c9754f0975b3dc`，PR #5已合入；[同SHA集成报告](https://github.com/zwh9616/campus-claw-plus/blob/29397750f3d6f8879b6aacdacbbe3e7d160ede3c/reports/changes/00/main-integration-2026-11-05.md)补充main CI及小张本机check/verify退出0，按00 D8的G2已成立。main有效规则仍为空，但这是10前置G3的待办；BC-SC-01及00归档仍待补。PR #7仍是`5e5f299`，待小葛修订；PR #8为02规约待审。没有修改00生效合同、Compose、真实配置或业务代码。
 
-本地合入00后，用Node 24.22.1对工作树执行OpenSpec全量严格校验（3项通过）、合同一致性检查（22 Schema、82正反例、6语义输入、39 operation示例）、foundation检查及全历史/待提交secret scan，均退出0；`npm run audit`两处均无漏洞、退出0。完整`npm run check`和真实容器`npm run verify`未在这次修订head上运行，后续以PR当前head的CI与同SHA实测分别记录，不复用旧证据。
+本地合入00后，用Node 24.22.1对工作树执行OpenSpec全量严格校验（3项通过）、合同一致性检查（22 Schema、82正反例、6语义输入、39 operation示例）、foundation检查及全历史/待提交secret scan，均退出0；`npm run audit`两处均无漏洞、退出0。本地未在01修订head完整运行`npm run check`和真实容器`npm run verify`；[PR #6的CI](https://github.com/zwh9616/campus-claw-plus/actions/runs/42035801865)已在`9ed12acf2d7680530dbd68baa0f7772038372c73`完成并成功，工作流含npm ci/setup/check/audit/secret-scan/verify。此CI是骨架/公共合同回归，不是未来01身份+数据库集成验收；最终文档同步提交的CI以该提交自己的运行状态另核。
