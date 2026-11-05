@@ -61,7 +61,7 @@ HTTPS候选采用同源Nginx：/提供前端、/api/v1/转发到本项目后端�
 
 提交00原两人确认的健康候选：引入MySQL的版本仍公开GET /health；200时status=ok、dependencies仅mysql=up；3秒预算PingContext失败时503、status=error、dependencies仅mysql=down，不输出连接串/错误详情。每次请求检查真实连接，不把启动成功缓存成永久up。请求标识/日志合同保留；Schema、OpenAPI、配置登记及/server --healthcheck必须同一变更同步，探针只接受该阶段批准的精确成功响应。此提案尚未被00确认，当前健康实现与骨架历史不变；参数如被退回则先改本提案，不同时支持两套规范。
 
-小陈准备条件：能运行Docker Compose的执行环境、隔离MySQL数据卷、双班五人凭据、受信HTTPS证书和故障注入权限；目前本终端未发现docker/go，未连接真实DB或验证证书。所有配置来源、实际版本、迁移与请求/DB断言必须在未来同一集成SHA保存到reports/changes/01，不能复制00/CI结果当本次运行。
+小陈准备条件：能运行Docker Compose的执行环境、隔离MySQL数据卷、双班五人凭据、受信HTTPS证书和故障注入权限。2026-11-05已在ab91417实际复跑现有骨架检查，Docker28.3.3/Compose2.39.1、Node22.23.4及固定摘要Go1.27.3工具链可用，check/verify等命令退出0，见[实际结果](../../../reports/changes/01/docker-check-2026-11-05.json)；尚未连接真实DB、创建账号或验证证书。未来身份集成仍须在同一集成SHA保存配置来源、实际版本、迁移与请求/DB断言，不能复制骨架或00/CI结果当作身份集成运行。
 
 ## R6 给小张的确认清单
 

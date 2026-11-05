@@ -1,6 +1,6 @@
 # 小陈运行条件准备
 
-日期：2026-11-04；基线main 2bf12e2。本次仅盘点，不声称部署或依赖已连通；未读取.env或令牌值，未创建真实配置或启动/停止服务。
+日期：2026-11-04；基线main 2bf12e2。以下为初始盘点，不声称该阶段部署或依赖已连通；未读取.env或令牌值，未创建真实配置或启动/停止服务。最新Docker复跑结论见末节及[实际结果](docker-check-2026-11-05.json)。
 
 | 条件 | 实际观察 | 后续准备与归属 |
 | --- | --- | --- |
@@ -29,3 +29,11 @@
 ## 第二天要求落实后的命令实跑
 
 见[环境检查原始结果](environment-check-2026-11-05.json)和[第二天交接](day-two-checkpoint.md)。显式Node24.22.1/npm10.5.0可用；npm run check退出1，前端类型/构建和foundation通过，因无Docker/Go而在backend检查失败；npm run audit退出0、根与前端0漏洞。npm run verify未运行，未创建.env或启停服务；Go、DB、HTTPS保持未验证。上述是c733ff2上的实际结果，不覆盖原先文档检查与CI记录。
+
+## 2026-11-05 Docker复跑通过
+
+小陈授权助手在提交ab91417c8989d333ac69df61ff6e6d18df0f125b执行现有检查，时间11:10–11:11 UTC。[记录](docker-check-2026-11-05.json)包含版本、命令、输出、退出码和15项容器结果。Node22.23.4/npm10.9.9可用；Docker28.3.3/Compose2.39.1已连接服务，Go固定摘要工具链实际为go1.27.3 linux/amd64。Node仅给本次检查指定PATH，未替换系统工具。
+
+npm ci、npm run setup、npm run check、npm run audit、npm run secret-scan、npm run verify均退出0：类型/构建、Go vet/test/build、两项严格规约检查通过，根和前端审计均0漏洞，历史与暂存扫描无命中；容器健康、配置失败、占用、日志关联与停止重启15项通过。验收容器已由脚本停止，原有.env与未跟踪日志保留。
+
+这解除现有工程检查的Docker/Go工具阻塞，保留此前失败记录。MySQL、迁移/初始化账号、HTTPS、模型/MCP仍未验证；01批准与G2/G3、10保护阻断流程未因此完成，也不冒称他人独立复现或新会话通过。
