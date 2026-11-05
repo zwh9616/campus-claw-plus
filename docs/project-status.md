@@ -6,7 +6,7 @@
 
 - **00规约修订221be73已由小张授权的AI辅助复审通过，G1成立；00合同与规则已落00实现分支，18c3d08的本机check/verify通过，11-05补核实现head 75cadbf已获[小葛终审批准](https://github.com/zwh9616/campus-claw-plus/pull/5#pullrequestreview-5782045346)，CI通过但尚未合入main，G2/G3尚未成立。** 详见[复审记录](https://github.com/zwh9616/campus-claw-plus/blob/75cadbf80a0adaddd8680a87a0b07dfb22c1ad37/reports/changes/00/zhang-spec-rereview.md)和[apply证据](https://github.com/zwh9616/campus-claw-plus/blob/75cadbf80a0adaddd8680a87a0b07dfb22c1ad37/reports/changes/00/apply-verification.md)，当次CI与评审状态见[快照](../reports/changes/01/github-state-2026-11-05.json)。
 - 已获取远端基线main `2bf12e2`：第7课骨架已经合入、规约已归档且存在v0.0.1-skeleton标签；历史范围与例外见[归档记录](lesson-07/archive-record.md)和[归档tasks](../openspec/changes/archive/2026-10-28-project-bootstrap/tasks.md)。本机初次检查因Docker失败；用户重启及本项目空网络清理后，18c3d08的完整检查与15项容器验收通过。历史失败保留，未将骨架回归算作后续业务实现。
-- 00实际change为[2026-11-04-business-contracts](https://github.com/zwh9616/campus-claw-plus/blob/75cadbf80a0adaddd8680a87a0b07dfb22c1ad37/openspec/changes/2026-11-04-business-contracts/proposal.md)。2026-11-05已核实小陈提交[01规约草稿PR #6](https://github.com/zwh9616/campus-claw-plus/pull/6)，当前待小张审查；01已补运行/版本/迁移/配置/HTTPS具体候选，尚未批准；远端未见02/03/10规约PR，其“未开始”只表示未有可见交接成果，不推断成员本机未工作。小葛03/10未起草的记录见[原始交接快照](https://github.com/zwh9616/campus-claw-plus/blob/75cadbf80a0adaddd8680a87a0b07dfb22c1ad37/reports/changes/00/ge-progress-2026-11-04.md)。
+- 00实际change为[2026-11-04-business-contracts](https://github.com/zwh9616/campus-claw-plus/blob/75cadbf80a0adaddd8680a87a0b07dfb22c1ad37/openspec/changes/2026-11-04-business-contracts/proposal.md)。2026-11-05已核实小陈提交[01规约草稿PR #6](https://github.com/zwh9616/campus-claw-plus/pull/6)，当前待小张审查；01已补运行/版本/迁移/配置/HTTPS具体候选，尚未批准；02/03尚未有可见规约PR，10已提交[PR #7](https://github.com/zwh9616/campus-claw-plus/pull/7)并经小陈首审请求修改；其余“未开始”只表示未有可见交接成果，不推断成员本机未工作。小葛03/10未起草的记录见[原始交接快照](https://github.com/zwh9616/campus-claw-plus/blob/75cadbf80a0adaddd8680a87a0b07dfb22c1ad37/reports/changes/00/ge-progress-2026-11-04.md)。
 - 人员按变更分配，不固定前端/后端/AI职责。表中日期记录该行最近实际更新，不代表开工、测试或批准日期。
 
 ## 整体里程碑
@@ -38,7 +38,7 @@
 | 07C MCP宿主接入 | 小葛 | 小陈 | 未开始 | 小葛写连接、工具权限、断开和调用上限 | 03、07A及技能绑定规则可用 | 仅登记计划；规约未创建、未验证 | 2026-11-04 |
 | 08 成绩与错题业务闭环 | 小陈 | 小张 | 未开始 | 小陈写结果入库、人工改分和冲突规则 | 05及批改结果格式确定可开发；真实验收等07B | 仅登记计划；规约未创建、未验证 | 2026-11-04 |
 | 09 助手与反馈页面 | 小张 | 小葛 | 未开始 | 小张写对话、配置、改分与错题页面流程 | 02/06及AI接口确定可开发；验收接齐07A/B/C、08 | 仅登记计划；规约未创建、未验证 | 2026-11-04 |
-| 10 交付流水线与运行观测 | 小葛 | 小陈 | 未开始 | 小葛先写检查与失败拦截规约，交小陈审查 | 00后优先做门禁；随功能接入服务，最后验运行 | 仅登记计划；规约未创建、未验证 | 2026-11-04 |
+| 10 交付流水线与运行观测 | 小葛 | 小陈 | 写规约（返修） | 小葛统一最低样本告警与部署规范，给出19/20样本等边界预期；小陈绑定新head复审 | 1项P2规则冲突未关闭；G2未成立、规约未批准，不apply；A先于B/C | [PR #7](https://github.com/zwh9616/campus-claw-plus/pull/7)的5e5f299已由小陈[请求修改](https://github.com/zwh9616/campus-claw-plus/pull/7#pullrequestreview-5784225566)；[审查记录](../reports/changes/10/chen-spec-review-2026-11-05.md)含入口一致、退出码、真实保护及红绿证据核对；严格校验退出0、2项通过，目标CI成功；未冒称保护生效或10实现通过 | 2026-11-05 |
 | 11 安全与端到端回归 | 小张 | 小葛 | 未开始 | 小张写测试场景、失败判据及证据要求 | 可提前准备；完整执行等真实业务接通 | 仅登记计划；规约未创建、未验证 | 2026-11-04 |
 | 12 发布验证与真实反馈 | 小葛 | 小陈 | 未开始 | 小葛写压测、用户反馈与发布验收计划 | 09、10、11通过，在同一候选版本验证 | 仅登记计划；规约未创建、未验证 | 2026-11-04 |
 | 13 最终报告与答辩准备 | 小陈 | 小葛 | 未开始 | 小陈写报告结构、证据路径和演示要求 | 12及各变更真实记录齐备；不把本计划充当成果 | 仅登记计划；规约未创建、未验证 | 2026-11-04 |
@@ -86,3 +86,5 @@
 2026-11-05补充：ab91417已由小陈授权助手完成[现有工程Docker复跑](../reports/changes/01/docker-check-2026-11-05.json)，全套命令退出0，15项容器验收通过。先前c733ff2失败作为历史保留；此次仅解除骨架检查工具阻塞，不计01身份业务、数据库/HTTPS、00终审或10主干保护验收。
 
 同次只读补核：PR #5的75cadbf已有gjj6666于2026-11-05 08:45:25 UTC提交的[APPROVED](https://github.com/zwh9616/campus-claw-plus/pull/5#pullrequestreview-5782045346)，PR仍open且未合并，main仍2bf12e2；按依赖表，G2还要求main集成SHA及复验。PR #6当前无正式review。这里只更新整体事实及01自身行，其他成员业务行保留原提交记录。
+
+19:35（UTC+8）收到10的[PR #7](https://github.com/zwh9616/campus-claw-plus/pull/7)后，小陈已优先完成5e5f299规约审查并正式请求修改1项P2规则冲突，见[审查记录](../reports/changes/10/chen-spec-review-2026-11-05.md)。10行据真实交接更新为返修；此前“未交接”为先前盘点，不继续作为当前状态。下一步等小葛修订后复审，G2前不apply。

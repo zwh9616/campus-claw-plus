@@ -30,7 +30,7 @@ runtime-plan R1..R6在c733ff2已补具体版本/许可、输入/回滚、空键/
 
 ## 10前置门禁交接准备
 
-当前可见远端没有10规约/PR，因此本次没有给出10批准或开始apply，也不代小葛起草同一变更。交接后由小陈优先审10，再按安排处理03。先对现有入口作只读盘点：package.json的check串联foundation/typecheck/build/backend/spec；CI依次运行ci/setup/check/audit/secret-scan/verify，没有continue-on-error或忽略失败分支；check-backend的非零/启动失败上抛，本次check退出1也实际体现失败传播。此盘点不是10完整门禁通过。
+先前01修订时尚未见10规约/PR，因此当时只准备审查清单，没有给出10批准或开始apply，也不代小葛起草同一变更。随后收到PR #7，小陈已优先审查并请求修改，最新结论见[实际审查](../10/chen-spec-review-2026-11-05.md)。此前入口只读盘点如下：package.json的check串联foundation/typecheck/build/backend/spec；CI依次运行ci/setup/check/audit/secret-scan/verify，没有continue-on-error或忽略失败分支；check-backend的非零/启动失败上抛，先前check退出1也实际体现失败传播。该盘点不是10完整门禁通过。
 
 收到10规约时重点要求：
 
@@ -43,4 +43,4 @@ runtime-plan R1..R6在c733ff2已补具体版本/许可、输入/回滚、空键/
 
 ## 提交与收工
 
-同一PR提交01修订、文档校验/扫描及环境真实结果；共享表01行同步为待小张复审，10行保留未交接。现有骨架工程检查和容器复跑已通过；01批准、DB/HTTPS集成、10审查/apply/终审都不勾完成。早先文档检查和失败记录保留，最新Docker结果绑定ab91417，不把成功转记为其他成员、无历史会话或主干保护的验收。
+同一PR提交01修订、文档校验/扫描及环境真实结果；共享表01行同步为待小张复审，10行随后按PR #7的真实审查更新为规约返修。现有骨架工程检查和容器复跑已通过；10首轮规约审查已完成并请求修改，01/10批准、DB/HTTPS集成、10 apply/终审都未完成。早先文档检查和失败记录保留，最新Docker结果绑定ab91417，不把成功转记为其他成员、无历史会话或主干保护的验收。
