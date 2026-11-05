@@ -1,5 +1,13 @@
 # PR #6 五项返修记录（小陈，2026-11-05）
 
+## 绑定90374c1的二次复审
+
+[小张二次正式审查](https://github.com/zwh9616/campus-claw-plus/pull/6#pullrequestreview-5786143149)确认R1凭据顺序、R2 CSRF恢复已在规约层通过，R3超时主修正及R4单实例双桶方案基本接受，但01整体仍为REQUEST_CHANGES。新[切班COMMIT不明意见](https://github.com/zwh9616/campus-claw-plus/pull/6#discussion_r4481386711)要求区分已确认回滚与确认包丢失；新[双桶容量意见](https://github.com/zwh9616/campus-claw-plus/pull/6#discussion_r4481386721)要求同时阻塞时等待取最大值、4095个桶需新建两个时原子拒绝。对应修订在design D3/D7及IDF-SC-12/19，新增Purpose供归档，不创建另一个01 change。
+
+小张[逐项反馈](https://github.com/zwh9616/campus-claw-plus/pull/6#issuecomment-6659982126)接受版本/许可用途、Argon2id与初始化方案、候选迁移号、目标健康和七键用途，要求迁移DSN继承业务DSN的目标/证书校验，健康合同由小葛明确阶段切换。runtime-plan R1/R2/R3/R5/R6、design D8及PCR请求已同步；此为候选确认，不代替00原两人公共修订、01正式批准或实际依赖运行验证。当前PR描述中的旧main/G2、六键和10未交接需与本次提交同步更正。新提交及检查结果在PR回帖中绑定，不将旧CI冒称新head通过。
+
+本轮本机用Node v24.22.1运行：OpenSpec全量strict 3项通过；合同检查22 Schema、82正反例、6语义输入、39接口示例及6组测试通过；foundation、全历史与暂存secret scan、audit（根和前端0漏洞）、diff检查均退出0。完整npm run check在backend因本机无Docker命令退出1；前序foundation/合同/类型/构建已通过，后续规约未由该串联命令执行但已独立通过。默认Node v20.12.2低于package要求，曾使合同检查报ERR_REQUIRE_ESM；改用符合要求的Node24重跑通过。未运行未来01身份代码、MySQL、HTTPS或npm run verify；新head CI须待推送后单独核实。
+
 小张在[正式审查](https://github.com/zwh9616/campus-claw-plus/pull/6#pullrequestreview-5785063604)对`7fa3946`提出R1—R5。候选修订始于`b29f2be`，随后合入main `4cfd61d`以使用00生效机器合同，首次推送的修订head为`bdd0809ac8471bf52ea5d200df685a6b2c09fade`。已在原五条意见处逐条回复并重新请求`zwh9616`审查；回帖不等于审查通过或01获准apply。G2另依据00同SHA复验成立。
 
 | 意见 | 对应修订 | 仍需确认 |

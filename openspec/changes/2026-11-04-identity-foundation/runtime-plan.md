@@ -6,13 +6,13 @@
 
 | 组件 | 本次候选 | 官方来源与已知事实 | 实施前仍需完成 |
 | --- | --- | --- | --- |
-| MySQL | 8.4.13 Community，InnoDB | [官方镜像清单](https://raw.githubusercontent.com/docker-library/official-images/master/library/mysql)含8.4.13；2026-11-05 Registry HEAD解析为mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902；[上游许可](https://raw.githubusercontent.com/mysql/mysql-server/mysql-8.4.13/LICENSE)为GPLv2并有附加许可说明 | 小张评审用途/许可与镜像组成；在Docker执行环境核对平台子摘要、实际版本、安全扫描及隔离启动，不把HEAD元数据当拉取运行 |
-| Go MySQL驱动 | github.com/go-sql-driver/mysql v1.10.1 | [go.mod](https://raw.githubusercontent.com/go-sql-driver/mysql/v1.10.1/go.mod)最低Go1.24.0；[许可](https://raw.githubusercontent.com/go-sql-driver/mysql/v1.10.1/LICENSE)MPL-2.0 | 属当前安全规范需先评审的许可；未批准前不引入。保留许可、用途及间接依赖清单，再锁go.mod/go.sum |
+| MySQL | 8.4.13 Community，InnoDB | [官方镜像清单](https://raw.githubusercontent.com/docker-library/official-images/master/library/mysql)含8.4.13；2026-11-05 Registry HEAD解析为mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902；[上游许可](https://raw.githubusercontent.com/mysql/mysql-server/mysql-8.4.13/LICENSE)为GPLv2并有附加许可说明 | 小张已认可课程项目用途/许可处理；实施时保留上游声明与源码获取说明，核对平台子摘要、实际版本、安全扫描及隔离启动，不把HEAD元数据当拉取运行 |
+| Go MySQL驱动 | github.com/go-sql-driver/mysql v1.10.1 | [go.mod](https://raw.githubusercontent.com/go-sql-driver/mysql/v1.10.1/go.mod)最低Go1.24.0；[许可](https://raw.githubusercontent.com/go-sql-driver/mysql/v1.10.1/LICENSE)MPL-2.0 | 小张已认可课程项目用途/许可处理，仍待01批准后引入；保留许可、用途及间接依赖清单，再锁go.mod/go.sum |
 | 口令函数 | golang.org/x/crypto v0.58.0 的argon2 | [版本模块](https://raw.githubusercontent.com/golang/crypto/v0.58.0/go.mod)最低Go1.26.0；[许可](https://raw.githubusercontent.com/golang/crypto/v0.58.0/LICENSE)BSD-3-Clause | 仅使用argon2及必要依赖；锁文件、构建和漏洞检查由未来实现验证，不声称选定版本即零漏洞 |
 | 迁移 | github.com/golang-migrate/migrate/v4 v4.20.1；仅mysql与iofs驱动 | [发布](https://github.com/golang-migrate/migrate/releases/tag/v4.20.1)、[go.mod](https://raw.githubusercontent.com/golang-migrate/migrate/v4.20.1/go.mod)最低Go1.25.11、[许可](https://raw.githubusercontent.com/golang-migrate/migrate/v4.20.1/LICENSE)MIT | 独立离线迁移入口调用库，凭据不传命令行；补R3校验和机制，不能假设库自动校验已发布SQL内容 |
 | HTTPS入口 | 复用当前已锁摘要的Nginx，不另加代理产品 | scripts/toolchain.json登记Nginx1.30.6；[Nginx HTTPS配置](https://nginx.org/en/docs/http/configuring_https_servers.html)提供证书/私钥入口 | 公共合同批准后由01实施接线，TLS配置、只读证书挂载和实际浏览器/客户端验收仍待运行证明 |
 
-当前仓库backend/go.mod为Go1.27.0、工具链锁1.27.3，满足上述模块声明的最低版本只是静态对照，并非已经成功解析、构建。所有精确版本均是候选；apply前重核上游安全信息、校验锁文件和必要补丁，不能使用latest漂移。镜像分发许可和Go驱动许可需由小张明确确认并按00流程登记，不能把本文件当豁免。
+当前仓库backend/go.mod为Go1.27.0、工具链锁1.27.3，满足上述模块声明的最低版本只是静态对照，并非已经成功解析、构建。小张在[PR #6逐项反馈](https://github.com/zwh9616/campus-claw-plus/pull/6#issuecomment-6659982126)接受上述精确版本及项目用途/许可处理方案，但公共登记、实际解析/构建、镜像扫描和分发声明仍未完成；apply前重核上游安全信息、校验锁文件和必要补丁，不能使用latest漂移，也不能把方案接受当成运行或未来商业分发许可结论。
 
 口令参数候选：Argon2id v19、m=19456KiB、t=2、p=1，密码学随机盐16字节、输出32字节，保存带版本/参数/盐/输出的可解析格式。19MiB/t2/p1来自[OWASP口令存储建议](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#argon2id)，盐与输出长度是本项目待审选择。解析不允许任意超大m/t/p耗尽内存，01只接受本次冻结参数；不存在账号也执行同参数的虚拟口令校验。初始化新口令候选12..128 Unicode码点；登录仍按00接收1..128，不偷偷改变LoginRequest。改密服务采用同一创建规则，不做自动trim。必须用SC-02/03/17和固定资源基准验证，不能因耗时直接降参数。
 
@@ -23,7 +23,7 @@
 | 候选空键 | 使用者 / 机密 | 必填和校验 | 失败与时限 |
 | --- | --- | --- | --- |
 | MYSQL_DSN= | 后端 / 是，含连接凭据 | 只允许TCP目标及确定库名；禁止root、skip-verify、preferred降级、multiStatements与明文连接；专用DML账号 | 缺失/空白/格式非法启动非零，错误只写键名；连接/读/写各3秒，首个需DB操作起单请求共用5秒截止；明确不可达503，截止到期504 |
-| MYSQL_MIGRATION_DSN= | 受控迁移/初始化入口 / 是 | 单独DDL账号；服务进程不读取；迁移用独立连接允许工具所需multiStatements，不可复用到业务池 | 入口缺配置非零；连接3秒、迁移锁等待10秒、每条DDL30秒；失败标dirty且非零；检查实际结果再恢复 |
+| MYSQL_MIGRATION_DSN= | 受控迁移/初始化入口 / 是 | 单独最小DDL权限账号；服务进程不读取；继承业务DSN的TCP目标、确定库名、CA/主机名校验及禁止root/明文/降级规则，唯一允许差异为离线DDL权限和工具所需multiStatements；不可复用到业务池 | 入口缺配置或与业务连接目标/TLS约束不一致时非零；连接3秒、迁移锁等待10秒、每条DDL30秒；失败标dirty且非零；检查实际结果再恢复 |
 | MYSQL_CA_FILE= | 服务及迁移入口 / 路径非机密，内容是信任材料 | 只读CA文件，服务端证书链及目标主机名必须验证；实际TLS要求不靠DSN自行关闭 | 缺失/不可读/证书无效启动或迁移非零；不把CA、DSN或底层错误正文写日志 |
 | AUTH_TRUSTED_ORIGIN= | 后端 / 非机密 | 单个HTTPS origin，含准确主机/端口；不含userinfo/path/query/fragment/通配符/null | 缺失/非法启动非零；不匹配请求403，无隐藏HTTP回退 |
 | AUTH_TRUSTED_PROXY_CIDRS= | 后端 / 非机密 | 仅在同源代理接线阶段启用，填已登记的代理对等端CIDR；拒绝0.0.0.0/0、::/0、空段和未识别地址；Nginx覆写单一X-Real-IP，后端仅在对等端命中登记范围时读取并校验该单一IP | 接线时缺失/非法启动非零；不信任客户端自报X-Forwarded-For；其他对等端只使用直连源 |
@@ -34,7 +34,7 @@ MYSQL_DSN等敏感值通过运行环境或受控文件注入，禁止在脚本�
 
 ## R3 迁移编号、校验和及恢复
 
-建议申请候选编号000001..000003，见下表。00当前实际迁移清单为空，此处仅为小张确认的编号申请，不占号、不创建SQL；如小张已分配号码则整体顺延并同步依赖。小张在00迁移登记确认起止号后，才固定文件名、依赖和兼容范围。SQL通过embed.FS/iofs只读内嵌到离线迁移程序；不在server启动时自动DDL，不引入ORM或所有数据库驱动。
+建议申请候选编号000001..000003，见下表。小张已同意作为公共修订提案，但00当前实际迁移清单仍为空；此处不占号、不创建SQL，如已有其他号码则整体顺延并同步依赖。00迁移登记确认起止号后，才固定文件名、依赖和兼容范围。SQL通过embed.FS/iofs只读内嵌到离线迁移程序；不在server启动时自动DDL，不引入ORM或所有数据库驱动。
 
 | 候选编号 / up文件 | 内容及依赖 | 兼容和失败修复边界 |
 | --- | --- | --- |
@@ -60,10 +60,10 @@ MySQL DDL存在隐式提交，见[官方说明](https://dev.mysql.com/doc/refman
 
 HTTPS候选采用同源Nginx：/提供前端、/api/v1/转发到本项目后端；运行时提供SAN匹配且客户端信任的证书，私钥只读挂载，后端不公开到非本机接口。浏览器与命令客户端都校验证书，禁止用忽略TLS校验当验收。可信origin取运行配置，不内置某个人的域名、证书、IP或端口；不安装系统信任、不生成密钥作为本次工作。代理只传可信网络源，默认不信任客户端X-Forwarded-For，CSRF/Origin检查仍在后端，Cookie Secure不变。01获准实施包中小陈负责Compose/Nginx/TLS/MySQL接线并把提交交小张审；小张负责Go身份装配和迁移，小陈复审其实现。10仅后续接手运行观测/门禁，不将01接线悬置于“10或01”。
 
-提交00原两人确认的健康候选：引入MySQL的版本仍公开GET /health；200时status=ok、dependencies仅mysql=up；3秒预算PingContext失败时503、status=error、dependencies仅mysql=down，不输出连接串/错误详情。每次请求检查真实连接，不把启动成功缓存成永久up。请求标识/日志合同保留；Schema、OpenAPI、配置登记及/server --healthcheck必须同一变更同步，探针只接受该阶段批准的精确成功响应。此提案尚未被00确认，当前健康实现与骨架历史不变；参数如被退回则先改本提案，不同时支持两套规范。
+提交00原两人确认的健康候选：引入MySQL的版本仍公开GET /health；200时status=ok、dependencies仅mysql=up；3秒预算PingContext失败时503、status=error、dependencies仅mysql=down，不输出连接串/错误详情。每次请求检查真实连接，不把启动成功缓存成永久up。请求标识/日志合同保留；Schema、OpenAPI、配置登记及/server --healthcheck必须同一变更同步，探针只接受该阶段批准的精确成功响应。小张已赞成此目标，但须由小葛在00公共修订中明确阶段切换时点并经原两人批准；当前无DB骨架仍是dependencies={}，不能让同一版本任选两套成功合同。当前健康实现与骨架历史不变；参数如被退回则先改本提案。
 
 小陈准备条件：能运行Docker Compose的执行环境、隔离MySQL数据卷、双班五人凭据、受信HTTPS证书和故障注入权限。2026-11-05已在ab91417实际复跑现有骨架检查，Docker28.3.3/Compose2.39.1、Node22.23.4及固定摘要Go1.27.3工具链可用，check/verify等命令退出0，见[实际结果](../../../reports/changes/01/docker-check-2026-11-05.json)；尚未连接真实DB、创建账号或验证证书。未来身份集成仍须在同一集成SHA保存配置来源、实际版本、迁移与请求/DB断言，不能复制骨架或00/CI结果当作身份集成运行。
 
 ## R6 给小张的确认清单
 
-确认R1版本/许可和Argon2id参数、R2空键/超时/TLS约束、R3工具/编号/恢复、R4输入/重跑冲突、R5同源HTTPS及提交00的健康候选；同时复审D3刷新单赢家/D4凭据优先级。确认以绑定修订head的明确记录为准。公共字段/配置/健康由00两人同步单源；未确认项保持阻塞，01不进入apply。规格通过也不能代替小陈准备真实运行条件或后续终审。
+小张已在PR #6绑定90374c1的复审及逐项反馈中接受D4凭据顺序、D3 CSRF派生/轮换和R1版本/许可/Argon2id、R3候选迁移号/恢复、R4初始化、R5目标健康与01接线责任；R2七键用途可作为公共修订输入，迁移DSN须按本表补齐TLS/目标一致性。剩余D3切班COMMIT不明、D7双桶/容量边界按新行内意见返修，修订后仍须小张绑定新head复审。公共字段/配置/健康及迁移登记由00原两人同步单源并批准；未完成前01不进入apply。规约通过也不能代替真实运行条件或后续终审。
