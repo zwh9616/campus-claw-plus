@@ -26,7 +26,7 @@
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 00 公共业务契约 | 小葛 | 小张 | 待集成验收 | 小张协调正常PR合入main后复验；补真实无历史会话 | main仍2bf12e2，G2/G3未成立；未授权本轮合并，BC-SC-01未做 | 小葛[批准5782045346](https://github.com/zwh9616/campus-claw-plus/pull/5#pullrequestreview-5782045346)绑定75cadbf；本提交只更新交接及tasks 3.1，无合同/代码变化；原18c3d08 check/verify证据保留；[队列与限制](https://github.com/zwh9616/campus-claw-plus/blob/b6a05ba8643c8fb19038a44596532354428ad77a/reports/changes/00/day-two-review-handoff.md) | 2026-11-05 |
 | 01 身份与数据基础 | 小陈 | 小张 | 写规约（返修） | 小陈修R1—R5并逐项回复，小张复审新head | 凭据判定/CSRF/超时/限流及公共依赖未关闭；G2/G3未成立 | [PR #6审查](https://github.com/zwh9616/campus-claw-plus/pull/6#pullrequestreview-5785063604)绑定7fa3946；严格校验单项及全量2项通过，仅文档；[记录](https://github.com/zwh9616/campus-claw-plus/blob/b6a05ba8643c8fb19038a44596532354428ad77a/reports/changes/01/zhang-spec-review-2026-11-05.md) | 2026-11-05 |
-| 02 前端应用基础 | 小张 | 小葛 | 待审规约 | 小葛审路由/ID切班/认证失败/线框样板/四态与同版本验收，小张按反馈修订 | G2及02批准未满足；01 R1—R3和HTTPS接线待确认；无apply | [四份规约](../openspec/changes/2026-11-05-frontend-foundation/proposal.md)；单项strict及全量2项通过；分支codex/2026-11-05-frontend-foundation；PR待创建；[校验](../reports/changes/02/spec-check.md) | 2026-11-05 |
+| 02 前端应用基础 | 小张 | 小葛 | 待审规约 | 小葛审路由/ID切班/认证失败/线框样板/四态与同版本验收，小张按反馈修订 | G2及02批准未满足；01 R1—R3和HTTPS接线待确认；无apply | [四份规约](../openspec/changes/2026-11-05-frontend-foundation/proposal.md)；单项strict及全量2项通过；分支codex/2026-11-05-frontend-foundation；[PR #8](https://github.com/zwh9616/campus-claw-plus/pull/8)，已正式请求gjj6666；[校验](../reports/changes/02/spec-check.md) | 2026-11-05 |
 | 03 独立MCP工具服务 | 小葛 | 小陈 | 未开始 | 小葛写工具、协议和失败场景 | 00及03规约确认；宿主接入另由07C验收 | 仅登记计划；规约未创建、未验证 | 2026-11-04 |
 | 04 资料与本班知识检索 | 小张 | 小陈 | 未开始 | 小张写上传、检索、出处和权限要求 | 00契约与01身份基础可用 | 仅登记计划；规约未创建、未验证 | 2026-11-04 |
 | 05 作业与持久任务基础 | 小陈 | 小张 | 未开始 | 小陈写任务状态、截止与重复请求规则 | 01可用；先用测试批改器验证任务机制 | 仅登记计划；规约未创建、未验证 | 2026-11-04 |
@@ -83,4 +83,4 @@
 
 ## 02规约交接（本分支最新）
 
-小张已完成02四份规约，严格校验通过，待创建PR正式请求小葛。本分支从main 2bf12e2起草，不包含未合并00的运行/合同实现；未合入的00文档以固定提交链接引用。只修改02规约与交接，不实施页面。样板、小葛批准、真实联验和截图均未发生。
+小张已完成02四份规约，严格校验通过；[PR #8](https://github.com/zwh9616/campus-claw-plus/pull/8)已创建并正式请求gjj6666审查，尚无批准。本分支从main 2bf12e2起草，不包含未合并00的运行/合同实现；未合入的00文档以固定提交链接引用。只修改02规约与交接，不实施页面。样板、小葛批准、真实联验和截图均未发生。
