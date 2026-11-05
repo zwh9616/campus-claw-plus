@@ -1,0 +1,54 @@
+{
+  "sha": "75cadbf80a0adaddd8680a87a0b07dfb22c1ad37",
+  "at": "2026-11-05T08:43:14.763934+00:00",
+  "node": "v24.19.0",
+  "mutation": "remove Principal.role enum in isolated clone; restore exact bytes",
+  "original_sha256": "676505632c766161d2aa7b9a0c2e2133e658ab5581f75f0403a2ee117484a234",
+  "restored_sha256": "676505632c766161d2aa7b9a0c2e2133e658ab5581f75f0403a2ee117484a234",
+  "red_exit": 1,
+  "green_exit": 0,
+  "records": [
+    {
+      "command": "npm run check",
+      "exit_code": 1,
+      "stdout": "\n> campus-claw-plus@0.0.1 check\n> npm run check:foundation && npm run check:contracts && npm run typecheck && npm run build && npm run check:backend && npm run check:spec\n\n\n> campus-claw-plus@0.0.1 check:foundation\n> node scripts/check-foundation.mjs\n\nFoundation: rule/skill entry points exist, sample keys are empty, .env is ignored.\nThis check is separate from real authorization review and full-history secret scanning.\n\n> campus-claw-plus@0.0.1 check:contracts\n> node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs\n\nContracts: 22 schemas; 82 positive/negative fixtures and 6 semantic inputs agree in both paths; 39 operation examples; 7 current/frozen operations. Planned operations absent.\n✔ BC-SC-06 accepts trusted rubric, rejects incorrect grading, stale and missing context (2.952ms)\n✔ BC-SC-05 nonempty Citation codepoint range (0.1854ms)\n✔ BC-SC-08/14 terminal sequence, cancellation and disconnected persistence (0.9854ms)\n✔ BC-SC-10 MCP exception remains exact, disabled and subject to both future reviews (1.2611ms)\n✔ BC-SC-09 registered empty keys only; no weakening historical HTTP_PORT requirement (3.7983ms)\n✔ BC-SC-18 planned operations and anonymous auth bypass cannot enter OpenAPI (29.0062ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 158.2515\n\n> campus-claw-plus@0.0.1 typecheck\n> npm run typecheck --prefix frontend\n\n\n> @campus-claw-plus/frontend@0.0.1 typecheck\n> tsc --noEmit\n\n\n> campus-claw-plus@0.0.1 build\n> npm run build --prefix frontend\n\n\n> @campus-claw-plus/frontend@0.0.1 build\n> tsc --noEmit && vite build\n\nvite v8.3.5 building client environment for production...\ntransforming...\n✓ 15 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                   0.61 kB │ gzip:  0.41 kB\ndist/assets/index-xLwe3wJW.css    3.46 kB │ gzip:  1.23 kB\ndist/assets/index-B1-fZwUu.js   143.18 kB │ gzip: 46.85 kB\n\n✓ built in 135ms\n\n> campus-claw-plus@0.0.1 check:backend\n> node scripts/check-backend.mjs\n\n",
+      "stderr": "failed to connect to the docker API at npipe:////./pipe/dockerDesktopLinuxEngine; check if the path is correct and if the daemon is running: open //./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified.\n"
+    },
+    {
+      "command": "npm run check:spec",
+      "exit_code": 0,
+      "stdout": "\n> campus-claw-plus@0.0.1 check:spec\n> openspec validate --all --strict\n\n✓ change/2026-11-04-business-contracts\n✓ spec/project-bootstrap\nTotals: 2 passed, 0 failed (2 items)\n",
+      "stderr": "- Validating...\n"
+    },
+    {
+      "command": "npm run audit",
+      "exit_code": 0,
+      "stdout": "\n> campus-claw-plus@0.0.1 audit\n> npm audit --audit-level=high && npm audit --prefix frontend --audit-level=high\n\nfound 0 vulnerabilities\nfound 0 vulnerabilities\n",
+      "stderr": ""
+    },
+    {
+      "command": "npm run check:contracts",
+      "exit_code": 1,
+      "stdout": "\n> campus-claw-plus@0.0.1 check:contracts\n> node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs\n\n",
+      "stderr": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Standalone: invalid role: null\n\ntrue !== false\n\n    at file:///D:/campusclaw-mygroup/tmp/day2-campus-review/scripts/check-contracts.mjs:96:10 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: true,\n  expected: false,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v24.19.0\n"
+    },
+    {
+      "command": "npm run check:contracts",
+      "exit_code": 0,
+      "stdout": "\n> campus-claw-plus@0.0.1 check:contracts\n> node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs\n\nContracts: 22 schemas; 82 positive/negative fixtures and 6 semantic inputs agree in both paths; 39 operation examples; 7 current/frozen operations. Planned operations absent.\n✔ BC-SC-06 accepts trusted rubric, rejects incorrect grading, stale and missing context (3.1237ms)\n✔ BC-SC-05 nonempty Citation codepoint range (0.1987ms)\n✔ BC-SC-08/14 terminal sequence, cancellation and disconnected persistence (0.8215ms)\n✔ BC-SC-10 MCP exception remains exact, disabled and subject to both future reviews (1.3837ms)\n✔ BC-SC-09 registered empty keys only; no weakening historical HTTP_PORT requirement (3.9775ms)\n✔ BC-SC-18 planned operations and anonymous auth bypass cannot enter OpenAPI (29.2228ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 161.5806\n",
+      "stderr": ""
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": "git status --short",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}
