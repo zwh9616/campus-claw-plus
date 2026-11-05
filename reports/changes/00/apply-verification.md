@@ -1,6 +1,6 @@
 # 00 apply：小张实现与自检
 
-最新状态：本机check/verify已在18c3d08通过，00待小葛终审。下文首次失败和修复过程保留，最新结果见末节。
+最新状态：小葛已对75cadbf终审批准，00待main集成验收；本机check/verify仍绑定18c3d08。下文保留历史失败/交接快照，当前事实见末节及day-two-review-handoff.md。
 
 日期：2026-11-04。小张明确授权AI复审并继续apply。依据小葛规约head `221be733194830daa9b35f810c37f035679e51bb`及[实际G1批准](zhang-spec-rereview.md)。实现分支`codex/apply-business-contracts`，整合基线`412cde3`；下述检查针对该基线上的本提交工作树，最终提交由Git历史定位，不能将基线SHA冒称本次产物SHA。
 
@@ -85,3 +85,7 @@ GitHub Actions运行[41798776552](https://github.com/zwh9616/campus-claw-plus/ac
 原始命令与退出码见[local-recovery-results.json](local-recovery-results.json)，场景结果见[local-container-results.json](local-container-results.json)（移除本机端口值）。脚本中browserCheck字段是历史固定描述，本轮只做静态页HTTP回归，未新增浏览器视觉截图；00没有UI改动。
 
 2.3完成，00改为待终审并将PR #5转为可审查。BC-SC-01仍未发生，小葛终审、main合入和集成复验未发生，G2/G3不提前成立。
+
+## 2026-11-05 真实终审交接
+
+小葛[APPROVE 5782045346](https://github.com/zwh9616/campus-claw-plus/pull/5#pullrequestreview-5782045346)绑定75cadbf，无返修项。本次只同步tasks 3.1、共享表和文档，未改运行代码/合同/测试。单项00严格校验及diff检查通过；未重跑容器。BC-SC-01、main合入及集成复验仍待完成，G2/G3未成立；限制与队列见[交接记录](day-two-review-handoff.md)。

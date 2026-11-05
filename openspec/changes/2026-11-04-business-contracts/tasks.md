@@ -17,8 +17,8 @@
 - [x] 2.3 对七类核查分别注明文档合同适用/不适用及下游责任；执行统一检查并受控破坏关键合同确认非零，恢复重跑；证据红绿输出、SHA和实现PR。
 
 ## 3. 00终审与下游准入 小葛 小张
-- [ ] 3.1 小葛终审小张实现PR当前head，复跑合同正反例、规则冲突和健康兼容检查；证据文件行号/命令/结果；前置2.1..2.3。
+- [x] 3.1 小葛终审小张实现PR当前head，复跑合同正反例、规则冲突和健康兼容检查；证据文件行号/命令/结果；前置2.1..2.3。
 - [ ] 3.2 小张修复、小葛复查；遵守远端保护合并并在集成版本重验，证据齐后归档；不得引用历史一次性豁免；前置3.1。
 - [x] 3.3 当天按真实状态更新进度、阻塞与下一责任人；G2前01/02/03/10仅起草，G3前所有业务实现PR禁止合并（10前置门禁自身例外），其他apply遵守design D8；证据BC-SC-12。
 
-当前执行记录：[apply证据](../../../reports/changes/00/apply-verification.md)。2.1/2.2已落实；2.3合同红绿与七类核查完成，用户重启及本项目空网络清理后，18c3d08的完整check/verify通过，证据local-recovery-results.json和local-container-results.json。1.5b/3.1/3.2未发生，不提前勾选；3.3只表示本次如实同步，后续继续维护。
+当前执行记录：[apply证据](../../../reports/changes/00/apply-verification.md)。2.1/2.2已落实；2.3合同红绿与七类核查完成，用户重启及本项目空网络清理后，18c3d08的完整check/verify通过，证据local-recovery-results.json和local-container-results.json。3.1已据小葛真实review 5782045346（head75cadbf）完成，限制见reports/changes/00/day-two-review-handoff.md；1.5b/3.2仍未发生，不提前勾选；3.3只表示本次如实同步，后续继续维护。
