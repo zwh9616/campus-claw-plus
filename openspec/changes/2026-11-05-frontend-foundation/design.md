@@ -1,6 +1,6 @@
 ## Context
 
-变更02；小张propose/终审，小葛审规约/apply。起草分支从main `2bf12e2`创建，与00/01/10分支隔离。合同依据为[00已批准规约221be73](https://github.com/zwh9616/campus-claw-plus/blob/221be733194830daa9b35f810c37f035679e51bb/openspec/changes/2026-11-04-business-contracts/design.md)以及[00实现75cadbf的合同入口](https://github.com/zwh9616/campus-claw-plus/blob/75cadbf80a0adaddd8680a87a0b07dfb22c1ad37/docs/contracts/README.md)。这些引用可用于提前写规约，不把未合入分支当G2。apply前重新绑定实际G2 SHA和机器合同，有差异先修规约、重新审查。
+变更02；小张propose/终审，小葛审规约/apply。起草分支从历史main `2bf12e2`创建，现已同步main `4cfd61d8119c51bc3bf2870a17c9754f0975b3dc`。合同依据为[00已批准规约221be73](https://github.com/zwh9616/campus-claw-plus/blob/221be733194830daa9b35f810c37f035679e51bb/openspec/changes/2026-11-04-business-contracts/design.md)及[已合入main的机器合同](https://github.com/zwh9616/campus-claw-plus/blob/4cfd61d8119c51bc3bf2870a17c9754f0975b3dc/docs/contracts/README.md)。00终审、main CI与本机复验已确认G2成立，见[集成证据](../../../reports/changes/00/main-integration-2026-11-05.md)。02自身批准及01相关公共修订尚待确认；apply前核对最新main合同，有差异先修规约、重新审查。
 
 ## Goals / Non-Goals
 
@@ -124,10 +124,10 @@ Origin由浏览器生成，不用JS伪造；同源HTTPS及Secure Cookie按01/10�
 
 | 项目 | 责任与解除条件 |
 | --- | --- |
-| 00 G2 | 小张协调00正常合入main及集成复验，记实际SHA；本PR不授权合并 |
+| 00 G2（已满足） | 00已合入main 4cfd61d，终审、main CI及本机check/verify证据齐备；见上述集成记录。BC-SC-01仍是00归档待办，不撤销已成立的G2 |
 | 02方案批准 | 小葛审本head的路由/ID切班/四态/线框/10秒客户端截止；有异议小张修规约再审，不自批 |
-| 01 CSRF与错误顺序/超时 | 小陈按PR #6 R1–R3修订、小张复审；02不得为适配不明确服务写第二套协议，相关流程apply前复核一致 |
-| HTTPS接线与真实联验 | 01/10明确哪个获批change提供同源证书/代理/DB；02引用实际运行入口，不安装信任、不生成凭据或新增环境键 |
+| 01规约及公共修订 | 小张已复审PR #6的90374c1并接受凭据顺序/CSRF恢复；切班提交不明、限流边界及公共冻结仍待关闭。02不得写第二套协议，相关流程apply前复核一致 |
+| HTTPS接线与真实联验 | 01修订已指定小陈提供同源证书/代理/DB接线、小张审查，方案仍待公共冻结及01批准/实测；02引用实际运行入口，不安装信任、不生成凭据或新增环境键 |
 | 班级名称/列表 | 本轮采用ID输入，不依赖不存在的列表；若审查要求改选择器，先冻结接口再修本change |
 | 样板确认 | G2+本规约批准后由小葛制作、小张确认；样板确认不是本次已经发生 |
 | G3及收尾 | 10前置门禁生效后才允许业务实现正常合并；小张终审、真实联验和同版本视觉证据齐备才归档 |

@@ -1,3 +1,7 @@
+## Purpose
+
+为CampusClawPlus提供基于可信身份的前端应用基础，明确公开与受保护页面、角色和班级上下文、登录及凭证失效处理、统一布局与交互规则。通过代表页面样板、正常加载空错误四态、键盘与窄屏检查，以及分开记录的mock测试、真实登录联验和同版本截图，让后续教学页面具备可审查、可复验的交付依据。本能力只引用已冻结接口，不提前实现或虚构教学业务。
+
 ## ADDED Requirements
 
 ### Requirement: FEF-01 Explicit routes and trusted identity
