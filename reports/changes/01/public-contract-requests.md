@@ -1,6 +1,6 @@
 # 01向00提交的公共合同修订需求
 
-日期2026-11-05；提出人小陈，确认与维护00单源合同仍由小葛/小张负责。本文件是PR #6的修订需求，尚未批准；没有改docs/contracts、主规约、.env.example、Compose或探针，不建立第二套生效规则。00由PR #5合入main 4cfd61d8119c51bc3bf2870a17c9754f0975b3dc；main的CI成功，但当前main未设置有效分支保护规则，且同SHA集成复验记录待核，不能据此宣称G2成立。
+日期2026-11-05；提出人小陈，确认与维护00单源合同仍由小葛/小张负责。本文件是PR #6的修订需求，尚未批准；没有改docs/contracts、主规约、.env.example、Compose或探针，不建立第二套生效规则。00由PR #5合入main 4cfd61d8119c51bc3bf2870a17c9754f0975b3dc；该SHA的main CI与小张本机check/verify复验已留证，G2按00 D8成立。main有效保护规则仍为空，失败合并阻断是10前置G3的未完成工作，不倒推否定G2。
 
 | 请求编号 | 当前合同及差异 | 请00两人确认的修订 | 受影响位置与验收 |
 | --- | --- | --- | --- |
@@ -8,6 +8,6 @@
 | PCR-IDF-02 配置和HTTPS | config-register当前只有HTTP_PORT，01仅planned names_frozen=false；样例仅空HTTP_PORT | 逐项审runtime-plan R2七个空键：MYSQL_DSN、MYSQL_MIGRATION_DSN、MYSQL_CA_FILE、AUTH_TRUSTED_ORIGIN、AUTH_TRUSTED_PROXY_CIDRS、HTTPS_CERT_FILE、HTTPS_KEY_FILE。确认使用者、机密分类、必填阶段、代理信任、TLS、超时和失败行为；真实值只运行环境 | config-register及安全/后端/部署规则、01/02/10范围协调；确认后再由01获准实施包扩展样例和接线。小陈负责Compose/Nginx/TLS/MySQL接线并交小张审，小张负责Go装配/迁移；10后续复用并验运行观测。缺失/空白/非法非零，Cookie Secure不降级、Origin精确匹配、证书必须验证 |
 | PCR-IDF-03 迁移号及公共接线窗口 | migration-register工具未选、实际清单空；公共配置和装配尚未准备01运行能力 | 提请小张协调runtime-plan R1的migrate v4.20.1和候选000001..000003；登记SQL/manifest摘要、前后置检查、dirty/部分DDL修复与重试。确认驱动MPL-2.0和MySQL GPLv2的用途/许可，再引入 | 迁移登记、小张Go依赖/身份装配窗口、小陈Compose/CI窗口；01空库/升级/故障恢复场景，10只复用及扩展观测；不在G2前安装业务依赖或改Compose |
 
-具体方案见[01 runtime-plan R1..R6](../../../openspec/changes/2026-11-04-identity-foundation/runtime-plan.md)，每一项允许“同意候选”或“具体替代方案”，但须绑定修订head并同步唯一合同。00现已合入main；请小葛/小张以新的公共合同修订change维护主规约、Health Schema、OpenAPI、配置及迁移登记，不能倒改归档历史，也不在PR #6私写第二套。建议顺序：先核实main的G2证据及远端门禁；小张审01候选与版本/许可/摘要/迁移号；00原两人审新公共修订并按门禁合入；小张复审与公共修订对齐的01规约；G2及01批准后才实施，G3及终审后才合并实现。健康/配置未确认时01保持待审和不apply。
+具体方案见[01 runtime-plan R1..R6](../../../openspec/changes/2026-11-04-identity-foundation/runtime-plan.md)，每一项允许“同意候选”或“具体替代方案”，但须绑定修订head并同步唯一合同。00现已合入main；请小葛/小张以新的公共合同修订change维护主规约、Health Schema、OpenAPI、配置及迁移登记，不能倒改归档历史，也不在PR #6私写第二套。建议顺序：小张审01候选与版本/许可/摘要/迁移号；00原两人审新公共修订并按门禁合入；小张复审与公共修订对齐的01规约；G2虽已成立，仍待01批准及依赖冻结后才实施，G3及终审后才合并实现。健康/配置未确认时01保持待审和不apply。
 
 这不是小陈对00实现的终审；00仍由原两人审查。提交此需求也不表示小张已批准01。实际发布位置以PR #3中的PCR-IDF-01..03请求评论为准，PR #6承担01方案复审。
