@@ -1,6 +1,6 @@
 # 00 apply：小张实现与自检
 
-最新状态：小葛已对75cadbf终审批准，00待main集成验收；本机check/verify仍绑定18c3d08。下文保留历史失败/交接快照，当前事实见末节及day-two-review-handoff.md。
+最新状态：00已合入main 4cfd61d，main CI及本机check/verify通过，G2成立；G3、BC-SC-01及归档待补。下文保留历史过程，最新证据见main-integration-2026-11-05.md。
 
 日期：2026-11-04。小张明确授权AI复审并继续apply。依据小葛规约head `221be733194830daa9b35f810c37f035679e51bb`及[实际G1批准](zhang-spec-rereview.md)。实现分支`codex/apply-business-contracts`，整合基线`412cde3`；下述检查针对该基线上的本提交工作树，最终提交由Git历史定位，不能将基线SHA冒称本次产物SHA。
 
