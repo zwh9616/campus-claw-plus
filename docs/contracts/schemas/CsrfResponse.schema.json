@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/v1/CsrfResponse.schema.json",
+  "title": "CsrfResponse",
+  "type": "object",
+  "properties": {
+    "csrf_token": {
+      "type": "string",
+      "minLength": 32,
+      "maxLength": 256
+    }
+  },
+  "required": [
+    "csrf_token"
+  ],
+  "additionalProperties": false
+}

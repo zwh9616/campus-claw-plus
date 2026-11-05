@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/v1/Usage.schema.json",
+  "title": "Usage",
+  "type": "object",
+  "properties": {
+    "input_tokens": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "output_tokens": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "input_tokens",
+    "output_tokens"
+  ],
+  "additionalProperties": false
+}

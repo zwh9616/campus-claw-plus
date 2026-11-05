@@ -1,0 +1,1629 @@
+{
+  "openapi": "3.1.0",
+  "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
+  "info": {
+    "title": "CampusClawPlus 公共合同",
+    "version": "business-contracts/v1",
+    "description": "仅health已实现；frozen认证操作须G2及01自身批准后实现。所有凭据样例均为不可用测试文本。"
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "operationId": "get_health",
+        "summary": "当前接口 health",
+        "x-contract-status": "current",
+        "x-owner-change": "bootstrap",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "当前健康响应",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Health.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "status": "ok",
+                      "dependencies": {}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/login": {
+      "post": {
+        "operationId": "post_login",
+        "summary": "已冻结合同，未实现 login",
+        "x-contract-status": "frozen",
+        "x-owner-change": "01",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "规划的成功响应，尚未实现",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              },
+              "Set-Cookie": {
+                "description": "刷新Cookie；HttpOnly; Secure; SameSite=Strict; Path=/api/v1/auth; Max-Age=604800；logout清除。名称campus_refresh为本合同传输名称，01可通过受审契约修订调整。",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                },
+                "description": "不缓存凭据响应"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/AuthSession.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "access_token": "example-not-a-credential",
+                      "token_type": "Bearer",
+                      "expires_in": 900,
+                      "principal": {
+                        "user_id": "1",
+                        "role": "student",
+                        "class_id": "2",
+                        "session_id": "0123456789abcdef0123456789abcdef",
+                        "session_version": 1,
+                        "expires_at": "2026-11-04T08:00:00.000Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "VALIDATION_ERROR",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "VALIDATION_ERROR",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHENTICATED",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "PAYLOAD_TOO_LARGE",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "PAYLOAD_TOO_LARGE",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RATE_LIMITED",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              },
+              "Retry-After": {
+                "description": "等待秒数",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "RATE_LIMITED",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "DEPENDENCY_UNAVAILABLE",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "DEPENDENCY_UNAVAILABLE",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "UPSTREAM_TIMEOUT",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "UPSTREAM_TIMEOUT",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./schemas/LoginRequest.schema.json"
+              },
+              "examples": {
+                "contract": {
+                  "value": {
+                    "username": "example-user",
+                    "password": "example-not-a-credential"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/csrf": {
+      "get": {
+        "operationId": "get_csrf",
+        "summary": "已冻结合同，未实现 csrf",
+        "x-contract-status": "frozen",
+        "x-owner-change": "01",
+        "security": [
+          {
+            "RefreshCookie": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "规划的成功响应，尚未实现",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                },
+                "description": "不缓存凭据响应"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/CsrfResponse.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "csrf_token": "example-csrf-for-contract-test-only"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHENTICATED",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RATE_LIMITED",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              },
+              "Retry-After": {
+                "description": "等待秒数",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "RATE_LIMITED",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "DEPENDENCY_UNAVAILABLE",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "DEPENDENCY_UNAVAILABLE",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "UPSTREAM_TIMEOUT",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "UPSTREAM_TIMEOUT",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/refresh": {
+      "post": {
+        "operationId": "post_refresh",
+        "summary": "已冻结合同，未实现 refresh",
+        "x-contract-status": "frozen",
+        "x-owner-change": "01",
+        "security": [
+          {
+            "RefreshCookie": [],
+            "CsrfToken": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "规划的成功响应，尚未实现",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              },
+              "Set-Cookie": {
+                "description": "刷新Cookie；HttpOnly; Secure; SameSite=Strict; Path=/api/v1/auth; Max-Age=604800；logout清除。名称campus_refresh为本合同传输名称，01可通过受审契约修订调整。",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                },
+                "description": "不缓存凭据响应"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/AuthSession.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "access_token": "example-not-a-credential",
+                      "token_type": "Bearer",
+                      "expires_in": 900,
+                      "principal": {
+                        "user_id": "1",
+                        "role": "student",
+                        "class_id": "2",
+                        "session_id": "0123456789abcdef0123456789abcdef",
+                        "session_version": 1,
+                        "expires_at": "2026-11-04T08:00:00.000Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHENTICATED",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "FORBIDDEN",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "FORBIDDEN",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RATE_LIMITED",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              },
+              "Retry-After": {
+                "description": "等待秒数",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "RATE_LIMITED",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "DEPENDENCY_UNAVAILABLE",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "DEPENDENCY_UNAVAILABLE",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "UPSTREAM_TIMEOUT",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "UPSTREAM_TIMEOUT",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Origin",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "必须与服务端配置的可信同源Origin完全匹配"
+          }
+        ]
+      }
+    },
+    "/api/v1/me": {
+      "get": {
+        "operationId": "get_me",
+        "summary": "已冻结合同，未实现 me",
+        "x-contract-status": "frozen",
+        "x-owner-change": "01",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "规划的成功响应，尚未实现",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Principal.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "user_id": "1",
+                      "role": "student",
+                      "class_id": "2",
+                      "session_id": "0123456789abcdef0123456789abcdef",
+                      "session_version": 1,
+                      "expires_at": "2026-11-04T08:00:00.000Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHENTICATED",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RATE_LIMITED",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              },
+              "Retry-After": {
+                "description": "等待秒数",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "RATE_LIMITED",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "DEPENDENCY_UNAVAILABLE",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "DEPENDENCY_UNAVAILABLE",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "UPSTREAM_TIMEOUT",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "UPSTREAM_TIMEOUT",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/logout": {
+      "post": {
+        "operationId": "post_logout",
+        "summary": "已冻结合同，未实现 logout",
+        "x-contract-status": "frozen",
+        "x-owner-change": "01",
+        "security": [
+          {
+            "BearerAuth": [],
+            "RefreshCookie": [],
+            "CsrfToken": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "规划的成功响应，尚未实现",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              },
+              "Set-Cookie": {
+                "description": "刷新Cookie；HttpOnly; Secure; SameSite=Strict; Path=/api/v1/auth; Max-Age=604800；logout清除。名称campus_refresh为本合同传输名称，01可通过受审契约修订调整。",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHENTICATED",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "FORBIDDEN",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "FORBIDDEN",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RATE_LIMITED",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              },
+              "Retry-After": {
+                "description": "等待秒数",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "RATE_LIMITED",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "DEPENDENCY_UNAVAILABLE",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "DEPENDENCY_UNAVAILABLE",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "UPSTREAM_TIMEOUT",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "UPSTREAM_TIMEOUT",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Origin",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "必须与服务端配置的可信同源Origin完全匹配"
+          }
+        ]
+      }
+    },
+    "/api/v1/auth/switch-class": {
+      "post": {
+        "operationId": "post_switch_class",
+        "summary": "已冻结合同，未实现 switch-class",
+        "x-contract-status": "frozen",
+        "x-owner-change": "01",
+        "security": [
+          {
+            "BearerAuth": [],
+            "RefreshCookie": [],
+            "CsrfToken": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "规划的成功响应，尚未实现",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              },
+              "Set-Cookie": {
+                "description": "刷新Cookie；HttpOnly; Secure; SameSite=Strict; Path=/api/v1/auth; Max-Age=604800；logout清除。名称campus_refresh为本合同传输名称，01可通过受审契约修订调整。",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                },
+                "description": "不缓存凭据响应"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/AuthSession.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "access_token": "example-not-a-credential",
+                      "token_type": "Bearer",
+                      "expires_in": 900,
+                      "principal": {
+                        "user_id": "1",
+                        "role": "student",
+                        "class_id": "2",
+                        "session_id": "0123456789abcdef0123456789abcdef",
+                        "session_version": 1,
+                        "expires_at": "2026-11-04T08:00:00.000Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "VALIDATION_ERROR",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "VALIDATION_ERROR",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHENTICATED",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "FORBIDDEN",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "FORBIDDEN",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "PAYLOAD_TOO_LARGE",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "PAYLOAD_TOO_LARGE",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RATE_LIMITED",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              },
+              "Retry-After": {
+                "description": "等待秒数",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "RATE_LIMITED",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "DEPENDENCY_UNAVAILABLE",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "DEPENDENCY_UNAVAILABLE",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "UPSTREAM_TIMEOUT",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成的请求标识，关联JSON日志",
+                "schema": {
+                  "type": "string",
+                  "minLength": 32,
+                  "maxLength": 32,
+                  "pattern": "^[0-9a-f]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "UPSTREAM_TIMEOUT",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./schemas/SwitchClassRequest.schema.json"
+              },
+              "examples": {
+                "contract": {
+                  "value": {
+                    "class_id": "2"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Origin",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "必须与服务端配置的可信同源Origin完全匹配"
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      },
+      "RefreshCookie": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "campus_refresh"
+      },
+      "CsrfToken": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-CSRF-Token"
+      }
+    },
+    "schemas": {
+      "ID": {
+        "$ref": "./schemas/ID.schema.json"
+      },
+      "Timestamp": {
+        "$ref": "./schemas/Timestamp.schema.json"
+      },
+      "Principal": {
+        "$ref": "./schemas/Principal.schema.json"
+      },
+      "AuthSession": {
+        "$ref": "./schemas/AuthSession.schema.json"
+      },
+      "LoginRequest": {
+        "$ref": "./schemas/LoginRequest.schema.json"
+      },
+      "SwitchClassRequest": {
+        "$ref": "./schemas/SwitchClassRequest.schema.json"
+      },
+      "CsrfResponse": {
+        "$ref": "./schemas/CsrfResponse.schema.json"
+      },
+      "Health": {
+        "$ref": "./schemas/Health.schema.json"
+      },
+      "Error": {
+        "$ref": "./schemas/Error.schema.json"
+      },
+      "Usage": {
+        "$ref": "./schemas/Usage.schema.json"
+      },
+      "Citation": {
+        "$ref": "./schemas/Citation.schema.json"
+      },
+      "Task": {
+        "$ref": "./schemas/Task.schema.json"
+      },
+      "Turn": {
+        "$ref": "./schemas/Turn.schema.json"
+      },
+      "SkillInput": {
+        "$ref": "./schemas/SkillInput.schema.json"
+      },
+      "GradeResult": {
+        "$ref": "./schemas/GradeResult.schema.json"
+      },
+      "Audit": {
+        "$ref": "./schemas/Audit.schema.json"
+      },
+      "Page": {
+        "$ref": "./schemas/Page.schema.json"
+      },
+      "SSEMeta": {
+        "$ref": "./schemas/SSEMeta.schema.json"
+      },
+      "SSEToken": {
+        "$ref": "./schemas/SSEToken.schema.json"
+      },
+      "SSEDone": {
+        "$ref": "./schemas/SSEDone.schema.json"
+      },
+      "SSEError": {
+        "$ref": "./schemas/SSEError.schema.json"
+      },
+      "SSE": {
+        "$ref": "./schemas/SSE.schema.json"
+      }
+    }
+  }
+}

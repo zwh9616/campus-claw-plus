@@ -1,0 +1,171 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/v1/Error.schema.json",
+  "title": "Error",
+  "type": "object",
+  "properties": {
+    "error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "enum": [
+            "VALIDATION_ERROR",
+            "UNAUTHENTICATED",
+            "FORBIDDEN",
+            "NOT_FOUND",
+            "CONFLICT",
+            "PAYLOAD_TOO_LARGE",
+            "RATE_LIMITED",
+            "DEPENDENCY_UNAVAILABLE",
+            "UPSTREAM_TIMEOUT",
+            "IDEMPOTENCY_CONFLICT",
+            "RETRY_EXHAUSTED",
+            "TASK_TERMINAL",
+            "TURN_EXISTS",
+            "TURN_TERMINAL"
+          ]
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "field": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 256
+              }
+            },
+            "required": [
+              "field",
+              "reason"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "details": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "turn_id": {
+                  "$ref": "ID.schema.json"
+                },
+                "turn_url": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 512,
+                  "pattern": "^/api/v1/conversations/[1-9][0-9]*/turns/[1-9][0-9]*$"
+                }
+              },
+              "required": [
+                "turn_id",
+                "turn_url"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "fields",
+        "details"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "code": {
+                "const": "TURN_EXISTS"
+              }
+            },
+            "required": [
+              "code"
+            ]
+          },
+          "then": {
+            "properties": {
+              "details": {
+                "type": "object",
+                "properties": {
+                  "turn_id": {
+                    "$ref": "ID.schema.json"
+                  },
+                  "turn_url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 512,
+                    "pattern": "^/api/v1/conversations/[1-9][0-9]*/turns/[1-9][0-9]*$"
+                  }
+                },
+                "required": [
+                  "turn_id",
+                  "turn_url"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "details": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "code": {
+                "const": "NOT_FOUND"
+              }
+            },
+            "required": [
+              "code"
+            ]
+          },
+          "then": {
+            "properties": {
+              "message": {
+                "const": "资源不存在"
+              },
+              "fields": {
+                "type": "array",
+                "maxItems": 0
+              }
+            }
+          }
+        }
+      ]
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 32,
+      "maxLength": 32,
+      "pattern": "^[0-9a-f]{32}$"
+    }
+  },
+  "required": [
+    "error",
+    "request_id"
+  ],
+  "additionalProperties": false
+}

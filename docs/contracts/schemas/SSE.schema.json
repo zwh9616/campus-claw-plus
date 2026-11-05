@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/v1/SSE.schema.json",
+  "title": "SSE",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "event": {
+          "const": "meta"
+        },
+        "data": {
+          "$ref": "SSEMeta.schema.json"
+        }
+      },
+      "required": [
+        "event",
+        "data"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event": {
+          "const": "token"
+        },
+        "data": {
+          "$ref": "SSEToken.schema.json"
+        }
+      },
+      "required": [
+        "event",
+        "data"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event": {
+          "const": "done"
+        },
+        "data": {
+          "$ref": "SSEDone.schema.json"
+        }
+      },
+      "required": [
+        "event",
+        "data"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event": {
+          "const": "error"
+        },
+        "data": {
+          "$ref": "SSEError.schema.json"
+        }
+      },
+      "required": [
+        "event",
+        "data"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/v1/SSEToken.schema.json",
+  "title": "SSEToken",
+  "type": "object",
+  "properties": {
+    "turn_id": {
+      "$ref": "ID.schema.json"
+    },
+    "seq": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "text": {
+      "type": "string",
+      "minLength": 0
+    }
+  },
+  "required": [
+    "turn_id",
+    "seq",
+    "text"
+  ],
+  "additionalProperties": false
+}

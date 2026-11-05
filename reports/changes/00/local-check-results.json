@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-04T08:17:51.729Z",
+  "node": "v25.2.1",
+  "platform": "win32",
+  "baseCommit": "412cde337c2572a341913395b29c131eaa6b3e67",
+  "scope": "00 implementation working tree before commit; Docker unavailable; not all gates passed",
+  "results": [
+    {
+      "command": "npm run check",
+      "exitCode": 1,
+      "stdout": "\n> campus-claw-plus@0.0.1 check\n> npm run check:foundation && npm run check:contracts && npm run typecheck && npm run build && npm run check:backend && npm run check:spec\n\n\n> campus-claw-plus@0.0.1 check:foundation\n> node scripts/check-foundation.mjs\n\nFoundation: rule/skill entry points exist, sample keys are empty, .env is ignored.\nThis check is separate from real authorization review and full-history secret scanning.\n\n> campus-claw-plus@0.0.1 check:contracts\n> node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs\n\nContracts: 22 schemas; 82 positive/negative fixtures and 6 semantic inputs agree in both paths; 39 operation examples; 7 current/frozen operations. Planned operations absent.\n✔ BC-SC-06 accepts trusted rubric, rejects incorrect grading, stale and missing context (2.6056ms)\n✔ BC-SC-05 nonempty Citation codepoint range (0.1748ms)\n✔ BC-SC-08/14 terminal sequence, cancellation and disconnected persistence (0.8279ms)\n✔ BC-SC-10 MCP exception remains exact, disabled and subject to both future reviews (0.8967ms)\n✔ BC-SC-09 registered empty keys only; no weakening historical HTTP_PORT requirement (5.567ms)\n✔ BC-SC-18 planned operations and anonymous auth bypass cannot enter OpenAPI (29.0118ms)\nℹ tests 6\nℹ suites 0\nℹ pass 6\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 306.0878\n\n> campus-claw-plus@0.0.1 typecheck\n> npm run typecheck --prefix frontend\n\n\n> @campus-claw-plus/frontend@0.0.1 typecheck\n> tsc --noEmit\n\n\n> campus-claw-plus@0.0.1 build\n> npm run build --prefix frontend\n\n\n> @campus-claw-plus/frontend@0.0.1 build\n> tsc --noEmit && vite build\n\nvite v8.3.5 building client environment for production...\ntransforming...\n✓ 15 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                   0.61 kB │ gzip:  0.41 kB\ndist/assets/index-xLwe3wJW.css    3.46 kB │ gzip:  1.23 kB\ndist/assets/index-B1-fZwUu.js   143.18 kB │ gzip: 46.85 kB\n\n✓ built in 111ms\n\n> campus-claw-plus@0.0.1 check:backend\n> node scripts/check-backend.mjs\n\n",
+      "stderr": "failed to connect to the docker API at npipe:////./pipe/dockerDesktopLinuxEngine; check if the path is correct and if the daemon is running: open //./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified.\n"
+    },
+    {
+      "command": "npm run check:spec",
+      "exitCode": 0,
+      "stdout": "\n> campus-claw-plus@0.0.1 check:spec\n> openspec validate --all --strict\n\n✓ change/2026-11-04-business-contracts\n✓ spec/project-bootstrap\nTotals: 2 passed, 0 failed (2 items)\n",
+      "stderr": "- Validating...\n"
+    }
+  ]
+}
