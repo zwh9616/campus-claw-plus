@@ -25,3 +25,7 @@
 已将运行准备从笼统待定细化为[runtime-plan候选](../../../openspec/changes/2026-11-04-identity-foundation/runtime-plan.md)：MySQL8.4.13及Registry索引摘要、Go驱动v1.10.1、crypto v0.58.0、migrate v4.20.1及各许可/最低Go要求；六个拟议空配置键、TLS/超时/失败行为；迁移校验和和部分DDL恢复、初始化输入以及复用Nginx的同源HTTPS。只核对元数据与官方说明，未安装、拉取、运行或评审批准。MySQL GPLv2与驱动MPL-2.0须按安全规范先确认，不能省略。
 
 可独立推进的准备已写成方案；下一责任人为小张确认01内部选择、00原两人确认公共健康/配置，随后小陈在可用Docker与可信HTTPS环境留真实运行证据。无需生成真实口令或改动现有共享服务来完成文档准备。
+
+## 第二天要求落实后的命令实跑
+
+见[环境检查原始结果](environment-check-2026-11-05.json)和[第二天交接](day-two-checkpoint.md)。显式Node24.22.1/npm10.5.0可用；npm run check退出1，前端类型/构建和foundation通过，因无Docker/Go而在backend检查失败；npm run audit退出0、根与前端0漏洞。npm run verify未运行，未创建.env或启停服务；Go、DB、HTTPS保持未验证。上述是c733ff2上的实际结果，不覆盖原先文档检查与CI记录。

@@ -27,7 +27,7 @@
 | 编号 / 变更 | 写规约并终审 | 审规约并实现 | 阶段 | 下一步：谁做什么 | 卡点 / 前置条件 | 最近进展与证据（change / PR / 验证） | 更新日期 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 00 公共业务契约 | 小葛 | 小张 | 待终审 | 小葛审实现PR当前head并复跑合同/规则/健康兼容；小张另补真实无历史会话，按反馈修复 | 本机环境阻塞已解除；BC-SC-01、实现终审、main合入后复验待完成；G2/G3未成立 | [规约批准](https://github.com/zwh9616/campus-claw-plus/pull/3#pullrequestreview-5765025797)绑定`221be73`；22 Schema、82正反例、6组测试及红绿通过；`18c3d08`本机check/verify退出0、15项容器验收通过；[证据](https://github.com/zwh9616/campus-claw-plus/blob/75cadbf80a0adaddd8680a87a0b07dfb22c1ad37/reports/changes/00/apply-verification.md)；[实现PR #5](https://github.com/zwh9616/campus-claw-plus/pull/5)；11-05核实时head `fc4bd05`[CI通过](https://github.com/zwh9616/campus-claw-plus/actions/runs/41801353136)；11-05核实PR #5仍无评审记录、未合并，main仍`2bf12e2` | 2026-11-05 |
-| 01 身份与数据基础 | 小陈 | 小张 | 待审规约 | 小张审PR #6修订head及runtime-plan R6；小陈收到意见后逐项修订；00原两人确认健康/配置 | 00未合入；01无可见批准，运行候选未冻结；本次终端无Docker/Go、DB/HTTPS未验证；apply须G2，业务合并须G3 | [PR #6](https://github.com/zwh9616/campus-claw-plus/pull/6)本提交补[运行候选](../openspec/changes/2026-11-04-identity-foundation/runtime-plan.md)及[交接/检查](../reports/changes/01/followup-2026-11-05.md)；API可见review/评论为空，已询问意见位置，不代报小张未工作或已批准 | 2026-11-05 |
+| 01 身份与数据基础 | 小陈 | 小张 | 待审规约 | 正式邀请小张复审PR #6当前head/runtime-plan R6；收到真实意见再逐条修订；00原两人确认PCR-IDF-01..03 | G2未成立；候选未冻结、01未批准；本机check缺Docker退出1，Go/DB/HTTPS未验证；业务合并须G3 | [PR #6](https://github.com/zwh9616/campus-claw-plus/pull/6)补[迁移编号/运行候选](../openspec/changes/2026-11-04-identity-foundation/runtime-plan.md)、[公共修订请求](../reports/changes/01/public-contract-requests.md)和[第二天交接](../reports/changes/01/day-two-checkpoint.md)；Node24.22.1/npm10.5.0可用，类型/构建及audit通过，环境失败保留。用户确认暂无反馈，不伪造回复或批准 | 2026-11-05 |
 | 02 前端应用基础 | 小张 | 小葛 | 未开始 | 小张写页面流程及接口要求 | 00及02规约确认可开发；真实登录验收等01 | 仅登记计划；规约未创建、未验证 | 2026-11-04 |
 | 03 独立MCP工具服务 | 小葛 | 小陈 | 未开始 | 小葛写工具、协议和失败场景 | 00及03规约确认；宿主接入另由07C验收 | 仅登记计划；规约未创建、未验证 | 2026-11-04 |
 | 04 资料与本班知识检索 | 小张 | 小陈 | 未开始 | 小张写上传、检索、出处和权限要求 | 00契约与01身份基础可用 | 仅登记计划；规约未创建、未验证 | 2026-11-04 |
@@ -81,4 +81,4 @@
 
 ## 2026-11-05小陈本次交接
 
-01本提交补版本/许可、配置空键/超时、迁移/初始化、健康及HTTPS候选并重新校验。最新远端查询见[快照](../reports/changes/01/github-state-2026-11-05.json)，未见01已发布评审意见；收到意见再逐条对照，不能把进度排班等同审查。仍不apply、不合并、不归档。见[01交接](../reports/changes/01/followup-2026-11-05.md)。
+01先前c733ff2已补版本/许可、配置空键/超时、迁移/初始化、健康及HTTPS候选并通过文档检查和CI；该阶段[快照](../reports/changes/01/github-state-2026-11-05.json)无01评审。用户随后确认看错；本提交按第二天要求实跑环境检查，追加明确编号申请和公共修订请求，并正式邀请小张复审。完整本机check退出1不改写为成功，见[真实环境结果](../reports/changes/01/environment-check-2026-11-05.json)和[当天交接](../reports/changes/01/day-two-checkpoint.md)。10未交接，保留审查准备清单，不代写/批准10，不apply、不合并、不归档。
