@@ -1,6 +1,6 @@
 # PR #6 五项返修记录（小陈，2026-11-05）
 
-小张在[正式审查](https://github.com/zwh9616/campus-claw-plus/pull/6#pullrequestreview-5785063604)对`7fa3946`提出R1—R5。下列为本次候选修订及待复审事项；本记录不表示审查通过、G2成立或01获准apply。修订提交号和真实命令结果以本次提交/回帖填写为准。
+小张在[正式审查](https://github.com/zwh9616/campus-claw-plus/pull/6#pullrequestreview-5785063604)对`7fa3946`提出R1—R5。候选修订始于`b29f2be`，随后合入main `4cfd61d`以使用00生效机器合同；本记录不表示审查通过、G2成立或01获准apply。最终head以PR #6新提交和逐条回帖为准。
 
 | 意见 | 对应修订 | 仍需确认 |
 | --- | --- | --- |
@@ -11,3 +11,5 @@
 | [R5 公共接线](https://github.com/zwh9616/campus-claw-plus/pull/6#discussion_r4480541572) | D8、runtime-plan R2/R5及PCR-IDF-01..03：00合入SHA、公共修订路径、版本/许可/迁移登记和01接线责任明确 | 00原两人审批新公共修订；小张确认候选，G2/01批准前不apply |
 
 核对时main=`4cfd61d8119c51bc3bf2870a17c9754f0975b3dc`，PR #5已合入；main的该SHA CI成功，但远端main有效规则为空，尚不能以合入证明G2。PR #7仍是`5e5f299`，待小葛修订；PR #8为02规约待审。没有修改00生效合同、Compose、真实配置或业务代码。
+
+本地合入00后，用Node 24.22.1对工作树执行OpenSpec全量严格校验（3项通过）、合同一致性检查（22 Schema、82正反例、6语义输入、39 operation示例）、foundation检查及全历史/待提交secret scan，均退出0；`npm run audit`两处均无漏洞、退出0。完整`npm run check`和真实容器`npm run verify`未在这次修订head上运行，后续以PR当前head的CI与同SHA实测分别记录，不复用旧证据。

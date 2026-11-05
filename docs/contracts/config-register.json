@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "active": [
+    {
+      "name": "HTTP_PORT",
+      "owner": "bootstrap",
+      "required": true,
+      "secret": false,
+      "introduced_by": "openspec/changes/archive/2026-10-28-project-bootstrap",
+      "missing_behavior": "启动失败且非零退出",
+      "timeout": "不适用（启动配置）"
+    }
+  ],
+  "planned": [
+    {
+      "owner": "01",
+      "purpose": "数据库与会话",
+      "names_frozen": false
+    },
+    {
+      "owner": "03",
+      "purpose": "MCP令牌",
+      "names_frozen": false
+    },
+    {
+      "owner": "07A",
+      "purpose": "模型连接与密钥",
+      "names_frozen": false
+    }
+  ],
+  "outbound_exceptions": [
+    {
+      "url": "http://mcp:8090/mcp",
+      "enabled": false,
+      "required_approvals": [
+        "03",
+        "07C"
+      ],
+      "constraints": [
+        "精确scheme/服务/端口/path",
+        "无userinfo/query/fragment/redirect",
+        "解析目标为本项目网络服务"
+      ],
+      "removal": "不再使用受控MCP服务时移除"
+    }
+  ]
+}

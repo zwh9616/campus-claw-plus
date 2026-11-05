@@ -27,7 +27,7 @@
 | 编号 / 变更 | 写规约并终审 | 审规约并实现 | 阶段 | 下一步：谁做什么 | 卡点 / 前置条件 | 最近进展与证据（change / PR / 验证） | 更新日期 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 00 公共业务契约 | 小葛 | 小张 | 待集成验收 | 小张协调main `4cfd61d`同SHA集成复验、BC-SC-01及有效主干保护；00原两人审01提出的公共修订 | 已合入但G2的同SHA复验/远端门禁未证实；G3未成立 | [PR #5](https://github.com/zwh9616/campus-claw-plus/pull/5)已获[小葛终审](https://github.com/zwh9616/campus-claw-plus/pull/5#pullrequestreview-5782045346)并合入；[main CI](https://github.com/zwh9616/campus-claw-plus/actions/runs/42033181713)对`4cfd61d`成功；核实时main有效规则为空。原本机check/verify记录仅绑定原执行版本，不作集成复验 | 2026-11-05 |
-| 01 身份与数据基础 | 小陈 | 小张 | 写规约（返修） | 小张复审PR #6新head的R1—R5候选；00原两人确认PCR-IDF-01..03新公共修订；小陈逐条回复原审查位置 | G2未成立；版本/许可/配置/迁移/健康候选未冻结，01未批准；DB/HTTPS集成未验证，业务合并须G3 | [PR #6正式返修](https://github.com/zwh9616/campus-claw-plus/pull/6#pullrequestreview-5785063604)绑定`7fa3946`；[逐项修订记录](../reports/changes/01/review-response-2026-11-05.md)及[公共修订请求](../reports/changes/01/public-contract-requests.md)；此前`ab91417`骨架check/verify退出0、容器15项通过，[证据](../reports/changes/01/docker-check-2026-11-05.json)，不作01实现通过 | 2026-11-05 |
+| 01 身份与数据基础 | 小陈 | 小张 | 写规约（返修） | 小张复审PR #6新head的R1—R5候选；00原两人确认PCR-IDF-01..03新公共修订；小陈逐条回复原审查位置 | G2未成立；版本/许可/配置/迁移/健康候选未冻结，01未批准；DB/HTTPS集成未验证，业务合并须G3 | [PR #6正式返修](https://github.com/zwh9616/campus-claw-plus/pull/6#pullrequestreview-5785063604)绑定`7fa3946`；[逐项修订记录](../reports/changes/01/review-response-2026-11-05.md)及[公共修订请求](../reports/changes/01/public-contract-requests.md)；此前`ab91417`骨架check/verify退出0、容器15项通过，[证据](../reports/changes/01/docker-check-2026-11-05.json)，不作01实现通过；本次合入main后OpenSpec严格校验3项、合同检查、foundation、secret scan、audit均退出0，完整check/verify在修订head未跑，见[返修记录](../reports/changes/01/review-response-2026-11-05.md) | 2026-11-05 |
 | 02 前端应用基础 | 小张 | 小葛 | 待审规约 | 小葛审路由/ID切班/认证失败/线框样板/四态与同版本验收，小张按反馈修订 | G2及02批准未满足；01 R1—R3和HTTPS接线待确认；无apply | [四份规约](https://github.com/zwh9616/campus-claw-plus/blob/codex/2026-11-05-frontend-foundation/openspec/changes/2026-11-05-frontend-foundation/proposal.md)；单项strict及全量2项通过；分支codex/2026-11-05-frontend-foundation；[PR #8](https://github.com/zwh9616/campus-claw-plus/pull/8)，已正式请求gjj6666；[校验](https://github.com/zwh9616/campus-claw-plus/blob/codex/2026-11-05-frontend-foundation/reports/changes/02/spec-check.md) | 2026-11-05 |
 | 03 独立MCP工具服务 | 小葛 | 小陈 | 未开始 | 小葛写工具、协议和失败场景 | 00及03规约确认；宿主接入另由07C验收 | 仅登记计划；规约未创建、未验证 | 2026-11-04 |
 | 04 资料与本班知识检索 | 小张 | 小陈 | 未开始 | 小张写上传、检索、出处和权限要求 | 00契约与01身份基础可用 | 仅登记计划；规约未创建、未验证 | 2026-11-04 |
@@ -88,3 +88,11 @@
 同次只读补核：PR #5的75cadbf已有gjj6666于2026-11-05 08:45:25 UTC提交的[APPROVED](https://github.com/zwh9616/campus-claw-plus/pull/5#pullrequestreview-5782045346)，PR仍open且未合并，main仍2bf12e2；按依赖表，G2还要求main集成SHA及复验。PR #6当前无正式review。这里只更新整体事实及01自身行，其他成员业务行保留原提交记录。
 
 19:35（UTC+8）收到10的[PR #7](https://github.com/zwh9616/campus-claw-plus/pull/7)后，小陈已优先完成5e5f299规约审查并正式请求修改1项P2规则冲突，见[审查记录](../reports/changes/10/chen-spec-review-2026-11-05.md)。10行据真实交接更新为返修；此前“未交接”为先前盘点，不继续作为当前状态。下一步等小葛修订后复审，G2前不apply。
+
+## 2026-11-05 小张执行记录（历史快照，当前状态以上表为准）
+
+00已真实终审通过；01已提交绑定7fa3946的REQUEST_CHANGES，5项问题等小陈修订；重复PR #4已关闭保留历史。02正在独立main基线分支起草，仅文档。10最新进展以PR #7中小陈的真实返修审查为准，不覆盖该change负责人维护的活动行。未合并、未apply下游、未伪造BC-SC-01。详见[队列交接](../reports/changes/00/day-two-review-handoff.md)。
+
+02已交[PR #8](https://github.com/zwh9616/campus-claw-plus/pull/8)并正式请求gjj6666；单项及全量严格校验通过，文档链接/场景/台账保留检查通过，未实现页面、未做视觉/真实登录验收。
+
+本次PR交接同步曾因混合换行导致diff检查失败（d79319b）；现统一LF并重跑差异检查，未改变台账含义或运行实现。

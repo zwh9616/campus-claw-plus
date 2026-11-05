@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/v1/SSEDone.schema.json",
+  "title": "SSEDone",
+  "type": "object",
+  "properties": {
+    "turn_id": {
+      "$ref": "ID.schema.json"
+    },
+    "status": {
+      "const": "completed"
+    },
+    "usage": {
+      "anyOf": [
+        {
+          "$ref": "Usage.schema.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "usage_unavailable_reason": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "provider_unavailable"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "duration_ms": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "turn_id",
+    "status",
+    "usage",
+    "usage_unavailable_reason",
+    "duration_ms"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "usage": {
+            "type": "null"
+          }
+        },
+        "required": [
+          "usage"
+        ]
+      },
+      "then": {
+        "properties": {
+          "usage_unavailable_reason": {
+            "const": "provider_unavailable"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "usage_unavailable_reason": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ]
+}
