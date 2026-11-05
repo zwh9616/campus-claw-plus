@@ -1,0 +1,1507 @@
+[
+  {
+    "name": "ID positive",
+    "schema": "ID",
+    "valid": true,
+    "data": "9223372036854775807",
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "Timestamp positive",
+    "schema": "Timestamp",
+    "valid": true,
+    "data": "2026-11-04T08:00:00.000Z",
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "Principal positive",
+    "schema": "Principal",
+    "valid": true,
+    "data": {
+      "user_id": "1",
+      "role": "student",
+      "class_id": "2",
+      "session_id": "0123456789abcdef0123456789abcdef",
+      "session_version": 1,
+      "expires_at": "2026-11-04T08:00:00.000Z"
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "Principal extra field",
+    "schema": "Principal",
+    "valid": false,
+    "data": {
+      "user_id": "1",
+      "role": "student",
+      "class_id": "2",
+      "session_id": "0123456789abcdef0123456789abcdef",
+      "session_version": 1,
+      "expires_at": "2026-11-04T08:00:00.000Z",
+      "unexpected": true
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "Principal missing field",
+    "schema": "Principal",
+    "valid": false,
+    "data": {
+      "role": "student",
+      "class_id": "2",
+      "session_id": "0123456789abcdef0123456789abcdef",
+      "session_version": 1,
+      "expires_at": "2026-11-04T08:00:00.000Z"
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "AuthSession positive",
+    "schema": "AuthSession",
+    "valid": true,
+    "data": {
+      "access_token": "example-not-a-credential",
+      "token_type": "Bearer",
+      "expires_in": 900,
+      "principal": {
+        "user_id": "1",
+        "role": "student",
+        "class_id": "2",
+        "session_id": "0123456789abcdef0123456789abcdef",
+        "session_version": 1,
+        "expires_at": "2026-11-04T08:00:00.000Z"
+      }
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "AuthSession extra field",
+    "schema": "AuthSession",
+    "valid": false,
+    "data": {
+      "access_token": "example-not-a-credential",
+      "token_type": "Bearer",
+      "expires_in": 900,
+      "principal": {
+        "user_id": "1",
+        "role": "student",
+        "class_id": "2",
+        "session_id": "0123456789abcdef0123456789abcdef",
+        "session_version": 1,
+        "expires_at": "2026-11-04T08:00:00.000Z"
+      },
+      "unexpected": true
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "AuthSession missing field",
+    "schema": "AuthSession",
+    "valid": false,
+    "data": {
+      "token_type": "Bearer",
+      "expires_in": 900,
+      "principal": {
+        "user_id": "1",
+        "role": "student",
+        "class_id": "2",
+        "session_id": "0123456789abcdef0123456789abcdef",
+        "session_version": 1,
+        "expires_at": "2026-11-04T08:00:00.000Z"
+      }
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "LoginRequest positive",
+    "schema": "LoginRequest",
+    "valid": true,
+    "data": {
+      "username": "example-user",
+      "password": "example-not-a-credential"
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "LoginRequest extra field",
+    "schema": "LoginRequest",
+    "valid": false,
+    "data": {
+      "username": "example-user",
+      "password": "example-not-a-credential",
+      "unexpected": true
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "LoginRequest missing field",
+    "schema": "LoginRequest",
+    "valid": false,
+    "data": {
+      "password": "example-not-a-credential"
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "SwitchClassRequest positive",
+    "schema": "SwitchClassRequest",
+    "valid": true,
+    "data": {
+      "class_id": "2"
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "SwitchClassRequest extra field",
+    "schema": "SwitchClassRequest",
+    "valid": false,
+    "data": {
+      "class_id": "2",
+      "unexpected": true
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "SwitchClassRequest missing field",
+    "schema": "SwitchClassRequest",
+    "valid": false,
+    "data": {},
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "CsrfResponse positive",
+    "schema": "CsrfResponse",
+    "valid": true,
+    "data": {
+      "csrf_token": "example-csrf-for-contract-test-only"
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "CsrfResponse extra field",
+    "schema": "CsrfResponse",
+    "valid": false,
+    "data": {
+      "csrf_token": "example-csrf-for-contract-test-only",
+      "unexpected": true
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "CsrfResponse missing field",
+    "schema": "CsrfResponse",
+    "valid": false,
+    "data": {},
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "Health positive",
+    "schema": "Health",
+    "valid": true,
+    "data": {
+      "status": "ok",
+      "dependencies": {}
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "Health extra field",
+    "schema": "Health",
+    "valid": false,
+    "data": {
+      "status": "ok",
+      "dependencies": {},
+      "unexpected": true
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "Health missing field",
+    "schema": "Health",
+    "valid": false,
+    "data": {
+      "dependencies": {}
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "Error positive",
+    "schema": "Error",
+    "valid": true,
+    "data": {
+      "error": {
+        "code": "NOT_FOUND",
+        "message": "资源不存在",
+        "fields": [],
+        "details": null
+      },
+      "request_id": "0123456789abcdef0123456789abcdef"
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "Error extra field",
+    "schema": "Error",
+    "valid": false,
+    "data": {
+      "error": {
+        "code": "NOT_FOUND",
+        "message": "资源不存在",
+        "fields": [],
+        "details": null
+      },
+      "request_id": "0123456789abcdef0123456789abcdef",
+      "unexpected": true
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "Error missing field",
+    "schema": "Error",
+    "valid": false,
+    "data": {
+      "request_id": "0123456789abcdef0123456789abcdef"
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "Usage positive",
+    "schema": "Usage",
+    "valid": true,
+    "data": {
+      "input_tokens": 12,
+      "output_tokens": 3
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "Usage extra field",
+    "schema": "Usage",
+    "valid": false,
+    "data": {
+      "input_tokens": 12,
+      "output_tokens": 3,
+      "unexpected": true
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "Usage missing field",
+    "schema": "Usage",
+    "valid": false,
+    "data": {
+      "output_tokens": 3
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "Citation positive",
+    "schema": "Citation",
+    "valid": true,
+    "data": {
+      "material_id": "3",
+      "chunk_id": "4",
+      "material_version": 1,
+      "title": "演示资料",
+      "ordinal": 0,
+      "char_start": 0,
+      "char_end": 2,
+      "quote": "资料",
+      "url": "/materials/3"
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "Citation extra field",
+    "schema": "Citation",
+    "valid": false,
+    "data": {
+      "material_id": "3",
+      "chunk_id": "4",
+      "material_version": 1,
+      "title": "演示资料",
+      "ordinal": 0,
+      "char_start": 0,
+      "char_end": 2,
+      "quote": "资料",
+      "url": "/materials/3",
+      "unexpected": true
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "Citation missing field",
+    "schema": "Citation",
+    "valid": false,
+    "data": {
+      "chunk_id": "4",
+      "material_version": 1,
+      "title": "演示资料",
+      "ordinal": 0,
+      "char_start": 0,
+      "char_end": 2,
+      "quote": "资料",
+      "url": "/materials/3"
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "Task positive",
+    "schema": "Task",
+    "valid": true,
+    "data": {
+      "task_id": "8",
+      "submission_id": "6",
+      "status": "pending",
+      "attempt": 0,
+      "execution_epoch": 0,
+      "version": 1,
+      "cancel_requested": false,
+      "created_at": "2026-11-04T08:00:00.000Z",
+      "updated_at": "2026-11-04T08:00:00.000Z",
+      "error": null
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "Task extra field",
+    "schema": "Task",
+    "valid": false,
+    "data": {
+      "task_id": "8",
+      "submission_id": "6",
+      "status": "pending",
+      "attempt": 0,
+      "execution_epoch": 0,
+      "version": 1,
+      "cancel_requested": false,
+      "created_at": "2026-11-04T08:00:00.000Z",
+      "updated_at": "2026-11-04T08:00:00.000Z",
+      "error": null,
+      "unexpected": true
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "Task missing field",
+    "schema": "Task",
+    "valid": false,
+    "data": {
+      "submission_id": "6",
+      "status": "pending",
+      "attempt": 0,
+      "execution_epoch": 0,
+      "version": 1,
+      "cancel_requested": false,
+      "created_at": "2026-11-04T08:00:00.000Z",
+      "updated_at": "2026-11-04T08:00:00.000Z",
+      "error": null
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "Turn positive",
+    "schema": "Turn",
+    "valid": true,
+    "data": {
+      "turn_id": "9",
+      "conversation_id": "10",
+      "status": "completed",
+      "text": "演示",
+      "last_seq": 1,
+      "version": 1,
+      "error": null,
+      "updated_at": "2026-11-04T08:00:00.000Z"
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "Turn extra field",
+    "schema": "Turn",
+    "valid": false,
+    "data": {
+      "turn_id": "9",
+      "conversation_id": "10",
+      "status": "completed",
+      "text": "演示",
+      "last_seq": 1,
+      "version": 1,
+      "error": null,
+      "updated_at": "2026-11-04T08:00:00.000Z",
+      "unexpected": true
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "Turn missing field",
+    "schema": "Turn",
+    "valid": false,
+    "data": {
+      "conversation_id": "10",
+      "status": "completed",
+      "text": "演示",
+      "last_seq": 1,
+      "version": 1,
+      "error": null,
+      "updated_at": "2026-11-04T08:00:00.000Z"
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "SkillInput positive",
+    "schema": "SkillInput",
+    "valid": true,
+    "data": {
+      "skill_id": "grading",
+      "skill_version": "v1",
+      "principal": {
+        "user_id": "1",
+        "role": "student",
+        "class_id": "2",
+        "session_id": "0123456789abcdef0123456789abcdef",
+        "session_version": 1,
+        "expires_at": "2026-11-04T08:00:00.000Z"
+      },
+      "request_id": "0123456789abcdef0123456789abcdef",
+      "question": "演示题",
+      "submission_id": "6",
+      "rubric_version": 1,
+      "citations": [
+        {
+          "material_id": "3",
+          "chunk_id": "4",
+          "material_version": 1,
+          "title": "演示资料",
+          "ordinal": 0,
+          "char_start": 0,
+          "char_end": 2,
+          "quote": "资料",
+          "url": "/materials/3"
+        }
+      ]
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "SkillInput extra field",
+    "schema": "SkillInput",
+    "valid": false,
+    "data": {
+      "skill_id": "grading",
+      "skill_version": "v1",
+      "principal": {
+        "user_id": "1",
+        "role": "student",
+        "class_id": "2",
+        "session_id": "0123456789abcdef0123456789abcdef",
+        "session_version": 1,
+        "expires_at": "2026-11-04T08:00:00.000Z"
+      },
+      "request_id": "0123456789abcdef0123456789abcdef",
+      "question": "演示题",
+      "submission_id": "6",
+      "rubric_version": 1,
+      "citations": [
+        {
+          "material_id": "3",
+          "chunk_id": "4",
+          "material_version": 1,
+          "title": "演示资料",
+          "ordinal": 0,
+          "char_start": 0,
+          "char_end": 2,
+          "quote": "资料",
+          "url": "/materials/3"
+        }
+      ],
+      "unexpected": true
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "SkillInput missing field",
+    "schema": "SkillInput",
+    "valid": false,
+    "data": {
+      "skill_version": "v1",
+      "principal": {
+        "user_id": "1",
+        "role": "student",
+        "class_id": "2",
+        "session_id": "0123456789abcdef0123456789abcdef",
+        "session_version": 1,
+        "expires_at": "2026-11-04T08:00:00.000Z"
+      },
+      "request_id": "0123456789abcdef0123456789abcdef",
+      "question": "演示题",
+      "submission_id": "6",
+      "rubric_version": 1,
+      "citations": [
+        {
+          "material_id": "3",
+          "chunk_id": "4",
+          "material_version": 1,
+          "title": "演示资料",
+          "ordinal": 0,
+          "char_start": 0,
+          "char_end": 2,
+          "quote": "资料",
+          "url": "/materials/3"
+        }
+      ]
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "GradeResult positive",
+    "schema": "GradeResult",
+    "valid": true,
+    "data": {
+      "schema_version": "1",
+      "submission_id": "6",
+      "submission_version": 1,
+      "rubric_version": 1,
+      "skill_id": "grading",
+      "skill_version": "v1",
+      "items": [
+        {
+          "criterion_id": "7",
+          "score": 600,
+          "max_score": 1000,
+          "reason": "示例反馈",
+          "citations": [
+            {
+              "material_id": "3",
+              "chunk_id": "4",
+              "material_version": 1,
+              "title": "演示资料",
+              "ordinal": 0,
+              "char_start": 0,
+              "char_end": 2,
+              "quote": "资料",
+              "url": "/materials/3"
+            }
+          ]
+        }
+      ],
+      "total_score": 600,
+      "max_total": 1000
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "GradeResult extra field",
+    "schema": "GradeResult",
+    "valid": false,
+    "data": {
+      "schema_version": "1",
+      "submission_id": "6",
+      "submission_version": 1,
+      "rubric_version": 1,
+      "skill_id": "grading",
+      "skill_version": "v1",
+      "items": [
+        {
+          "criterion_id": "7",
+          "score": 600,
+          "max_score": 1000,
+          "reason": "示例反馈",
+          "citations": [
+            {
+              "material_id": "3",
+              "chunk_id": "4",
+              "material_version": 1,
+              "title": "演示资料",
+              "ordinal": 0,
+              "char_start": 0,
+              "char_end": 2,
+              "quote": "资料",
+              "url": "/materials/3"
+            }
+          ]
+        }
+      ],
+      "total_score": 600,
+      "max_total": 1000,
+      "unexpected": true
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "GradeResult missing field",
+    "schema": "GradeResult",
+    "valid": false,
+    "data": {
+      "submission_id": "6",
+      "submission_version": 1,
+      "rubric_version": 1,
+      "skill_id": "grading",
+      "skill_version": "v1",
+      "items": [
+        {
+          "criterion_id": "7",
+          "score": 600,
+          "max_score": 1000,
+          "reason": "示例反馈",
+          "citations": [
+            {
+              "material_id": "3",
+              "chunk_id": "4",
+              "material_version": 1,
+              "title": "演示资料",
+              "ordinal": 0,
+              "char_start": 0,
+              "char_end": 2,
+              "quote": "资料",
+              "url": "/materials/3"
+            }
+          ]
+        }
+      ],
+      "total_score": 600,
+      "max_total": 1000
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "Audit positive",
+    "schema": "Audit",
+    "valid": true,
+    "data": {
+      "audit_id": "5",
+      "request_id": "0123456789abcdef0123456789abcdef",
+      "actor_id": "1",
+      "class_id": "2",
+      "action": "contract.example",
+      "object_type": "material",
+      "object_id": "3",
+      "result": "ok",
+      "skill_id": null,
+      "skill_version": null,
+      "usage": null,
+      "duration_ms": 4,
+      "created_at": "2026-11-04T08:00:00.000Z"
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "Audit extra field",
+    "schema": "Audit",
+    "valid": false,
+    "data": {
+      "audit_id": "5",
+      "request_id": "0123456789abcdef0123456789abcdef",
+      "actor_id": "1",
+      "class_id": "2",
+      "action": "contract.example",
+      "object_type": "material",
+      "object_id": "3",
+      "result": "ok",
+      "skill_id": null,
+      "skill_version": null,
+      "usage": null,
+      "duration_ms": 4,
+      "created_at": "2026-11-04T08:00:00.000Z",
+      "unexpected": true
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "Audit missing field",
+    "schema": "Audit",
+    "valid": false,
+    "data": {
+      "request_id": "0123456789abcdef0123456789abcdef",
+      "actor_id": "1",
+      "class_id": "2",
+      "action": "contract.example",
+      "object_type": "material",
+      "object_id": "3",
+      "result": "ok",
+      "skill_id": null,
+      "skill_version": null,
+      "usage": null,
+      "duration_ms": 4,
+      "created_at": "2026-11-04T08:00:00.000Z"
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "Page positive",
+    "schema": "Page",
+    "valid": true,
+    "data": {
+      "items": [
+        {
+          "audit_id": "5",
+          "request_id": "0123456789abcdef0123456789abcdef",
+          "actor_id": "1",
+          "class_id": "2",
+          "action": "contract.example",
+          "object_type": "material",
+          "object_id": "3",
+          "result": "ok",
+          "skill_id": null,
+          "skill_version": null,
+          "usage": null,
+          "duration_ms": 4,
+          "created_at": "2026-11-04T08:00:00.000Z"
+        }
+      ],
+      "page": 1,
+      "page_size": 20,
+      "total": 1
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "Page extra field",
+    "schema": "Page",
+    "valid": false,
+    "data": {
+      "items": [
+        {
+          "audit_id": "5",
+          "request_id": "0123456789abcdef0123456789abcdef",
+          "actor_id": "1",
+          "class_id": "2",
+          "action": "contract.example",
+          "object_type": "material",
+          "object_id": "3",
+          "result": "ok",
+          "skill_id": null,
+          "skill_version": null,
+          "usage": null,
+          "duration_ms": 4,
+          "created_at": "2026-11-04T08:00:00.000Z"
+        }
+      ],
+      "page": 1,
+      "page_size": 20,
+      "total": 1,
+      "unexpected": true
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "Page missing field",
+    "schema": "Page",
+    "valid": false,
+    "data": {
+      "page": 1,
+      "page_size": 20,
+      "total": 1
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "SSEMeta positive",
+    "schema": "SSEMeta",
+    "valid": true,
+    "data": {
+      "request_id": "0123456789abcdef0123456789abcdef",
+      "turn_id": "9",
+      "conversation_id": "10",
+      "assistant_version": 1,
+      "citations": [
+        {
+          "material_id": "3",
+          "chunk_id": "4",
+          "material_version": 1,
+          "title": "演示资料",
+          "ordinal": 0,
+          "char_start": 0,
+          "char_end": 2,
+          "quote": "资料",
+          "url": "/materials/3"
+        }
+      ],
+      "skill": null
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "SSEMeta extra field",
+    "schema": "SSEMeta",
+    "valid": false,
+    "data": {
+      "request_id": "0123456789abcdef0123456789abcdef",
+      "turn_id": "9",
+      "conversation_id": "10",
+      "assistant_version": 1,
+      "citations": [
+        {
+          "material_id": "3",
+          "chunk_id": "4",
+          "material_version": 1,
+          "title": "演示资料",
+          "ordinal": 0,
+          "char_start": 0,
+          "char_end": 2,
+          "quote": "资料",
+          "url": "/materials/3"
+        }
+      ],
+      "skill": null,
+      "unexpected": true
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "SSEMeta missing field",
+    "schema": "SSEMeta",
+    "valid": false,
+    "data": {
+      "turn_id": "9",
+      "conversation_id": "10",
+      "assistant_version": 1,
+      "citations": [
+        {
+          "material_id": "3",
+          "chunk_id": "4",
+          "material_version": 1,
+          "title": "演示资料",
+          "ordinal": 0,
+          "char_start": 0,
+          "char_end": 2,
+          "quote": "资料",
+          "url": "/materials/3"
+        }
+      ],
+      "skill": null
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "SSEToken positive",
+    "schema": "SSEToken",
+    "valid": true,
+    "data": {
+      "turn_id": "9",
+      "seq": 1,
+      "text": "演示"
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "SSEToken extra field",
+    "schema": "SSEToken",
+    "valid": false,
+    "data": {
+      "turn_id": "9",
+      "seq": 1,
+      "text": "演示",
+      "unexpected": true
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "SSEToken missing field",
+    "schema": "SSEToken",
+    "valid": false,
+    "data": {
+      "seq": 1,
+      "text": "演示"
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "SSEDone positive",
+    "schema": "SSEDone",
+    "valid": true,
+    "data": {
+      "turn_id": "9",
+      "status": "completed",
+      "usage": {
+        "input_tokens": 12,
+        "output_tokens": 3
+      },
+      "usage_unavailable_reason": null,
+      "duration_ms": 30
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "SSEDone extra field",
+    "schema": "SSEDone",
+    "valid": false,
+    "data": {
+      "turn_id": "9",
+      "status": "completed",
+      "usage": {
+        "input_tokens": 12,
+        "output_tokens": 3
+      },
+      "usage_unavailable_reason": null,
+      "duration_ms": 30,
+      "unexpected": true
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "SSEDone missing field",
+    "schema": "SSEDone",
+    "valid": false,
+    "data": {
+      "status": "completed",
+      "usage": {
+        "input_tokens": 12,
+        "output_tokens": 3
+      },
+      "usage_unavailable_reason": null,
+      "duration_ms": 30
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "SSEError positive",
+    "schema": "SSEError",
+    "valid": true,
+    "data": {
+      "turn_id": "9",
+      "code": "CANCELLED",
+      "message": "已取消",
+      "retryable": false
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "SSEError extra field",
+    "schema": "SSEError",
+    "valid": false,
+    "data": {
+      "turn_id": "9",
+      "code": "CANCELLED",
+      "message": "已取消",
+      "retryable": false,
+      "unexpected": true
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "SSEError missing field",
+    "schema": "SSEError",
+    "valid": false,
+    "data": {
+      "code": "CANCELLED",
+      "message": "已取消",
+      "retryable": false
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "SSE positive",
+    "schema": "SSE",
+    "valid": true,
+    "data": {
+      "event": "done",
+      "data": {
+        "turn_id": "9",
+        "status": "completed",
+        "usage": {
+          "input_tokens": 12,
+          "output_tokens": 3
+        },
+        "usage_unavailable_reason": null,
+        "duration_ms": 30
+      }
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "SSE extra field",
+    "schema": "SSE",
+    "valid": false,
+    "data": {
+      "event": "done",
+      "data": {
+        "turn_id": "9",
+        "status": "completed",
+        "usage": {
+          "input_tokens": 12,
+          "output_tokens": 3
+        },
+        "usage_unavailable_reason": null,
+        "duration_ms": 30
+      },
+      "unexpected": true
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "SSE missing field",
+    "schema": "SSE",
+    "valid": false,
+    "data": {
+      "data": {
+        "turn_id": "9",
+        "status": "completed",
+        "usage": {
+          "input_tokens": 12,
+          "output_tokens": 3
+        },
+        "usage_unavailable_reason": null,
+        "duration_ms": 30
+      }
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "invalid ID 0",
+    "schema": "ID",
+    "valid": false,
+    "data": "0",
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "invalid ID 01",
+    "schema": "ID",
+    "valid": false,
+    "data": "01",
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "invalid ID -1",
+    "schema": "ID",
+    "valid": false,
+    "data": "-1",
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "invalid ID 9223372036854775808",
+    "schema": "ID",
+    "valid": false,
+    "data": "9223372036854775808",
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "invalid ID 9999999999999999999",
+    "schema": "ID",
+    "valid": false,
+    "data": "9999999999999999999",
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "invalid ID 1",
+    "schema": "ID",
+    "valid": false,
+    "data": 1,
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "valid ID 1",
+    "schema": "ID",
+    "valid": true,
+    "data": "1",
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "valid ID 999999999999999999",
+    "schema": "ID",
+    "valid": true,
+    "data": "999999999999999999",
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "valid ID 1000000000000000000",
+    "schema": "ID",
+    "valid": true,
+    "data": "1000000000000000000",
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "valid ID 9223372036854775806",
+    "schema": "ID",
+    "valid": true,
+    "data": "9223372036854775806",
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "invalid timestamp",
+    "schema": "Timestamp",
+    "valid": false,
+    "data": "2026-02-30T08:00:00.000Z",
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "timestamp without milliseconds",
+    "schema": "Timestamp",
+    "valid": false,
+    "data": "2026-11-04T08:00:00Z",
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "invalid role",
+    "schema": "Principal",
+    "valid": false,
+    "data": {
+      "user_id": "1",
+      "role": "admin",
+      "class_id": "2",
+      "session_id": "0123456789abcdef0123456789abcdef",
+      "session_version": 1,
+      "expires_at": "2026-11-04T08:00:00.000Z"
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "nested unknown Usage",
+    "schema": "Audit",
+    "valid": false,
+    "data": {
+      "audit_id": "5",
+      "request_id": "0123456789abcdef0123456789abcdef",
+      "actor_id": "1",
+      "class_id": "2",
+      "action": "contract.example",
+      "object_type": "material",
+      "object_id": "3",
+      "result": "ok",
+      "skill_id": null,
+      "skill_version": null,
+      "usage": {
+        "input_tokens": 1,
+        "output_tokens": 2,
+        "cost": 3
+      },
+      "duration_ms": 4,
+      "created_at": "2026-11-04T08:00:00.000Z"
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "unknown usage",
+    "schema": "SSEDone",
+    "valid": true,
+    "data": {
+      "turn_id": "9",
+      "status": "completed",
+      "usage": null,
+      "usage_unavailable_reason": "provider_unavailable",
+      "duration_ms": 30
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "unknown usage missing reason",
+    "schema": "SSEDone",
+    "valid": false,
+    "data": {
+      "turn_id": "9",
+      "status": "completed",
+      "usage": null,
+      "usage_unavailable_reason": null,
+      "duration_ms": 30
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "existing turn details",
+    "schema": "Error",
+    "valid": true,
+    "data": {
+      "error": {
+        "code": "TURN_EXISTS",
+        "message": "已有轮次",
+        "fields": [],
+        "details": {
+          "turn_id": "9",
+          "turn_url": "/api/v1/conversations/10/turns/9"
+        }
+      },
+      "request_id": "0123456789abcdef0123456789abcdef"
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "existing turn lacks details",
+    "schema": "Error",
+    "valid": false,
+    "data": {
+      "error": {
+        "code": "TURN_EXISTS",
+        "message": "已有轮次",
+        "fields": [],
+        "details": null
+      },
+      "request_id": "0123456789abcdef0123456789abcdef"
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "cancel is not retryable",
+    "schema": "SSEError",
+    "valid": false,
+    "data": {
+      "turn_id": "9",
+      "code": "CANCELLED",
+      "message": "已取消",
+      "retryable": true
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  },
+  {
+    "name": "attempt exhausted",
+    "schema": "Task",
+    "valid": false,
+    "data": {
+      "task_id": "8",
+      "submission_id": "6",
+      "status": "pending",
+      "attempt": 4,
+      "execution_epoch": 0,
+      "version": 1,
+      "cancel_requested": false,
+      "created_at": "2026-11-04T08:00:00.000Z",
+      "updated_at": "2026-11-04T08:00:00.000Z",
+      "error": null
+    },
+    "scenarios": [
+      "BC-SC-02",
+      "BC-SC-17"
+    ]
+  }
+]

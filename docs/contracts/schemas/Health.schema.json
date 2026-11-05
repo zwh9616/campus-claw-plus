@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/v1/Health.schema.json",
+  "title": "Health",
+  "type": "object",
+  "properties": {
+    "status": {
+      "const": "ok"
+    },
+    "dependencies": {
+      "type": "object",
+      "properties": {},
+      "required": [],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "status",
+    "dependencies"
+  ],
+  "additionalProperties": false
+}

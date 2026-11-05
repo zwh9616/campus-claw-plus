@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/v1/SwitchClassRequest.schema.json",
+  "title": "SwitchClassRequest",
+  "type": "object",
+  "properties": {
+    "class_id": {
+      "$ref": "ID.schema.json"
+    }
+  },
+  "required": [
+    "class_id"
+  ],
+  "additionalProperties": false
+}

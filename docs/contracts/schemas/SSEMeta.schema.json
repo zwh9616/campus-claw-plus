@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/v1/SSEMeta.schema.json",
+  "title": "SSEMeta",
+  "type": "object",
+  "properties": {
+    "request_id": {
+      "type": "string",
+      "minLength": 32,
+      "maxLength": 32,
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "turn_id": {
+      "$ref": "ID.schema.json"
+    },
+    "conversation_id": {
+      "$ref": "ID.schema.json"
+    },
+    "assistant_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "citations": {
+      "type": "array",
+      "items": {
+        "$ref": "Citation.schema.json"
+      }
+    },
+    "skill": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "skill_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "skill_version": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "skill_id",
+            "skill_version"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "request_id",
+    "turn_id",
+    "conversation_id",
+    "assistant_version",
+    "citations",
+    "skill"
+  ],
+  "additionalProperties": false
+}
