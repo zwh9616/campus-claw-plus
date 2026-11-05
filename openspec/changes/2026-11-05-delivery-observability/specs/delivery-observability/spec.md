@@ -6,7 +6,7 @@
 
 ### Requirement: DO-01 分段准入不得提前放行
 
-交付 SHALL 分为 A 前置门禁、B 增量服务接线、C 最终运行观测恢复。A 的 apply MUST 等待00的G2及本规约获小陈批准；业务正常合并 MUST 等待G3，A自身不循环依赖G3。A经小葛终审、合入main并集成复验且有效保护证据齐备才 SHALL 记录G3；10整体完成 MUST 等待B/C全部必验项通过。
+交付 SHALL 分为 A 前置门禁、B 增量服务接线、C 最终运行观测恢复。A 的 apply MUST 等待00的G2及本规约审查收口（默认小陈，当前积压按组长授权由小张承接，记录实际身份）；业务正常合并 MUST 等待G3，A自身不循环依赖G3。A经小葛终审、合入main并集成复验且有效保护证据齐备才 SHALL 记录G3；10整体完成 MUST 等待B/C全部必验项通过。
 
 #### Scenario: DO-SC-01 前置不足
 - **WHEN** 只有00规约批准或PR分支终审通过，尚无main集成复验
@@ -34,7 +34,7 @@
 
 ### Requirement: DO-03 CI及main保护实际阻止失败合并
 
-每个PR及main push SHALL 运行完整门禁，required context稳定且来源可核对，无路径过滤或continue-on-error绕过。main MUST 实际启用PR、非作者批准、更新后重新审查、最新集成状态及required检查约束，管理员同受约束；failure/pending/missing/cancelled/timeout MUST 均不能作为正常可合并状态。无权限/套餐不足 SHALL 作为A阻塞。
+每个PR及main push SHALL 运行完整门禁，required context稳定且来源可核对，无路径过滤或continue-on-error绕过。main MUST 实际启用PR、非PR作者批准、更新后对最终head重新审查、最新集成状态及required检查约束，管理员同受约束；非PR作者的审查者可直接修复后重新批准，不额外强制最后推送者之外的人反向审批；failure/pending/missing/cancelled/timeout MUST 均不能作为正常可合并状态。无权限/套餐不足 SHALL 作为A阻塞。
 
 #### Scenario: DO-SC-06 实际红CI被拦
 - **WHEN** 面向main的隔离测试PR在真实合同破坏head上运行CI并变红
@@ -42,7 +42,7 @@
 
 #### Scenario: DO-SC-07 恢复与旧批准失效
 - **WHEN** 受控改动逐字节恢复并推送新head，或新head尚无检查、检查取消、旧head曾绿
-- **THEN** 恢复head完整门禁变绿才具有对应检查证据；旧批准/旧绿不能替代新head，缺失和取消仍阻断，真实合并仍须实际终审及授权
+- **THEN** 恢复head完整门禁变绿才具有对应检查证据；旧批准/旧绿不能替代新head，缺失和取消仍阻断，修复者可按新协作规则对最终head重新审查收口，不冒用原批准，真实合并仍须实际终审及授权
 
 #### Scenario: DO-SC-08 无有效保护
 - **WHEN** CI为绿但main未保护、存在可绕过失败检查的例外，或操作者不能配置保护

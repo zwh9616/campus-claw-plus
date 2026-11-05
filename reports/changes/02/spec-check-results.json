@@ -1,0 +1,51 @@
+{
+  "date": "2026-11-05",
+  "executor": "小张授权AI辅助",
+  "base": "2bf12e223e9a1e3bdd9044e32f7e8067df1f7afa",
+  "tree": "本提交规约；执行时新增文件未提交；无业务测试",
+  "node": "v25.2.1",
+  "results": [
+    {
+      "check": "local-document-links",
+      "count": 4,
+      "exit_code": 0
+    },
+    {
+      "check": "six-requirements-fifteen-scenarios",
+      "scenarios": [
+        "FEF-SC-01",
+        "FEF-SC-02",
+        "FEF-SC-03",
+        "FEF-SC-04",
+        "FEF-SC-05",
+        "FEF-SC-06",
+        "FEF-SC-07",
+        "FEF-SC-08",
+        "FEF-SC-09",
+        "FEF-SC-10",
+        "FEF-SC-11",
+        "FEF-SC-12",
+        "FEF-SC-13",
+        "FEF-SC-14",
+        "FEF-SC-15"
+      ],
+      "exit_code": 0
+    },
+    {
+      "check": "all-sixteen-rows-preserved-only-02-updated",
+      "exit_code": 0
+    },
+    {
+      "command": "OpenSpec 1.13.0 validate 2026-11-05-frontend-foundation --strict",
+      "exit_code": 0,
+      "stdout": "Change '2026-11-05-frontend-foundation' is valid",
+      "stderr": ""
+    },
+    {
+      "command": "OpenSpec 1.13.0 validate --all --strict",
+      "exit_code": 0,
+      "stdout": "✓ change/2026-11-05-frontend-foundation\n✓ spec/project-bootstrap\nTotals: 2 passed, 0 failed (2 items)",
+      "stderr": "- Validating..."
+    }
+  ]
+}

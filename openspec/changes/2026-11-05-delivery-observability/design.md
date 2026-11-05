@@ -1,10 +1,10 @@
 ## Context
 
-见 proposal.md 的动机。2026-11-05 实测 main=`2bf12e223e9a1e3bdd9044e32f7e8067df1f7afa`；PR #3 规约=`221be733194830daa9b35f810c37f035679e51bb` 已批准；PR #5 实现=`75cadbf80a0adaddd8680a87a0b07dfb22c1ad37` CI 通过且小葛终审通过，但仍未合入 main。main 的 GitHub protected=false，G2/G3 均未成立。上述是起草时快照，apply 前必须重取，不把快照当未来准入。
+见 proposal.md 的动机。以下为起草时历史快照：2026-11-05 实测 main=`2bf12e223e9a1e3bdd9044e32f7e8067df1f7afa`；PR #3 规约=`221be733194830daa9b35f810c37f035679e51bb` 已批准；PR #5 实现=`75cadbf80a0adaddd8680a87a0b07dfb22c1ad37` CI 通过且小葛终审通过，但仍未合入 main。main 的 GitHub protected=false，G2/G3 均未成立。上述是起草时快照，apply 前必须重取，不把快照当未来准入。
 
 已读 main 的 AGENTS、安全/部署规范、package.json、check.yml、compose.yaml、toolchain.json、verify/check-backend 脚本及 project-bootstrap 全部场景；另读 PR #5 的共享表、协作规则、00 四份产物与迁移表。现有入口已涵盖安装、foundation、前端类型/构建、固定 Go vet/test/build、严格规约、audit、全历史/暂存秘密扫描和真实容器 verify。00 加入 contracts；本规约不能退回到 main 尚无 contracts 的旧组合。当前 Compose 只有 frontend/backend，health 空依赖。main 暂无共享表/协作文件，本 PR 携带的共享表保留 PR #5 各行事实并标记未合入来源，不复制00实现或另建个人总表。
 
-批准的00依据：[固定版本 design](https://github.com/zwh9616/campus-claw-plus/blob/221be733194830daa9b35f810c37f035679e51bb/openspec/changes/2026-11-04-business-contracts/design.md)。main 集成后改用仓库内权威合同，出现冲突先修规约，由两人重新确认，不能凭本草案覆盖旧约束。
+批准的00依据：[固定版本 design](https://github.com/zwh9616/campus-claw-plus/blob/221be733194830daa9b35f810c37f035679e51bb/openspec/changes/2026-11-04-business-contracts/design.md)。当前已整合main b7c3f36，改用仓库内权威合同；G2已成立，G3未成立。出现冲突先修规约，按新协作规则由审查者直接修复并对最终head收口，不能凭草案覆盖公共契约或伪造他人批准。
 
 ## Goals / Non-Goals
 
@@ -18,7 +18,7 @@
 
 | 段 | apply条件 | 验收与状态 |
 | --- | --- | --- |
-| A 前置门禁 | 00已终审并按正常流程合入main及集成复验，即G2；本规约获小陈对当前head批准 | 小陈提交小PR，小葛终审；main保护生效、受控红绿及main集成复验齐全后才记G3；10整体仍进行中 |
+| A 前置门禁 | 00已终审并按正常流程合入main及集成复验，即G2；本规约审查收口（通常小陈；本次组长明确授权小张依据小陈真实审查接手修复、验证与合并） | 小陈提交小PR，小葛终审；main保护生效、受控红绿及main集成复验齐全后才记G3；10整体仍进行中 |
 | B 服务逐步接入 | A成立；相关服务自身规约批准、合同冻结及其依赖满足 | 每个实际接入批次单独记录版本、配置/探针/故障/隔离检查；未就绪项明确待接，不用mock冒称实联 |
 | C 最终运行观测恢复 | B清单真实接齐，01/03/04/05/07/08等相应真实路径可测，09/11相关验收齐备 | 同一候选部署、观测/告警、持久数据恢复与回滚完成；小葛终审后才整体完成/归档，12另做发布验收 |
 
@@ -34,14 +34,14 @@ CI沿用既有 .github/workflows/check.yml 的 job check 作为稳定required co
 
 ### D3 真实保护与受控红绿（A）
 
-main必须要求PR、至少1位非作者批准、关键更新撤销旧批准并要求最后推送者之外的人批准、required check（GitHub Actions实际check context及来源app，记录实际名称/ID）、与main保持更新；管理员同受约束，不配置可绕过失败检查的成员/机器人例外，不允许force push/删除。可用branch protection或等价ruleset，保存实际有效配置；不可只提交一份建议JSON。若套餐/权限不支持，A阻塞，管理员处理权限/仓库设置后重验，不能写G3通过或用口头纪律替代。
+main必须要求PR、至少1位非PR作者批准、关键更新撤销旧批准、required check（GitHub Actions实际check context及来源app，记录实际名称/ID）、与main保持更新；管理员同受约束，不配置可绕过失败检查的成员/机器人例外，不允许force push/删除。可用branch protection或等价ruleset，保存实际有效配置；不可只提交一份建议JSON。若套餐/权限不支持，A阻塞，管理员处理权限/仓库设置后重验，不能写G3通过或用口头纪律替代。按2026-11-05组长新规则，不将“最后推送者之外的人再批准”设为额外必需条件：非PR作者的审查者可直接提交修复，再以自己账号对最终head重新批准并合并，无须把修复退回原作者；旧批准不能替代新head审查。若当前远端已有更强制设置，仍须满足或经明确授权调整并留证，不能绕过。
 
 在独立临时分支、非生产资源做以下实验；不改他人工作树、不篡改测试断言，不真的尝试合并坏版本：
 1. 基线干净版本npm gate/make gate皆绿，记录代码SHA、环境及命令。
 2. 破坏已有被检查的真实条件（例如删除Principal.role枚举），保存受控diff和原文件摘要；npm check:contracts和完整gate必须非零。再分别注入各子命令失败/信号/超时，验证编排不吞错，未执行的后续项不得标成功。
 3. 以该受控分支开面向main的测试PR，在实际CI上变红；读取有效保护与同一head的check-run结论，并用GitHub合并面板禁用状态或API/GraphQL的BLOCKED状态证明有写权限的普通成员不能按正常流程合并。保留可核对链接/脱敏截图；仅红CI不够，不能通过真实merge请求冒险做证明。
 4. 恢复原文件逐字节一致，推新head完整gate变绿。验证旧head绿/旧批准不能替代新head，缺required、pending、cancelled、failure均阻断；红head与恢复head分别留证。关闭测试PR、删除自身试验分支（仅另获授权时），不合并受控破坏。
-5. A实现PR小葛绑定最新head终审，遵守实际保护正常合入main；main集成SHA重跑完整gate并复查保护仍有效，才记录G3。不能自改自批；保护配置无权限时留明确下一责任人。
+5. A实现PR小葛绑定最新head终审，遵守实际保护正常合入main；main集成SHA重跑完整gate并复查保护仍有效，才记录G3。审查者可按新协作规则直接修复并对最终head收口，不伪造他人批准；保护配置无权限时留明确下一责任人。
 
 除真实关键条件红绿外，针对编排器的注入是测试替身，必须单列，不能代替真实CI/保护/容器。A验收证据表列每个命令的原有断言、现入口、红场景和结果，不能只做一次无关exit 1。
 
@@ -81,9 +81,9 @@ main必须要求PR、至少1位非作者批准、关键更新撤销旧批准并�
 
 ### D7 证据与交接
 
-reports/changes/10/按A/B/C分目录，记录执行人（AI辅助注明真实账号）、时间、base/head/集成SHA、diff或摘要、环境版本、Scenario、命令/预期/实际/退出码、CI run/check ID和保护有效配置/合并受阻证据。禁止在正在生成的提交写自身SHA；使用本提交工作树并在后续交接绑定真实提交。新证据与历史00/骨架分开，链接源SHA不把旧版本绿当当前绿。tasks按段勾选，docs/project-status.md同提交更新；未运行/权限不足/环境失败分别写明，不能记pass。00独立新会话仍由小张补，本轮带历史会话不冒充它。
+reports/changes/10/按A/B/C分目录，记录执行人（AI辅助注明真实账号）、时间、base/head/集成SHA、diff或摘要、环境版本、Scenario、命令/预期/实际/退出码、CI run/check ID和保护有效配置/合并受阻证据。禁止在正在生成的提交写自身SHA；使用本提交工作树并在后续交接绑定真实提交。新证据与历史00/骨架分开，链接源SHA不把旧版本绿当当前绿。tasks按段勾选，docs/project-status.md同提交更新；未运行/权限不足/环境失败分别写明，不能记pass。00独立阅读已由小张另建真实会话执行但未通过，错题订正路径仍待补；本轮有历史会话不能替代该证据。
 
-小张交来02规约后预留首个可用20分钟审查段：前5分钟流程/合同，10分钟布局样板和360/1440及四态/键盘，5分钟记录阻断与下一人；该段只审规约、不提前apply；截至本次核实未见02 PR，不虚构已审或日历预约。03留后续。
+以下为起草时排班历史，当前02已交PR #8且获小葛真实审查并完成文档修订：原计划在小张交来02规约后预留首个可用20分钟审查段：前5分钟流程/合同，10分钟布局样板和360/1440及四态/键盘，5分钟记录阻断与下一人；该段只审规约、不提前apply；当时尚未见02 PR，不虚构已审或日历预约。03留后续。
 
 ## Risks / Trade-offs
 
