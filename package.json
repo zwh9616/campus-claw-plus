@@ -14,12 +14,14 @@
     "check:foundation": "node scripts/check-foundation.mjs",
     "check:backend": "node scripts/check-backend.mjs",
     "check:spec": "openspec validate --all --strict",
-    "check": "npm run check:foundation && npm run check:contracts && npm run typecheck && npm run build && npm run check:backend && npm run check:spec",
+    "check": "npm run check:foundation && npm run check:gate && npm run check:contracts && npm run typecheck && npm run build && npm run check:backend && npm run check:spec",
     "test": "npm run check:backend",
     "audit": "npm audit --audit-level=high && npm audit --prefix frontend --audit-level=high",
     "verify": "node scripts/verify-skeleton.mjs",
     "secret-scan": "node scripts/check-secrets.mjs",
-    "check:contracts": "node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs"
+    "check:contracts": "node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs",
+    "check:gate": "node --test scripts/gate.test.mjs",
+    "gate": "node scripts/gate.mjs"
   },
   "devDependencies": {
     "@apidevtools/swagger-parser": "13.1.0",
