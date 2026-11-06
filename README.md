@@ -11,6 +11,7 @@
 
 ## 小组进度与协作入口
 
+- [前端视觉规约](docs/standards/frontend-visual.md)：02及后续页面采用北大红#94070A、暖白背景与简约布局，参考Canvas/Moodle的信息组织；先验登录/账号样板，再扩展页面。2026-11-06本次仅修订规约，当前静态首页尚未换肤，组长已明确要求合入视觉规约，实际页面样板仍由小张确认。
 - [共享进度表](docs/project-status.md)：查看每个变更的两位负责人、当前阶段、下一步、卡点及证据；00修订规约已批准，本分支落实公共合同和检查，本机完整检查与容器验收已通过，小葛已对75cadbf终审批准，00现已合入main 4cfd61d，main CI及本机check/verify通过，G2已成立；G3、独立新会话及归档仍待完成。
 - [公共合同](docs/contracts/README.md)：OpenAPI3.1、2020-12单源类型与依赖/配置登记；认证只是frozen合同，当前运行仍只有health。npm run check:contracts已接入原检查入口。
 - [协作规范](docs/standards/collaboration.md)：一人写规约并终审，另一人审规约并实现；按变更分工，不按人固定技术模块。
