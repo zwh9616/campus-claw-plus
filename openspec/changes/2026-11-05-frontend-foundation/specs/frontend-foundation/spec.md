@@ -86,4 +86,26 @@
 
 #### Scenario: FEF-SC-15 Unmet gates and honest handoff
 - **WHEN** G2/02批准未满足，或尚无样板确认、真实联验/视觉证据、G3
-- **THEN** 分别阻断apply、扩展、归档或业务合并；本PR只写规约，实际PR和待确认项同步共享表，不能自批、擅自合并或冒充独立新会话
+- **THEN** 分别阻断apply、扩展、归档或业务合并；本PR只写规约，实际PR和待确认项同步共享表，按新协作规则由实际审查者直接修复并收口，不冒充其他成员批准或独立新会话
+
+
+### Requirement: FEF-07 Crimson restrained visual language
+前端 SHALL 按design D6/D7及docs/standards/frontend-visual.md采用#94070A品牌色、暖白背景、统一主题变量和简约布局；参考来源与取舍可追溯。02及后续06/09 SHALL 复用该视觉体系，竞品参考 MUST NOT 扩大当前页面/接口范围，历史骨架证据不倒改。
+
+#### Scenario: FEF-SC-16 Brand theme and clear hierarchy
+- **WHEN** 在准入后生成登录、工作台、师生账号页及公共组件
+- **THEN** 品牌色为#94070A，主体为暖白/白色，主按钮白字，正文/辅助/状态色引用统一变量；每任务区域最多一个实心主操作，标题层次和间距统一，无深蓝/湖蓝第二套品牌主题
+- **AND** 无满屏红底、渐变大海报、玻璃拟态、嵌套卡片或假统计；退出为次操作，品牌与错误含义有文字区分
+
+#### Scenario: FEF-SC-17 Contrast and interaction failures
+- **WHEN** 检查按钮/输入/导航的默认、悬停、按下、焦点、禁用、忙碌和错误状态，或修改颜色/背景/透明度
+- **THEN** 实测所有可读文字对背景至少4.5:1，必要边界/焦点/状态图形至少3:1；焦点可见，错误有文字，忙碌和禁用有语义说明；不足即修复，不以静态色板或CI绿色代替浏览器验收
+
+#### Scenario: FEF-SC-18 Restrained responsive layout boundaries
+- **WHEN** 在360×800、1440×900、767/768px断点及200%缩放查看19位ID、256码点错误和四态
+- **THEN** 桌面200px导航与最大1120px正文、移动16px边距单列及顶部换行导航符合规约；无页面横向溢出、重叠、裁切或遮挡；长文完整可读可复制，44px触控目标与键盘操作均可达
+
+#### Scenario: FEF-SC-19 References and visual acceptance are traceable
+- **WHEN** 交付代表样板，或模型依据Canvas/Moodle参考增加内容
+- **THEN** 样板说明参考原则与本地取舍，保留同SHA截图/实际对比度/检查清单及小张实际确认；确认前不扩展其他页面
+- **AND** 02仍只提供已批准路由与冻结操作；课程卡、待办、统计和班级列表等未批准入口不得由竞品参考生成；mock、真实联验和视觉证据分列，未验证项不勾完成
