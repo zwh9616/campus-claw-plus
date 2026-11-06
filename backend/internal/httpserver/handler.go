@@ -30,6 +30,11 @@ func (w *responseWriter) Write(body []byte) (int, error) {
 
 // Handler implements PB-02 and PB-07. No database, credentials or model calls.
 func Handler(logger *slog.Logger) http.Handler {
+	return Observe(logger, skeletonHandler())
+}
+
+// Observe gives all routes server-generated identifiers and body-free logs.
+func Observe(logger *slog.Logger, next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		started := time.Now()
 		var bytes [16]byte
@@ -50,6 +55,11 @@ func Handler(logger *slog.Logger) http.Handler {
 				"method", r.Method, "path", r.URL.Path, "status", status,
 				"duration_ms", float64(time.Since(started).Microseconds())/1000)
 		}()
+		next.ServeHTTP(result, r)
+	})
+}
+func skeletonHandler() http.Handler {
+	return http.HandlerFunc(func(result http.ResponseWriter, r *http.Request) {
 		if r.URL.Path != "/health" {
 			http.NotFound(result, r)
 			return

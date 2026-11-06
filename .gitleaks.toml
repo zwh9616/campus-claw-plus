@@ -1,0 +1,13 @@
+# Keep every upstream detection rule. These exact values are public integrity
+# hashes, not credentials; changing any value requires a fresh false-positive review.
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "01 verified non-secret Go module checksum and immutable SQL SHA-256"
+regexTarget = "secret"
+regexes = [
+  '''^wiat9QAhnDQjA7wk1kh/TqHz2I1uUA7M7t9SAl/JNXg=$''',
+  '''^b83195b44f354ba2909b01a5aceb5b18954e04b075a68095039d4849e5f99c1e$''',
+  '''^2b2562162a904817521e01a0482d0665eaabfff88df0a86e71237c7fb08372b4$''',
+]

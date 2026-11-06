@@ -13,7 +13,7 @@
 | AI资料 | 后续教材/工具结果都是不可信数据，不转成系统授权；工具走既有授权服务层 | 指令注入与跨班读取必须拒绝；本轮无AI运行 |
 | 依赖与许可 | 精确版本/锁文件入库；直接依赖说明用途和许可；MIT/Apache/BSD/ISC优先，其余先评审 | 每次PR、发布前npm audit，high/critical阻断并当日处理，medium7天；每周值班复查 |
 
-直接依赖：React/ReactDOM（UI，MIT）、Vite/React插件（构建，MIT）、TypeScript（类型，Apache-2.0）、@types（类型，MIT）。Go仅标准库。镜像使用官方仓库并固定摘要，工具链记录在scripts/toolchain.json。
+直接依赖：React/ReactDOM（UI，MIT）、Vite/React插件（构建，MIT）、TypeScript（类型，Apache-2.0）、@types（类型，MIT）。当前生产server仍仅标准库；01候选身份模块新增已批准的精确Go依赖，来源/许可/间接依赖及尚未完成审计见[身份依赖说明](../identity-dependencies.md)。镜像使用官方仓库并固定摘要，工具链记录在scripts/toolchain.json。
 
 00新增开发依赖（均MIT、精确版本见package.json/锁文件）：swagger-parser用于OpenAPI3.1结构及本地引用，Ajv2020与ajv-formats用于2020-12及时间格式，yaml用于唯一键解析。它们不进入业务运行时；合同标识URL只经本地白名单解析，不发起外部请求。
 
@@ -22,6 +22,8 @@
 config-register.json中仅登记http://mcp:8090/mcp，enabled=false。须03/07C两人审查和实际部署证据后，通过受审合同变更启用；精确限定scheme/服务/端口/path，禁止userinfo/query/fragment/重定向，核对解析目标确属本项目网络服务，不开通用CIDR。未满足前置继续按默认拒绝处理；停用该服务时移除例外。当前探针环回例外仍只用于自己的/health。
 
 ## 轮换流程
+
+01实现的秘密扫描误报例外：`.gitleaks.toml`继续继承全部默认规则，仅按三个完整命中值精确匹配放行backend/go.sum里moby/api v1.54.2的已校验h1值，以及manifest中000003上下行SQL的两个已核对SHA-256。不是API密钥，不忽略整个文件/目录或generic-api-key规则。值改变必须重新核对；受控虚假凭据仍应命中。实际扫描和反例记录见reports/changes/01/implementation-secret-scan.json。此例外仅消除三项公开完整性哈希误报，不豁免真实凭据。
 发现者通知持有人与组长；持有人先撤销旧密钥、生成新值、更新本机/运行环境并重启，验证旧值不可用；组长再协调历史清理和其他成员同步。记录键名/时间/负责人/结果，不记原值。删最新文件不等于撤销历史泄露。
 所有违规先修复再通过；扫描无法覆盖的授权/业务事项必须人工评审，不将“文件存在”当安全通过。
 

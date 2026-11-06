@@ -17,7 +17,8 @@
     "check": "npm run check:foundation && npm run check:contracts && npm run typecheck && npm run build && npm run check:backend && npm run check:spec",
     "test": "npm run check:backend",
     "audit": "npm audit --audit-level=high && npm audit --prefix frontend --audit-level=high",
-    "verify": "node scripts/verify-skeleton.mjs",
+    "verify": "node scripts/verify-skeleton.mjs && node scripts/verify-identity.mjs",
+    "verify:identity": "node scripts/verify-identity.mjs",
     "secret-scan": "node scripts/check-secrets.mjs",
     "check:contracts": "node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs scripts/contracts/identity-phase.test.mjs"
   },

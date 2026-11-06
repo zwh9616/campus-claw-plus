@@ -13,10 +13,10 @@
 
 ## 实际迁移清单
 
-当前为空（00不创建数据库或占用迁移编号）。新增时按以下列记录，不预填不存在的通过结果：编号、change、文件、依赖、写入影响、兼容范围、回退/补偿、验证记录、两位负责人。
+01候选实现已提供000001..000003及上下行SQL，见[迁移操作说明](../identity-migrations.md)和backend/internal/migrations/manifest.json的真实SHA-256。已在隔离MySQL验证空库/升级/六处DDL中断及恢复，不代表生产已迁移。两位负责人仍为小陈/小张；其他变更不得占用这些号。
 
-## 01已保留号码（尚无SQL、摘要或执行结果）
+## 01号码及候选SQL（尚未部署）
 
 唯一机器登记见 [identity-phase.json](identity-phase.json)。000001 identity_users_classes 建用户/班级/成员，000002 identity_sessions 建会话/凭证且依赖000001，000003 identity_auth_audit 建审计且依赖前两步；负责人小陈/小张。文件名为 `<编号>_<名称>.up.sql` 与 `.down.sql`，其他变更从000004协调申请，不复用这三个号。
 
-工具/许可/镜像来源见 [01 runtime-plan R1](../../openspec/changes/2026-11-04-identity-foundation/runtime-plan.md)，恢复规则见 [公共设计D3](../../openspec/changes/2026-11-06-identity-public-contracts/design.md)。SQL实现时提供真实SHA-256 manifest、逐条DDL故障点、前后置检查及可执行前向修复脚本；dirty/摘要或结构不一致阻止服务和新迁移。MySQL部分DDL不能当事务已回滚，禁止盲目force或删库。当前实际迁移清单仍为空，保留号不代表SQL已实现。
+工具/许可/镜像来源见 [01 runtime-plan R1](../../openspec/changes/2026-11-04-identity-foundation/runtime-plan.md)，恢复规则见 [公共设计D3](../../openspec/changes/2026-11-06-identity-public-contracts/design.md)。SQL实现时提供真实SHA-256 manifest、逐条DDL故障点、前后置检查及可执行前向修复脚本；dirty/摘要或结构不一致阻止服务和新迁移。MySQL部分DDL不能当事务已回滚，禁止盲目force或删库。实际SQL与摘要见上述候选实现，执行证据见reports/changes/01/implementation-container-results.json。公共identity-phase仍为skeleton/reserved，待生产接线同提交原子激活，不提前宣称已部署。
