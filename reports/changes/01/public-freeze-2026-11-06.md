@@ -23,10 +23,12 @@
 | check:spec | strict7/7，退出0 |
 | audit | 曾返回根/前端0漏洞退出0；记录复跑遇registry TLS断连退出1，待恢复复跑，不把断网当无漏洞 |
 | secret-scan | 全历史58 commits及暂存扫描退出0，无命中；最终提交后再核当前范围 |
-| 完整check / verify | check在Docker管道不存在处退出1；日志确认sailor-ingest.sock占用；verify待环境恢复，不能冒称通过 |
+| 完整check / verify | check在Docker管道不存在处退出1；verify也实际执行退出1，仅SC-09缺配置断言通过，容器启动/清理均受引擎不可达阻塞，不能冒称15项通过；日志确认sailor-ingest.sock占用 |
 
 ## 保护与同伴交接
 
 main保护已实际启用，见[API回读](../10/A/main-protection-applied-2026-11-06.json)。#9 76d3d76的CI42199747856成功，保护后API状态blocked。仅此不证明所有失败状态及旧批准失效均通过实验；小陈补受控证据，小葛终审/正常合并/集成。G3保持未成立，不代其批准或合并#9。
 
 02原规约和北大红已入main；本PR冻结合入后小葛可做登录/账号样板和mock，小张实开确认。01实际实现由小张继续，小陈先交DB/TLS接线输入与真实环境子包。详见[共享表](../../../docs/project-status.md)。最终head、CI、批准、合并与集成复验以随后真实结果追加，不预填。
+
+2026-11-06环境恢复尝试：Docker CLI正常启动/重启超时，核对安装目录后结束残留Desktop宿主进程再启动仍出现相同ingest占用；未重置Docker、未删镜像/卷/业务数据。已请用户在方便时重启Windows，保留本机失败阻断。#9管理员进展已实际交接[评论6682703513](https://github.com/zwh9616/campus-claw-plus/pull/9#issuecomment-6682703513)。
