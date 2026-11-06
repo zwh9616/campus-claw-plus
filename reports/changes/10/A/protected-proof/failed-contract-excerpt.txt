@@ -1,0 +1,26 @@
+2026-11-06T10:47:52.6042293Z
+2026-11-06T10:47:52.6042964Z > campus-claw-plus@0.0.1 check:contracts
+2026-11-06T10:47:52.6043444Z > node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs
+2026-11-06T10:47:52.6043685Z
+2026-11-06T10:47:53.0055740Z node:internal/modules/run_main:123
+2026-11-06T10:47:53.0056309Z     triggerUncaughtException(
+2026-11-06T10:47:53.0056572Z     ^
+2026-11-06T10:47:53.0056756Z
+2026-11-06T10:47:53.0058714Z AssertionError [ERR_ASSERTION]: Standalone: Principal positive: [{"instancePath":"/role","schemaPath":"#/properties/role/enum","keyword":"enum","params":{"allowedValues":["teacher"]},"message":"must be equal to one of the allowed values"}]
+2026-11-06T10:47:53.0059496Z
+2026-11-06T10:47:53.0059584Z false !== true
+2026-11-06T10:47:53.0059726Z
+2026-11-06T10:47:53.0060131Z     at file:///home/runner/work/campus-claw-plus/campus-claw-plus/scripts/check-contracts.mjs:96:10 {
+2026-11-06T10:47:53.0060659Z   generatedMessage: false,
+2026-11-06T10:47:53.0060901Z   code: 'ERR_ASSERTION',
+2026-11-06T10:47:53.0061135Z   actual: false,
+2026-11-06T10:47:53.0061314Z   expected: true,
+2026-11-06T10:47:53.0061514Z   operator: 'strictEqual',
+2026-11-06T10:47:53.0061745Z   diff: 'simple'
+2026-11-06T10:47:53.0061930Z }
+2026-11-06T10:47:53.0062434Z
+2026-11-06T10:47:53.0062516Z Node.js v22.23.4
+2026-11-06T10:47:53.0267103Z Gate check: failed, exit=1
+2026-11-06T10:47:53.0267674Z Not run: audit, secret-scan, verify
+2026-11-06T10:47:53.0373697Z make: *** [Makefile:9: gate] Error 1
+2026-11-06T10:47:53.0389342Z ##[error]Process completed with exit code 2.

@@ -9,7 +9,7 @@
 - [x] 2.1 建立原npm断言/入口对照清单及测试映射，核验00 contracts与所有骨架检查均保留；交付reports/changes/10/A/映射及原命令基线输出（DO-SC-03/04）。
 - [x] 2.2 增加npm gate串行编排和Makefile薄封装，更新README工具要求；以正常、各子项非零/信号/超时、Make缺失及并行隔离验证等价入口与失败传播，保留实际退出码（DO-SC-03..05）。
 - [x] 2.3 使PR/main CI运行统一完整入口，保留固定Actions、稳定check名称及原安装/检查/审计/扫描/容器断言；真实CI验证文档PR不跳过、失败不吞错、取消不通过（DO-SC-06/07）。
-- [ ] 2.4 与实际仓库管理员落实D3的main有效保护，保存required context来源/权限/批准和重新审查设置；无权限或套餐不足记阻塞并交管理员处理，保护未生效不得勾选（DO-SC-08）。
+- [x] 2.4 小张已实际设置并回读D3保护；保留main-protection-applied-2026-11-06.json与评论6682703513，Kevcco本轮确认protected=true及check.isRequired=true；申请JSON按个人仓库可接受格式修正。受控各状态和旧批准实验仍由2.6单列（DO-SC-08）。
 - [x] 2.5 在隔离副本破坏已有合同条件，保存差异/摘要，确认合同和完整gate红，逐字节恢复完整绿；另测各子项失败的编排替身，不混淆真实证据（DO-SC-04/09）。
 - [ ] 2.6 建面向main的受控测试PR，保留真实红/恢复绿head和有效保护、同head禁用/BLOCKED状态；验证旧绿/旧批准、missing/pending/cancelled边界，不执行坏版本合并（DO-SC-06..09）。
 
@@ -41,3 +41,5 @@
 ## 2026-11-06 A实施交接
 
 小陈在PR #9交付A代码与[A验收包](../../../reports/changes/10/A/README.md)。d88bf2d的13项编排回归、真实合同破坏/原字节恢复完整gate、两目录并行容器各15项通过，当前代码CI成功。2.4/2.6未完成：Kevcco无admin、main保护未生效；虽然实验PR #10有真实红CI、取消和恢复，不能作为BLOCKED或旧批准失效证据。3.1/3.2待小葛真实终审及受保护main集成复验；G3未成立，B/C保持待办。最终head结果以实现PR检查为准。
+
+2026-11-06后续更新：小张实际启用main保护，管理员回读及Kevcco对protected=true、check.isRequired=true的实查已留证，2.4完成。测试PR #12已有missing/pending/failure/cancelled和逐字节恢复后同SHA完整绿，见[受控验收](../../../reports/changes/10/A/protected-gate-proof-2026-11-06.md)。旧批准失效实验待真实非作者批准，2.6及3.1/3.2仍未完成；上段是启用前历史，不再作为当前保护状态。未改main保护、未合并测试PR、未声明G3。

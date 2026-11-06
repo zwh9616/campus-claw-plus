@@ -2,6 +2,10 @@
 
 执行人：小陈 / Kevcco（AI辅助）。本轮仅DO-01..04及现有骨架回归；不实现B/C、不改变健康/配置合同，不代小葛终审。
 
+## 2026-11-06保护启用后的进展
+
+小张已实际启用main保护并保存[管理员回读](main-protection-applied-2026-11-06.json)。小陈在[受控测试PR #12](https://github.com/zwh9616/campus-claw-plus/pull/12)补齐缺检查、执行中、真实合同失败、取消及原字节恢复后同SHA完整绿的快照，详见[本轮验收记录](protected-gate-proof-2026-11-06.md)。`check`为required，main protected=true。真实非作者批准及旧批准失效实验仍待完成，tasks2.6未勾；小葛最终终审及受保护main集成仍未完成，G3未成立。以下未保护/PR #10记录是初次执行历史，保留失败及权限限制，现状以本节为准。
+
 ## 准入与范围
 
 - 起点main `7e4c81f37473ed725cfe3b1f90ffd32c5049c41c`，其[完整CI](https://github.com/zwh9616/campus-claw-plus/actions/runs/42050569845)成功。
