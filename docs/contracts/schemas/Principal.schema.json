@@ -10,7 +10,8 @@
     "role": {
       "type": "string",
       "enum": [
-        "teacher"
+        "teacher",
+        "student"
       ]
     },
     "class_id": {
