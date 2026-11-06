@@ -1,6 +1,7 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { mkdtempSync, rmSync, readFileSync } from 'node:fs'
+import { mkdtempSync, rmSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs'
+import { spawnSync } from 'node:child_process'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { runSequence, acquireLock } from './gate-runner.mjs'
@@ -104,4 +105,31 @@ test('DO-SC-03/06 Make remains a thin npm wrapper, stable CI delegates complete 
   assert.match(ci, /run: npm run setup/)
   assert.match(ci, /make gate/)
   assert.doesNotMatch(ci, /continue-on-error|paths-ignore|\n\s+paths:/)
+})
+
+test('DO-SC-05 Make installation failure stops setup; -j does not run targets concurrently', t => {
+  const make = spawnSync('make', ['--version'], { encoding: 'utf8' })
+  if (make.error?.code === 'ENOENT') {
+    assert.equal(make.status, null)
+    t.diagnostic('GNU Make unavailable: real Make execution unverified here; use npm gate. CI and Docker test environment must execute this case.')
+    return
+  }
+  assert.equal(make.status, 0)
+  const directory = mkdtempSync(join(tmpdir(), 'campus-make-test-'))
+  try {
+    mkdirSync(join(directory, 'bin'))
+    writeFileSync(join(directory, 'Makefile'), readFileSync('Makefile'))
+    // This is an orchestration double, not a dependency install or real gate.
+    const fake = '#!/bin/sh\nprintf "%s\\n" "$*" >> calls\nif [ "$*" = "ci" ]; then exit 23; fi\nif ! mkdir busy 2>/dev/null; then exit 24; fi\nsleep 0.1\nrmdir busy\n'
+    writeFileSync(join(directory, 'bin', 'npm'), fake, { mode: 0o755 })
+    const env = { ...process.env, PATH: join(directory, 'bin') + ':' + process.env.PATH }
+    const install = spawnSync('make', ['setup'], { cwd: directory, env, encoding: 'utf8' })
+    assert.notEqual(install.status, 0)
+    assert.match(install.stderr, /23/)
+    assert.equal(readFileSync(join(directory, 'calls'), 'utf8'), 'ci\n')
+    writeFileSync(join(directory, 'calls'), '')
+    const parallel = spawnSync('make', ['-j8', 'check', 'audit', 'secret-scan', 'verify'], { cwd: directory, env, encoding: 'utf8' })
+    assert.equal(parallel.status, 0, parallel.stderr)
+    assert.equal(readFileSync(join(directory, 'calls'), 'utf8'), 'run check\nrun audit\nrun secret-scan\nrun verify\n')
+  } finally { rmSync(directory, { recursive: true, force: true }) }
 })

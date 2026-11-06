@@ -31,7 +31,11 @@
 
 ## 当前验证与后续交接
 
-本提交初次Windows Node24.22.1编排测试12/12、git diff --check通过。真实Docker基线/完整门禁、Make等价、并行隔离、合同红绿和当前head CI将在实际执行后追加结果；此处不预填通过。
+基线main 7e4c81f：锁定安装、原check/audit/secret-scan/verify全部退出0；原15项容器断言通过，[完整原输出](baseline-original-output.txt)保留命令、退出码及输出（工作目录脱敏）。
+
+实现e51a1ba：Node22.23.4 / npm10.9.7 / GNU Make4.3 / Docker28.3.3 / Compose2.39.1，真实`npm run gate`及`make gate`均四阶段退出0，各自15项容器断言通过；[该head CI](https://github.com/zwh9616/campus-claw-plus/actions/runs/42166753398)成功。Windows Node24.22.1首轮12项编排测试通过；本次补Make安装失败/并行调用反例后为13项，Windows缺Make如实记未验证，Linux实际执行将另留证。
+
+独立并行容器、真实合同红绿及最终head完整门禁/CI待继续执行；不得以e51a1ba替代后续head。管理员有效保护、BLOCKED、旧批准撤销以及缺失/取消检查的真实合并阻断仍未通过，不写G3。
 
 管理员阻塞：由仓库管理员应用[明确配置](required-main-protection.json)，随后重取实际配置并运行受控测试PR，证明failure/pending/missing/cancelled及旧批准不能合并。建议配置文件本身不是已生效证据。示例（管理员使用自己的登录，不共享令牌）：
 
