@@ -46,3 +46,13 @@ main保护已实际启用，见[API回读](../10/A/main-protection-applied-2026-
 重新创建run并启动后仍失败：日志转为mkdir目录已存在/监听路径不存在；PowerShell/.NET创建目录返回对象，随后Get-Item/Directory.Exists却找不到它。另一个空诊断目录`run-fresh-check-20261106`同样不可访问，未据此声称根因已确定。所有Docker进程随后已退出；Windows最后启动时间为当天13:52，已建议用户保存工作后执行Windows重启，再恢复本机check/audit/verify。未擅自重启Windows，未把启动命令返回0当成引擎恢复。
 
 此前b43ac50的[完整CI42205319922](https://github.com/zwh9616/campus-claw-plus/actions/runs/42205319922)已成功，[绑定head复审5799054323](https://github.com/zwh9616/campus-claw-plus/pull/6#pullrequestreview-5799054323)为COMMENT。此轮仅追加真实环境记录，不改变规约/代码，不新增apply或批准，合并仍阻断。
+
+## Docker恢复后的验收与批准（覆盖前述环境阻塞）
+
+用户告知重启后，实际docker version返回Server29.8.0；不根据口头重启推断Windows启动时间变化。对干净4c0ad233a0db9a7e9ce085f0c8b82a260e407305运行npm ci/setup/check全部退出0（含Go vet/test/build、合同9组、strict7/7）。秘密扫描全历史66 commits和暂存通过；本机verify15项通过，证据见[检查记录](recovery-checks.json)和[容器结果](recovery-container-results.json)。
+
+Windows原生npm run audit及指定系统代理的尝试均遇registry.npmjs.org TLS断连；首次本机Node容器审计根项目成功、前端遇相同网络错误。未改变包、审计阈值、源或证书校验，使用仓库scripts/toolchain.json锁定的官方Node镜像在本机只读挂载同一工作树，重新执行完整npm run audit，最终根/前端均0漏洞且退出0（Node22.23.4/npm10.9.9）。这是本机容器执行，不冒称Windows原生命令成功。所有失败保留，恢复后通过才解除阻塞。
+
+4c0ad23的[完整CI42206882978](https://github.com/zwh9616/campus-claw-plus/actions/runs/42206882978)成功；小张[实际APPROVE5799304472](https://github.com/zwh9616/campus-claw-plus/pull/6#pullrequestreview-5799304472)绑定该head，R5线程PRRT_kwDOVZ83gM60EZEU已真实resolved。本次仅补证据/台账/tasks，推送后仍须当前head CI及重新批准才能正常合并，不预填合并SHA；实际合并与main复验记录在原PR交接评论，不以规约通过冒充身份实现完成。
+
+小陈#9已推进到e88ed53，missing/pending/failure/cancelled有受保护状态证据，旧批准实验尚待执行。小张已审查#12恢复head01384fa（相对76d3d76只有两份实验文档，运行代码/Schema/工作流恢复原字节，CI42205527375成功），[实际批准5799296188](https://github.com/zwh9616/campus-claw-plus/pull/12#pullrequestreview-5799296188)仅用于DO-SC-07实验输入；#12禁止合并，不代小葛对#9终审，不宣称G3。

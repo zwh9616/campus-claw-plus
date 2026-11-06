@@ -4,6 +4,8 @@
 - [x] 1.3 [小张] 为 ICF-SC-01..05 添加双路径正反例和阶段/配置/迁移反例；ICF-SC-06 真实恢复交 01。
 
 ## 2. 验证与收口
-- [ ] 2.1 [小张] 严格校验与完整 check/audit/secret-scan/verify，保留真实输出及受控破坏红绿记录。
+- [x] 2.1 [小张] 严格校验与完整 check/audit/secret-scan/verify，保留真实输出及受控破坏红绿记录。
 - [ ] 2.2 [小张] 同步共享表、绑定最终 head 审查 PR #6，正常提交推送并按远端门禁合并；不将 G3 或真实身份验收勾成完成。
 - [ ] 2.3 [小张] 对 main 集成版本复验，保留未完成的 01/02/10 交接项。
+
+2.1恢复证据见reports/changes/01/recovery-checks.json及recovery-container-results.json；4c0ad23已获真实批准5799304472。2.2/2.3的最终合并及main复验以原PR实际记录核对，不提前勾选。
