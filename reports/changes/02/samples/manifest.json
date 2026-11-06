@@ -1,0 +1,3010 @@
+{
+  "sha": "fcdf726915ef2abb366d596d0b5a50e656cd5119",
+  "sourceDirty": false,
+  "browser": "156.0.4314.58",
+  "fixture": true,
+  "checks": "layout, real computed text contrast, 256-character errors, keyboard focus, input boundaries, no API traffic; no real identity test",
+  "nativeBrowserZoom": "not executed; final 200% manual review remains for reviewer",
+  "rows": [
+    {
+      "sha": "fcdf726915ef2abb366d596d0b5a50e656cd5119",
+      "url": "http://127.0.0.1:5174/samples.html?page=login&state=normal&long=0",
+      "viewport": {
+        "width": 360,
+        "height": 800
+      },
+      "kind": "login",
+      "state": "normal",
+      "long": false,
+      "source": "isolated synthetic fixture, no authentication service",
+      "geometry": {
+        "width": 360,
+        "scroll": 360
+      },
+      "contrast": [
+        {
+          "tag": "ASIDE",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 6.081614815988506
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 8.470678898389933
+        },
+        {
+          "tag": "H1",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "LABEL",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "INPUT",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "LABEL",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "INPUT",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(148, 7, 10)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 6.081614815988506
+        }
+      ],
+      "screenshot": "login-normal-360.png"
+    },
+    {
+      "sha": "fcdf726915ef2abb366d596d0b5a50e656cd5119",
+      "url": "http://127.0.0.1:5174/samples.html?page=login&state=error&long=0",
+      "viewport": {
+        "width": 360,
+        "height": 800
+      },
+      "kind": "login",
+      "state": "error",
+      "long": false,
+      "source": "isolated synthetic fixture, no authentication service",
+      "geometry": {
+        "width": 360,
+        "scroll": 360
+      },
+      "contrast": [
+        {
+          "tag": "ASIDE",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 6.081614815988506
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 8.470678898389933
+        },
+        {
+          "tag": "H1",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "LABEL",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "INPUT",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "LABEL",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "INPUT",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(148, 7, 10)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 6.081614815988506
+        }
+      ],
+      "screenshot": "login-error-360.png"
+    },
+    {
+      "sha": "fcdf726915ef2abb366d596d0b5a50e656cd5119",
+      "url": "http://127.0.0.1:5174/samples.html?page=account&state=normal&long=0",
+      "viewport": {
+        "width": 360,
+        "height": 800
+      },
+      "kind": "account",
+      "state": "normal",
+      "long": false,
+      "source": "isolated synthetic fixture, no authentication service",
+      "geometry": {
+        "width": 360,
+        "scroll": 360
+      },
+      "contrast": [
+        {
+          "tag": "ASIDE",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 6.081614815988506
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "A",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(250, 238, 238)",
+          "ratio": 8.077415242054448
+        },
+        {
+          "tag": "H1",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 9.154497551025868
+        }
+      ],
+      "screenshot": "account-normal-360.png"
+    },
+    {
+      "sha": "fcdf726915ef2abb366d596d0b5a50e656cd5119",
+      "url": "http://127.0.0.1:5174/samples.html?page=account&state=loading&long=0",
+      "viewport": {
+        "width": 360,
+        "height": 800
+      },
+      "kind": "account",
+      "state": "loading",
+      "long": false,
+      "source": "isolated synthetic fixture, no authentication service",
+      "geometry": {
+        "width": 360,
+        "scroll": 360
+      },
+      "contrast": [
+        {
+          "tag": "ASIDE",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 6.081614815988506
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "A",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(250, 238, 238)",
+          "ratio": 8.077415242054448
+        },
+        {
+          "tag": "H1",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "P",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(148, 7, 10)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 9.154497551025868
+        }
+      ],
+      "screenshot": "account-loading-360.png"
+    },
+    {
+      "sha": "fcdf726915ef2abb366d596d0b5a50e656cd5119",
+      "url": "http://127.0.0.1:5174/samples.html?page=account&state=error&long=0",
+      "viewport": {
+        "width": 360,
+        "height": 800
+      },
+      "kind": "account",
+      "state": "error",
+      "long": false,
+      "source": "isolated synthetic fixture, no authentication service",
+      "geometry": {
+        "width": 360,
+        "scroll": 360
+      },
+      "contrast": [
+        {
+          "tag": "ASIDE",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 6.081614815988506
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "A",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(250, 238, 238)",
+          "ratio": 8.077415242054448
+        },
+        {
+          "tag": "H1",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "LABEL",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "INPUT",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(148, 7, 10)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 9.154497551025868
+        }
+      ],
+      "screenshot": "account-error-360.png"
+    },
+    {
+      "sha": "fcdf726915ef2abb366d596d0b5a50e656cd5119",
+      "url": "http://127.0.0.1:5174/samples.html?page=account&state=error&long=1",
+      "viewport": {
+        "width": 360,
+        "height": 800
+      },
+      "kind": "account",
+      "state": "error",
+      "long": true,
+      "source": "isolated synthetic fixture, no authentication service",
+      "geometry": {
+        "width": 360,
+        "scroll": 360
+      },
+      "contrast": [
+        {
+          "tag": "ASIDE",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 6.081614815988506
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "A",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(250, 238, 238)",
+          "ratio": 8.077415242054448
+        },
+        {
+          "tag": "H1",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "LABEL",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "INPUT",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(148, 7, 10)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 9.154497551025868
+        }
+      ],
+      "screenshot": "account-error-long-360.png"
+    },
+    {
+      "sha": "fcdf726915ef2abb366d596d0b5a50e656cd5119",
+      "url": "http://127.0.0.1:5174/samples.html?page=login&state=normal&long=0",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "kind": "login",
+      "state": "normal",
+      "long": false,
+      "source": "isolated synthetic fixture, no authentication service",
+      "geometry": {
+        "width": 1440,
+        "scroll": 1440
+      },
+      "contrast": [
+        {
+          "tag": "ASIDE",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 6.081614815988506
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 8.470678898389933
+        },
+        {
+          "tag": "H1",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "LABEL",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "INPUT",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "LABEL",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "INPUT",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(148, 7, 10)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 6.081614815988506
+        }
+      ],
+      "screenshot": "login-normal-1440.png"
+    },
+    {
+      "sha": "fcdf726915ef2abb366d596d0b5a50e656cd5119",
+      "url": "http://127.0.0.1:5174/samples.html?page=login&state=error&long=0",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "kind": "login",
+      "state": "error",
+      "long": false,
+      "source": "isolated synthetic fixture, no authentication service",
+      "geometry": {
+        "width": 1440,
+        "scroll": 1440
+      },
+      "contrast": [
+        {
+          "tag": "ASIDE",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 6.081614815988506
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 8.470678898389933
+        },
+        {
+          "tag": "H1",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "LABEL",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "INPUT",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "LABEL",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "INPUT",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(148, 7, 10)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 6.081614815988506
+        }
+      ],
+      "screenshot": "login-error-1440.png"
+    },
+    {
+      "sha": "fcdf726915ef2abb366d596d0b5a50e656cd5119",
+      "url": "http://127.0.0.1:5174/samples.html?page=account&state=normal&long=0",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "kind": "account",
+      "state": "normal",
+      "long": false,
+      "source": "isolated synthetic fixture, no authentication service",
+      "geometry": {
+        "width": 1440,
+        "scroll": 1440
+      },
+      "contrast": [
+        {
+          "tag": "ASIDE",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 6.081614815988506
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "A",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(250, 238, 238)",
+          "ratio": 8.077415242054448
+        },
+        {
+          "tag": "H1",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 9.154497551025868
+        }
+      ],
+      "screenshot": "account-normal-1440.png"
+    },
+    {
+      "sha": "fcdf726915ef2abb366d596d0b5a50e656cd5119",
+      "url": "http://127.0.0.1:5174/samples.html?page=account&state=loading&long=0",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "kind": "account",
+      "state": "loading",
+      "long": false,
+      "source": "isolated synthetic fixture, no authentication service",
+      "geometry": {
+        "width": 1440,
+        "scroll": 1440
+      },
+      "contrast": [
+        {
+          "tag": "ASIDE",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 6.081614815988506
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "A",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(250, 238, 238)",
+          "ratio": 8.077415242054448
+        },
+        {
+          "tag": "H1",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "P",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(148, 7, 10)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 9.154497551025868
+        }
+      ],
+      "screenshot": "account-loading-1440.png"
+    },
+    {
+      "sha": "fcdf726915ef2abb366d596d0b5a50e656cd5119",
+      "url": "http://127.0.0.1:5174/samples.html?page=account&state=error&long=0",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "kind": "account",
+      "state": "error",
+      "long": false,
+      "source": "isolated synthetic fixture, no authentication service",
+      "geometry": {
+        "width": 1440,
+        "scroll": 1440
+      },
+      "contrast": [
+        {
+          "tag": "ASIDE",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 6.081614815988506
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "A",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(250, 238, 238)",
+          "ratio": 8.077415242054448
+        },
+        {
+          "tag": "H1",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "LABEL",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "INPUT",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(148, 7, 10)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 9.154497551025868
+        }
+      ],
+      "screenshot": "account-error-1440.png"
+    },
+    {
+      "sha": "fcdf726915ef2abb366d596d0b5a50e656cd5119",
+      "url": "http://127.0.0.1:5174/samples.html?page=account&state=error&long=1",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "kind": "account",
+      "state": "error",
+      "long": true,
+      "source": "isolated synthetic fixture, no authentication service",
+      "geometry": {
+        "width": 1440,
+        "scroll": 1440
+      },
+      "contrast": [
+        {
+          "tag": "ASIDE",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 6.081614815988506
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "A",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(250, 238, 238)",
+          "ratio": 8.077415242054448
+        },
+        {
+          "tag": "H1",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "LABEL",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "INPUT",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(148, 7, 10)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 9.154497551025868
+        }
+      ],
+      "screenshot": "account-error-long-1440.png"
+    },
+    {
+      "sha": "fcdf726915ef2abb366d596d0b5a50e656cd5119",
+      "url": "http://127.0.0.1:5174/samples.html?page=login&state=normal&long=0",
+      "viewport": {
+        "width": 767,
+        "height": 900
+      },
+      "kind": "login",
+      "state": "normal",
+      "long": false,
+      "source": "isolated synthetic fixture, no authentication service",
+      "geometry": {
+        "width": 767,
+        "scroll": 767
+      },
+      "contrast": [
+        {
+          "tag": "ASIDE",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 6.081614815988506
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 8.470678898389933
+        },
+        {
+          "tag": "H1",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "LABEL",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "INPUT",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "LABEL",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "INPUT",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(148, 7, 10)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 6.081614815988506
+        }
+      ],
+      "screenshot": null
+    },
+    {
+      "sha": "fcdf726915ef2abb366d596d0b5a50e656cd5119",
+      "url": "http://127.0.0.1:5174/samples.html?page=login&state=error&long=0",
+      "viewport": {
+        "width": 767,
+        "height": 900
+      },
+      "kind": "login",
+      "state": "error",
+      "long": false,
+      "source": "isolated synthetic fixture, no authentication service",
+      "geometry": {
+        "width": 767,
+        "scroll": 767
+      },
+      "contrast": [
+        {
+          "tag": "ASIDE",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 6.081614815988506
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 8.470678898389933
+        },
+        {
+          "tag": "H1",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "LABEL",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "INPUT",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "LABEL",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "INPUT",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(148, 7, 10)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 6.081614815988506
+        }
+      ],
+      "screenshot": null
+    },
+    {
+      "sha": "fcdf726915ef2abb366d596d0b5a50e656cd5119",
+      "url": "http://127.0.0.1:5174/samples.html?page=account&state=normal&long=0",
+      "viewport": {
+        "width": 767,
+        "height": 900
+      },
+      "kind": "account",
+      "state": "normal",
+      "long": false,
+      "source": "isolated synthetic fixture, no authentication service",
+      "geometry": {
+        "width": 767,
+        "scroll": 767
+      },
+      "contrast": [
+        {
+          "tag": "ASIDE",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 6.081614815988506
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "A",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(250, 238, 238)",
+          "ratio": 8.077415242054448
+        },
+        {
+          "tag": "H1",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 9.154497551025868
+        }
+      ],
+      "screenshot": null
+    },
+    {
+      "sha": "fcdf726915ef2abb366d596d0b5a50e656cd5119",
+      "url": "http://127.0.0.1:5174/samples.html?page=account&state=loading&long=0",
+      "viewport": {
+        "width": 767,
+        "height": 900
+      },
+      "kind": "account",
+      "state": "loading",
+      "long": false,
+      "source": "isolated synthetic fixture, no authentication service",
+      "geometry": {
+        "width": 767,
+        "scroll": 767
+      },
+      "contrast": [
+        {
+          "tag": "ASIDE",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 6.081614815988506
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "A",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(250, 238, 238)",
+          "ratio": 8.077415242054448
+        },
+        {
+          "tag": "H1",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "P",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(148, 7, 10)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 9.154497551025868
+        }
+      ],
+      "screenshot": null
+    },
+    {
+      "sha": "fcdf726915ef2abb366d596d0b5a50e656cd5119",
+      "url": "http://127.0.0.1:5174/samples.html?page=account&state=error&long=0",
+      "viewport": {
+        "width": 767,
+        "height": 900
+      },
+      "kind": "account",
+      "state": "error",
+      "long": false,
+      "source": "isolated synthetic fixture, no authentication service",
+      "geometry": {
+        "width": 767,
+        "scroll": 767
+      },
+      "contrast": [
+        {
+          "tag": "ASIDE",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 6.081614815988506
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "A",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(250, 238, 238)",
+          "ratio": 8.077415242054448
+        },
+        {
+          "tag": "H1",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "LABEL",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "INPUT",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(148, 7, 10)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 9.154497551025868
+        }
+      ],
+      "screenshot": null
+    },
+    {
+      "sha": "fcdf726915ef2abb366d596d0b5a50e656cd5119",
+      "url": "http://127.0.0.1:5174/samples.html?page=account&state=error&long=1",
+      "viewport": {
+        "width": 767,
+        "height": 900
+      },
+      "kind": "account",
+      "state": "error",
+      "long": true,
+      "source": "isolated synthetic fixture, no authentication service",
+      "geometry": {
+        "width": 767,
+        "scroll": 767
+      },
+      "contrast": [
+        {
+          "tag": "ASIDE",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 6.081614815988506
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "A",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(250, 238, 238)",
+          "ratio": 8.077415242054448
+        },
+        {
+          "tag": "H1",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "LABEL",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "INPUT",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(148, 7, 10)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 9.154497551025868
+        }
+      ],
+      "screenshot": null
+    },
+    {
+      "sha": "fcdf726915ef2abb366d596d0b5a50e656cd5119",
+      "url": "http://127.0.0.1:5174/samples.html?page=login&state=normal&long=0",
+      "viewport": {
+        "width": 768,
+        "height": 900
+      },
+      "kind": "login",
+      "state": "normal",
+      "long": false,
+      "source": "isolated synthetic fixture, no authentication service",
+      "geometry": {
+        "width": 768,
+        "scroll": 768
+      },
+      "contrast": [
+        {
+          "tag": "ASIDE",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 6.081614815988506
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 8.470678898389933
+        },
+        {
+          "tag": "H1",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "LABEL",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "INPUT",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "LABEL",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "INPUT",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(148, 7, 10)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 6.081614815988506
+        }
+      ],
+      "screenshot": null
+    },
+    {
+      "sha": "fcdf726915ef2abb366d596d0b5a50e656cd5119",
+      "url": "http://127.0.0.1:5174/samples.html?page=login&state=error&long=0",
+      "viewport": {
+        "width": 768,
+        "height": 900
+      },
+      "kind": "login",
+      "state": "error",
+      "long": false,
+      "source": "isolated synthetic fixture, no authentication service",
+      "geometry": {
+        "width": 768,
+        "scroll": 768
+      },
+      "contrast": [
+        {
+          "tag": "ASIDE",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 6.081614815988506
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 8.470678898389933
+        },
+        {
+          "tag": "H1",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "LABEL",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "INPUT",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "LABEL",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "INPUT",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(148, 7, 10)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 6.081614815988506
+        }
+      ],
+      "screenshot": null
+    },
+    {
+      "sha": "fcdf726915ef2abb366d596d0b5a50e656cd5119",
+      "url": "http://127.0.0.1:5174/samples.html?page=account&state=normal&long=0",
+      "viewport": {
+        "width": 768,
+        "height": 900
+      },
+      "kind": "account",
+      "state": "normal",
+      "long": false,
+      "source": "isolated synthetic fixture, no authentication service",
+      "geometry": {
+        "width": 768,
+        "scroll": 768
+      },
+      "contrast": [
+        {
+          "tag": "ASIDE",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 6.081614815988506
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "A",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(250, 238, 238)",
+          "ratio": 8.077415242054448
+        },
+        {
+          "tag": "H1",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 9.154497551025868
+        }
+      ],
+      "screenshot": null
+    },
+    {
+      "sha": "fcdf726915ef2abb366d596d0b5a50e656cd5119",
+      "url": "http://127.0.0.1:5174/samples.html?page=account&state=loading&long=0",
+      "viewport": {
+        "width": 768,
+        "height": 900
+      },
+      "kind": "account",
+      "state": "loading",
+      "long": false,
+      "source": "isolated synthetic fixture, no authentication service",
+      "geometry": {
+        "width": 768,
+        "scroll": 768
+      },
+      "contrast": [
+        {
+          "tag": "ASIDE",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 6.081614815988506
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "A",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(250, 238, 238)",
+          "ratio": 8.077415242054448
+        },
+        {
+          "tag": "H1",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "P",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(148, 7, 10)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 9.154497551025868
+        }
+      ],
+      "screenshot": null
+    },
+    {
+      "sha": "fcdf726915ef2abb366d596d0b5a50e656cd5119",
+      "url": "http://127.0.0.1:5174/samples.html?page=account&state=error&long=0",
+      "viewport": {
+        "width": 768,
+        "height": 900
+      },
+      "kind": "account",
+      "state": "error",
+      "long": false,
+      "source": "isolated synthetic fixture, no authentication service",
+      "geometry": {
+        "width": 768,
+        "scroll": 768
+      },
+      "contrast": [
+        {
+          "tag": "ASIDE",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 6.081614815988506
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "A",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(250, 238, 238)",
+          "ratio": 8.077415242054448
+        },
+        {
+          "tag": "H1",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "LABEL",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "INPUT",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(148, 7, 10)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 9.154497551025868
+        }
+      ],
+      "screenshot": null
+    },
+    {
+      "sha": "fcdf726915ef2abb366d596d0b5a50e656cd5119",
+      "url": "http://127.0.0.1:5174/samples.html?page=account&state=error&long=1",
+      "viewport": {
+        "width": 768,
+        "height": 900
+      },
+      "kind": "account",
+      "state": "error",
+      "long": true,
+      "source": "isolated synthetic fixture, no authentication service",
+      "geometry": {
+        "width": 768,
+        "scroll": 768
+      },
+      "contrast": [
+        {
+          "tag": "ASIDE",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 6.081614815988506
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "A",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "A",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(250, 238, 238)",
+          "ratio": 8.077415242054448
+        },
+        {
+          "tag": "H1",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "DT",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "DD",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "LABEL",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "INPUT",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 15.434610156785826
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(148, 7, 10)",
+          "ratio": 9.154497551025868
+        },
+        {
+          "tag": "H2",
+          "color": "rgb(39, 36, 33)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 14.281682400505913
+        },
+        {
+          "tag": "P",
+          "color": "rgb(104, 97, 92)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 5.627333013394766
+        },
+        {
+          "tag": "BUTTON",
+          "color": "rgb(148, 7, 10)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 9.154497551025868
+        }
+      ],
+      "screenshot": null
+    }
+  ]
+}
