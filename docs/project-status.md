@@ -147,3 +147,5 @@
 本机合同9组、24 Schema/99正反例+6语义输入双路径、41接口示例通过；关键健康值受控破坏退出1、逐字节恢复退出0；strict7/7、前端类型/构建、秘密扫描通过。audit曾成功，复跑遇registry TLS网络错误；完整check及实际verify均因Docker sailor-ingest.sock占用退出1（verify仅缺配置断言通过），当前不能算全门禁通过。正常重启及残留宿主进程恢复无效，已请用户方便时重启Windows；未删镜像/卷/数据。#9保护实际进展已交[评论](https://github.com/zwh9616/campus-claw-plus/pull/9#issuecomment-6682703513)。恢复及最终CI结果会追加到同次交接报告，未执行项不勾完成。
 
 已实际推送7d099c9及f50dc87到原#6；f50dc87远端完整CI42203445671成功（含check/audit/secret-scan/真实容器verify），这不改写本机失败。小张已提交绑定f50dc87的COMMENT复审5799022319，暂未APPROVE、未合并；API状态blocked，main仍14760f5。本次补证提交只更新台账/报告，最终批准和合并必须核对其最新head检查。
+
+Docker后续排障（2026-11-06约18:55）：b43ac50的CI42205319922已成功，复审5799054323仍为COMMENT。用户再次报告同一ingest错误后，已退出Docker并将仅含零字节socket的本机运行目录改名保留为`%LOCALAPPDATA%/Docker/run-socket-backup-20261106-185516`，未删除镜像/卷/数据。重新生成目录后仍出现创建成功但不可访问、Docker启动报目录存在/路径不存在的异常；当前所有Docker进程已退出，需用户保存工作并重启Windows后再复验。本机上次启动仍为当天13:52，未将Docker重启写成Windows已重启。01/02准入及G3不因排障而放行。

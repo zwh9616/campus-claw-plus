@@ -36,3 +36,13 @@ main保护已实际启用，见[API回读](../10/A/main-protection-applied-2026-
 ## 推送与远端结果
 
 已推送7d099c9、f50dc87807eb442e8a3a7229add08431217955ff到原PR #6。该head的[CI42203445671](https://github.com/zwh9616/campus-claw-plus/actions/runs/42203445671)状态Success、用时1m30s；工作流未跳过check/audit/secret-scan/真实容器verify。小张已提交[绑定该head的COMMENT复审5799022319](https://github.com/zwh9616/campus-claw-plus/pull/6#pullrequestreview-5799022319)，公共R5内容收口，但未将本机故障写成通过，尚未APPROVE或合并。API确认#6 open、mergeable=true、mergeable_state=blocked，main14760f5。后续台账/报告补证提交仍需其最新head检查；运行合同/测试内容相对f50dc87不变。
+
+## Docker再次启动失败后的排障
+
+2026-11-06约18:55，小张按用户错误报告检查：Linux引擎管道不存在；运行目录中可枚举的项目均为零字节AF_UNIX残留，多个文件反复追加`.stale`。参考[Docker项目中的同类报告](https://github.com/docker/desktop-feedback/issues/692)，这些用户报告可作排障线索，不能保证本机采用相同步骤必定修好。
+
+正常stop超时后，仅结束已核对安装路径的Docker Desktop宿主进程；核对`%LOCALAPPDATA%/Docker/run`为普通目录、没有非零文件/子目录，将其同父目录改名为`run-socket-backup-20261106-185516`，完整保留。没有删除或重置镜像、容器卷、VHDX，没有执行WSL注销或全局关闭WSL。
+
+重新创建run并启动后仍失败：日志转为mkdir目录已存在/监听路径不存在；PowerShell/.NET创建目录返回对象，随后Get-Item/Directory.Exists却找不到它。另一个空诊断目录`run-fresh-check-20261106`同样不可访问，未据此声称根因已确定。所有Docker进程随后已退出；Windows最后启动时间为当天13:52，已建议用户保存工作后执行Windows重启，再恢复本机check/audit/verify。未擅自重启Windows，未把启动命令返回0当成引擎恢复。
+
+此前b43ac50的[完整CI42205319922](https://github.com/zwh9616/campus-claw-plus/actions/runs/42205319922)已成功，[绑定head复审5799054323](https://github.com/zwh9616/campus-claw-plus/pull/6#pullrequestreview-5799054323)为COMMENT。此轮仅追加真实环境记录，不改变规约/代码，不新增apply或批准，合并仍阻断。
