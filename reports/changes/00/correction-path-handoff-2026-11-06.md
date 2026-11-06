@@ -10,3 +10,5 @@
 实际自检：OpenSpec1.13.0全量strict7 passed/0 failed；合同24 Schema、99正反例+6语义输入双路径一致、41接口例及9组测试通过；foundation、git diff --check退出0。纯文档不运行不存在的订正业务；不声称新增场景运行通过。秘密扫描及正式PR信息随交接补充。
 
 请小张绑定当前head核对输入/输出/完成含义与08/09边界，审查通过后在新会话仅给仓库与change名重做BC-SC-01，保留真实输入输出和版本。不得复制本会话结论伪造独立验收，也不提前归档。
+
+正式交接：[PR #13](https://github.com/zwh9616/campus-claw-plus/pull/13)，已requested reviewer zwh9616；ecffb87为初始补缺提交。本提交仅补PR/请求与自检状态；最终审查/CI按最新head，未取得小张批准。秘密扫描首次根历史47提交及暂存均退出0，无泄漏。
