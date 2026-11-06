@@ -53,3 +53,7 @@ Go依赖按已批准版本锁定。`go.sum`与`vendor`一起提交，使原本�
 最新一轮npm run check（Go vet/test、合同、前端类型/构建、OpenSpec strict 7/7）、锁定Node容器内npm run audit（根/前端0漏洞）、全历史/暂存秘密扫描、npm run verify（原15项骨架+新增真实MySQL/可信TLS身份场景）均退出0。此前npm审计400及秘密扫描误报的失败保留在implementation-checks.json，没有改写为成功。
 
 秘密扫描三处误报均为已核对的公开完整性哈希，精确命中值例外见.gitleaks.toml及安全规范；控制实验确认生成的虚假API-key和同SQL名的其他值仍返回1。严格JSON补了大小写别名拒绝，避免encoding/json将Username当作username。Go漏洞审计和镜像扫描依旧未完成，不能据npm审计通过宣称所有依赖审计通过。
+
+## 远端交接
+
+实现提交637986f46e826c04f9e57b8fda8650d5cccc852c已推送至[PR #14](https://github.com/zwh9616/campus-claw-plus/pull/14)，已实际向Kevcco发送GitHub审查请求。远端当前为blocked，不越过保护；当前没有小陈批准。最新远端确认main仍为13bc04f，#9仍为e88ed53且未合并；#13是00订正路径规约，与本次身份生产接线不同，不能据此宣称接线依赖已齐。当前head的CI结果另在本PR评论绑定，不以本地成功代填。
