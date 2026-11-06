@@ -1,0 +1,14 @@
+diff --git a/docs/contracts/schemas/Principal.schema.json b/docs/contracts/schemas/Principal.schema.json
+index a2609bb..3ebdcd1 100644
+--- a/docs/contracts/schemas/Principal.schema.json
++++ b/docs/contracts/schemas/Principal.schema.json
+@@ -10,8 +10,7 @@
+     "role": {
+       "type": "string",
+       "enum": [
+-        "teacher",
+-        "student"
++        "teacher"
+       ]
+     },
+     "class_id": {

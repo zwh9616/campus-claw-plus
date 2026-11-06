@@ -5,8 +5,8 @@
 ## 现在做到哪里
 
 - **G2已成立，G3未成立；02/10规约均已合入main 7e4c81f。小陈开始10 A门禁实现，01内部审查问题已闭但公共冻结仍阻断；00独立阅读未通过，待补错题订正路径。**
-- 已获取远端基线main `2bf12e2`：第7课骨架已经合入、规约已归档且存在v0.0.1-skeleton标签；历史范围与例外见[归档记录](lesson-07/archive-record.md)和[归档tasks](../openspec/changes/archive/2026-10-28-project-bootstrap/tasks.md)。本机初次检查因Docker失败；用户重启及本项目空网络清理后，18c3d08的完整检查与15项容器验收通过。历史失败保留，未将骨架回归算作后续业务实现。
-- 00实际change为[2026-11-04-business-contracts](https://github.com/zwh9616/campus-claw-plus/blob/29397750f3d6f8879b6aacdacbbe3e7d160ede3c/openspec/changes/2026-11-04-business-contracts/proposal.md)。01已在[PR #6](https://github.com/zwh9616/campus-claw-plus/pull/6)收到小张返修意见；10已在[PR #7](https://github.com/zwh9616/campus-claw-plus/pull/7)收到小陈返修意见；02已交PR #8待审，03尚未核实新交接。下方第二天排班是当时快照，以执行更新和活动PR实际记录为准。
+- 历史第7课基线main `2bf12e2`（当前10 A准入基线为`7e4c81f`）：第7课骨架已经合入、规约已归档且存在v0.0.1-skeleton标签；历史范围与例外见[归档记录](lesson-07/archive-record.md)和[归档tasks](../openspec/changes/archive/2026-10-28-project-bootstrap/tasks.md)。本机初次检查因Docker失败；用户重启及本项目空网络清理后，18c3d08的完整检查与15项容器验收通过。历史失败保留，未将骨架回归算作后续业务实现。
+- 00实际change为[2026-11-04-business-contracts](../openspec/changes/2026-11-04-business-contracts/proposal.md)。01 [PR #6](https://github.com/zwh9616/campus-claw-plus/pull/6)内部意见已闭，公共冻结仍待小张处理；02规约PR #8和10规约PR #7已合并，10 A实现见PR #9。03尚未核实新交接。下方第二天排班为历史快照。
 - 人员按变更分配，不固定前端/后端/AI职责。表中日期记录该行最近实际更新，不代表开工、测试或批准日期。
 
 ## 整体里程碑
@@ -36,7 +36,7 @@
 | 07C MCP宿主接入 | 小葛 | 小陈 | 未开始 | 小葛写连接、工具权限、断开和调用上限 | 03、07A及技能绑定规则可用 | 仅登记计划；规约未创建、未验证 | 2026-11-04 |
 | 08 成绩与错题业务闭环 | 小陈 | 小张 | 未开始 | 小陈写结果入库、人工改分和冲突规则 | 05及批改结果格式确定可开发；真实验收等07B | 仅登记计划；规约未创建、未验证 | 2026-11-04 |
 | 09 助手与反馈页面 | 小张 | 小葛 | 未开始 | 小张写对话、配置、改分与错题页面流程 | 02/06及AI接口确定可开发；验收接齐07A/B/C、08 | 仅登记计划；规约未创建、未验证 | 2026-11-04 |
-| 10 交付流水线与运行观测 | 小葛 | 小陈 | 实现与自测（A） | 小陈补真实合同红绿、并行容器及最终CI；管理员按明确JSON落实main保护，再补同head阻断证据，交小葛终审 | G2及10规约已满足；Kevcco无admin，main未保护，G3未成立；B/C未开始 | [实现PR #9](https://github.com/zwh9616/campus-claw-plus/pull/9) e51a1ba的npm/make完整gate均退出0、各15项容器通过且CI成功；本提交补Make安装失败/并行反例、准入快照和原基线输出；新head及保护阻断待验，见[交接](../reports/changes/10/A/README.md) | 2026-11-06 |
+| 10 交付流水线与运行观测 | 小葛 | 小陈 | 待终审（A实现已交，保护验收阻塞） | 小葛终审[实现PR #9](https://github.com/zwh9616/campus-claw-plus/pull/9)；管理员按受审JSON启用main保护，小陈再补同head BLOCKED及旧批准等证据 | G2及10规约已满足；Kevcco无admin、main未保护，G3未成立；禁止合入业务实现，B/C未开始 | d88bf2d代码的13项编排、真实合同失败/字节恢复、完整gate及两目录并行verify各15项通过，CI成功；[实验PR #10](https://github.com/zwh9616/campus-claw-plus/pull/10)红CI和取消已真实留证但未证明保护阻断，见[A验收包](../reports/changes/10/A/README.md)；最终head检查另看PR #9 | 2026-11-06 |
 | 11 安全与端到端回归 | 小张 | 小葛 | 未开始 | 小张写测试场景、失败判据及证据要求 | 可提前准备；完整执行等真实业务接通 | 仅登记计划；规约未创建、未验证 | 2026-11-04 |
 | 12 发布验证与真实反馈 | 小葛 | 小陈 | 未开始 | 小葛写压测、用户反馈与发布验收计划 | 09、10、11通过，在同一候选版本验证 | 仅登记计划；规约未创建、未验证 | 2026-11-04 |
 | 13 最终报告与答辩准备 | 小陈 | 小葛 | 未开始 | 小陈写报告结构、证据路径和演示要求 | 12及各变更真实记录齐备；不把本计划充当成果 | 仅登记计划；规约未创建、未验证 | 2026-11-04 |

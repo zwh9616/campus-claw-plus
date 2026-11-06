@@ -1,0 +1,18 @@
+{
+  "run_id": 42167365004,
+  "checks": [
+    {
+      "id": 127727469011,
+      "name": "check",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/zwh9616/campus-claw-plus/actions/runs/42167365004/job/127727469011"
+    }
+  ],
+  "html_url": "https://github.com/zwh9616/campus-claw-plus/actions/runs/42167365004",
+  "head": "ecd6c71de3c07a55a40b2691f1e8cb9a55847ac7",
+  "run_attempt": 2,
+  "observed_at": "2026-11-06T05:19:36.6929760Z",
+  "status": "completed",
+  "conclusion": "success"
+}

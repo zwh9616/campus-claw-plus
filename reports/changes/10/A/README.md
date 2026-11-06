@@ -35,7 +35,21 @@
 
 实现e51a1ba：Node22.23.4 / npm10.9.7 / GNU Make4.3 / Docker28.3.3 / Compose2.39.1，真实`npm run gate`及`make gate`均四阶段退出0，各自15项容器断言通过；[该head CI](https://github.com/zwh9616/campus-claw-plus/actions/runs/42166753398)成功。Windows Node24.22.1首轮12项编排测试通过；本次补Make安装失败/并行调用反例后为13项，Windows缺Make如实记未验证，Linux实际执行将另留证。
 
-独立并行容器、真实合同红绿及最终head完整门禁/CI待继续执行；不得以e51a1ba替代后续head。管理员有效保护、BLOCKED、旧批准撤销以及缺失/取消检查的真实合并阻断仍未通过，不写G3。
+后续代码d88bf2d的[CI](https://github.com/zwh9616/campus-claw-plus/actions/runs/42167069861)成功；Linux实际GNU Make边界测试13/13，无skip。该版本真实合同红绿、恢复后的完整gate及两目录并行verify全部通过，见[机器摘要](local-validation.json)。
+
+| 验证 | 实际结果 / 证据 |
+| --- | --- |
+| 真实合同破坏 | 只删除Principal.role的student枚举值，[受控diff](controlled-contract.patch)，未改检查器或fixture断言；[合同检查退出1](contract-red-output.txt) |
+| 破坏后的完整gate | [退出1](gate-red-results.json)，check失败；audit/secret-scan/verify明确未运行，未冒称通过 |
+| 逐字节恢复 | [SHA256](contract-hashes.json)原/恢复均为676505632c766161d2aa7b9a0c2e2133e658ab5581f75f0403a2ee117484a234；[完整gate四阶段退出0](restored-gate-results.json)，[原15项容器断言及清理通过](restored-container-results.json) |
+| 编排替身 | [13项输出](make-boundaries-output.txt)：四阶段逐项exit17、信号、取消、超时124、缺命令、锁争用、Make安装失败停止及-j8串行；这些是编排测试，不代替上面真实合同/容器 |
+| 真实并行容器 | [第一份](parallel-one-results.json)与[第二份](parallel-two-results.json)各15项通过；项目/镜像标签和两个环回临时端口各不相同，两次finally清理通过，验后无残留验收容器 |
+| 真实红CI | [测试PR #10](https://github.com/zwh9616/campus-claw-plus/pull/10)红head 0dd593b，[run42167205201失败](https://github.com/zwh9616/campus-claw-plus/actions/runs/42167205201)，[API快照](ci-red.json)为UNSTABLE而非BLOCKED；未发送merge请求 |
+| 新head与取消 | 恢复head ecd6c71与d88bf2d源树一致；[新head运行中快照](ci-restored-initial.json)未沿用旧绿；[主动取消快照](ci-cancelled.json)实际为cancelled，不计成功；[同SHA第二次完整CI成功](ci-restored-success.json)，测试PR已关闭且未合并，分支保留 |
+
+本轮没有真实他人批准可用于“旧批准失效”实验，当前也没有有效保护。因此管理员保护、同head BLOCKED、旧批准撤销以及missing/pending/cancelled不能合并的证明仍未通过；tasks2.4/2.6和G3保持待办。没有实际测试missing检查的合并阻断，不能由编排测试推出。
+
+最终实现PR为[PR #9](https://github.com/zwh9616/campus-claw-plus/pull/9)。最终head证据以该PR的检查与交接评论为准；本报告不会预填正在生成的提交SHA，也不将最终文档提交的CI提前记成功。
 
 管理员阻塞：由仓库管理员应用[明确配置](required-main-protection.json)，随后重取实际配置并运行受控测试PR，证明failure/pending/missing/cancelled及旧批准不能合并。建议配置文件本身不是已生效证据。示例（管理员使用自己的登录，不共享令牌）：
 
