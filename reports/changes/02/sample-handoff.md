@@ -17,3 +17,5 @@
 隔离检查check:sample-isolation已纳入原npm check（build之后），检查普通dev入口404、显式测试模式200、生产输出无测试入口/夹具。临时关闭隔离条件检查退出1，逐字节恢复退出0。原检查未删除，完整本机check因Docker缺失失败；实际输出另存sample-local-checks.json，CI按当前head另查。没有将环境失败或mock截图当真实运行通过。
 
 请小张实开同版本两档样板并按视觉规范第5节确认或修正，记录实际结论；2.3前不扩展工作台或真实认证接线。G3及业务合并/归档条件不提前通过。
+
+正式交接PR #15：https://github.com/zwh9616/campus-claw-plus/pull/15 ，requested reviewer zwh9616。截图在14c15c6证据提交中，捕获的UI源码为fcdf726；本提交只补PR链接/交接，源码未改，原清单继续作为该源码证据，不冒称新UI通过。
