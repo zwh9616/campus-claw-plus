@@ -44,6 +44,52 @@
               }
             }
           }
+        },
+        "x-frozen-identity-profile": {
+          "activation_change": "openspec/changes/2026-11-04-identity-foundation",
+          "security": [],
+          "responses": {
+            "200": {
+              "description": "Frozen identity phase only; not current runtime",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/IdentityHealthUp"
+                  },
+                  "examples": {
+                    "identity": {
+                      "value": {
+                        "status": "ok",
+                        "dependencies": {
+                          "mysql": "up"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "503": {
+              "description": "Frozen identity phase only; not current runtime",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/IdentityHealthDown"
+                  },
+                  "examples": {
+                    "identity": {
+                      "value": {
+                        "status": "error",
+                        "dependencies": {
+                          "mysql": "down"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     },
@@ -1623,6 +1669,12 @@
       },
       "SSE": {
         "$ref": "./schemas/SSE.schema.json"
+      },
+      "IdentityHealthUp": {
+        "$ref": "./schemas/IdentityHealthUp.schema.json"
+      },
+      "IdentityHealthDown": {
+        "$ref": "./schemas/IdentityHealthDown.schema.json"
       }
     }
   }

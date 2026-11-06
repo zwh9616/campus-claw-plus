@@ -1,0 +1,38 @@
+{
+  "executor": "小张 / zwh9616（AI辅助）",
+  "time": "2026-11-06T10:23:14.749453+00:00",
+  "base": "72fe59bf16e5180e588efbecead42cca4328360b + main 14760f59afd2818ca8f2957afb66cc9cc5773186",
+  "restored_schema_sha256": "95debc89c6fe79956c65c707d75286f6ac766e8d4e8719df0533615434a59fab",
+  "results": [
+    {
+      "name": "contracts-green-before",
+      "command": "npm run check:contracts",
+      "exit_code": 0,
+      "output": "\n> campus-claw-plus@0.0.1 check:contracts\n> node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs scripts/contracts/identity-phase.test.mjs\n\nContracts: 24 schemas; 99 positive/negative fixtures and 6 semantic inputs agree in both paths; 41 operation examples; 7 current/frozen operations. Planned operations absent.\n✔ ICF-SC-01/02 only skeleton is active; future health is complete and anonymous (17.5148ms)\n✔ ICF-SC-03/04 frozen configuration cannot leak into active samples or lose safety metadata (17.9093ms)\n✔ ICF-SC-05/06 migration reservations reject duplicate numbers, forward dependencies and false evidence (8.1002ms)\n✔ BC-SC-06 accepts trusted rubric, rejects incorrect grading, stale and missing context (2.5453ms)\n✔ BC-SC-05 nonempty Citation codepoint range (0.2018ms)\n✔ BC-SC-08/14 terminal sequence, cancellation and disconnected persistence (0.6625ms)\n✔ BC-SC-10 MCP exception remains exact, disabled and subject to both future reviews (0.8951ms)\n✔ BC-SC-09 registered empty keys only; no weakening historical HTTP_PORT requirement (5.3507ms)\n✔ BC-SC-18 planned operations and anonymous auth bypass cannot enter OpenAPI (27.5025ms)\nℹ tests 9\nℹ suites 0\nℹ pass 9\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 335.3642\n"
+    },
+    {
+      "name": "ICF-SC-01 controlled wrong mysql success value",
+      "command": "npm run check:contracts",
+      "exit_code": 1,
+      "output": "\n> campus-claw-plus@0.0.1 check:contracts\n> node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs scripts/contracts/identity-phase.test.mjs\n\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Standalone: ICF-SC-01 IdentityHealthUp valid: [{\"instancePath\":\"/dependencies/mysql\",\"schemaPath\":\"#/properties/dependencies/properties/mysql/const\",\"keyword\":\"const\",\"params\":{\"allowedValue\":\"down\"},\"message\":\"must be equal to constant\"}]\n\nfalse !== true\n\n    at file:///<WORKTREE>/scripts/check-contracts.mjs:99:10 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v25.2.1\n"
+    },
+    {
+      "name": "contracts-green-restored",
+      "command": "npm run check:contracts",
+      "exit_code": 0,
+      "output": "\n> campus-claw-plus@0.0.1 check:contracts\n> node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs scripts/contracts/identity-phase.test.mjs\n\nContracts: 24 schemas; 99 positive/negative fixtures and 6 semantic inputs agree in both paths; 41 operation examples; 7 current/frozen operations. Planned operations absent.\n✔ ICF-SC-01/02 only skeleton is active; future health is complete and anonymous (17.2867ms)\n✔ ICF-SC-03/04 frozen configuration cannot leak into active samples or lose safety metadata (22.4822ms)\n✔ ICF-SC-05/06 migration reservations reject duplicate numbers, forward dependencies and false evidence (8.4399ms)\n✔ BC-SC-06 accepts trusted rubric, rejects incorrect grading, stale and missing context (2.608ms)\n✔ BC-SC-05 nonempty Citation codepoint range (0.1673ms)\n✔ BC-SC-08/14 terminal sequence, cancellation and disconnected persistence (0.6783ms)\n✔ BC-SC-10 MCP exception remains exact, disabled and subject to both future reviews (0.9276ms)\n✔ BC-SC-09 registered empty keys only; no weakening historical HTTP_PORT requirement (5.0799ms)\n✔ BC-SC-18 planned operations and anonymous auth bypass cannot enter OpenAPI (25.8192ms)\nℹ tests 9\nℹ suites 0\nℹ pass 9\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 320.971\n"
+    },
+    {
+      "name": "strict",
+      "command": "npm run check:spec",
+      "exit_code": 0,
+      "output": "\n> campus-claw-plus@0.0.1 check:spec\n> openspec validate --all --strict\n\n✓ change/2026-11-04-business-contracts\n✓ change/2026-11-04-identity-foundation\n✓ change/2026-11-05-delivery-observability\n✓ change/2026-11-05-frontend-foundation\n✓ change/2026-11-05-reviewer-fix-workflow\n✓ change/2026-11-06-identity-public-contracts\n✓ spec/project-bootstrap\nTotals: 7 passed, 0 failed (7 items)\n- Validating...\n"
+    },
+    {
+      "name": "audit",
+      "command": "npm run audit",
+      "exit_code": 1,
+      "output": "\n> campus-claw-plus@0.0.1 audit\n> npm audit --audit-level=high && npm audit --prefix frontend --audit-level=high\n\nundefined\nnpm warn audit request to https://registry.npmjs.org/-/npm/v1/security/advisories/bulk failed, reason: Client network socket disconnected before secure TLS connection was established\nnpm error audit endpoint returned an error\nnpm error A complete log of this run can be found in: C:\\Users\\lenovo\\AppData\\Local\\npm-cache\\_logs\\2026-11-06T10_23_08_714Z-debug-0.log\n"
+    }
+  ]
+}

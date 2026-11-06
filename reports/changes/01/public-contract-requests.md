@@ -1,3 +1,11 @@
+# 01公共合同请求与处理结果
+
+## 2026-11-06 最新结果（覆盖下方历史待定状态）
+
+小张按组长新规则在原 PR #6 直接收口 PCR-IDF-01..03。新增 [公共修订 change](../../../openspec/changes/2026-11-06-identity-public-contracts/proposal.md)、[阶段登记](../../../docs/contracts/identity-phase.json)、[七键登记](../../../docs/contracts/config-register.json) 和迁移保留号。健康在 01 引入 MySQL 的同一受审实现提交原子切换；当前仍仅空依赖健康和 HTTP_PORT。最终 review 绑定当前 head，未冒称小葛批准，未实现数据库或 HTTPS。
+
+以下保留小陈原始请求及当时反馈，作为方案来源，不继续表示现行待定项。
+
 # 01向00提交的公共合同修订需求
 
 日期2026-11-05；提出人小陈，确认与维护00单源合同仍由小葛/小张负责。本文件是PR #6的修订需求，尚未批准；没有改docs/contracts、主规约、.env.example、Compose或探针，不建立第二套生效规则。00由PR #5合入main 4cfd61d8119c51bc3bf2870a17c9754f0975b3dc；该SHA的main CI与小张本机check/verify复验已留证，G2按00 D8成立。main有效保护规则仍为空，失败合并阻断是10前置G3的未完成工作，不倒推否定G2。

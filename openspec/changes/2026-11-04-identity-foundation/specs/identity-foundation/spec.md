@@ -118,12 +118,12 @@
 - **AND** 凭证表仅存摘要、口令为经审定参数的加盐口令散列，扫描输出不打印待匹配机密
 
 ### Requirement: IDF-05 Fail closed and obey integration gates
-身份基础 SHALL 按design D7/D8/D9在必需配置缺失、依赖故障及未授权动作时失败关闭；runtime-plan R1..R6的版本/许可/参数、迁移、配置/超时/HTTPS及健康候选必须经对应两人确认。公共健康/配置先对齐00，不得默许两套合同或把文档准备写成实现通过。
+身份基础 SHALL 按design D7/D8/D9在必需配置缺失、依赖故障及未授权动作时失败关闭；runtime-plan R1..R6及identity-public-contracts冻结版本/许可/参数、迁移、配置/超时/HTTPS及健康规则；最终批准须绑定PR head。公共健康/配置先对齐00，不得默许两套合同或把文档准备写成实现通过。
 
 #### Scenario: IDF-SC-18 Configuration and database failure
 - **WHEN** 移除已冻结的必需配置，或在运行中使MySQL明确不可达/操作超过共用5秒预算，再请求依赖数据库的登录/刷新/me
 - **THEN** 配置缺失启动非零且不打印值；明确不可达503 DEPENDENCY_UNAVAILABLE，截止到期504 UPSTREAM_TIMEOUT；提交前失败回滚、不返回新Cookie/访问凭证、不放宽授权
-- **AND** 恢复后正常路径可用；数据库健康及探针只按先经00批准的唯一合同验收，批准前本草案不改变原health
+- **AND** 恢复后正常路径可用；数据库健康及探针只按先经00批准的唯一合同验收，01引入MySQL的同一受审实现提交按公共D1原子切换；本PR不改变原health
 - **AND** 覆盖runtime-plan R2每个生效必需键的缺失/空白/非法/证书不可信及时间边界；任何TLS故障不允许降级或跳过证书校验；提交结果不明单列核查、不盲重试或声称数据库无变更
 
 #### Scenario: IDF-SC-19 Login rate and window boundaries
