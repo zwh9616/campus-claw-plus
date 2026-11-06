@@ -9,7 +9,7 @@
 | [openapi.yaml](openapi.yaml) | OpenAPI3.1.0；JSON文本也是合法YAML，解析与引用均由工具校验 |
 | [schemas](schemas/) | JSON Schema2020-12唯一类型源；OpenAPI仅引用，不复制第二套类型 |
 | [endpoint-register.json](endpoint-register.json) | current/frozen操作清单、planned能力的负责人及缺少内容 |
-| [config-register.json](config-register.json) | 当前空值配置键、未来未冻结配置职责、未启用的MCP出站例外 |
+| [config-register.json](config-register.json) | 当前空值配置键、01已冻结未启用键及其他未来配置职责、未启用的MCP出站例外 |
 | [change-dependencies.md](change-dependencies.md) | G0/G1/G2/G3与每个变更前置 |
 | [migration-register.md](migration-register.md) | 数据库迁移编号与公共文件协调方法；当前没有数据库迁移 |
 | [rule-alignment.md](rule-alignment.md) | 规则冲突如何迁移、怎样检查 |
@@ -52,3 +52,7 @@ SSE fixture的`{event,data}`只是测试表达：真实wire仍为`event:`与JSON
 ## 交接证据
 
 实现证据见[00 apply记录](../../reports/changes/00/apply-verification.md)及[main集成复验](../../reports/changes/00/main-integration-2026-11-05.md)。所有凭据样例都是不可用测试文本，禁止替换为真实值。小葛终审与main集成复验已完成，G2已成立；[BC-SC-01真实独立阅读](../../reports/changes/00/independent-reading-2026-11-05.md)首次未通过，错题订正主路径需补充复验，00尚不归档；G3仍待10前置门禁验收，不能将G2当作G3。
+
+## 01公共依赖冻结（2026-11-06）
+
+[公共变更](../../openspec/changes/2026-11-06-identity-public-contracts/proposal.md) 收口 PCR-IDF-01..03；[identity-phase.json](identity-phase.json) 是阶段及迁移保留号的机器登记，配置登记的 frozen 与 active 严格分开。新健康 Schema 在 OpenAPI 扩展中引用；当前 `/health` responses 不变。01 同一实施提交原子激活所有受影响实现/探针/规则/配置/用例，无环境回退或双成功合同。版本、HTTPS、迁移恢复与初始化见公共设计及01 runtime-plan；当前无实际DB或新路由，frozen不得写成业务已交付。

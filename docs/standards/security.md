@@ -24,3 +24,9 @@ config-register.json中仅登记http://mcp:8090/mcp，enabled=false。须03/07C�
 ## 轮换流程
 发现者通知持有人与组长；持有人先撤销旧密钥、生成新值、更新本机/运行环境并重启，验证旧值不可用；组长再协调历史清理和其他成员同步。记录键名/时间/负责人/结果，不记原值。删最新文件不等于撤销历史泄露。
 所有违规先修复再通过；扫描无法覆盖的授权/业务事项必须人工评审，不将“文件存在”当安全通过。
+
+## 01身份阶段的冻结与启用
+
+2026-11-06 公共修订见 [identity-public-contracts D1—D3](../../openspec/changes/2026-11-06-identity-public-contracts/design.md)。当前 skeleton 仍仅空依赖健康、active HTTP_PORT；[七个 frozen 键](../contracts/config-register.json) 和 [identity 阶段](../contracts/identity-phase.json) 不是已经运行。01 引入 MySQL 的同一受审实现提交必须同步实现、探针、Schema/OpenAPI 当前引用、配置激活/空样例、规范和全部用例，不能同时接受两种成功载荷。
+
+启用后健康每请求真实 Ping、3 秒总预算，up 为200、down/超时为503，保留服务端标识和日志且不泄露连接信息；业务数据库5秒预算/503与504边界另按01规约。HTTPS和DB均验证可信证书，后台不读取离线迁移凭据；七键按使用进程验证必填/空白/非法，失败非零。MySQL初始化/卷/TLS接线输入随01子包先登记后使用，真实值不入Git/镜像/日志。真实数据库、证书和迁移恢复仍需01执行验收，合同用例不能替代。

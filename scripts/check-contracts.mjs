@@ -7,6 +7,8 @@ import SwaggerParser from '@apidevtools/swagger-parser'
 import { parseDocument } from 'yaml'
 import { validateOperationBoundary, validateConfigSample, validateOutboundCandidate } from './contracts/validate.mjs'
 
+import { validateIdentityPhase } from './contracts/identity-phase.mjs'
+
 const root = resolve('docs/contracts')
 const json = path => JSON.parse(readFileSync(resolve(root, path), 'utf8'))
 const document = parseDocument(readFileSync(resolve(root, 'openapi.yaml'), 'utf8'), { uniqueKeys: true })
@@ -15,6 +17,7 @@ const api = document.toJS()
 validateOperationBoundary(api, json('endpoint-register.json'))
 validateConfigSample(readFileSync('.env.example', 'utf8'), json('config-register.json'))
 validateOutboundCandidate(json('config-register.json'))
+validateIdentityPhase(api, json('config-register.json'), json('identity-phase.json'))
 
 // Reject remote and escaping references before the parser can read anything.
 function inspect(value, file, inSchema = false) {

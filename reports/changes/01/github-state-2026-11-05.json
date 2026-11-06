@@ -1,0 +1,56 @@
+{
+  "observed_date": "2026-11-05",
+  "timezone": "Asia/Shanghai",
+  "note": "Read-only GitHub API snapshot before the present documentation revision; counts refer to published API-visible records, not private or pending work.",
+  "main_sha": "2bf12e223e9a1e3bdd9044e32f7e8067df1f7afa",
+  "main_protected": false,
+  "main_rule_count": 0,
+  "pull_requests": [
+    {
+      "issue_comments": [],
+      "base": "docs/2026-11-04-business-contracts",
+      "head": "75cadbf80a0adaddd8680a87a0b07dfb22c1ad37",
+      "checks": [
+        {
+          "name": "check",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/zwh9616/campus-claw-plus/actions/runs/41982020319/job/127094056216"
+        }
+      ],
+      "inline_comment_count": 0,
+      "comment_count": 0,
+      "comments": [],
+      "state": "open",
+      "draft": false,
+      "review_count": 0,
+      "url": "https://github.com/zwh9616/campus-claw-plus/pull/5",
+      "number": 5,
+      "reviews": [],
+      "merged": false
+    },
+    {
+      "issue_comments": [],
+      "base": "main",
+      "head": "dcbd60530326444b0ac585238fe25bf7e3490143",
+      "checks": [
+        {
+          "name": "check",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/zwh9616/campus-claw-plus/actions/runs/41810304075/job/126507599330"
+        }
+      ],
+      "inline_comment_count": 0,
+      "comment_count": 0,
+      "comments": [],
+      "state": "open",
+      "draft": true,
+      "review_count": 0,
+      "url": "https://github.com/zwh9616/campus-claw-plus/pull/6",
+      "number": 6,
+      "reviews": [],
+      "merged": false
+    }
+  ]
+}
