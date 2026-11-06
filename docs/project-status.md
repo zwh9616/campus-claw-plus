@@ -27,7 +27,7 @@
 | 编号 / 变更 | 写规约并终审 | 审规约并实现 | 阶段 | 下一步：谁做什么 | 卡点 / 前置条件 | 最近进展与证据（change / PR / 验证） | 更新日期 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 00 公共业务契约 | 小葛 | 小张 | 写规约（归档验收补缺） | 小葛补错题订正用户路径及08/09责任，小张审查后重新独立复验 | G2已成立；G3未成立；BC-SC-01首次未通过，不归档 | #3/#5已入main 4cfd61d，集成复验通过；[真实独立输入输出](../reports/changes/00/independent-reading-2026-11-05.md)；[已交小葛补充](https://github.com/zwh9616/campus-claw-plus/pull/3#issuecomment-6660380420)，保留失败，不私定公共规则 | 2026-11-05 |
-| 01 身份与数据基础 | 小陈 | 小张 | 规约及公共冻结收口，等待最终检查/合入 | 小张完成#6最终审查与正常合并；之后做身份/迁移实现，小陈提交MySQL/TLS接线输入并终审身份实现 | G2成立；本PR未完成批准前不apply；真实DB/HTTPS未验；业务合并须G3 | R1—R4已在72fe59b复审接受；本次新增公共change、健康阶段Schema、七键frozen和000001..000003保留号；[本次验证](../reports/changes/01/public-freeze-2026-11-06.md)，当前完整本机check被Docker阻塞，最终CI待提交 | 2026-11-06 |
+| 01 身份与数据基础 | 小陈 | 小张 | 规约及公共冻结已推送，CI通过，本机验收阻塞 | 小张待Docker恢复后重跑check/audit/verify、绑定最终head批准并正常合并；之后做身份/迁移实现，小陈提交MySQL/TLS接线输入 | G2成立；本PR尚未批准/合入，不apply；业务合并须G3 | #6合同实现f50dc87的[完整CI42203445671](https://github.com/zwh9616/campus-claw-plus/actions/runs/42203445671)成功；[绑定head复审](https://github.com/zwh9616/campus-claw-plus/pull/6#pullrequestreview-5799022319)为COMMENT；[本次验证](../reports/changes/01/public-freeze-2026-11-06.md)保留本机Docker失败，最终合并仍核当前head | 2026-11-06 |
 | 02 前端应用基础 | 小张 | 小葛 | 规约与北大红视觉规约已合并，待样板实现 | #6公共冻结合入后，小葛先交登录/账号样板（360/1440同版本截图和mock）；小张实开确认再推广布局 | 自身规约已批准；真实联验等01 MySQL+HTTPS；业务合并须G3 | [#8](https://github.com/zwh9616/campus-claw-plus/pull/8)、[#11](https://github.com/zwh9616/campus-claw-plus/pull/11)已合入main14760f5；[视觉规范](standards/frontend-visual.md)已定，尚无页面/截图验收 | 2026-11-06 |
 | 03 独立MCP工具服务 | 小葛 | 小陈 | 未开始 | 小葛写工具、协议和失败场景 | 00及03规约确认；宿主接入另由07C验收 | 仅登记计划；规约未创建、未验证 | 2026-11-04 |
 | 04 资料与本班知识检索 | 小张 | 小陈 | 未开始 | 小张写上传、检索、出处和权限要求 | 00契约与01身份基础可用 | 仅登记计划；规约未创建、未验证 | 2026-11-04 |
@@ -145,3 +145,5 @@
 在原#6上整合main14760f5，逐块保留小陈历史交接、主干较新的00独立阅读失败和02/10事实，没有覆盖同伴工作。公共冻结范围由小陈PCR方案和小张既有复审衔接，按组长新规则直接修复；没冒称小葛审批。主分支保护实际设置成功；原#9提供的请求在个人仓库遇到422，去掉互斥的contexts输入及仅组织支持的空bypass对象后生效，保留checks app_id=15368和原保护强度。
 
 本机合同9组、24 Schema/99正反例+6语义输入双路径、41接口示例通过；关键健康值受控破坏退出1、逐字节恢复退出0；strict7/7、前端类型/构建、秘密扫描通过。audit曾成功，复跑遇registry TLS网络错误；完整check及实际verify均因Docker sailor-ingest.sock占用退出1（verify仅缺配置断言通过），当前不能算全门禁通过。正常重启及残留宿主进程恢复无效，已请用户方便时重启Windows；未删镜像/卷/数据。#9保护实际进展已交[评论](https://github.com/zwh9616/campus-claw-plus/pull/9#issuecomment-6682703513)。恢复及最终CI结果会追加到同次交接报告，未执行项不勾完成。
+
+已实际推送7d099c9及f50dc87到原#6；f50dc87远端完整CI42203445671成功（含check/audit/secret-scan/真实容器verify），这不改写本机失败。小张已提交绑定f50dc87的COMMENT复审5799022319，暂未APPROVE、未合并；API状态blocked，main仍14760f5。本次补证提交只更新台账/报告，最终批准和合并必须核对其最新head检查。

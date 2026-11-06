@@ -32,3 +32,7 @@ main保护已实际启用，见[API回读](../10/A/main-protection-applied-2026-
 02原规约和北大红已入main；本PR冻结合入后小葛可做登录/账号样板和mock，小张实开确认。01实际实现由小张继续，小陈先交DB/TLS接线输入与真实环境子包。详见[共享表](../../../docs/project-status.md)。最终head、CI、批准、合并与集成复验以随后真实结果追加，不预填。
 
 2026-11-06环境恢复尝试：Docker CLI正常启动/重启超时，核对安装目录后结束残留Desktop宿主进程再启动仍出现相同ingest占用；未重置Docker、未删镜像/卷/业务数据。已请用户在方便时重启Windows，保留本机失败阻断。#9管理员进展已实际交接[评论6682703513](https://github.com/zwh9616/campus-claw-plus/pull/9#issuecomment-6682703513)。
+
+## 推送与远端结果
+
+已推送7d099c9、f50dc87807eb442e8a3a7229add08431217955ff到原PR #6。该head的[CI42203445671](https://github.com/zwh9616/campus-claw-plus/actions/runs/42203445671)状态Success、用时1m30s；工作流未跳过check/audit/secret-scan/真实容器verify。小张已提交[绑定该head的COMMENT复审5799022319](https://github.com/zwh9616/campus-claw-plus/pull/6#pullrequestreview-5799022319)，公共R5内容收口，但未将本机故障写成通过，尚未APPROVE或合并。API确认#6 open、mergeable=true、mergeable_state=blocked，main14760f5。后续台账/报告补证提交仍需其最新head检查；运行合同/测试内容相对f50dc87不变。
