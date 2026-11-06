@@ -2,6 +2,6 @@
 
 执行人Kevcco（小陈，AI辅助），基线76d3d76，目标main14760f5。仅用于DO-SC-06..09的实际门禁验证，不代表A终审或G3。
 
-当前阶段：当前head缺少required check。仅在此禁止合并测试分支使用GitHub skip指令；工作流文件及全部断言不变。旧绿色head不能替代新head，等待实际API确认当前checks为空和合并阻断。
+当前阶段：真实合同破坏。只移除Principal.role枚举的student值，未改断言或工作流；预期原合同检查与完整CI非零，记录当前head pending/failure及BLOCKED。
 
 测试分支不得合并；不修改main保护，不使用其他成员凭据，不发送merge请求。恢复后由真实非作者审查者批准测试版本，再推送受控改动检查旧批准失效。
