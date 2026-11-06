@@ -33,7 +33,7 @@
 
 基线main 7e4c81f：锁定安装、原check/audit/secret-scan/verify全部退出0；原15项容器断言通过，[完整原输出](baseline-original-output.txt)保留命令、退出码及输出（工作目录脱敏）。
 
-实现e51a1ba：Node22.23.4 / npm10.9.7 / GNU Make4.3 / Docker28.3.3 / Compose2.39.1，真实`npm run gate`及`make gate`均四阶段退出0，各自15项容器断言通过；[该head CI](https://github.com/zwh9616/campus-claw-plus/actions/runs/42166753398)成功。Windows Node24.22.1首轮12项编排测试通过；本次补Make安装失败/并行调用反例后为13项，Windows缺Make如实记未验证，Linux实际执行将另留证。
+实现e51a1ba：Node22.23.4 / npm10.9.9 / GNU Make4.3 / Docker28.3.3 / Compose2.39.1，真实`npm run gate`及`make gate`均四阶段退出0，各自15项容器断言通过；[该head CI](https://github.com/zwh9616/campus-claw-plus/actions/runs/42166753398)成功。Windows Node24.22.1首轮12项编排测试通过；本次补Make安装失败/并行调用反例后为13项，Windows缺Make如实记未验证，Linux实际执行将另留证。
 
 后续代码d88bf2d的[CI](https://github.com/zwh9616/campus-claw-plus/actions/runs/42167069861)成功；Linux实际GNU Make边界测试13/13，无skip。该版本真实合同红绿、恢复后的完整gate及两目录并行verify全部通过，见[机器摘要](local-validation.json)。
 

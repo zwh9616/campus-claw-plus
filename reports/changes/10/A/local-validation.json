@@ -3,7 +3,7 @@
   "tested_commit": "d88bf2d990347cc92b5b8a3d927365ef49edb450",
   "tools": {
     "node": "22.23.4",
-    "npm": "10.9.7",
+    "npm": "10.9.9",
     "make": "4.3",
     "docker": "28.3.3",
     "compose": "2.39.1",
