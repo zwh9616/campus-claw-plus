@@ -1,0 +1,58 @@
+{
+  "base_commit": "e814590442b26daf3894b4a4eeaa49132b4233fd",
+  "source_description": "Tracked/staged source archive, Docker host has no Git metadata; exact executable inputs below. Final PR CI binds committed head.",
+  "files": [
+    {
+      "path": "backend/Dockerfile.identity",
+      "sha256": "a78bf59efa36cd4ae91cefcbd1406a569b04f0930948604b4c547fdc993c2c82"
+    },
+    {
+      "path": "backend/internal/integration/fixture/main.go",
+      "sha256": "bc2ab0ce2436f777932e6e0e0d5c2d695c180b9d69f1eb67b0cc01c95b12c470"
+    },
+    {
+      "path": "backend/internal/integration/wiring/wiring_test.go",
+      "sha256": "e5d981c6ab0beab4dc3a5682dba702c87e301ca9c54613de3dcbb77f1e052b75"
+    },
+    {
+      "path": "backend/internal/integration/wiringfixture/main.go",
+      "sha256": "0addde8152bdaaed3fb21d97c284cb889395d9f79cdcaccd44b75cfef3e70d39"
+    },
+    {
+      "path": "deploy/identity/compose.yaml",
+      "sha256": "7b88b416b1f602e9dc0357bb927551f102b756527925313526c60766a6c89191"
+    },
+    {
+      "path": "deploy/identity/mysql-entrypoint.sh",
+      "sha256": "c8c5b58045095cfe9387e28443b386371023b7ccd46fca36c2ba6617d3dbebe9"
+    },
+    {
+      "path": "deploy/identity/nginx.conf.template",
+      "sha256": "1892c2210b03503ccadd82a57f3a038c11e4742c3715b0e2d405726c368c745c"
+    },
+    {
+      "path": "deploy/identity/identity-proxy.conf",
+      "sha256": "e373c8bad152eb29712fd234583bf6cb0f25352cb01c469b9be36dbff4a5567a"
+    },
+    {
+      "path": "deploy/identity/inputs.json",
+      "sha256": "4f33144c28fbdfaccda948f5896dd78a6d5016caa7dac5066b8052554a514cfe"
+    },
+    {
+      "path": "scripts/identity-compose.mjs",
+      "sha256": "5ed5f9d88c0bc1762e60f797966737169945e7b3d2cb51878d6d8d5f55f2a135"
+    },
+    {
+      "path": "scripts/identity-wiring.test.mjs",
+      "sha256": "3623d50ce4d28d7ddfb96186322f3a1657ed64bc1122839f999115adc4c3f5a8"
+    },
+    {
+      "path": "scripts/verify-identity-wiring.mjs",
+      "sha256": "70a0e473f5e7e2f2ae037dc1d2791dc1118f20044bbcb0b9657770ee1da5757c"
+    },
+    {
+      "path": "package.json",
+      "sha256": "71d5934dd8a7b18553d84071dde027e72c847974482befd1c8e4780f01ae243e"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+user nginx;
+worker_processes auto;
+error_log /dev/stderr crit;
+pid /var/run/nginx.pid;
+events { worker_connections 1024; }
+http {
+    include /etc/nginx/mime.types;
+    # Request URI, headers and credentials must not enter auxiliary logs.
+    access_log off;
+    server_tokens off;
+    server {
+        listen 443 ssl;
+        server_name ${IDENTITY_HTTPS_HOST};
+        ssl_certificate /run/https/cert.pem;
+        ssl_certificate_key /run/https/key.pem;
+        ssl_protocols TLSv1.2 TLSv1.3;
+        # Let Go's bounded strict reader return the frozen JSON 413 contract.
+        # Stream upstream instead of spooling an unbounded request in Nginx.
+        client_max_body_size 0;
+        client_body_timeout 10s;
+        root /usr/share/nginx/html;
+        location = /health { include /etc/nginx/identity-proxy.conf; }
+        location ^~ /api/ { include /etc/nginx/identity-proxy.conf; }
+        location / { try_files $uri $uri/ /index.html; }
+    }
+}
