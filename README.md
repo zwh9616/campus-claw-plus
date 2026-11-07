@@ -15,6 +15,7 @@
 - [前端视觉规约](docs/standards/frontend-visual.md)：北大红#94070A、暖白、简约布局，参考Canvas/Moodle信息组织；小张已确认#15代表样板，真实页面仍由小葛继续。
 - [协作规范](docs/standards/collaboration.md)：按变更两人接力；每组可提交修改必须同提交更新共享表。
 
+
 ## 从零启动身份服务
 
 需要Docker、Node>=22.19及持有人提供的数据库/HTTPS可信证书和本机秘密文件。无默认证书或账号口令；不把测试临时CA安装到系统，不跳过TLS校验。准备细节见[身份部署步骤](deploy/identity/README.md)。
@@ -72,7 +73,7 @@ npm run gate
 - check：基础配置/规则入口、OpenAPI/Schema及语义反例、前端类型和构建、Go vet/test/build、严格OpenSpec。任何失败非零退出。
 - audit：根与前端npm依赖high/critical阻断；不是Go/容器漏洞扫描的替代品。
 - secret-scan：官方Gitleaks8.30.1，首次下载验证SHA256；扫描全部Git历史和暂存内容并全量隐藏原值。当前支持Windows/Linux x64，其他平台可手动使用同版本。
-- verify：保留真实容器构建/健康、配置失败退出码、占用、恢复、JSON日志、停止再启动的原15项断言；读取本机.env的HTTP_PORT作为容器内部端口，独立项目使用临时环回端口，不抢占普通Compose的5173/HTTP_PORT，不停止其他项目。普通运行的compose.yaml和健康合同不变。
+- verify：把原启动/配置/健康/日志/停止回归类别迁移到当前默认身份入口，再运行真实身份/迁移测试。使用随机独占项目、临时配置/CA和Docker分配的环回端口，保留唯一MySQL健康合同；只清理自己的测试容器、网络与数据卷，不影响普通运行项目。
 - 10 A进度与验收边界见[门禁交接](reports/changes/10/A/README.md)。CI绿色不等于主干保护生效；G3还要求有效保护、受控阻断、小葛终审和main集成复验。
 - 输出：控制台；本机机器报告在output/verification/（忽略）；可审查结论和SC映射在[验收记录](docs/lesson-07/verification.md)。
 - CI在push/PR自动运行同一套检查。按2026-10-29确认的归档范围，采用C已提供的运行/页面/新会话证据和CI结果；已取消的三项前置见[归档记录](docs/lesson-07/archive-record.md)，未执行结果不冒充通过。

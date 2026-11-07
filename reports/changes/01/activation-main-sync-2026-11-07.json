@@ -85,7 +85,9 @@
     "high": 33,
     "reported_exit_code": 1,
     "source": "https://github.com/zwh9616/campus-claw-plus/pull/14#pullrequestreview-5811356408",
-    "raw_report_available_here": false
+    "raw_report_available_here": true,
+    "raw_report_gzip": "reports/changes/01/mysql-image-audit-2026-11-07.json.gz",
+    "uncompressed_sha256_verified": "4557868fe25ddc395f22558d71a1e47b41a718f570f82d77050eca16fc537e1d"
   },
   "registry_query": {
     "executor": "zwh9616 / 小张",
@@ -115,5 +117,6 @@
   "diff_check": {
     "command": "git diff --cached --check",
     "exit_code": 0
-  }
+  },
+  "peer_integrated": "c91129f"
 }
