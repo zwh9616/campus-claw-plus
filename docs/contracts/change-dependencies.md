@@ -29,6 +29,6 @@
 目录协调窗口：小葛负责frontend及前端锁的冲突协调；小张负责公共Go入口/身份/迁移编号；小陈负责AI/RAG/MCP、Compose/镜像/CI。这不是固定技术实现分工，实际编码/审查按每个change两人表执行；跨目录变更说明影响并请窗口协调，不新增第三审批。共享装配走小PR，两位变更负责人检查自身迁移，不增加固定第三审批人。review绑定head SHA，关键改动需复审；归档需集成版本实测，起草完成不算apply批准。
 
 
-当前G1已批准；00已合入main `4cfd61d8119c51bc3bf2870a17c9754f0975b3dc`，main CI与小张本机check/verify通过，G2已成立；G3尚未成立。[集成证据](../../reports/changes/00/main-integration-2026-11-05.md)，参见[共享表](../project-status.md)。G1的无历史会话验收证据与真实规约批准分列，前者仍需在00归档前留证。
+当前G1已批准；00已合入main `4cfd61d8119c51bc3bf2870a17c9754f0975b3dc`，main CI与小张本机check/verify通过，G2已成立，[00集成证据](../../reports/changes/00/main-integration-2026-11-05.md)。10 A已获小葛对b81d698终审批准并正常合入main `55f0e8364e150ff4c42f9af1facc8763e4274fa2`，同SHA完整CI42356275838成功、保护复验及小陈核对已完成，G3已成立，见[10 A共同记录](../../reports/changes/10/A/main-integration-2026-11-07.md)及[共享表](../project-status.md)。各业务自身依赖/终审仍须满足，10 B/C仍待验。G1的无历史会话验收证据与真实规约批准分列，前者仍需在00归档前留证。
 
 2026-11-06 补充：01 的公共健康、七键、迁移号由 [公共冻结变更](../../openspec/changes/2026-11-06-identity-public-contracts/design.md) 收口，实际批准及合入后可开始01已冻结范围的实现。02原规约及北大红修订已随#8/#11合入；公共冻结合入后小葛可先做登录/账号样板和mock，真实登录联验等01真实MySQL+HTTPS。MySQL服务端初始化/卷/TLS接线输入须由小陈提交子包、先登记后使用。业务合并仍须G3，保护设置完成不等于G3完成。

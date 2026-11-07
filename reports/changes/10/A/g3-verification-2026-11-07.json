@@ -1,0 +1,215 @@
+{
+  "checked_at": "2026-11-07T09:21:57.7295752+00:00",
+  "executor": "小陈 / Kevcco（AI辅助）",
+  "scenarios": [
+    "DO-SC-02",
+    "DO-SC-08",
+    "DO-SC-09",
+    "DO-SC-10"
+  ],
+  "pr9": {
+    "number": 9,
+    "state": "closed",
+    "merged": true,
+    "merged_at": "2026-11-07T08:37:26Z",
+    "merge_commit_sha": "55f0e8364e150ff4c42f9af1facc8763e4274fa2",
+    "head": "b81d6989f90b85d702f8b1d4c03abf6b5a2e612f",
+    "merged_by": "gjj6666"
+  },
+  "pr9_reviews": [
+    {
+      "id": 5798524934,
+      "state": "COMMENTED",
+      "commit_id": "e6b74bd01e62e05aab1c2ee38a5d05437a549ac3",
+      "submitted_at": "2026-11-06T09:58:13Z",
+      "html_url": "https://github.com/zwh9616/campus-claw-plus/pull/9#pullrequestreview-5798524934",
+      "login": "gjj6666"
+    },
+    {
+      "id": 5811099824,
+      "state": "APPROVED",
+      "commit_id": "b81d6989f90b85d702f8b1d4c03abf6b5a2e612f",
+      "submitted_at": "2026-11-07T08:37:21Z",
+      "html_url": "https://github.com/zwh9616/campus-claw-plus/pull/9#pullrequestreview-5811099824",
+      "login": "gjj6666"
+    }
+  ],
+  "main": {
+    "name": "main",
+    "protected": true,
+    "protection": {
+      "enabled": true,
+      "required_status_checks": {
+        "enforcement_level": "everyone",
+        "contexts": [
+          "check"
+        ],
+        "checks": [
+          {
+            "context": "check",
+            "app_id": 15368
+          }
+        ]
+      }
+    },
+    "sha": "55f0e8364e150ff4c42f9af1facc8763e4274fa2"
+  },
+  "main_ci": {
+    "id": 42356275838,
+    "head_sha": "55f0e8364e150ff4c42f9af1facc8763e4274fa2",
+    "event": "push",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/zwh9616/campus-claw-plus/actions/runs/42356275838"
+  },
+  "jobs": [
+    {
+      "id": 128354942897,
+      "name": "check",
+      "head_sha": "55f0e8364e150ff4c42f9af1facc8763e4274fa2",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/zwh9616/campus-claw-plus/actions/runs/42356275838/job/128354942897",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-07T08:37:32Z",
+          "completed_at": "2026-11-07T08:37:33Z"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-07T08:37:33Z",
+          "completed_at": "2026-11-07T08:37:35Z"
+        },
+        {
+          "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-07T08:37:35Z",
+          "completed_at": "2026-11-07T08:37:37Z"
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-07T08:37:37Z",
+          "completed_at": "2026-11-07T08:37:38Z"
+        },
+        {
+          "name": "Run npm run setup",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-07T08:37:38Z",
+          "completed_at": "2026-11-07T08:37:39Z"
+        },
+        {
+          "name": "Run the same complete gate as local development",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-07T08:37:39Z",
+          "completed_at": "2026-11-07T08:38:49Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-07T08:38:49Z",
+          "completed_at": "2026-11-07T08:38:49Z"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-11-07T08:38:49Z",
+          "completed_at": "2026-11-07T08:38:49Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-11-07T08:38:49Z",
+          "completed_at": "2026-11-07T08:38:49Z"
+        }
+      ]
+    }
+  ],
+  "trees": {
+    "reviewed": "7ee6b898e8262573d193f720a0a79579876ce46a",
+    "integrated": "7ee6b898e8262573d193f720a0a79579876ce46a"
+  },
+  "current_pr17_rollup": {
+    "data": {
+      "viewer": {
+        "login": "Kevcco"
+      },
+      "repository": {
+        "viewerPermission": "WRITE",
+        "defaultBranchRef": {
+          "name": "main",
+          "target": {
+            "oid": "55f0e8364e150ff4c42f9af1facc8763e4274fa2"
+          },
+          "branchProtectionRule": null
+        },
+        "pullRequest": {
+          "number": 17,
+          "author": {
+            "login": "gjj6666"
+          },
+          "headRefName": "codex/10-main-acceptance-2026-11-07",
+          "headRefOid": "dd5ab28032f4dd2b75a4718af3942521495f2e54",
+          "baseRefOid": "55f0e8364e150ff4c42f9af1facc8763e4274fa2",
+          "mergeable": "MERGEABLE",
+          "mergeStateStatus": "BLOCKED",
+          "reviewDecision": "REVIEW_REQUIRED",
+          "commits": {
+            "nodes": [
+              {
+                "commit": {
+                  "oid": "dd5ab28032f4dd2b75a4718af3942521495f2e54",
+                  "statusCheckRollup": {
+                    "state": "SUCCESS",
+                    "contexts": {
+                      "nodes": [
+                        {
+                          "__typename": "CheckRun",
+                          "name": "check",
+                          "status": "COMPLETED",
+                          "conclusion": "SUCCESS",
+                          "isRequired": true,
+                          "detailsUrl": "https://github.com/zwh9616/campus-claw-plus/actions/runs/42356486461/job/128355590964"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "protection_read_limits": {
+    "full_endpoint_status": 404,
+    "branch_protection_rule": null,
+    "effective_rules": [],
+    "full_settings_source": "main-protection-applied-2026-11-06.json",
+    "note": "当前WRITE账号仅确认branch protected、everyone/check/app15368、required标记及真实BLOCKED；不冒称重新读取完整管理员设置。"
+  },
+  "stale_experiment_source": "stale-review-proof-2026-11-07.md",
+  "conclusion": "G3已成立；10 B/C及整体归档仍待验"
+}
