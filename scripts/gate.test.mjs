@@ -133,3 +133,11 @@ test('DO-SC-05 Make installation failure stops setup; -j does not run targets co
     assert.equal(readFileSync(join(directory, 'calls'), 'utf8'), 'run check\nrun audit\nrun secret-scan\nrun verify\n')
   } finally { rmSync(directory, { recursive: true, force: true }) }
 })
+
+// DO-SC-04/07: controlled substantive test update after real non-author approval.
+test('DO-SC-04 exit-code 255 remains a blocking failure', async () => {
+  const result = await runSequence([step('boundary', 'process.exit(255)'), step('later')], quiet)
+  assert.equal(result.exitCode, 255)
+  assert.equal(result.results[0].reason, 'failed')
+  assert.deepEqual(result.notRun, ['later'])
+})
