@@ -32,3 +32,7 @@ config-register.json中仅登记http://mcp:8090/mcp，enabled=false。须03/07C�
 2026-11-06 公共修订见 [identity-public-contracts D1—D3](../../openspec/changes/2026-11-06-identity-public-contracts/design.md)。当前 skeleton 仍仅空依赖健康、active HTTP_PORT；[七个 frozen 键](../contracts/config-register.json) 和 [identity 阶段](../contracts/identity-phase.json) 不是已经运行。01 引入 MySQL 的同一受审实现提交必须同步实现、探针、Schema/OpenAPI 当前引用、配置激活/空样例、规范和全部用例，不能同时接受两种成功载荷。
 
 启用后健康每请求真实 Ping、3 秒总预算，up 为200、down/超时为503，保留服务端标识和日志且不泄露连接信息；业务数据库5秒预算/503与504边界另按01规约。HTTPS和DB均验证可信证书，后台不读取离线迁移凭据；七键按使用进程验证必填/空白/非法，失败非零。MySQL初始化/卷/TLS接线输入随01子包先登记后使用，真实值不入Git/镜像/日志。真实数据库、证书和迁移恢复仍需01执行验收，合同用例不能替代。
+
+## 2026-11-07 主干秘密扫描精确误报恢复
+
+全历史扫描包括尚未合入的远端分支。身份候选637986f的迁移manifest中两个公开SQL SHA-256被generic-api-key误判。`.gitleaksignore`仅采用#15已经记录的两条完整历史指纹（提交+文件+规则+行号），并独立重算该提交六个SQL文件确认全部与manifest一致；不允许整个文件/目录/规则，不缩小--all，不取消暂存扫描。新提交或行号不会沿用此历史豁免；同一配置下随机合成api_key仍退出1。详见reports/changes/10/A/main-secret-scan-recovery-2026-11-07.md及JSON。此处不是身份公共合同、生产激活或G3批准。
