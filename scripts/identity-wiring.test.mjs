@@ -5,7 +5,7 @@ import { resolve } from 'node:path'
 import { parse } from 'yaml'
 import { validateWiringInputs } from './identity-compose.mjs'
 
-const env = () => ({ IDENTITY_STATE_DIR: resolve('output/identity'), IDENTITY_PROXY_NETWORK: 'campus-isolated', IDENTITY_PROXY_IP: '172.30.0.2', IDENTITY_HTTPS_HOST: 'campus.test', IDENTITY_HTTPS_PORT: '8443', HTTPS_CERT_FILE: resolve('output/identity/https.pem'), HTTPS_KEY_FILE: resolve('output/identity/https.key') })
+const env = () => ({ HTTP_PORT:'18080', IDENTITY_STATE_DIR: resolve('output/identity'), IDENTITY_PROXY_NETWORK: 'campus-isolated', IDENTITY_PROXY_IP: '172.30.0.2', IDENTITY_HTTPS_HOST: 'campus.test', IDENTITY_HTTPS_PORT: '8443', HTTPS_CERT_FILE: resolve('output/identity/https.pem'), HTTPS_KEY_FILE: resolve('output/identity/https.key') })
 test('IDF-SC-18 required input, hostname and exact proxy boundaries', () => {
   validateWiringInputs(env())
   for (const key of Object.keys(env())) for (const value of ['', ' ', undefined]) assert.throws(() => validateWiringInputs({ ...env(), [key]: value }))
@@ -28,8 +28,20 @@ test('IDF-SC-17/18 isolated wiring keeps secrets, ports and current phase separa
   assert.deepEqual(c.services.preview.profiles, ['preview'])
   assert.deepEqual(c.services.admin.profiles, ['tools'])
   assert.deepEqual(c.services.gateway.command, ['nginx', '-g', 'daemon off;'])
-  assert.equal(JSON.parse(readFileSync('docs/contracts/identity-phase.json')).current_phase, 'skeleton')
-  assert.deepEqual(Object.keys(parse(readFileSync('compose.yaml', 'utf8')).services).sort(), ['backend', 'frontend'])
+  assert.equal(JSON.parse(readFileSync('docs/contracts/identity-phase.json')).current_phase, 'identity')
+  const root=parse(readFileSync('compose.yaml','utf8'))
+  assert.deepEqual(Object.keys(root.services).sort(),['admin','backend','frontend','mysql'])
+  assert.equal(root.services.backend.profiles,undefined)
+  assert.equal(root.services.mysql.ports,undefined)
+  assert.equal(root.services.backend.ports,undefined)
+  assert.deepEqual(root.services.backend.healthcheck.test,['CMD','/server','--healthcheck'])
+  assert.equal(root.services.backend.build.dockerfile,undefined)
+  assert.deepEqual(root.services.admin.profiles,['tools'])
+  assert.equal(root.services.frontend.ports.length,1)
+  assert.match(root.services.frontend.ports[0],/^127\.0\.0\.1:/)
+  const productionProxy=readFileSync('deploy/identity/production-proxy.conf.template','utf8')
+  assert.match(productionProxy,/proxy_pass http:\/\/backend:\$\{HTTP_PORT\}/)
+  assert.doesNotMatch(productionProxy,/http_x_real_ip|proxy_add_x_forwarded_for/)
   const proxy = readFileSync('deploy/identity/identity-proxy.conf', 'utf8')
   assert.match(proxy, /proxy_set_header X-Real-IP \$remote_addr;/)
   assert.match(proxy, /proxy_set_header X-Forwarded-For "";/)

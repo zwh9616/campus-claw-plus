@@ -15,6 +15,7 @@ export function validateWiringInputs(env, { ephemeral = false } = {}) {
   if (isIP(env.IDENTITY_PROXY_IP) !== 4 || /^(0\.|127\.|169\.254\.)/.test(env.IDENTITY_PROXY_IP)) throw new Error('IDENTITY_PROXY_IP invalid')
   const host = env.IDENTITY_HTTPS_HOST
   if (host.length > 253 || !host.split('.').every(label => /^[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?$/.test(label)) || isIP(host)) throw new Error('IDENTITY_HTTPS_HOST invalid')
+  if (!/^\d+$/.test(env.HTTP_PORT ?? "") || +env.HTTP_PORT < 1 || +env.HTTP_PORT > 65535) throw new Error("HTTP_PORT invalid")
   const port = env.IDENTITY_HTTPS_PORT
   if (!/^\d+$/.test(port) || +port > 65535 || +port < (ephemeral ? 0 : 1)) throw new Error('IDENTITY_HTTPS_PORT invalid')
   for (const key of register.existing_frozen_inputs) if (!isAbsolute(env[key] ?? '')) throw new Error(`${key} must be absolute`)
@@ -40,7 +41,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
     checkWiringFiles(env)
     // Avoid expanded `config` output: it contains runtime credentials.
     if (process.argv.slice(3).includes('config')) throw new Error('Expanded configuration is not a shareable diagnostic; use the verifier')
-    const result = spawnSync('docker', ['compose', '--env-file', file, '--file', 'deploy/identity/compose.yaml', ...process.argv.slice(3)], { stdio: 'inherit', env: { ...process.env, ...env } })
+    const result = spawnSync('docker', ['compose', '--env-file', file, '--file', 'compose.yaml', ...process.argv.slice(3)], { stdio: 'inherit', env: { ...process.env, ...env } })
     process.exitCode = result.status ?? 1
   } catch (error) {
     // Filesystem errors can expose private paths; known validation errors omit values.

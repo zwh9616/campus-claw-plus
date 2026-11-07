@@ -1,0 +1,19 @@
+{
+  "time": "2026-11-06T05:13:31.086Z",
+  "node": "v22.23.4",
+  "exitCode": 1,
+  "results": [
+    {
+      "name": "check",
+      "exitCode": 1,
+      "reason": "failed",
+      "signal": null,
+      "durationMs": 1795
+    }
+  ],
+  "notRun": [
+    "audit",
+    "secret-scan",
+    "verify"
+  ]
+}

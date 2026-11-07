@@ -1,5 +1,5 @@
 # CampusClawPlus 工程约定
-当前运行仍是第7课最小骨架，历史主规约见[spec](openspec/specs/project-bootstrap/spec.md)，归档依据见[历史变更](openspec/changes/archive/2026-10-28-project-bootstrap/)。本轮执行[00规约](openspec/changes/2026-11-04-business-contracts/proposal.md)、[design](openspec/changes/2026-11-04-business-contracts/design.md)、[spec](openspec/changes/2026-11-04-business-contracts/specs/business-contracts/spec.md)及[tasks](openspec/changes/2026-11-04-business-contracts/tasks.md)：仅落公共合同、规则和检查，不实现教学业务。PB/SC保留历史含义，新需求使用BC及后续change自己的前缀。
+本分支默认运行已接入01身份与MySQL阶段，实际合入/验收状态见共享表。第7课骨架为历史基线，历史主规约见[spec](openspec/specs/project-bootstrap/spec.md)，归档依据见[历史变更](openspec/changes/archive/2026-10-28-project-bootstrap/)。本轮执行[00规约](openspec/changes/2026-11-04-business-contracts/proposal.md)、[design](openspec/changes/2026-11-04-business-contracts/design.md)、[spec](openspec/changes/2026-11-04-business-contracts/specs/business-contracts/spec.md)及[tasks](openspec/changes/2026-11-04-business-contracts/tasks.md)；00只负责公共合同。当前01按已批准身份规约接入数据库/身份，02按已批准规约推进登录；教学业务仍暂停。PB/SC保留历史含义，新需求使用BC及后续change自己的前缀。
 
 ## 每次开始工作
 - 必读 [安全规范](docs/standards/security.md)，按范围必须读取下表规则；这些文件是约束，不是可选参考。
@@ -11,8 +11,8 @@
 - 配置/镜像/日志/发布：[部署规范](docs/standards/deployment.md)，验证版本使用 [.agents/skills/campus-release-check/SKILL.md](.agents/skills/campus-release-check/SKILL.md)。
 
 ## 硬约束
-- 配置样例仅含[配置登记](docs/contracts/config-register.json)active的空值键，当前仍只有HTTP_PORT=；未来新增键须受审change及缺失/超时规则。真实值只在本机.env/进程环境，不进Git、镜像、日志。
-- 当前仅公开GET /health，无认证、数据库、模型；返回{"status":"ok","dependencies":{}}，不加业务码外层；服务端生成X-Request-ID与JSON日志关联。
+- 配置样例仅含[配置登记](docs/contracts/config-register.json)active的空值键，本分支已按01原子激活HTTP_PORT、七个身份键及五个R7接线键，均为空值；新增键须受审change及缺失/超时规则。真实值只在本机.env/进程环境，不进Git、镜像、日志。
+- 当前公开GET /health每请求真实MySQL Ping，总预算3秒；200为status=ok/dependencies.mysql=up，失败503为status=error/mysql=down，不加业务码外层。六个已登记身份接口按01鉴权，planned业务仍不可调用；服务端生成X-Request-ID与JSON日志关联。
 - 当前frontend仍为React18静态首页、不依赖API；G2后02等按自身批准规约扩展，不生成假业务入口。frozen合同不等于已实现，planned操作禁止提前接线。
 - cmd/server只装配；config负责配置；httpserver负责HTTP边界；后续业务/存储不得反向依赖HTTP，不为骨架创建空业务层。
 - 失败退出非零；不能删断言、放宽门禁、伪造新会话或跨机器通过。

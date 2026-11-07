@@ -1,11 +1,11 @@
 # 部署运维规范
-当前运行两个独立服务frontend/backend，无数据库、模型、持久卷。00只落合同和阶段规则，不加容器。后续依赖必须G2及自身规约批准后引入，同时更新接口、探针、测试及规则；违反本文件须修复并重新验证。
+当前默认运行frontend/backend/MySQL，离线admin为tools profile；MySQL命名卷持久化，无模型服务。00只落合同和阶段规则，不加容器。后续依赖必须G2及自身规约批准后引入，同时更新接口、探针、测试及规则；违反本文件须修复并重新验证。
 | 条目 | 规则/示例 | 检查 |
 | --- | --- | --- |
 | 构建 | Docker分阶段；依赖精确锁定，基础镜像固定摘要；Go静态程序仅复制运行产物，前端仅复制dist | 干净目录同提交构建；禁止COPY .env与使用latest标签 |
-| 环境配置 | 开发/测试/生产隔离，同制品换运行配置；config-register.active登记键/所有者/必需性/缺失行为/超时，当前只有HTTP_PORT | 样例空值且与active精确一致；HTTP_PORT原失败/恢复断言保留，新增键须新场景 |
-| 端口 | 前端127.0.0.1:5173→80；后端127.0.0.1:HTTP_PORT→HTTP_PORT | 8080是示例，可用空闲端口写入.env并记录；不得停止无关项目来抢端口 |
-| 健康 | /health免认证，200与status=ok、dependencies={}；镜像内/server --healthcheck检查真实状态/类型/载荷/标识 | 容器healthy而非仅running；不依赖镜像有curl |
+| 环境配置 | 开发/测试/生产隔离，同制品换运行配置；config-register.active登记键/所有者/必需性/缺失行为/超时，当前active键以登记表为准 | 样例空值且与active精确一致；HTTP_PORT原失败/恢复断言保留，新增键须新场景 |
+| 端口 | 后端/MySQL不发布主机端口；前端仅127.0.0.1:IDENTITY_HTTPS_PORT→443，同源HTTPS | 8080是示例，可用空闲端口写入.env并记录；不得停止无关项目来抢端口 |
+| 健康 | /health免认证，200与status=ok、dependencies.mysql=up；失败503/status=error/mysql=down；镜像内/server --healthcheck检查真实状态/类型/载荷/标识 | 容器healthy而非仅running；不依赖镜像有curl |
 | 停机 | SIGTERM/SIGINT停止接新请求、10秒内排空；Compose停止宽限15秒 | 单元验证在途请求完成；实际容器停止后不再提供本项目响应 |
 | 日志 | stdout每行JSON，ts UTC RFC3339/level/module/message/request_id；请求加method/path/status/duration_ms | 启动request_id=null；HTTP标识非空、同X-Request-ID，禁止敏感值 |
 | 发布留痕 | docs/lesson-07/记录实际运行及批准的范围调整；docs/verification.md仅索引；本轮由C按调整范围在B分支归档，合并和标签另行处理 | 不跳过自动门禁、不冒称未执行结果或他人批准 |
@@ -13,7 +13,7 @@
 
 ## 后续运维约束
 - 新运行证据写reports/changes/<编号>/。00/10按G1/G2/G3分阶段交付，所有业务合并需G3；旧骨架归档例外不能自动扩展到新change。
-- 新增必需依赖down时按受审合同响应503并阻断依赖它的流量；LLM暂时失败不等于所有资料浏览不可用。当前health仍为空依赖，不提前增加假健康项。
+- 新增必需依赖down时按受审合同响应503并阻断依赖它的流量；LLM暂时失败不等于所有资料浏览不可用。当前health真实检查MySQL，禁止回退空依赖。
 - 观测至少请求量、错误率、p95耗时、依赖状态；错误率5分钟>5%、p95>500ms或依赖连续失败3次通知当周负责人，C主责排查恢复。本轮未接告警系统，不宣称已运行。
 - 数据迁移先加字段→双写→切读→最后删旧；已发布迁移不修改；旧版本须兼容，有备份和回滚/补偿。
 - 有持久数据后每日MySQL备份/Qdrant快照保留7天，RPO24小时、RTO60分钟；C在隔离实例恢复演练并记录实际耗时。本轮无数据备份任务。
@@ -28,6 +28,8 @@ JSON日志正式验收对象为Go应用输出，HTTP完成日志使用duration_m
 
 ## 01身份阶段的冻结与启用
 
-2026-11-06 公共修订见 [identity-public-contracts D1—D3](../../openspec/changes/2026-11-06-identity-public-contracts/design.md)。当前 skeleton 仍仅空依赖健康、active HTTP_PORT；[七个 frozen 键](../contracts/config-register.json) 和 [identity 阶段](../contracts/identity-phase.json) 不是已经运行。01 引入 MySQL 的同一受审实现提交必须同步实现、探针、Schema/OpenAPI 当前引用、配置激活/空样例、规范和全部用例，不能同时接受两种成功载荷。
+2026-11-06 公共修订见 [identity-public-contracts D1—D3](../../openspec/changes/2026-11-06-identity-public-contracts/design.md)。历史skeleton仅空依赖健康、active HTTP_PORT；当前默认入口已激活identity阶段，[七个身份键与五个接线键](../contracts/config-register.json) 和 [identity 阶段](../contracts/identity-phase.json) 现已同步默认入口；部署实测与最终终审状态见共享表。01 引入 MySQL 的同一受审实现提交必须同步实现、探针、Schema/OpenAPI 当前引用、配置激活/空样例、规范和全部用例，不能同时接受两种成功载荷。
 
 启用后健康每请求真实 Ping、3 秒总预算，up 为200、down/超时为503，保留服务端标识和日志且不泄露连接信息；业务数据库5秒预算/503与504边界另按01规约。HTTPS和DB均验证可信证书，后台不读取离线迁移凭据；七键按使用进程验证必填/空白/非法，失败非零。MySQL初始化/卷/TLS接线输入随01子包先登记后使用，真实值不入Git/镜像/日志。真实数据库、证书和迁移恢复仍需01执行验收，合同用例不能替代。
+
+01生产接线补记：R7五个输入已经小张接受并在同一实施提交激活；本机状态文件、数据库初始化SQL、凭据env文件和TLS私钥仅置于忽略的运行目录，均不进入构建上下文/镜像/日志。backend只挂CA并取得DML连接，admin只在离线tools读取DDL连接；默认启动不自动迁移或初始化。原骨架健康回归已迁移到唯一MySQL健康合同，历史archive不追改。

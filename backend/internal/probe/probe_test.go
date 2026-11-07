@@ -13,15 +13,18 @@ func TestProbeContract(t *testing.T) {
 		status                int
 		valid                 bool
 	}{
-		{"normal", `{"status":"ok","dependencies":{}}`, "application/json; charset=utf-8", "0123456789abcdef0123456789abcdef", 200, true},
-		{"wrong_status", `{"status":"ok","dependencies":{}}`, "application/json", "0123456789abcdef0123456789abcdef", 503, false},
+		{"normal", `{"status":"ok","dependencies":{"mysql":"up"}}`, "application/json; charset=utf-8", "0123456789abcdef0123456789abcdef", 200, true},
+		{"old_skeleton_rejected", `{"status":"ok","dependencies":{}}`, "application/json", "0123456789abcdef0123456789abcdef", 200, false},
+		{"database_down", `{"status":"error","dependencies":{"mysql":"down"}}`, "application/json", "0123456789abcdef0123456789abcdef", 503, false},
+		{"wrong_dependency", `{"status":"ok","dependencies":{"mysql":"down"}}`, "application/json", "0123456789abcdef0123456789abcdef", 200, false},
+		{"wrong_status", `{"status":"ok","dependencies":{"mysql":"up"}}`, "application/json", "0123456789abcdef0123456789abcdef", 503, false},
 		{"bad_json", "not-json", "application/json", "0123456789abcdef0123456789abcdef", 200, false},
-		{"wrong_media", `{"status":"ok","dependencies":{}}`, "text/html", "0123456789abcdef0123456789abcdef", 200, false},
-		{"missing_id", `{"status":"ok","dependencies":{}}`, "application/json", "", 200, false},
+		{"wrong_media", `{"status":"ok","dependencies":{"mysql":"up"}}`, "text/html", "0123456789abcdef0123456789abcdef", 200, false},
+		{"missing_id", `{"status":"ok","dependencies":{"mysql":"up"}}`, "application/json", "", 200, false},
 		{"missing_dependencies", `{"status":"ok"}`, "application/json", "0123456789abcdef0123456789abcdef", 200, false},
 		{"null_dependencies", `{"status":"ok","dependencies":null}`, "application/json", "0123456789abcdef0123456789abcdef", 200, false},
-		{"extra_field", `{"status":"ok","dependencies":{},"extra":true}`, "application/json", "0123456789abcdef0123456789abcdef", 200, false},
-		{"extra_document", `{"status":"ok","dependencies":{}}{}`, "application/json", "0123456789abcdef0123456789abcdef", 200, false},
+		{"extra_field", `{"status":"ok","dependencies":{"mysql":"up"},"extra":true}`, "application/json", "0123456789abcdef0123456789abcdef", 200, false},
+		{"extra_document", `{"status":"ok","dependencies":{"mysql":"up"}}{}`, "application/json", "0123456789abcdef0123456789abcdef", 200, false},
 	} {
 		t.Run(test.name, func(t *testing.T) {
 			server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {

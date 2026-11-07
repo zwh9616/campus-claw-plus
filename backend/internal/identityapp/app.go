@@ -1,6 +1,5 @@
-// Package identityapp assembles the approved identity implementation. Production
-// cmd/server activation remains one atomic change with the MySQL/HTTPS wiring,
-// public phase, probe and active configuration; there is no environment fallback.
+// Package identityapp assembles the active identity service after verifying TLS
+// and offline migration state. It never performs DDL or reads migration credentials.
 package identityapp
 
 import (

@@ -1,10 +1,10 @@
 # 后端开发规范
-当前运行仍是Go标准库骨架，不引入数据库或模型。00只落实[公共合同](../contracts/README.md)与检查；G2及自身规约批准后，各业务按OpenAPI3.1和唯一2020-12 Schema实施。health继续原载荷，不能将frozen认证接口当已运行或给planned操作补假实现。
+当前运行已按01接入MySQL及六个身份操作，不引入模型或教学业务。00只落实[公共合同](../contracts/README.md)与检查；G2及自身规约批准后，各业务按OpenAPI3.1和唯一2020-12 Schema实施。health仅采用MySQL up/down合同；planned操作禁止假实现。
 | 条目 | 规则/示例 | 检查 |
 | --- | --- | --- |
 | 分层 | backend/cmd/server装配；internal/config读取配置；internal/httpserver处理HTTP；未来service业务、repository接口、adapter实现 | 当前import单向，入口不写HTTP业务；后续service不依赖transport/adapter，SQL只在存储适配器 |
-| 当前接口 | GET /health免认证，200、application/json、{"status":"ok","dependencies":{}}；X-Request-ID为服务端32位十六进制 | SC-02/03/16；严格解析字段，不用B旧草稿code/message外层 |
-| HTTP错误 | 未知路由404，错误方法405；当前无独立业务码，以HTTP及具体契约判定 | Go表驱动测试，错误不能返回200 |
+| 当前接口 | GET /health免认证，200、application/json、{"status":"ok","dependencies":{"mysql":"up"}}；失败503/mysql=down；X-Request-ID为服务端32位十六进制 | SC-02/03/16；严格解析字段，不用B旧草稿code/message外层 |
+| HTTP错误 | 未知路由404，错误方法405；健康无业务码外层，身份错误按Error合同，以HTTP及具体契约判定 | Go表驱动测试，错误不能返回200 |
 | 配置 | HTTP_PORT从环境读取，Trim后仅十进制1..65535；缺失/空白/非法/占用非零退出，无8080默认 | SC-04..07单元及真实可执行文件退出码 |
 | 参数 | HTTP边界校验类型/范围，service只做业务规则校验 | 错误类型/缺字段/范围边界；不把非法筛选当未筛选 |
 | 分页 | 未来page≥1、page_size默认20上限50；筛选/排序白名单，不合法400；非唯一排序追加id | 同排序键跨页不重不漏，非法筛选不返回全量 |
@@ -18,7 +18,7 @@
 | 参数非法 | 400 | HTTP_PORT在启动边界失败，非HTTP接口；业务见SC-20 |
 | 未认证/功能无权限 | 401/403 | 后续SC-21，不生成登录 |
 | 不存在/跨班 | 404（业务体除观测字段外一致） | 后续SC-22 |
-| 必需依赖不可达 | 503，健康依赖标down | 后续SC-23；当前依赖为空 |
+| 必需依赖不可达 | 503，健康依赖标down | 后续SC-23；当前必需依赖为真实MySQL |
 | 并发/终态冲突 | 409 | 后续业务规约明确 |
 | 限流 | 429并给重试建议 | 后续业务规约明确 |
 新接口先登记授权、契约、错误和幂等，再实现。违反须同步修复规约/实现/测试；例外注明范围、理由、检查与移除条件。
@@ -27,6 +27,8 @@
 
 ## 01身份阶段的冻结与启用
 
-2026-11-06 公共修订见 [identity-public-contracts D1—D3](../../openspec/changes/2026-11-06-identity-public-contracts/design.md)。当前 skeleton 仍仅空依赖健康、active HTTP_PORT；[七个 frozen 键](../contracts/config-register.json) 和 [identity 阶段](../contracts/identity-phase.json) 不是已经运行。01 引入 MySQL 的同一受审实现提交必须同步实现、探针、Schema/OpenAPI 当前引用、配置激活/空样例、规范和全部用例，不能同时接受两种成功载荷。
+2026-11-06 公共修订见 [identity-public-contracts D1—D3](../../openspec/changes/2026-11-06-identity-public-contracts/design.md)。历史skeleton仅空依赖健康、active HTTP_PORT；当前默认入口已激活identity阶段，[七个身份键与五个接线键](../contracts/config-register.json) 和 [identity 阶段](../contracts/identity-phase.json) 现已同步默认入口；部署实测与最终终审状态见共享表。01 引入 MySQL 的同一受审实现提交必须同步实现、探针、Schema/OpenAPI 当前引用、配置激活/空样例、规范和全部用例，不能同时接受两种成功载荷。
 
 启用后健康每请求真实 Ping、3 秒总预算，up 为200、down/超时为503，保留服务端标识和日志且不泄露连接信息；业务数据库5秒预算/503与504边界另按01规约。HTTPS和DB均验证可信证书，后台不读取离线迁移凭据；七键按使用进程验证必填/空白/非法，失败非零。MySQL初始化/卷/TLS接线输入随01子包先登记后使用，真实值不入Git/镜像/日志。真实数据库、证书和迁移恢复仍需01执行验收，合同用例不能替代。
+
+01生产接线补记：R7五个输入已经小张接受并在同一实施提交激活；本机状态文件、数据库初始化SQL、凭据env文件和TLS私钥仅置于忽略的运行目录，均不进入构建上下文/镜像/日志。backend只挂CA并取得DML连接，admin只在离线tools读取DDL连接；默认启动不自动迁移或初始化。原骨架健康回归已迁移到唯一MySQL健康合同，历史archive不追改。

@@ -1,26 +1,153 @@
 name: campus-claw-plus
 services:
-  frontend:
-    image: campus-claw-plus/frontend:0.0.1
-    build:
-      context: ./frontend
-    ports:
-      - "127.0.0.1:5173:80"
+  mysql:
+    image: mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902
+    entrypoint:
+      - /bin/sh
+      - /wiring/mysql-entrypoint.sh
+    command:
+      - mysqld
+      - --require-secure-transport=ON
+      - --ssl-ca=/run/mysql-tls/ca.pem
+      - --ssl-cert=/run/mysql-tls/server.pem
+      - --ssl-key=/run/mysql-tls/server.key
+    environment:
+      MYSQL_ROOT_PASSWORD_FILE: /input/root-password
+    volumes:
+      - type: bind
+        source: ${IDENTITY_STATE_DIR:?Provide IDENTITY_STATE_DIR}
+        target: /input
+        read_only: true
+        bind:
+          create_host_path: false
+      - ./deploy/identity/mysql-entrypoint.sh:/wiring/mysql-entrypoint.sh:ro
+      - mysql-data:/var/lib/mysql
+    tmpfs:
+      - /run/mysql-tls
+      - /docker-entrypoint-initdb.d
+    networks:
+      - data
+    healthcheck:
+      test:
+        - CMD
+        - mysqladmin
+        - ping
+        - --protocol=tcp
+        - --host=127.0.0.1
+        - --silent
+      interval: 2s
+      timeout: 2s
+      retries: 45
+      start_period: 10s
     stop_grace_period: 15s
-    restart: "no"
-  backend:
-    image: campus-claw-plus/backend:0.0.1
+  admin:
     build:
       context: ./backend
+      dockerfile: Dockerfile.identity
+      target: admin
+    env_file:
+      - ${IDENTITY_STATE_DIR:?Provide IDENTITY_STATE_DIR}/admin.env
+    volumes:
+      - type: bind
+        source: ${IDENTITY_STATE_DIR:?Provide IDENTITY_STATE_DIR}/ca.pem
+        target: /fixtures/ca.pem
+        read_only: true
+        bind:
+          create_host_path: false
+    networks:
+      - data
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    profiles:
+      - tools
+  backend:
+    build:
+      context: ./backend
+    env_file:
+      - ${IDENTITY_STATE_DIR:?Provide IDENTITY_STATE_DIR}/backend.env
     environment:
       HTTP_PORT: ${HTTP_PORT:?Fill HTTP_PORT in the root .env}
-    ports:
-      - "127.0.0.1:${HTTP_PORT}:${HTTP_PORT}"
-    healthcheck:
-      test: ["CMD", "/server", "--healthcheck"]
-      interval: 5s
-      timeout: 3s
-      start_period: 5s
-      retries: 5
+      AUTH_TRUSTED_PROXY_CIDRS: ${IDENTITY_PROXY_IP:?Provide IDENTITY_PROXY_IP}/32
+    volumes:
+      - type: bind
+        source: ${IDENTITY_STATE_DIR:?Provide IDENTITY_STATE_DIR}/ca.pem
+        target: /fixtures/ca.pem
+        read_only: true
+        bind:
+          create_host_path: false
+    networks:
+      - data
+      - proxy
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
     stop_grace_period: 15s
-    restart: "no"
+    healthcheck:
+      test:
+        - CMD
+        - /server
+        - --healthcheck
+      interval: 2s
+      timeout: 4s
+      retries: 15
+  frontend:
+    build:
+      context: ./frontend
+    entrypoint:
+      - /docker-entrypoint.sh
+    command:
+      - nginx
+      - -g
+      - daemon off;
+    environment:
+      IDENTITY_HTTPS_HOST: ${IDENTITY_HTTPS_HOST:?Provide IDENTITY_HTTPS_HOST}
+      NGINX_ENVSUBST_OUTPUT_DIR: /etc/nginx
+      NGINX_ENVSUBST_FILTER: ^(IDENTITY_HTTPS_HOST|HTTP_PORT)$$
+      HTTP_PORT: ${HTTP_PORT:?Fill HTTP_PORT in the root .env}
+    ports:
+      - 127.0.0.1:${IDENTITY_HTTPS_PORT:?Provide IDENTITY_HTTPS_PORT}:443
+    volumes:
+      - ./deploy/identity/nginx.conf.template:/etc/nginx/templates/nginx.conf.template:ro
+      - ./deploy/identity/production-proxy.conf.template:/etc/nginx/templates/identity-proxy.conf.template:ro
+      - type: bind
+        source: ${HTTPS_CERT_FILE:?Provide HTTPS_CERT_FILE}
+        target: /run/https/cert.pem
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ${HTTPS_KEY_FILE:?Provide HTTPS_KEY_FILE}
+        target: /run/https/key.pem
+        read_only: true
+        bind:
+          create_host_path: false
+    networks:
+      proxy:
+        ipv4_address: ${IDENTITY_PROXY_IP:?Provide IDENTITY_PROXY_IP}
+        aliases:
+          - ${IDENTITY_HTTPS_HOST:?Provide IDENTITY_HTTPS_HOST}
+    depends_on:
+      backend:
+        condition: service_healthy
+    stop_grace_period: 15s
+    healthcheck:
+      test:
+        - CMD
+        - nginx
+        - -t
+      interval: 5s
+      timeout: 2s
+      retries: 5
+volumes:
+  mysql-data: {}
+networks:
+  data:
+    internal: true
+  proxy:
+    external: true
+    name: ${IDENTITY_PROXY_NETWORK:?Provide IDENTITY_PROXY_NETWORK}

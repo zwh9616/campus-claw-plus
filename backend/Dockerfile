@@ -9,5 +9,5 @@ RUN --mount=type=cache,target=/root/.cache/go-build CGO_ENABLED=0 go build -trim
 FROM scratch
 COPY --from=build /out/server /server
 USER 65532:65532
-HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=5 CMD ["/server","--healthcheck"]
+HEALTHCHECK --interval=5s --timeout=4s --start-period=5s --retries=5 CMD ["/server","--healthcheck"]
 ENTRYPOINT ["/server"]

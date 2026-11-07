@@ -1,0 +1,16 @@
+{
+  "checks": [
+    {
+      "id": 127726828467,
+      "name": "check",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "html_url": "https://github.com/zwh9616/campus-claw-plus/actions/runs/42167365004/job/127726828467"
+    }
+  ],
+  "observed_at": "2026-11-06T05:17:39.8682745Z",
+  "run_conclusion": "cancelled",
+  "head": "ecd6c71de3c07a55a40b2691f1e8cb9a55847ac7",
+  "run_id": 42167365004,
+  "run_attempt": 1
+}

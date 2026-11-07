@@ -1,0 +1,77 @@
+{
+  "executor": "zwh9616 / 小张",
+  "time": "2026-11-07T09:26:46.183790+00:00",
+  "base": "41e8ed2191a9b6538b1ddab980172a8569a9ac22",
+  "integrated_main": "55f0e8364e150ff4c42f9af1facc8763e4274fa2",
+  "scope": "working-tree atomic activation; hashes of executable/public-contract inputs, no secrets",
+  "files": [
+    {
+      "path": "backend/cmd/server/main.go",
+      "sha256": "abc14c228340f04a0f15497bf5c88a4609c7282ee99aa5e7836751f36b11f7e5"
+    },
+    {
+      "path": "backend/internal/identityapp/app.go",
+      "sha256": "2825b56182228f9c0e4c5eb1099fe25d0198c70dd0b87252b8dd699686339859"
+    },
+    {
+      "path": "backend/internal/httpserver/handler.go",
+      "sha256": "acdf5a131ebece805992a7e71b3e0868bbc2dbaabfc4f3c88050f26d394c3001"
+    },
+    {
+      "path": "backend/internal/httpserver/identity.go",
+      "sha256": "319078d6a201c777298b1dc94d18b6426b49b8c145df45e0b30f994c51aa0fc2"
+    },
+    {
+      "path": "backend/internal/probe/probe.go",
+      "sha256": "a52c3b202a9edc77dfeb61b10763036bec51f1775a9bdbf6029449ec5c9f7e8e"
+    },
+    {
+      "path": "backend/Dockerfile",
+      "sha256": "e3490fddcb1256f83301339d5b5d698b3b49f59bc31439cc494206f8a66be93a"
+    },
+    {
+      "path": "backend/Dockerfile.identity",
+      "sha256": "a78bf59efa36cd4ae91cefcbd1406a569b04f0930948604b4c547fdc993c2c82"
+    },
+    {
+      "path": "compose.yaml",
+      "sha256": "83b25db4489feab82d8120e63c2f5b71611bd0ba1913886df3eea181b118361e"
+    },
+    {
+      "path": "deploy/identity/inputs.json",
+      "sha256": "43b3b704105db526c3211f4c466fe33979be1e172e4d9fb729a44b54522b5da0"
+    },
+    {
+      "path": "deploy/identity/production-proxy.conf.template",
+      "sha256": "165bbb3542b16b8c8554aa9d1794ebaa09bf211b1ed9a3b611ab456b7e98b55b"
+    },
+    {
+      "path": "docs/contracts/config-register.json",
+      "sha256": "fafa165c69db25732d1caab6bf781f9a1550346576a08d1eb9c58440fbdab31d"
+    },
+    {
+      "path": "docs/contracts/identity-phase.json",
+      "sha256": "17f20853fa8fbe7b83d95bf056828543facd05eb45fa48b8fd5ba5448e4a0404"
+    },
+    {
+      "path": "docs/contracts/openapi.yaml",
+      "sha256": "2a08889cc476962e59acfec6f6555321f0c78bfc6e88adafe57332a9c21065f2"
+    },
+    {
+      "path": "scripts/verify-skeleton.mjs",
+      "sha256": "7f90f8352aa59d62e3210cd2834c838d3d5d8a2df920b0b934a1212d7e3ee313"
+    },
+    {
+      "path": "scripts/verify-identity-wiring.mjs",
+      "sha256": "0698e6ac6a91d7f662f19afb542063107189d9bbdd50b50e43548928bef77c1a"
+    },
+    {
+      "path": "scripts/identity-compose.mjs",
+      "sha256": "19397afda8dafd069f2a298b52c3e0d21b9a07f1e94ce2f7e9b4c016cb96284f"
+    },
+    {
+      "path": "backend/internal/integration/wiring/wiring_test.go",
+      "sha256": "1f6f085ac5366f7efb58128aca478dd9289bb28d3a89bdf706e77ed1dc9fd046"
+    }
+  ]
+}

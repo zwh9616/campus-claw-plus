@@ -1,0 +1,21 @@
+{
+  "executor": "zwh9616 / 小张",
+  "staged_report_false_positive": {
+    "rule": "generic-api-key",
+    "field": "docs/contracts/openapi.yaml",
+    "meaning": "recomputed public source integrity checksum, not a credential",
+    "fix": "serialize file path and sha256 as separate attributes, no detector exception added"
+  },
+  "checks": [
+    {
+      "case": "public SQL hash reused under arbitrary api_key must still be rejected",
+      "exit_code": 1,
+      "output": "5:29PM INF scanned ~78 bytes (78 bytes) in 109ms\n5:29PM WRN leaks found: 1\n"
+    },
+    {
+      "case": "random synthetic api_key must be rejected",
+      "exit_code": 1,
+      "output": "5:29PM INF scanned ~62 bytes (62 bytes) in 112ms\n5:29PM WRN leaks found: 1\n"
+    }
+  ]
+}

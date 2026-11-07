@@ -1,0 +1,46 @@
+{
+  "label": "stale-green-blocked",
+  "checked_at": "2026-11-07T07:59:56.9373240Z",
+  "executor": "Kevcco",
+  "viewer_permission": "WRITE",
+  "pr": 12,
+  "url": "https://github.com/zwh9616/campus-claw-plus/pull/12",
+  "state": "open",
+  "head": "9ad69775960d2cd7b12a7fbddfa2250b9307f2ba",
+  "base": "3bf34de1be682de01969e05363b3b23630c66b64",
+  "mergeable": true,
+  "mergeable_state": "blocked",
+  "main_protected": true,
+  "main_sha": "3bf34de1be682de01969e05363b3b23630c66b64",
+  "checks": [
+    {
+      "id": 128346090353,
+      "name": "check",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "9ad69775960d2cd7b12a7fbddfa2250b9307f2ba",
+      "html_url": "https://github.com/zwh9616/campus-claw-plus/actions/runs/42353376907/job/128346090353",
+      "app_id": 15368
+    }
+  ],
+  "runs": [
+    {
+      "id": 42353376907,
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "head_sha": "9ad69775960d2cd7b12a7fbddfa2250b9307f2ba",
+      "html_url": "https://github.com/zwh9616/campus-claw-plus/actions/runs/42353376907"
+    }
+  ],
+  "reviews": [
+    {
+      "id": 5799296188,
+      "state": "DISMISSED",
+      "commit_id": "01384fa76a99ffc4319f6f424af39e3fccdf8425",
+      "submitted_at": "2026-11-06T11:12:05Z",
+      "html_url": "https://github.com/zwh9616/campus-claw-plus/pull/12#pullrequestreview-5799296188",
+      "user": "zwh9616"
+    }
+  ]
+}

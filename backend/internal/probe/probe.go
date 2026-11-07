@@ -17,7 +17,7 @@ func Check(ctx context.Context, url string) error {
 	if err != nil {
 		return errors.New("invalid health address")
 	}
-	client := &http.Client{Timeout: 2 * time.Second}
+	client := &http.Client{Timeout: 3500 * time.Millisecond}
 	response, err := client.Do(request)
 	if err != nil {
 		return errors.New("health request failed")
@@ -38,7 +38,7 @@ func Check(ctx context.Context, url string) error {
 	decoder := json.NewDecoder(io.LimitReader(response.Body, 4097))
 	decoder.DisallowUnknownFields()
 	if err := decoder.Decode(&body); err != nil || body.Status != "ok" ||
-		body.Dependencies == nil || len(body.Dependencies) != 0 {
+		body.Dependencies == nil || len(body.Dependencies) != 1 || body.Dependencies["mysql"] != "up" {
 		return errors.New("health body invalid")
 	}
 	var extra any

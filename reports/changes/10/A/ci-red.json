@@ -1,0 +1,16 @@
+{
+  "is_draft": false,
+  "checks": [
+    {
+      "id": 127726328777,
+      "name": "check",
+      "status": "completed",
+      "conclusion": "failure",
+      "html_url": "https://github.com/zwh9616/campus-claw-plus/actions/runs/42167205201/job/127726328777"
+    }
+  ],
+  "pr": "https://github.com/zwh9616/campus-claw-plus/pull/10",
+  "head": "0dd593b8ba865ea3f833195240a85a9d2a363898",
+  "observed_at": "2026-11-06T05:15:34.3389403Z",
+  "merge_state": "unstable"
+}

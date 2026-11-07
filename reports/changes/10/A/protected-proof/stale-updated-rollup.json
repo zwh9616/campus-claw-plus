@@ -1,0 +1,37 @@
+{
+  "data": {
+    "repository": {
+      "viewerPermission": "WRITE",
+      "pullRequest": {
+        "number": 12,
+        "headRefOid": "9ad69775960d2cd7b12a7fbddfa2250b9307f2ba",
+        "baseRefOid": "3bf34de1be682de01969e05363b3b23630c66b64",
+        "mergeStateStatus": "BLOCKED",
+        "reviewDecision": "REVIEW_REQUIRED",
+        "commits": {
+          "nodes": [
+            {
+              "commit": {
+                "oid": "9ad69775960d2cd7b12a7fbddfa2250b9307f2ba",
+                "statusCheckRollup": {
+                  "state": "PENDING",
+                  "contexts": {
+                    "nodes": [
+                      {
+                        "__typename": "CheckRun",
+                        "name": "check",
+                        "status": "IN_PROGRESS",
+                        "conclusion": null,
+                        "isRequired": true
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

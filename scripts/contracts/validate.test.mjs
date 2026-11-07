@@ -64,7 +64,8 @@ test('BC-SC-10 MCP exception remains exact, disabled and subject to both future 
 })
 
 test('BC-SC-09 registered empty keys only; no weakening historical HTTP_PORT requirement', () => {
-  validateConfigSample('HTTP_PORT=\r\n', register)
+  const sample = register.active.map(e => e.name+'=').join('\n')+'\n'
+  validateConfigSample(sample, register)
   for (const value of ['', 'HTTP_PORT=18080', 'HTTP_PORT=\nUNKNOWN=', 'HTTP_PORT=\nHTTP_PORT=', 'HTTP_PORT= \nDB_PASSWORD=secret']) {
     assert.throws(() => validateConfigSample(value, register))
   }
@@ -74,9 +75,9 @@ test('BC-SC-09 registered empty keys only; no weakening historical HTTP_PORT req
   assert.throws(() => validateConfigSample('HTTP_PORT=', optionalPort))
   const future = copy(register)
   future.active.push({ ...future.active[0], name: 'DB_URL', owner: '01', introduced_by: 'openspec/changes/future-approved' })
-  assert.throws(() => validateConfigSample('HTTP_PORT=\nDB_URL=', future, () => false))
+  assert.throws(() => validateConfigSample(sample+'DB_URL=', future, () => false))
   // A real future entry also requires the declared change to exist; approval is PR-reviewed.
-  validateConfigSample('HTTP_PORT=\nDB_URL=', future, () => true)
+  validateConfigSample(sample+'DB_URL=', future, () => true)
 })
 
 test('BC-SC-18 planned operations and anonymous auth bypass cannot enter OpenAPI', () => {
@@ -88,6 +89,6 @@ test('BC-SC-18 planned operations and anonymous auth bypass cannot enter OpenAPI
   assert.throws(() => validateOperationBoundary(planned, endpoints))
   const anonymous = copy(api); anonymous.paths['/api/v1/auth/refresh'].post.security = []
   assert.throws(() => validateOperationBoundary(anonymous, endpoints))
-  const mislabeled = copy(api); mislabeled.paths['/api/v1/me'].get['x-contract-status'] = 'current'
+  const mislabeled = copy(api); mislabeled.paths['/api/v1/me'].get['x-contract-status'] = 'frozen'
   assert.throws(() => validateOperationBoundary(mislabeled, endpoints))
 })

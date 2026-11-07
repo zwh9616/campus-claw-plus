@@ -1,27 +1,34 @@
 //go:build integration
 
 // Package wiring tests the actual Nginx -> Go -> TLS MySQL path, without
-// switching the production phase. No response/credential bodies are logged.
+// the activated default production artifact. No response/credential bodies are logged.
 package wiring
 
 import (
 	"bytes"
+	"context"
 	"crypto/sha256"
 	"crypto/tls"
 	"crypto/x509"
 	"encoding/hex"
 	"encoding/json"
+	"github.com/zwh9616/campus-claw-plus/backend/internal/mysqlstore"
 	"io"
 	"net/http"
 	"net/http/cookiejar"
 	"os"
 	"regexp"
+	"strconv"
 	"strings"
 	"testing"
 	"time"
 )
 
 func TestIDFWiring(t *testing.T) {
+	if os.Getenv("WIRING_EXPECT") == "lookup" {
+		prepareClassFixture(t)
+		return
+	}
 	ca, err := os.ReadFile("/fixtures/ca.pem")
 	if err != nil {
 		t.Fatal("CA unavailable")
@@ -33,6 +40,7 @@ func TestIDFWiring(t *testing.T) {
 	jar, _ := cookiejar.New(nil)
 	client := &http.Client{Timeout: 7 * time.Second, Jar: jar, Transport: &http.Transport{TLSClientConfig: &tls.Config{RootCAs: pool, MinVersion: tls.VersionTLS12}}}
 	defer client.CloseIdleConnections()
+	var observedSecrets []string
 	call := func(method, path, body, access, csrf string, want int) (map[string]any, *http.Response) {
 		t.Helper()
 		req, _ := http.NewRequest(method, "https://campus.test"+path, strings.NewReader(body))
@@ -56,7 +64,10 @@ func TestIDFWiring(t *testing.T) {
 		if res.StatusCode != want {
 			t.Fatalf("%s %s status=%d want=%d", method, path, res.StatusCode, want)
 		}
-		if path == "/health" && time.Since(start) > 3500*time.Millisecond {
+		if strings.HasPrefix(path, "/health") && want == 200 && time.Since(start) > 2*time.Second {
+			t.Fatal("healthy request exceeded original 2000ms regression limit")
+		}
+		if strings.HasPrefix(path, "/health") && time.Since(start) > 3500*time.Millisecond {
 			t.Fatal("health exceeded 3s budget plus transport allowance")
 		}
 		if !regexp.MustCompile(`^[0-9a-f]{32}$`).MatchString(res.Header.Get("X-Request-ID")) {
@@ -70,7 +81,32 @@ func TestIDFWiring(t *testing.T) {
 		if want != 204 && json.Unmarshal(data, &out) != nil {
 			t.Fatal("invalid JSON response")
 		}
+		for _, key := range []string{"access_token", "csrf_token"} {
+			if value, ok := out[key].(string); ok && value != "" {
+				observedSecrets = append(observedSecrets, value)
+			}
+		}
+		for _, cookie := range res.Cookies() {
+			if cookie.Value != "" {
+				observedSecrets = append(observedSecrets, cookie.Value)
+			}
+		}
+		if len(observedSecrets) > 0 {
+			private, _ := json.Marshal(observedSecrets)
+			if os.WriteFile("/fixtures/credential-proof", private, 0644) != nil {
+				t.Fatal("private exclusion proof")
+			}
+		}
 		return out, res
+	}
+	if os.Getenv("WIRING_EXPECT") == "stopped" {
+		for _, path := range []string{"/health", "/"} {
+			if res, err := client.Get("https://campus.test" + path); err == nil {
+				res.Body.Close()
+				t.Fatal("stopped project still responds")
+			}
+		}
+		return
 	}
 	seed, err := os.ReadFile("/fixtures/seed.json")
 	if err != nil {
@@ -99,7 +135,11 @@ func TestIDFWiring(t *testing.T) {
 		}
 		return
 	}
-	body, _ := call("GET", "/health", "", "", "", 200)
+	body, firstHealth := call("GET", "/health?token=verification-private", "", "", "", 200)
+	_, secondHealth := call("GET", "/health", "", "", "", 200)
+	if firstHealth.Header.Get("X-Request-ID") == secondHealth.Header.Get("X-Request-ID") {
+		t.Fatal("request identifiers reused")
+	}
 	deps, _ := body["dependencies"].(map[string]any)
 	if len(body) != 2 || body["status"] != "ok" || len(deps) != 1 || deps["mysql"] != "up" {
 		t.Fatal("up health contract")
@@ -154,12 +194,73 @@ func TestIDFWiring(t *testing.T) {
 	if csrf == "" {
 		t.Fatal("CSRF missing")
 	}
-	private, _ := json.Marshal([]string{access, cookies[0].Value, csrf})
+	private, _ := json.Marshal(observedSecrets)
 	// Container and caller UIDs may differ. The caller owns the enclosing 0700
 	// disposable directory; this test-only file is removed before the run ends.
 	if os.WriteFile("/fixtures/credential-proof", private, 0644) != nil {
 		t.Fatal("private log exclusion proof write")
 	}
+	// Exercise the actual production entry point, with the old credentials
+	// checked after refresh, and invalidated after class change and logout (D3).
+	oldAccess := access
+	body, _ = call("POST", "/api/v1/auth/refresh", "", "", csrf, 200)
+	access, _ = body["access_token"].(string)
+	if access == "" || access == oldAccess {
+		t.Fatal("refresh did not rotate access")
+	}
+	call("GET", "/api/v1/me", "", oldAccess, "", 200) // D3: refresh preserves unexpired access.
+	staleClient := *client
+	staleClient.Jar = nil
+	staleRequest, _ := http.NewRequest("GET", "https://campus.test/api/v1/auth/csrf", nil)
+	staleRequest.AddCookie(cookies[0])
+	staleResponse, err := staleClient.Do(staleRequest)
+	if err != nil {
+		t.Fatal("old-refresh verification request")
+	}
+	staleResponse.Body.Close()
+	if staleResponse.StatusCode != 401 {
+		t.Fatal("old refresh cookie was not invalidated")
+	}
+	body, _ = call("GET", "/api/v1/auth/csrf", "", "", "", 200)
+	csrf, _ = body["csrf_token"].(string)
+	targetBytes, err := os.ReadFile("/fixtures/class-target")
+	if err != nil {
+		t.Fatal("trusted fixture class target missing")
+	}
+	target := string(targetBytes)
+	oldAccess = access
+	change, _ := json.Marshal(map[string]string{"class_id": target})
+	body, _ = call("POST", "/api/v1/auth/switch-class", string(change), access, csrf, 200)
+	access, _ = body["access_token"].(string)
+	switched, _ := body["principal"].(map[string]any)
+	if switched["class_id"] != target {
+		t.Fatal("teacher switch did not change trusted class")
+	}
+	call("GET", "/api/v1/me", "", oldAccess, "", 401)
+	body, _ = call("GET", "/api/v1/auth/csrf", "", "", "", 200)
+	csrf, _ = body["csrf_token"].(string)
+	call("POST", "/api/v1/auth/logout", "", access, csrf, 204)
+	call("GET", "/api/v1/me", "", access, "", 401)
+	call("GET", "/api/v1/auth/csrf", "", "", "", 401)
+	wrong, _ := json.Marshal(map[string]string{"username": input.Users[0].Username, "password": "incorrect-test-password"})
+	_, denied := call("POST", "/api/v1/auth/login", string(wrong), "", "", 401)
+	if len(denied.Cookies()) != 0 {
+		t.Fatal("wrong password received credentials")
+	}
+	if len(input.Users) < 2 {
+		t.Fatal("student fixture missing")
+	}
+	student, _ := json.Marshal(map[string]string{"username": input.Users[1].Username, "password": input.Users[1].Password})
+	body, _ = call("POST", "/api/v1/auth/login", string(student), "", "", 200)
+	access, _ = body["access_token"].(string)
+	sp, _ := body["principal"].(map[string]any)
+	if sp["role"] != "student" {
+		t.Fatal("student trusted role")
+	}
+	body, _ = call("GET", "/api/v1/auth/csrf", "", "", "", 200)
+	csrf, _ = body["csrf_token"].(string)
+	call("POST", "/api/v1/auth/switch-class", string(change), access, csrf, 403)
+	call("GET", "/api/v1/me", "", access, "", 200)
 	call("POST", "/api/v1/auth/logout", "", access, csrf, 204)
 	call("GET", "/api/v1/me", "", access, "", 401)
 	// Retain only an irreversible proof; the runner verifies log correlation.
@@ -167,4 +268,36 @@ func TestIDFWiring(t *testing.T) {
 		t.Fatal("request proof write")
 	}
 	t.Log("IDF-SC-01/06/14/15/17/18 trusted HTTPS, TLS rejection, login/logout and persistence assertions passed")
+}
+
+// Trusted test setup runs on the data network, never exposing MySQL to the gateway.
+func prepareClassFixture(t *testing.T) {
+	rawEnv, err := os.ReadFile("/fixtures/backend.env")
+	if err != nil {
+		t.Fatal("fixture app input")
+	}
+	values := map[string]string{}
+	for _, line := range strings.Split(string(rawEnv), "\n") {
+		if key, value, ok := strings.Cut(line, "="); ok {
+			decoded, e := strconv.Unquote(value)
+			if e != nil {
+				t.Fatal("fixture env encoding")
+			}
+			values[key] = decoded
+		}
+	}
+	db, err := mysqlstore.Open(values["MYSQL_DSN"], values["MYSQL_CA_FILE"], false)
+	if err != nil {
+		t.Fatal("fixture read-only connection")
+	}
+	defer db.Close()
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+	var target string
+	if db.QueryRowContext(ctx, "SELECT id FROM classes WHERE stable_key=?", "wiring-b").Scan(&target) != nil {
+		t.Fatal("fixture class lookup")
+	}
+	if os.WriteFile("/fixtures/class-target", []byte(target), 0644) != nil {
+		t.Fatal("fixture target proof")
+	}
 }

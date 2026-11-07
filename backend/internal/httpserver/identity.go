@@ -1,7 +1,6 @@
 package httpserver
 
 import (
-	"context"
 	"encoding/json"
 	"errors"
 	"github.com/zwh9616/campus-claw-plus/backend/internal/config"
@@ -12,11 +11,9 @@ import (
 	"net/http"
 	"strconv"
 	"strings"
-	"time"
 )
 
-// IdentityHandler is composed only when the approved identity phase is activated.
-// The current production server stays on skeleton until MySQL/TLS wiring lands.
+// IdentityHandler is the production identity transport; planned business routes stay absent.
 func IdentityHandler(logger *slog.Logger, service *identity.Service, repo identity.Repository, cfg config.Identity, limiter *identity.Limiter) http.Handler {
 	return Observe(logger, http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json; charset=utf-8")
@@ -32,14 +29,7 @@ func IdentityHandler(logger *slog.Logger, service *identity.Service, repo identi
 			return
 		}
 		if r.URL.Path == "/health" {
-			ctx, cancel := context.WithTimeout(r.Context(), 3*time.Second)
-			defer cancel()
-			status, state, code := "ok", "up", 200
-			if repo.Ping(ctx) != nil {
-				status, state, code = "error", "down", 503
-			}
-			w.WriteHeader(code)
-			json.NewEncoder(w).Encode(map[string]any{"status": status, "dependencies": map[string]string{"mysql": state}})
+			writeHealth(w, r, repo)
 			return
 		}
 		w.Header().Set("Cache-Control", "no-store")

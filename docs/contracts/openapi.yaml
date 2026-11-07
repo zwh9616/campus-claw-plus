@@ -16,73 +16,38 @@
         "security": [],
         "responses": {
           "200": {
-            "description": "当前健康响应",
-            "headers": {
-              "X-Request-ID": {
-                "description": "服务端生成的请求标识，关联JSON日志",
-                "schema": {
-                  "type": "string",
-                  "minLength": 32,
-                  "maxLength": 32,
-                  "pattern": "^[0-9a-f]{32}$"
-                }
-              }
-            },
+            "description": "Frozen identity phase only; not current runtime",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "./schemas/Health.schema.json"
+                  "$ref": "#/components/schemas/IdentityHealthUp"
                 },
                 "examples": {
-                  "contract": {
+                  "identity": {
                     "value": {
                       "status": "ok",
-                      "dependencies": {}
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "x-frozen-identity-profile": {
-          "activation_change": "openspec/changes/2026-11-04-identity-foundation",
-          "security": [],
-          "responses": {
-            "200": {
-              "description": "Frozen identity phase only; not current runtime",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/IdentityHealthUp"
-                  },
-                  "examples": {
-                    "identity": {
-                      "value": {
-                        "status": "ok",
-                        "dependencies": {
-                          "mysql": "up"
-                        }
+                      "dependencies": {
+                        "mysql": "up"
                       }
                     }
                   }
                 }
               }
-            },
-            "503": {
-              "description": "Frozen identity phase only; not current runtime",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/IdentityHealthDown"
-                  },
-                  "examples": {
-                    "identity": {
-                      "value": {
-                        "status": "error",
-                        "dependencies": {
-                          "mysql": "down"
-                        }
+            }
+          },
+          "503": {
+            "description": "Frozen identity phase only; not current runtime",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IdentityHealthDown"
+                },
+                "examples": {
+                  "identity": {
+                    "value": {
+                      "status": "error",
+                      "dependencies": {
+                        "mysql": "down"
                       }
                     }
                   }
@@ -97,7 +62,7 @@
       "post": {
         "operationId": "post_login",
         "summary": "已冻结合同，未实现 login",
-        "x-contract-status": "frozen",
+        "x-contract-status": "current",
         "x-owner-change": "01",
         "security": [],
         "responses": {
@@ -387,7 +352,7 @@
       "get": {
         "operationId": "get_csrf",
         "summary": "已冻结合同，未实现 csrf",
-        "x-contract-status": "frozen",
+        "x-contract-status": "current",
         "x-owner-change": "01",
         "security": [
           {
@@ -579,7 +544,7 @@
       "post": {
         "operationId": "post_refresh",
         "summary": "已冻结合同，未实现 refresh",
-        "x-contract-status": "frozen",
+        "x-contract-status": "current",
         "x-owner-change": "01",
         "security": [
           {
@@ -833,7 +798,7 @@
       "get": {
         "operationId": "get_me",
         "summary": "已冻结合同，未实现 me",
-        "x-contract-status": "frozen",
+        "x-contract-status": "current",
         "x-owner-change": "01",
         "security": [
           {
@@ -1024,7 +989,7 @@
       "post": {
         "operationId": "post_logout",
         "summary": "已冻结合同，未实现 logout",
-        "x-contract-status": "frozen",
+        "x-contract-status": "current",
         "x-owner-change": "01",
         "security": [
           {
@@ -1249,7 +1214,7 @@
       "post": {
         "operationId": "post_switch_class",
         "summary": "已冻结合同，未实现 switch-class",
-        "x-contract-status": "frozen",
+        "x-contract-status": "current",
         "x-owner-change": "01",
         "security": [
           {

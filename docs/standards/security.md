@@ -1,11 +1,11 @@
 # 安全开发规范
-每次修改必读。当前运行入口仍只有公开/health。00获G1后仅落实合同/规则；G2及各change批准后才实现业务。合同见[入口](../contracts/README.md)，未来约束不代表本轮已实现。
+每次修改必读。当前运行已按01激活身份与MySQL；公开/health每次Ping，其余仅允许已登记身份操作。00获G1后仅落实合同/规则；G2及各change批准后才实现业务。合同见[入口](../contracts/README.md)，未来约束不代表本轮已实现。
 | 条目 | 规则/示例 | 检查与违规处置 |
 | --- | --- | --- |
 | 默认拒绝 | 只显式开放已登记接口；未来角色/班级来自可信会话，不采信query/body/header声明 | 新业务路由未登记则不得放行；授权遗漏阻断 |
 | 逐资源授权 | 读取资源后校验归属；跨班与不存在一致404，观测标识可不同 | 双班师生互换资源ID，响应无存在性差异 |
 | 附件 | 必须挂钩授权业务对象，禁止通用文件ID下载和公开附件静态目录 | 匿名/跨班读取拒绝；当前无附件接口 |
-| 机密 | .env被忽略；.env.example只含config-register.active的空值键，当前仅HTTP_PORT=；不进Git/镜像/前端/日志 | 基础检查验证登记/空值/重复/缺项+待提交审查+全历史gitleaks；命中立即轮换 |
+| 机密 | .env被忽略；.env.example只含config-register.active的空值键，当前active键以登记表为准；不进Git/镜像/前端/日志 | 基础检查验证登记/空值/重复/缺项+待提交审查+全历史gitleaks；命中立即轮换 |
 | 输入输出 | 类型/长度/范围/枚举白名单；查询参数绑定；React转义；不用dangerouslySetInnerHTML | 注入引号/标签/路径穿越不得执行；非法筛选不能变全量 |
 | 令牌 | 未来访问令牌仅内存，刷新令牌HttpOnly/Secure/SameSite=Strict Cookie并轮换；登出/改密立即失效 | 不在URL/本地存储/日志出现；旧令牌失效测试 |
 | 出站 | 服务端配置允许目标，校验解析地址及重定向，默认禁内网/环回/链路本地 | SSRF失败用例；当前唯一例外是探针访问自己环回/health，无用户可控出站 |
@@ -13,7 +13,7 @@
 | AI资料 | 后续教材/工具结果都是不可信数据，不转成系统授权；工具走既有授权服务层 | 指令注入与跨班读取必须拒绝；本轮无AI运行 |
 | 依赖与许可 | 精确版本/锁文件入库；直接依赖说明用途和许可；MIT/Apache/BSD/ISC优先，其余先评审 | 每次PR、发布前npm audit，high/critical阻断并当日处理，medium7天；每周值班复查 |
 
-直接依赖：React/ReactDOM（UI，MIT）、Vite/React插件（构建，MIT）、TypeScript（类型，Apache-2.0）、@types（类型，MIT）。当前生产server仍仅标准库；01候选身份模块新增已批准的精确Go依赖，来源/许可/间接依赖及尚未完成审计见[身份依赖说明](../identity-dependencies.md)。镜像使用官方仓库并固定摘要，工具链记录在scripts/toolchain.json。
+直接依赖：React/ReactDOM（UI，MIT）、Vite/React插件（构建，MIT）、TypeScript（类型，Apache-2.0）、@types（类型，MIT）。当前生产server含已批准身份依赖；01身份模块使用已批准的精确Go依赖，来源/许可/间接依赖及尚未完成审计见[身份依赖说明](../identity-dependencies.md)。镜像使用官方仓库并固定摘要，工具链记录在scripts/toolchain.json。
 
 00新增开发依赖（均MIT、精确版本见package.json/锁文件）：swagger-parser用于OpenAPI3.1结构及本地引用，Ajv2020与ajv-formats用于2020-12及时间格式，yaml用于唯一键解析。它们不进入业务运行时；合同标识URL只经本地白名单解析，不发起外部请求。
 
@@ -23,16 +23,18 @@ config-register.json中仅登记http://mcp:8090/mcp，enabled=false。须03/07C�
 
 ## 轮换流程
 
-01实现的秘密扫描误报例外：`.gitleaks.toml`继续继承全部默认规则，仅按三个完整命中值精确匹配放行backend/go.sum里moby/api v1.54.2的已校验h1值，以及manifest中000003上下行SQL的两个已核对SHA-256。不是API密钥，不忽略整个文件/目录或generic-api-key规则。值改变必须重新核对；受控虚假凭据仍应命中。实际扫描和反例记录见reports/changes/01/implementation-secret-scan.json。此例外仅消除三项公开完整性哈希误报，不豁免真实凭据。
+秘密扫描保留所有默认规则，仅沿用主干.gitleaksignore中的精确历史指纹，不重新引入全局摘要值豁免。新的非秘密摘要命中须逐项核对上下文和来源后只放行具体指纹，随机合成凭据仍须阻断。
 发现者通知持有人与组长；持有人先撤销旧密钥、生成新值、更新本机/运行环境并重启，验证旧值不可用；组长再协调历史清理和其他成员同步。记录键名/时间/负责人/结果，不记原值。删最新文件不等于撤销历史泄露。
 所有违规先修复再通过；扫描无法覆盖的授权/业务事项必须人工评审，不将“文件存在”当安全通过。
 
 ## 01身份阶段的冻结与启用
 
-2026-11-06 公共修订见 [identity-public-contracts D1—D3](../../openspec/changes/2026-11-06-identity-public-contracts/design.md)。当前 skeleton 仍仅空依赖健康、active HTTP_PORT；[七个 frozen 键](../contracts/config-register.json) 和 [identity 阶段](../contracts/identity-phase.json) 不是已经运行。01 引入 MySQL 的同一受审实现提交必须同步实现、探针、Schema/OpenAPI 当前引用、配置激活/空样例、规范和全部用例，不能同时接受两种成功载荷。
+2026-11-06 公共修订见 [identity-public-contracts D1—D3](../../openspec/changes/2026-11-06-identity-public-contracts/design.md)。历史skeleton仅空依赖健康、active HTTP_PORT；当前默认入口已激活identity阶段，[七个身份键与五个接线键](../contracts/config-register.json) 和 [identity 阶段](../contracts/identity-phase.json) 现已同步默认入口；部署实测与最终终审状态见共享表。01 引入 MySQL 的同一受审实现提交必须同步实现、探针、Schema/OpenAPI 当前引用、配置激活/空样例、规范和全部用例，不能同时接受两种成功载荷。
 
 启用后健康每请求真实 Ping、3 秒总预算，up 为200、down/超时为503，保留服务端标识和日志且不泄露连接信息；业务数据库5秒预算/503与504边界另按01规约。HTTPS和DB均验证可信证书，后台不读取离线迁移凭据；七键按使用进程验证必填/空白/非法，失败非零。MySQL初始化/卷/TLS接线输入随01子包先登记后使用，真实值不入Git/镜像/日志。真实数据库、证书和迁移恢复仍需01执行验收，合同用例不能替代。
 
 ## 2026-11-07 主干秘密扫描精确误报恢复
 
 全历史扫描包括尚未合入的远端分支。身份候选637986f的迁移manifest中两个公开SQL SHA-256被generic-api-key误判。`.gitleaksignore`仅采用#15已经记录的两条完整历史指纹（提交+文件+规则+行号），并独立重算该提交六个SQL文件确认全部与manifest一致；不允许整个文件/目录/规则，不缩小--all，不取消暂存扫描。新提交或行号不会沿用此历史豁免；同一配置下随机合成api_key仍退出1。详见reports/changes/10/A/main-secret-scan-recovery-2026-11-07.md及JSON。此处不是身份公共合同、生产激活或G3批准。
+
+01生产接线补记：R7五个输入已经小张接受并在同一实施提交激活；本机状态文件、数据库初始化SQL、凭据env文件和TLS私钥仅置于忽略的运行目录，均不进入构建上下文/镜像/日志。backend只挂CA并取得DML连接，admin只在离线tools读取DDL连接；默认启动不自动迁移或初始化。原骨架健康回归已迁移到唯一MySQL健康合同，历史archive不追改。
