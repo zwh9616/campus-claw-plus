@@ -7,7 +7,7 @@ COPY src ./src
 COPY public ./public
 RUN npm run build
 
-FROM nginx@sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951
+FROM nginx@sha256:583b7f2fce1cdb8da5ad5c39ebd3c33b98b87d493190e548bdee1fa8c619c311
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=build /src/dist /usr/share/nginx/html
 EXPOSE 80

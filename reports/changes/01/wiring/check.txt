@@ -1,0 +1,102 @@
+
+> campus-claw-plus@0.0.1 check
+> npm run check:foundation && npm run check:contracts && npm run check:identity-wiring && npm run typecheck && npm run build && npm run check:backend && npm run check:spec
+
+
+> campus-claw-plus@0.0.1 check:foundation
+> node scripts/check-foundation.mjs
+
+Foundation: rule/skill entry points exist, sample keys are empty, .env is ignored.
+This check is separate from real authorization review and full-history secret scanning.
+
+> campus-claw-plus@0.0.1 check:contracts
+> node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs scripts/contracts/identity-phase.test.mjs
+
+Contracts: 24 schemas; 99 positive/negative fixtures and 6 semantic inputs agree in both paths; 41 operation examples; 7 current/frozen operations. Planned operations absent.
+✔ ICF-SC-01/02 only skeleton is active; future health is complete and anonymous (10.0941ms)
+✔ ICF-SC-03/04 frozen configuration cannot leak into active samples or lose safety metadata (9.3921ms)
+✔ ICF-SC-05/06 migration reservations reject duplicate numbers, forward dependencies and false evidence (3.9501ms)
+✔ BC-SC-06 accepts trusted rubric, rejects incorrect grading, stale and missing context (3.0764ms)
+✔ BC-SC-05 nonempty Citation codepoint range (0.2071ms)
+✔ BC-SC-08/14 terminal sequence, cancellation and disconnected persistence (0.6947ms)
+✔ BC-SC-10 MCP exception remains exact, disabled and subject to both future reviews (1.1922ms)
+✔ BC-SC-09 registered empty keys only; no weakening historical HTTP_PORT requirement (3.6302ms)
+✔ BC-SC-18 planned operations and anonymous auth bypass cannot enter OpenAPI (27.7943ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 139.999
+
+> campus-claw-plus@0.0.1 check:identity-wiring
+> node --test scripts/identity-wiring.test.mjs
+
+✔ IDF-SC-18 required input, hostname and exact proxy boundaries (8.8617ms)
+✔ IDF-SC-17/18 isolated wiring keeps secrets, ports and current phase separated (11.4465ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 117.9259
+
+> campus-claw-plus@0.0.1 typecheck
+> npm run typecheck --prefix frontend
+
+
+> @campus-claw-plus/frontend@0.0.1 typecheck
+> tsc --noEmit
+
+
+> campus-claw-plus@0.0.1 build
+> npm run build --prefix frontend
+
+
+> @campus-claw-plus/frontend@0.0.1 build
+> tsc --noEmit && vite build
+
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 15 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.61 kB │ gzip:  0.41 kB
+dist/assets/index-xLwe3wJW.css    3.46 kB │ gzip:  1.23 kB
+dist/assets/index-B1-fZwUu.js   143.18 kB │ gzip: 46.85 kB
+
+✓ built in 80ms
+
+> campus-claw-plus@0.0.1 check:backend
+> node scripts/check-backend.mjs
+
+?   	github.com/zwh9616/campus-claw-plus/backend/cmd/identity-admin	[no test files]
+?   	github.com/zwh9616/campus-claw-plus/backend/cmd/server	[no test files]
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/config	0.799s
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/httpserver	1.824s
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/identity	0.578s
+?   	github.com/zwh9616/campus-claw-plus/backend/internal/identityapp	[no test files]
+?   	github.com/zwh9616/campus-claw-plus/backend/internal/integration/fixture	[no test files]
+?   	github.com/zwh9616/campus-claw-plus/backend/internal/integration/wiringfixture	[no test files]
+?   	github.com/zwh9616/campus-claw-plus/backend/internal/migrations	[no test files]
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/mysqlstore	0.673s
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/observability	0.576s
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/probe	1.819s
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/strictjson	0.578s
+
+> campus-claw-plus@0.0.1 check:spec
+> openspec validate --all --strict
+
+- Validating...
+✓ change/2026-11-04-business-contracts
+✓ change/2026-11-04-identity-foundation
+✓ change/2026-11-05-delivery-observability
+✓ change/2026-11-05-frontend-foundation
+✓ change/2026-11-05-reviewer-fix-workflow
+✓ change/2026-11-06-identity-public-contracts
+✓ spec/project-bootstrap
+Totals: 7 passed, 0 failed (7 items)

@@ -1,0 +1,11 @@
+npm run gate
+
+> campus-claw-plus@0.0.1 gate
+> node scripts/gate.mjs
+
+<review-workspace>/output/runtime/ld-musl-x86_64.so.1: <review-workspace>/output/runtime/lib/node_modules/npm/bin/npm-cli.js: Not a valid dynamic program
+
+Gate: check
+Gate check: failed, exit=1
+Not run: audit, secret-scan, verify
+make: *** [Makefile:9：gate] 错误 1

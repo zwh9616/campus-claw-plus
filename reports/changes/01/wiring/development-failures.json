@@ -1,0 +1,473 @@
+{
+  "scope": "Actual development attempts, not final release results; diagnostic summaries transcribed from observed errors",
+  "attempts": [
+    {
+      "attempt": 1,
+      "time": "2026-11-07T08:15:53.593Z",
+      "exit_code": 1,
+      "observed_error": "Docker requires an explicit user-configured subnet for a fixed endpoint IP.",
+      "steps": [
+        {
+          "label": "generate disposable wiring credentials/certificates",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "dedicated internal proxy network",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "discover allocated proxy address",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "validate explicit candidate compose",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "missing HTTPS key is rejected before startup",
+          "exit_code": 1,
+          "expected": "nonzero"
+        },
+        {
+          "label": "build pinned offline admin and preview",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "start fresh persistent MySQL",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "offline migrations",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "offline manifest/schema check",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "database CA file missing is rejected",
+          "exit_code": 2,
+          "expected": "nonzero"
+        },
+        {
+          "label": "offline initialize via stdin",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "repeat initialize does not replace existing password",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "start isolated Go and HTTPS frontend",
+          "exit_code": 1,
+          "expected": 0,
+          "output": " Container campus-wiring-4efd2b3b8aac-preview-1  Creating\n Container campus-wiring-4efd2b3b8aac-preview-1  Created\n Container campus-wiring-4efd2b3b8aac-gateway-1  Creating\n Container campus-wiring-4efd2b3b8aac-gateway-1  Error response from daemon: invalid config for network campus-wiring-4efd2b3b8aac: invalid endpoint settings:\nuser specified IP address is supported only when connecting to networks with user configured subnets\nError response from daemon: invalid config for network campus-wiring-4efd2b3b8aac: invalid endpoint settings:\nuser specified IP address is supported only when connecting to networks with user configured subnets\n"
+        },
+        {
+          "label": "remove only this disposable project and test data volume",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "remove dedicated proxy network",
+          "exit_code": 0,
+          "expected": 0
+        }
+      ]
+    },
+    {
+      "attempt": 2,
+      "time": "2026-11-07T08:17:05.324Z",
+      "exit_code": 1,
+      "observed_error": "The dynamically allocated preview peer took the proposed fixed gateway address.",
+      "steps": [
+        {
+          "label": "generate disposable wiring credentials/certificates",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "dedicated internal proxy network",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "discover allocated proxy address",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "release automatically allocated proxy network",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "create explicit isolated proxy subnet",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "validate explicit candidate compose",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "missing HTTPS key is rejected before startup",
+          "exit_code": 1,
+          "expected": "nonzero"
+        },
+        {
+          "label": "build pinned offline admin and preview",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "start fresh persistent MySQL",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "offline migrations",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "offline manifest/schema check",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "database CA file missing is rejected",
+          "exit_code": 2,
+          "expected": "nonzero"
+        },
+        {
+          "label": "offline initialize via stdin",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "repeat initialize does not replace existing password",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "start isolated Go and HTTPS frontend",
+          "exit_code": 1,
+          "expected": 0,
+          "output": " Container campus-wiring-a9770fc474b2-preview-1  Creating\n Container campus-wiring-a9770fc474b2-preview-1  Created\n Container campus-wiring-a9770fc474b2-gateway-1  Creating\n Container campus-wiring-a9770fc474b2-gateway-1  Created\n Container campus-wiring-a9770fc474b2-preview-1  Starting\n Container campus-wiring-a9770fc474b2-preview-1  Started\n Container campus-wiring-a9770fc474b2-preview-1  Waiting\n Container campus-wiring-a9770fc474b2-preview-1  Healthy\n Container campus-wiring-a9770fc474b2-gateway-1  Starting\nError response from daemon: failed to set up container networking: Address already in use\n"
+        },
+        {
+          "label": "remove only this disposable project and test data volume",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "remove dedicated proxy network",
+          "exit_code": 0,
+          "expected": 0
+        }
+      ]
+    },
+    {
+      "attempt": 3,
+      "time": "2026-11-07T08:18:24.408Z",
+      "exit_code": 1,
+      "observed_error": "EACCES writing generated ca.pem: fixture container and caller UIDs differ.",
+      "steps": [
+        {
+          "label": "generate disposable wiring credentials/certificates",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "dedicated internal proxy network",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "discover allocated proxy address",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "release automatically allocated proxy network",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "create explicit isolated proxy subnet",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "validate explicit candidate compose",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "missing HTTPS key is rejected before startup",
+          "exit_code": 1,
+          "expected": "nonzero"
+        },
+        {
+          "label": "build pinned offline admin and preview",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "start fresh persistent MySQL",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "offline migrations",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "offline manifest/schema check",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "database CA file missing is rejected",
+          "exit_code": 2,
+          "expected": "nonzero"
+        },
+        {
+          "label": "failure diagnostics before cleanup",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "remove only this disposable project and test data volume",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "remove dedicated proxy network",
+          "exit_code": 0,
+          "expected": 0
+        }
+      ]
+    },
+    {
+      "attempt": 4,
+      "time": "2026-11-07T08:19:37.103Z",
+      "exit_code": 1,
+      "observed_error": "Gateway exited 0: overriding entrypoint also removed the inherited default command.",
+      "steps": [
+        {
+          "label": "generate disposable wiring credentials/certificates",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "dedicated internal proxy network",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "discover allocated proxy address",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "release automatically allocated proxy network",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "create explicit isolated proxy subnet",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "validate explicit candidate compose",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "missing HTTPS key is rejected before startup",
+          "exit_code": 1,
+          "expected": "nonzero"
+        },
+        {
+          "label": "build pinned offline admin and preview",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "start fresh persistent MySQL",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "offline migrations",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "offline manifest/schema check",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "database CA file missing is rejected",
+          "exit_code": 2,
+          "expected": "nonzero"
+        },
+        {
+          "label": "valid but wrong database trust certificate is rejected",
+          "exit_code": 1,
+          "expected": "nonzero"
+        },
+        {
+          "label": "offline initialize via stdin",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "repeat initialize does not replace existing password",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "start isolated Go and HTTPS frontend",
+          "exit_code": 1,
+          "expected": 0,
+          "output": " Container campus-wiring-60fbeb66a1a1-preview-1  Creating\n Container campus-wiring-60fbeb66a1a1-preview-1  Created\n Container campus-wiring-60fbeb66a1a1-gateway-1  Creating\n Container campus-wiring-60fbeb66a1a1-gateway-1  Created\n Container campus-wiring-60fbeb66a1a1-preview-1  Starting\n Container campus-wiring-60fbeb66a1a1-preview-1  Started\n Container campus-wiring-60fbeb66a1a1-preview-1  Waiting\n Container campus-wiring-60fbeb66a1a1-preview-1  Healthy\n Container campus-wiring-60fbeb66a1a1-gateway-1  Starting\n Container campus-wiring-60fbeb66a1a1-gateway-1  Started\n Container campus-wiring-60fbeb66a1a1-preview-1  Waiting\n Container campus-wiring-60fbeb66a1a1-gateway-1  Waiting\n Container campus-wiring-60fbeb66a1a1-preview-1  Healthy\ncontainer campus-wiring-60fbeb66a1a1-gateway-1 exited (0)\n"
+        },
+        {
+          "label": "failure diagnostics before cleanup",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "remove only this disposable project and test data volume",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "remove dedicated proxy network",
+          "exit_code": 0,
+          "expected": 0
+        }
+      ]
+    },
+    {
+      "attempt": 5,
+      "time": "2026-11-07T08:20:40.868Z",
+      "exit_code": 1,
+      "observed_error": "EACCES reading generated credential-proof: fixture container and caller UIDs differ.",
+      "steps": [
+        {
+          "label": "generate disposable wiring credentials/certificates",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "dedicated internal proxy network",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "discover allocated proxy address",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "release automatically allocated proxy network",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "create explicit isolated proxy subnet",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "validate explicit candidate compose",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "missing HTTPS key is rejected before startup",
+          "exit_code": 1,
+          "expected": "nonzero"
+        },
+        {
+          "label": "build pinned offline admin and preview",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "start fresh persistent MySQL",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "offline migrations",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "offline manifest/schema check",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "database CA file missing is rejected",
+          "exit_code": 2,
+          "expected": "nonzero"
+        },
+        {
+          "label": "valid but wrong database trust certificate is rejected",
+          "exit_code": 1,
+          "expected": "nonzero"
+        },
+        {
+          "label": "offline initialize via stdin",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "repeat initialize does not replace existing password",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "start isolated Go and HTTPS frontend",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "real same-origin HTTPS, TLS rejection, login and revoked access",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "remove only this disposable project and test data volume",
+          "exit_code": 0,
+          "expected": 0
+        },
+        {
+          "label": "remove dedicated proxy network",
+          "exit_code": 0,
+          "expected": 0
+        }
+      ]
+    }
+  ]
+}

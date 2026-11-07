@@ -1,0 +1,112 @@
+# Opt-in IDF wiring candidate, not the default production phase.
+services:
+  mysql:
+    build:
+      context: ./mysql
+    entrypoint: ["/bin/sh", "/wiring/mysql-entrypoint.sh"]
+    command: ["mysqld", "--require-secure-transport=ON", "--ssl-ca=/run/mysql-tls/ca.pem", "--ssl-cert=/run/mysql-tls/server.pem", "--ssl-key=/run/mysql-tls/server.key"]
+    environment:
+      MYSQL_ROOT_PASSWORD_FILE: /input/root-password
+    volumes:
+      - type: bind
+        source: ${IDENTITY_STATE_DIR:?Provide IDENTITY_STATE_DIR}
+        target: /input
+        read_only: true
+        bind: {create_host_path: false}
+      - ./mysql-entrypoint.sh:/wiring/mysql-entrypoint.sh:ro
+      - mysql-data:/var/lib/mysql
+    tmpfs: [/run/mysql-tls, /docker-entrypoint-initdb.d]
+    networks: [data]
+    healthcheck:
+      # Liveness only; the application separately verifies TLS, schema and Ping.
+      test: ["CMD", "mysqladmin", "ping", "--protocol=tcp", "--host=127.0.0.1", "--silent"]
+      interval: 2s
+      timeout: 2s
+      retries: 45
+      start_period: 10s
+    stop_grace_period: 15s
+
+  admin:
+    profiles: [tools]
+    build: {context: ../../backend, dockerfile: Dockerfile.identity, target: admin}
+    env_file: ["${IDENTITY_STATE_DIR:?Provide IDENTITY_STATE_DIR}/admin.env"]
+    volumes:
+      - type: bind
+        source: ${IDENTITY_STATE_DIR:?Provide IDENTITY_STATE_DIR}/ca.pem
+        target: /fixtures/ca.pem
+        read_only: true
+        bind: {create_host_path: false}
+    networks: [data]
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+
+  preview:
+    # Isolated test assembly. Never selected by the root compose.yaml.
+    profiles: [preview]
+    build: {context: ../../backend, dockerfile: Dockerfile.identity, target: preview}
+    env_file: ["${IDENTITY_STATE_DIR:?Provide IDENTITY_STATE_DIR}/backend.env"]
+    environment:
+      HTTP_PORT: "18080"
+      AUTH_TRUSTED_PROXY_CIDRS: "${IDENTITY_PROXY_IP:?Provide IDENTITY_PROXY_IP}/32"
+    volumes:
+      - type: bind
+        source: ${IDENTITY_STATE_DIR:?Provide IDENTITY_STATE_DIR}/ca.pem
+        target: /fixtures/ca.pem
+        read_only: true
+        bind: {create_host_path: false}
+    networks: [data, proxy]
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    stop_grace_period: 15s
+    healthcheck:
+      test: ["CMD", "/wiring-preview", "--healthcheck"]
+      interval: 2s
+      timeout: 4s
+      retries: 15
+
+  gateway:
+    profiles: [preview]
+    build: {context: ../../frontend}
+    entrypoint: ["/docker-entrypoint.sh"]
+    command: ["nginx", "-g", "daemon off;"]
+    environment:
+      IDENTITY_HTTPS_HOST: ${IDENTITY_HTTPS_HOST:?Provide IDENTITY_HTTPS_HOST}
+      NGINX_ENVSUBST_OUTPUT_DIR: /etc/nginx
+      NGINX_ENVSUBST_FILTER: ^IDENTITY_HTTPS_HOST$$
+    ports: ["127.0.0.1:${IDENTITY_HTTPS_PORT:?Provide IDENTITY_HTTPS_PORT}:443"]
+    volumes:
+      - ./nginx.conf.template:/etc/nginx/templates/nginx.conf.template:ro
+      - ./identity-proxy.conf:/etc/nginx/identity-proxy.conf:ro
+      - type: bind
+        source: ${HTTPS_CERT_FILE:?Provide HTTPS_CERT_FILE}
+        target: /run/https/cert.pem
+        read_only: true
+        bind: {create_host_path: false}
+      - type: bind
+        source: ${HTTPS_KEY_FILE:?Provide HTTPS_KEY_FILE}
+        target: /run/https/key.pem
+        read_only: true
+        bind: {create_host_path: false}
+    networks:
+      proxy:
+        ipv4_address: ${IDENTITY_PROXY_IP:?Provide IDENTITY_PROXY_IP}
+        aliases: ["${IDENTITY_HTTPS_HOST:?Provide IDENTITY_HTTPS_HOST}"]
+    depends_on:
+      preview: {condition: service_healthy}
+    stop_grace_period: 15s
+    healthcheck:
+      # HTTPS application checks are made by the independent trusted client.
+      test: ["CMD", "nginx", "-t"]
+      interval: 5s
+      timeout: 2s
+      retries: 5
+
+volumes:
+  mysql-data: {}
+networks:
+  data: {internal: true}
+  proxy:
+    external: true
+    name: ${IDENTITY_PROXY_NETWORK:?Provide IDENTITY_PROXY_NETWORK}

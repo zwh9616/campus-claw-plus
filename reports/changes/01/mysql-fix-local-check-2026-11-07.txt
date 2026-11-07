@@ -1,0 +1,128 @@
+
+> campus-claw-plus@0.0.1 check
+> npm run check:foundation && npm run check:gate && npm run check:contracts && npm run check:identity-wiring && npm run typecheck && npm run build && npm run check:backend && npm run check:spec
+
+
+> campus-claw-plus@0.0.1 check:foundation
+> node scripts/check-foundation.mjs
+
+Foundation: rule/skill entry points exist, sample keys are empty, .env is ignored.
+This check is separate from real authorization review and full-history secret scanning.
+
+> campus-claw-plus@0.0.1 check:gate
+> node --test scripts/gate.test.mjs
+
+✔ DO-SC-03 serial success executes all stages in order (158.2346ms)
+✔ DO-SC-04 check failure preserves exit code and prevents subsequent execution (39.965ms)
+✔ DO-SC-04 audit failure preserves exit code and prevents subsequent execution (72.3707ms)
+✔ DO-SC-04 secret-scan failure preserves exit code and prevents subsequent execution (107.3684ms)
+✔ DO-SC-04 verify failure preserves exit code and prevents subsequent execution (152.1435ms)
+✔ DO-SC-05 missing executable is failure, not a skipped pass (3.2708ms)
+✔ DO-SC-05 signalled child cannot pass (40.6953ms)
+✔ DO-SC-05 timeout terminates stage and fails closed (196.6633ms)
+✔ DO-SC-05 cancellation before and during a stage prevents later commands (105.12ms)
+✔ DO-SC-05 concurrent calls in one checkout fail without stealing its lock (2.2334ms)
+✔ DO-SC-05 different runs isolate images and atomically assigned ports; keep contract/probes (1.4876ms)
+✔ DO-SC-03/06 Make remains a thin npm wrapper, stable CI delegates complete gate (0.4779ms)
+✔ DO-SC-05 Make installation failure stops setup; -j does not run targets concurrently (2.97ms)
+ℹ GNU Make unavailable: real Make execution unverified here; use npm gate. CI and Docker test environment must execute this case.
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 945.297
+
+> campus-claw-plus@0.0.1 check:contracts
+> node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs scripts/contracts/identity-phase.test.mjs
+
+Contracts: 24 schemas; 99 positive/negative fixtures and 6 semantic inputs agree in both paths; 40 operation examples; 7 current/frozen operations. Planned operations absent.
+✔ ICF-SC-01/02 active identity health is unique and anonymous; no skeleton fallback (10.7854ms)
+✔ ICF-SC-03/04 activation preserves required, process-separated secret metadata (10.5222ms)
+✔ ICF-SC-05/06 available SQL rejects duplicates, forward dependencies and false deployment claims (5.8974ms)
+✔ BC-SC-06 accepts trusted rubric, rejects incorrect grading, stale and missing context (3.1514ms)
+✔ BC-SC-05 nonempty Citation codepoint range (0.1888ms)
+✔ BC-SC-08/14 terminal sequence, cancellation and disconnected persistence (0.8252ms)
+✔ BC-SC-10 MCP exception remains exact, disabled and subject to both future reviews (1.5395ms)
+✔ BC-SC-09 registered empty keys only; no weakening historical HTTP_PORT requirement (5.2162ms)
+✔ BC-SC-18 planned operations and anonymous auth bypass cannot enter OpenAPI (27.3354ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 146.0195
+
+> campus-claw-plus@0.0.1 check:identity-wiring
+> node --test scripts/identity-wiring.test.mjs
+
+✔ IDF-SC-18 required input, hostname and exact proxy boundaries (8.8982ms)
+✔ IDF-SC-17/18 isolated wiring keeps secrets, ports and current phase separated (14.3495ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 117.5797
+
+> campus-claw-plus@0.0.1 typecheck
+> npm run typecheck --prefix frontend
+
+
+> @campus-claw-plus/frontend@0.0.1 typecheck
+> tsc --noEmit
+
+
+> campus-claw-plus@0.0.1 build
+> npm run build --prefix frontend
+
+
+> @campus-claw-plus/frontend@0.0.1 build
+> tsc --noEmit && vite build
+
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 15 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.61 kB │ gzip:  0.41 kB
+dist/assets/index-xLwe3wJW.css    3.46 kB │ gzip:  1.23 kB
+dist/assets/index-B1-fZwUu.js   143.18 kB │ gzip: 46.85 kB
+
+✓ built in 78ms
+
+> campus-claw-plus@0.0.1 check:backend
+> node scripts/check-backend.mjs
+
+?   	github.com/zwh9616/campus-claw-plus/backend/cmd/identity-admin	[no test files]
+?   	github.com/zwh9616/campus-claw-plus/backend/cmd/server	[no test files]
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/config	0.675s
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/httpserver	1.758s
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/identity	0.756s
+?   	github.com/zwh9616/campus-claw-plus/backend/internal/identityapp	[no test files]
+?   	github.com/zwh9616/campus-claw-plus/backend/internal/integration/fixture	[no test files]
+?   	github.com/zwh9616/campus-claw-plus/backend/internal/integration/wiringfixture	[no test files]
+?   	github.com/zwh9616/campus-claw-plus/backend/internal/migrations	[no test files]
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/mysqlstore	0.894s
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/observability	0.794s
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/probe	1.712s
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/strictjson	0.785s
+
+> campus-claw-plus@0.0.1 check:spec
+> openspec validate --all --strict
+
+- Validating...
+✓ change/2026-11-04-business-contracts
+✓ change/2026-11-04-identity-foundation
+✓ change/2026-11-05-delivery-observability
+✓ change/2026-11-05-frontend-foundation
+✓ change/2026-11-05-reviewer-fix-workflow
+✓ change/2026-11-06-identity-public-contracts
+✓ spec/project-bootstrap
+Totals: 7 passed, 0 failed (7 items)

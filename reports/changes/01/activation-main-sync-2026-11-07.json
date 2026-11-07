@@ -1,0 +1,122 @@
+{
+  "time": "2026-11-07T09:41:23.860775+00:00",
+  "executor": "zwh9616 / 小张",
+  "identity_head": "a74bc0c50e52703429b0e034e0d7f6f1529e1b66",
+  "integrated_main": "7806b5d08741291b9c3de9ea0c5a1ab29c9c7870",
+  "check": {
+    "command": "npm run check",
+    "exit_code": 0,
+    "output": "\n> campus-claw-plus@0.0.1 check\n> npm run check:foundation && npm run check:gate && npm run check:contracts && npm run check:identity-wiring && npm run typecheck && npm run build && npm run check:backend && npm run check:spec\n\n\n> campus-claw-plus@0.0.1 check:foundation\n> node scripts/check-foundation.mjs\n\nFoundation: rule/skill entry points exist, sample keys are empty, .env is ignored.\nThis check is separate from real authorization review and full-history secret scanning.\n\n> campus-claw-plus@0.0.1 check:gate\n> node --test scripts/gate.test.mjs\n\n✔ DO-SC-03 serial success executes all stages in order (412.5896ms)\n✔ DO-SC-04 check failure preserves exit code and prevents subsequent execution (124.3567ms)\n✔ DO-SC-04 audit failure preserves exit code and prevents subsequent execution (265.6783ms)\n✔ DO-SC-04 secret-scan failure preserves exit code and prevents subsequent execution (295.0351ms)\n✔ DO-SC-04 verify failure preserves exit code and prevents subsequent execution (368.841ms)\n✔ DO-SC-05 missing executable is failure, not a skipped pass (29.8807ms)\n✔ DO-SC-05 signalled child cannot pass (93.724ms)\n✔ DO-SC-05 timeout terminates stage and fails closed (511.0175ms)\n✔ DO-SC-05 cancellation before and during a stage prevents later commands (371.8357ms)\n✔ DO-SC-05 concurrent calls in one checkout fail without stealing its lock (8.4851ms)\n✔ DO-SC-05 different runs isolate images and atomically assigned ports; keep contract/probes (1.553ms)\n✔ DO-SC-03/06 Make remains a thin npm wrapper, stable CI delegates complete gate (1.0841ms)\n✔ DO-SC-05 Make installation failure stops setup; -j does not run targets concurrently (18.6827ms)\nℹ GNU Make unavailable: real Make execution unverified here; use npm gate. CI and Docker test environment must execute this case.\nℹ tests 13\nℹ suites 0\nℹ pass 13\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 2659.6743\n\n> campus-claw-plus@0.0.1 check:contracts\n> node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs scripts/contracts/identity-phase.test.mjs\n\nContracts: 24 schemas; 99 positive/negative fixtures and 6 semantic inputs agree in both paths; 40 operation examples; 7 current/frozen operations. Planned operations absent.\n✔ ICF-SC-01/02 active identity health is unique and anonymous; no skeleton fallback (23.7393ms)\n✔ ICF-SC-03/04 activation preserves required, process-separated secret metadata (25.0909ms)\n✔ ICF-SC-05/06 available SQL rejects duplicates, forward dependencies and false deployment claims (18.7839ms)\n✔ BC-SC-06 accepts trusted rubric, rejects incorrect grading, stale and missing context (3.0094ms)\n✔ BC-SC-05 nonempty Citation codepoint range (0.1971ms)\n✔ BC-SC-08/14 terminal sequence, cancellation and disconnected persistence (0.7482ms)\n✔ BC-SC-10 MCP exception remains exact, disabled and subject to both future reviews (1.01ms)\n✔ BC-SC-09 registered empty keys only; no weakening historical HTTP_PORT requirement (28.8904ms)\n✔ BC-SC-18 planned operations and anonymous auth bypass cannot enter OpenAPI (29.254ms)\nℹ tests 9\nℹ suites 0\nℹ pass 9\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 416.9914\n\n> campus-claw-plus@0.0.1 check:identity-wiring\n> node --test scripts/identity-wiring.test.mjs\n\n✔ IDF-SC-18 required input, hostname and exact proxy boundaries (14.7823ms)\n✔ IDF-SC-17/18 isolated wiring keeps secrets, ports and current phase separated (20.0638ms)\nℹ tests 2\nℹ suites 0\nℹ pass 2\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 292.3771\n\n> campus-claw-plus@0.0.1 typecheck\n> npm run typecheck --prefix frontend\n\n\n> @campus-claw-plus/frontend@0.0.1 typecheck\n> tsc --noEmit\n\n\n> campus-claw-plus@0.0.1 build\n> npm run build --prefix frontend\n\n\n> @campus-claw-plus/frontend@0.0.1 build\n> tsc --noEmit && vite build\n\nvite v8.3.5 building client environment for production...\ntransforming...\n✓ 15 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                   0.61 kB │ gzip:  0.41 kB\ndist/assets/index-xLwe3wJW.css    3.46 kB │ gzip:  1.23 kB\ndist/assets/index-B1-fZwUu.js   143.18 kB │ gzip: 46.85 kB\n\n✓ built in 139ms\n\n> campus-claw-plus@0.0.1 check:backend\n> node scripts/check-backend.mjs\n\n?   \tgithub.com/zwh9616/campus-claw-plus/backend/cmd/identity-admin\t[no test files]\n?   \tgithub.com/zwh9616/campus-claw-plus/backend/cmd/server\t[no test files]\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/config\t0.006s\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/httpserver\t0.021s\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/identity\t0.118s\n?   \tgithub.com/zwh9616/campus-claw-plus/backend/internal/identityapp\t[no test files]\n?   \tgithub.com/zwh9616/campus-claw-plus/backend/internal/integration/fixture\t[no test files]\n?   \tgithub.com/zwh9616/campus-claw-plus/backend/internal/integration/wiringfixture\t[no test files]\n?   \tgithub.com/zwh9616/campus-claw-plus/backend/internal/migrations\t[no test files]\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/mysqlstore\t0.008s\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/observability\t0.010s\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/probe\t0.017s\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/strictjson\t0.009s\n\n> campus-claw-plus@0.0.1 check:spec\n> openspec validate --all --strict\n\n- Validating...\n✓ change/2026-11-04-business-contracts\n✓ change/2026-11-04-identity-foundation\n✓ change/2026-11-05-delivery-observability\n✓ change/2026-11-05-frontend-foundation\n✓ change/2026-11-05-reviewer-fix-workflow\n✓ change/2026-11-06-identity-public-contracts\n✓ spec/project-bootstrap\nTotals: 7 passed, 0 failed (7 items)\n"
+  },
+  "source_manifest_comparison": [
+    {
+      "path": "backend/cmd/server/main.go",
+      "unchanged": true
+    },
+    {
+      "path": "backend/internal/identityapp/app.go",
+      "unchanged": true
+    },
+    {
+      "path": "backend/internal/httpserver/handler.go",
+      "unchanged": true
+    },
+    {
+      "path": "backend/internal/httpserver/identity.go",
+      "unchanged": true
+    },
+    {
+      "path": "backend/internal/probe/probe.go",
+      "unchanged": true
+    },
+    {
+      "path": "backend/Dockerfile",
+      "unchanged": true
+    },
+    {
+      "path": "backend/Dockerfile.identity",
+      "unchanged": true
+    },
+    {
+      "path": "compose.yaml",
+      "unchanged": true
+    },
+    {
+      "path": "deploy/identity/inputs.json",
+      "unchanged": true
+    },
+    {
+      "path": "deploy/identity/production-proxy.conf.template",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/config-register.json",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/identity-phase.json",
+      "unchanged": true
+    },
+    {
+      "path": "docs/contracts/openapi.yaml",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/verify-skeleton.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/verify-identity-wiring.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/identity-compose.mjs",
+      "unchanged": true
+    },
+    {
+      "path": "backend/internal/integration/wiring/wiring_test.go",
+      "unchanged": true
+    }
+  ],
+  "image_audit": {
+    "executor": "Kevcco / 小陈; actual GitHub CHANGES_REQUESTED on identity_head",
+    "own_scan_executed": false,
+    "critical": 2,
+    "high": 33,
+    "reported_exit_code": 1,
+    "source": "https://github.com/zwh9616/campus-claw-plus/pull/14#pullrequestreview-5811356408",
+    "raw_report_available_here": true,
+    "raw_report_gzip": "reports/changes/01/mysql-image-audit-2026-11-07.json.gz",
+    "uncompressed_sha256_verified": "4557868fe25ddc395f22558d71a1e47b41a718f570f82d77050eca16fc537e1d"
+  },
+  "registry_query": {
+    "executor": "zwh9616 / 小张",
+    "commands": [
+      "docker buildx imagetools inspect mysql:8.4.13",
+      "docker buildx imagetools inspect mysql:8.4.13-oraclelinux9"
+    ],
+    "exit_codes": [
+      0,
+      0
+    ],
+    "both_index_digest": "sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902",
+    "amd64_manifest": "sha256:72c368d898861f3b3a07af0e6d690400f44f048799ed46822783d9224cc2c86d",
+    "new_same_version_official_digest_obtained": false
+  },
+  "merge_allowed": false,
+  "remaining": [
+    "Fix and rescan vulnerable MySQL image under approved exact version or reviewed version update",
+    "Final actual Chen review of current implementation",
+    "02 real UI and browser integration"
+  ],
+  "secret_scan": {
+    "command": "npm run secret-scan",
+    "exit_code": 0,
+    "output": "\n> campus-claw-plus@0.0.1 secret-scan\n> node scripts/check-secrets.mjs\n\n5:41PM INF 89 commits scanned.\n5:41PM INF scanned ~2474285 bytes (2.47 MB) in 1.5s\n5:41PM INF no leaks found\n5:41PM INF scanned ~51666 bytes (51.67 KB) in 120ms\n5:41PM INF no leaks found\nFull-history and staged-content secret scans passed.\n"
+  },
+  "diff_check": {
+    "command": "git diff --cached --check",
+    "exit_code": 0
+  },
+  "peer_integrated": "c91129f"
+}

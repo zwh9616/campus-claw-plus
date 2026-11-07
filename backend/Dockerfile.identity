@@ -1,0 +1,18 @@
+FROM golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb AS build
+WORKDIR /src
+COPY go.mod go.sum ./
+COPY vendor ./vendor
+COPY cmd ./cmd
+COPY internal ./internal
+RUN --mount=type=cache,target=/root/.cache/go-build CGO_ENABLED=0 go build -trimpath -buildvcs=false -ldflags="-s -w -buildid=" -o /out/identity-admin ./cmd/identity-admin
+RUN --mount=type=cache,target=/root/.cache/go-build CGO_ENABLED=0 go build -trimpath -buildvcs=false -ldflags="-s -w -buildid=" -o /out/wiring-preview ./internal/integration/wiringfixture
+
+FROM scratch AS admin
+COPY --from=build /out/identity-admin /identity-admin
+USER 65532:65532
+ENTRYPOINT ["/identity-admin"]
+
+FROM scratch AS preview
+COPY --from=build /out/wiring-preview /wiring-preview
+USER 65532:65532
+ENTRYPOINT ["/wiring-preview"]

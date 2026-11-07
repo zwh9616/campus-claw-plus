@@ -1,0 +1,65 @@
+{
+  "source_head": "2ec6668475fa99f46d25206a1da8249b784ca4ad",
+  "tested_merge": "bd0676e454d715c28e0ef4199bb325282ac64569",
+  "run": "https://github.com/zwh9616/campus-claw-plus/actions/runs/42362608142",
+  "artifact_id": 13570333317,
+  "conclusion": "success",
+  "scanner": "aquasec/trivy@sha256:8f6bb947dbc528902e11f2f5be52f7b519f6a39d5d148f41166f2040499768fb",
+  "mysql_vulnerability_database": {
+    "Version": 2,
+    "NextUpdate": "2026-11-08T06:54:25.084761663Z",
+    "UpdatedAt": "2026-11-07T06:54:25.084761873Z",
+    "DownloadedAt": "2026-11-07T10:09:10.775578829Z"
+  },
+  "application_vulnerability_database": {
+    "Version": 2,
+    "NextUpdate": "2026-11-08T06:54:25.084761663Z",
+    "UpdatedAt": "2026-11-07T06:54:25.084761873Z",
+    "DownloadedAt": "2026-11-07T10:09:37.093446904Z"
+  },
+  "images": [
+    {
+      "service": "mysql",
+      "image_id": "sha256:e85a91382905e64a8907e8274da77e377dc8cb45760612104934cfc899451b55",
+      "HIGH": 0,
+      "CRITICAL": 0,
+      "raw_sha256": "1b9d7ca95e0487df8991ab93eadd9e3082482b3694c3ef5e3669c6dd44b2cd11",
+      "raw_bytes": 1182778,
+      "archive": "runtime-mysql-ci-scan-2026-11-07.json.gz"
+    },
+    {
+      "service": "backend",
+      "image_id": "sha256:a1a1d4ef8202e3bdcd8ad85c6ba6a499744a1a21daec26a8f60bb51019ac544c",
+      "HIGH": 0,
+      "CRITICAL": 0,
+      "raw_sha256": "a7bd8a311968c236a1d1c76ab05142a05d8f8df27f16ba16b5bad8ba5606bba0",
+      "raw_bytes": 6287,
+      "archive": "runtime-backend-ci-scan-2026-11-07.json.gz"
+    },
+    {
+      "service": "admin",
+      "image_id": "sha256:8fbd8621a8a75543ad76acd6540572f79c74ca1de92b192f7049628a23697946",
+      "HIGH": 0,
+      "CRITICAL": 0,
+      "raw_sha256": "281ee4f9c5612098befb2f87b650aaa9ae708968283f4fbabbc77715d1113f4c",
+      "raw_bytes": 5778,
+      "archive": "runtime-admin-ci-scan-2026-11-07.json.gz"
+    },
+    {
+      "service": "frontend",
+      "image_id": "sha256:2d21a84673be79dacf6b790dcae6ddd2d84e76d2ba1909107340eedcc4a871fc",
+      "HIGH": 0,
+      "CRITICAL": 0,
+      "raw_sha256": "d2bb6b8b22118323d41d9bd7af2643da8995c436c5ce333dc5d1d2d837d16258",
+      "raw_bytes": 153902,
+      "archive": "runtime-frontend-ci-scan-2026-11-07.json.gz"
+    }
+  ],
+  "gate_milestones": [
+    "2026-11-07T10:11:22.4395723Z Gate check: passed, exit=0",
+    "2026-11-07T10:11:22.4397251Z Gate audit: passed, exit=0",
+    "2026-11-07T10:11:22.4397696Z Gate secret-scan: passed, exit=0",
+    "2026-11-07T10:11:22.4398075Z Gate verify: passed, exit=0"
+  ],
+  "scope": "Actual CI built production artifacts plus full gate; independent local final replay recorded separately"
+}

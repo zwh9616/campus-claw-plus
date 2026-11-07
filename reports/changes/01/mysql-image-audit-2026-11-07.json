@@ -1,0 +1,422 @@
+{
+  "executed_at": "2026-11-07T09:27:45.7132944+00:00",
+  "source_head": "41e8ed2191a9b6538b1ddab980172a8569a9ac22",
+  "tool": "Trivy 0.76.2 Windows amd64",
+  "archive_sha256": "691f737a7e5566a673c3a74dab9160552ec32101e953b659e5c77443d16dddb6",
+  "image": "docker.io/library/mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902",
+  "platform": "linux/amd64",
+  "severity": [
+    "HIGH",
+    "CRITICAL"
+  ],
+  "exit_code": 1,
+  "duration_seconds": 25.8,
+  "reviewed_head": "a74bc0c50e52703429b0e034e0d7f6f1529e1b66",
+  "current_image_verified_equal": [
+    "compose.yaml",
+    "deploy/identity/compose.yaml",
+    "scripts/verify-identity.mjs"
+  ],
+  "raw_report": "mysql-image-audit-2026-11-07.json.gz",
+  "raw_report_sha256": "4557868fe25ddc395f22558d71a1e47b41a718f570f82d77050eca16fc537e1d",
+  "raw_report_bytes": 1456534,
+  "vulnerability_database": {
+    "Version": 2,
+    "NextUpdate": "2026-11-08T06:54:25.084761663Z",
+    "UpdatedAt": "2026-11-07T06:54:25.084761873Z",
+    "DownloadedAt": "2026-11-07T09:27:30.6335598Z"
+  },
+  "counts": {
+    "CRITICAL": 2,
+    "HIGH": 33
+  },
+  "findings": [
+    {
+      "target": "Python",
+      "type": "python-pkg",
+      "id": "GHSA-6q48-6c7w-9gw2",
+      "severity": "CRITICAL",
+      "package": "certifi",
+      "package_path": "usr/lib/mysqlsh/lib/python3.13/site-packages/certifi-2026.2.25.dist-info/METADATA",
+      "installed": "2026.2.25",
+      "fixed": "2026.10.18",
+      "primary_url": "https://github.com/advisories/GHSA-6q48-6c7w-9gw2"
+    },
+    {
+      "target": "Python",
+      "type": "python-pkg",
+      "id": "CVE-2026-69247",
+      "severity": "HIGH",
+      "package": "cryptography",
+      "package_path": "usr/lib/mysqlsh/lib/python3.13/site-packages/cryptography-46.0.5.dist-info/METADATA",
+      "installed": "46.0.5",
+      "fixed": "50.0.0",
+      "primary_url": "https://avd.aquasec.com/nvd/cve-2026-69247"
+    },
+    {
+      "target": "Python",
+      "type": "python-pkg",
+      "id": "CVE-2026-69249",
+      "severity": "HIGH",
+      "package": "cryptography",
+      "package_path": "usr/lib/mysqlsh/lib/python3.13/site-packages/cryptography-46.0.5.dist-info/METADATA",
+      "installed": "46.0.5",
+      "fixed": "49.0.0",
+      "primary_url": "https://avd.aquasec.com/nvd/cve-2026-69249"
+    },
+    {
+      "target": "Python",
+      "type": "python-pkg",
+      "id": "GHSA-537c-gmf6-5ccf",
+      "severity": "HIGH",
+      "package": "cryptography",
+      "package_path": "usr/lib/mysqlsh/lib/python3.13/site-packages/cryptography-46.0.5.dist-info/METADATA",
+      "installed": "46.0.5",
+      "fixed": "48.0.1",
+      "primary_url": "https://github.com/advisories/GHSA-537c-gmf6-5ccf"
+    },
+    {
+      "target": "Python",
+      "type": "python-pkg",
+      "id": "CVE-2026-27459",
+      "severity": "HIGH",
+      "package": "pyOpenSSL",
+      "package_path": "usr/lib/mysqlsh/lib/python3.13/site-packages/pyopenssl-25.3.0.dist-info/METADATA",
+      "installed": "25.3.0",
+      "fixed": "26.0.0",
+      "primary_url": "https://avd.aquasec.com/nvd/cve-2026-27459"
+    },
+    {
+      "target": "Python",
+      "type": "python-pkg",
+      "id": "CVE-2026-44431",
+      "severity": "HIGH",
+      "package": "urllib3",
+      "package_path": "usr/lib/mysqlsh/lib/python3.13/site-packages/urllib3-2.6.3.dist-info/METADATA",
+      "installed": "2.6.3",
+      "fixed": "2.7.0",
+      "primary_url": "https://avd.aquasec.com/nvd/cve-2026-44431"
+    },
+    {
+      "target": "Python",
+      "type": "python-pkg",
+      "id": "CVE-2026-44432",
+      "severity": "HIGH",
+      "package": "urllib3",
+      "package_path": "usr/lib/mysqlsh/lib/python3.13/site-packages/urllib3-2.6.3.dist-info/METADATA",
+      "installed": "2.6.3",
+      "fixed": "2.7.0",
+      "primary_url": "https://avd.aquasec.com/nvd/cve-2026-44432"
+    },
+    {
+      "target": "Python",
+      "type": "python-pkg",
+      "id": "CVE-2026-97687",
+      "severity": "HIGH",
+      "package": "urllib3",
+      "package_path": "usr/lib/mysqlsh/lib/python3.13/site-packages/urllib3-2.6.3.dist-info/METADATA",
+      "installed": "2.6.3",
+      "fixed": "2.8.0",
+      "primary_url": "https://avd.aquasec.com/nvd/cve-2026-97687"
+    },
+    {
+      "target": "Python",
+      "type": "python-pkg",
+      "id": "CVE-2026-97689",
+      "severity": "HIGH",
+      "package": "urllib3",
+      "package_path": "usr/lib/mysqlsh/lib/python3.13/site-packages/urllib3-2.6.3.dist-info/METADATA",
+      "installed": "2.6.3",
+      "fixed": "2.8.0",
+      "primary_url": "https://avd.aquasec.com/nvd/cve-2026-97689"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "type": "gobinary",
+      "id": "CVE-2025-68121",
+      "severity": "CRITICAL",
+      "package": "stdlib",
+      "package_path": null,
+      "installed": "v1.24.6",
+      "fixed": "1.24.13, 1.25.7, 1.26.0-rc.3",
+      "primary_url": "https://avd.aquasec.com/nvd/cve-2025-68121"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "type": "gobinary",
+      "id": "CVE-2025-61726",
+      "severity": "HIGH",
+      "package": "stdlib",
+      "package_path": null,
+      "installed": "v1.24.6",
+      "fixed": "1.24.12, 1.25.6",
+      "primary_url": "https://avd.aquasec.com/nvd/cve-2025-61726"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "type": "gobinary",
+      "id": "CVE-2025-61729",
+      "severity": "HIGH",
+      "package": "stdlib",
+      "package_path": null,
+      "installed": "v1.24.6",
+      "fixed": "1.24.11, 1.25.5",
+      "primary_url": "https://avd.aquasec.com/nvd/cve-2025-61729"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "type": "gobinary",
+      "id": "CVE-2026-111943",
+      "severity": "HIGH",
+      "package": "stdlib",
+      "package_path": null,
+      "installed": "v1.24.6",
+      "fixed": "1.26.10, 1.27.3",
+      "primary_url": "https://avd.aquasec.com/nvd/cve-2026-111943"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "type": "gobinary",
+      "id": "CVE-2026-25679",
+      "severity": "HIGH",
+      "package": "stdlib",
+      "package_path": null,
+      "installed": "v1.24.6",
+      "fixed": "1.25.8, 1.26.1",
+      "primary_url": "https://avd.aquasec.com/nvd/cve-2026-25679"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "type": "gobinary",
+      "id": "CVE-2026-27145",
+      "severity": "HIGH",
+      "package": "stdlib",
+      "package_path": null,
+      "installed": "v1.24.6",
+      "fixed": "1.25.11, 1.26.4",
+      "primary_url": "https://avd.aquasec.com/nvd/cve-2026-27145"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "type": "gobinary",
+      "id": "CVE-2026-32280",
+      "severity": "HIGH",
+      "package": "stdlib",
+      "package_path": null,
+      "installed": "v1.24.6",
+      "fixed": "1.25.9, 1.26.2",
+      "primary_url": "https://avd.aquasec.com/nvd/cve-2026-32280"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "type": "gobinary",
+      "id": "CVE-2026-32281",
+      "severity": "HIGH",
+      "package": "stdlib",
+      "package_path": null,
+      "installed": "v1.24.6",
+      "fixed": "1.25.9, 1.26.2",
+      "primary_url": "https://avd.aquasec.com/nvd/cve-2026-32281"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "type": "gobinary",
+      "id": "CVE-2026-32283",
+      "severity": "HIGH",
+      "package": "stdlib",
+      "package_path": null,
+      "installed": "v1.24.6",
+      "fixed": "1.25.9, 1.26.2",
+      "primary_url": "https://avd.aquasec.com/nvd/cve-2026-32283"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "type": "gobinary",
+      "id": "CVE-2026-33811",
+      "severity": "HIGH",
+      "package": "stdlib",
+      "package_path": null,
+      "installed": "v1.24.6",
+      "fixed": "1.25.10, 1.26.3",
+      "primary_url": "https://avd.aquasec.com/nvd/cve-2026-33811"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "type": "gobinary",
+      "id": "CVE-2026-33814",
+      "severity": "HIGH",
+      "package": "stdlib",
+      "package_path": null,
+      "installed": "v1.24.6",
+      "fixed": "1.25.10, 1.26.3",
+      "primary_url": "https://avd.aquasec.com/nvd/cve-2026-33814"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "type": "gobinary",
+      "id": "CVE-2026-33818",
+      "severity": "HIGH",
+      "package": "stdlib",
+      "package_path": null,
+      "installed": "v1.24.6",
+      "fixed": "1.25.13, 1.26.6, 1.27.0-rc.3",
+      "primary_url": "https://avd.aquasec.com/nvd/cve-2026-33818"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "type": "gobinary",
+      "id": "CVE-2026-39820",
+      "severity": "HIGH",
+      "package": "stdlib",
+      "package_path": null,
+      "installed": "v1.24.6",
+      "fixed": "1.25.10, 1.26.3",
+      "primary_url": "https://avd.aquasec.com/nvd/cve-2026-39820"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "type": "gobinary",
+      "id": "CVE-2026-39821",
+      "severity": "HIGH",
+      "package": "stdlib",
+      "package_path": null,
+      "installed": "v1.24.6",
+      "fixed": "1.25.13, 1.26.6, 1.27.0-rc.3",
+      "primary_url": "https://avd.aquasec.com/nvd/cve-2026-39821"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "type": "gobinary",
+      "id": "CVE-2026-39822",
+      "severity": "HIGH",
+      "package": "stdlib",
+      "package_path": null,
+      "installed": "v1.24.6",
+      "fixed": "1.25.12, 1.26.5, 1.27.0-rc.2",
+      "primary_url": "https://avd.aquasec.com/nvd/cve-2026-39822"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "type": "gobinary",
+      "id": "CVE-2026-39836",
+      "severity": "HIGH",
+      "package": "stdlib",
+      "package_path": null,
+      "installed": "v1.24.6",
+      "fixed": "1.25.10, 1.26.3",
+      "primary_url": "https://avd.aquasec.com/nvd/cve-2026-39836"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "type": "gobinary",
+      "id": "CVE-2026-42499",
+      "severity": "HIGH",
+      "package": "stdlib",
+      "package_path": null,
+      "installed": "v1.24.6",
+      "fixed": "1.25.10, 1.26.3",
+      "primary_url": "https://avd.aquasec.com/nvd/cve-2026-42499"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "type": "gobinary",
+      "id": "CVE-2026-42504",
+      "severity": "HIGH",
+      "package": "stdlib",
+      "package_path": null,
+      "installed": "v1.24.6",
+      "fixed": "1.25.11, 1.26.4",
+      "primary_url": "https://avd.aquasec.com/nvd/cve-2026-42504"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "type": "gobinary",
+      "id": "CVE-2026-56853",
+      "severity": "HIGH",
+      "package": "stdlib",
+      "package_path": null,
+      "installed": "v1.24.6",
+      "fixed": "1.25.13, 1.26.6, 1.27.0-rc.3",
+      "primary_url": "https://avd.aquasec.com/nvd/cve-2026-56853"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "type": "gobinary",
+      "id": "CVE-2026-56858",
+      "severity": "HIGH",
+      "package": "stdlib",
+      "package_path": null,
+      "installed": "v1.24.6",
+      "fixed": "1.25.13, 1.26.6, 1.27.0-rc.3",
+      "primary_url": "https://avd.aquasec.com/nvd/cve-2026-56858"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "type": "gobinary",
+      "id": "CVE-2026-56859",
+      "severity": "HIGH",
+      "package": "stdlib",
+      "package_path": null,
+      "installed": "v1.24.6",
+      "fixed": "1.25.13, 1.26.6, 1.27.0-rc.3",
+      "primary_url": "https://avd.aquasec.com/nvd/cve-2026-56859"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "type": "gobinary",
+      "id": "CVE-2026-56860",
+      "severity": "HIGH",
+      "package": "stdlib",
+      "package_path": null,
+      "installed": "v1.24.6",
+      "fixed": "1.25.13, 1.26.6, 1.27.0-rc.3",
+      "primary_url": "https://avd.aquasec.com/nvd/cve-2026-56860"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "type": "gobinary",
+      "id": "CVE-2026-56862",
+      "severity": "HIGH",
+      "package": "stdlib",
+      "package_path": null,
+      "installed": "v1.24.6",
+      "fixed": "1.25.13, 1.26.6, 1.27.0-rc.3",
+      "primary_url": "https://avd.aquasec.com/nvd/cve-2026-56862"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "type": "gobinary",
+      "id": "CVE-2026-78667",
+      "severity": "HIGH",
+      "package": "stdlib",
+      "package_path": null,
+      "installed": "v1.24.6",
+      "fixed": "1.26.9, 1.27.2",
+      "primary_url": "https://avd.aquasec.com/nvd/cve-2026-78667"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "type": "gobinary",
+      "id": "CVE-2026-78669",
+      "severity": "HIGH",
+      "package": "stdlib",
+      "package_path": null,
+      "installed": "v1.24.6",
+      "fixed": "1.26.9, 1.27.2",
+      "primary_url": "https://avd.aquasec.com/nvd/cve-2026-78669"
+    },
+    {
+      "target": "usr/local/bin/gosu",
+      "type": "gobinary",
+      "id": "CVE-2026-97031",
+      "severity": "HIGH",
+      "package": "stdlib",
+      "package_path": null,
+      "installed": "v1.24.6",
+      "fixed": "1.26.9, 1.27.2",
+      "primary_url": "https://avd.aquasec.com/nvd/cve-2026-97031"
+    }
+  ],
+  "final_application_images": "not scanned",
+  "runtime_exploitability": "not established by package scan"
+}

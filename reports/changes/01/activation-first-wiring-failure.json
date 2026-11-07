@@ -1,0 +1,88 @@
+{
+  "time": "2026-11-07T08:58:41.546Z",
+  "scope": "default production Compose and real cmd/server with disposable test credentials/CA; no native browser or operator deployment claim",
+  "results": [
+    {
+      "label": "generate disposable wiring credentials/certificates",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "Disposable credentials and CA generated; values omitted\n"
+    },
+    {
+      "label": "dedicated internal proxy network",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "ed181023a5c703db155b024d2cefae6ea5788905ee209f8819362238a38d547d\n"
+    },
+    {
+      "label": "discover allocated proxy address",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "[{\"Subnet\":\"192.168.192.0/20\",\"Gateway\":\"192.168.192.1\"}]\n"
+    },
+    {
+      "label": "release automatically allocated proxy network",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "campus-wiring-21044c60d361\n"
+    },
+    {
+      "label": "create explicit isolated proxy subnet",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "a320f837b4055083395022a36b2176e0c380be125f27e63d60b55caf0727cfb7\n"
+    },
+    {
+      "label": "validate explicit candidate compose",
+      "exit_code": 0,
+      "expected": 0,
+      "output": ""
+    },
+    {
+      "label": "SC-09 missing HTTP_PORT is rejected before startup",
+      "exit_code": 1,
+      "expected": "nonzero",
+      "output": "error while interpolating services.backend.environment.HTTP_PORT: required variable HTTP_PORT is missing a value: Fill HTTP_PORT in the root .env\nerror while interpolating services.frontend.environment.HTTP_PORT: required variable HTTP_PORT is missing a value: Fill HTTP_PORT in the root .env\n"
+    },
+    {
+      "label": "missing HTTPS key is rejected before startup",
+      "exit_code": 1,
+      "expected": "nonzero",
+      "output": "error while interpolating services.frontend.volumes.[].source: required variable HTTPS_KEY_FILE is missing a value: Provide HTTPS_KEY_FILE\n"
+    },
+    {
+      "label": "build pinned offline admin and preview",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "#1 [internal] load local bake definitions\n#1 reading from stdin 1.77kB 0.0s done\n#1 DONE 0.0s\n\n#2 [backend internal] load build definition from Dockerfile\n#2 transferring dockerfile: 577B done\n#2 DONE 0.6s\n\n#3 [frontend internal] load build definition from Dockerfile\n#3 transferring dockerfile: 696B done\n#3 DONE 0.6s\n\n#4 [admin internal] load build definition from Dockerfile.identity\n#4 transferring dockerfile: 849B done\n#4 DONE 0.6s\n\n#5 [admin internal] load metadata for docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb\n#5 ...\n\n#6 [frontend internal] load metadata for docker.io/library/node@sha256:fe4f6d74e20370acb04ad889077d14d0f64a9c8ea6a42bc60cddf1e844699914\n#6 DONE 1.6s\n\n#7 [frontend internal] load metadata for docker.io/library/nginx@sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951\n#7 ...\n\n#5 [admin internal] load metadata for docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb\n#5 DONE 1.8s\n\n#8 [backend internal] load .dockerignore\n#8 transferring context: 66B 0.0s done\n#8 DONE 0.0s\n\n#9 [backend build 1/7] FROM docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb\n#9 resolve docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb 0.0s done\n#9 DONE 0.0s\n\n#10 [backend internal] load build context\n#10 transferring context: 948.93kB 0.2s done\n#10 DONE 0.3s\n\n#11 [backend build 3/7] COPY go.mod go.sum ./\n#11 CACHED\n\n#12 [backend build 2/7] WORKDIR /src\n#12 CACHED\n\n#13 [admin build 4/7] COPY vendor ./vendor\n#13 CACHED\n\n#14 [admin build 5/7] COPY cmd ./cmd\n#14 DONE 0.0s\n\n#15 [backend build 6/7] COPY internal ./internal\n#15 DONE 0.1s\n\n#7 [frontend internal] load metadata for docker.io/library/nginx@sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951\n#7 DONE 2.4s\n\n#16 [backend build 7/7] RUN --mount=type=cache,target=/root/.cache/go-build CGO_ENABLED=0 go build -trimpath -buildvcs=false -ldflags=\"-s -w -buildid=\" -o /out/server ./cmd/server\n#16 ...\n\n#17 [frontend internal] load .dockerignore\n#17 transferring context: 78B 0.0s done\n#17 DONE 0.0s\n\n#18 [frontend build 1/8] FROM docker.io/library/node@sha256:fe4f6d74e20370acb04ad889077d14d0f64a9c8ea6a42bc60cddf1e844699914\n#18 resolve docker.io/library/node@sha256:fe4f6d74e20370acb04ad889077d14d0f64a9c8ea6a42bc60cddf1e844699914 0.0s done\n#18 DONE 0.0s\n\n#19 [frontend stage-1 1/3] FROM docker.io/library/nginx@sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951\n#19 resolve docker.io/library/nginx@sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951 0.0s done\n#19 DONE 0.0s\n\n#20 [frontend internal] load build context\n#20 transferring context: 52.51kB 0.1s done\n#20 DONE 0.1s\n\n#21 [frontend build 2/8] WORKDIR /src\n#21 CACHED\n\n#22 [frontend build 3/8] COPY package.json package-lock.json ./\n#22 CACHED\n\n#23 [frontend build 8/8] RUN npm run build\n#23 CACHED\n\n#24 [frontend build 5/8] COPY index.html tsconfig.json vite.config.ts ./\n#24 CACHED\n\n#25 [frontend build 6/8] COPY src ./src\n#25 CACHED\n\n#26 [frontend build 4/8] RUN --mount=type=cache,target=/root/.npm npm ci --ignore-scripts --prefer-offline --fetch-retries=5 --fetch-retry-mintimeout=1000 --fetch-retry-maxtimeout=10000 --fetch-timeout=60000\n#26 CACHED\n\n#27 [frontend build 7/8] COPY public ./public\n#27 CACHED\n\n#28 [frontend stage-1 2/3] COPY nginx.conf /etc/nginx/nginx.conf\n#28 CACHED\n\n#29 [frontend stage-1 3/3] COPY --from=build /src/dist /usr/share/nginx/html\n#29 CACHED\n\n#30 [frontend] exporting to image\n#30 exporting layers 0.0s done\n#30 exporting manifest sha256:cf43f772406a6731491e2040bdb9f49a70619945531ebb12f38793568ee8620d 0.0s done\n#30 exporting config sha256:c6dc7c72cdfc503071f4e9d38daca7e9d3d3d43f01fcd79582c2bc8540508ea0 0.0s done\n#30 exporting attestation manifest sha256:0cb2c4208879602a237a2da7af1a07371923a373ac60a5f62bfd6e2c4336c992\n#30 exporting attestation manifest sha256:0cb2c4208879602a237a2da7af1a07371923a373ac60a5f62bfd6e2c4336c992 0.0s done\n#30 exporting manifest list sha256:8888df73fc4a5a67444b11543e69a3bb28f113fdcc6f8be43e675665cef466a5 0.0s done\n#30 naming to docker.io/library/campus-wiring-21044c60d361-frontend:latest 0.0s done\n#30 unpacking to docker.io/library/campus-wiring-21044c60d361-frontend:latest 0.0s done\n#30 DONE 0.2s\n\n#31 [admin build 7/8] RUN --mount=type=cache,target=/root/.cache/go-build CGO_ENABLED=0 go build -trimpath -buildvcs=false -ldflags=\"-s -w -buildid=\" -o /out/identity-admin ./cmd/identity-admin\n#31 ...\n\n#32 [frontend] resolving provenance for metadata file\n#32 DONE 0.0s\n\n#16 [backend build 7/7] RUN --mount=type=cache,target=/root/.cache/go-build CGO_ENABLED=0 go build -trimpath -buildvcs=false -ldflags=\"-s -w -buildid=\" -o /out/server ./cmd/server\n#16 ...\n\n#31 [admin build 7/8] RUN --mount=type=cache,target=/root/.cache/go-build CGO_ENABLED=0 go build -trimpath -buildvcs=false -ldflags=\"-s -w -buildid=\" -o /out/identity-admin ./cmd/identity-admin\n#31 DONE 2.6s\n\n#16 [backend build 7/7] RUN --mount=type=cache,target=/root/.cache/go-build CGO_ENABLED=0 go build -trimpath -buildvcs=false -ldflags=\"-s -w -buildid=\" -o /out/server ./cmd/server\n#16 DONE 2.7s\n\n#33 [backend stage-1 1/1] COPY --from=build /out/server /server\n#33 DONE 0.0s\n\n#34 [backend] exporting to image\n#34 exporting layers 0.3s done\n#34 exporting manifest sha256:f8c55b792592a739c885e0fbaec56ad5129cad2046b90e63f45db47538e7c2e3\n#34 exporting manifest sha256:f8c55b792592a739c885e0fbaec56ad5129cad2046b90e63f45db47538e7c2e3 0.0s done\n#34 exporting config sha256:97801201667a930c8d18241f4619c180de07f60686d0cb232e5e7411b5bf384b 0.0s done\n#34 exporting attestation manifest sha256:c0b040c2cf3ed154d056631b02f8fa0036191b7d57de25d27b72fa7763501baa 0.0s done\n#34 exporting manifest list sha256:c1739db5e0dbc9148c9a1d80ec9e16c30f63d4c690b4f5b267851fe333bb4a56 0.0s done\n#34 naming to docker.io/library/campus-wiring-21044c60d361-backend:latest done\n#34 unpacking to docker.io/library/campus-wiring-21044c60d361-backend:latest 0.1s done\n#34 DONE 0.5s\n\n#35 [admin build 8/8] RUN --mount=type=cache,target=/root/.cache/go-build CGO_ENABLED=0 go build -trimpath -buildvcs=false -ldflags=\"-s -w -buildid=\" -o /out/wiring-preview ./internal/integration/wiringfixture\n#35 DONE 0.9s\n\n#36 [backend] resolving provenance for metadata file\n#36 DONE 0.0s\n\n#37 [admin admin 1/1] COPY --from=build /out/identity-admin /identity-admin\n#37 DONE 0.0s\n\n#38 [admin] exporting to image\n#38 exporting layers 0.3s done\n#38 exporting manifest sha256:33ee4c9c588828861e32de09bfacbbe5553b8506d96756965ad8c2dfc8822f1f done\n#38 exporting config sha256:cda74f810758a37bc22cb4b9aca971ffe2066fe195310e28df723e73b811f672 0.0s done\n#38 exporting attestation manifest sha256:e1de23fa182a6162cb20d6ff17168fb86f800617632e3eaa8600342a832e2fe4 0.0s done\n#38 exporting manifest list sha256:01f4e9f211c0788c3d2e9bbbbb582607d0c8de45bce465ffad8592cee0cda8d6 done\n#38 naming to docker.io/library/campus-wiring-21044c60d361-admin:latest done\n#38 unpacking to docker.io/library/campus-wiring-21044c60d361-admin:latest 0.0s done\n#38 DONE 0.4s\n\n#39 [admin] resolving provenance for metadata file\n#39 DONE 0.0s\n Image campus-wiring-21044c60d361-frontend Building \n Image campus-wiring-21044c60d361-admin Building \n Image campus-wiring-21044c60d361-backend Building \n Image campus-wiring-21044c60d361-admin Built \n Image campus-wiring-21044c60d361-backend Built \n Image campus-wiring-21044c60d361-frontend Built \n"
+    },
+    {
+      "label": "start fresh persistent MySQL",
+      "exit_code": 1,
+      "expected": 0,
+      "output": " Volume campus-wiring-21044c60d361_mysql-data Creating \n Volume campus-wiring-21044c60d361_mysql-data Creating \n Network campus-wiring-21044c60d361_data Creating \n Network campus-wiring-21044c60d361_data Creating \n Network campus-wiring-21044c60d361_data Error Error response from daemon: all predefined address pools have been fully subnetted\n network:data failed to create network campus-wiring-21044c60d361_data: Error response from daemon: all predefined address pools have been fully subnetted \n Volume campus-wiring-21044c60d361_mysql-data Error error during connect: Post \"http://%2F%2F.%2Fpipe%2FdockerDesktopLinuxEngine/v1.55/volumes/create\": failed to create network campus-wiring-21044c60d361_data: Error response from daemon: all predefined address pools have been fully subnetted\nfailed to create network campus-wiring-21044c60d361_data: Error response from daemon: all predefined address pools have been fully subnetted\n"
+    },
+    {
+      "label": "failure diagnostics before cleanup",
+      "exit_code": 0,
+      "expected": 0,
+      "output": ""
+    },
+    {
+      "label": "remove only this disposable project and test data volume",
+      "exit_code": 0,
+      "expected": 0,
+      "output": " Volume campus-wiring-21044c60d361_mysql-data Removing \n Volume campus-wiring-21044c60d361_mysql-data Removed \n"
+    },
+    {
+      "label": "remove dedicated proxy network",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "campus-wiring-21044c60d361\n"
+    }
+  ],
+  "errors": [
+    "start fresh persistent MySQL: unexpected exit status; sanitized evidence saved"
+  ],
+  "exit_code": 1
+}

@@ -1,0 +1,60 @@
+{
+  "change": "2026-11-04-identity-foundation",
+  "status": "accepted-for-production",
+  "scope": "Active default Compose wiring for the existing 01 identity phase",
+  "inputs": [
+    {
+      "name": "IDENTITY_STATE_DIR",
+      "consumer": "compose",
+      "secret": false,
+      "validation": "Absolute existing local directory containing operator-owned files; never a build context",
+      "missing_behavior": "preflight and Compose fail nonzero",
+      "timeout": "local file validation"
+    },
+    {
+      "name": "IDENTITY_PROXY_NETWORK",
+      "consumer": "compose",
+      "secret": false,
+      "validation": "Existing dedicated internal Docker bridge; do not reuse unrelated networks",
+      "missing_behavior": "preflight and Compose fail nonzero",
+      "timeout": "Docker operation bounded by caller"
+    },
+    {
+      "name": "IDENTITY_PROXY_IP",
+      "consumer": "compose/backend",
+      "secret": false,
+      "validation": "Available IPv4 on that bridge, assigned only to gateway; backend trusts this exact /32",
+      "missing_behavior": "preflight and Compose fail nonzero",
+      "timeout": "local validation"
+    },
+    {
+      "name": "IDENTITY_HTTPS_HOST",
+      "consumer": "nginx",
+      "secret": false,
+      "validation": "DNS hostname matching certificate SAN and trusted origin; no port or Nginx syntax",
+      "missing_behavior": "preflight and Compose fail nonzero",
+      "timeout": "local validation; client verifies TLS"
+    },
+    {
+      "name": "IDENTITY_HTTPS_PORT",
+      "consumer": "compose",
+      "secret": false,
+      "validation": "Host loopback port 1..65535; verifier alone may use 0 for Docker allocated port",
+      "missing_behavior": "preflight and Compose fail nonzero",
+      "timeout": "Docker bind fails nonzero"
+    }
+  ],
+  "existing_frozen_inputs": [
+    "HTTPS_CERT_FILE",
+    "HTTPS_KEY_FILE"
+  ],
+  "state_files": {
+    "root-password": "MySQL root secret, read through MYSQL_ROOT_PASSWORD_FILE; not an application environment key",
+    "initialize.sql": "First-volume database/user provisioning, dedicated DML and DDL accounts REQUIRE SSL; operator supplies values locally",
+    "ca.pem": "Trusted database CA",
+    "server.pem": "MySQL certificate with mysql SAN",
+    "server.key": "MySQL private key, copied to tmpfs mysql ownership mode 0400",
+    "backend.env": "MYSQL_DSN, MYSQL_CA_FILE, AUTH_TRUSTED_ORIGIN only; proxy /32 supplied by Compose",
+    "admin.env": "MYSQL_DSN, MYSQL_MIGRATION_DSN, MYSQL_CA_FILE; never mounted in backend"
+  }
+}

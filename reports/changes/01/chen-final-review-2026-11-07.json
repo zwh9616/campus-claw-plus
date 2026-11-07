@@ -1,0 +1,226 @@
+{
+  "reviewer": "小陈 / Kevcco (AI assisted)",
+  "source_head": "2ec6668475fa99f46d25206a1da8249b784ca4ad",
+  "time": "2026-11-07T10:20:29.267Z",
+  "environment": {
+    "node": "22.23.4",
+    "npm": "10.9.9",
+    "docker": "28.3.3",
+    "compose": "2.39.1",
+    "make": "4.3",
+    "go": "1.27.3 pinned Docker toolchain",
+    "node_archive": "https://nodejs.org/dist/v22.23.4/node-v22.23.4-linux-x64.tar.xz",
+    "node_archive_sha256": "1805bcd35e6815559bd2eb97db438d3fdb0eb3a5e6a977b7c1badca76337e9ce",
+    "verified_against_official_sha256_manifest": true
+  },
+  "synchronization": {
+    "exact_committed_source": true,
+    "bundle_sha256": "32e7144864c71ceb1ba84d33022a2f84f361d8fd65c65d161cee8622b7593a7b",
+    "original_untracked_files_excluded": true,
+    "tested_worktree_clean": true
+  },
+  "preparation_failures": [
+    {
+      "result": "System Node12 below minimum; not used for project verification"
+    },
+    {
+      "exit_code": 1,
+      "result": "First isolated Alpine Node extraction retained a shared-library symlink without its target; tool bootstrap failed before project checks"
+    },
+    {
+      "exit_code": 2,
+      "result": "Direct musl-loader execution made Node execPath point at loader; gate check exited1 and audit/secret-scan/verify did not run. Switched to checksum-verified official glibc Node22.23.4 without changing project gate."
+    }
+  ],
+  "commands": [
+    {
+      "command": "npm ci",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run setup",
+      "exit_code": 0
+    },
+    {
+      "command": "make gate",
+      "exit_code": 0,
+      "stages": [
+        {
+          "name": "check",
+          "exitCode": 0,
+          "reason": "passed",
+          "signal": null,
+          "durationMs": 7527
+        },
+        {
+          "name": "audit",
+          "exitCode": 0,
+          "reason": "passed",
+          "signal": null,
+          "durationMs": 1905
+        },
+        {
+          "name": "secret-scan",
+          "exitCode": 0,
+          "reason": "passed",
+          "signal": null,
+          "durationMs": 8713
+        },
+        {
+          "name": "verify",
+          "exitCode": 0,
+          "reason": "passed",
+          "signal": null,
+          "durationMs": 406348
+        }
+      ]
+    }
+  ],
+  "scanner": "aquasec/trivy@sha256:8f6bb947dbc528902e11f2f5be52f7b519f6a39d5d148f41166f2040499768fb",
+  "images": [
+    {
+      "service": "mysql",
+      "image_id": "sha256:6f93716f1ba8f4b149c2c0e8ba8b77ef040f54554949aabba3d906473650bdc9",
+      "HIGH": 0,
+      "CRITICAL": 0,
+      "raw_sha256": "7ace4efa98b13d57046eb7bc4430191b44d680405feeded30aa381e7643261ac",
+      "archive": "runtime-mysql-independent-scan-2026-11-07.json.gz"
+    },
+    {
+      "service": "backend",
+      "image_id": "sha256:fdf95f89ad8642d3a1ca89d56f3f02c5fb0a527385f717352003275aaeb3d0ac",
+      "HIGH": 0,
+      "CRITICAL": 0,
+      "raw_sha256": "abe5dac207e2072380b91c9973d1150f4ecbbc1d39421cf695ecf761791fdd5b",
+      "archive": "runtime-backend-independent-scan-2026-11-07.json.gz"
+    },
+    {
+      "service": "admin",
+      "image_id": "sha256:41fd9277c5f0f74433abef27e08659fe8727afdbad7164e229b8ab44793448ba",
+      "HIGH": 0,
+      "CRITICAL": 0,
+      "raw_sha256": "9d0dd54a8a9440edb5adc13fb58bc65f79baced0ac72db54929ddcfccbe93ba4",
+      "archive": "runtime-admin-independent-scan-2026-11-07.json.gz"
+    },
+    {
+      "service": "frontend",
+      "image_id": "sha256:57110231e782251b7aaf3672affcc8d74a23fe8a6e864379a15e0cfca3396db5",
+      "HIGH": 0,
+      "CRITICAL": 0,
+      "raw_sha256": "9fc789e2d41babe0b5a6cbb13a8287df849fcdfb083467c50eb3ba2012419175",
+      "archive": "runtime-frontend-independent-scan-2026-11-07.json.gz"
+    }
+  ],
+  "mysql_vulnerability_database": {
+    "Version": 2,
+    "NextUpdate": "2026-11-08T06:54:25.084761663Z",
+    "UpdatedAt": "2026-11-07T06:54:25.084761873Z",
+    "DownloadedAt": "2026-11-07T10:16:53.029728138Z"
+  },
+  "application_vulnerability_database": {
+    "Version": 2,
+    "NextUpdate": "2026-11-08T06:54:25.084761663Z",
+    "UpdatedAt": "2026-11-07T06:54:25.084761873Z",
+    "DownloadedAt": "2026-11-07T10:18:14.241631501Z"
+  },
+  "verified": [
+    "Production Nginx -> cmd/server -> trusted TLS MySQL",
+    "Student switch-class403 and current authenticated me200",
+    "Refresh old-cookie401; switch old-Bearer401; logout old-Bearer/refresh401",
+    "Reviewer-owned real-MySQL authorization/revocation tests with full six-table comparisons",
+    "Migration interruption and recovery, checksum/schema mismatch rejection",
+    "Repeated initialization preserves password; restart and full container recreation preserve account/class",
+    "Database stop: unique health503/mysql=down and login503; restart recovers",
+    "Server request-id/log correlation and runtime secret exclusions"
+  ],
+  "runtime_inputs_unchanged": [
+    {
+      "path": "backend/cmd/server/main.go",
+      "sha256": "abc14c228340f04a0f15497bf5c88a4609c7282ee99aa5e7836751f36b11f7e5"
+    },
+    {
+      "path": "backend/internal/identityapp/app.go",
+      "sha256": "2825b56182228f9c0e4c5eb1099fe25d0198c70dd0b87252b8dd699686339859"
+    },
+    {
+      "path": "backend/Dockerfile",
+      "sha256": "e3490fddcb1256f83301339d5b5d698b3b49f59bc31439cc494206f8a66be93a"
+    },
+    {
+      "path": "backend/Dockerfile.identity",
+      "sha256": "a78bf59efa36cd4ae91cefcbd1406a569b04f0930948604b4c547fdc993c2c82"
+    },
+    {
+      "path": "frontend/Dockerfile",
+      "sha256": "3a7c1719d16e1cdb78fbc66830ed1f32406c3ae58e8628da82fb903467ead098"
+    },
+    {
+      "path": "compose.yaml",
+      "sha256": "cee708e37e05b63fa2a1169adbdd7836273f189821ff7485f2ca2a9afd1f19cc"
+    },
+    {
+      "path": "deploy/identity/compose.yaml",
+      "sha256": "e30d2be8c14717f44c3f8c56bd6dc0671124c2640423e9d260355de25472f6cc"
+    },
+    {
+      "path": "deploy/identity/mysql/Dockerfile",
+      "sha256": "055eb6378eb40d305b7a28ea9d4a735bfd5e0137a806e330799965074e999c5a"
+    },
+    {
+      "path": "scripts/verify-mysql-image.mjs",
+      "sha256": "e21417b29a1766a3c91b481f5cd527238393586e02d526160ca5d99f6a99aed4"
+    },
+    {
+      "path": "scripts/verify-application-images.mjs",
+      "sha256": "f66d3495d316c542def0f9ff4f9dbb3902e1e2d9aef23a002963858f5137f8b4"
+    },
+    {
+      "path": "scripts/verify-identity-wiring.mjs",
+      "sha256": "008e8ef92faba2116c064998488c524025046e10f5194bb1739a06c4331b49e5"
+    },
+    {
+      "path": "scripts/verify-identity.mjs",
+      "sha256": "4a004fe06b1c5aab8c1310fc5435b91651af4e57a0272333c3c547da1162b073"
+    },
+    {
+      "path": "scripts/application-image-report.mjs",
+      "sha256": "1517f4f7b54d7c0a86d1d7a9b57de25b7bfd7fff8ae2c7086bdf035961c0966c"
+    },
+    {
+      "path": "package.json",
+      "sha256": "44294274dee2a48cb66d528c1fb8cf9338e4853d33914df68d943008c5fd8f8c"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "4a5962456c6bb661ae8b7222cc0d5e692635a9196a997e1fa42c64bbfc8da7c6"
+    },
+    {
+      "path": ".github/workflows/check.yml",
+      "sha256": "38ad11e73814f782a7a373d286dfe34908524136c9a148ab6cdd6fb8859cbc8e"
+    },
+    {
+      "path": "docs/contracts/config-register.json",
+      "sha256": "fafa165c69db25732d1caab6bf781f9a1550346576a08d1eb9c58440fbdab31d"
+    },
+    {
+      "path": "docs/contracts/identity-phase.json",
+      "sha256": "17f20853fa8fbe7b83d95bf056828543facd05eb45fa48b8fd5ba5448e4a0404"
+    },
+    {
+      "path": ".env.example",
+      "sha256": "088a606b93b84cd6f941c2363fcceed7529ff704699d47b8b241bf00ef234d54"
+    }
+  ],
+  "post_test_changes": "Evidence/status/documentation, Nginx metadata alignment in scripts/toolchain.json, and a foundation check rejecting runtime/register digest mismatch; actual Dockerfile/runtime inputs unchanged. Final remote head CI and review must bind resulting commit.",
+  "cleanup": {
+    "disposable_containers_networks_data_and_private_fixtures_removed": true,
+    "no_running_containers_at_completion": true,
+    "temporary_authorization_removed": 1,
+    "subsequent_login_rejected": true,
+    "local_temporary_key_pair_removed": true
+  },
+  "not_verified": [
+    "02 real login pages and native browser integration",
+    "Integrated main acceptance and 01 archive"
+  ]
+}

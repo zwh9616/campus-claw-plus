@@ -14,16 +14,19 @@
     "check:foundation": "node scripts/check-foundation.mjs",
     "check:backend": "node scripts/check-backend.mjs",
     "check:spec": "openspec validate --all --strict",
-    "check": "npm run check:foundation && npm run check:gate && npm run check:contracts && npm run check:frontend-auth && npm run typecheck && npm run build && npm run check:sample-isolation && npm run check:backend && npm run check:spec",
+    "check": "npm run check:foundation && npm run check:gate && npm run check:contracts && npm run check:identity-wiring && npm run check:frontend-auth && npm run typecheck && npm run build && npm run check:sample-isolation && npm run check:backend && npm run check:spec",
     "test": "npm run check:backend",
     "audit": "npm audit --audit-level=high && npm audit --prefix frontend --audit-level=high",
-    "verify": "node scripts/verify-skeleton.mjs",
+    "verify": "node scripts/verify-mysql-image.mjs && node scripts/verify-application-images.mjs && node scripts/verify-skeleton.mjs && node scripts/verify-identity.mjs",
     "secret-scan": "node scripts/check-secrets.mjs",
     "check:contracts": "node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs scripts/contracts/identity-phase.test.mjs",
     "check:gate": "node --test scripts/gate.test.mjs",
     "gate": "node scripts/gate.mjs",
     "check:frontend-auth": "node --experimental-strip-types --test frontend/tests/auth.test.mjs",
-    "check:sample-isolation": "node scripts/check-sample-isolation.mjs"
+    "check:sample-isolation": "node scripts/check-sample-isolation.mjs",
+    "verify:identity": "node scripts/verify-identity.mjs",
+    "verify:identity-wiring": "node scripts/verify-identity-wiring.mjs",
+    "check:identity-wiring": "node --test scripts/identity-wiring.test.mjs scripts/application-image-report.test.mjs"
   },
   "devDependencies": {
     "@apidevtools/swagger-parser": "13.1.0",
