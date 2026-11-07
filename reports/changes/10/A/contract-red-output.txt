@@ -1,0 +1,22 @@
+
+> campus-claw-plus@0.0.1 check:contracts
+> node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs
+
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Standalone: Principal positive: [{"instancePath":"/role","schemaPath":"#/properties/role/enum","keyword":"enum","params":{"allowedValues":["teacher"]},"message":"must be equal to one of the allowed values"}]
+
+false !== true
+
+    at file://<implementation-worktree>/scripts/check-contracts.mjs:96:10 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v22.23.4

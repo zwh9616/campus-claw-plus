@@ -1,0 +1,37 @@
+{
+  "label": "pending-check",
+  "checked_at": "2026-11-06T10:47:54.8939247Z",
+  "executor": "Kevcco",
+  "viewer_permission": "WRITE",
+  "pr": 12,
+  "url": "https://github.com/zwh9616/campus-claw-plus/pull/12",
+  "state": "open",
+  "head": "fb8240c1f2807c468d3010c1bfe49cae149fa32e",
+  "base": "14760f59afd2818ca8f2957afb66cc9cc5773186",
+  "mergeable": true,
+  "mergeable_state": "blocked",
+  "main_protected": true,
+  "main_sha": "14760f59afd2818ca8f2957afb66cc9cc5773186",
+  "checks": [
+    {
+      "id": 127850541350,
+      "name": "check",
+      "status": "in_progress",
+      "conclusion": null,
+      "head_sha": "fb8240c1f2807c468d3010c1bfe49cae149fa32e",
+      "html_url": "https://github.com/zwh9616/campus-claw-plus/actions/runs/42205371741/job/127850541350",
+      "app_id": 15368
+    }
+  ],
+  "runs": [
+    {
+      "id": 42205371741,
+      "status": "in_progress",
+      "conclusion": null,
+      "run_attempt": 1,
+      "head_sha": "fb8240c1f2807c468d3010c1bfe49cae149fa32e",
+      "html_url": "https://github.com/zwh9616/campus-claw-plus/actions/runs/42205371741"
+    }
+  ],
+  "reviews": []
+}

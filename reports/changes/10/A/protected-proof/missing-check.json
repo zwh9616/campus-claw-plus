@@ -1,0 +1,18 @@
+{
+  "label": "missing-check",
+  "checked_at": "2026-11-06T10:47:06.1890442Z",
+  "executor": "Kevcco",
+  "viewer_permission": "WRITE",
+  "pr": 12,
+  "url": "https://github.com/zwh9616/campus-claw-plus/pull/12",
+  "state": "open",
+  "head": "6bc5b1883615be03de24c7095ff86c9489e851eb",
+  "base": "14760f59afd2818ca8f2957afb66cc9cc5773186",
+  "mergeable": true,
+  "mergeable_state": "blocked",
+  "main_protected": true,
+  "main_sha": "14760f59afd2818ca8f2957afb66cc9cc5773186",
+  "checks": [],
+  "runs": [],
+  "reviews": []
+}

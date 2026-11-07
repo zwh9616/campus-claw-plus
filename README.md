@@ -122,19 +122,20 @@ Go日志字段：ts、level、module、message、request_id；HTTP日志另含me
 未知后端路径404，错误方法405。当前没有业务码外层。镜像自带/server --healthcheck，不依赖curl。
 
 ## 开发者检查（同伴启动系统无需执行）
-要求Node22.19+（推荐22系列最新补丁）、npm、Docker。Go可用本机1.27.3，或自动使用固定摘要的Go1.27.3容器工具链，无需全局安装。
+要求Node22.19+（推荐22系列最新补丁）、npm、Docker及Compose v2。Go可用本机1.27.3，或自动使用固定摘要的Go1.27.3容器工具链，无需全局安装。
 ```powershell
 npm ci
 npm run setup
-npm run check
-npm run audit
-npm run secret-scan
-npm run verify
+npm run gate
 ```
+- gate：串行运行check → audit → secret-scan → verify，失败立即非零退出，后续项标记未运行；超时分别为10/3/5/10分钟，取消同样失败。安装仍须先完成上面的ci/setup，安装失败不得继续。单项npm命令保持可用。
+- GNU Make用户可等价执行`make setup`后`make gate`；`make check/audit/secret-scan/verify`薄封装对应npm命令。未安装Make时使用上述npm入口，不能把Make缺失记为通过。CI安装后执行同一`make gate`。
+- 同一工作区同时运行gate会拒绝第二次调用；异常中止留下`output/verification/gate.lock`时，先确认旧进程及其子进程已停止，再删除该锁并重跑。不同干净目录的verify使用独立项目、镜像标签及Docker原子分配的环回端口，结束时仅清理自己的资源。
 - check：基础配置/规则入口、OpenAPI/Schema及语义反例、前端类型和构建、Go vet/test/build、严格OpenSpec。任何失败非零退出。
 - audit：根与前端npm依赖high/critical阻断；不是Go/容器漏洞扫描的替代品。
 - secret-scan：官方Gitleaks8.30.1，首次下载验证SHA256；扫描全部Git历史和暂存内容并全量隐藏原值。当前支持Windows/Linux x64，其他平台可手动使用同版本。
-- verify：真实容器构建/健康、配置失败退出码、占用、恢复、JSON日志、停止再启动；使用单独的campus-claw-plus-verify项目，完成后停止验收容器。开始前先停本项目普通Compose实例以释放5173/HTTP_PORT。
+- verify：保留真实容器构建/健康、配置失败退出码、占用、恢复、JSON日志、停止再启动的原15项断言；读取本机.env的HTTP_PORT作为容器内部端口，独立项目使用临时环回端口，不抢占普通Compose的5173/HTTP_PORT，不停止其他项目。普通运行的compose.yaml和健康合同不变。
+- 10 A进度与验收边界见[门禁交接](reports/changes/10/A/README.md)。CI绿色不等于主干保护生效；G3还要求有效保护、受控阻断、小葛终审和main集成复验。
 - 输出：控制台；本机机器报告在output/verification/（忽略）；可审查结论和SC映射在[验收记录](docs/lesson-07/verification.md)。
 - CI在push/PR自动运行同一套检查。按2026-10-29确认的归档范围，采用C已提供的运行/页面/新会话证据和CI结果；已取消的三项前置见[归档记录](docs/lesson-07/archive-record.md)，未执行结果不冒充通过。
 

@@ -1,0 +1,132 @@
+
+> campus-claw-plus@0.0.1 gate
+> node scripts/gate.mjs
+
+
+Gate: check
+
+> campus-claw-plus@0.0.1 check
+> npm run check:foundation && npm run check:gate && npm run check:contracts && npm run typecheck && npm run build && npm run check:backend && npm run check:spec
+
+
+> campus-claw-plus@0.0.1 check:foundation
+> node scripts/check-foundation.mjs
+
+Foundation: rule/skill entry points exist, sample keys are empty, .env is ignored.
+This check is separate from real authorization review and full-history secret scanning.
+
+> campus-claw-plus@0.0.1 check:gate
+> node --test scripts/gate.test.mjs
+
+TAP version 13
+# Subtest: DO-SC-03 serial success executes all stages in order
+ok 1 - DO-SC-03 serial success executes all stages in order
+  ---
+  duration_ms: 88.467608
+  type: 'test'
+  ...
+# Subtest: DO-SC-04 check failure preserves exit code and prevents subsequent execution
+ok 2 - DO-SC-04 check failure preserves exit code and prevents subsequent execution
+  ---
+  duration_ms: 23.197918
+  type: 'test'
+  ...
+# Subtest: DO-SC-04 audit failure preserves exit code and prevents subsequent execution
+ok 3 - DO-SC-04 audit failure preserves exit code and prevents subsequent execution
+  ---
+  duration_ms: 40.881593
+  type: 'test'
+  ...
+# Subtest: DO-SC-04 secret-scan failure preserves exit code and prevents subsequent execution
+ok 4 - DO-SC-04 secret-scan failure preserves exit code and prevents subsequent execution
+  ---
+  duration_ms: 66.854
+  type: 'test'
+  ...
+# Subtest: DO-SC-04 verify failure preserves exit code and prevents subsequent execution
+ok 5 - DO-SC-04 verify failure preserves exit code and prevents subsequent execution
+  ---
+  duration_ms: 88.336624
+  type: 'test'
+  ...
+# Subtest: DO-SC-05 missing executable is failure, not a skipped pass
+ok 6 - DO-SC-05 missing executable is failure, not a skipped pass
+  ---
+  duration_ms: 2.374558
+  type: 'test'
+  ...
+# Subtest: DO-SC-05 signalled child cannot pass
+ok 7 - DO-SC-05 signalled child cannot pass
+  ---
+  duration_ms: 18.839057
+  type: 'test'
+  ...
+# Subtest: DO-SC-05 timeout terminates stage and fails closed
+ok 8 - DO-SC-05 timeout terminates stage and fails closed
+  ---
+  duration_ms: 103.675614
+  type: 'test'
+  ...
+# Subtest: DO-SC-05 cancellation before and during a stage prevents later commands
+ok 9 - DO-SC-05 cancellation before and during a stage prevents later commands
+  ---
+  duration_ms: 2.523736
+  type: 'test'
+  ...
+# Subtest: DO-SC-05 concurrent calls in one checkout fail without stealing its lock
+ok 10 - DO-SC-05 concurrent calls in one checkout fail without stealing its lock
+  ---
+  duration_ms: 1.367823
+  type: 'test'
+  ...
+# Subtest: DO-SC-05 different runs isolate images and atomically assigned ports; keep contract/probes
+ok 11 - DO-SC-05 different runs isolate images and atomically assigned ports; keep contract/probes
+  ---
+  duration_ms: 1.53276
+  type: 'test'
+  ...
+# Subtest: DO-SC-03/06 Make remains a thin npm wrapper, stable CI delegates complete gate
+ok 12 - DO-SC-03/06 Make remains a thin npm wrapper, stable CI delegates complete gate
+  ---
+  duration_ms: 0.242793
+  type: 'test'
+  ...
+# Subtest: DO-SC-05 Make installation failure stops setup; -j does not run targets concurrently
+ok 13 - DO-SC-05 Make installation failure stops setup; -j does not run targets concurrently
+  ---
+  duration_ms: 429.47975
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 916.325971
+
+> campus-claw-plus@0.0.1 check:contracts
+> node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs
+
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Standalone: Principal positive: [{"instancePath":"/role","schemaPath":"#/properties/role/enum","keyword":"enum","params":{"allowedValues":["teacher"]},"message":"must be equal to one of the allowed values"}]
+
+false !== true
+
+    at file://<implementation-worktree>/scripts/check-contracts.mjs:96:10 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v22.23.4
+Gate check: failed, exit=1
+Not run: audit, secret-scan, verify

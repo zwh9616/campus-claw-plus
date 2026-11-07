@@ -1,0 +1,20 @@
+{
+  "protected": false,
+  "g2": "established: linked in README",
+  "actor": "Kevcco (AI-assisted)",
+  "observed_at": "2026-11-06T05:09:49.9109817Z",
+  "effective_rules": [],
+  "main_sha": "7e4c81f37473ed725cfe3b1f90ffd32c5049c41c",
+  "required_check": {
+    "context": "check",
+    "app_id": 15368
+  },
+  "permissions": {
+    "admin": false,
+    "maintain": false,
+    "push": true,
+    "triage": true,
+    "pull": true
+  },
+  "g3": "not established"
+}
