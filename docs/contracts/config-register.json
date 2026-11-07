@@ -8,38 +8,9 @@
       "secret": false,
       "introduced_by": "openspec/changes/archive/2026-10-28-project-bootstrap",
       "missing_behavior": "启动失败且非零退出",
-      "timeout": "不适用（启动配置）"
-    }
-  ],
-  "planned": [
-    {
-      "owner": "03",
-      "purpose": "MCP令牌",
-      "names_frozen": false
+      "timeout": "不适用（启动配置）",
+      "consumers": []
     },
-    {
-      "owner": "07A",
-      "purpose": "模型连接与密钥",
-      "names_frozen": false
-    }
-  ],
-  "outbound_exceptions": [
-    {
-      "url": "http://mcp:8090/mcp",
-      "enabled": false,
-      "required_approvals": [
-        "03",
-        "07C"
-      ],
-      "constraints": [
-        "精确scheme/服务/端口/path",
-        "无userinfo/query/fragment/redirect",
-        "解析目标为本项目网络服务"
-      ],
-      "removal": "不再使用受控MCP服务时移除"
-    }
-  ],
-  "frozen": [
     {
       "name": "MYSQL_DSN",
       "owner": "01",
@@ -140,6 +111,106 @@
       "validation": "只读最小权限私钥，与证书匹配；不进入Git/镜像/日志，不自动生成",
       "missing_behavior": "使用该键的进程遇缺失、空白或非法值必须启动失败且非零退出；不得打印值",
       "timeout": "Nginx启动检查；缺失/无效不启动"
+    },
+    {
+      "name": "IDENTITY_STATE_DIR",
+      "owner": "01",
+      "required": true,
+      "secret": false,
+      "consumers": [
+        "compose"
+      ],
+      "introduced_by": "openspec/changes/2026-11-04-identity-foundation",
+      "activation_change": "openspec/changes/2026-11-04-identity-foundation",
+      "validation": "Absolute existing local directory containing operator-owned files; never a build context",
+      "missing_behavior": "preflight and Compose fail nonzero",
+      "timeout": "local file validation"
+    },
+    {
+      "name": "IDENTITY_PROXY_NETWORK",
+      "owner": "01",
+      "required": true,
+      "secret": false,
+      "consumers": [
+        "compose"
+      ],
+      "introduced_by": "openspec/changes/2026-11-04-identity-foundation",
+      "activation_change": "openspec/changes/2026-11-04-identity-foundation",
+      "validation": "Existing dedicated internal Docker bridge; do not reuse unrelated networks",
+      "missing_behavior": "preflight and Compose fail nonzero",
+      "timeout": "Docker operation bounded by caller"
+    },
+    {
+      "name": "IDENTITY_PROXY_IP",
+      "owner": "01",
+      "required": true,
+      "secret": false,
+      "consumers": [
+        "compose",
+        "backend"
+      ],
+      "introduced_by": "openspec/changes/2026-11-04-identity-foundation",
+      "activation_change": "openspec/changes/2026-11-04-identity-foundation",
+      "validation": "Available IPv4 on that bridge, assigned only to gateway; backend trusts this exact /32",
+      "missing_behavior": "preflight and Compose fail nonzero",
+      "timeout": "local validation"
+    },
+    {
+      "name": "IDENTITY_HTTPS_HOST",
+      "owner": "01",
+      "required": true,
+      "secret": false,
+      "consumers": [
+        "nginx"
+      ],
+      "introduced_by": "openspec/changes/2026-11-04-identity-foundation",
+      "activation_change": "openspec/changes/2026-11-04-identity-foundation",
+      "validation": "DNS hostname matching certificate SAN and trusted origin; no port or Nginx syntax",
+      "missing_behavior": "preflight and Compose fail nonzero",
+      "timeout": "local validation; client verifies TLS"
+    },
+    {
+      "name": "IDENTITY_HTTPS_PORT",
+      "owner": "01",
+      "required": true,
+      "secret": false,
+      "consumers": [
+        "compose"
+      ],
+      "introduced_by": "openspec/changes/2026-11-04-identity-foundation",
+      "activation_change": "openspec/changes/2026-11-04-identity-foundation",
+      "validation": "Host loopback port 1..65535; verifier alone may use 0 for Docker allocated port",
+      "missing_behavior": "preflight and Compose fail nonzero",
+      "timeout": "Docker bind fails nonzero"
     }
-  ]
+  ],
+  "planned": [
+    {
+      "owner": "03",
+      "purpose": "MCP令牌",
+      "names_frozen": false
+    },
+    {
+      "owner": "07A",
+      "purpose": "模型连接与密钥",
+      "names_frozen": false
+    }
+  ],
+  "outbound_exceptions": [
+    {
+      "url": "http://mcp:8090/mcp",
+      "enabled": false,
+      "required_approvals": [
+        "03",
+        "07C"
+      ],
+      "constraints": [
+        "精确scheme/服务/端口/path",
+        "无userinfo/query/fragment/redirect",
+        "解析目标为本项目网络服务"
+      ],
+      "removal": "不再使用受控MCP服务时移除"
+    }
+  ],
+  "frozen": []
 }

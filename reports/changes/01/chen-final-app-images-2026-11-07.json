@@ -1,0 +1,126 @@
+{
+  "time": "2026-11-07T10:18:55.239Z",
+  "scanner": "aquasec/trivy@sha256:8f6bb947dbc528902e11f2f5be52f7b519f6a39d5d148f41166f2040499768fb",
+  "results": [
+    {
+      "label": "build production backend",
+      "exit_code": 0,
+      "output": "#0 building with \"default\" instance using docker driver\n\n#1 [internal] load build definition from Dockerfile\n#1 transferring dockerfile: 577B done\n#1 DONE 0.0s\n\n#2 [internal] load metadata for docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb\n#2 DONE 0.0s\n\n#3 [internal] load .dockerignore\n#3 transferring context: 66B done\n#3 DONE 0.0s\n\n#4 [build 1/7] FROM docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb\n#4 DONE 0.0s\n\n#5 [internal] load build context\n#5 transferring context: 953.60kB 0.0s done\n#5 DONE 0.1s\n\n#6 [build 3/7] COPY go.mod go.sum ./\n#6 CACHED\n\n#7 [build 2/7] WORKDIR /src\n#7 CACHED\n\n#8 [build 4/7] COPY vendor ./vendor\n#8 CACHED\n\n#9 [build 5/7] COPY cmd ./cmd\n#9 DONE 0.0s\n\n#10 [build 6/7] COPY internal ./internal\n#10 DONE 0.0s\n\n#11 [build 7/7] RUN --mount=type=cache,target=/root/.cache/go-build CGO_ENABLED=0 go build -trimpath -buildvcs=false -ldflags=\"-s -w -buildid=\" -o /out/server ./cmd/server\n#11 DONE 1.8s\n\n#12 [stage-1 1/1] COPY --from=build /out/server /server\n#12 DONE 0.0s\n\n#13 exporting to image\n#13 exporting layers 0.0s done\n#13 writing image sha256:fdf95f89ad8642d3a1ca89d56f3f02c5fb0a527385f717352003275aaeb3d0ac done\n#13 naming to docker.io/library/campus-app-audit-e8491e794b22-backend:verification done\n#13 DONE 0.0s\n"
+    },
+    {
+      "label": "record immutable backend artifact",
+      "exit_code": 0,
+      "output": "sha256:fdf95f89ad8642d3a1ca89d56f3f02c5fb0a527385f717352003275aaeb3d0ac\n"
+    },
+    {
+      "label": "export backend without scanner Docker socket",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "label": "Trivy HIGH/CRITICAL backend",
+      "exit_code": 0,
+      "output": "2026-11-07T10:16:58Z\tINFO\t[vulndb] Need to update DB\n2026-11-07T10:16:58Z\tINFO\t[vulndb] Downloading vulnerability DB...\n2026-11-07T10:16:58Z\tINFO\t[vulndb] Downloading artifact...\trepo=\"mirror.gcr.io/aquasec/trivy-db:2\"\n2026-11-07T10:18:14Z\tINFO\t[vulndb] Artifact successfully downloaded\trepo=\"mirror.gcr.io/aquasec/trivy-db:2\"\n2026-11-07T10:18:14Z\tINFO\t[vuln] Vulnerability scanning is enabled\n2026-11-07T10:18:14Z\tINFO\tNumber of language-specific files\tnum=1\n2026-11-07T10:18:14Z\tINFO\t[gobinary] Detecting vulnerabilities...\n2026-11-07T10:18:14Z\tWARN\tUsing severities from other vendors for some vulnerabilities. Read https://trivy.dev/docs/v0.76/guide/scanner/vulnerability#severity-selection for details.\n"
+    },
+    {
+      "label": "build production admin",
+      "exit_code": 0,
+      "output": "#0 building with \"default\" instance using docker driver\n\n#1 [internal] load build definition from Dockerfile.identity\n#1 transferring dockerfile: 849B done\n#1 DONE 0.0s\n\n#2 [internal] load metadata for docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb\n#2 DONE 0.0s\n\n#3 [internal] load .dockerignore\n#3 transferring context: 66B done\n#3 DONE 0.0s\n\n#4 [build 1/8] FROM docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb\n#4 DONE 0.0s\n\n#5 [internal] load build context\n#5 transferring context: 15.75kB done\n#5 DONE 0.0s\n\n#6 [build 2/8] WORKDIR /src\n#6 CACHED\n\n#7 [build 3/8] COPY go.mod go.sum ./\n#7 CACHED\n\n#8 [build 4/8] COPY vendor ./vendor\n#8 CACHED\n\n#9 [build 5/8] COPY cmd ./cmd\n#9 CACHED\n\n#10 [build 6/8] COPY internal ./internal\n#10 CACHED\n\n#11 [build 7/8] RUN --mount=type=cache,target=/root/.cache/go-build CGO_ENABLED=0 go build -trimpath -buildvcs=false -ldflags=\"-s -w -buildid=\" -o /out/identity-admin ./cmd/identity-admin\n#11 DONE 0.7s\n\n#12 [build 8/8] RUN --mount=type=cache,target=/root/.cache/go-build CGO_ENABLED=0 go build -trimpath -buildvcs=false -ldflags=\"-s -w -buildid=\" -o /out/wiring-preview ./internal/integration/wiringfixture\n#12 DONE 0.7s\n\n#13 [admin 1/1] COPY --from=build /out/identity-admin /identity-admin\n#13 CACHED\n\n#14 exporting to image\n#14 exporting layers done\n#14 writing image sha256:41fd9277c5f0f74433abef27e08659fe8727afdbad7164e229b8ab44793448ba done\n#14 naming to docker.io/library/campus-app-audit-e8491e794b22-admin:verification done\n#14 DONE 0.0s\n"
+    },
+    {
+      "label": "record immutable admin artifact",
+      "exit_code": 0,
+      "output": "sha256:41fd9277c5f0f74433abef27e08659fe8727afdbad7164e229b8ab44793448ba\n"
+    },
+    {
+      "label": "export admin without scanner Docker socket",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "label": "Trivy HIGH/CRITICAL admin",
+      "exit_code": 0,
+      "output": "2026-11-07T10:18:16Z\tINFO\t[vuln] Vulnerability scanning is enabled\n2026-11-07T10:18:16Z\tINFO\tNumber of language-specific files\tnum=1\n2026-11-07T10:18:16Z\tINFO\t[gobinary] Detecting vulnerabilities...\n2026-11-07T10:18:16Z\tWARN\tUsing severities from other vendors for some vulnerabilities. Read https://trivy.dev/docs/v0.76/guide/scanner/vulnerability#severity-selection for details.\n"
+    },
+    {
+      "label": "build production frontend",
+      "exit_code": 0,
+      "output": "#0 building with \"default\" instance using docker driver\n\n#1 [internal] load build definition from Dockerfile\n#1 transferring dockerfile: 696B done\n#1 DONE 0.0s\n\n#2 [internal] load metadata for docker.io/library/node@sha256:fe4f6d74e20370acb04ad889077d14d0f64a9c8ea6a42bc60cddf1e844699914\n#2 DONE 0.0s\n\n#3 [internal] load metadata for docker.io/library/nginx@sha256:583b7f2fce1cdb8da5ad5c39ebd3c33b98b87d493190e548bdee1fa8c619c311\n#3 DONE 14.7s\n\n#4 [internal] load .dockerignore\n#4 transferring context: 78B done\n#4 DONE 0.0s\n\n#5 [build 1/8] FROM docker.io/library/node@sha256:fe4f6d74e20370acb04ad889077d14d0f64a9c8ea6a42bc60cddf1e844699914\n#5 DONE 0.0s\n\n#6 [internal] load build context\n#6 transferring context: 52.45kB done\n#6 DONE 0.0s\n\n#7 [build 4/8] RUN --mount=type=cache,target=/root/.npm npm ci --ignore-scripts --prefer-offline --fetch-retries=5 --fetch-retry-mintimeout=1000 --fetch-retry-maxtimeout=10000 --fetch-timeout=60000\n#7 CACHED\n\n#8 [build 5/8] COPY index.html tsconfig.json vite.config.ts ./\n#8 CACHED\n\n#9 [build 7/8] COPY public ./public\n#9 CACHED\n\n#10 [build 3/8] COPY package.json package-lock.json ./\n#10 CACHED\n\n#11 [build 2/8] WORKDIR /src\n#11 CACHED\n\n#12 [build 6/8] COPY src ./src\n#12 CACHED\n\n#13 [build 8/8] RUN npm run build\n#13 CACHED\n\n#14 [stage-1 1/3] FROM docker.io/library/nginx@sha256:583b7f2fce1cdb8da5ad5c39ebd3c33b98b87d493190e548bdee1fa8c619c311\n#14 resolve docker.io/library/nginx@sha256:583b7f2fce1cdb8da5ad5c39ebd3c33b98b87d493190e548bdee1fa8c619c311 done\n#14 sha256:52eb9c26a93672fd16d692befd22944ee26a59772beff8c775b37c684b0da36f 0B / 1.88MB 0.1s\n#14 sha256:89fcb8c382892a31f2b913ee3e11af133e228ec75e84351e4f848d6f83c0b56e 0B / 627B 0.1s\n#14 sha256:583b7f2fce1cdb8da5ad5c39ebd3c33b98b87d493190e548bdee1fa8c619c311 10.32kB / 10.32kB done\n#14 sha256:bb8f722b4be005fcd7827816a136ab779fd40185d85b5171be915cc7fc0575c7 2.49kB / 2.49kB done\n#14 sha256:1390db6b01a8b0c865b157c7f036b0772534418b1701f598737de546d208b6e4 12.30kB / 12.30kB done\n#14 sha256:881fc932939efef04ca120ad44bbd2c0917851eb247aa4995428afb1e80ede17 0B / 3.85MB 0.1s\n#14 sha256:89fcb8c382892a31f2b913ee3e11af133e228ec75e84351e4f848d6f83c0b56e 627B / 627B 0.2s done\n#14 sha256:163ee6b178c7d7aa60ef7115424399a0ccb8f293e43f6b35cd6df8f152698c6a 0B / 964B 0.3s\n#14 sha256:163ee6b178c7d7aa60ef7115424399a0ccb8f293e43f6b35cd6df8f152698c6a 964B / 964B 0.4s done\n#14 sha256:0e13a8a92b02d6d710028ebada164686467e25ddff8907ae28a80bafc26bbee4 403B / 403B 0.6s done\n#14 sha256:c12ffff18732349750d8928e649e2333d19363a2a201978b1876c80f38aaf292 0B / 1.21kB 0.6s\n#14 sha256:c12ffff18732349750d8928e649e2333d19363a2a201978b1876c80f38aaf292 1.21kB / 1.21kB 0.8s done\n#14 sha256:d04b4ed66a450f2c2675e1c80127ba32721eeda72aaac8709d6ff707ccf90070 0B / 1.40kB 0.9s\n#14 sha256:d04b4ed66a450f2c2675e1c80127ba32721eeda72aaac8709d6ff707ccf90070 1.40kB / 1.40kB 1.0s done\n#14 sha256:4fd2a979a136065b9518cac19c8f3d11f2251813831dc2d18a4edb1d1b26374d 0B / 20.32MB 1.0s\n#14 sha256:881fc932939efef04ca120ad44bbd2c0917851eb247aa4995428afb1e80ede17 1.05MB / 3.85MB 1.1s\n#14 sha256:52eb9c26a93672fd16d692befd22944ee26a59772beff8c775b37c684b0da36f 1.05MB / 1.88MB 1.4s\n#14 sha256:881fc932939efef04ca120ad44bbd2c0917851eb247aa4995428afb1e80ede17 2.10MB / 3.85MB 1.6s\n#14 sha256:52eb9c26a93672fd16d692befd22944ee26a59772beff8c775b37c684b0da36f 1.88MB / 1.88MB 1.7s done\n#14 sha256:4fd2a979a136065b9518cac19c8f3d11f2251813831dc2d18a4edb1d1b26374d 1.05MB / 20.32MB 2.2s\n#14 sha256:881fc932939efef04ca120ad44bbd2c0917851eb247aa4995428afb1e80ede17 3.15MB / 3.85MB 2.4s\n#14 sha256:881fc932939efef04ca120ad44bbd2c0917851eb247aa4995428afb1e80ede17 3.85MB / 3.85MB 3.2s done\n#14 sha256:4fd2a979a136065b9518cac19c8f3d11f2251813831dc2d18a4edb1d1b26374d 2.10MB / 20.32MB 3.3s\n#14 extracting sha256:881fc932939efef04ca120ad44bbd2c0917851eb247aa4995428afb1e80ede17 0.1s done\n#14 extracting sha256:52eb9c26a93672fd16d692befd22944ee26a59772beff8c775b37c684b0da36f 0.0s done\n#14 extracting sha256:89fcb8c382892a31f2b913ee3e11af133e228ec75e84351e4f848d6f83c0b56e\n#14 extracting sha256:89fcb8c382892a31f2b913ee3e11af133e228ec75e84351e4f848d6f83c0b56e done\n#14 extracting sha256:163ee6b178c7d7aa60ef7115424399a0ccb8f293e43f6b35cd6df8f152698c6a done\n#14 extracting sha256:0e13a8a92b02d6d710028ebada164686467e25ddff8907ae28a80bafc26bbee4 done\n#14 extracting sha256:c12ffff18732349750d8928e649e2333d19363a2a201978b1876c80f38aaf292 done\n#14 extracting sha256:d04b4ed66a450f2c2675e1c80127ba32721eeda72aaac8709d6ff707ccf90070 done\n#14 sha256:4fd2a979a136065b9518cac19c8f3d11f2251813831dc2d18a4edb1d1b26374d 3.15MB / 20.32MB 4.3s\n#14 sha256:4fd2a979a136065b9518cac19c8f3d11f2251813831dc2d18a4edb1d1b26374d 4.19MB / 20.32MB 5.3s\n#14 sha256:4fd2a979a136065b9518cac19c8f3d11f2251813831dc2d18a4edb1d1b26374d 5.24MB / 20.32MB 6.4s\n#14 sha256:4fd2a979a136065b9518cac19c8f3d11f2251813831dc2d18a4edb1d1b26374d 6.29MB / 20.32MB 7.2s\n#14 sha256:4fd2a979a136065b9518cac19c8f3d11f2251813831dc2d18a4edb1d1b26374d 7.34MB / 20.32MB 7.8s\n#14 sha256:4fd2a979a136065b9518cac19c8f3d11f2251813831dc2d18a4edb1d1b26374d 8.39MB / 20.32MB 8.7s\n#14 sha256:4fd2a979a136065b9518cac19c8f3d11f2251813831dc2d18a4edb1d1b26374d 9.44MB / 20.32MB 10.6s\n#14 sha256:4fd2a979a136065b9518cac19c8f3d11f2251813831dc2d18a4edb1d1b26374d 10.49MB / 20.32MB 11.2s\n#14 sha256:4fd2a979a136065b9518cac19c8f3d11f2251813831dc2d18a4edb1d1b26374d 11.53MB / 20.32MB 12.8s\n#14 sha256:4fd2a979a136065b9518cac19c8f3d11f2251813831dc2d18a4edb1d1b26374d 12.58MB / 20.32MB 14.2s\n#14 sha256:4fd2a979a136065b9518cac19c8f3d11f2251813831dc2d18a4edb1d1b26374d 13.63MB / 20.32MB 15.3s\n#14 sha256:4fd2a979a136065b9518cac19c8f3d11f2251813831dc2d18a4edb1d1b26374d 14.68MB / 20.32MB 16.2s\n#14 sha256:4fd2a979a136065b9518cac19c8f3d11f2251813831dc2d18a4edb1d1b26374d 15.73MB / 20.32MB 17.4s\n#14 sha256:4fd2a979a136065b9518cac19c8f3d11f2251813831dc2d18a4edb1d1b26374d 16.78MB / 20.32MB 18.6s\n#14 sha256:4fd2a979a136065b9518cac19c8f3d11f2251813831dc2d18a4edb1d1b26374d 17.83MB / 20.32MB 19.7s\n#14 sha256:4fd2a979a136065b9518cac19c8f3d11f2251813831dc2d18a4edb1d1b26374d 18.87MB / 20.32MB 20.6s\n#14 sha256:4fd2a979a136065b9518cac19c8f3d11f2251813831dc2d18a4edb1d1b26374d 19.92MB / 20.32MB 21.4s\n#14 sha256:4fd2a979a136065b9518cac19c8f3d11f2251813831dc2d18a4edb1d1b26374d 20.32MB / 20.32MB 21.6s done\n#14 extracting sha256:4fd2a979a136065b9518cac19c8f3d11f2251813831dc2d18a4edb1d1b26374d\n#14 extracting sha256:4fd2a979a136065b9518cac19c8f3d11f2251813831dc2d18a4edb1d1b26374d 0.3s done\n#14 DONE 22.0s\n\n#15 [stage-1 2/3] COPY nginx.conf /etc/nginx/nginx.conf\n#15 DONE 0.1s\n\n#16 [stage-1 3/3] COPY --from=build /src/dist /usr/share/nginx/html\n#16 DONE 0.0s\n\n#17 exporting to image\n#17 exporting layers 0.0s done\n#17 writing image sha256:57110231e782251b7aaf3672affcc8d74a23fe8a6e864379a15e0cfca3396db5 done\n#17 naming to docker.io/library/campus-app-audit-e8491e794b22-frontend:verification done\n#17 DONE 0.0s\n"
+    },
+    {
+      "label": "record immutable frontend artifact",
+      "exit_code": 0,
+      "output": "sha256:57110231e782251b7aaf3672affcc8d74a23fe8a6e864379a15e0cfca3396db5\n"
+    },
+    {
+      "label": "export frontend without scanner Docker socket",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "label": "Trivy HIGH/CRITICAL frontend",
+      "exit_code": 0,
+      "output": "2026-11-07T10:18:54Z\tINFO\t[vuln] Vulnerability scanning is enabled\n2026-11-07T10:18:54Z\tINFO\tDetected OS\tfamily=\"alpine\" version=\"3.24.4\"\n2026-11-07T10:18:54Z\tINFO\t[alpine] Detecting vulnerabilities...\tos_version=\"3.24\" repository=\"3.24\" pkg_num=71\n2026-11-07T10:18:54Z\tINFO\tNumber of language-specific files\tnum=0\n2026-11-07T10:18:54Z\tWARN\tUsing severities from other vendors for some vulnerabilities. Read https://trivy.dev/docs/v0.76/guide/scanner/vulnerability#severity-selection for details.\n"
+    },
+    {
+      "label": "record actual vulnerability database",
+      "exit_code": 0,
+      "output": "{\"Version\":2,\"NextUpdate\":\"2026-11-08T06:54:25.084761663Z\",\"UpdatedAt\":\"2026-11-07T06:54:25.084761873Z\",\"DownloadedAt\":\"2026-11-07T10:18:14.241631501Z\"}\n"
+    },
+    {
+      "label": "remove own scanner if timed out",
+      "exit_code": 0
+    },
+    {
+      "label": "remove own image tag",
+      "exit_code": 0
+    },
+    {
+      "label": "remove own image tag",
+      "exit_code": 0
+    },
+    {
+      "label": "remove own image tag",
+      "exit_code": 0
+    },
+    {
+      "label": "remove own scanner cache",
+      "exit_code": 0
+    }
+  ],
+  "summaries": [
+    {
+      "service": "backend",
+      "image_id": "sha256:fdf95f89ad8642d3a1ca89d56f3f02c5fb0a527385f717352003275aaeb3d0ac",
+      "dockerfile_sha256": "e3490fddcb1256f83301339d5b5d698b3b49f59bc31439cc494206f8a66be93a",
+      "raw_sha256": "abe5dac207e2072380b91c9973d1150f4ecbbc1d39421cf695ecf761791fdd5b",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "admin",
+      "image_id": "sha256:41fd9277c5f0f74433abef27e08659fe8727afdbad7164e229b8ab44793448ba",
+      "dockerfile_sha256": "a78bf59efa36cd4ae91cefcbd1406a569b04f0930948604b4c547fdc993c2c82",
+      "raw_sha256": "9d0dd54a8a9440edb5adc13fb58bc65f79baced0ac72db54929ddcfccbe93ba4",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "frontend",
+      "image_id": "sha256:57110231e782251b7aaf3672affcc8d74a23fe8a6e864379a15e0cfca3396db5",
+      "dockerfile_sha256": "3a7c1719d16e1cdb78fbc66830ed1f32406c3ae58e8628da82fb903467ead098",
+      "raw_sha256": "9fc789e2d41babe0b5a6cbb13a8287df849fcdfb083467c50eb3ba2012419175",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "vulnerability_database": {
+        "Version": 2,
+        "NextUpdate": "2026-11-08T06:54:25.084761663Z",
+        "UpdatedAt": "2026-11-07T06:54:25.084761873Z",
+        "DownloadedAt": "2026-11-07T10:18:14.241631501Z"
+      }
+    }
+  ],
+  "exit_code": 0
+}

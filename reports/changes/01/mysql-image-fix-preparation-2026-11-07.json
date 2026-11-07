@@ -1,0 +1,93 @@
+{
+  "time": "2026-11-07T09:51:44.126Z",
+  "reviewer": "小陈 / Kevcco (AI assisted)",
+  "base_head": "773cd4bc1d5d3f0466ef50bf12574a6ca7d1bbf1",
+  "source": [
+    {
+      "path": "deploy/identity/mysql/Dockerfile",
+      "sha256": "4f9dcfeb0a7bc3122ee8a3225f55624e4d2c06208ea835563c01a7492ee259c9"
+    },
+    {
+      "path": "scripts/verify-mysql-image.mjs",
+      "sha256": "7fb02739dbf089e9577c2677fec439d9a7efc2daea7d59be696bd3d81412b3ae"
+    },
+    {
+      "path": "scripts/verify-identity.mjs",
+      "sha256": "4a004fe06b1c5aab8c1310fc5435b91651af4e57a0272333c3c547da1162b073"
+    },
+    {
+      "path": "scripts/verify-identity-wiring.mjs",
+      "sha256": "008e8ef92faba2116c064998488c524025046e10f5194bb1739a06c4331b49e5"
+    },
+    {
+      "path": "compose.yaml",
+      "sha256": "cee708e37e05b63fa2a1169adbdd7836273f189821ff7485f2ca2a9afd1f19cc"
+    },
+    {
+      "path": "deploy/identity/compose.yaml",
+      "sha256": "e30d2be8c14717f44c3f8c56bd6dc0671124c2640423e9d260355de25472f6cc"
+    },
+    {
+      "path": "package.json",
+      "sha256": "f908e32fa6c926f38e578c6e8b867487c2bf6f81a5f8e7b760fed51e2248e0db"
+    },
+    {
+      "path": ".github/workflows/check.yml",
+      "sha256": "bf0174c147454ed28aeed798b3a8ee76d48a8ff91bc7772db2313954400532aa"
+    }
+  ],
+  "local_check": {
+    "command": "npm run check",
+    "exit_code": 0,
+    "log": "mysql-fix-local-check-2026-11-07.txt"
+  },
+  "npm_audit": {
+    "command": "npm run audit",
+    "exit_code": 0,
+    "log": "mysql-fix-local-audit-2026-11-07.txt"
+  },
+  "gosu": {
+    "version": "1.19",
+    "source_commit": "6456aaa0f3c854d199d0f037f068eb97515b7513",
+    "archive_sha256": "cd9719b775dbfedae53923c9b0dc792b66d42c51e0b36652ed6f747fbadc0164",
+    "binary_sha256": "83c4067383c08b8bbbd52e36ede1c8c97815e2787bf8d053358e4ac35f41f369",
+    "build": "GOTOOLCHAIN=local CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -buildvcs=false",
+    "compiler": "Go1.27.3",
+    "compile_exit_code": 0,
+    "component_scan": {
+      "tool": "Trivy0.76.2",
+      "command": "trivy image --input gosu-probe-image.tar --scanners vuln --severity HIGH,CRITICAL --exit-code 1",
+      "exit_code": 0,
+      "HIGH": 0,
+      "CRITICAL": 0,
+      "report": "gosu-rebuild-component-scan-2026-11-07.json",
+      "scope": "Only locally cross-compiled gosu ELF in synthetic image archive; NOT final MySQL image or runtime execution"
+    },
+    "unmodified_source_module_license_files": 6
+  },
+  "preliminary_failures": [
+    {
+      "operation": "First Windows source extraction",
+      "exit_code": 1,
+      "result": "Archive .dockerignore symlink unsupported; re-extraction excluding only this irrelevant symlink succeeded. Go source/module/license bytes are unmodified."
+    },
+    {
+      "operation": "Trivy rootfs scan on Windows directory",
+      "exit_code": 0,
+      "language_files": 0,
+      "accepted_as_pass": false,
+      "result": "Insufficient executable coverage. Replaced with image archive preserving ELF executable mode; one gobinary analyzed."
+    }
+  ],
+  "full_mysql_image_build_scan_and_runtime": "not run locally; Docker unavailable, submitted to same gate in CI",
+  "independent_final_docker_verification": "not run; test environment login not restored",
+  "final_frontend_backend_image_scans": "not run",
+  "real_browser": "not verified",
+  "final_review": "changes requested; do not merge",
+  "secret_scan": {
+    "command": "npm run secret-scan",
+    "exit_code": 0,
+    "scope": "full history and staged contents",
+    "log": "mysql-fix-secret-scan-2026-11-07.txt"
+  }
+}

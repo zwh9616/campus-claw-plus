@@ -1,0 +1,9 @@
+{
+  "scope": "Nginx register consistency red/green and final evidence integrity; production inputs unchanged from independently tested 2ec6668",
+  "mismatch_exit": 1,
+  "restored_exit": 0,
+  "raw_scan_archives_verified": 8,
+  "production_inputs_unchanged": 19,
+  "local_document_links": 57,
+  "note": "Final resulting head must pass complete remote gate before approval/normal merge."
+}

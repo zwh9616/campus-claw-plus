@@ -1,0 +1,60 @@
+{
+  "raw_sha256": "ef344679079a50aef192c50389bc6ef0435aab47023bd68129d32a18c71517e5",
+  "raw_bytes": 183049,
+  "raw_gzip": "nginx-base-old-scan-2026-11-07.json.gz",
+  "counts": {
+    "HIGH": 6,
+    "CRITICAL": 1
+  },
+  "findings": [
+    {
+      "id": "CVE-2026-111497",
+      "package": "brotli-libs",
+      "installed": "1.2.0-r1",
+      "fixed": "1.2.1-r0",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": "CVE-2026-92392",
+      "package": "curl",
+      "installed": "8.22.0-r0",
+      "fixed": "8.23.0-r0",
+      "severity": "HIGH"
+    },
+    {
+      "id": "CVE-2026-92392",
+      "package": "libcurl",
+      "installed": "8.22.0-r0",
+      "fixed": "8.23.0-r0",
+      "severity": "HIGH"
+    },
+    {
+      "id": "CVE-2026-113351",
+      "package": "libexpat",
+      "installed": "2.9.0-r0",
+      "fixed": "2.10.0-r0",
+      "severity": "HIGH"
+    },
+    {
+      "id": "CVE-2026-115506",
+      "package": "libexpat",
+      "installed": "2.9.0-r0",
+      "fixed": "2.10.0-r0",
+      "severity": "HIGH"
+    },
+    {
+      "id": "CVE-2026-117610",
+      "package": "libexpat",
+      "installed": "2.9.0-r0",
+      "fixed": "2.10.0-r0",
+      "severity": "HIGH"
+    },
+    {
+      "id": "CVE-2026-118370",
+      "package": "libexpat",
+      "installed": "2.9.0-r0",
+      "fixed": "2.10.0-r0",
+      "severity": "HIGH"
+    }
+  ]
+}

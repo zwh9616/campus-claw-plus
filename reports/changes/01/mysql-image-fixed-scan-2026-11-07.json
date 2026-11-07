@@ -1,0 +1,10 @@
+{
+  "raw_sha256": "9738db460e81e892a38ef0704f2959cbac0729ef4085cfc67f8d922fa1ece97c",
+  "raw_bytes": 1182778,
+  "raw_gzip": "mysql-image-fixed-scan-2026-11-07.json.gz",
+  "counts": {
+    "HIGH": 0,
+    "CRITICAL": 0
+  },
+  "findings": []
+}

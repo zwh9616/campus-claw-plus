@@ -1,0 +1,53 @@
+
+> campus-claw-plus@0.0.1 verify
+> node scripts/verify-skeleton.mjs && node scripts/verify-identity.mjs && node scripts/verify-identity-wiring.mjs
+
+PASS SC-09 Compose missing required configuration
+PASS SC-08 local Compose startup (not second-machine acceptance)
+PASS SC-02/03 healthy JSON with no external dependencies
+PASS SC-01 static frontend HTTP
+PASS SC-04/05 process configuration missing
+PASS SC-04/05 process configuration empty
+PASS SC-04/05 process configuration whitespace
+PASS SC-04/05 process configuration letters
+PASS SC-04/05 process configuration zero
+PASS SC-04/05 process configuration negative
+PASS SC-04/05 process configuration aboveMaximum
+PASS SC-07 occupied port is failure of new executable
+PASS SC-06 valid trimmed configuration and recovery
+PASS SC-16/17 JSON logs and request identifier correlation
+PASS SC-10 stop and restart
+test fixtures: PASS
+isolated network: PASS
+isolated MySQL: PASS
+real MySQL identity scenarios: PASS
+generate disposable wiring credentials/certificates: PASS (exit 0)
+dedicated internal proxy network: PASS (exit 0)
+discover allocated proxy address: PASS (exit 0)
+release automatically allocated proxy network: PASS (exit 0)
+create explicit isolated proxy subnet: PASS (exit 0)
+validate explicit candidate compose: PASS (exit 0)
+missing HTTPS key is rejected before startup: PASS (exit 1)
+build pinned offline admin and preview: PASS (exit 0)
+start fresh persistent MySQL: PASS (exit 0)
+offline migrations: PASS (exit 0)
+offline manifest/schema check: PASS (exit 0)
+database CA file missing is rejected: PASS (exit 2)
+valid but wrong database trust certificate is rejected: PASS (exit 1)
+offline initialize via stdin: PASS (exit 0)
+repeat initialize does not replace existing password: PASS (exit 0)
+start isolated Go and HTTPS frontend: PASS (exit 0)
+real same-origin HTTPS, TLS rejection, login and revoked access: PASS (exit 0)
+capture sanitized Go request logs: PASS (exit 0)
+stop database only: PASS (exit 0)
+real database-down health 503 and login 503 without credentials: PASS (exit 0)
+restore database: PASS (exit 0)
+account and class persist after database restart: PASS (exit 0)
+remove candidate containers while retaining named data volume: PASS (exit 0)
+recreate MySQL on retained volume: PASS (exit 0)
+recreated database migration state unchanged: PASS (exit 0)
+recreate isolated HTTPS path: PASS (exit 0)
+same account and original password after full container recreation: PASS (exit 0)
+check combined logs contain no generated passwords: PASS (exit 0)
+remove only this disposable project and test data volume: PASS (exit 0)
+remove dedicated proxy network: PASS (exit 0)

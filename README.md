@@ -1,125 +1,64 @@
 # CampusClawPlus
-面向高校师生的课程助教与学习反馈项目。第7课只交付可运行的项目骨架，当前首页不限定学段。
 
-## 当前能做什么
-- React18 + TypeScript + Vite 静态首页：CampusClawPlus、Hello World、项目启动说明。
-- Go标准库后端：公开GET /health、必需HTTP_PORT校验、JSON日志和请求标识。
-- 两个独立容器：frontend/backend，一套Compose命令构建启动、检查和停止。
-- 五类工程规范、AGENTS读取入口、测试/发布技能、自动检查与CI。
+本分支已把MySQL、离线迁移/初始化、身份HTTP服务和同源HTTPS接入默认Compose。前端默认制品目前仍是静态首页；真实登录/账号页面在02/#15继续，候选API通过不等于完整页面交付。当前审查、接线和真实联验结果统一见[共享进度表](docs/project-status.md)。
 
-本轮没有登录、真实课程/资料、RAG、模型、数据库或作业功能。前端不调用后端；后续业务失败合同PB-09只交接规约，不能算运行通过。
+## 当前运行范围
+
+- GET /health匿名，逐请求真实Ping MySQL，3秒预算；200为status=ok/mysql=up，失败503为status=error/mysql=down，均有服务端X-Request-ID。
+- 六个身份接口：登录、CSRF、刷新、me、登出、切班。具体输入/权限/失败响应见[公共合同](docs/contracts/README.md)。资料、作业、AI、MCP和成绩接口不提供。
+- 默认服务为frontend/backend/mysql；admin仅在tools profile用于离线操作。只向本机发布HTTPS，后端与数据库不发布主机端口；数据使用命名卷，server不自动DDL/初始化。
 
 ## 小组进度与协作入口
 
-- [前端视觉规约](docs/standards/frontend-visual.md)：02及后续页面采用北大红#94070A、暖白背景与简约布局，参考Canvas/Moodle的信息组织；先验登录/账号样板，再扩展页面。2026-11-06本次仅修订规约，当前静态首页尚未换肤，组长已明确要求合入视觉规约，实际页面样板仍由小张确认。
-- [共享进度表](docs/project-status.md)：查看每个变更的两位负责人、当前阶段、下一步、卡点及证据；00已终审、合入main并复验，G2已成立；10 A已终审、合入main 55f0e83并通过完整门禁，两位负责人核对后G3已成立，见[验收记录](reports/changes/10/A/main-integration-2026-11-07.md)。01/02真实登录仍待装配与联验；00独立阅读复验、归档及10 B/C仍待完成。
-- [公共合同](docs/contracts/README.md)：OpenAPI3.1、2020-12单源类型与依赖/配置登记；认证只是frozen合同，当前运行仍只有health。npm run check:contracts已接入原检查入口。
-- [协作规范](docs/standards/collaboration.md)：一人写规约并终审，另一人审规约并实现；按变更分工，不按人固定技术模块。
-- 每次代码、测试、配置或脚本修改形成提交时，同一提交更新进度表对应行；阶段不变也记录本次改动和验证情况。PR交接和每日群内同步按协作规范执行。
+- [共享进度表](docs/project-status.md)：G2、G3已成立；10 A已终审、合入main 55f0e83并通过完整门禁，小陈已核对共同登记，见[验收记录](reports/changes/10/A/main-integration-2026-11-07.md)。本PR已激活默认身份服务，四个实际运行制品扫描及小陈独立Docker门禁全通过，见[最终复核](reports/changes/01/chen-final-review-2026-11-07.md)；收口head须经绿CI和正式批准正常合并，02真实页面/浏览器及集成main验收仍待完成。
+- [公共合同](docs/contracts/README.md)：六个身份操作和MySQL健康已随本PR原子激活，planned教学操作仍不可调用；npm run check:contracts接入原检查入口。
+- [前端视觉规约](docs/standards/frontend-visual.md)：北大红#94070A、暖白、简约布局，参考Canvas/Moodle信息组织；小张已确认#15代表样板，真实页面仍由小葛继续。
+- [协作规范](docs/standards/collaboration.md)：按变更两人接力；每组可提交修改必须同提交更新共享表。
 
-下面第7课的A/B/C分工与验收记录属于历史范围，保留原义；后续变更使用共享表中的实名搭配，不倒改历史证据。
 
-## 基本使用：同伴和教师从零启动
+## 从零启动身份服务
 
-运行系统只需 **Docker Desktop（Linux容器模式）**。Node.js、npm、Go和前端构建都在Docker中执行，不需要在本机安装。Git只用于获取代码，也可下载对应版本的源码ZIP。首次构建需要联网下载镜像和依赖。
+需要Docker、Node>=22.19及持有人提供的数据库/HTTPS可信证书和本机秘密文件。无默认证书或账号口令；不把测试临时CA安装到系统，不跳过TLS校验。准备细节见[身份部署步骤](deploy/identity/README.md)。
 
-### 1. 获取可运行代码
+1. 获取本PR代码或合入后的main；已有目录先保留未提交修改，不能强制覆盖。
+2. 在忽略的output/identity-local准备root-password、initialize.sql、数据库TLS材料、backend.env、admin.env和seed.json。应用DML账号与离线DDL账号分离；秘密不发群、不进Git/镜像/截图。
+3. 按部署步骤创建本项目独占internal代理网络，选择未占用静态地址。把根.env.example复制为本机.env（已有文件不要覆盖），填写HTTP_PORT、五个IDENTITY_*及HTTPS_CERT_FILE/HTTPS_KEY_FILE。MYSQL_*和AUTH_TRUSTED_ORIGIN由对应进程env文件提供；AUTH_TRUSTED_PROXY_CIDRS由Compose从代理IP派生为精确/32，不再在多个地方复制秘密。
+4. 按顺序构建、迁移、初始化、启动。以下均从仓库根执行，wrapper只校验键与文件，不打印配置值。
 
-本实现通过[PR #2](https://github.com/zwh9616/campus-claw-plus/pull/2)交付。PR合并前，请在新目录获取以下实现分支：
+```text
+node scripts/identity-compose.mjs .env --profile tools build mysql admin backend frontend
+node scripts/identity-compose.mjs .env up -d --wait --wait-timeout 120 mysql
+node scripts/identity-compose.mjs .env run --rm -T admin migrate
+node scripts/identity-compose.mjs .env run --rm -T admin check
+```
+
+PowerShell经标准输入初始化，口令不作为命令行参数：
 
 ```powershell
-git clone --single-branch --branch feat/2026-10-28-member-b-foundation https://github.com/zwh9616/campus-claw-plus.git
-cd campus-claw-plus
+Get-Content -Raw output/identity-local/seed.json | node scripts/identity-compose.mjs .env run --rm -T admin initialize
+node scripts/identity-compose.mjs .env up -d --wait --wait-timeout 90 backend frontend
 ```
 
-PR #2合并后，可以直接克隆默认main。已有该实现分支的同伴无需重复克隆，在工作区没有未提交代码修改时执行 `git pull --ff-only` 更新。
+准备完成后，直接docker compose up --build -d --wait也运行同一默认身份入口。访问配置的HTTPS主机/端口；客户端必须信任证书且SAN匹配。/health应为mysql up；身份行为用真实API客户端验收，当前静态首页不宣称可点击登录。
 
-### 2. 准备本机配置
+重复初始化不覆盖既有口令；SQL/结构/摘要不一致或dirty时拒绝启动，按[迁移恢复](docs/identity-migrations.md)前向修复，不盲目force、不删库。首次卷的initialize.sql不会在已有卷自动重跑。
 
-启动Docker Desktop，等待引擎可用。以下命令均在含有 `compose.yaml` 的仓库根目录执行。
+## 停止、恢复与排错
 
-Windows PowerShell：
-
-```powershell
-Copy-Item .env.example .env
-notepad .env
+```text
+node scripts/identity-compose.mjs .env down --timeout 15
+node scripts/identity-compose.mjs .env up -d --wait --wait-timeout 90
 ```
 
-macOS/Linux使用 `cp .env.example .env`，再用文本编辑器打开.env。已有.env不要覆盖。
+正常down保留数据卷；真实账号环境禁止加--volumes。只操作自己的Compose项目。缺配置/CA/私钥/有效迁移须非零失败；数据库停机时真实健康503，恢复后重新Ping。不要分享展开的compose config或完整容器inspect，其中可能含密码。
 
-将本机.env填写为：
+Docker自动地址池耗尽时不要清理无关项目网络：为本项目data网络选不冲突的显式ipam subnet，写在忽略的本机Compose覆盖文件中，并以-f compose.yaml -f 本机覆盖文件启动。隔离验收器会仅为自己的临时data网络选空闲网段，保留原服务、健康和隔离策略。
 
-```dotenv
-HTTP_PORT=18080
-```
+## 检查与协作
 
-这是后端端口，必须填写1..65535内的空闲端口；前端固定使用5173。若改用其他后端端口，下面健康检查地址也相应修改。.env只保存在本机，不提交Git；.env.example按课程要求只保留空值键名。
+npm run gate串行执行check、audit、secret-scan、verify；失败阻断。verify在随机独占项目验证默认生产server/Compose、可信HTTPS和MySQL、原启动/配置/日志/停止回归，再执行真实身份/迁移测试。临时测试CA和随机秘密随运行清理；它不证明持有人证书已就绪或浏览器真实联验已完成。
 
-### 3. 一条命令构建并启动
-
-```powershell
-docker compose up --build -d --wait
-```
-
-Docker会自动安装前端依赖、构建前端、编译Go后端并启动两个服务。首次运行可能需要等待下载和构建；看到命令成功退出后再访问页面。只使用系统时无需运行后面开发者章节中的npm或Go命令。
-
-### 4. 访问与确认启动成功
-
-| 项目 | 地址或命令 | 成功现象 |
-| --- | --- | --- |
-| 首页 | [http://localhost:5173/](http://localhost:5173/) | 显示CampusClawPlus、Hello World和项目启动说明 |
-| 后端健康检查 | [http://localhost:18080/health](http://localhost:18080/health) | HTTP200、JSON响应，含X-Request-ID响应头 |
-| 容器状态 | `docker compose ps` | frontend为Up，backend为Up且healthy |
-
-健康接口响应：
-
-```json
-{"status":"ok","dependencies":{}}
-```
-
-这里的空对象表示没有配置外部依赖，不表示数据库或模型已健康。当前首页是静态启动页，不提供登录、问答或作业操作。
-
-Windows可在终端查看完整HTTP响应：
-
-```powershell
-curl.exe -i http://localhost:18080/health
-```
-
-macOS/Linux将curl.exe替换为curl。同伴需要在自己的电脑执行启动命令；localhost始终指当前执行者自己的电脑。
-
-### 5. 查看日志、停止、重启和更新
-
-| 操作 | 在仓库根目录执行 |
-| --- | --- |
-| 查看后端最近50行日志 | `docker compose logs --no-color --tail 50 backend` |
-| 查看前端最近50行日志 | `docker compose logs --no-color --tail 50 frontend` |
-| 停止系统 | `docker compose down --timeout 15` |
-| 再次启动已构建系统 | `docker compose up -d --wait` |
-| 获取当前分支更新 | `git pull --ff-only`（先保存本地代码修改） |
-| 更新后重新构建启动 | `docker compose up --build -d --wait` |
-
-关闭浏览器不会停止后台容器；停止系统请执行down。停止命令只作用于本项目。
-
-### 常见启动问题
-
-| 现象 | 处理方法 |
-| --- | --- |
-| 无法连接Docker引擎 | 启动Docker Desktop，确认Linux容器引擎已就绪；可用docker info检查 |
-| 提示HTTP_PORT缺失或为空 | 检查仓库根目录.env，按上面的示例填写并重新启动 |
-| 端口被占用 | 停止自己已有的本项目实例；后端可在.env改为空闲端口，前端5173需与占用程序协调 |
-| 下载镜像或npm依赖失败 | 确认Docker能联网后重试同一启动命令；构建已配置依赖缓存和有限重试，无需在本机安装npm |
-| 后端不是healthy或页面打不开 | 先运行docker compose ps，再查看对应服务日志；不要将仅running当作后端验收通过 |
-
-同伴需留交叉验收证据时，可参考[Docker验收记录模板](docs/lesson-07/peer-docker-guide.md#同伴填写的验收记录)；上述基本使用步骤已完整写在本README中。
-
-## 接口与日志
-GET /health无需认证，HTTP200、application/json：
-```json
-{"status":"ok","dependencies":{}}
-```
-空依赖表示本轮没有外部依赖，不能据此声称MySQL/Qdrant已健康。服务端生成32位十六进制X-Request-ID，同次JSON请求日志使用相同标识，不信任客户端输入的标识。
-Go日志字段：ts、level、module、message、request_id；HTTP日志另含method、path、status、duration_ms。启动/配置日志request_id=null；日志不含查询串、正文或配置原值。
-未知后端路径404，错误方法405。当前没有业务码外层。镜像自带/server --healthcheck，不依赖curl。
+[共享进度](docs/project-status.md)、[协作规范](docs/standards/collaboration.md)、[前端视觉](docs/standards/frontend-visual.md)。本轮只推进数据库→身份→真实登录，后续教学业务暂停。下方第7课分工/历史章节保留历史含义，不反向修改归档证据。
 
 ## 开发者检查（同伴启动系统无需执行）
 要求Node22.19+（推荐22系列最新补丁）、npm、Docker及Compose v2。Go可用本机1.27.3，或自动使用固定摘要的Go1.27.3容器工具链，无需全局安装。
@@ -134,7 +73,7 @@ npm run gate
 - check：基础配置/规则入口、OpenAPI/Schema及语义反例、前端类型和构建、Go vet/test/build、严格OpenSpec。任何失败非零退出。
 - audit：根与前端npm依赖high/critical阻断；不是Go/容器漏洞扫描的替代品。
 - secret-scan：官方Gitleaks8.30.1，首次下载验证SHA256；扫描全部Git历史和暂存内容并全量隐藏原值。当前支持Windows/Linux x64，其他平台可手动使用同版本。
-- verify：保留真实容器构建/健康、配置失败退出码、占用、恢复、JSON日志、停止再启动的原15项断言；读取本机.env的HTTP_PORT作为容器内部端口，独立项目使用临时环回端口，不抢占普通Compose的5173/HTTP_PORT，不停止其他项目。普通运行的compose.yaml和健康合同不变。
+- verify：把原启动/配置/健康/日志/停止回归类别迁移到当前默认身份入口，再运行真实身份/迁移测试。使用随机独占项目、临时配置/CA和Docker分配的环回端口，保留唯一MySQL健康合同；只清理自己的测试容器、网络与数据卷，不影响普通运行项目。
 - 10 A进度与验收边界见[门禁交接](reports/changes/10/A/README.md)。CI绿色不等于主干保护生效；G3还要求有效保护、受控阻断、小葛终审和main集成复验。
 - 输出：控制台；本机机器报告在output/verification/（忽略）；可审查结论和SC映射在[验收记录](docs/lesson-07/verification.md)。
 - CI在push/PR自动运行同一套检查。按2026-10-29确认的归档范围，采用C已提供的运行/页面/新会话证据和CI结果；已取消的三项前置见[归档记录](docs/lesson-07/archive-record.md)，未执行结果不冒充通过。

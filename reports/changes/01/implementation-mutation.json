@@ -1,0 +1,16 @@
+{
+  "file": "backend/internal/identity/model.go",
+  "restored_sha256": "d95ab80dca2c1b4b0bc0c6d3ae59283adcb6abac63ef0c2e5397945d7df4819f",
+  "results": [
+    {
+      "phase": "class condition removed",
+      "exit_code": 1,
+      "output": "--- FAIL: TestIDFAuthorization (0.00s)\n    --- FAIL: TestIDFAuthorization/cross-class (0.00s)\n        identity_test.go:69: want NOT_FOUND got <nil>\nFAIL\nFAIL\tgithub.com/zwh9616/campus-claw-plus/backend/internal/identity\t0.007s\nFAIL\n"
+    },
+    {
+      "phase": "original bytes restored",
+      "exit_code": 0,
+      "output": "ok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/identity\t0.005s\n"
+    }
+  ]
+}

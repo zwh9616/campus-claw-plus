@@ -1,0 +1,2 @@
+Foundation: rule/skill entry points exist, sample keys are empty, .env is ignored, Nginx runtime digest matches its register.
+This check is separate from real authorization review and full-history secret scanning.

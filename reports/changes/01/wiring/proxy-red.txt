@@ -1,0 +1,41 @@
+✔ IDF-SC-18 required input, hostname and exact proxy boundaries (10.1062ms)
+✖ IDF-SC-17/18 isolated wiring keeps secrets, ports and current phase separated (13.0593ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 1
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 122.108
+
+✖ failing tests:
+
+test at scripts\identity-wiring.test.mjs:17:1
+✖ IDF-SC-17/18 isolated wiring keeps secrets, ports and current phase separated (13.0593ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /proxy_set_header X-Real-IP \$remote_addr;/. Input:
+
+  'proxy_pass http://preview:18080;\n' +
+    'proxy_set_header Host $http_host;\n' +
+    'proxy_set_header X-Real-IP $http_x_real_ip;\n' +
+    'proxy_set_header X-Forwarded-For "";\n' +
+    'proxy_set_header X-Forwarded-Proto https;\n' +
+    'proxy_connect_timeout 3s;\n' +
+    'proxy_read_timeout 10s;\n' +
+    'proxy_send_timeout 10s;\n' +
+    'proxy_intercept_errors off;\n'
+
+      at TestContext.<anonymous> (file:///D:/long/2/grade5/Internet-Software/group_project/scripts/identity-wiring.test.mjs:33:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'proxy_pass http://preview:18080;\nproxy_set_header Host $http_host;\nproxy_set_header X-Real-IP $http_x_real_ip;\nproxy_set_header X-Forwarded-For "";\nproxy_set_header X-Forwarded-Proto https;\nproxy_connect_timeout 3s;\nproxy_read_timeout 10s;\nproxy_send_timeout 10s;\nproxy_intercept_errors off;\n',
+    expected: /proxy_set_header X-Real-IP \$remote_addr;/,
+    operator: 'match',
+    diff: 'simple'
+  }

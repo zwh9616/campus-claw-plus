@@ -2,13 +2,16 @@ package httpserver
 
 import (
 	"bytes"
+	"context"
 	"encoding/hex"
 	"encoding/json"
+	"errors"
 	"mime"
 	"net/http"
 	"net/http/httptest"
 	"strings"
 	"testing"
+	"time"
 
 	"github.com/zwh9616/campus-claw-plus/backend/internal/observability"
 )
@@ -16,7 +19,7 @@ import (
 // PB-02/PB-07 / SC-02/03/16: actual response and correlated single-line log.
 func TestHealthNormalAndLog(t *testing.T) {
 	var logs bytes.Buffer
-	handler := Handler(observability.NewLogger(&logs))
+	handler := Handler(observability.NewLogger(&logs), healthyDB{})
 	ids := map[string]bool{}
 	for i := 0; i < 2; i++ {
 		request := httptest.NewRequest(http.MethodGet, "/health?secret=must-not-log", nil)
@@ -34,7 +37,7 @@ func TestHealthNormalAndLog(t *testing.T) {
 		if err := json.Unmarshal(response.Body.Bytes(), &body); err != nil {
 			t.Fatal(err)
 		}
-		if len(body) != 2 || string(body["status"]) != `"ok"` || string(body["dependencies"]) != "{}" {
+		if len(body) != 2 || string(body["status"]) != `"ok"` || string(body["dependencies"]) != `{"mysql":"up"}` {
 			t.Fatalf("wrong health contract: %s", response.Body.String())
 		}
 		id := response.Header().Get("X-Request-ID")
@@ -74,7 +77,7 @@ func TestHTTPFailureRoutes(t *testing.T) {
 		t.Run(test.name, func(t *testing.T) {
 			var logs bytes.Buffer
 			response := httptest.NewRecorder()
-			Handler(observability.NewLogger(&logs)).ServeHTTP(response, httptest.NewRequest(test.method, test.path, nil))
+			Handler(observability.NewLogger(&logs), healthyDB{}).ServeHTTP(response, httptest.NewRequest(test.method, test.path, nil))
 			if response.Code != test.status {
 				t.Fatalf("status=%d", response.Code)
 			}
@@ -85,5 +88,49 @@ func TestHTTPFailureRoutes(t *testing.T) {
 				t.Fatal("missing Allow")
 			}
 		})
+	}
+}
+
+type healthyDB struct{}
+
+func (healthyDB) Ping(context.Context) error { return nil }
+
+// IDF-SC-17: every health request checks the dependency with its own budget;
+// no cached success, leaked driver message, or skeleton success on failure.
+type changingDB struct {
+	calls int
+	t     *testing.T
+}
+
+func (db *changingDB) Ping(ctx context.Context) error {
+	db.calls++
+	deadline, ok := ctx.Deadline()
+	if !ok || time.Until(deadline) > 3*time.Second || time.Until(deadline) < 2500*time.Millisecond {
+		db.t.Fatal("health must supply a fresh 3s total budget")
+	}
+	if db.calls > 1 {
+		return errors.New("sensitive-database-detail")
+	}
+	return nil
+}
+func TestIdentityHealthChecksEveryRequestAndFailsClosed(t *testing.T) {
+	var logs bytes.Buffer
+	db := &changingDB{t: t}
+	h := Handler(observability.NewLogger(&logs), db)
+	for i, status := range []int{200, 503} {
+		w := httptest.NewRecorder()
+		h.ServeHTTP(w, httptest.NewRequest("GET", "/health", nil))
+		if w.Code != status {
+			t.Fatalf("request %d status=%d want=%d", i, w.Code, status)
+		}
+		if strings.Contains(w.Body.String(), "sensitive") || strings.Contains(logs.String(), "sensitive") {
+			t.Fatal("dependency error leaked")
+		}
+		if i == 1 && w.Body.String() != "{\"dependencies\":{\"mysql\":\"down\"},\"status\":\"error\"}\n" {
+			t.Fatal("down payload must be unique and exact")
+		}
+	}
+	if db.calls != 2 {
+		t.Fatal("health reused a previous dependency result")
 	}
 }

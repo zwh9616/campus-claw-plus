@@ -1,0 +1,8 @@
+{
+  "000001_identity_users_classes.up.sql": "07947f4fd66c751eb549c07917266eb65d8e4e9352d26506fb8002b5e65e05c7",
+  "000003_identity_auth_audit.up.sql": "b83195b44f354ba2909b01a5aceb5b18954e04b075a68095039d4849e5f99c1e",
+  "000003_identity_auth_audit.down.sql": "2b2562162a904817521e01a0482d0665eaabfff88df0a86e71237c7fb08372b4",
+  "000001_identity_users_classes.down.sql": "4aeb5022ed2575818082d6e4880b2f83a524c7cc7038d7b49b3debadfdd532da",
+  "000002_identity_sessions.down.sql": "b44b4528eb1aa3bfddfea588249da54509871972f6febe26b2d448faf45a9773",
+  "000002_identity_sessions.up.sql": "c600e1133f8ace63565fca713e13dd33a187f670d10bc94b028d66db351baeb0"
+}

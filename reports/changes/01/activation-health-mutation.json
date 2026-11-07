@@ -1,0 +1,19 @@
+{
+  "executor": "zwh9616 / 小张",
+  "time": "2026-11-07T09:19:39.586354+00:00",
+  "source": "working tree activation, base 41e8ed2 + main55f0e83",
+  "restored_sha256": "acdf5a131ebece805992a7e71b3e0868bbc2dbaabfc4f3c88050f26d394c3001",
+  "byte_restoration_confirmed": true,
+  "results": [
+    {
+      "case": "compilable removal of real Ping",
+      "exit_code": 1,
+      "output": "--- FAIL: TestIdentityHealthChecksEveryRequestAndFailsClosed (0.00s)\n    handler_test.go:124: request 1 status=200 want=503\nFAIL\nFAIL\tgithub.com/zwh9616/campus-claw-plus/backend/internal/httpserver\t0.008s\nFAIL\n"
+    },
+    {
+      "case": "restored exact original bytes",
+      "exit_code": 0,
+      "output": "ok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/httpserver\t0.009s\n"
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "SchemaVersion": 2,
+  "Trivy": {
+    "Version": "0.76.2"
+  },
+  "ReportID": "01a1b56a-3737-7be8-8955-cc07c282dc03",
+  "CreatedAt": "2026-11-07T17:49:59.4797803+08:00",
+  "ArtifactID": "sha256:ae22d81f0b578e6494678509731b6b57d54ca28613f096dfaba1bd985cf4c2d0",
+  "ArtifactName": "output/identity-image-audit/gosu-probe-image.tar",
+  "ArtifactType": "container_image",
+  "Metadata": {
+    "Size": 2836480,
+    "ImageID": "sha256:29984c54fcfed4682aef082e69c7091bc92896f4dadca5e2203e334a846d2b3a",
+    "DiffIDs": [
+      "sha256:6fe916195639d8eccfd8bbbef77531cb4f53cbadb404c8efba9aab2ca49591cf"
+    ],
+    "RepoTags": [
+      "local-gosu-rebuild:probe"
+    ],
+    "Reference": "local-gosu-rebuild:probe",
+    "ImageConfig": {
+      "architecture": "amd64",
+      "created": "0001-01-01T00:00:00Z",
+      "os": "linux",
+      "rootfs": {
+        "type": "layers",
+        "diff_ids": [
+          "sha256:6fe916195639d8eccfd8bbbef77531cb4f53cbadb404c8efba9aab2ca49591cf"
+        ]
+      },
+      "config": {}
+    },
+    "Layers": [
+      {
+        "Size": 2836480,
+        "DiffID": "sha256:6fe916195639d8eccfd8bbbef77531cb4f53cbadb404c8efba9aab2ca49591cf"
+      }
+    ]
+  },
+  "Results": [
+    {
+      "Target": "usr/local/bin/gosu",
+      "Class": "lang-pkgs",
+      "Type": "gobinary",
+      "Packages": [
+        {
+          "ID": "github.com/tianon/gosu",
+          "Name": "github.com/tianon/gosu",
+          "Identifier": {
+            "PURL": "pkg:golang/github.com/tianon/gosu",
+            "UID": "a7ca294e76447778"
+          },
+          "Relationship": "root",
+          "DependsOn": [
+            "github.com/moby/sys/user@v0.1.0",
+            "golang.org/x/sys@v0.1.0",
+            "stdlib@v1.27.3"
+          ],
+          "Layer": {
+            "DiffID": "sha256:6fe916195639d8eccfd8bbbef77531cb4f53cbadb404c8efba9aab2ca49591cf"
+          },
+          "AnalyzedBy": "gobinary"
+        },
+        {
+          "ID": "stdlib@v1.27.3",
+          "Name": "stdlib",
+          "Identifier": {
+            "PURL": "pkg:golang/stdlib@v1.27.3",
+            "UID": "554c549ca977c687"
+          },
+          "Version": "v1.27.3",
+          "Relationship": "direct",
+          "Layer": {
+            "DiffID": "sha256:6fe916195639d8eccfd8bbbef77531cb4f53cbadb404c8efba9aab2ca49591cf"
+          },
+          "AnalyzedBy": "gobinary"
+        },
+        {
+          "ID": "github.com/moby/sys/user@v0.1.0",
+          "Name": "github.com/moby/sys/user",
+          "Identifier": {
+            "PURL": "pkg:golang/github.com/moby/sys/user@v0.1.0",
+            "UID": "cfd815b74e215fdf"
+          },
+          "Version": "v0.1.0",
+          "Layer": {
+            "DiffID": "sha256:6fe916195639d8eccfd8bbbef77531cb4f53cbadb404c8efba9aab2ca49591cf"
+          },
+          "AnalyzedBy": "gobinary"
+        },
+        {
+          "ID": "golang.org/x/sys@v0.1.0",
+          "Name": "golang.org/x/sys",
+          "Identifier": {
+            "PURL": "pkg:golang/golang.org/x/sys@v0.1.0",
+            "UID": "11ab2e48c80f8e7d"
+          },
+          "Version": "v0.1.0",
+          "Layer": {
+            "DiffID": "sha256:6fe916195639d8eccfd8bbbef77531cb4f53cbadb404c8efba9aab2ca49591cf"
+          },
+          "AnalyzedBy": "gobinary"
+        }
+      ]
+    }
+  ]
+}

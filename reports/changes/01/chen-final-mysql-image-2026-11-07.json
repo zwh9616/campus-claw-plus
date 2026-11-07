@@ -1,0 +1,63 @@
+{
+  "time": "2026-11-07T10:16:56.219Z",
+  "source_dockerfile_sha256": "055eb6378eb40d305b7a28ea9d4a735bfd5e0137a806e330799965074e999c5a",
+  "results": [
+    {
+      "label": "build fixed MySQL 8.4.13 runtime",
+      "exit_code": 0,
+      "output": "#0 building with \"default\" instance using docker driver\n\n#1 [internal] load build definition from Dockerfile\n#1 transferring dockerfile: 1.37kB done\n#1 DONE 0.0s\n\n#2 [internal] load metadata for docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb\n#2 DONE 0.0s\n\n#3 [internal] load metadata for docker.io/library/mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902\n#3 DONE 0.0s\n\n#4 [internal] load .dockerignore\n#4 transferring context: 2B done\n#4 DONE 0.0s\n\n#5 [gosu 1/4] FROM docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb\n#5 DONE 0.0s\n\n#6 [gosu 2/4] WORKDIR /src\n#6 CACHED\n\n#7 [stage-1 1/5] FROM docker.io/library/mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902\n#7 DONE 0.0s\n\n#8 [gosu 3/4] ADD --checksum=sha256:cd9719b775dbfedae53923c9b0dc792b66d42c51e0b36652ed6f747fbadc0164 https://codeload.github.com/tianon/gosu/tar.gz/refs/tags/1.19 /tmp/gosu.tar.gz\n#8 DONE 1.1s\n\n#9 [stage-1 2/5] RUN microdnf remove -y mysql-shell     && microdnf clean all     && rm -rf -- /usr/lib/mysqlsh     && ! command -v mysqlsh     && test ! -d /usr/lib/mysqlsh     && mysqld --version | grep '8.4.13'     && mysql --version\n#9 0.483 Package                          Repository     Size\n#9 0.483 Removing:                                           \n#9 0.483  mysql-shell-8.4.10-1.el9.x86_64 @System    514.3 MB\n#9 0.483 Transaction Summary:\n#9 0.483  Installing:        0 packages\n#9 0.483  Reinstalling:      0 packages\n#9 0.483  Upgrading:         0 packages\n#9 0.483  Obsoleting:        0 packages\n#9 0.483  Removing:          1 packages\n#9 0.483  Downgrading:       0 packages\n#9 0.506 Running transaction test...\n#9 0.795 Removing: mysql-shell;8.4.10-1.el9;x86_64;installed\n#9 ...\n\n#10 [gosu 3/4] ADD --checksum=sha256:cd9719b775dbfedae53923c9b0dc792b66d42c51e0b36652ed6f747fbadc0164 https://codeload.github.com/tianon/gosu/tar.gz/refs/tags/1.19 /tmp/gosu.tar.gz\n#10 DONE 0.0s\n\n#11 [gosu 4/4] RUN tar -xzf /tmp/gosu.tar.gz --strip-components=1 -C /src     && GOTOOLCHAIN=local CGO_ENABLED=0 go build -trimpath -buildvcs=false -o /out/gosu .\n#11 0.345 go: downloading github.com/moby/sys/user v0.1.0\n#11 0.345 go: downloading golang.org/x/sys v0.1.0\n#11 ...\n\n#9 [stage-1 2/5] RUN microdnf remove -y mysql-shell     && microdnf clean all     && rm -rf -- /usr/lib/mysqlsh     && ! command -v mysqlsh     && test ! -d /usr/lib/mysqlsh     && mysqld --version | grep '8.4.13'     && mysql --version\n#9 1.595 Complete.\n#9 1.635 Complete.\n#9 1.711 /usr/sbin/mysqld  Ver 8.4.13 for Linux on x86_64 (MySQL Community Server - GPL)\n#9 1.721 mysql  Ver 8.4.13 for Linux on x86_64 (MySQL Community Server - GPL)\n#9 DONE 1.7s\n\n#11 [gosu 4/4] RUN tar -xzf /tmp/gosu.tar.gz --strip-components=1 -C /src     && GOTOOLCHAIN=local CGO_ENABLED=0 go build -trimpath -buildvcs=false -o /out/gosu .\n#11 DONE 4.5s\n\n#12 [stage-1 3/5] COPY --from=gosu /out/gosu /usr/local/bin/gosu\n#12 DONE 0.0s\n\n#13 [stage-1 4/5] COPY --from=gosu /src/LICENSE /usr/share/licenses/campus-gosu/LICENSE\n#13 DONE 0.0s\n\n#14 [stage-1 5/5] RUN gosu --version     && test \"$(gosu mysql id -u)\" = 999     && test \"$(gosu mysql id -g)\" = 999\n#14 0.247 1.19 (go1.27.3 on linux/amd64; gc)\n#14 DONE 0.3s\n\n#15 exporting to image\n#15 exporting layers 0.1s done\n#15 writing image sha256:6f93716f1ba8f4b149c2c0e8ba8b77ef040f54554949aabba3d906473650bdc9 done\n#15 naming to docker.io/library/campus-mysql-audit-612f0a716da0:verification done\n#15 DONE 0.1s\n"
+    },
+    {
+      "label": "record immutable built artifact",
+      "exit_code": 0,
+      "output": "sha256:6f93716f1ba8f4b149c2c0e8ba8b77ef040f54554949aabba3d906473650bdc9\n"
+    },
+    {
+      "label": "MySQL version, mysqlsh removal, real gosu UID/GID drop",
+      "exit_code": 0,
+      "output": "/usr/sbin/mysqld  Ver 8.4.13 for Linux on x86_64 (MySQL Community Server - GPL)\nmysql  Ver 8.4.13 for Linux on x86_64 (MySQL Community Server - GPL)\n"
+    },
+    {
+      "label": "export artifact for scanner without Docker socket",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "label": "Trivy HIGH/CRITICAL audit of fixed artifact",
+      "exit_code": 0,
+      "output": "Unable to find image 'aquasec/trivy@sha256:8f6bb947dbc528902e11f2f5be52f7b519f6a39d5d148f41166f2040499768fb' locally\ndocker.io/aquasec/trivy@sha256:8f6bb947dbc528902e11f2f5be52f7b519f6a39d5d148f41166f2040499768fb: Pulling from aquasec/trivy\n7b229517ed22: Already exists\n9f087194f4fe: Pulling fs layer\nd7953b8bb0ca: Pulling fs layer\nac09fd37397a: Pulling fs layer\nac09fd37397a: Verifying Checksum\nac09fd37397a: Download complete\n9f087194f4fe: Download complete\n9f087194f4fe: Pull complete\nd7953b8bb0ca: Verifying Checksum\nd7953b8bb0ca: Download complete\nd7953b8bb0ca: Pull complete\nac09fd37397a: Pull complete\nDigest: sha256:8f6bb947dbc528902e11f2f5be52f7b519f6a39d5d148f41166f2040499768fb\nStatus: Downloaded newer image for aquasec/trivy@sha256:8f6bb947dbc528902e11f2f5be52f7b519f6a39d5d148f41166f2040499768fb\n2026-11-07T10:15:30Z\tINFO\t[vulndb] Need to update DB\n2026-11-07T10:15:30Z\tINFO\t[vulndb] Downloading vulnerability DB...\n2026-11-07T10:15:30Z\tINFO\t[vulndb] Downloading artifact...\trepo=\"mirror.gcr.io/aquasec/trivy-db:2\"\n2026-11-07T10:16:53Z\tINFO\t[vulndb] Artifact successfully downloaded\trepo=\"mirror.gcr.io/aquasec/trivy-db:2\"\n2026-11-07T10:16:53Z\tINFO\t[vuln] Vulnerability scanning is enabled\n2026-11-07T10:16:55Z\tINFO\t[python] Licenses acquired from one or more METADATA files may be subject to additional terms. Use `--debug` flag to see all affected packages.\n2026-11-07T10:16:55Z\tINFO\tDetected OS\tfamily=\"oracle\" version=\"9.8\"\n2026-11-07T10:16:55Z\tINFO\t[oracle] Detecting vulnerabilities...\tos_version=\"9\" pkg_num=113\n2026-11-07T10:16:55Z\tINFO\tNumber of language-specific files\tnum=1\n2026-11-07T10:16:55Z\tINFO\t[gobinary] Detecting vulnerabilities...\n2026-11-07T10:16:55Z\tWARN\tUsing severities from other vendors for some vulnerabilities. Read https://trivy.dev/docs/v0.76/guide/scanner/vulnerability#severity-selection for details.\n"
+    },
+    {
+      "label": "record actual vulnerability database metadata",
+      "exit_code": 0,
+      "output": "{\"Version\":2,\"NextUpdate\":\"2026-11-08T06:54:25.084761663Z\",\"UpdatedAt\":\"2026-11-07T06:54:25.084761873Z\",\"DownloadedAt\":\"2026-11-07T10:16:53.029728138Z\"}\n"
+    },
+    {
+      "label": "remove own scanner if its client timed out",
+      "exit_code": 0
+    },
+    {
+      "label": "remove only own image tag",
+      "exit_code": 0
+    },
+    {
+      "label": "remove only own scanner cache volume",
+      "exit_code": 0
+    }
+  ],
+  "summary": {
+    "image_id": "sha256:6f93716f1ba8f4b149c2c0e8ba8b77ef040f54554949aabba3d906473650bdc9",
+    "scanner": "aquasec/trivy@sha256:8f6bb947dbc528902e11f2f5be52f7b519f6a39d5d148f41166f2040499768fb",
+    "raw_sha256": "7ace4efa98b13d57046eb7bc4430191b44d680405feeded30aa381e7643261ac",
+    "HIGH": 0,
+    "CRITICAL": 0,
+    "gosu_go": "1.27.3",
+    "vulnerability_database": {
+      "Version": 2,
+      "NextUpdate": "2026-11-08T06:54:25.084761663Z",
+      "UpdatedAt": "2026-11-07T06:54:25.084761873Z",
+      "DownloadedAt": "2026-11-07T10:16:53.029728138Z"
+    }
+  },
+  "exit_code": 0
+}
