@@ -8,6 +8,12 @@
 - 六个身份接口：登录、CSRF、刷新、me、登出、切班。具体输入/权限/失败响应见[公共合同](docs/contracts/README.md)。资料、作业、AI、MCP和成绩接口不提供。
 - 默认服务为frontend/backend/mysql；admin仅在tools profile用于离线操作。只向本机发布HTTPS，后端与数据库不发布主机端口；数据使用命名卷，server不自动DDL/初始化。
 
+## 小组进度与协作入口
+
+- [共享进度表](docs/project-status.md)：G2、G3已成立，见[10 A验收](reports/changes/10/A/main-integration-2026-11-07.md)。本PR默认身份入口已激活；最终独立复测、MySQL镜像扫描问题修复及02真实浏览器联验仍待完成。
+- [公共合同](docs/contracts/README.md)：当前为MySQL健康与六个身份操作；planned教学业务禁止接线。
+- [前端视觉规约](docs/standards/frontend-visual.md)与[协作规范](docs/standards/collaboration.md)：02样板2.3已由小张确认，后续真实页面由小葛实现；每次提交同提交同步共享表。
+
 ## 从零启动身份服务
 
 需要Docker、Node>=22.19及持有人提供的数据库/HTTPS可信证书和本机秘密文件。无默认证书或账号口令；不把测试临时CA安装到系统，不跳过TLS校验。准备细节见[身份部署步骤](deploy/identity/README.md)。
@@ -65,7 +71,7 @@ npm run gate
 - check：基础配置/规则入口、OpenAPI/Schema及语义反例、前端类型和构建、Go vet/test/build、严格OpenSpec。任何失败非零退出。
 - audit：根与前端npm依赖high/critical阻断；不是Go/容器漏洞扫描的替代品。
 - secret-scan：官方Gitleaks8.30.1，首次下载验证SHA256；扫描全部Git历史和暂存内容并全量隐藏原值。当前支持Windows/Linux x64，其他平台可手动使用同版本。
-- verify：保留真实容器构建/健康、配置失败退出码、占用、恢复、JSON日志、停止再启动的原15项断言；读取本机.env的HTTP_PORT作为容器内部端口，独立项目使用临时环回端口，不抢占普通Compose的5173/HTTP_PORT，不停止其他项目。普通运行的compose.yaml和健康合同不变。
+- verify：把原启动/配置/健康/日志/停止回归类别迁移到当前默认身份入口，再运行真实身份/迁移测试。使用随机独占项目、临时配置/CA和Docker分配的环回端口，保留唯一MySQL健康合同；只清理自己的测试容器、网络与数据卷，不影响普通运行项目。
 - 10 A进度与验收边界见[门禁交接](reports/changes/10/A/README.md)。CI绿色不等于主干保护生效；G3还要求有效保护、受控阻断、小葛终审和main集成复验。
 - 输出：控制台；本机机器报告在output/verification/（忽略）；可审查结论和SC映射在[验收记录](docs/lesson-07/verification.md)。
 - CI在push/PR自动运行同一套检查。按2026-10-29确认的归档范围，采用C已提供的运行/页面/新会话证据和CI结果；已取消的三项前置见[归档记录](docs/lesson-07/archive-record.md)，未执行结果不冒充通过。
