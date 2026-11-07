@@ -1,0 +1,10 @@
+{
+  "raw_sha256": "278d1e97a0789cda4f3bea737de3a4ea643d23b2b66e7f2a6629e315e47fa4c0",
+  "raw_bytes": 160179,
+  "raw_gzip": "nginx-base-updated-scan-2026-11-07.json.gz",
+  "counts": {
+    "HIGH": 0,
+    "CRITICAL": 0
+  },
+  "findings": []
+}

@@ -70,3 +70,9 @@ G3已随#17共同登记，main 7806b5d的完整CI42359879443成功；这只解�
 ## 2026-11-07 小陈镜像最小返修
 
 在原#14按R1最小修复候选接入同一MySQL衍生Dockerfile，保留服务端版本/官方entrypoint；增加本机与CI共同verify的真实制品漏洞/降权断言及原数据库全量回归。local check/audit 0、单gosu组件扫描0；完整镜像/运行回归待CI，独立最终Docker/前后端镜像/02浏览器未验证，不勾3.6b或4.1..4.3。证据见[修复记录](../../../reports/changes/01/mysql-image-fix-2026-11-07.md)。
+
+## 2026-11-07 MySQL修复实证与应用镜像补扫
+
+- [x] 3.6f [小陈] 核对2a06bf8的完整CI42361771890，实际MySQL衍生制品0 HIGH/CRITICAL、UID/GID和默认可信TLS/迁移/初始化/持久卷重建全部回归通过；原失败留证，见[修复实证](../../../reports/changes/01/mysql-image-fixed-2026-11-07.md)。
+
+另补扫发现旧Nginx基础1 CRITICAL/6 HIGH，换官方同1.30.6安全重建固定摘要，基础实扫0；最终backend/admin/frontend镜像构建扫描加入同一个verify，当前CI待验。3.6b和4.1..4.3不勾：最终独立Docker复测及02真实浏览器未验证，不把CI回归改称独立终审。

@@ -8,12 +8,12 @@
 | 机密 | .env被忽略；.env.example只含config-register.active的空值键，当前active键以登记表为准；不进Git/镜像/前端/日志 | 基础检查验证登记/空值/重复/缺项+待提交审查+全历史gitleaks；命中立即轮换 |
 | 输入输出 | 类型/长度/范围/枚举白名单；查询参数绑定；React转义；不用dangerouslySetInnerHTML | 注入引号/标签/路径穿越不得执行；非法筛选不能变全量 |
 | 令牌 | 未来访问令牌仅内存，刷新令牌HttpOnly/Secure/SameSite=Strict Cookie并轮换；登出/改密立即失效 | 不在URL/本地存储/日志出现；旧令牌失效测试 |
-| 出站 | 服务端配置允许目标，校验解析地址及重定向，默认禁内网/环回/链路本地 | SSRF失败用例；当前唯一例外是探针访问自己环回/health，无用户可控出站 |
+| 出站 | HTTP出站目标由服务端允许，校验解析地址及重定向，默认禁内网/环回/链路本地；当前数据库只连接01已批准的MySQL目标，校验CA/SAN并受data网络隔离 | 探针仅访问自己环回/health；数据库例外不开放用户可控URL或通用CIDR，未来HTTP/MCP出站仍按专门受审例外和SSRF失败用例验收 |
 | 日志 | 只记录必要字段，不记录配置值、正文、查询串、密码、令牌或学生原值 | SC-17逐行JSON解析与敏感值排除 |
 | AI资料 | 后续教材/工具结果都是不可信数据，不转成系统授权；工具走既有授权服务层 | 指令注入与跨班读取必须拒绝；本轮无AI运行 |
 | 依赖与许可 | 精确版本/锁文件入库；直接依赖说明用途和许可；MIT/Apache/BSD/ISC优先，其余先评审 | 每次PR、发布前npm audit，high/critical阻断并当日处理，medium7天；每周值班复查 |
 
-直接依赖：React/ReactDOM（UI，MIT）、Vite/React插件（构建，MIT）、TypeScript（类型，Apache-2.0）、@types（类型，MIT）。当前生产server含已批准身份依赖；01身份模块使用已批准的精确Go依赖，来源/许可/间接依赖及尚未完成审计见[身份依赖说明](../identity-dependencies.md)。镜像使用官方仓库并固定摘要，工具链记录在scripts/toolchain.json。
+直接依赖：React/ReactDOM（UI，MIT）、Vite/React插件（构建，MIT）、TypeScript（类型，Apache-2.0）、@types（类型，MIT）。当前生产server含已批准身份依赖；01身份模块使用已批准的精确Go依赖，来源/许可/间接依赖及尚未完成审计见[身份依赖说明](../identity-dependencies.md)。官方基础镜像固定摘要；01最小安全衍生镜像的gosu源码/校验与构建方式亦锁定，实际制品扫描及验收见共享表，工具链记录在scripts/toolchain.json。
 
 00新增开发依赖（均MIT、精确版本见package.json/锁文件）：swagger-parser用于OpenAPI3.1结构及本地引用，Ajv2020与ajv-formats用于2020-12及时间格式，yaml用于唯一键解析。它们不进入业务运行时；合同标识URL只经本地白名单解析，不发起外部请求。
 

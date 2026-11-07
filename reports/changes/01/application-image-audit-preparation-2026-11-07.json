@@ -1,0 +1,84 @@
+{
+  "reviewer": "小陈 / Kevcco (AI assisted)",
+  "time": "2026-11-07T10:05:45.801Z",
+  "tool": "Trivy 0.76.2",
+  "command": "trivy image --image-src remote --platform linux/amd64 --scanners vuln --severity HIGH,CRITICAL --exit-code 1 --format json <fixed image digest>",
+  "before": {
+    "digest": "sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951",
+    "exit_code": 1,
+    "raw_sha256": "ef344679079a50aef192c50389bc6ef0435aab47023bd68129d32a18c71517e5",
+    "raw_bytes": 183049,
+    "raw_gzip": "nginx-base-old-scan-2026-11-07.json.gz",
+    "counts": {
+      "HIGH": 6,
+      "CRITICAL": 1
+    },
+    "findings": [
+      {
+        "id": "CVE-2026-111497",
+        "package": "brotli-libs",
+        "installed": "1.2.0-r1",
+        "fixed": "1.2.1-r0",
+        "severity": "CRITICAL"
+      },
+      {
+        "id": "CVE-2026-92392",
+        "package": "curl",
+        "installed": "8.22.0-r0",
+        "fixed": "8.23.0-r0",
+        "severity": "HIGH"
+      },
+      {
+        "id": "CVE-2026-92392",
+        "package": "libcurl",
+        "installed": "8.22.0-r0",
+        "fixed": "8.23.0-r0",
+        "severity": "HIGH"
+      },
+      {
+        "id": "CVE-2026-113351",
+        "package": "libexpat",
+        "installed": "2.9.0-r0",
+        "fixed": "2.10.0-r0",
+        "severity": "HIGH"
+      },
+      {
+        "id": "CVE-2026-115506",
+        "package": "libexpat",
+        "installed": "2.9.0-r0",
+        "fixed": "2.10.0-r0",
+        "severity": "HIGH"
+      },
+      {
+        "id": "CVE-2026-117610",
+        "package": "libexpat",
+        "installed": "2.9.0-r0",
+        "fixed": "2.10.0-r0",
+        "severity": "HIGH"
+      },
+      {
+        "id": "CVE-2026-118370",
+        "package": "libexpat",
+        "installed": "2.9.0-r0",
+        "fixed": "2.10.0-r0",
+        "severity": "HIGH"
+      }
+    ]
+  },
+  "official_same_version_tag": "docker.io/library/nginx:1.30.6-alpine",
+  "after": {
+    "digest": "sha256:583b7f2fce1cdb8da5ad5c39ebd3c33b98b87d493190e548bdee1fa8c619c311",
+    "exit_code": 0,
+    "raw_sha256": "278d1e97a0789cda4f3bea737de3a4ea643d23b2b66e7f2a6629e315e47fa4c0",
+    "raw_bytes": 160179,
+    "raw_gzip": "nginx-base-updated-scan-2026-11-07.json.gz",
+    "counts": {
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    "findings": []
+  },
+  "scope": "Official immutable Nginx base image scans only; final frontend/backend/admin Dockerfile builds/scans pending current CI",
+  "independent_final_review": "not verified: test environment login pending",
+  "browser": "not verified: real 02 pages pending"
+}

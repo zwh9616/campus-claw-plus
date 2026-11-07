@@ -13,6 +13,7 @@ const parent = resolve('output/mysql-image-verify')
 assert.equal(dirname(directory), parent)
 const cacheVolume = id + '-cache'
 mkdirSync(directory, { recursive: true })
+for (const name of ['results', 'mysql']) rmSync(resolve(parent, name + '.json'), { force: true })
 const results = []
 let failed = false, summary
 function run(label, args, timeout = 180000) {

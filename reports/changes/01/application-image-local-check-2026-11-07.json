@@ -1,0 +1,23 @@
+{
+  "time": "2026-11-07T10:06:22.912Z",
+  "execution": "小陈 / Kevcco (AI assisted)",
+  "node": "v24.22.1",
+  "source_parent": "2a06bf8c6fd3c8610eadbf576d52afcbb548c558",
+  "check": {
+    "command": "npm run check",
+    "exit_code": 0,
+    "log": "application-image-local-check-2026-11-07.txt"
+  },
+  "mutation": {
+    "requirement": "IDF-SC-17",
+    "removed": "HIGH/CRITICAL finding rejection",
+    "red_exit": 1,
+    "restored_exact_bytes": true,
+    "green_exit": 0,
+    "restored_sha256": "1517f4f7b54d7c0a86d1d7a9b57de25b7bfd7fff8ae2c7086bdf035961c0966c"
+  },
+  "local_document_links": 30,
+  "full_container_image_scan": "pending this source in CI; no local Docker execution claimed",
+  "independent_final_review": "not verified",
+  "native_browser": "not verified"
+}
