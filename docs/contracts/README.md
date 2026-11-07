@@ -56,3 +56,7 @@ SSE fixture的`{event,data}`只是测试表达：真实wire仍为`event:`与JSON
 ## 01公共依赖冻结（2026-11-06）
 
 [公共变更](../../openspec/changes/2026-11-06-identity-public-contracts/proposal.md) 收口 PCR-IDF-01..03；[identity-phase.json](identity-phase.json) 是阶段及迁移保留号的机器登记，配置登记的 frozen 与 active 严格分开。新健康 Schema 在 OpenAPI 扩展中引用；当前 `/health` responses 不变。01 同一实施提交原子激活所有受影响实现/探针/规则/配置/用例，无环境回退或双成功合同。版本、HTTPS、迁移恢复与初始化见公共设计及01 runtime-plan；当前无实际DB或新路由，frozen不得写成业务已交付。
+
+## 三条用户路径的文档入口
+
+见[00设计D0](../../openspec/changes/2026-11-04-business-contracts/design.md)：资料答疑、作业批改复核和错题订正。错题订正为待审流程说明，具体08/09接口仍planned；不以补文档冒充独立阅读或业务实现通过。
