@@ -26,7 +26,7 @@
 4. 按顺序构建、迁移、初始化、启动。以下均从仓库根执行，wrapper只校验键与文件，不打印配置值。
 
 ```text
-node scripts/identity-compose.mjs .env --profile tools build admin backend frontend
+node scripts/identity-compose.mjs .env --profile tools build mysql admin backend frontend
 node scripts/identity-compose.mjs .env up -d --wait --wait-timeout 120 mysql
 node scripts/identity-compose.mjs .env run --rm -T admin migrate
 node scripts/identity-compose.mjs .env run --rm -T admin check

@@ -1,7 +1,8 @@
 # Opt-in IDF wiring candidate, not the default production phase.
 services:
   mysql:
-    image: mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902
+    build:
+      context: ./mysql
     entrypoint: ["/bin/sh", "/wiring/mysql-entrypoint.sh"]
     command: ["mysqld", "--require-secure-transport=ON", "--ssl-ca=/run/mysql-tls/ca.pem", "--ssl-cert=/run/mysql-tls/server.pem", "--ssl-key=/run/mysql-tls/server.key"]
     environment:

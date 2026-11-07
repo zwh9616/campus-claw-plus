@@ -29,3 +29,12 @@ jobs:
         run: |
           echo 'HTTP_PORT=18080' > .env
           make gate
+      - name: Retain MySQL image scan evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: mysql-image-scan-${{ github.sha }}
+          path: |
+            output/mysql-image-verify/results.json
+            output/mysql-image-verify/mysql.json
+          if-no-files-found: ignore

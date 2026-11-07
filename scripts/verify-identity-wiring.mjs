@@ -81,7 +81,7 @@ try {
 // Continue below only after fixture/config preparation; all failures still clean up.
 try {
   if (failed) throw new Error('Wiring preparation failed')
-  compose('build pinned offline admin and preview', ['--profile', 'tools', 'build', 'admin', 'backend', 'frontend'])
+  compose('build pinned MySQL, offline admin and production applications', ['--profile', 'tools', 'build', 'mysql', 'admin', 'backend', 'frontend'])
   compose('start fresh persistent MySQL', ['up', '-d', '--wait', '--wait-timeout', '120', 'mysql'])
   compose('offline migrations', ['run', '--rm', '-T', 'admin', 'migrate'])
   compose('offline manifest/schema check', ['run', '--rm', '-T', 'admin', 'check'])

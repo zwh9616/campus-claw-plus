@@ -16,6 +16,8 @@
 
 冻结口令参数：Argon2id v19、m=19456KiB、t=2、p=1，密码学随机盐16字节、输出32字节，保存带版本/参数/盐/输出的可解析格式。19MiB/t2/p1来自[OWASP口令存储建议](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#argon2id)，盐与输出长度是本项目已确认选择。解析不允许任意超大m/t/p耗尽内存，01只接受本次冻结参数；不存在账号也执行同参数的虚拟口令校验。初始化新口令12..128 Unicode码点；登录仍按00接收1..128，不偷偷改变LoginRequest。改密服务采用同一创建规则，不做自动trim。必须用SC-02/03/17和固定资源基准验证，不能因耗时直接降参数。
 
+R1镜像修复补记（2026-11-07，小陈审修候选）：原官方摘要独立扫描失败2 CRITICAL/33 HIGH。保留服务端8.4.13、官方基础摘要和entrypoint；[同一衍生Dockerfile](../../../deploy/identity/mysql/Dockerfile)通过RPM移除未使用mysql-shell，使用原gosu1.19源码及SHA256校验归档、已锁Go1.27.3重建降权程序，保留LICENSE。默认/隔离Compose及真实身份验证复用该构建；`verify`增加实际制品的Trivy0.76.2固定摘要扫描、真实UID/GID降权与版本断言。此为现有01安全命中的最小修复，不改变公共健康/认证/配置合同；构建、扫描和数据库回归实际通过前不得登记安全修复完成，当前结果见共享表。
+
 ## R2 配置空键及失败合同（已冻结登记，尚未运行生效）
 
 七键已进入 config-register.frozen；当前 active/.env.example 仍仅 HTTP_PORT。01 引入真实数据库的受审实现提交按公共 D1 同步激活并扩展空值样例；服务器固定900/604800秒和限流参数，不另增绕过安全值的开关。
