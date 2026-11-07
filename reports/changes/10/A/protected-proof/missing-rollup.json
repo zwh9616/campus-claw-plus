@@ -1,0 +1,24 @@
+{
+  "data": {
+    "repository": {
+      "viewerPermission": "WRITE",
+      "pullRequest": {
+        "number": 12,
+        "headRefOid": "6bc5b1883615be03de24c7095ff86c9489e851eb",
+        "baseRefOid": "14760f59afd2818ca8f2957afb66cc9cc5773186",
+        "mergeStateStatus": "BLOCKED",
+        "reviewDecision": "REVIEW_REQUIRED",
+        "commits": {
+          "nodes": [
+            {
+              "commit": {
+                "oid": "6bc5b1883615be03de24c7095ff86c9489e851eb",
+                "statusCheckRollup": null
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

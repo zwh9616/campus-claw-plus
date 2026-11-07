@@ -1,0 +1,92 @@
+
+> campus-claw-plus@0.0.1 check:gate
+> node --test scripts/gate.test.mjs
+
+TAP version 13
+# Subtest: DO-SC-03 serial success executes all stages in order
+ok 1 - DO-SC-03 serial success executes all stages in order
+  ---
+  duration_ms: 96.922739
+  type: 'test'
+  ...
+# Subtest: DO-SC-04 check failure preserves exit code and prevents subsequent execution
+ok 2 - DO-SC-04 check failure preserves exit code and prevents subsequent execution
+  ---
+  duration_ms: 22.116661
+  type: 'test'
+  ...
+# Subtest: DO-SC-04 audit failure preserves exit code and prevents subsequent execution
+ok 3 - DO-SC-04 audit failure preserves exit code and prevents subsequent execution
+  ---
+  duration_ms: 44.411125
+  type: 'test'
+  ...
+# Subtest: DO-SC-04 secret-scan failure preserves exit code and prevents subsequent execution
+ok 4 - DO-SC-04 secret-scan failure preserves exit code and prevents subsequent execution
+  ---
+  duration_ms: 68.917675
+  type: 'test'
+  ...
+# Subtest: DO-SC-04 verify failure preserves exit code and prevents subsequent execution
+ok 5 - DO-SC-04 verify failure preserves exit code and prevents subsequent execution
+  ---
+  duration_ms: 91.016636
+  type: 'test'
+  ...
+# Subtest: DO-SC-05 missing executable is failure, not a skipped pass
+ok 6 - DO-SC-05 missing executable is failure, not a skipped pass
+  ---
+  duration_ms: 2.148587
+  type: 'test'
+  ...
+# Subtest: DO-SC-05 signalled child cannot pass
+ok 7 - DO-SC-05 signalled child cannot pass
+  ---
+  duration_ms: 21.166686
+  type: 'test'
+  ...
+# Subtest: DO-SC-05 timeout terminates stage and fails closed
+ok 8 - DO-SC-05 timeout terminates stage and fails closed
+  ---
+  duration_ms: 103.804201
+  type: 'test'
+  ...
+# Subtest: DO-SC-05 cancellation before and during a stage prevents later commands
+ok 9 - DO-SC-05 cancellation before and during a stage prevents later commands
+  ---
+  duration_ms: 2.229584
+  type: 'test'
+  ...
+# Subtest: DO-SC-05 concurrent calls in one checkout fail without stealing its lock
+ok 10 - DO-SC-05 concurrent calls in one checkout fail without stealing its lock
+  ---
+  duration_ms: 1.392679
+  type: 'test'
+  ...
+# Subtest: DO-SC-05 different runs isolate images and atomically assigned ports; keep contract/probes
+ok 11 - DO-SC-05 different runs isolate images and atomically assigned ports; keep contract/probes
+  ---
+  duration_ms: 1.253257
+  type: 'test'
+  ...
+# Subtest: DO-SC-03/06 Make remains a thin npm wrapper, stable CI delegates complete gate
+ok 12 - DO-SC-03/06 Make remains a thin npm wrapper, stable CI delegates complete gate
+  ---
+  duration_ms: 0.264285
+  type: 'test'
+  ...
+# Subtest: DO-SC-05 Make installation failure stops setup; -j does not run targets concurrently
+ok 13 - DO-SC-05 Make installation failure stops setup; -j does not run targets concurrently
+  ---
+  duration_ms: 432.041112
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 936.746452

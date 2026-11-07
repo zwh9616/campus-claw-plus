@@ -1,0 +1,181 @@
+Baseline: 7e4c81f37473ed725cfe3b1f90ffd32c5049c41c
+Actor: Kevcco (AI-assisted), local Docker execution
+
+Command: npm ci
+Exit: 0
+
+added 96 packages, and audited 97 packages in 2s
+
+27 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+Command: npm run setup
+Exit: 0
+
+> campus-claw-plus@0.0.1 setup
+> npm ci --prefix frontend
+
+
+added 31 packages, and audited 32 packages in 1s
+
+9 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+Command: npm run check
+Exit: 0
+
+> campus-claw-plus@0.0.1 check
+> npm run check:foundation && npm run check:contracts && npm run typecheck && npm run build && npm run check:backend && npm run check:spec
+
+
+> campus-claw-plus@0.0.1 check:foundation
+> node scripts/check-foundation.mjs
+
+Foundation: rule/skill entry points exist, sample keys are empty, .env is ignored.
+This check is separate from real authorization review and full-history secret scanning.
+
+> campus-claw-plus@0.0.1 check:contracts
+> node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs
+
+Contracts: 22 schemas; 82 positive/negative fixtures and 6 semantic inputs agree in both paths; 39 operation examples; 7 current/frozen operations. Planned operations absent.
+TAP version 13
+# Subtest: BC-SC-06 accepts trusted rubric, rejects incorrect grading, stale and missing context
+ok 1 - BC-SC-06 accepts trusted rubric, rejects incorrect grading, stale and missing context
+  ---
+  duration_ms: 3.405639
+  type: 'test'
+  ...
+# Subtest: BC-SC-05 nonempty Citation codepoint range
+ok 2 - BC-SC-05 nonempty Citation codepoint range
+  ---
+  duration_ms: 0.213668
+  type: 'test'
+  ...
+# Subtest: BC-SC-08/14 terminal sequence, cancellation and disconnected persistence
+ok 3 - BC-SC-08/14 terminal sequence, cancellation and disconnected persistence
+  ---
+  duration_ms: 0.886017
+  type: 'test'
+  ...
+# Subtest: BC-SC-10 MCP exception remains exact, disabled and subject to both future reviews
+ok 4 - BC-SC-10 MCP exception remains exact, disabled and subject to both future reviews
+  ---
+  duration_ms: 1.391834
+  type: 'test'
+  ...
+# Subtest: BC-SC-09 registered empty keys only; no weakening historical HTTP_PORT requirement
+ok 5 - BC-SC-09 registered empty keys only; no weakening historical HTTP_PORT requirement
+  ---
+  duration_ms: 12.460942
+  type: 'test'
+  ...
+# Subtest: BC-SC-18 planned operations and anonymous auth bypass cannot enter OpenAPI
+ok 6 - BC-SC-18 planned operations and anonymous auth bypass cannot enter OpenAPI
+  ---
+  duration_ms: 45.052201
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 135.362865
+
+> campus-claw-plus@0.0.1 typecheck
+> npm run typecheck --prefix frontend
+
+
+> @campus-claw-plus/frontend@0.0.1 typecheck
+> tsc --noEmit
+
+
+> campus-claw-plus@0.0.1 build
+> npm run build --prefix frontend
+
+
+> @campus-claw-plus/frontend@0.0.1 build
+> tsc --noEmit && vite build
+
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 15 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.61 kB │ gzip:  0.41 kB
+dist/assets/index-xLwe3wJW.css    3.46 kB │ gzip:  1.23 kB
+dist/assets/index-B1-fZwUu.js   143.18 kB │ gzip: 46.85 kB
+
+✓ built in 143ms
+
+> campus-claw-plus@0.0.1 check:backend
+> node scripts/check-backend.mjs
+
+?   	github.com/zwh9616/campus-claw-plus/backend/cmd/server	[no test files]
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/config	0.002s
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/httpserver	0.012s
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/observability	0.002s
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/probe	0.007s
+
+> campus-claw-plus@0.0.1 check:spec
+> openspec validate --all --strict
+
+- Validating...
+✓ change/2026-11-04-business-contracts
+✓ change/2026-11-05-delivery-observability
+✓ change/2026-11-05-frontend-foundation
+✓ change/2026-11-05-reviewer-fix-workflow
+✓ spec/project-bootstrap
+Totals: 5 passed, 0 failed (5 items)
+
+Command: npm run audit
+Exit: 0
+
+> campus-claw-plus@0.0.1 audit
+> npm audit --audit-level=high && npm audit --prefix frontend --audit-level=high
+
+found 0 vulnerabilities
+found 0 vulnerabilities
+
+Command: npm run secret-scan
+Exit: 0
+
+> campus-claw-plus@0.0.1 secret-scan
+> node scripts/check-secrets.mjs
+
+[90m1:09PM[0m [32mINF[0m [1mUnknown SCM platform. Use --platform to include links in findings.[0m [36mhost=[0m
+[90m1:09PM[0m [32mINF[0m [1m51 commits scanned.[0m
+[90m1:09PM[0m [32mINF[0m [1mscanned ~1028955 bytes (1.03 MB) in 185ms[0m
+[90m1:09PM[0m [32mINF[0m [1mno leaks found[0m
+[90m1:09PM[0m [32mINF[0m [1mscanned ~0 bytes (0) in 115ms[0m
+[90m1:09PM[0m [32mINF[0m [1mno leaks found[0m
+Full-history and staged-content secret scans passed.
+
+Command: npm run verify
+Exit: 0
+
+> campus-claw-plus@0.0.1 verify
+> node scripts/verify-skeleton.mjs
+
+PASS SC-09 Compose missing required configuration
+PASS SC-08 local Compose startup (not second-machine acceptance)
+PASS SC-02/03 healthy JSON with no external dependencies
+PASS SC-01 static frontend HTTP
+PASS SC-04/05 process configuration missing
+PASS SC-04/05 process configuration empty
+PASS SC-04/05 process configuration whitespace
+PASS SC-04/05 process configuration letters
+PASS SC-04/05 process configuration zero
+PASS SC-04/05 process configuration negative
+PASS SC-04/05 process configuration aboveMaximum
+PASS SC-07 occupied port is failure of new executable
+PASS SC-06 valid trimmed configuration and recovery
+PASS SC-16/17 JSON logs and request identifier correlation
+PASS SC-10 stop and restart

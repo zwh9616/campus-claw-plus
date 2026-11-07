@@ -25,10 +25,7 @@ jobs:
             frontend/package-lock.json
       - run: npm ci
       - run: npm run setup
-      - run: npm run check
-      - run: npm run audit
-      - run: npm run secret-scan
-      - name: Verify real containers and process exit codes
+      - name: Run the same complete gate as local development
         run: |
           echo 'HTTP_PORT=18080' > .env
-          npm run verify
+          make gate

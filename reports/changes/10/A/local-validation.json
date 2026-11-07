@@ -1,0 +1,27 @@
+{
+  "actor": "Kevcco (AI-assisted)",
+  "tested_commit": "d88bf2d990347cc92b5b8a3d927365ef49edb450",
+  "tools": {
+    "node": "22.23.4",
+    "npm": "10.9.9",
+    "make": "4.3",
+    "docker": "28.3.3",
+    "compose": "2.39.1",
+    "go": "1.27.3 (pinned container)"
+  },
+  "orchestration_tests": {
+    "passed": 13,
+    "failed": 0,
+    "skipped": 0,
+    "actual_make": true
+  },
+  "contract_red_exit": 1,
+  "gate_red_exit": 1,
+  "restored_full_gate_exit": 0,
+  "parallel_verify_exit_codes": [
+    0,
+    0
+  ],
+  "remaining_test_containers": 0,
+  "scope": "Local Docker execution; no independent review, protected merge or G3 acceptance"
+}

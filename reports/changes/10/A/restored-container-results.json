@@ -1,0 +1,136 @@
+{
+  "date": "2026-11-06T05:13:55.511Z",
+  "commit": "d88bf2d990347cc92b5b8a3d927365ef49edb450",
+  "scope": "Local Docker execution only; not independent peer or new-session acceptance",
+  "project": "campus-verify-5d627874-a59f-4d65-b915-42348917128e",
+  "results": [
+    {
+      "scenario": "SC-09 Compose missing required configuration",
+      "actual": {
+        "exitCode": 1
+      },
+      "passed": true
+    },
+    {
+      "scenario": "SC-08 local Compose startup (not second-machine acceptance)",
+      "actual": {
+        "backend": "healthy",
+        "port": 18080,
+        "backendAddress": "127.0.0.1:32776",
+        "frontendAddress": "127.0.0.1:32777",
+        "project": "campus-verify-5d627874-a59f-4d65-b915-42348917128e"
+      },
+      "passed": true
+    },
+    {
+      "scenario": "SC-02/03 healthy JSON with no external dependencies",
+      "actual": {
+        "first": {
+          "id": "ccf6236ef87eb7f1d962444996e69d94",
+          "durationMs": 27.19,
+          "slow": false
+        },
+        "second": {
+          "id": "2c8058df1fef1eca5ad00b862de3a25e",
+          "durationMs": 2.83,
+          "slow": false
+        }
+      },
+      "passed": true
+    },
+    {
+      "scenario": "SC-01 static frontend HTTP",
+      "actual": {
+        "status": 200,
+        "browserCheck": "recorded separately"
+      },
+      "passed": true
+    },
+    {
+      "scenario": "SC-04/05 process configuration missing",
+      "actual": {
+        "exitCode": 2,
+        "jsonLines": 1
+      },
+      "passed": true
+    },
+    {
+      "scenario": "SC-04/05 process configuration empty",
+      "actual": {
+        "exitCode": 2,
+        "jsonLines": 1
+      },
+      "passed": true
+    },
+    {
+      "scenario": "SC-04/05 process configuration whitespace",
+      "actual": {
+        "exitCode": 2,
+        "jsonLines": 1
+      },
+      "passed": true
+    },
+    {
+      "scenario": "SC-04/05 process configuration letters",
+      "actual": {
+        "exitCode": 2,
+        "jsonLines": 1
+      },
+      "passed": true
+    },
+    {
+      "scenario": "SC-04/05 process configuration zero",
+      "actual": {
+        "exitCode": 2,
+        "jsonLines": 1
+      },
+      "passed": true
+    },
+    {
+      "scenario": "SC-04/05 process configuration negative",
+      "actual": {
+        "exitCode": 2,
+        "jsonLines": 1
+      },
+      "passed": true
+    },
+    {
+      "scenario": "SC-04/05 process configuration aboveMaximum",
+      "actual": {
+        "exitCode": 2,
+        "jsonLines": 1
+      },
+      "passed": true
+    },
+    {
+      "scenario": "SC-07 occupied port is failure of new executable",
+      "actual": {
+        "exitCode": 1
+      },
+      "passed": true
+    },
+    {
+      "scenario": "SC-06 valid trimmed configuration and recovery",
+      "actual": {
+        "healthcheckExitCode": 0
+      },
+      "passed": true
+    },
+    {
+      "scenario": "SC-16/17 JSON logs and request identifier correlation",
+      "actual": {
+        "lines": 4
+      },
+      "passed": true
+    },
+    {
+      "scenario": "SC-10 stop and restart",
+      "actual": {
+        "stopped": true,
+        "restarted": true
+      },
+      "passed": true
+    }
+  ],
+  "cleanup": "passed"
+}
