@@ -12,6 +12,7 @@ FROM mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b09
 # including payload; never remove only vulnerability/package metadata.
 RUN microdnf remove -y mysql-shell \
     && microdnf clean all \
+    && rm -rf -- /usr/lib/mysqlsh \
     && ! command -v mysqlsh \
     && test ! -d /usr/lib/mysqlsh \
     && mysqld --version | grep '8.4.13' \

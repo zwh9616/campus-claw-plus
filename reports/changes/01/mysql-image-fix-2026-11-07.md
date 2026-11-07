@@ -9,3 +9,5 @@ verify先验证实际版本、mysqlsh载荷移除和UID/GID降权，再以固定
 本机完整check、npm audit退出0。原gosu源码已交叉编译成Linux ELF，以保留执行模式的单二进制镜像归档实扫0（识别Go1.27.3，HIGH/CRITICAL均0），该结果只覆盖gosu组件，不是完整MySQL或真实降权/数据库测试。首次Windows解压的非业务symlink失败、rootfs扫描未覆盖ELF的情况均留在[准备记录](mysql-image-fix-preparation-2026-11-07.json)，后者不计通过。
 
 完整衍生镜像构建/扫描、默认Compose真实MySQL与迁移回归待本提交CI结果；独立最终Docker复测待恢复登录，最终前后端制品扫描及02真实浏览器链路仍未验证。本提交不标01终审/合并或归档完成，不把旧773cd4b绿CI算新Dockerfile通过。
+
+首次修复5dc633d的CI [42361579502](https://github.com/zwh9616/campus-claw-plus/actions/runs/42361579502)真实失败：check/audit/secret-scan通过，verify构建阶段退出1，Make向CI返回2；未进入镜像扫描/数据库测试。[原始构建报告](mysql-image-fix-first-build-failure-2026-11-07.json)保留。RPM已卸载mysql-shell，但目录残留触发必须不存在的断言；补显式清理该组件完整/usr/lib/mysqlsh载荷，原断言保留，再交CI构建/扫描和真实数据库回归。不以故障时未运行的项冒称通过。

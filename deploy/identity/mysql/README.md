@@ -2,6 +2,8 @@
 
 基础仍为01批准的官方MySQL 8.4.13摘要，MySQL服务端、mysql/mysqladmin、原entrypoint、配置、初始化和持久卷协议不变。构建只做两件事：通过RPM移除本项目未使用的mysql-shell及其完整Python载荷；从未修改的gosu 1.19源码，用已锁定Go1.27.3重建降权程序。不会删除漏洞元数据、跳过未修复项、禁用TLS或用root代替mysql用户。
 
+首次CI构建保留了“目录必须不存在”的断言，实际发现RPM卸载后仍留下mysqlsh目录，因此失败。修复在卸载后明确清理该组件的完整/usr/lib/mysqlsh载荷，再执行原断言；不删断言、不把目录残留当通过。
+
 该修复针对[原镜像实测的35条HIGH/CRITICAL](../../../reports/changes/01/mysql-image-audit-2026-11-07.md)。仅提交Dockerfile不代表修复通过；`npm run verify`首先构建并扫描真实制品，随后在同一Dockerfile上跑默认Compose和真实MySQL身份/迁移回归。所有命令失败退出非零，本机与CI使用同一入口。
 
 | 来源 | 固定版本与校验 |
