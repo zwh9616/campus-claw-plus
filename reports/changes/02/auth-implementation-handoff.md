@@ -5,6 +5,6 @@
 - FEF-SC-01/02/09/10：公开首页和未知路由零身份请求；登录、工作台、账号页复用已确认主题。教师可切班，学生只查看身份与班级。
 - FEF-SC-03..08：六个冻结身份接口、内存凭据、同源请求、串行认证写、一次 GET 恢复、请求代号与 10 秒截止。结果不确定时清空私有画面，等待显式恢复。
 - FEF-SC-13：npm run check:frontend-auth 的 7 组测试退出 0，已并入根 check。受控取消请求代号检查时，旧班响应把新班 3 覆盖为 2，测试退出 1；逐字节恢复后退出 0。生产构建及样板隔离检查通过。浏览器 mock 由外部测试进程拦截，使用原页面与客户端代码。
-- Windows Node v24.19.0：npm ci、setup、typecheck、build 均退出 0。完整 npm run gate 的 check、audit、secret-scan 退出 0；verify 在缺配置反例通过后，Docker Hub 认证超时，退出 1。完整本机 gate 未通过。最终完整门禁以当前 PR CI 为准。
+- Windows Node v24.19.0：npm ci、setup、typecheck、build 均退出 0。完整 npm run gate 的 check、audit、secret-scan 退出 0；verify 在缺配置反例通过后，Docker Hub 认证超时，退出 1。完整本机 gate 未通过。实现与截图证据提交 1939f2a 的[完整 GitHub CI](https://github.com/zwh9616/campus-claw-plus/actions/runs/42363950241/job/128377943504)成功，含真实骨架容器回归。
 - Edge 156.0.4314.58，在 360/767/768/1440 宽度执行 48 个页面状态检查，含首页/404零请求、登录失败焦点和清密码、Tab/Enter、登录/刷新/切班、退出后退、学生切班入口隐藏、19位ID、无横向溢出、无持久凭据。24张两档截图和干净源码SHA见[浏览器清单](auth-mock/manifest.json)。测试脚本为 frontend/tests/auth-browser.mjs，使用独立 Playwright 1.56.0 与本机 Edge，未新增应用依赖。初次沙箱 Edge 启动失败，使用允许本机浏览器执行的环境后通过。
 - 3.5 全页面原生200%、完整四态人工视觉复核、4.1独立终审和4.2真实MySQL/HTTPS联验均待办。#14 仍在修复镜像并验证最终生产入口，合成截图不作真实身份联验。
