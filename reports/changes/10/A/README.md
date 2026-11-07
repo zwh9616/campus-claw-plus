@@ -67,3 +67,7 @@ gh api repos/zwh9616/campus-claw-plus/rules/branches/main
 required context为`check`，实际来源GitHub Actions app ID `15368`（从基线check-run `127325247980`读取），不是另创状态名。要求分支最新、PR至少一位非作者批准、更新撤销旧批准、管理员同受约束、无force push/删除/绕过；按新协作规则不额外要求“最后推送者之外的人”批准。
 
 小陈完成实现后交小葛在实际账号下终审/修复。只有保护、受控阻断、终审及main集成完整gate均有真实证据才成立G3；10整体仍需B/C，00独立阅读失败另行修复，不归档本变更。
+
+## 2026-11-07当前结果
+
+[旧批准失效实验及新main同步](stale-review-proof-2026-11-07.md)已完成：真实APPROVED自动DISMISSED，无文件冲突且新head完整CI成功仍BLOCKED，#12关闭未合并；2.6完成。前文“待真实批准/实验未执行”为历史；#9小葛终审和main集成仍待办，G3未成立。

@@ -11,7 +11,7 @@
 - [x] 2.3 使PR/main CI运行统一完整入口，保留固定Actions、稳定check名称及原安装/检查/审计/扫描/容器断言；真实CI验证文档PR不跳过、失败不吞错、取消不通过（DO-SC-06/07）。
 - [x] 2.4 小张已实际设置并回读D3保护；保留main-protection-applied-2026-11-06.json与评论6682703513，Kevcco本轮确认protected=true及check.isRequired=true；申请JSON按个人仓库可接受格式修正。受控各状态和旧批准实验仍由2.6单列（DO-SC-08）。
 - [x] 2.5 在隔离副本破坏已有合同条件，保存差异/摘要，确认合同和完整gate红，逐字节恢复完整绿；另测各子项失败的编排替身，不混淆真实证据（DO-SC-04/09）。
-- [ ] 2.6 建面向main的受控测试PR，保留真实红/恢复绿head和有效保护、同head禁用/BLOCKED状态；验证旧绿/旧批准、missing/pending/cancelled边界，不执行坏版本合并（DO-SC-06..09）。
+- [x] 2.6 建面向main的受控测试PR，保留真实红/恢复绿head和有效保护、同head禁用/BLOCKED状态；验证旧绿/旧批准、missing/pending/cancelled边界，不执行坏版本合并（DO-SC-06..09）。
 
 ## 3. A 终审与G3 小葛/小陈
 
@@ -43,3 +43,5 @@
 小陈在PR #9交付A代码与[A验收包](../../../reports/changes/10/A/README.md)。d88bf2d的13项编排回归、真实合同破坏/原字节恢复完整gate、两目录并行容器各15项通过，当前代码CI成功。2.4/2.6未完成：Kevcco无admin、main保护未生效；虽然实验PR #10有真实红CI、取消和恢复，不能作为BLOCKED或旧批准失效证据。3.1/3.2待小葛真实终审及受保护main集成复验；G3未成立，B/C保持待办。最终head结果以实现PR检查为准。
 
 2026-11-06后续更新：小张实际启用main保护，管理员回读及Kevcco对protected=true、check.isRequired=true的实查已留证，2.4完成。测试PR #12已有missing/pending/failure/cancelled和逐字节恢复后同SHA完整绿，见[受控验收](../../../reports/changes/10/A/protected-gate-proof-2026-11-06.md)。旧批准失效实验待真实非作者批准，2.6及3.1/3.2仍未完成；上段是启用前历史，不再作为当前保护状态。未改main保护、未合并测试PR、未声明G3。
+
+2026-11-07：依据用户恢复授权完成DO-SC-07。小张真实review5799296188在01384fa为APPROVED；受控更新9ad6977后自动DISMISSED，完整CI42353376907成功且无冲突仍REVIEW_REQUIRED/BLOCKED，#12已关闭未合并，见[本轮证据](../../../reports/changes/10/A/stale-review-proof-2026-11-07.md)。2.6完成，3.1/3.2仍未完成；不代小葛终审或宣布G3。
