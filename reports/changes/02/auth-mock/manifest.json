@@ -1,0 +1,273 @@
+{
+  "source": "253cdf8c8b9a61f272b7ec8618880e5b0a125bec",
+  "sourceDirty": false,
+  "origin": "http://127.0.0.1:5195",
+  "version": "156.0.4314.58",
+  "mode": "mock browser interception",
+  "cases": [
+    {
+      "width": 360,
+      "height": 800,
+      "name": "home",
+      "path": "home-360.png"
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "name": "not-found",
+      "path": "not-found-360.png"
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "name": "login",
+      "path": "login-360.png"
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "name": "login-error",
+      "path": "login-error-360.png"
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "name": "workbench",
+      "path": "workbench-360.png"
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "name": "teacher-account",
+      "path": "teacher-account-360.png"
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "name": "switch-error",
+      "path": "switch-error-360.png"
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "name": "switched",
+      "path": "switched-360.png"
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "name": "recovered",
+      "path": "recovered-360.png"
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "name": "logged-out",
+      "path": "logged-out-360.png"
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "name": "student-workbench",
+      "path": "student-workbench-360.png"
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "name": "student-account",
+      "path": "student-account-360.png"
+    },
+    {
+      "width": 767,
+      "height": 800,
+      "name": "home"
+    },
+    {
+      "width": 767,
+      "height": 800,
+      "name": "not-found"
+    },
+    {
+      "width": 767,
+      "height": 800,
+      "name": "login"
+    },
+    {
+      "width": 767,
+      "height": 800,
+      "name": "login-error"
+    },
+    {
+      "width": 767,
+      "height": 800,
+      "name": "workbench"
+    },
+    {
+      "width": 767,
+      "height": 800,
+      "name": "teacher-account"
+    },
+    {
+      "width": 767,
+      "height": 800,
+      "name": "switch-error"
+    },
+    {
+      "width": 767,
+      "height": 800,
+      "name": "switched"
+    },
+    {
+      "width": 767,
+      "height": 800,
+      "name": "recovered"
+    },
+    {
+      "width": 767,
+      "height": 800,
+      "name": "logged-out"
+    },
+    {
+      "width": 767,
+      "height": 800,
+      "name": "student-workbench"
+    },
+    {
+      "width": 767,
+      "height": 800,
+      "name": "student-account"
+    },
+    {
+      "width": 768,
+      "height": 800,
+      "name": "home"
+    },
+    {
+      "width": 768,
+      "height": 800,
+      "name": "not-found"
+    },
+    {
+      "width": 768,
+      "height": 800,
+      "name": "login"
+    },
+    {
+      "width": 768,
+      "height": 800,
+      "name": "login-error"
+    },
+    {
+      "width": 768,
+      "height": 800,
+      "name": "workbench"
+    },
+    {
+      "width": 768,
+      "height": 800,
+      "name": "teacher-account"
+    },
+    {
+      "width": 768,
+      "height": 800,
+      "name": "switch-error"
+    },
+    {
+      "width": 768,
+      "height": 800,
+      "name": "switched"
+    },
+    {
+      "width": 768,
+      "height": 800,
+      "name": "recovered"
+    },
+    {
+      "width": 768,
+      "height": 800,
+      "name": "logged-out"
+    },
+    {
+      "width": 768,
+      "height": 800,
+      "name": "student-workbench"
+    },
+    {
+      "width": 768,
+      "height": 800,
+      "name": "student-account"
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "home",
+      "path": "home-1440.png"
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "not-found",
+      "path": "not-found-1440.png"
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "login",
+      "path": "login-1440.png"
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "login-error",
+      "path": "login-error-1440.png"
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "workbench",
+      "path": "workbench-1440.png"
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "teacher-account",
+      "path": "teacher-account-1440.png"
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "switch-error",
+      "path": "switch-error-1440.png"
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "switched",
+      "path": "switched-1440.png"
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "recovered",
+      "path": "recovered-1440.png"
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "logged-out",
+      "path": "logged-out-1440.png"
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "student-workbench",
+      "path": "student-workbench-1440.png"
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "student-account",
+      "path": "student-account-1440.png"
+    }
+  ]
+}

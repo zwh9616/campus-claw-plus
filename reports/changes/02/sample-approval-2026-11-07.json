@@ -1,0 +1,14 @@
+{
+  "provided_by": "用户小张 / zwh9616",
+  "reviewed_by": "小张授权AI辅助视觉复核",
+  "source_ui_head": "b078747e122f4cdb05fe51ce08dea1a492965826",
+  "source_code_unchanged": true,
+  "screenshot": "sample-login-user-200-percent-2026-11-07.png",
+  "image_pixels": [
+    2557,
+    1548
+  ],
+  "zoom": "用户明确确认原生浏览器200%；非AI自动测量",
+  "image_sha256": "fb9373f50e395440ef527af1d8567f9fb15e7f5dc6b331d375a24bb484e1892a",
+  "scope": "登录代表样板；全页面/账号200%与真实认证仍待3.5/4.2"
+}
