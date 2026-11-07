@@ -1,0 +1,36 @@
+{
+  "time": "2026-11-07T10:20:29.267Z",
+  "node": "v22.23.4",
+  "exitCode": 0,
+  "results": [
+    {
+      "name": "check",
+      "exitCode": 0,
+      "reason": "passed",
+      "signal": null,
+      "durationMs": 7527
+    },
+    {
+      "name": "audit",
+      "exitCode": 0,
+      "reason": "passed",
+      "signal": null,
+      "durationMs": 1905
+    },
+    {
+      "name": "secret-scan",
+      "exitCode": 0,
+      "reason": "passed",
+      "signal": null,
+      "durationMs": 8713
+    },
+    {
+      "name": "verify",
+      "exitCode": 0,
+      "reason": "passed",
+      "signal": null,
+      "durationMs": 406348
+    }
+  ],
+  "notRun": []
+}
