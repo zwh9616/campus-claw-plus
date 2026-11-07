@@ -1,0 +1,52 @@
+{
+  "executor": "小陈 / Kevcco（AI辅助）",
+  "checked_at": "2026-11-07T09:24:33.804Z",
+  "subject": "PR #17 dd5ab28 加本次G3登记文档修订，不改运行代码或配置",
+  "environment": {
+    "platform": "win32",
+    "node": "v24.22.1"
+  },
+  "commands": [
+    {
+      "command": "npm run check:foundation",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run check:contracts",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run check:spec",
+      "exit_code": 0
+    }
+  ],
+  "evidence_consistency": {
+    "exit_code": 0,
+    "local_links_checked": 76,
+    "files": [
+      "README.md",
+      "docs/contracts/README.md",
+      "docs/contracts/change-dependencies.md",
+      "docs/project-status.md",
+      "openspec/changes/2026-11-05-delivery-observability/tasks.md",
+      "reports/changes/10/A/README.md",
+      "reports/changes/10/A/main-integration-2026-11-07.md"
+    ],
+    "bc_stale_experiment_closed_unmerged": true,
+    "g3_main_sha": "55f0e8364e150ff4c42f9af1facc8763e4274fa2",
+    "tasks_B_C_unchanged_pending": true
+  },
+  "diff_check_exit_code": 0,
+  "preparation_failure": "首次文档链接检查在校验报告尚未生成时退出1；先创建待验报告后重新执行，实际通过结果见本文件",
+  "limits": [
+    "本次纯文档修改未重跑本机完整gate或Docker容器；main完整运行验收依据同SHA CI42356275838",
+    "当前修订head的完整门禁由推送后CI执行，未预填成功",
+    "全历史及暂存秘密扫描在暂存后单独执行并保留输出"
+  ],
+  "secret_scan": {
+    "command": "npm run secret-scan",
+    "exit_code": 0,
+    "full_history_commits": 90,
+    "staged_content": "no leaks found"
+  }
+}

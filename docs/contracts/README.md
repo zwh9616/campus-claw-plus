@@ -1,6 +1,6 @@
 # 00 公共合同 business-contracts/v1
 
-执行依据：`2026-11-04-business-contracts` 的D1—D9、BC-01—06；规约head `221be733194830daa9b35f810c37f035679e51bb` 已获[小张授权的复审批准](https://github.com/zwh9616/campus-claw-plus/pull/3#pullrequestreview-5765025797)。00实现已获小葛对75cadbf终审批准，合入main 4cfd61d并通过main CI和本机check/verify；G2已成立，证据见[集成记录](../../reports/changes/00/main-integration-2026-11-05.md)。下游仍须自身批准与依赖，G3未成立。
+执行依据：`2026-11-04-business-contracts` 的D1—D9、BC-01—06；规约head `221be733194830daa9b35f810c37f035679e51bb` 已获[小张授权的复审批准](https://github.com/zwh9616/campus-claw-plus/pull/3#pullrequestreview-5765025797)。00实现已获小葛对75cadbf终审批准，合入main 4cfd61d并通过main CI和本机check/verify；G2已成立，证据见[集成记录](../../reports/changes/00/main-integration-2026-11-05.md)。10 A经小葛终审、正常合入main 55f0e83并完整复验，小陈复核共同登记，G3已成立，见[验收记录](../../reports/changes/10/A/main-integration-2026-11-07.md)。下游仍须自身批准与实际依赖。
 
 ## 从这里开始
 
@@ -51,7 +51,7 @@ SSE fixture的`{event,data}`只是测试表达：真实wire仍为`event:`与JSON
 
 ## 交接证据
 
-实现证据见[00 apply记录](../../reports/changes/00/apply-verification.md)及[main集成复验](../../reports/changes/00/main-integration-2026-11-05.md)。所有凭据样例都是不可用测试文本，禁止替换为真实值。小葛终审与main集成复验已完成，G2已成立；[BC-SC-01真实独立阅读](../../reports/changes/00/independent-reading-2026-11-05.md)首次未通过，错题订正主路径需补充复验，00尚不归档；G3仍待10前置门禁验收，不能将G2当作G3。
+实现证据见[00 apply记录](../../reports/changes/00/apply-verification.md)及[main集成复验](../../reports/changes/00/main-integration-2026-11-05.md)。所有凭据样例都是不可用测试文本，禁止替换为真实值。小葛终审与main集成复验已完成，G2已成立；[BC-SC-01真实独立阅读](../../reports/changes/00/independent-reading-2026-11-05.md)首次未通过，错题订正主路径需补充复验，00尚不归档。G3已另经[10 A主干验收](../../reports/changes/10/A/main-integration-2026-11-07.md)成立，不等于00归档、业务实现或10整体完成。
 
 ## 01公共依赖冻结（2026-11-06）
 

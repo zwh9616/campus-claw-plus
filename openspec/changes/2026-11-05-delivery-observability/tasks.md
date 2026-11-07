@@ -15,8 +15,8 @@
 
 ## 3. A 终审与G3 小葛/小陈
 
-- [ ] 3.1 小葛以真实账号终审小陈A实现当前head并亲自复跑必要红绿；交付审查位置/结论/命令/退出码，缺项由小葛按新协作规则直接修复、复验并对最终head收口，不伪造其他成员批准（DO-SC-09/10）。
-- [ ] 3.2 获实际授权后遵守保护正常合入main，在集成SHA完整gate及保护复验通过；两位负责人据证据记录G3，B/C不提前勾选（DO-SC-02/10）。
+- [x] 3.1 小葛以真实账号终审小陈A实现当前head并亲自复跑必要红绿；交付审查位置/结论/命令/退出码，缺项由小葛按新协作规则直接修复、复验并对最终head收口，不伪造其他成员批准（DO-SC-09/10）。
+- [x] 3.2 获实际授权后遵守保护正常合入main，在集成SHA完整gate及保护复验通过；两位负责人据证据记录G3，B/C不提前勾选（DO-SC-02/10）。
 
 ## 4. B 后续服务逐批接入
 
@@ -45,3 +45,5 @@
 2026-11-06后续更新：小张实际启用main保护，管理员回读及Kevcco对protected=true、check.isRequired=true的实查已留证，2.4完成。测试PR #12已有missing/pending/failure/cancelled和逐字节恢复后同SHA完整绿，见[受控验收](../../../reports/changes/10/A/protected-gate-proof-2026-11-06.md)。旧批准失效实验待真实非作者批准，2.6及3.1/3.2仍未完成；上段是启用前历史，不再作为当前保护状态。未改main保护、未合并测试PR、未声明G3。
 
 2026-11-07：依据用户恢复授权完成DO-SC-07。小张真实review5799296188在01384fa为APPROVED；受控更新9ad6977后自动DISMISSED，完整CI42353376907成功且无冲突仍REVIEW_REQUIRED/BLOCKED，#12已关闭未合并，见[本轮证据](../../../reports/changes/10/A/stale-review-proof-2026-11-07.md)。2.6完成，3.1/3.2仍未完成；不代小葛终审或宣布G3。
+
+2026-11-07 主干复验：3.1 已有绑定 b81d698 的[实际终审批准](https://github.com/zwh9616/campus-claw-plus/pull/9#pullrequestreview-5811099824)。#9 已合入 main 55f0e83，完整 CI 和 required check 回读通过。小陈已复核小葛的集成证据、main同SHA完整门禁、文件树一致及保护仍生效，3.2完成，G3成立；详见[共同记录](../../../reports/changes/10/A/main-integration-2026-11-07.md)。B/C和10整体完成、归档仍待各自真实验收。
