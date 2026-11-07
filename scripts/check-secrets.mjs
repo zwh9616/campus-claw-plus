@@ -44,7 +44,7 @@ for (const args of [
     if (staged.status !== 0) process.exit(staged.status ?? 1)
     options.input = staged.stdout
   }
-  const scan = spawnSync(binary, [...args, '--config=.gitleaks.toml', '--redact=100', '--no-banner'], options)
+  const scan = spawnSync(binary, [...args, '--redact=100', '--no-banner'], options)
   if (scan.error) throw scan.error
   if (scan.status !== 0) process.exit(scan.status ?? 1)
 }
