@@ -10,7 +10,7 @@
 
 ## 小组进度与协作入口
 
-- [共享进度表](docs/project-status.md)：G2、G3已成立；10 A已终审、合入main 55f0e83并通过完整门禁，小陈已核对共同登记，见[验收记录](reports/changes/10/A/main-integration-2026-11-07.md)。本PR已激活默认身份服务，四个实际运行制品扫描及小陈独立Docker门禁全通过，见[最终复核](reports/changes/01/chen-final-review-2026-11-07.md)；收口head须经绿CI和正式批准正常合并，02真实页面/浏览器及集成main验收仍待完成。
+- [共享进度表](docs/project-status.md)：G2、G3已成立；01服务端#14已由小陈独立终审、正常合入main c2c34a2，四个实际制品扫描及独立Docker门禁通过，见[最终复核](reports/changes/01/chen-final-review-2026-11-07.md)及[合入记录](reports/changes/01/main-integration-2026-11-07.md)。02真实页面/客户端已在#15提交，真实HTTPS浏览器与最终集成验收仍待完成，01暂不归档。
 - [公共合同](docs/contracts/README.md)：六个身份操作和MySQL健康已随本PR原子激活，planned教学操作仍不可调用；npm run check:contracts接入原检查入口。
 - [前端视觉规约](docs/standards/frontend-visual.md)：北大红#94070A、暖白、简约布局，参考Canvas/Moodle信息组织；小张已确认#15代表样板，真实页面仍由小葛继续。
 - [协作规范](docs/standards/collaboration.md)：按变更两人接力；每组可提交修改必须同提交更新共享表。
