@@ -12,7 +12,14 @@ func TestIDFConfiguration(t *testing.T) {
 	if cfg.Source("127.0.0.1:123", []string{"192.0.2.5"}) != "192.0.2.5" || cfg.Source("192.0.2.6:123", []string{"192.0.2.5"}) != "192.0.2.6" {
 		t.Fatal("proxy trust")
 	}
-	for _, bad := range []string{"", " ", "http://campus.test", "https://campus.test/", "https://user@campus.test", "https://*.test", "null", "https://campus.test?", "https://campus.test#x"} {
+	// IDF-SC-18: valid TCP port boundaries, including a bracketed IPv6 host.
+	for _, origin := range []string{"https://campus.test", "https://campus.test:1", "https://campus.test:65535", "https://[::1]", "https://[::1]:8443"} {
+		values["AUTH_TRUSTED_ORIGIN"] = origin
+		if _, e := ReadIdentity(lookup); e != nil {
+			t.Fatal("valid origin port rejected")
+		}
+	}
+	for _, bad := range []string{"", " ", "http://campus.test", "https://campus.test/", "https://user@campus.test", "https://*.test", "null", "https://campus.test?", "https://campus.test#x", "https://campus.test:", "https://campus.test:0", "https://campus.test:65536"} {
 		values["AUTH_TRUSTED_ORIGIN"] = bad
 		if _, e := ReadIdentity(lookup); e == nil {
 			t.Fatalf("origin accepted %q", bad)

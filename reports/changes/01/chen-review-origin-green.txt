@@ -1,0 +1,1 @@
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/config	0.723s

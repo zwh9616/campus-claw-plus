@@ -1,0 +1,36 @@
+{
+  "time": "2026-11-07T06:16:11.743Z",
+  "mysqlImage": "mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902",
+  "results": [
+    {
+      "label": "test fixtures",
+      "exit_code": 0,
+      "output": "Disposable credentials and CA generated; values omitted\n"
+    },
+    {
+      "label": "isolated network",
+      "exit_code": 0,
+      "output": "ce9e1db057fba882356cd342fbe168c5d11474357c60198a1e2b552889f33aff\n"
+    },
+    {
+      "label": "isolated MySQL",
+      "exit_code": 0,
+      "output": "77dfecd817e84e187978b6657bfe3a03a6e489cc82d825d85bc5c618f87d0107\n"
+    },
+    {
+      "label": "real MySQL identity scenarios",
+      "exit_code": 1,
+      "output": "=== RUN   TestIDFAssemblyHealthAndConfiguration\n--- PASS: TestIDFAssemblyHealthAndConfiguration (7.36s)\n=== RUN   TestIDFFailureAndRaceBoundaries\n=== RUN   TestIDFFailureAndRaceBoundaries/SC05-refresh-versus-switch\n=== RUN   TestIDFFailureAndRaceBoundaries/SC12-commit-failure-distinction\n=== RUN   TestIDFFailureAndRaceBoundaries/SC12-commit-failure-distinction/rollback\n=== RUN   TestIDFFailureAndRaceBoundaries/SC12-commit-failure-distinction/commit-ack-lost\n=== RUN   TestIDFFailureAndRaceBoundaries/SC08-membership-disable-revocation\n=== RUN   TestIDFFailureAndRaceBoundaries/SC18-common-five-second-budget\n    failures_test.go:175: locked database bounded duration 5.018s\n=== RUN   TestIDFFailureAndRaceBoundaries/SC18-CA-target-and-DML-role\n=== RUN   TestIDFFailureAndRaceBoundaries/SC18-unavailable-and-recovery\n--- PASS: TestIDFFailureAndRaceBoundaries (5.62s)\n    --- PASS: TestIDFFailureAndRaceBoundaries/SC05-refresh-versus-switch (0.05s)\n    --- PASS: TestIDFFailureAndRaceBoundaries/SC12-commit-failure-distinction (0.15s)\n        --- PASS: TestIDFFailureAndRaceBoundaries/SC12-commit-failure-distinction/rollback (0.06s)\n        --- PASS: TestIDFFailureAndRaceBoundaries/SC12-commit-failure-distinction/commit-ack-lost (0.08s)\n    --- PASS: TestIDFFailureAndRaceBoundaries/SC08-membership-disable-revocation (0.06s)\n    --- PASS: TestIDFFailureAndRaceBoundaries/SC18-common-five-second-budget (5.04s)\n    --- PASS: TestIDFFailureAndRaceBoundaries/SC18-CA-target-and-DML-role (0.00s)\n    --- PASS: TestIDFFailureAndRaceBoundaries/SC18-unavailable-and-recovery (0.05s)\n=== RUN   TestIDFRealMigrationsAndSessions\n    identity_test.go:86: MySQL version 8.4.13\n=== RUN   TestIDFRealMigrationsAndSessions/SC14-15-repeat-concurrent-and-rollback\n=== RUN   TestIDFRealMigrationsAndSessions/SC01-02-five-identities\n=== RUN   TestIDFRealMigrationsAndSessions/SC04-05-concurrent-refresh\n=== RUN   TestIDFRealMigrationsAndSessions/SC06-07-12-switch-logout-expiry\n=== RUN   TestIDFRealMigrationsAndSessions/SC08-revocation\n=== RUN   TestIDFRealMigrationsAndSessions/SC09-11-20-real-principal-authorization\n    identity_test.go:287: isolation failure\n=== RUN   TestIDFRealMigrationsAndSessions/SC03-13-17-HTTP-HTTPS-order-and-logs\n--- FAIL: TestIDFRealMigrationsAndSessions (0.89s)\n    --- PASS: TestIDFRealMigrationsAndSessions/SC14-15-repeat-concurrent-and-rollback (0.17s)\n    --- PASS: TestIDFRealMigrationsAndSessions/SC01-02-five-identities (0.21s)\n    --- PASS: TestIDFRealMigrationsAndSessions/SC04-05-concurrent-refresh (0.03s)\n    --- PASS: TestIDFRealMigrationsAndSessions/SC06-07-12-switch-logout-expiry (0.09s)\n    --- PASS: TestIDFRealMigrationsAndSessions/SC08-revocation (0.09s)\n    --- FAIL: TestIDFRealMigrationsAndSessions/SC09-11-20-real-principal-authorization (0.06s)\n    --- PASS: TestIDFRealMigrationsAndSessions/SC03-13-17-HTTP-HTTPS-order-and-logs (0.06s)\n=== RUN   TestIDFPartialDDLRecovery\n=== RUN   TestIDFPartialDDLRecovery/SC16-v1-step1\n=== RUN   TestIDFPartialDDLRecovery/SC16-v1-step2\n=== RUN   TestIDFPartialDDLRecovery/SC16-v1-step3\n=== RUN   TestIDFPartialDDLRecovery/SC16-v2-step1\n=== RUN   TestIDFPartialDDLRecovery/SC16-v2-step2\n=== RUN   TestIDFPartialDDLRecovery/SC16-v3-step1\n--- PASS: TestIDFPartialDDLRecovery (1.42s)\n    --- PASS: TestIDFPartialDDLRecovery/SC16-v1-step1 (0.15s)\n    --- PASS: TestIDFPartialDDLRecovery/SC16-v1-step2 (0.16s)\n    --- PASS: TestIDFPartialDDLRecovery/SC16-v1-step3 (0.17s)\n    --- PASS: TestIDFPartialDDLRecovery/SC16-v2-step1 (0.31s)\n    --- PASS: TestIDFPartialDDLRecovery/SC16-v2-step2 (0.31s)\n    --- PASS: TestIDFPartialDDLRecovery/SC16-v3-step1 (0.32s)\n=== RUN   TestIDFMigrationMetadataAndEmptyDown\n--- PASS: TestIDFMigrationMetadataAndEmptyDown (0.71s)\n=== RUN   TestIDFReviewerIndependentAuthorizationAndRevocation\n    reviewer_test.go:128: review resource authorization failed\n--- FAIL: TestIDFReviewerIndependentAuthorizationAndRevocation (0.37s)\nFAIL\nFAIL\tgithub.com/zwh9616/campus-claw-plus/backend/internal/integration\t16.381s\nFAIL\n"
+    },
+    {
+      "label": "remove test container and its anonymous volume",
+      "exit_code": 0,
+      "output": "campus-idf-57862d96250f\n"
+    },
+    {
+      "label": "remove test network",
+      "exit_code": 0,
+      "output": "campus-idf-57862d96250f\n"
+    }
+  ]
+}

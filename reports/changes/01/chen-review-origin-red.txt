@@ -1,0 +1,5 @@
+--- FAIL: TestIDFConfiguration (0.00s)
+    identity_test.go:18: origin accepted "https://campus.test:"
+FAIL
+FAIL	github.com/zwh9616/campus-claw-plus/backend/internal/config	0.609s
+FAIL

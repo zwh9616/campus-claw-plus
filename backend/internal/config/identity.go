@@ -4,6 +4,7 @@ import (
 	"errors"
 	"net/netip"
 	"net/url"
+	"strconv"
 	"strings"
 )
 
@@ -17,6 +18,15 @@ func ReadIdentity(lookup func(string) (string, bool)) (Identity, error) {
 	u, e := url.Parse(raw)
 	if e != nil || raw != strings.TrimSpace(raw) || u.Scheme != "https" || u.Host == "" || u.Hostname() == "" || u.User != nil || u.Path != "" || u.RawQuery != "" || u.ForceQuery || u.Fragment != "" || strings.ContainsAny(raw, "*\\\r\n#") {
 		return Identity{}, errors.New("AUTH_TRUSTED_ORIGIN invalid")
+	}
+	if strings.HasSuffix(u.Host, ":") {
+		return Identity{}, errors.New("AUTH_TRUSTED_ORIGIN invalid")
+	}
+	if port := u.Port(); port != "" {
+		n, err := strconv.Atoi(port)
+		if err != nil || n < 1 || n > 65535 {
+			return Identity{}, errors.New("AUTH_TRUSTED_ORIGIN invalid")
+		}
 	}
 	cidrs, _ := lookup("AUTH_TRUSTED_PROXY_CIDRS")
 	c := Identity{Origin: raw}

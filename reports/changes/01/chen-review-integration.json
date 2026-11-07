@@ -1,0 +1,36 @@
+{
+  "time": "2026-11-07T06:13:51.462Z",
+  "mysqlImage": "mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902",
+  "results": [
+    {
+      "label": "test fixtures",
+      "exit_code": 0,
+      "output": "Disposable credentials and CA generated; values omitted\n"
+    },
+    {
+      "label": "isolated network",
+      "exit_code": 0,
+      "output": "fae3bef07be03fcefe273c3ddb23ff50d7a4fc79ea24ba2060a92c3eb5661331\n"
+    },
+    {
+      "label": "isolated MySQL",
+      "exit_code": 0,
+      "output": "c78c88f69bf68308699bec9649e52c571a22fa54470b48457b53a6d73e202876\nUnable to find image 'mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902' locally\ndocker.io/library/mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902: Pulling from library/mysql\nc3e99775cc39: Pulling fs layer\n332288060cf8: Pulling fs layer\n5a7ab34260fd: Pulling fs layer\nabda743cff12: Pulling fs layer\n335c0ba6129f: Pulling fs layer\n084e06fe4d96: Pulling fs layer\na8a79f346bc1: Pulling fs layer\n16ff0dc0f366: Pulling fs layer\nb14917cf1885: Pulling fs layer\n0b3d5697e820: Pulling fs layer\n084e06fe4d96: Waiting\na8a79f346bc1: Waiting\n16ff0dc0f366: Waiting\nb14917cf1885: Waiting\n0b3d5697e820: Waiting\nabda743cff12: Waiting\n335c0ba6129f: Waiting\n332288060cf8: Verifying Checksum\n332288060cf8: Download complete\n5a7ab34260fd: Verifying Checksum\n5a7ab34260fd: Download complete\n335c0ba6129f: Verifying Checksum\n335c0ba6129f: Download complete\n084e06fe4d96: Download complete\nabda743cff12: Download complete\n16ff0dc0f366: Verifying Checksum\n16ff0dc0f366: Download complete\nc3e99775cc39: Verifying Checksum\nc3e99775cc39: Download complete\n0b3d5697e820: Verifying Checksum\n0b3d5697e820: Download complete\nc3e99775cc39: Pull complete\n332288060cf8: Pull complete\n5a7ab34260fd: Pull complete\nabda743cff12: Pull complete\n335c0ba6129f: Pull complete\n084e06fe4d96: Pull complete\na8a79f346bc1: Verifying Checksum\na8a79f346bc1: Download complete\na8a79f346bc1: Pull complete\n16ff0dc0f366: Pull complete\nb14917cf1885: Verifying Checksum\nb14917cf1885: Download complete\nb14917cf1885: Pull complete\n0b3d5697e820: Pull complete\nDigest: sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902\nStatus: Downloaded newer image for mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902\n"
+    },
+    {
+      "label": "real MySQL identity scenarios",
+      "exit_code": 0,
+      "output": "=== RUN   TestIDFAssemblyHealthAndConfiguration\n--- PASS: TestIDFAssemblyHealthAndConfiguration (6.36s)\n=== RUN   TestIDFFailureAndRaceBoundaries\n=== RUN   TestIDFFailureAndRaceBoundaries/SC05-refresh-versus-switch\n=== RUN   TestIDFFailureAndRaceBoundaries/SC12-commit-failure-distinction\n=== RUN   TestIDFFailureAndRaceBoundaries/SC12-commit-failure-distinction/rollback\n=== RUN   TestIDFFailureAndRaceBoundaries/SC12-commit-failure-distinction/commit-ack-lost\n=== RUN   TestIDFFailureAndRaceBoundaries/SC08-membership-disable-revocation\n=== RUN   TestIDFFailureAndRaceBoundaries/SC18-common-five-second-budget\n    failures_test.go:175: locked database bounded duration 5.018s\n=== RUN   TestIDFFailureAndRaceBoundaries/SC18-CA-target-and-DML-role\n=== RUN   TestIDFFailureAndRaceBoundaries/SC18-unavailable-and-recovery\n--- PASS: TestIDFFailureAndRaceBoundaries (5.62s)\n    --- PASS: TestIDFFailureAndRaceBoundaries/SC05-refresh-versus-switch (0.06s)\n    --- PASS: TestIDFFailureAndRaceBoundaries/SC12-commit-failure-distinction (0.16s)\n        --- PASS: TestIDFFailureAndRaceBoundaries/SC12-commit-failure-distinction/rollback (0.07s)\n        --- PASS: TestIDFFailureAndRaceBoundaries/SC12-commit-failure-distinction/commit-ack-lost (0.09s)\n    --- PASS: TestIDFFailureAndRaceBoundaries/SC08-membership-disable-revocation (0.07s)\n    --- PASS: TestIDFFailureAndRaceBoundaries/SC18-common-five-second-budget (5.04s)\n    --- PASS: TestIDFFailureAndRaceBoundaries/SC18-CA-target-and-DML-role (0.00s)\n    --- PASS: TestIDFFailureAndRaceBoundaries/SC18-unavailable-and-recovery (0.04s)\n=== RUN   TestIDFRealMigrationsAndSessions\n    identity_test.go:86: MySQL version 8.4.13\n=== RUN   TestIDFRealMigrationsAndSessions/SC14-15-repeat-concurrent-and-rollback\n=== RUN   TestIDFRealMigrationsAndSessions/SC01-02-five-identities\n=== RUN   TestIDFRealMigrationsAndSessions/SC04-05-concurrent-refresh\n=== RUN   TestIDFRealMigrationsAndSessions/SC06-07-12-switch-logout-expiry\n=== RUN   TestIDFRealMigrationsAndSessions/SC08-revocation\n=== RUN   TestIDFRealMigrationsAndSessions/SC09-11-20-real-principal-authorization\n=== RUN   TestIDFRealMigrationsAndSessions/SC03-13-17-HTTP-HTTPS-order-and-logs\n--- PASS: TestIDFRealMigrationsAndSessions (0.97s)\n    --- PASS: TestIDFRealMigrationsAndSessions/SC14-15-repeat-concurrent-and-rollback (0.19s)\n    --- PASS: TestIDFRealMigrationsAndSessions/SC01-02-five-identities (0.22s)\n    --- PASS: TestIDFRealMigrationsAndSessions/SC04-05-concurrent-refresh (0.06s)\n    --- PASS: TestIDFRealMigrationsAndSessions/SC06-07-12-switch-logout-expiry (0.09s)\n    --- PASS: TestIDFRealMigrationsAndSessions/SC08-revocation (0.09s)\n    --- PASS: TestIDFRealMigrationsAndSessions/SC09-11-20-real-principal-authorization (0.06s)\n    --- PASS: TestIDFRealMigrationsAndSessions/SC03-13-17-HTTP-HTTPS-order-and-logs (0.06s)\n=== RUN   TestIDFPartialDDLRecovery\n=== RUN   TestIDFPartialDDLRecovery/SC16-v1-step1\n=== RUN   TestIDFPartialDDLRecovery/SC16-v1-step2\n=== RUN   TestIDFPartialDDLRecovery/SC16-v1-step3\n=== RUN   TestIDFPartialDDLRecovery/SC16-v2-step1\n=== RUN   TestIDFPartialDDLRecovery/SC16-v2-step2\n=== RUN   TestIDFPartialDDLRecovery/SC16-v3-step1\n--- PASS: TestIDFPartialDDLRecovery (1.43s)\n    --- PASS: TestIDFPartialDDLRecovery/SC16-v1-step1 (0.15s)\n    --- PASS: TestIDFPartialDDLRecovery/SC16-v1-step2 (0.16s)\n    --- PASS: TestIDFPartialDDLRecovery/SC16-v1-step3 (0.15s)\n    --- PASS: TestIDFPartialDDLRecovery/SC16-v2-step1 (0.29s)\n    --- PASS: TestIDFPartialDDLRecovery/SC16-v2-step2 (0.30s)\n    --- PASS: TestIDFPartialDDLRecovery/SC16-v3-step1 (0.37s)\n=== RUN   TestIDFMigrationMetadataAndEmptyDown\n--- PASS: TestIDFMigrationMetadataAndEmptyDown (0.76s)\n=== RUN   TestIDFReviewerIndependentAuthorizationAndRevocation\n    reviewer_test.go:135: IDF-SC-09/10/11/13/20: own allowed; teacher/other student/cross-class/unknown denied; all rows unchanged\n    reviewer_test.go:159: IDF-SC-06/17: logout 204; old access/refresh 401; other session 200; database revocation and HTTP/audit request ID agree\n    reviewer_test.go:179: IDF-SC-08: remaining user session revoked; old access/refresh 401; unrelated user 200; denial rows unchanged; logs omit credentials\n--- PASS: TestIDFReviewerIndependentAuthorizationAndRevocation (0.42s)\nPASS\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/integration\t15.563s\n"
+    },
+    {
+      "label": "remove test container and its anonymous volume",
+      "exit_code": 0,
+      "output": "campus-idf-e18aacbee83b\n"
+    },
+    {
+      "label": "remove test network",
+      "exit_code": 0,
+      "output": "campus-idf-e18aacbee83b\n"
+    }
+  ]
+}
