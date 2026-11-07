@@ -1503,5 +1503,186 @@
       "BC-SC-02",
       "BC-SC-17"
     ]
+  },
+  {
+    "name": "ICF-SC-01 IdentityHealthUp valid",
+    "schema": "IdentityHealthUp",
+    "data": {
+      "status": "ok",
+      "dependencies": {
+        "mysql": "up"
+      }
+    },
+    "valid": true
+  },
+  {
+    "name": "ICF-SC-01 IdentityHealthUp missing dependency",
+    "schema": "IdentityHealthUp",
+    "data": {
+      "status": "ok",
+      "dependencies": {}
+    },
+    "valid": false
+  },
+  {
+    "name": "ICF-SC-01 IdentityHealthUp missing status",
+    "schema": "IdentityHealthUp",
+    "data": {
+      "dependencies": {
+        "mysql": "up"
+      }
+    },
+    "valid": false
+  },
+  {
+    "name": "ICF-SC-01 IdentityHealthUp wrong state",
+    "schema": "IdentityHealthUp",
+    "data": {
+      "status": "error",
+      "dependencies": {
+        "mysql": "up"
+      }
+    },
+    "valid": false
+  },
+  {
+    "name": "ICF-SC-01 IdentityHealthUp unknown dependency",
+    "schema": "IdentityHealthUp",
+    "data": {
+      "status": "ok",
+      "dependencies": {
+        "mysql": "up",
+        "redis": "up"
+      }
+    },
+    "valid": false
+  },
+  {
+    "name": "ICF-SC-01 IdentityHealthUp extra field",
+    "schema": "IdentityHealthUp",
+    "data": {
+      "status": "ok",
+      "dependencies": {
+        "mysql": "up"
+      },
+      "error": null
+    },
+    "valid": false
+  },
+  {
+    "name": "ICF-SC-01 IdentityHealthUp null dependency",
+    "schema": "IdentityHealthUp",
+    "data": {
+      "status": "ok",
+      "dependencies": null
+    },
+    "valid": false
+  },
+  {
+    "name": "ICF-SC-01 IdentityHealthUp wrong dependency state",
+    "schema": "IdentityHealthUp",
+    "data": {
+      "status": "ok",
+      "dependencies": {
+        "mysql": "down"
+      }
+    },
+    "valid": false
+  },
+  {
+    "name": "ICF-SC-01 IdentityHealthDown valid",
+    "schema": "IdentityHealthDown",
+    "data": {
+      "status": "error",
+      "dependencies": {
+        "mysql": "down"
+      }
+    },
+    "valid": true
+  },
+  {
+    "name": "ICF-SC-01 IdentityHealthDown missing dependency",
+    "schema": "IdentityHealthDown",
+    "data": {
+      "status": "error",
+      "dependencies": {}
+    },
+    "valid": false
+  },
+  {
+    "name": "ICF-SC-01 IdentityHealthDown missing status",
+    "schema": "IdentityHealthDown",
+    "data": {
+      "dependencies": {
+        "mysql": "down"
+      }
+    },
+    "valid": false
+  },
+  {
+    "name": "ICF-SC-01 IdentityHealthDown wrong state",
+    "schema": "IdentityHealthDown",
+    "data": {
+      "status": "ok",
+      "dependencies": {
+        "mysql": "down"
+      }
+    },
+    "valid": false
+  },
+  {
+    "name": "ICF-SC-01 IdentityHealthDown unknown dependency",
+    "schema": "IdentityHealthDown",
+    "data": {
+      "status": "error",
+      "dependencies": {
+        "mysql": "down",
+        "redis": "up"
+      }
+    },
+    "valid": false
+  },
+  {
+    "name": "ICF-SC-01 IdentityHealthDown extra field",
+    "schema": "IdentityHealthDown",
+    "data": {
+      "status": "error",
+      "dependencies": {
+        "mysql": "down"
+      },
+      "error": null
+    },
+    "valid": false
+  },
+  {
+    "name": "ICF-SC-01 IdentityHealthDown null dependency",
+    "schema": "IdentityHealthDown",
+    "data": {
+      "status": "error",
+      "dependencies": null
+    },
+    "valid": false
+  },
+  {
+    "name": "ICF-SC-01 IdentityHealthDown wrong dependency state",
+    "schema": "IdentityHealthDown",
+    "data": {
+      "status": "error",
+      "dependencies": {
+        "mysql": "up"
+      }
+    },
+    "valid": false
+  },
+  {
+    "name": "ICF-SC-02 skeleton rejects identity payload",
+    "schema": "Health",
+    "data": {
+      "status": "ok",
+      "dependencies": {
+        "mysql": "up"
+      }
+    },
+    "valid": false
   }
 ]

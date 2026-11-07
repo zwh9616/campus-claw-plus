@@ -1,0 +1,51 @@
+{
+  "head": "4c0ad233a0db9a7e9ce085f0c8b82a260e407305",
+  "executor": "zwh9616 / 小张",
+  "time": "2026-11-06T11:07:03.254731+00:00",
+  "results": [
+    {
+      "command": "npm ci",
+      "exit_code": 0,
+      "duration_seconds": 12.4,
+      "output": "\nadded 96 packages, and audited 97 packages in 12s\n\n27 packages are looking for funding\n  run `npm fund` for details\n\nfound 0 vulnerabilities\n"
+    },
+    {
+      "command": "npm run setup",
+      "exit_code": 0,
+      "duration_seconds": 6.03,
+      "output": "\n> campus-claw-plus@0.0.1 setup\n> npm ci --prefix frontend\n\n\nadded 29 packages, and audited 30 packages in 5s\n\n8 packages are looking for funding\n  run `npm fund` for details\n\nfound 0 vulnerabilities\n"
+    },
+    {
+      "command": "npm run check",
+      "exit_code": 0,
+      "duration_seconds": 20.01,
+      "output": "\n> campus-claw-plus@0.0.1 check\n> npm run check:foundation && npm run check:contracts && npm run typecheck && npm run build && npm run check:backend && npm run check:spec\n\n\n> campus-claw-plus@0.0.1 check:foundation\n> node scripts/check-foundation.mjs\n\nFoundation: rule/skill entry points exist, sample keys are empty, .env is ignored.\nThis check is separate from real authorization review and full-history secret scanning.\n\n> campus-claw-plus@0.0.1 check:contracts\n> node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs scripts/contracts/identity-phase.test.mjs\n\nContracts: 24 schemas; 99 positive/negative fixtures and 6 semantic inputs agree in both paths; 41 operation examples; 7 current/frozen operations. Planned operations absent.\n✔ ICF-SC-01/02 only skeleton is active; future health is complete and anonymous (22.4892ms)\n✔ ICF-SC-03/04 frozen configuration cannot leak into active samples or lose safety metadata (19.992ms)\n✔ ICF-SC-05/06 migration reservations reject duplicate numbers, forward dependencies and false evidence (8.7097ms)\n✔ BC-SC-06 accepts trusted rubric, rejects incorrect grading, stale and missing context (2.6154ms)\n✔ BC-SC-05 nonempty Citation codepoint range (0.1614ms)\n✔ BC-SC-08/14 terminal sequence, cancellation and disconnected persistence (0.6383ms)\n✔ BC-SC-10 MCP exception remains exact, disabled and subject to both future reviews (0.8643ms)\n✔ BC-SC-09 registered empty keys only; no weakening historical HTTP_PORT requirement (5.1255ms)\n✔ BC-SC-18 planned operations and anonymous auth bypass cannot enter OpenAPI (25.9226ms)\nℹ tests 9\nℹ suites 0\nℹ pass 9\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 362.1213\n\n> campus-claw-plus@0.0.1 typecheck\n> npm run typecheck --prefix frontend\n\n\n> @campus-claw-plus/frontend@0.0.1 typecheck\n> tsc --noEmit\n\n\n> campus-claw-plus@0.0.1 build\n> npm run build --prefix frontend\n\n\n> @campus-claw-plus/frontend@0.0.1 build\n> tsc --noEmit && vite build\n\nvite v8.3.5 building client environment for production...\ntransforming...\n✓ 15 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                   0.61 kB │ gzip:  0.41 kB\ndist/assets/index-xLwe3wJW.css    3.46 kB │ gzip:  1.23 kB\ndist/assets/index-B1-fZwUu.js   143.18 kB │ gzip: 46.85 kB\n\n✓ built in 120ms\n\n> campus-claw-plus@0.0.1 check:backend\n> node scripts/check-backend.mjs\n\n?   \tgithub.com/zwh9616/campus-claw-plus/backend/cmd/server\t[no test files]\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/config\t0.010s\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/httpserver\t0.022s\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/observability\t0.007s\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/probe\t0.015s\n\n> campus-claw-plus@0.0.1 check:spec\n> openspec validate --all --strict\n\n✓ change/2026-11-04-business-contracts\n✓ change/2026-11-04-identity-foundation\n✓ change/2026-11-05-delivery-observability\n✓ change/2026-11-05-frontend-foundation\n✓ change/2026-11-05-reviewer-fix-workflow\n✓ change/2026-11-06-identity-public-contracts\n✓ spec/project-bootstrap\nTotals: 7 passed, 0 failed (7 items)\n- Validating...\n"
+    },
+    {
+      "command": "npm run audit",
+      "exit_code": 1,
+      "duration_seconds": 7.24,
+      "output": "\n> campus-claw-plus@0.0.1 audit\n> npm audit --audit-level=high && npm audit --prefix frontend --audit-level=high\n\nundefined\nnpm warn audit request to https://registry.npmjs.org/-/npm/v1/security/advisories/bulk failed, reason: Client network socket disconnected before secure TLS connection was established\nnpm error audit endpoint returned an error\nnpm error A complete log of this run can be found in: C:\\Users\\lenovo\\AppData\\Local\\npm-cache\\_logs\\2026-11-06T11_06_57_218Z-debug-0.log\n"
+    }
+  ],
+  "followup_results": [
+    {
+      "command": "npm run secret-scan",
+      "exit_code": 0,
+      "environment": "Windows Node25.2.1",
+      "summary": "66 commits / staged content: no leaks"
+    },
+    {
+      "command": "npm run verify",
+      "exit_code": 0,
+      "environment": "Windows Node25.2.1 / Docker29.8.0",
+      "summary": "15 scenarios passed; exact results in recovery-container-results.json"
+    },
+    {
+      "command": "docker run --rm --mount type=bind,source=<WORKTREE>,target=/src,readonly -w /src <scripts/toolchain.json.nodeImage> npm run audit",
+      "exit_code": 0,
+      "environment": "Local Docker / Node22.23.4 / npm10.9.9",
+      "summary": "Root and frontend: found 0 vulnerabilities; previous Windows and first container TLS failures retained in report; no registry or thresholds changed"
+    }
+  ]
+}

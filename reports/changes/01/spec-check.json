@@ -1,0 +1,34 @@
+{
+  "date": "2026-11-04",
+  "kind": "documentation-only checks, not business/runtime acceptance",
+  "node_version": "v24.22.1",
+  "locked_openspec_version": "1.13.0",
+  "root_path_note": "Absolute local root normalized to <repository-root>; other tool results preserved.",
+  "commands": [
+    {
+      "command": "node node_modules/@fission-ai/openspec/bin/openspec.js validate 2026-11-04-identity-foundation --strict --json",
+      "exit_code": 0,
+      "stdout": "{\n  \"items\": [\n    {\n      \"id\": \"2026-11-04-identity-foundation\",\n      \"type\": \"change\",\n      \"valid\": true,\n      \"issues\": [],\n      \"durationMs\": 26\n    }\n  ],\n  \"summary\": {\n    \"totals\": {\n      \"items\": 1,\n      \"passed\": 1,\n      \"failed\": 0\n    },\n    \"byType\": {\n      \"change\": {\n        \"items\": 1,\n        \"passed\": 1,\n        \"failed\": 0\n      }\n    }\n  },\n  \"version\": \"1.0\",\n  \"root\": {\n    \"path\": \"<repository-root>\",\n    \"source\": \"nearest\"\n  }\n}",
+      "stderr": ""
+    },
+    {
+      "command": "node node_modules/@fission-ai/openspec/bin/openspec.js validate --all --strict",
+      "exit_code": 0,
+      "stdout": "✓ change/2026-11-04-identity-foundation\n✓ spec/project-bootstrap\nTotals: 2 passed, 0 failed (2 items)\n",
+      "stderr": "- Validating...\n"
+    },
+    {
+      "command": "node scripts/check-foundation.mjs",
+      "exit_code": 0,
+      "stdout": "Foundation: rule/skill entry points exist, sample keys are empty, .env is ignored.\nThis check is separate from real authorization review and full-history secret scanning.\n",
+      "stderr": ""
+    }
+  ],
+  "document_checks": {
+    "files": 7,
+    "local_links": 9,
+    "requirements": 5,
+    "scenarios": 20,
+    "issues": []
+  }
+}
