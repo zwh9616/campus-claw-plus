@@ -14,7 +14,7 @@ const denied = () => Response.json({ error: { code: 'UNAUTHENTICATED', message: 
 test('FEF-SC-07/08 reviewer: late successful identity cannot resurrect a logged-out session', async () => {
   let release
   const delayed = new Promise(resolve => { release = resolve })
-  const responses = [session(), csrf(), delayed, new Response(null, { status: 204 })]
+  const responses = [session(), csrf(), delayed, csrf(), new Response(null, { status: 204 })]
   const calls = []
   const client = createAuthClient(async (url, options) => {
     calls.push({ url, options })
@@ -30,7 +30,7 @@ test('FEF-SC-07/08 reviewer: late successful identity cannot resurrect a logged-
   await read
   assert.equal(client.snapshot().principal, undefined)
   assert.equal(client.snapshot().phase, 'anonymous')
-  assert.equal(calls.length, 4)
+  assert.equal(calls.length, 5)
 })
 
 test('FEF-SC-04/08 reviewer: revoked access and refresh hide identity without retrying or logging out another session', async () => {
@@ -71,4 +71,21 @@ test('FEF-SC-07 reviewer: another tab changing context invalidates an already pe
   assert.equal(client.snapshot().phase, 'authenticated')
   assert.equal(client.snapshot().principal.class_id, '3')
   assert.equal(client.snapshot().principal.session_version, 2)
+})
+
+test('FEF-SC-05/08 reviewer: logout obtains CSRF for the current shared cookie after another tab refreshes', async () => {
+  let reads = 0, writes = 0
+  const client = createAuthClient(async (url, options) => {
+    if (url.endsWith('/login')) return session()
+    if (url.endsWith('/csrf')) return Response.json({ csrf_token: (++reads === 1 ? 'c' : 'f').repeat(32) })
+    assert.equal(url.endsWith('/logout'), true)
+    ++writes
+    assert.equal(options.headers['X-CSRF-Token'], 'f'.repeat(32))
+    return new Response(null, { status: 204 })
+  })
+  await client.login('review-user', 'synthetic-only')
+  await client.logout()
+  assert.equal(reads, 2)
+  assert.equal(writes, 1)
+  assert.equal(client.snapshot().phase, 'anonymous')
 })

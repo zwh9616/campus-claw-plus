@@ -1,0 +1,46 @@
+{
+  "time": "2026-11-08T06:30:29.180Z",
+  "mysqlImage": "campus-idf-9186a1c7bf31-mysql:verification",
+  "results": [
+    {
+      "label": "build reviewed MySQL runtime without mysqlsh and with current Go gosu",
+      "exit_code": 0,
+      "output": "#0 building with \"desktop-linux\" instance using docker driver\n\n#1 [internal] load build definition from Dockerfile\n#1 transferring dockerfile: 1.37kB done\n#1 DONE 0.0s\n\n#2 [internal] load metadata for docker.io/library/mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902\n#2 DONE 0.0s\n\n#3 [internal] load metadata for docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb\n#3 DONE 0.0s\n\n#4 [internal] load .dockerignore\n#4 transferring context: 2B done\n#4 DONE 0.0s\n\n#5 [gosu 3/4] ADD --checksum=sha256:cd9719b775dbfedae53923c9b0dc792b66d42c51e0b36652ed6f747fbadc0164 https://codeload.github.com/tianon/gosu/tar.gz/refs/tags/1.19 /tmp/gosu.tar.gz\n#5 DONE 0.0s\n\n#6 [stage-1 1/5] FROM docker.io/library/mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902\n#6 resolve docker.io/library/mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902 0.0s done\n#6 DONE 0.0s\n\n#7 [gosu 1/4] FROM docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb\n#7 resolve docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb 0.0s done\n#7 DONE 0.0s\n\n#8 [stage-1 2/5] RUN microdnf remove -y mysql-shell     && microdnf clean all     && rm -rf -- /usr/lib/mysqlsh     && ! command -v mysqlsh     && test ! -d /usr/lib/mysqlsh     && mysqld --version | grep '8.4.13'     && mysql --version\n#8 CACHED\n\n#9 [stage-1 3/5] COPY --from=gosu /out/gosu /usr/local/bin/gosu\n#9 CACHED\n\n#10 [stage-1 4/5] COPY --from=gosu /src/LICENSE /usr/share/licenses/campus-gosu/LICENSE\n#10 CACHED\n\n#11 [gosu 3/4] ADD --checksum=sha256:cd9719b775dbfedae53923c9b0dc792b66d42c51e0b36652ed6f747fbadc0164 https://codeload.github.com/tianon/gosu/tar.gz/refs/tags/1.19 /tmp/gosu.tar.gz\n#11 CACHED\n\n#12 [gosu 2/4] WORKDIR /src\n#12 CACHED\n\n#13 [gosu 4/4] RUN tar -xzf /tmp/gosu.tar.gz --strip-components=1 -C /src     && GOTOOLCHAIN=local CGO_ENABLED=0 go build -trimpath -buildvcs=false -o /out/gosu .\n#13 CACHED\n\n#14 [stage-1 5/5] RUN gosu --version     && test \"$(gosu mysql id -u)\" = 999     && test \"$(gosu mysql id -g)\" = 999\n#14 CACHED\n\n#15 exporting to image\n#15 exporting layers done\n#15 exporting manifest sha256:02649e1627390ac4d3390f1830c1cb2fca68ca03e8ea48e3d069c640c11356a9 done\n#15 exporting config sha256:470eb9e79c456b909db1436386bdf25100ef10d5b2fc6c9f1341cc0a7709d857 done\n#15 exporting attestation manifest sha256:922df86a72f4809bf987583f7d0351e0fa5d485049cd360fc82083527be0ffa7 0.0s done\n#15 exporting manifest list sha256:361d83d66ab47e5968474b3bc36da69ba7e766b628e085357a9650e188255011 done\n#15 naming to docker.io/library/campus-idf-9186a1c7bf31-mysql:verification done\n#15 unpacking to docker.io/library/campus-idf-9186a1c7bf31-mysql:verification 0.0s done\n#15 DONE 0.1s\n\nView build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/2nnndta1t9zmnagyyetrypmew\n"
+    },
+    {
+      "label": "test fixtures",
+      "exit_code": 0,
+      "output": "Disposable credentials and CA generated; values omitted\n"
+    },
+    {
+      "label": "isolated network",
+      "exit_code": 0,
+      "output": "cb614e342d7cf8ce86a99654795b15bbac764a864588e7f49480300f7821ff86\n"
+    },
+    {
+      "label": "isolated MySQL",
+      "exit_code": 0,
+      "output": "1563b420fe2211802d6d935c2d503d1f74955df825834c5893575fc710ae65e7\n"
+    },
+    {
+      "label": "real MySQL identity scenarios",
+      "exit_code": 0,
+      "output": "=== RUN   TestIDFAssemblyHealthAndConfiguration\n--- PASS: TestIDFAssemblyHealthAndConfiguration (6.47s)\n=== RUN   TestIDFFailureAndRaceBoundaries\n=== RUN   TestIDFFailureAndRaceBoundaries/SC05-refresh-versus-switch\n=== RUN   TestIDFFailureAndRaceBoundaries/SC12-commit-failure-distinction\n=== RUN   TestIDFFailureAndRaceBoundaries/SC12-commit-failure-distinction/rollback\n=== RUN   TestIDFFailureAndRaceBoundaries/SC12-commit-failure-distinction/commit-ack-lost\n=== RUN   TestIDFFailureAndRaceBoundaries/SC08-membership-disable-revocation\n=== RUN   TestIDFFailureAndRaceBoundaries/SC18-common-five-second-budget\n    failures_test.go:175: locked database bounded duration 5.019s\n=== RUN   TestIDFFailureAndRaceBoundaries/SC18-CA-target-and-DML-role\n=== RUN   TestIDFFailureAndRaceBoundaries/SC18-unavailable-and-recovery\n--- PASS: TestIDFFailureAndRaceBoundaries (5.79s)\n    --- PASS: TestIDFFailureAndRaceBoundaries/SC05-refresh-versus-switch (0.07s)\n    --- PASS: TestIDFFailureAndRaceBoundaries/SC12-commit-failure-distinction (0.19s)\n        --- PASS: TestIDFFailureAndRaceBoundaries/SC12-commit-failure-distinction/rollback (0.08s)\n        --- PASS: TestIDFFailureAndRaceBoundaries/SC12-commit-failure-distinction/commit-ack-lost (0.10s)\n    --- PASS: TestIDFFailureAndRaceBoundaries/SC08-membership-disable-revocation (0.08s)\n    --- PASS: TestIDFFailureAndRaceBoundaries/SC18-common-five-second-budget (5.05s)\n    --- PASS: TestIDFFailureAndRaceBoundaries/SC18-CA-target-and-DML-role (0.00s)\n    --- PASS: TestIDFFailureAndRaceBoundaries/SC18-unavailable-and-recovery (0.05s)\n=== RUN   TestIDFRealMigrationsAndSessions\n    identity_test.go:86: MySQL version 8.4.13\n=== RUN   TestIDFRealMigrationsAndSessions/SC14-15-repeat-concurrent-and-rollback\n=== RUN   TestIDFRealMigrationsAndSessions/SC01-02-five-identities\n=== RUN   TestIDFRealMigrationsAndSessions/SC04-05-concurrent-refresh\n=== RUN   TestIDFRealMigrationsAndSessions/SC06-07-12-switch-logout-expiry\n=== RUN   TestIDFRealMigrationsAndSessions/SC08-revocation\n=== RUN   TestIDFRealMigrationsAndSessions/SC09-11-20-real-principal-authorization\n=== RUN   TestIDFRealMigrationsAndSessions/SC03-13-17-HTTP-HTTPS-order-and-logs\n--- PASS: TestIDFRealMigrationsAndSessions (1.05s)\n    --- PASS: TestIDFRealMigrationsAndSessions/SC14-15-repeat-concurrent-and-rollback (0.19s)\n    --- PASS: TestIDFRealMigrationsAndSessions/SC01-02-five-identities (0.21s)\n    --- PASS: TestIDFRealMigrationsAndSessions/SC04-05-concurrent-refresh (0.05s)\n    --- PASS: TestIDFRealMigrationsAndSessions/SC06-07-12-switch-logout-expiry (0.16s)\n    --- PASS: TestIDFRealMigrationsAndSessions/SC08-revocation (0.11s)\n    --- PASS: TestIDFRealMigrationsAndSessions/SC09-11-20-real-principal-authorization (0.07s)\n    --- PASS: TestIDFRealMigrationsAndSessions/SC03-13-17-HTTP-HTTPS-order-and-logs (0.07s)\n=== RUN   TestIDFPartialDDLRecovery\n=== RUN   TestIDFPartialDDLRecovery/SC16-v1-step1\n=== RUN   TestIDFPartialDDLRecovery/SC16-v1-step2\n=== RUN   TestIDFPartialDDLRecovery/SC16-v1-step3\n=== RUN   TestIDFPartialDDLRecovery/SC16-v2-step1\n=== RUN   TestIDFPartialDDLRecovery/SC16-v2-step2\n=== RUN   TestIDFPartialDDLRecovery/SC16-v3-step1\n--- PASS: TestIDFPartialDDLRecovery (2.01s)\n    --- PASS: TestIDFPartialDDLRecovery/SC16-v1-step1 (0.27s)\n    --- PASS: TestIDFPartialDDLRecovery/SC16-v1-step2 (0.27s)\n    --- PASS: TestIDFPartialDDLRecovery/SC16-v1-step3 (0.27s)\n    --- PASS: TestIDFPartialDDLRecovery/SC16-v2-step1 (0.39s)\n    --- PASS: TestIDFPartialDDLRecovery/SC16-v2-step2 (0.41s)\n    --- PASS: TestIDFPartialDDLRecovery/SC16-v3-step1 (0.41s)\n=== RUN   TestIDFMigrationMetadataAndEmptyDown\n--- PASS: TestIDFMigrationMetadataAndEmptyDown (1.18s)\n=== RUN   TestIDFReviewerIndependentAuthorizationAndRevocation\n    reviewer_test.go:135: IDF-SC-09/10/11/13/20: own allowed; teacher/other student/cross-class/unknown denied; all rows unchanged\n    reviewer_test.go:159: IDF-SC-06/17: logout 204; old access/refresh 401; other session 200; database revocation and HTTP/audit request ID agree\n    reviewer_test.go:179: IDF-SC-08: remaining user session revoked; old access/refresh 401; unrelated user 200; denial rows unchanged; logs omit credentials\n--- PASS: TestIDFReviewerIndependentAuthorizationAndRevocation (0.54s)\nPASS\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/integration\t17.050s\n"
+    },
+    {
+      "label": "remove test container and its anonymous volume",
+      "exit_code": 0,
+      "output": "campus-idf-9186a1c7bf31\n"
+    },
+    {
+      "label": "remove test network",
+      "exit_code": 0,
+      "output": "campus-idf-9186a1c7bf31\n"
+    },
+    {
+      "label": "remove only own MySQL image tag",
+      "exit_code": 0,
+      "output": "Untagged: campus-idf-9186a1c7bf31-mysql:verification\nDeleted: sha256:361d83d66ab47e5968474b3bc36da69ba7e766b628e085357a9650e188255011\n"
+    }
+  ]
+}

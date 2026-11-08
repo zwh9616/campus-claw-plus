@@ -1,0 +1,279 @@
+
+> campus-claw-plus@0.0.1 gate
+> node scripts/gate.mjs
+
+
+Gate: check
+
+> campus-claw-plus@0.0.1 check
+> npm run check:foundation && npm run check:gate && npm run check:contracts && npm run check:identity-wiring && npm run check:frontend-auth && npm run typecheck && npm run build && npm run check:sample-isolation && npm run check:backend && npm run check:spec
+
+
+> campus-claw-plus@0.0.1 check:foundation
+> node scripts/check-foundation.mjs
+
+Foundation: rule/skill entry points exist, sample keys are empty, .env is ignored, Nginx runtime digest matches its register.
+This check is separate from real authorization review and full-history secret scanning.
+
+> campus-claw-plus@0.0.1 check:gate
+> node --test scripts/gate.test.mjs
+
+✔ DO-SC-03 serial success executes all stages in order (330.833ms)
+✔ DO-SC-04 check failure preserves exit code and prevents subsequent execution (92.7079ms)
+✔ DO-SC-04 audit failure preserves exit code and prevents subsequent execution (150.4498ms)
+✔ DO-SC-04 secret-scan failure preserves exit code and prevents subsequent execution (221.7009ms)
+✔ DO-SC-04 verify failure preserves exit code and prevents subsequent execution (324.2176ms)
+✔ DO-SC-05 missing executable is failure, not a skipped pass (16.9563ms)
+✔ DO-SC-05 signalled child cannot pass (78.4709ms)
+✔ DO-SC-05 timeout terminates stage and fails closed (435.2466ms)
+✔ DO-SC-05 cancellation before and during a stage prevents later commands (295.2399ms)
+✔ DO-SC-05 concurrent calls in one checkout fail without stealing its lock (5.1488ms)
+✔ DO-SC-05 different runs isolate images and atomically assigned ports; keep contract/probes (1.4559ms)
+✔ DO-SC-03/06 Make remains a thin npm wrapper, stable CI delegates complete gate (0.9549ms)
+✔ DO-SC-05 Make installation failure stops setup; -j does not run targets concurrently (17.9778ms)
+ℹ GNU Make unavailable: real Make execution unverified here; use npm gate. CI and Docker test environment must execute this case.
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2086.3271
+
+> campus-claw-plus@0.0.1 check:contracts
+> node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs scripts/contracts/identity-phase.test.mjs
+
+Contracts: 24 schemas; 99 positive/negative fixtures and 6 semantic inputs agree in both paths; 40 operation examples; 7 current/frozen operations. Planned operations absent.
+✔ ICF-SC-01/02 active identity health is unique and anonymous; no skeleton fallback (18.332ms)
+✔ ICF-SC-03/04 activation preserves required, process-separated secret metadata (20.124ms)
+✔ ICF-SC-05/06 available SQL rejects duplicates, forward dependencies and false deployment claims (15.6799ms)
+✔ BC-SC-06 accepts trusted rubric, rejects incorrect grading, stale and missing context (2.7127ms)
+✔ BC-SC-05 nonempty Citation codepoint range (0.1731ms)
+✔ BC-SC-08/14 terminal sequence, cancellation and disconnected persistence (0.678ms)
+✔ BC-SC-10 MCP exception remains exact, disabled and subject to both future reviews (1.1079ms)
+✔ BC-SC-09 registered empty keys only; no weakening historical HTTP_PORT requirement (21.5109ms)
+✔ BC-SC-18 planned operations and anonymous auth bypass cannot enter OpenAPI (28.6064ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 350.8473
+
+> campus-claw-plus@0.0.1 check:identity-wiring
+> node --test scripts/identity-wiring.test.mjs scripts/application-image-report.test.mjs
+
+✔ IDF-SC-17 complete application coverage accepts a clean actual runtime report (1.1645ms)
+✔ IDF-SC-17 a vulnerability or absent binary coverage cannot become a scan pass (1.1849ms)
+✔ IDF-SC-18 required input, hostname and exact proxy boundaries (13.8396ms)
+✔ IDF-SC-17/18 isolated wiring keeps secrets, ports and current phase separated (16.872ms)
+✔ IDF-SC-18 verification reserves distinct data/ingress subnets without consuming exhausted default pools (0.6521ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 357.5946
+
+> campus-claw-plus@0.0.1 check:frontend-auth
+> node --experimental-strip-types --test frontend/tests/auth.test.mjs frontend/tests/reviewer-auth.test.mjs
+
+✔ FEF-SC-03 login bounds, unchanged input, duplicate clicks and private credentials (20.2004ms)
+✔ FEF-SC-03/09 uniform 401, Retry-After and malformed CSRF are fail closed (1.7452ms)
+✔ FEF-SC-04/05 recover order, one refresh and one replay, no logout after contention (2.4939ms)
+✔ FEF-SC-06 switch role and int64 boundaries, retain original class only after verification (1.6696ms)
+✔ FEF-SC-07 late old class response is discarded and writes are serialized (0.9504ms)
+✔ FEF-SC-07/08 uncertain writes never replay; 204 and 401 clear identity (2.887ms)
+✔ FEF-SC-09 malformed response cannot install identity or leak the response body (0.31ms)
+✔ FEF-SC-07/08 reviewer: late successful identity cannot resurrect a logged-out session (20.2621ms)
+✔ FEF-SC-04/08 reviewer: revoked access and refresh hide identity without retrying or logging out another session (1.9164ms)
+✔ FEF-SC-07 reviewer: another tab changing context invalidates an already pending old identity response (1.821ms)
+✔ FEF-SC-05/08 reviewer: logout obtains CSRF for the current shared cookie after another tab refreshes (0.6329ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 215.0602
+
+> campus-claw-plus@0.0.1 typecheck
+> npm run typecheck --prefix frontend
+
+
+> @campus-claw-plus/frontend@0.0.1 typecheck
+> tsc --noEmit
+
+
+> campus-claw-plus@0.0.1 build
+> npm run build --prefix frontend
+
+
+> @campus-claw-plus/frontend@0.0.1 build
+> tsc --noEmit && vite build
+
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 17 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.61 kB │ gzip:  0.41 kB
+dist/assets/index-BZWXOWmF.css    4.56 kB │ gzip:  1.35 kB
+dist/assets/index-CB4drJkF.js   158.24 kB │ gzip: 52.13 kB
+
+✓ built in 163ms
+
+> campus-claw-plus@0.0.1 check:sample-isolation
+> node scripts/check-sample-isolation.mjs
+
+FEF-SC-13: production excludes samples; normal dev rejects test entry; explicit samples mode serves it.
+
+> campus-claw-plus@0.0.1 check:backend
+> node scripts/check-backend.mjs
+
+?   	github.com/zwh9616/campus-claw-plus/backend/cmd/identity-admin	[no test files]
+?   	github.com/zwh9616/campus-claw-plus/backend/cmd/server	[no test files]
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/config	0.006s
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/httpserver	0.022s
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/identity	0.118s
+?   	github.com/zwh9616/campus-claw-plus/backend/internal/identityapp	[no test files]
+?   	github.com/zwh9616/campus-claw-plus/backend/internal/integration/fixture	[no test files]
+?   	github.com/zwh9616/campus-claw-plus/backend/internal/integration/wiringfixture	[no test files]
+?   	github.com/zwh9616/campus-claw-plus/backend/internal/migrations	[no test files]
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/mysqlstore	0.009s
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/observability	0.009s
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/probe	0.016s
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/strictjson	0.009s
+
+> campus-claw-plus@0.0.1 check:spec
+> openspec validate --all --strict
+
+- Validating...
+✓ change/2026-11-04-business-contracts
+✓ change/2026-11-04-identity-foundation
+✓ change/2026-11-05-delivery-observability
+✓ change/2026-11-05-frontend-foundation
+✓ change/2026-11-05-reviewer-fix-workflow
+✓ change/2026-11-06-identity-public-contracts
+✓ spec/project-bootstrap
+Totals: 7 passed, 0 failed (7 items)
+
+Gate: audit
+
+> campus-claw-plus@0.0.1 audit
+> npm audit --audit-level=high && npm audit --prefix frontend --audit-level=high
+
+found 0 vulnerabilities
+found 0 vulnerabilities
+
+Gate: secret-scan
+
+> campus-claw-plus@0.0.1 secret-scan
+> node scripts/check-secrets.mjs
+
+2:23PM INF 104 commits scanned.
+2:23PM INF scanned ~3050308 bytes (3.05 MB) in 2.12s
+2:23PM INF no leaks found
+2:23PM INF scanned ~0 bytes (0) in 111ms
+2:23PM INF no leaks found
+Full-history and staged-content secret scans passed.
+
+Gate: verify
+
+> campus-claw-plus@0.0.1 verify
+> node scripts/verify-mysql-image.mjs && node scripts/verify-application-images.mjs && node scripts/verify-skeleton.mjs && node scripts/verify-identity.mjs
+
+build fixed MySQL 8.4.13 runtime: exit 0
+record immutable built artifact: exit 0
+MySQL version, mysqlsh removal, real gosu UID/GID drop: exit 0
+export artifact for scanner without Docker socket: exit 0
+Trivy HIGH/CRITICAL audit of fixed artifact: exit 0
+record actual vulnerability database metadata: exit 0
+MySQL image audit: HIGH=0 CRITICAL=0; gosu Go1.27.3; no ignore flags
+build production backend: exit 0
+record immutable backend artifact: exit 0
+export backend without scanner Docker socket: exit 0
+Trivy HIGH/CRITICAL backend: exit 0
+build production admin: exit 0
+record immutable admin artifact: exit 0
+export admin without scanner Docker socket: exit 0
+Trivy HIGH/CRITICAL admin: exit 0
+build production frontend: exit 0
+record immutable frontend artifact: exit 0
+export frontend without scanner Docker socket: exit 0
+Trivy HIGH/CRITICAL frontend: exit 0
+record actual vulnerability database: exit 0
+generate disposable wiring credentials/certificates: PASS (exit 0)
+dedicated internal proxy network: PASS (exit 0)
+discover allocated proxy address: PASS (exit 0)
+release automatically allocated proxy network: PASS (exit 0)
+create explicit isolated proxy subnet: PASS (exit 0)
+validate explicit candidate compose: PASS (exit 0)
+SC-09 missing HTTP_PORT is rejected before startup: PASS (exit 1)
+missing HTTPS key is rejected before startup: PASS (exit 1)
+build pinned MySQL, offline admin and production applications: PASS (exit 0)
+start fresh persistent MySQL: PASS (exit 0)
+offline migrations: PASS (exit 0)
+offline manifest/schema check: PASS (exit 0)
+database CA file missing is rejected: PASS (exit 2)
+valid but wrong database trust certificate is rejected: PASS (exit 1)
+offline initialize via stdin: PASS (exit 0)
+repeat initialize does not replace existing password: PASS (exit 0)
+trusted fixture class lookup on database-only network: PASS (exit 0)
+start isolated Go and HTTPS frontend: PASS (exit 0)
+resolve only this project HTTPS frontend: PASS (exit 0)
+inspect only published HTTPS binding: PASS (exit 0)
+Actual host published HTTPS and CA/SAN rejection: PASS
+resolve production backend image: PASS (exit 0)
+SC-04/05 production process missing: PASS (exit 2)
+SC-04/05 production process empty: PASS (exit 2)
+SC-04/05 production process whitespace: PASS (exit 2)
+SC-04/05 production process letters: PASS (exit 2)
+SC-04/05 production process zero: PASS (exit 2)
+SC-04/05 production process negative: PASS (exit 2)
+SC-04/05 production process aboveMaximum: PASS (exit 2)
+SC-07 occupied port rejects second real server: PASS (exit 1)
+SC-06 start real server with trimmed valid port: PASS (exit 0)
+SC-06 inspect own trimmed-port instance: PASS (exit 0)
+SC-06 inspect own trimmed-port instance: PASS (exit 0)
+SC-06 inspect own trimmed-port instance: PASS (exit 0)
+SC-06 inspect own trimmed-port instance: PASS (exit 0)
+SC-06 inspect own trimmed-port instance: PASS (exit 0)
+SC-06 inspect own trimmed-port instance: PASS (exit 0)
+SC-06 inspect own trimmed-port instance: PASS (exit 0)
+SC-06 inspect own trimmed-port instance: PASS (exit 0)
+SC-06 inspect own trimmed-port instance: PASS (exit 0)
+SC-06 active strict probe succeeds: PASS (exit 0)
+remove only trimmed-port test instance: PASS (exit 0)
+SC-01/02/03 real same-origin HTTPS, unique health, TLS rejection, login and revoked access: PASS (exit 0)
+capture sanitized Go request logs: PASS (exit 0)
+stop database only: PASS (exit 0)
+real database-down health 503 and login 503 without credentials: PASS (exit 0)
+restore database: PASS (exit 0)
+account and class persist after database restart: PASS (exit 0)
+remove candidate containers while retaining named data volume: PASS (exit 0)
+SC-10 stopped production HTTP and HTTPS are unreachable: PASS (exit 0)
+recreate MySQL on retained volume: PASS (exit 0)
+recreated database migration state unchanged: PASS (exit 0)
+recreate isolated HTTPS path: PASS (exit 0)
+resolve recreated HTTPS frontend: PASS (exit 0)
+inspect recreated host binding: PASS (exit 0)
+same account and original password after full container recreation: PASS (exit 0)
+check combined logs contain no generated passwords: PASS (exit 0)
+remove only this disposable project and test data volume: PASS (exit 0)
+remove dedicated proxy network: PASS (exit 0)
+build reviewed MySQL runtime without mysqlsh and with current Go gosu: PASS
+test fixtures: PASS
+isolated network: PASS
+isolated MySQL: PASS
+real MySQL identity scenarios: PASS
+Gate check: passed, exit=0
+Gate audit: passed, exit=0
+Gate secret-scan: passed, exit=0
+Gate verify: passed, exit=0

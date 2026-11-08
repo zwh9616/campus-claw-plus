@@ -1,0 +1,117 @@
+{
+  "base_head": "5be7a79d726a9b67c271df657fab8551ca73b922",
+  "integrated_main": "05965056098e6cb3b4d8411d62cbac482697b31c",
+  "source_state": "base head plus reviewed cross-tab CSRF fix; see SHA-256 below. No claim of a clean committed head for these captures.",
+  "inputs": [
+    {
+      "path": "frontend/src/auth/client.ts",
+      "tested_worktree_sha256": "bf19541622a68fe9da3eb8ecf457a385005990663af6c7abf76854c8b5f2faed",
+      "committed_lf_sha256": "bf19541622a68fe9da3eb8ecf457a385005990663af6c7abf76854c8b5f2faed"
+    },
+    {
+      "path": "frontend/src/pages/App.tsx",
+      "tested_worktree_sha256": "c15486759ad26f3b8977cc240782b7164e1b1e5946af749a5e49b9c84fc7b10a",
+      "committed_lf_sha256": "c15486759ad26f3b8977cc240782b7164e1b1e5946af749a5e49b9c84fc7b10a"
+    },
+    {
+      "path": "frontend/src/app.css",
+      "tested_worktree_sha256": "0f7ced8a542c2a4ebdb4dd43adc60d6959bd488d7533c808ebea21003e45a57c",
+      "committed_lf_sha256": "0f7ced8a542c2a4ebdb4dd43adc60d6959bd488d7533c808ebea21003e45a57c"
+    },
+    {
+      "path": "frontend/src/sample-theme.css",
+      "tested_worktree_sha256": "6139e17b6881284ae0fd4bd808f81ca883888f84bb164abb48c7a2afe198cfe9",
+      "committed_lf_sha256": "6139e17b6881284ae0fd4bd808f81ca883888f84bb164abb48c7a2afe198cfe9"
+    },
+    {
+      "path": "frontend/src/styles.css",
+      "tested_worktree_sha256": "45024331913712a2789a5cccd0b51634efe9caffbbe5b45457ce25189cb2d7bc",
+      "committed_lf_sha256": "45024331913712a2789a5cccd0b51634efe9caffbbe5b45457ce25189cb2d7bc"
+    },
+    {
+      "path": "frontend/tests/auth.test.mjs",
+      "tested_worktree_sha256": "80f3f4f59761382748b61306f9e1cdcec7f636429b6e76f7a03855e602a749dd",
+      "committed_lf_sha256": "68d139f59dfdb4362506475814e211535eaa245cfd78f166e5052bb449aa85ba"
+    },
+    {
+      "path": "frontend/tests/reviewer-auth.test.mjs",
+      "tested_worktree_sha256": "f6ca747d7d68a6f614bdf84a57d902ae1ba4b640e5147ded08f3382150c44b6e",
+      "committed_lf_sha256": "4565b0413a5904978908b917bf12591ae808eb1e3d72574e48a56a05d73a8691"
+    },
+    {
+      "path": "compose.yaml",
+      "tested_worktree_sha256": "29e97627f068082ea9b2f85f276d53eae5dddb03f89012c1c9f39affd5614ec8",
+      "committed_lf_sha256": "29e97627f068082ea9b2f85f276d53eae5dddb03f89012c1c9f39affd5614ec8"
+    },
+    {
+      "path": "scripts/toolchain.json",
+      "tested_worktree_sha256": "0bda3685bcdbe882a8f7291bc76a463d8ef281ba3d6d1dd9069e96e1ae4e4eac",
+      "committed_lf_sha256": "0bda3685bcdbe882a8f7291bc76a463d8ef281ba3d6d1dd9069e96e1ae4e4eac"
+    },
+    {
+      "path": "scripts/verify-identity-wiring.mjs",
+      "tested_worktree_sha256": "3ec953defae2b45dbfdc4469bc46deb3914a14af68ffcedb0686257251b1db95",
+      "committed_lf_sha256": "3ec953defae2b45dbfdc4469bc46deb3914a14af68ffcedb0686257251b1db95"
+    },
+    {
+      "path": "scripts/verification-subnets.mjs",
+      "tested_worktree_sha256": "78d49ec2abe4db4f277bb1376ff9d44e8403899a9a27a458fdeb7cc8b60265bf",
+      "committed_lf_sha256": "78d49ec2abe4db4f277bb1376ff9d44e8403899a9a27a458fdeb7cc8b60265bf"
+    }
+  ],
+  "evidence": {
+    "admin-scan.json.gz": "4af979b10999b143e3632db137839117c1e1f9bd48b5355cbee1448f35a82cac",
+    "applications.json": "0232fe6fb233cfdfd61f188992f7a5422cfb534fd68b99ba411126ae71a687bf",
+    "backend-scan.json.gz": "d72663056da03b22fd534df8128ecc43d7156d7e1b1efd2a5693b57496655275",
+    "browser-real.mjs": "fdce1c62e157712b0f9fc7d1fdd8fe3754a3692d03d9b8dba9b40bdae217bc4f",
+    "browser-runtime.mjs": "31c159410f58f68a6111c38ed96b7c2ae1a2e6801ddfdc87d4204e95b67606e8",
+    "frontend-scan.json.gz": "9c8c2cf90fb5d81512a3bd1cef6d42b7768877606835e261bb1a0202e91bfbba",
+    "gate.json": "3832cf5b39a153edcfa723820d1c0395603d0e31f0c49fdd8e2140bf51db91bb",
+    "gate.txt": "246376facd3a5543a5e32acdf778ce3c6f0879a1b9145cd6cb29ad9b869da68a",
+    "identity.json": "19cf437f4f934610a33c6c979314565d129a5e4aaf3465d0dc3d72bf597e4456",
+    "import-profile-ca.py": "3df1b0da1cf84ad774617cbff33c4da286c28c7c19ea16a7fdef591a0d829322",
+    "integrated-first-gate.json": "f599fa99e373d451ec3abe4294a0baf477e73e1073ecd212ae1cb6e55ed34188",
+    "integrated-first-wiring.json": "c98beb1cfe19a2ef287312bf2cf64ead935144bb1816a50f0772ef51f856b395",
+    "mock-browser.mjs": "f79518d5cfe506a72c88088b56c0e7009f1087665c62c7da363000cc1347f7c7",
+    "mysql-scan.json.gz": "df17b83b1b35c975e0757a3e7106624e410a0768dc81a282b816f4ddb2454a0a",
+    "mysql.json": "ef622a45960cf25c8b39f7aa000b884f8e7856939dce47144f0549e493e67bf2",
+    "real-browser.json": "531e38463cec320334cab6e7b32f64bfd3c2e20019f7beb5df0718e6d9ea4804",
+    "real-firefox-final-check.txt": "2dc8302221bc448b057cbaabf2b72f2711b875325e7e6b4a53769e7ce0b46b35",
+    "real-student-360.png": "932dac65e921e4e7e5a17b72fb6729942676cf3f72e60a49b2c52f725ac52714",
+    "real-workbench-1440.png": "59da8549fbc2991aabe1d03a6f1aa9319538768fab6a2c0186e0b5e6cce8ef00",
+    "shared-cookie-green.txt": "2346c5627ea0aeeb4bdffe3d64d0773a49eba956761990b66a2a6a31d10d215a",
+    "shared-cookie-red.txt": "a711ed7309ca8d34acce9482ee991ee6778bf07e3554201b550f97549a1e7703",
+    "staged-scan.txt": "a7cbcfad4e58592e06ef6a42e3d5436d6405d6387f5657691f3fbea87fb6a751",
+    "wiring.json": "28395e04092b806f7bbe56fa11d591825a938517bcbcbd66637a6889a03c1dd1",
+    "mock-browser\\home-1440.png": "ef9ded00d697a09506f587d687ff8ab9daa12b8b9bb8797380c83d597265f369",
+    "mock-browser\\home-360.png": "08d4f4772918454a6d8456885151c54e96288ae94cbfd5fcc67bdff54455a211",
+    "mock-browser\\logged-out-1440.png": "c7c16e3f3730615ae13875621af24cc04c47fcbc45e4daffbbfe2aaf8c6cb187",
+    "mock-browser\\logged-out-360.png": "8c609301dbef8553a7a229aa55575630e018b8bb671aa2c2ffed44049ee92a14",
+    "mock-browser\\login-1440.png": "e488831cc729e4d189b29b68f031168019aec1fc903a82ad57cf6f563c1416df",
+    "mock-browser\\login-360.png": "adbf8f2352b370ebf0d9da6c5c016270a97c61170c67e1d9f28cdbb4f986ef24",
+    "mock-browser\\login-error-1440.png": "bb0af61f9b534badcedc7bb3a4f1ec5edf6238c24484baccdaaa719881a1cca3",
+    "mock-browser\\login-error-360.png": "a3aca1c0f8ed31da696e6d96497ffbe19b57132af51fda0bb20686d9e3b29ad5",
+    "mock-browser\\manifest.json": "f4dbd44f3421b3eb1fd22235ffe3a1a489b550081a436de0a1376c8c2cd0a429",
+    "mock-browser\\not-found-1440.png": "d754873c195eeac52faf52a9154257de0513debb5316a65f59ff020e0c08c031",
+    "mock-browser\\not-found-360.png": "bbac31779b1e61d779ea7e75a3a02ceccbab96cce697339674f1211a3863e6d9",
+    "mock-browser\\recovered-1440.png": "500942d820fc5e7176494d17f8f2ed5ba4b3d9f10c52151825c94b689e43f679",
+    "mock-browser\\recovered-360.png": "bc3ce187fa8bf68988a14c08606f34584680f90eaba093fbffe0ba65761dfc77",
+    "mock-browser\\student-account-1440.png": "3f5ce8bf1b7fe0efce9bb26cdec39b935f7355911ad30c61fe161f8c8f9e7204",
+    "mock-browser\\student-account-360.png": "634e26839810d4f8fdc5eb65a4eb77f246b08f864668a7e7a646322b9b5f889e",
+    "mock-browser\\student-workbench-1440.png": "8973a1f5c3e012ce73a1e0f8eca6c9e119c6b960db7b3c94d29e601124a07564",
+    "mock-browser\\student-workbench-360.png": "1c82f9796821622405d034e075bf9d8b3d6fb6341984f79b1744d39b0f379603",
+    "mock-browser\\switch-error-1440.png": "aa2ba24ff756144263d20176981e1b19152c19f0497179d09a2f6c2b8499a035",
+    "mock-browser\\switch-error-360.png": "6619018c057b1b2d939dc6432509d786df928fb274a52650bad4e7e3d430bf8f",
+    "mock-browser\\switched-1440.png": "500942d820fc5e7176494d17f8f2ed5ba4b3d9f10c52151825c94b689e43f679",
+    "mock-browser\\switched-360.png": "bc3ce187fa8bf68988a14c08606f34584680f90eaba093fbffe0ba65761dfc77",
+    "mock-browser\\teacher-account-1440.png": "c362ca84499abbd56bc3e48772f8ad137aae69d95c4ce7fa290448c6137b3dcd",
+    "mock-browser\\teacher-account-360.png": "0f5f6f807225d85f814c8a2f4a3b7320224123dcb4baefbeef7ce51443a6d01f",
+    "mock-browser\\workbench-1440.png": "bf744e37736a80c5336c712f1e042b86bb5c62669c0f32090db74d8acf0ce5bd",
+    "mock-browser\\workbench-360.png": "8e897097e11390f6881aa3c48946c4eb5035d8ee2f87723ff025774624487385"
+  },
+  "backend_tree": "d04b4dd2b299b9f0e8ebba946afd8ca0ec8a7451",
+  "backend_matches_integrated_main": true,
+  "local_fixture_base_matches_integrated_main": true,
+  "gate_exit_code": 0,
+  "line_endings": "Input records retain tested Windows worktree hashes plus staged canonical LF hashes. Evidence text normalized to LF and trailing whitespace removed only; semantic outputs unchanged."
+}

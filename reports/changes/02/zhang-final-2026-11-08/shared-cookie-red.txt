@@ -1,0 +1,31 @@
+✔ FEF-SC-07/08 reviewer: late successful identity cannot resurrect a logged-out session (20.0728ms)
+✔ FEF-SC-04/08 reviewer: revoked access and refresh hide identity without retrying or logging out another session (1.8281ms)
+✔ FEF-SC-07 reviewer: another tab changing context invalidates an already pending old identity response (1.8414ms)
+✖ FEF-SC-05/08 reviewer: logout obtains CSRF for the current shared cookie after another tab refreshes (1.2789ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 3
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 196.0241
+
+✖ failing tests:
+
+test at frontend\tests\reviewer-auth.test.mjs:76:1
+✖ FEF-SC-05/08 reviewer: logout obtains CSRF for the current shared cookie after another tab refreshes (1.2789ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  1 !== 2
+
+      at TestContext.<anonymous> (file:///C:/Users/lenovo/Desktop/SoftwareDevelopment/group_project/output/review-02/frontend/tests/reviewer-auth.test.mjs:88:10)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

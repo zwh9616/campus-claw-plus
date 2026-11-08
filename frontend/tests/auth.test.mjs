@@ -76,8 +76,8 @@ test('FEF-SC-06 switch role and int64 boundaries, retain original class only aft
   await student.client.login('u', 'p')
   await student.client.switchClass('3')
   assert.equal(student.calls.length, 2)
-  const { client, calls, paths } = fixture(...loginResponses(), err(403, 'FORBIDDEN'), json(principal()),
-    json(session('9223372036854775807')), json(csrf))
+  const { client, calls, paths } = fixture(...loginResponses(), json(csrf), err(403, 'FORBIDDEN'), json(principal()),
+    json(csrf), json(session('9223372036854775807')), json(csrf))
   assert.equal(validId('9223372036854775808'), false)
   await client.login('u', 'p')
   await client.switchClass('2')
@@ -89,14 +89,14 @@ test('FEF-SC-06 switch role and int64 boundaries, retain original class only aft
   assert.match(client.snapshot().error.message, /无法切换/)
   await client.switchClass('9223372036854775807')
   assert.equal(client.snapshot().principal.class_id, '9223372036854775807')
-  assert.equal(JSON.parse(calls[4].body).class_id, '9223372036854775807')
-  assert.deepEqual(paths(), ['POST login', 'GET csrf', 'POST switch-class', 'GET me', 'POST switch-class', 'GET csrf'])
+  assert.equal(JSON.parse(calls[6].body).class_id, '9223372036854775807')
+  assert.deepEqual(paths(), ['POST login', 'GET csrf', 'GET csrf', 'POST switch-class', 'GET me', 'GET csrf', 'POST switch-class', 'GET csrf'])
 })
 
 test('FEF-SC-07 late old class response is discarded and writes are serialized', async () => {
   let late
   const old = new Promise(resolve => { late = resolve })
-  const { client, calls, paths } = fixture(...loginResponses(), () => old, json(session('3')), json(csrf))
+  const { client, calls, paths } = fixture(...loginResponses(), () => old, json(csrf), json(session('3')), json(csrf))
   await client.login('u', 'p')
   const read = client.verify()
   await Promise.all([client.switchClass('3'), client.logout()])
@@ -104,7 +104,7 @@ test('FEF-SC-07 late old class response is discarded and writes are serialized',
   late(json(principal('2')))
   await read
   assert.equal(client.snapshot().principal.class_id, '3')
-  assert.deepEqual(paths(), ['POST login', 'GET csrf', 'GET me', 'POST switch-class', 'GET csrf'])
+  assert.deepEqual(paths(), ['POST login', 'GET csrf', 'GET me', 'GET csrf', 'POST switch-class', 'GET csrf'])
 })
 
 test('FEF-SC-07/08 uncertain writes never replay; 204 and 401 clear identity', async () => {
@@ -115,13 +115,13 @@ test('FEF-SC-07/08 uncertain writes never replay; 204 and 401 clear identity', a
     [err(504, 'UPSTREAM_TIMEOUT'), 'recovery-error', /暂未确认/],
     [() => { throw new TypeError('offline') }, 'recovery-error', /暂未确认/],
   ]) {
-    const { client, paths } = fixture(...loginResponses(), response)
+    const { client, paths } = fixture(...loginResponses(), json(csrf), response)
     await client.login('u', 'p')
     await client.logout()
     assert.equal(client.snapshot().phase, phase)
     assert.equal(client.snapshot().principal, undefined)
     assert.match(client.snapshot().notice, message)
-    assert.deepEqual(paths(), ['POST login', 'GET csrf', 'POST logout'])
+    assert.deepEqual(paths(), ['POST login', 'GET csrf', 'GET csrf', 'POST logout'])
   }
 })
 

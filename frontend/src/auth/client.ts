@@ -228,7 +228,10 @@ export function createAuthClient(fetcher: typeof fetch = (...args) => fetch(...a
     return serial(async () => {
       const id = reset({ phase: op === 'logout' ? 'signing-out' : 'changing-class' })
       try {
-        const data = await request(op, id, active.access_token, protection, target ? { class_id: target } : undefined)
+        // Another tab may have rotated the shared HttpOnly refresh cookie.
+        // Obtain matching protection immediately before the single write.
+        const currentProtection = await getCsrf(id)
+        const data = await request(op, id, active.access_token, currentProtection, target ? { class_id: target } : undefined)
         if (op === 'logout') {
           reset({ phase: 'anonymous', notice: '已退出登录。' })
         } else {
