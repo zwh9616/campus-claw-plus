@@ -20,7 +20,7 @@
         "backend"
       ],
       "introduced_by": "openspec/changes/2026-11-06-identity-public-contracts",
-      "activation_change": "openspec/changes/2026-11-04-identity-foundation",
+      "activation_change": "openspec/changes/archive/2026-11-04-identity-foundation",
       "validation": "仅TCP，同库名；非root最小DML；TLS验证CA和主机名；拒绝skip-verify、preferred及multiStatements",
       "missing_behavior": "使用该键的进程遇缺失、空白或非法值必须启动失败且非零退出；不得打印值",
       "timeout": "连接/读/写各3000ms；业务数据库总预算5000ms，从传输校验后首次DB操作开始，重试不重置"
@@ -35,7 +35,7 @@
         "initializer"
       ],
       "introduced_by": "openspec/changes/2026-11-06-identity-public-contracts",
-      "activation_change": "openspec/changes/2026-11-04-identity-foundation",
+      "activation_change": "openspec/changes/archive/2026-11-04-identity-foundation",
       "validation": "离线最小DDL账号；与MYSQL_DSN同TCP目标、库名和证书验证；仅工具连接可启用multiStatements，服务进程不读取",
       "missing_behavior": "使用该键的进程遇缺失、空白或非法值必须启动失败且非零退出；不得打印值",
       "timeout": "连接3000ms；迁移/初始化锁10000ms；单条DDL30000ms，失败dirty且非零"
@@ -51,7 +51,7 @@
         "initializer"
       ],
       "introduced_by": "openspec/changes/2026-11-06-identity-public-contracts",
-      "activation_change": "openspec/changes/2026-11-04-identity-foundation",
+      "activation_change": "openspec/changes/archive/2026-11-04-identity-foundation",
       "validation": "只读CA文件，验证服务端证书链和主机名；不可读/无效即失败",
       "missing_behavior": "使用该键的进程遇缺失、空白或非法值必须启动失败且非零退出；不得打印值",
       "timeout": "启动检查；连接继承对应DSN预算"
@@ -65,7 +65,7 @@
         "backend"
       ],
       "introduced_by": "openspec/changes/2026-11-06-identity-public-contracts",
-      "activation_change": "openspec/changes/2026-11-04-identity-foundation",
+      "activation_change": "openspec/changes/archive/2026-11-04-identity-foundation",
       "validation": "单个精确HTTPS origin，不含用户信息/路径/查询/片段，不允许null或通配；运行时Origin匹配失败403",
       "missing_behavior": "使用该键的进程遇缺失、空白或非法值必须启动失败且非零退出；不得打印值",
       "timeout": "启动检查；请求中按凭据优先顺序判定"
@@ -79,7 +79,7 @@
         "backend"
       ],
       "introduced_by": "openspec/changes/2026-11-06-identity-public-contracts",
-      "activation_change": "openspec/changes/2026-11-04-identity-foundation",
+      "activation_change": "openspec/changes/archive/2026-11-04-identity-foundation",
       "validation": "有限代理对等端CIDR，拒绝IPv4/IPv6的/0及空项；Nginx覆写单一X-Real-IP，仅信任登记对等端提供的合法单一IP；否则用直连源",
       "missing_behavior": "使用该键的进程遇缺失、空白或非法值必须启动失败且非零退出；不得打印值",
       "timeout": "启动检查；不发起网络查询"
@@ -93,7 +93,7 @@
         "nginx"
       ],
       "introduced_by": "openspec/changes/2026-11-06-identity-public-contracts",
-      "activation_change": "openspec/changes/2026-11-04-identity-foundation",
+      "activation_change": "openspec/changes/archive/2026-11-04-identity-foundation",
       "validation": "只读证书链，SAN匹配可信origin主机；客户端必须信任且证书有效",
       "missing_behavior": "使用该键的进程遇缺失、空白或非法值必须启动失败且非零退出；不得打印值",
       "timeout": "Nginx启动检查；缺失/无效不启动"
@@ -107,7 +107,7 @@
         "nginx"
       ],
       "introduced_by": "openspec/changes/2026-11-06-identity-public-contracts",
-      "activation_change": "openspec/changes/2026-11-04-identity-foundation",
+      "activation_change": "openspec/changes/archive/2026-11-04-identity-foundation",
       "validation": "只读最小权限私钥，与证书匹配；不进入Git/镜像/日志，不自动生成",
       "missing_behavior": "使用该键的进程遇缺失、空白或非法值必须启动失败且非零退出；不得打印值",
       "timeout": "Nginx启动检查；缺失/无效不启动"
@@ -120,8 +120,8 @@
       "consumers": [
         "compose"
       ],
-      "introduced_by": "openspec/changes/2026-11-04-identity-foundation",
-      "activation_change": "openspec/changes/2026-11-04-identity-foundation",
+      "introduced_by": "openspec/changes/archive/2026-11-04-identity-foundation",
+      "activation_change": "openspec/changes/archive/2026-11-04-identity-foundation",
       "validation": "Absolute existing local directory containing operator-owned files; never a build context",
       "missing_behavior": "preflight and Compose fail nonzero",
       "timeout": "local file validation"
@@ -134,8 +134,8 @@
       "consumers": [
         "compose"
       ],
-      "introduced_by": "openspec/changes/2026-11-04-identity-foundation",
-      "activation_change": "openspec/changes/2026-11-04-identity-foundation",
+      "introduced_by": "openspec/changes/archive/2026-11-04-identity-foundation",
+      "activation_change": "openspec/changes/archive/2026-11-04-identity-foundation",
       "validation": "Existing dedicated internal Docker bridge; do not reuse unrelated networks",
       "missing_behavior": "preflight and Compose fail nonzero",
       "timeout": "Docker operation bounded by caller"
@@ -149,8 +149,8 @@
         "compose",
         "backend"
       ],
-      "introduced_by": "openspec/changes/2026-11-04-identity-foundation",
-      "activation_change": "openspec/changes/2026-11-04-identity-foundation",
+      "introduced_by": "openspec/changes/archive/2026-11-04-identity-foundation",
+      "activation_change": "openspec/changes/archive/2026-11-04-identity-foundation",
       "validation": "Available IPv4 on that bridge, assigned only to gateway; backend trusts this exact /32",
       "missing_behavior": "preflight and Compose fail nonzero",
       "timeout": "local validation"
@@ -163,8 +163,8 @@
       "consumers": [
         "nginx"
       ],
-      "introduced_by": "openspec/changes/2026-11-04-identity-foundation",
-      "activation_change": "openspec/changes/2026-11-04-identity-foundation",
+      "introduced_by": "openspec/changes/archive/2026-11-04-identity-foundation",
+      "activation_change": "openspec/changes/archive/2026-11-04-identity-foundation",
       "validation": "DNS hostname matching certificate SAN and trusted origin; no port or Nginx syntax",
       "missing_behavior": "preflight and Compose fail nonzero",
       "timeout": "local validation; client verifies TLS"
@@ -177,8 +177,8 @@
       "consumers": [
         "compose"
       ],
-      "introduced_by": "openspec/changes/2026-11-04-identity-foundation",
-      "activation_change": "openspec/changes/2026-11-04-identity-foundation",
+      "introduced_by": "openspec/changes/archive/2026-11-04-identity-foundation",
+      "activation_change": "openspec/changes/archive/2026-11-04-identity-foundation",
       "validation": "Host loopback port 1..65535; verifier alone may use 0 for Docker allocated port",
       "missing_behavior": "preflight and Compose fail nonzero",
       "timeout": "Docker bind fails nonzero"

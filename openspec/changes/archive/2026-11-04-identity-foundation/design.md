@@ -1,6 +1,6 @@
 ## Context
 
-本文件是 01 设计，运行实现尚未开始。2026-11-06 公共冻结修订已纳入本 PR，最终批准绑定远端 head，不以文档勾选代替。写规约/终审：小陈；审规约/实现：小张。00已由PR #5合入main，集成SHA为4cfd61d8119c51bc3bf2870a17c9754f0975b3dc；同SHA main CI及小张本机check/verify证据已补，G2按00 D8成立。主干保护/失败阻断属尚未成立的G3；01 apply仍须自身规约批准及下表公共依赖冻结。IDF场景均为未来验收要求，不是本次测试结果。运行细节见[runtime-plan](runtime-plan.md)，内部方案已获小张 72fe59b 复审接受；公共影响按同 PR [身份公共冻结](../2026-11-06-identity-public-contracts/design.md) 与公共登记对齐，按新规则由审查者直接收口。
+本文件是 01 设计，运行实现尚未开始。2026-11-06 公共冻结修订已纳入本 PR，最终批准绑定远端 head，不以文档勾选代替。写规约/终审：小陈；审规约/实现：小张。00已由PR #5合入main，集成SHA为4cfd61d8119c51bc3bf2870a17c9754f0975b3dc；同SHA main CI及小张本机check/verify证据已补，G2按00 D8成立。主干保护/失败阻断属尚未成立的G3；01 apply仍须自身规约批准及下表公共依赖冻结。IDF场景均为未来验收要求，不是本次测试结果。运行细节见[runtime-plan](runtime-plan.md)，内部方案已获小张 72fe59b 复审接受；公共影响按同 PR [身份公共冻结](../../2026-11-06-identity-public-contracts/design.md) 与公共登记对齐，按新规则由审查者直接收口。
 
 ## Goals / Non-Goals
 

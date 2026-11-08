@@ -1,0 +1,115 @@
+{
+  "fetched_at": "2026-11-08T07:18:19.9940822Z",
+  "baseline_main": "ec1095ea0ad613ed74e5875c7fb7e22e2f20cf1c",
+  "pulls": [
+    {
+      "number": 14,
+      "state": "closed",
+      "merged": true,
+      "merged_at": "2026-11-07T10:35:21Z",
+      "head": "917596428392ca2bb66a061688b6d0c0e63055d6",
+      "merge_commit_sha": "c2c34a298c9f53840c861bdf7c6181486a6150c2",
+      "reviews": [
+        {
+          "id": 5811595197,
+          "state": "APPROVED",
+          "commit_id": "917596428392ca2bb66a061688b6d0c0e63055d6",
+          "submitted_at": "2026-11-07T10:35:11Z",
+          "login": "Kevcco"
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "state": "closed",
+      "merged": true,
+      "merged_at": "2026-11-08T06:01:37Z",
+      "head": "a9d89670d04add1ed129309819b4e0f48c3be025",
+      "merge_commit_sha": "05965056098e6cb3b4d8411d62cbac482697b31c",
+      "reviews": [
+        {
+          "id": 5816839413,
+          "state": "APPROVED",
+          "commit_id": "a9d89670d04add1ed129309819b4e0f48c3be025",
+          "submitted_at": "2026-11-08T06:01:30Z",
+          "login": "zwh9616"
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "state": "closed",
+      "merged": true,
+      "merged_at": "2026-11-08T06:47:25Z",
+      "head": "90976b9a6ef8cef5fdb4f1559b64819dc39a2689",
+      "merge_commit_sha": "3ef79f40e184f75ab4b8d1435c9ea57af56014f5",
+      "reviews": [
+        {
+          "id": 5816948613,
+          "state": "APPROVED",
+          "commit_id": "90976b9a6ef8cef5fdb4f1559b64819dc39a2689",
+          "submitted_at": "2026-11-08T06:47:17Z",
+          "login": "zwh9616"
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "state": "closed",
+      "merged": true,
+      "merged_at": "2026-11-08T07:12:27Z",
+      "head": "a6c1ce1347480d4148f2b55ce9a9bf59baffcaaa",
+      "merge_commit_sha": "ec1095ea0ad613ed74e5875c7fb7e22e2f20cf1c",
+      "reviews": [
+        {
+          "id": 5816978046,
+          "state": "APPROVED",
+          "commit_id": "a6c1ce1347480d4148f2b55ce9a9bf59baffcaaa",
+          "submitted_at": "2026-11-08T07:00:10Z",
+          "login": "gjj6666"
+        }
+      ]
+    }
+  ],
+  "verified_runs": [
+    {
+      "id": 42453041413,
+      "head_sha": "05965056098e6cb3b4d8411d62cbac482697b31c",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/zwh9616/campus-claw-plus/actions/runs/42453041413"
+    },
+    {
+      "id": 42456168251,
+      "head_sha": "3ef79f40e184f75ab4b8d1435c9ea57af56014f5",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/zwh9616/campus-claw-plus/actions/runs/42456168251"
+    },
+    {
+      "id": 42456655716,
+      "head_sha": "a6c1ce1347480d4148f2b55ce9a9bf59baffcaaa",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/zwh9616/campus-claw-plus/actions/runs/42456655716"
+    }
+  ],
+  "latest_main_runs": [
+    {
+      "id": 42457829034,
+      "head_sha": "ec1095ea0ad613ed74e5875c7fb7e22e2f20cf1c",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/zwh9616/campus-claw-plus/actions/runs/42457829034"
+    },
+    {
+      "id": 42456168251,
+      "head_sha": "3ef79f40e184f75ab4b8d1435c9ea57af56014f5",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/zwh9616/campus-claw-plus/actions/runs/42456168251"
+    }
+  ],
+  "pr19_tree_equals_main": true,
+  "scope": "Selected public GitHub metadata; no credentials, no assumed approval"
+}
