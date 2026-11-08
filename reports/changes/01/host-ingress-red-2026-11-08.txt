@@ -15,12 +15,12 @@ test at scripts\identity-wiring.test.mjs:17:1
 ✖ IDF-SC-17/18 isolated wiring keeps secrets, ports and current phase separated (17.5379ms)
   AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
   + actual - expected
-  
+
     [
   -   'ingress',
       'proxy'
     ]
-  
+
       at TestContext.<anonymous> (file:///D:/long/2/grade5/Internet-Software/group_project/scripts/identity-wiring.test.mjs:45:12)
       at Test.runInAsyncScope (node:async_hooks:227:14)
       at Test.run (node:internal/test_runner/test:1402:25)

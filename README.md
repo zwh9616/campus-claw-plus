@@ -9,6 +9,8 @@
 - 默认服务为frontend/backend/mysql；admin仅在tools profile用于离线操作。只向本机发布HTTPS，后端与数据库不发布主机端口；数据使用命名卷，server不自动DDL/初始化。
 - frontend单独加入Compose自管ingress bridge，负责本机端口入口；backend/MySQL/admin仍使用内部网络，后端只信任内部proxy中Nginx的精确/32。验收同时检查实际主机发布端口与容器内链路。
 
+本分支包含[#18主机入口修复](reports/changes/01/host-ingress-review-2026-11-08.md)：CI与小陈独立Docker完整门禁通过，待小张审查后正常合入。原Windows Docker Desktop现象及02正常信任链的原生浏览器联验仍由实际执行者复跑，不把服务端/CI通过当整轮交付。
+
 ## 小组进度与协作入口
 
 - [共享进度表](docs/project-status.md)：G2、G3已成立；01服务端#14已由小陈独立终审、正常合入main c2c34a2，四个实际制品扫描及独立Docker门禁通过，见[最终复核](reports/changes/01/chen-final-review-2026-11-07.md)及[合入记录](reports/changes/01/main-integration-2026-11-07.md)。02真实页面/客户端已在#15提交，真实HTTPS浏览器与最终集成验收仍待完成，01暂不归档。

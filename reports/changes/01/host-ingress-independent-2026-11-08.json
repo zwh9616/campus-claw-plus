@@ -1,0 +1,185 @@
+{
+  "reviewer": "小陈 / Kevcco (AI assisted)",
+  "source_head": "cf89432fdbf2b4f1e8239037b5af09bced14defa",
+  "time": "2026-11-08T05:24:58.926Z",
+  "synchronization": {
+    "clean_committed_source": true,
+    "excluded_user_uncommitted_files": true,
+    "bundle_sha256": "355b5df30a61862e0c1dbeca03390abd168044637c1bf42932f303f3fe4eed25",
+    "evidence_tar_sha256": "5564f0a7e206a769368f5f98cd1c990140a05f54348725f5e6cb716ea781b953"
+  },
+  "environment": {
+    "node": "22.23.4",
+    "npm": "10.9.9",
+    "docker": "28.3.3",
+    "compose": "2.39.1",
+    "make": "4.3",
+    "go": "1.27.3 pinned Docker toolchain"
+  },
+  "commands": [
+    "ci=0",
+    "setup=0",
+    "gate=0"
+  ],
+  "gate": [
+    {
+      "name": "check",
+      "exitCode": 0,
+      "reason": "passed",
+      "signal": null,
+      "durationMs": 8294
+    },
+    {
+      "name": "audit",
+      "exitCode": 0,
+      "reason": "passed",
+      "signal": null,
+      "durationMs": 1387
+    },
+    {
+      "name": "secret-scan",
+      "exitCode": 0,
+      "reason": "passed",
+      "signal": null,
+      "durationMs": 6451
+    },
+    {
+      "name": "verify",
+      "exitCode": 0,
+      "reason": "passed",
+      "signal": null,
+      "durationMs": 237434
+    }
+  ],
+  "host_ingress": [
+    {
+      "label": "IDF-SC-18 actual host loopback HTTPS, CA/SAN and anonymous denial",
+      "exit_code": 0,
+      "health": 200,
+      "health_duration_ms": 18.181892000000516,
+      "page": 200,
+      "anonymous_me": 401,
+      "wrong_san_rejected": true,
+      "wrong_ca_rejected": true
+    },
+    {
+      "label": "SC-10 stopped host published HTTPS is unreachable",
+      "exit_code": 0
+    },
+    {
+      "label": "IDF-SC-18 recreated host HTTPS remains reachable",
+      "exit_code": 0,
+      "health": 200,
+      "health_duration_ms": 7.5547500000102445,
+      "page": 200,
+      "anonymous_me": 401,
+      "wrong_san_rejected": true,
+      "wrong_ca_rejected": true
+    }
+  ],
+  "images": [
+    {
+      "service": "mysql",
+      "image_id": "sha256:6f93716f1ba8f4b149c2c0e8ba8b77ef040f54554949aabba3d906473650bdc9",
+      "HIGH": 0,
+      "CRITICAL": 0,
+      "raw_sha256": "5182edb0515a199a0369fce64edb62a17039578c692741109c20649b268c1dc3",
+      "archive": "host-ingress-mysql-independent-scan-2026-11-08.json.gz"
+    },
+    {
+      "service": "backend",
+      "image_id": "sha256:fdf95f89ad8642d3a1ca89d56f3f02c5fb0a527385f717352003275aaeb3d0ac",
+      "HIGH": 0,
+      "CRITICAL": 0,
+      "raw_sha256": "3a4e3ef0a1fb881d63fc2849a692ba73f19c43b0a80ca094a14afd71e86a49b0",
+      "archive": "host-ingress-backend-independent-scan-2026-11-08.json.gz"
+    },
+    {
+      "service": "admin",
+      "image_id": "sha256:41fd9277c5f0f74433abef27e08659fe8727afdbad7164e229b8ab44793448ba",
+      "HIGH": 0,
+      "CRITICAL": 0,
+      "raw_sha256": "ebb8a2d6d2fcbddc2964bb2aa099dbc7a216e40f95430fb4ef07e704c4f08b34",
+      "archive": "host-ingress-admin-independent-scan-2026-11-08.json.gz"
+    },
+    {
+      "service": "frontend",
+      "image_id": "sha256:57110231e782251b7aaf3672affcc8d74a23fe8a6e864379a15e0cfca3396db5",
+      "HIGH": 0,
+      "CRITICAL": 0,
+      "raw_sha256": "22d26ab4ea860ee9e575b15f5d4e8b9da500378e6ff0fcdbe5d3d3569086e492",
+      "archive": "host-ingress-frontend-independent-scan-2026-11-08.json.gz"
+    }
+  ],
+  "runtime_inputs_unchanged": [
+    {
+      "path": "compose.yaml",
+      "sha256": "29e97627f068082ea9b2f85f276d53eae5dddb03f89012c1c9f39affd5614ec8"
+    },
+    {
+      "path": "deploy/identity/compose.yaml",
+      "sha256": "4522a060c8151c09396f8d35c39f0c206f37140576c9645f4c2ccdd91da2aeab"
+    },
+    {
+      "path": "scripts/identity-host-ingress.mjs",
+      "sha256": "b836421506578245642a2911892203c44b7c500c2b67216f96f842a51f82043c"
+    },
+    {
+      "path": "scripts/verify-identity-wiring.mjs",
+      "sha256": "9258543511c4891fa2b163bed5021ec5c0810d6e18f2f65ac11101e30792abf5"
+    },
+    {
+      "path": "scripts/identity-wiring.test.mjs",
+      "sha256": "780366311ee71c17f35f7ac53ca28704d406ed878197d5f1e4aee1a2d02d6e18"
+    },
+    {
+      "path": "scripts/verify-identity.mjs",
+      "sha256": "4a004fe06b1c5aab8c1310fc5435b91651af4e57a0272333c3c547da1162b073"
+    },
+    {
+      "path": "scripts/verify-mysql-image.mjs",
+      "sha256": "e21417b29a1766a3c91b481f5cd527238393586e02d526160ca5d99f6a99aed4"
+    },
+    {
+      "path": "scripts/verify-application-images.mjs",
+      "sha256": "f66d3495d316c542def0f9ff4f9dbb3902e1e2d9aef23a002963858f5137f8b4"
+    },
+    {
+      "path": "package.json",
+      "sha256": "44294274dee2a48cb66d528c1fb8cf9338e4853d33914df68d943008c5fd8f8c"
+    },
+    {
+      "path": "frontend/Dockerfile",
+      "sha256": "3a7c1719d16e1cdb78fbc66830ed1f32406c3ae58e8628da82fb903467ead098"
+    },
+    {
+      "path": "backend/Dockerfile",
+      "sha256": "e3490fddcb1256f83301339d5b5d698b3b49f59bc31439cc494206f8a66be93a"
+    },
+    {
+      "path": "backend/Dockerfile.identity",
+      "sha256": "a78bf59efa36cd4ae91cefcbd1406a569b04f0930948604b4c547fdc993c2c82"
+    },
+    {
+      "path": "deploy/identity/nginx.conf.template",
+      "sha256": "1892c2210b03503ccadd82a57f3a038c11e4742c3715b0e2d405726c368c745c"
+    },
+    {
+      "path": "deploy/identity/production-proxy.conf.template",
+      "sha256": "165bbb3542b16b8c8554aa9d1794ebaa09bf211b1ed9a3b611ab456b7e98b55b"
+    }
+  ],
+  "cleanup": {
+    "private_fixture_directories_removed": true,
+    "disposable_containers_and_networks_removed": true,
+    "temporary_authorizations_removed": 1,
+    "subsequent_login_exit": 255,
+    "local_temporary_key_pair_removed": true
+  },
+  "not_verified": [
+    "Original Windows Docker Desktop host entrance replay",
+    "Native browser normal trust-chain acceptance / complete 02 final review",
+    "Final integrated main demo and 01 archive"
+  ],
+  "note": "Independent full gate and host loopback tests, separate from CI. Follow-up only adds evidence/status; no runtime change. Private workspace/user/host details normalized in public logs."
+}
