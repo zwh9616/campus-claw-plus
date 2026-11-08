@@ -1,0 +1,26 @@
+{
+  "reviewer": "小陈 / Kevcco (AI assisted)",
+  "baseline": "c2c34a298c9f53840c861bdf7c6181486a6150c2",
+  "node": "v24.22.1",
+  "commands": [
+    {
+      "command": "remove frontend ingress attachment; node --test scripts/identity-wiring.test.mjs",
+      "exit": 1
+    },
+    {
+      "command": "restore exact bytes; node --test scripts/identity-wiring.test.mjs",
+      "exit": 0
+    },
+    {
+      "command": "npm run check",
+      "exit": 0
+    },
+    {
+      "command": "npm run audit",
+      "exit": 0
+    }
+  ],
+  "docker_independent": "not executed yet: waiting for temporary access",
+  "windows_docker_desktop": "not independently retested; original finding belongs to #15",
+  "native_browser": "not executed by this reviewer"
+}

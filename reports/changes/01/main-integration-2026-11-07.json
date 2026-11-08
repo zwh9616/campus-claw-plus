@@ -1,0 +1,142 @@
+{
+  "recorded_at": "2026-11-07T10:39:36.6685836Z",
+  "pr": 14,
+  "reviewed_head": "917596428392ca2bb66a061688b6d0c0e63055d6",
+  "review": {
+    "state": "APPROVED",
+    "reviewer": "Kevcco",
+    "submitted_at": "2026-11-07T10:35:11Z",
+    "url": "https://github.com/zwh9616/campus-claw-plus/pull/14#pullrequestreview-5811595197",
+    "id": 5811595197
+  },
+  "head_ci": {
+    "conclusion": "success",
+    "url": "https://github.com/zwh9616/campus-claw-plus/actions/runs/42364213612",
+    "id": 42364213612
+  },
+  "normal_merge": {
+    "expected_head": "917596428392ca2bb66a061688b6d0c0e63055d6",
+    "merged_at": "2026-11-07T10:35:21Z",
+    "bypass_used": false,
+    "sha": "c2c34a298c9f53840c861bdf7c6181486a6150c2",
+    "merged_tree": "904331de99314b542b2b0a74a01e000e32cf05bb",
+    "reviewed_tree": "904331de99314b542b2b0a74a01e000e32cf05bb",
+    "merged_by": "Kevcco"
+  },
+  "main_ci": {
+    "conclusion": "success",
+    "sha": "c2c34a298c9f53840c861bdf7c6181486a6150c2",
+    "url": "https://github.com/zwh9616/campus-claw-plus/actions/runs/42364596741",
+    "id": 42364596741,
+    "event": "push",
+    "jobs": [
+      {
+        "conclusion": "success",
+        "steps": [
+          {
+            "name": "Set up job",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm ci",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run setup",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run the same complete gate as local development",
+            "conclusion": "success"
+          },
+          {
+            "name": "Retain runtime image scan evidence",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "conclusion": "success"
+          }
+        ],
+        "id": 128379883018
+      }
+    ],
+    "artifacts": [
+      {
+        "id": 13570833780,
+        "name": "runtime-image-scans-c2c34a298c9f53840c861bdf7c6181486a6150c2",
+        "size_in_bytes": 147756,
+        "expired": false
+      }
+    ],
+    "actual_images": [
+      {
+        "service": "mysql",
+        "image_id": "sha256:4c64e1880591ee653e4f170fea25b381cec4e09d683b9f2fc835f35a560ca30b",
+        "HIGH": 0,
+        "CRITICAL": 0,
+        "raw_sha256": "2a35a96ab0bf5a76488b680bc8c163aa3a3b3b246d2a24565c348204a04ed65f",
+        "archive": "runtime-mysql-main-scan-2026-11-07.json.gz"
+      },
+      {
+        "service": "backend",
+        "image_id": "sha256:89fda47e33838e1356526aea9f60981297080101595c3c9880f60f42d9ee33ef",
+        "HIGH": 0,
+        "CRITICAL": 0,
+        "raw_sha256": "51246b5663f896a590541324c1136e8d22840fce7f3a30b5545141ba4fe5deb1",
+        "archive": "runtime-backend-main-scan-2026-11-07.json.gz"
+      },
+      {
+        "service": "admin",
+        "image_id": "sha256:5e1af2017732a942e5c5a67d9356047962c63bfa57ddbd7c54c4e19f84839ea0",
+        "HIGH": 0,
+        "CRITICAL": 0,
+        "raw_sha256": "d67ff0b051297034a5bb6210c3a8caf274b8d44d6c15e8bb7a6950c6ba3acafb",
+        "archive": "runtime-admin-main-scan-2026-11-07.json.gz"
+      },
+      {
+        "service": "frontend",
+        "image_id": "sha256:404317563d1e9ba49cb64ad492462081faa7d95ad674de63548e719e148b86b4",
+        "HIGH": 0,
+        "CRITICAL": 0,
+        "raw_sha256": "0beade332c93f0028a9247c5295a25156e9542cb8a5a6a32c3acdb875cbe4bd6",
+        "archive": "runtime-frontend-main-scan-2026-11-07.json.gz"
+      }
+    ],
+    "gate_milestones": [
+      "2026-11-07T10:38:55.9883462Z Gate check: passed, exit=0",
+      "2026-11-07T10:38:55.9883906Z Gate audit: passed, exit=0",
+      "2026-11-07T10:38:55.9884273Z Gate secret-scan: passed, exit=0",
+      "2026-11-07T10:38:55.9884671Z Gate verify: passed, exit=0"
+    ]
+  },
+  "protection": {
+    "required_checks": [
+      {
+        "context": "check",
+        "app_id": 15368
+      }
+    ],
+    "observed_main_sha": "c2c34a298c9f53840c861bdf7c6181486a6150c2",
+    "protected": true
+  },
+  "independent_replay": "chen-final-review-2026-11-07.json",
+  "zhang_actual_comment": "https://github.com/zwh9616/campus-claw-plus/pull/14#issuecomment-6705579048",
+  "scope": "01 backend merged and complete CI revalidated on integrated main; native browser integration and archive remain pending. Zhang raw evidence not yet committed; comment is attributed, not copied as own tests."
+}

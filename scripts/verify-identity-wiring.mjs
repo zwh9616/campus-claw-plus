@@ -5,6 +5,8 @@ import { resolve } from 'node:path'
 import { randomBytes } from 'node:crypto'
 import { parseEnv } from 'node:util'
 import { validateWiringInputs } from './identity-compose.mjs'
+import { hostRequest, verifyHostIngress } from './identity-host-ingress.mjs'
+import { verificationSubnets } from './verification-subnets.mjs'
 
 const { goImage } = JSON.parse(readFileSync('scripts/toolchain.json', 'utf8'))
 const id = 'campus-wiring-' + randomBytes(6).toString('hex')
@@ -59,12 +61,12 @@ try {
   if(ids.status!==0)throw new Error('Network inventory unavailable')
   const inventory=spawnSync('docker',['network','inspect','--format','{{range .IPAM.Config}}{{.Subnet}} {{end}}',...ids.stdout.trim().split(/\s+/)],{encoding:'utf8',timeout:30000})
   if(inventory.status!==0)throw new Error('Network prefix inventory unavailable')
-  const integer=ip=>ip.split('.').map(Number).reduce((n,o)=>n*256+o,0)
-  const occupied=[...inventory.stdout.matchAll(/(\d+\.\d+\.\d+\.\d+)\/(\d+)/g)].map(m=>[integer(m[1]),integer(m[1])+2**(32-Number(m[2]))-1])
-  let dataSubnet
-  for(let n=0;n<256;n++){const base=integer(`10.240.${n}.0`);if(occupied.every(([lo,hi])=>base+255<lo||base>hi)){dataSubnet=`10.240.${n}.0/24`;break}}
-  if(!dataSubnet)throw new Error('No isolated test subnet available')
-  writeFileSync(resolve(directory,'network-override.json'),JSON.stringify({networks:{data:{ipam:{config:[{subnet:dataSubnet}]}}}}))
+  const occupied = [...inventory.stdout.matchAll(/(\d+\.\d+\.\d+\.\d+)\/(\d+)/g)].map(m => m[0])
+  const [dataSubnet, ingressSubnet] = verificationSubnets(occupied)
+  writeFileSync(resolve(directory,'network-override.json'),JSON.stringify({networks:{
+    data:{ipam:{config:[{subnet:dataSubnet}]}},
+    ingress:{ipam:{config:[{subnet:ingressSubnet}]}},
+  }}))
   validateWiringInputs(env, { ephemeral: true })
   const envText = object => Object.entries(object).map(([k,v]) => `${k}=${JSON.stringify(v)}`).join('\n') + '\n'
   writeFileSync(resolve(directory, 'compose.env'), envText(env), { mode: 0o600 })
@@ -107,6 +109,17 @@ try {
   compose('repeat initialize does not replace existing password', ['run', '--rm', '-T', 'admin', 'initialize'], { input: JSON.stringify(seed) })
   client('lookup', 'trusted fixture class lookup on database-only network')
   compose('start isolated Go and HTTPS frontend', [ 'up', '-d', '--wait', '--wait-timeout', '90', 'backend', 'frontend'])
+  const frontend = compose('resolve only this project HTTPS frontend', ['ps', '-q', 'frontend']).trim()
+  assert.match(frontend, /^[a-f0-9]{64}$/)
+  const ports = JSON.parse(run('inspect only published HTTPS binding', ['inspect', '--format', '{{json .NetworkSettings.Ports}}', frontend]))
+  assert.deepEqual(Object.keys(ports).filter(key => ports[key]?.length), ['443/tcp'])
+  assert.equal(ports['443/tcp'].length, 1)
+  assert.equal(ports['443/tcp'][0].HostIp, '127.0.0.1')
+  const publishedPort = Number(ports['443/tcp'][0].HostPort)
+  assert.ok(Number.isInteger(publishedPort) && publishedPort > 0 && publishedPort <= 65535)
+  const hostResult = await verifyHostIngress(publishedPort, directory)
+  evidence.push({ label: 'IDF-SC-18 actual host loopback HTTPS, CA/SAN and anonymous denial', exit_code: 0, ...hostResult })
+  console.log('Actual host published HTTPS and CA/SAN rejection: PASS')
   // Preserve all original process/configuration/HTTP/log/shutdown regression
   // categories on the new default artifact; no skeleton server or alternate health.
   const image = compose('resolve production backend image', ['images', '-q', 'backend']).trim()
@@ -149,9 +162,17 @@ try {
   client('persist', 'account and class persist after database restart')
   compose('remove candidate containers while retaining named data volume', [ 'down', '--timeout', '15'])
   client('stopped', 'SC-10 stopped production HTTP and HTTPS are unreachable')
+  await assert.rejects(hostRequest({ port: publishedPort, ca: readFileSync(resolve(directory, 'ca.pem')) }),
+    error => ['ECONNREFUSED', 'ECONNRESET'].includes(error.code))
+  evidence.push({ label: 'SC-10 stopped host published HTTPS is unreachable', exit_code: 0 })
   compose('recreate MySQL on retained volume', ['up', '-d', '--wait', '--wait-timeout', '90', 'mysql'])
   compose('recreated database migration state unchanged', ['run', '--rm', '-T', 'admin', 'check'])
   compose('recreate isolated HTTPS path', [ 'up', '-d', '--wait', '--wait-timeout', '90', 'backend', 'frontend'])
+  const recreated = compose('resolve recreated HTTPS frontend', ['ps', '-q', 'frontend']).trim()
+  const recreatedPorts = JSON.parse(run('inspect recreated host binding', ['inspect', '--format', '{{json .NetworkSettings.Ports}}', recreated]))
+  assert.equal(recreatedPorts['443/tcp'][0].HostIp, '127.0.0.1')
+  const recreatedHost = await verifyHostIngress(Number(recreatedPorts['443/tcp'][0].HostPort), directory)
+  evidence.push({ label: 'IDF-SC-18 recreated host HTTPS remains reachable', exit_code: 0, ...recreatedHost })
   client('persist', 'same account and original password after full container recreation')
   const allLogs = compose('check combined logs contain no generated passwords', [ 'logs', '--no-color', '--no-log-prefix'])
   if (secrets.some(secret => allLogs.includes(secret))) throw new Error('secret appeared in service log')

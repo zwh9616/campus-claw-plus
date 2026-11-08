@@ -90,6 +90,7 @@ services:
         read_only: true
         bind: {create_host_path: false}
     networks:
+      ingress: {}
       proxy:
         ipv4_address: ${IDENTITY_PROXY_IP:?Provide IDENTITY_PROXY_IP}
         aliases: ["${IDENTITY_HTTPS_HOST:?Provide IDENTITY_HTTPS_HOST}"]
@@ -106,6 +107,7 @@ services:
 volumes:
   mysql-data: {}
 networks:
+  ingress: {driver: bridge}
   data: {internal: true}
   proxy:
     external: true
