@@ -1,0 +1,175 @@
+{
+  "time": "2026-11-07T10:21:46.371971+00:00",
+  "executor": "小张 / zwh9616 (AI assisted)",
+  "source_head": "2ec6668475fa99f46d25206a1da8249b784ca4ad",
+  "node": "v25.2.1",
+  "docker": "29.8.0",
+  "commands": [
+    {
+      "command": "npm ci",
+      "exit_code": 0,
+      "source_head": "2a06bf8c6fd3c8610eadbf576d52afcbb548c558"
+    },
+    {
+      "command": "npm run setup",
+      "exit_code": 0,
+      "source_head": "2a06bf8c6fd3c8610eadbf576d52afcbb548c558"
+    },
+    {
+      "command": "npm run gate",
+      "exit_code": 0
+    }
+  ],
+  "gate_steps": [
+    {
+      "name": "check",
+      "exitCode": 0,
+      "reason": "passed"
+    },
+    {
+      "name": "audit",
+      "exitCode": 0,
+      "reason": "passed"
+    },
+    {
+      "name": "secret-scan",
+      "exitCode": 0,
+      "reason": "passed"
+    },
+    {
+      "name": "verify",
+      "exitCode": 0,
+      "reason": "passed"
+    }
+  ],
+  "source_manifest": [
+    {
+      "path": "deploy/identity/mysql/Dockerfile",
+      "sha256": "055eb6378eb40d305b7a28ea9d4a735bfd5e0137a806e330799965074e999c5a"
+    },
+    {
+      "path": "frontend/Dockerfile",
+      "sha256": "3a7c1719d16e1cdb78fbc66830ed1f32406c3ae58e8628da82fb903467ead098"
+    },
+    {
+      "path": "backend/Dockerfile",
+      "sha256": "e3490fddcb1256f83301339d5b5d698b3b49f59bc31439cc494206f8a66be93a"
+    },
+    {
+      "path": "backend/Dockerfile.identity",
+      "sha256": "a78bf59efa36cd4ae91cefcbd1406a569b04f0930948604b4c547fdc993c2c82"
+    },
+    {
+      "path": "compose.yaml",
+      "sha256": "cee708e37e05b63fa2a1169adbdd7836273f189821ff7485f2ca2a9afd1f19cc"
+    },
+    {
+      "path": "deploy/identity/compose.yaml",
+      "sha256": "e30d2be8c14717f44c3f8c56bd6dc0671124c2640423e9d260355de25472f6cc"
+    },
+    {
+      "path": "scripts/verify-mysql-image.mjs",
+      "sha256": "e21417b29a1766a3c91b481f5cd527238393586e02d526160ca5d99f6a99aed4"
+    },
+    {
+      "path": "scripts/verify-application-images.mjs",
+      "sha256": "f66d3495d316c542def0f9ff4f9dbb3902e1e2d9aef23a002963858f5137f8b4"
+    },
+    {
+      "path": "scripts/verify-identity-wiring.mjs",
+      "sha256": "008e8ef92faba2116c064998488c524025046e10f5194bb1739a06c4331b49e5"
+    },
+    {
+      "path": "scripts/verify-identity.mjs",
+      "sha256": "4a004fe06b1c5aab8c1310fc5435b91651af4e57a0272333c3c547da1162b073"
+    },
+    {
+      "path": "scripts/application-image-report.mjs",
+      "sha256": "1517f4f7b54d7c0a86d1d7a9b57de25b7bfd7fff8ae2c7086bdf035961c0966c"
+    },
+    {
+      "path": ".github/workflows/check.yml",
+      "sha256": "38ad11e73814f782a7a373d286dfe34908524136c9a148ab6cdd6fb8859cbc8e"
+    },
+    {
+      "path": "package.json",
+      "sha256": "44294274dee2a48cb66d528c1fb8cf9338e4853d33914df68d943008c5fd8f8c"
+    },
+    {
+      "path": "scripts/toolchain.json",
+      "sha256": "731b728eb3666497771701a4a97b8c6af27beda5146a78e7edaf05d5f582b14a"
+    },
+    {
+      "path": "docs/contracts/identity-phase.json",
+      "sha256": "17f20853fa8fbe7b83d95bf056828543facd05eb45fa48b8fd5ba5448e4a0404"
+    }
+  ],
+  "records": [
+    {
+      "path": "reports/changes/01/zhang-image-fix-gate-2026-11-07.json",
+      "sha256": "ab9d48bbc4ae2d3e2ace3c09c10b00dd1a1a1cebbd93e2d0c4a5f5993fc20a71"
+    },
+    {
+      "path": "reports/changes/01/zhang-image-fix-mysql-2026-11-07.json",
+      "sha256": "64c3db6cd3cdcc5f2427a81374cc12896076cb47baa8a14219f4faa7f59f50be"
+    },
+    {
+      "path": "reports/changes/01/zhang-image-fix-applications-2026-11-07.json",
+      "sha256": "d7be8f7fa4a15ff9aed9ad52387ff4a50aec5ab37946ad1ccd4ead1d91dd9a47"
+    },
+    {
+      "path": "reports/changes/01/zhang-image-fix-wiring-2026-11-07.json",
+      "sha256": "fdcfcac165c95e6698a2f973f2afe18e8dd6cecf86b5c514f8b3dd3ddda3c1ac"
+    },
+    {
+      "path": "reports/changes/01/zhang-image-fix-database-2026-11-07.json",
+      "sha256": "34fcf524d93e8335d667602f43b33c82b82af1c3abda1e0870cf39e235a092ee"
+    },
+    {
+      "path": "reports/changes/01/zhang-mysql-scan-2026-11-07.json.gz",
+      "uncompressed_sha256": "de3c56aca477b363fd308d1ba314131a10119667d3776dba263595fbf6ef9270",
+      "gzip_sha256": "e8f18fd6f9217ef3bcfe943b7e4a393aba4f92f70685813cec3e832848bfdc12"
+    },
+    {
+      "path": "reports/changes/01/zhang-backend-scan-2026-11-07.json.gz",
+      "uncompressed_sha256": "97d156bc8e94f95b9fb85dde15460eae59d39a6b56d450cfc31a8c8ddad840c2",
+      "gzip_sha256": "fb02c6b273fe3e35fce86500f3de727a61115d4c5aba45038debbb08e47aaecb"
+    },
+    {
+      "path": "reports/changes/01/zhang-admin-scan-2026-11-07.json.gz",
+      "uncompressed_sha256": "865c3c94d011cd9b66039dbedaab47d51dc28f775c5f0dcc1a75d110bbe78c27",
+      "gzip_sha256": "39fe262bab1a61cc7342b4e301b536bc5f26731a37c540b208df5b153182d1cf"
+    },
+    {
+      "path": "reports/changes/01/zhang-frontend-scan-2026-11-07.json.gz",
+      "uncompressed_sha256": "9c83f6faafec513eace80d013aeba6987445a2b233fe2d326b3a2d77e3a4b677",
+      "gzip_sha256": "0ce5928b4ef0d1cd0fcbf92ddf0ee010725f2a49da58d4f833c9972ba0086764"
+    }
+  ],
+  "remote_ci": {
+    "run": 42362608142,
+    "head": "2ec6668475fa99f46d25206a1da8249b784ca4ad",
+    "conclusion": "success"
+  },
+  "open_items": [
+    "nginxImage registration still points to old digest; requested reviewer fix within current edit window",
+    "Actual final Chen review on final head and branch protection approval",
+    "02 real browser UI integration and operator deployment certificate acceptance remain unverified; no archive claim"
+  ],
+  "merge_performed": false,
+  "earlier_replay": {
+    "source_head": "2a06bf8c6fd3c8610eadbf576d52afcbb548c558",
+    "full_gate_exit_code": 0,
+    "scope": "MySQL artifact plus DB/TLS regression; superseded by this full gate including application artifact scans"
+  },
+  "unchanged_install_inputs": [
+    {
+      "path": "package-lock.json",
+      "sha256": "4a5962456c6bb661ae8b7222cc0d5e692635a9196a997e1fa42c64bbfc8da7c6"
+    },
+    {
+      "path": "frontend/package-lock.json",
+      "sha256": "ca3730fcf5b23af46bdd1183563455bf17e04f96643fcb253a7c53aedaba0a35"
+    }
+  ]
+}

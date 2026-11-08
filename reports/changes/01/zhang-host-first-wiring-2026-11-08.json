@@ -1,0 +1,136 @@
+{
+  "time": "2026-11-08T05:44:43.980Z",
+  "scope": "default production Compose and real cmd/server with disposable test credentials/CA; no native browser or operator deployment claim",
+  "results": [
+    {
+      "label": "generate disposable wiring credentials/certificates",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "Disposable credentials and CA generated; values omitted\n"
+    },
+    {
+      "label": "dedicated internal proxy network",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "823f54c3e83ab0757c4c1fc0f27d7a71266ae694dd7b699d10a70da71e45f62c\n"
+    },
+    {
+      "label": "discover allocated proxy address",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "[{\"Subnet\":\"192.168.192.0/20\",\"Gateway\":\"192.168.192.1\"}]\n"
+    },
+    {
+      "label": "release automatically allocated proxy network",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "campus-wiring-00c5599cbb73\n"
+    },
+    {
+      "label": "create explicit isolated proxy subnet",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "555d14065730bd436e99151c88ed2555888e6837e1092d5aa4240045691fbcf3\n"
+    },
+    {
+      "label": "validate explicit candidate compose",
+      "exit_code": 0,
+      "expected": 0,
+      "output": ""
+    },
+    {
+      "label": "SC-09 missing HTTP_PORT is rejected before startup",
+      "exit_code": 1,
+      "expected": "nonzero",
+      "output": "error while interpolating services.backend.environment.HTTP_PORT: required variable HTTP_PORT is missing a value: Fill HTTP_PORT in the root .env\nerror while interpolating services.frontend.environment.HTTP_PORT: required variable HTTP_PORT is missing a value: Fill HTTP_PORT in the root .env\n"
+    },
+    {
+      "label": "missing HTTPS key is rejected before startup",
+      "exit_code": 1,
+      "expected": "nonzero",
+      "output": "error while interpolating services.frontend.volumes.[].source: required variable HTTPS_KEY_FILE is missing a value: Provide HTTPS_KEY_FILE\n"
+    },
+    {
+      "label": "build pinned MySQL, offline admin and production applications",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "#1 [internal] load local bake definitions\n#1 reading from stdin 2.50kB 0.0s done\n#1 DONE 0.0s\n\n#2 [admin internal] load build definition from Dockerfile.identity\n#2 transferring dockerfile: 849B done\n#2 DONE 0.0s\n\n#3 [frontend internal] load build definition from Dockerfile\n#3 transferring dockerfile: 696B done\n#3 DONE 0.1s\n\n#4 [backend internal] load build definition from Dockerfile\n#4 transferring dockerfile: 577B done\n#4 DONE 0.1s\n\n#5 [mysql internal] load build definition from Dockerfile\n#5 transferring dockerfile: 1.37kB done\n#5 DONE 0.1s\n\n#6 [admin internal] load metadata for docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb\n#6 DONE 0.1s\n\n#7 [frontend internal] load metadata for docker.io/library/nginx@sha256:583b7f2fce1cdb8da5ad5c39ebd3c33b98b87d493190e548bdee1fa8c619c311\n#7 DONE 0.1s\n\n#8 [frontend internal] load metadata for docker.io/library/node@sha256:fe4f6d74e20370acb04ad889077d14d0f64a9c8ea6a42bc60cddf1e844699914\n#8 DONE 0.1s\n\n#9 [admin internal] load .dockerignore\n#9 transferring context: 66B done\n#9 DONE 0.0s\n\n#10 [mysql internal] load metadata for docker.io/library/mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902\n#10 DONE 0.1s\n\n#11 [admin internal] load build context\n#11 DONE 0.0s\n\n#12 [frontend internal] load .dockerignore\n#12 transferring context: 78B done\n#12 DONE 0.0s\n\n#13 [frontend internal] load build context\n#13 DONE 0.0s\n\n#14 [mysql internal] load .dockerignore\n#14 transferring context: 2B done\n#14 DONE 0.0s\n\n#15 [mysql gosu 3/4] ADD --checksum=sha256:cd9719b775dbfedae53923c9b0dc792b66d42c51e0b36652ed6f747fbadc0164 https://codeload.github.com/tianon/gosu/tar.gz/refs/tags/1.19 /tmp/gosu.tar.gz\n#15 DONE 0.0s\n\n#16 [mysql stage-1 1/5] FROM docker.io/library/mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902\n#16 resolve docker.io/library/mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902\n#16 resolve docker.io/library/mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902 0.1s done\n#16 DONE 0.1s\n\n#17 [admin build 1/7] FROM docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb\n#17 resolve docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb 0.1s done\n#17 DONE 0.1s\n\n#11 [backend internal] load build context\n#11 transferring context: 15.75kB 0.0s done\n#11 DONE 0.0s\n\n#18 [frontend stage-1 1/3] FROM docker.io/library/nginx@sha256:583b7f2fce1cdb8da5ad5c39ebd3c33b98b87d493190e548bdee1fa8c619c311\n#18 resolve docker.io/library/nginx@sha256:583b7f2fce1cdb8da5ad5c39ebd3c33b98b87d493190e548bdee1fa8c619c311 0.1s done\n#18 DONE 0.1s\n\n#19 [frontend build 1/8] FROM docker.io/library/node@sha256:fe4f6d74e20370acb04ad889077d14d0f64a9c8ea6a42bc60cddf1e844699914\n#19 resolve docker.io/library/node@sha256:fe4f6d74e20370acb04ad889077d14d0f64a9c8ea6a42bc60cddf1e844699914 0.1s done\n#19 DONE 0.1s\n\n#13 [frontend internal] load build context\n#13 transferring context: 423B done\n#13 DONE 0.0s\n\n#20 [backend build 4/7] COPY vendor ./vendor\n#20 CACHED\n\n#21 [backend build 5/7] COPY cmd ./cmd\n#21 CACHED\n\n#22 [backend build 6/7] COPY internal ./internal\n#22 CACHED\n\n#23 [backend build 3/7] COPY go.mod go.sum ./\n#23 CACHED\n\n#24 [backend build 7/7] RUN --mount=type=cache,target=/root/.cache/go-build CGO_ENABLED=0 go build -trimpath -buildvcs=false -ldflags=\"-s -w -buildid=\" -o /out/server ./cmd/server\n#24 CACHED\n\n#25 [backend build 2/7] WORKDIR /src\n#25 CACHED\n\n#26 [backend stage-1 1/1] COPY --from=build /out/server /server\n#26 CACHED\n\n#27 [admin build 7/8] RUN --mount=type=cache,target=/root/.cache/go-build CGO_ENABLED=0 go build -trimpath -buildvcs=false -ldflags=\"-s -w -buildid=\" -o /out/identity-admin ./cmd/identity-admin\n#27 CACHED\n\n#20 [admin build 4/7] COPY vendor ./vendor\n#20 CACHED\n\n#21 [admin build 5/7] COPY cmd ./cmd\n#21 CACHED\n\n#23 [admin build 3/7] COPY go.mod go.sum ./\n#23 CACHED\n\n#28 [admin build 8/8] RUN --mount=type=cache,target=/root/.cache/go-build CGO_ENABLED=0 go build -trimpath -buildvcs=false -ldflags=\"-s -w -buildid=\" -o /out/wiring-preview ./internal/integration/wiringfixture\n#28 CACHED\n\n#22 [admin build 6/7] COPY internal ./internal\n#22 CACHED\n\n#29 [admin admin 1/1] COPY --from=build /out/identity-admin /identity-admin\n#29 CACHED\n\n#30 [mysql stage-1 4/5] COPY --from=gosu /src/LICENSE /usr/share/licenses/campus-gosu/LICENSE\n#30 CACHED\n\n#31 [mysql gosu 4/4] RUN tar -xzf /tmp/gosu.tar.gz --strip-components=1 -C /src     && GOTOOLCHAIN=local CGO_ENABLED=0 go build -trimpath -buildvcs=false -o /out/gosu .\n#31 CACHED\n\n#32 [mysql stage-1 3/5] COPY --from=gosu /out/gosu /usr/local/bin/gosu\n#32 CACHED\n\n#33 [mysql stage-1 2/5] RUN microdnf remove -y mysql-shell     && microdnf clean all     && rm -rf -- /usr/lib/mysqlsh     && ! command -v mysqlsh     && test ! -d /usr/lib/mysqlsh     && mysqld --version | grep '8.4.13'     && mysql --version\n#33 CACHED\n\n#34 [mysql gosu 3/4] ADD --checksum=sha256:cd9719b775dbfedae53923c9b0dc792b66d42c51e0b36652ed6f747fbadc0164 https://codeload.github.com/tianon/gosu/tar.gz/refs/tags/1.19 /tmp/gosu.tar.gz\n#34 CACHED\n\n#25 [mysql build 2/7] WORKDIR /src\n#25 CACHED\n\n#35 [mysql stage-1 5/5] RUN gosu --version     && test \"$(gosu mysql id -u)\" = 999     && test \"$(gosu mysql id -g)\" = 999\n#35 CACHED\n\n#36 [frontend build 6/8] COPY src ./src\n#36 CACHED\n\n#37 [frontend build 7/8] COPY public ./public\n#37 CACHED\n\n#38 [frontend build 8/8] RUN npm run build\n#38 CACHED\n\n#39 [frontend build 3/8] COPY package.json package-lock.json ./\n#39 CACHED\n\n#40 [frontend stage-1 2/3] COPY nginx.conf /etc/nginx/nginx.conf\n#40 CACHED\n\n#41 [frontend build 4/8] RUN --mount=type=cache,target=/root/.npm npm ci --ignore-scripts --prefer-offline --fetch-retries=5 --fetch-retry-mintimeout=1000 --fetch-retry-maxtimeout=10000 --fetch-timeout=60000\n#41 CACHED\n\n#42 [frontend build 2/8] WORKDIR /src\n#42 CACHED\n\n#43 [frontend build 5/8] COPY index.html tsconfig.json vite.config.ts ./\n#43 CACHED\n\n#44 [frontend stage-1 3/3] COPY --from=build /src/dist /usr/share/nginx/html\n#44 CACHED\n\n#45 [frontend] exporting to image\n#45 exporting layers done\n#45 exporting manifest sha256:c6dbf53759211138b8628c2aea490b82c7709b3fa783a7e46e290d55eecc6228\n#45 exporting manifest sha256:c6dbf53759211138b8628c2aea490b82c7709b3fa783a7e46e290d55eecc6228 0.1s done\n#45 exporting config sha256:95429f388cdfc690400d163682899090ac90b0d2e3ccb170c6d0941d74bd8fb2\n#45 exporting config sha256:95429f388cdfc690400d163682899090ac90b0d2e3ccb170c6d0941d74bd8fb2 0.1s done\n#45 exporting attestation manifest sha256:6d74a62746662ea1f5bb46d100a90ba205e0d0b17430842c423f0c68e071e6a7\n#45 exporting attestation manifest sha256:6d74a62746662ea1f5bb46d100a90ba205e0d0b17430842c423f0c68e071e6a7 0.1s done\n#45 exporting manifest list sha256:15283937b36d1cd80d351d26966604679c533d48b860e58abec7f9e5ef271724\n#45 exporting manifest list sha256:15283937b36d1cd80d351d26966604679c533d48b860e58abec7f9e5ef271724 0.0s done\n#45 naming to docker.io/library/campus-wiring-00c5599cbb73-frontend:latest 0.0s done\n#45 unpacking to docker.io/library/campus-wiring-00c5599cbb73-frontend:latest 0.0s done\n#45 DONE 0.5s\n\n#46 [mysql] exporting to image\n#46 exporting layers done\n#46 exporting manifest sha256:cd3ba173040c359a1e551db7fcdd04908148b81f48df92aa3f1c90fe5418fd36 0.1s done\n#46 exporting config sha256:b8ab9ab0db810a37f8834410971b95a5f898660aa48c550167c4be21c37d0e0c 0.1s done\n#46 exporting attestation manifest sha256:fe4ddb7f1f64d59ae2ff6fc246a2190b37fed1caf485b3f04a8e1ab39a9afec0 0.1s done\n#46 exporting manifest list sha256:4aaaa85f42ea2af4c683c14ef9f410d4bffbe66024fc02b0c1469a316bcd9fbc 0.1s done\n#46 naming to docker.io/library/campus-wiring-00c5599cbb73-mysql:latest 0.0s done\n#46 unpacking to docker.io/library/campus-wiring-00c5599cbb73-mysql:latest 0.0s done\n#46 DONE 0.5s\n\n#47 [admin] exporting to image\n#47 exporting layers done\n#47 exporting manifest sha256:a74907e69714a94d7315752726a3109636bc4171f9f4ea928bafbf13318be1e6 0.0s done\n#47 exporting config sha256:523bbc31236b0757a4f6a53fc4b1d5e8b204220673dba4ddb06f68c08b0ab258 0.1s done\n#47 exporting attestation manifest sha256:f3f7848e709273de69e2d840d1bb8d6b11ced55f692238bafd50e03fed7e5594 0.1s done\n#47 exporting manifest list sha256:f9583a6199c88499a5962f21a64e4f3ac022b5ea96ac0c4d06e24563ed067290 0.1s done\n#47 naming to docker.io/library/campus-wiring-00c5599cbb73-admin:latest 0.0s done\n#47 unpacking to docker.io/library/campus-wiring-00c5599cbb73-admin:latest 0.1s done\n#47 DONE 0.6s\n\n#48 [backend] exporting to image\n#48 exporting layers done\n#48 exporting manifest sha256:9a739107fe1abb4ae06feccaf5ec36b239bc0d661332e052fc404f67a02a365c 0.0s done\n#48 exporting config sha256:acc2d6addb934375841e3aa4fda044ba1e19d46da46ad492f4ef0a3e0fbecb2f 0.1s done\n#48 exporting attestation manifest sha256:ef8d1d0ba19f47726fd862eebd5a822eb10997933507105a716a25743521bd39 0.1s done\n#48 exporting manifest list sha256:1237f697513e3ab22392d8d627e7446cffb776171c61bdc31ceea7d8e97ee94f 0.1s done\n#48 naming to docker.io/library/campus-wiring-00c5599cbb73-backend:latest 0.0s done\n#48 unpacking to docker.io/library/campus-wiring-00c5599cbb73-backend:latest 0.1s done\n#48 DONE 0.6s\n\n#49 [frontend] resolving provenance for metadata file\n#49 DONE 0.2s\n\n#50 [backend] resolving provenance for metadata file\n#50 DONE 0.1s\n\n#51 [admin] resolving provenance for metadata file\n#51 DONE 0.2s\n\n#52 [mysql] resolving provenance for metadata file\n#52 DONE 0.0s\n Image campus-wiring-00c5599cbb73-frontend Building \n Image campus-wiring-00c5599cbb73-mysql Building \n Image campus-wiring-00c5599cbb73-admin Building \n Image campus-wiring-00c5599cbb73-backend Building \n Image campus-wiring-00c5599cbb73-frontend Built \n Image campus-wiring-00c5599cbb73-mysql Built \n Image campus-wiring-00c5599cbb73-admin Built \n Image campus-wiring-00c5599cbb73-backend Built \n"
+    },
+    {
+      "label": "start fresh persistent MySQL",
+      "exit_code": 0,
+      "expected": 0,
+      "output": " Network campus-wiring-00c5599cbb73_data Creating \n Volume campus-wiring-00c5599cbb73_mysql-data Creating \n Network campus-wiring-00c5599cbb73_data Creating \n Volume campus-wiring-00c5599cbb73_mysql-data Creating \n Volume campus-wiring-00c5599cbb73_mysql-data Created \n Volume campus-wiring-00c5599cbb73_mysql-data Created \n Network campus-wiring-00c5599cbb73_data Created \n Network campus-wiring-00c5599cbb73_data Created \n Container campus-wiring-00c5599cbb73-mysql-1 Creating \n Container campus-wiring-00c5599cbb73-mysql-1 Created \n Container campus-wiring-00c5599cbb73-mysql-1 Starting \n Container campus-wiring-00c5599cbb73-mysql-1 Started \n Container campus-wiring-00c5599cbb73-mysql-1 Waiting \n Container campus-wiring-00c5599cbb73-mysql-1 Healthy \n"
+    },
+    {
+      "label": "offline migrations",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "identity administration completed\n Container campus-wiring-00c5599cbb73-admin-run-89805a418a32 Creating \n Container campus-wiring-00c5599cbb73-admin-run-89805a418a32 Created \n"
+    },
+    {
+      "label": "offline manifest/schema check",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "identity administration completed\n Container campus-wiring-00c5599cbb73-admin-run-6ed1a2e95e40 Creating \n Container campus-wiring-00c5599cbb73-admin-run-6ed1a2e95e40 Created \n"
+    },
+    {
+      "label": "database CA file missing is rejected",
+      "exit_code": 2,
+      "expected": "nonzero",
+      "output": " Container campus-wiring-00c5599cbb73-admin-run-091fb2f1f9e7 Creating \n Container campus-wiring-00c5599cbb73-admin-run-091fb2f1f9e7 Created \noffline configuration invalid\n\n"
+    },
+    {
+      "label": "valid but wrong database trust certificate is rejected",
+      "exit_code": 1,
+      "expected": "nonzero",
+      "output": " Container campus-wiring-00c5599cbb73-admin-run-34350330c081 Creating \n Container campus-wiring-00c5599cbb73-admin-run-34350330c081 Created \ndatabase unavailable\n\n"
+    },
+    {
+      "label": "offline initialize via stdin",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "identity administration completed\n Container campus-wiring-00c5599cbb73-admin-run-54fdc1021be8 Creating \n Container campus-wiring-00c5599cbb73-admin-run-54fdc1021be8 Created \n"
+    },
+    {
+      "label": "repeat initialize does not replace existing password",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "identity administration completed\n Container campus-wiring-00c5599cbb73-admin-run-b06c3164b42e Creating \n Container campus-wiring-00c5599cbb73-admin-run-b06c3164b42e Created \n"
+    },
+    {
+      "label": "trusted fixture class lookup on database-only network",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "=== RUN   TestIDFWiring\n--- PASS: TestIDFWiring (0.02s)\nPASS\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/integration/wiring\t0.029s\n"
+    },
+    {
+      "label": "start isolated Go and HTTPS frontend",
+      "exit_code": 1,
+      "expected": 0,
+      "output": " Container campus-wiring-00c5599cbb73-backend-1 Creating \n Network campus-wiring-00c5599cbb73_ingress Creating \n Network campus-wiring-00c5599cbb73_ingress Creating \n Network campus-wiring-00c5599cbb73_ingress Error Error response from daemon: all predefined address pools have been fully subnetted\n network:ingress failed to create network campus-wiring-00c5599cbb73_ingress: Error response from daemon: all predefined address pools have been fully subnetted \nfailed to create network campus-wiring-00c5599cbb73_ingress: Error response from daemon: all predefined address pools have been fully subnetted\n"
+    },
+    {
+      "label": "failure diagnostics before cleanup",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "2026-11-08T05:44:27.879515Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.\n2026-11-08T05:44:28.204599Z 0 [Warning] [MY-010068] [Server] CA certificate /run/mysql-tls/ca.pem is self signed.\n2026-11-08T05:44:28.204634Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.\n2026-11-08T05:44:28.210411Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.\n2026-11-08T05:44:28.247133Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Socket: /var/run/mysqld/mysqlx.sock\n2026-11-08T05:44:28.247462Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.4.13'  socket: '/var/run/mysqld/mysqld.sock'  port: 0  MySQL Community Server - GPL.\n2026-11-08 05:44:28+00:00 [Note] [Entrypoint]: Temporary server started.\n'/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'\n\n2026-11-08 05:44:29+00:00 [Note] [Entrypoint]: /usr/local/bin/docker-entrypoint.sh: running /docker-entrypoint-initdb.d/initialize.sql\n\n\n2026-11-08 05:44:29+00:00 [Note] [Entrypoint]: Stopping temporary server\n2026-11-08T05:44:29.868540Z 11 [System] [MY-013172] [Server] Received SHUTDOWN from user root. Shutting down mysqld (Version: 8.4.13).\n2026-11-08T05:44:30.562048Z 0 [System] [MY-010910] [Server] /usr/sbin/mysqld: Shutdown complete (mysqld 8.4.13)  MySQL Community Server - GPL.\n2026-11-08T05:44:30.562074Z 0 [System] [MY-015016] [Server] MySQL Server - end.\n2026-11-08 05:44:30+00:00 [Note] [Entrypoint]: Temporary server stopped\n\n2026-11-08 05:44:30+00:00 [Note] [Entrypoint]: MySQL init process done. Ready for start up.\n\n2026-11-08T05:44:30.882566Z 0 [System] [MY-015015] [Server] MySQL Server - start.\n2026-11-08T05:44:31.084178Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.13) starting as process 1\n2026-11-08T05:44:31.084181Z 0 [System] [MY-015150] [Server] Server version with update: '8.4.13.0'\n2026-11-08T05:44:31.090038Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.\n2026-11-08T05:44:31.490346Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.\n2026-11-08T05:44:31.766579Z 0 [Warning] [MY-010068] [Server] CA certificate /run/mysql-tls/ca.pem is self signed.\n2026-11-08T05:44:31.766623Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.\n2026-11-08T05:44:31.772990Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.\n2026-11-08T05:44:31.801480Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock\n2026-11-08T05:44:31.801545Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.4.13'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.\n"
+    },
+    {
+      "label": "remove only this disposable project and test data volume",
+      "exit_code": 0,
+      "expected": 0,
+      "output": " Container campus-wiring-00c5599cbb73-backend-1 Stopping \n Container campus-wiring-00c5599cbb73-mysql-1 Stopping \n Container campus-wiring-00c5599cbb73-backend-1 Stopped \n Container campus-wiring-00c5599cbb73-backend-1 Removing \n Container campus-wiring-00c5599cbb73-backend-1 Removed \n Container campus-wiring-00c5599cbb73-mysql-1 Stopped \n Container campus-wiring-00c5599cbb73-mysql-1 Removing \n Container campus-wiring-00c5599cbb73-mysql-1 Removed \n Volume campus-wiring-00c5599cbb73_mysql-data Removing \n Network campus-wiring-00c5599cbb73_data Removing \n Volume campus-wiring-00c5599cbb73_mysql-data Removed \n Network campus-wiring-00c5599cbb73_data Removed \n"
+    },
+    {
+      "label": "remove dedicated proxy network",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "campus-wiring-00c5599cbb73\n"
+    }
+  ],
+  "errors": [
+    "start isolated Go and HTTPS frontend: unexpected exit status; sanitized evidence saved"
+  ],
+  "exit_code": 1
+}

@@ -65,3 +65,10 @@ test('IDF-SC-17/18 isolated wiring keeps secrets, ports and current phase separa
   assert.match(nginx, /access_log off;/)
   assert.match(nginx, /client_max_body_size 0;/)
 })
+import { verificationSubnets } from './verification-subnets.mjs'
+
+test('IDF-SC-18 verification reserves distinct data/ingress subnets without consuming exhausted default pools', () => {
+  assert.deepEqual(verificationSubnets(['10.240.0.0/23', '10.240.3.0/24']), ['10.240.2.0/24', '10.240.4.0/24'])
+  assert.deepEqual(verificationSubnets(['10.0.0.0/9']), ['10.240.0.0/24', '10.240.1.0/24'])
+  assert.throws(() => verificationSubnets(['10.240.0.0/16']), /No isolated verification subnets/)
+})

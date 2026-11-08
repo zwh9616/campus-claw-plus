@@ -6,6 +6,7 @@ import { randomBytes } from 'node:crypto'
 import { parseEnv } from 'node:util'
 import { validateWiringInputs } from './identity-compose.mjs'
 import { hostRequest, verifyHostIngress } from './identity-host-ingress.mjs'
+import { verificationSubnets } from './verification-subnets.mjs'
 
 const { goImage } = JSON.parse(readFileSync('scripts/toolchain.json', 'utf8'))
 const id = 'campus-wiring-' + randomBytes(6).toString('hex')
@@ -60,12 +61,12 @@ try {
   if(ids.status!==0)throw new Error('Network inventory unavailable')
   const inventory=spawnSync('docker',['network','inspect','--format','{{range .IPAM.Config}}{{.Subnet}} {{end}}',...ids.stdout.trim().split(/\s+/)],{encoding:'utf8',timeout:30000})
   if(inventory.status!==0)throw new Error('Network prefix inventory unavailable')
-  const integer=ip=>ip.split('.').map(Number).reduce((n,o)=>n*256+o,0)
-  const occupied=[...inventory.stdout.matchAll(/(\d+\.\d+\.\d+\.\d+)\/(\d+)/g)].map(m=>[integer(m[1]),integer(m[1])+2**(32-Number(m[2]))-1])
-  let dataSubnet
-  for(let n=0;n<256;n++){const base=integer(`10.240.${n}.0`);if(occupied.every(([lo,hi])=>base+255<lo||base>hi)){dataSubnet=`10.240.${n}.0/24`;break}}
-  if(!dataSubnet)throw new Error('No isolated test subnet available')
-  writeFileSync(resolve(directory,'network-override.json'),JSON.stringify({networks:{data:{ipam:{config:[{subnet:dataSubnet}]}}}}))
+  const occupied = [...inventory.stdout.matchAll(/(\d+\.\d+\.\d+\.\d+)\/(\d+)/g)].map(m => m[0])
+  const [dataSubnet, ingressSubnet] = verificationSubnets(occupied)
+  writeFileSync(resolve(directory,'network-override.json'),JSON.stringify({networks:{
+    data:{ipam:{config:[{subnet:dataSubnet}]}},
+    ingress:{ipam:{config:[{subnet:ingressSubnet}]}},
+  }}))
   validateWiringInputs(env, { ephemeral: true })
   const envText = object => Object.entries(object).map(([k,v]) => `${k}=${JSON.stringify(v)}`).join('\n') + '\n'
   writeFileSync(resolve(directory, 'compose.env'), envText(env), { mode: 0o600 })

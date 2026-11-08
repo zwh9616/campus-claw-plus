@@ -1,0 +1,91 @@
+{
+  "reviewer": "小张 / zwh9616 (AI辅助)",
+  "base_head": "d0db5480fb644bb5c6304c8ff75628581997f984",
+  "scope": "Windows Docker Desktop host ingress review; no native browser claim",
+  "time": "2026-11-08T05:55:09.110Z",
+  "node": "v25.2.1",
+  "docker": "29.8.0",
+  "gate": {
+    "time": "2026-11-08T05:55:09.110Z",
+    "node": "v25.2.1",
+    "exitCode": 0,
+    "results": [
+      {
+        "name": "check",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 36381
+      },
+      {
+        "name": "audit",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 17680
+      },
+      {
+        "name": "secret-scan",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 3493
+      },
+      {
+        "name": "verify",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 376415
+      }
+    ],
+    "notRun": []
+  },
+  "scans": {
+    "mysql": {
+      "HIGH": 0,
+      "CRITICAL": 0,
+      "raw_sha256": "74236996daf0879ae1de2c45911265d9a11ff94d834df005b943515e7f9d550a",
+      "gzip": "zhang-host-mysql-scan-2026-11-08.json.gz",
+      "gzip_sha256": "a5aa6ca9e083f6e6300846671bebd0a46acec2ef4701e0868e3a141cc9d484b1",
+      "image_id": "sha256:470eb9e79c456b909db1436386bdf25100ef10d5b2fc6c9f1341cc0a7709d857"
+    },
+    "backend": {
+      "HIGH": 0,
+      "CRITICAL": 0,
+      "raw_sha256": "e117f9073940bc86b12bc57868af450648ba98f721812cfa131ad2e2dfd1c013",
+      "gzip": "zhang-host-backend-scan-2026-11-08.json.gz",
+      "gzip_sha256": "8e91ce483b28de887b00599af2dba6d73923472083aaff6ed44f8e13d5a86c12",
+      "image_id": "sha256:08294ccdcf5a2ecac211a3dbddbdf87c5a11629ffcd89935439827c382b7d3b1"
+    },
+    "admin": {
+      "HIGH": 0,
+      "CRITICAL": 0,
+      "raw_sha256": "35f5b3f2c8e63b61957b8193836246b46e586ce76b9294c662fd7b9770db47a9",
+      "gzip": "zhang-host-admin-scan-2026-11-08.json.gz",
+      "gzip_sha256": "a0b78d4db94ddb1b50efb4ca9bf367fabbdc09f6a2e5b061b4ed433477bd6b84",
+      "image_id": "sha256:578561e56653d4d62d2f2956649c713913dc42af0b1f44ac441163581ebe75c9"
+    },
+    "frontend": {
+      "HIGH": 0,
+      "CRITICAL": 0,
+      "raw_sha256": "1b14d026cce78d6ee7e3fa856f272d6648e015f2c682d8ebecb35ded505e7c90",
+      "gzip": "zhang-host-frontend-scan-2026-11-08.json.gz",
+      "gzip_sha256": "40ac6c9704cc7c4d7de182a6e53590499ec8e6c44e82b65794877d50a9600663",
+      "image_id": "sha256:5b96fd7759fb7c0b3c0b0d090d1c99e85e8415fab480df9a058040269bd0f357"
+    }
+  },
+  "tested_file_sha256": {
+    "scripts/verification-subnets.mjs": "78d49ec2abe4db4f277bb1376ff9d44e8403899a9a27a458fdeb7cc8b60265bf",
+    "scripts/verify-identity-wiring.mjs": "3ec953defae2b45dbfdc4469bc46deb3914a14af68ffcedb0686257251b1db95",
+    "scripts/identity-wiring.test.mjs": "49234e61f2f1fa3cea86b1d9cbc586b643d3acf7d4163ee96bddd8d6e97aba5a",
+    "scripts/identity-host-ingress.mjs": "b836421506578245642a2911892203c44b7c500c2b67216f96f842a51f82043c",
+    "compose.yaml": "29e97627f068082ea9b2f85f276d53eae5dddb03f89012c1c9f39affd5614ec8",
+    "deploy/identity/compose.yaml": "4522a060c8151c09396f8d35c39f0c206f37140576c9645f4c2ccdd91da2aeab"
+  },
+  "first_gate_exit": 1,
+  "first_failure": "Docker automatic address pools exhausted creating ingress; retained original failure",
+  "fix": "Only disposable data/ingress IPAM selects two non-overlapping free /24 ranges; no unrelated networks removed",
+  "native_browser": "pending separately in 02",
+  "merge_performed": false
+}
