@@ -1,0 +1,113 @@
+{
+  "pr": {
+    "number": 15,
+    "html_url": "https://github.com/zwh9616/campus-claw-plus/pull/15",
+    "state": "closed",
+    "merged": true,
+    "mergeable": null,
+    "mergeable_state": "unknown",
+    "merge_commit_sha": "3ef79f40e184f75ab4b8d1435c9ea57af56014f5",
+    "head": {
+      "ref": "codex/02-page-samples-2026-11-06",
+      "sha": "90976b9a6ef8cef5fdb4f1559b64819dc39a2689"
+    },
+    "base": {
+      "ref": "main",
+      "sha": "05965056098e6cb3b4d8411d62cbac482697b31c"
+    }
+  },
+  "head_ci": {
+    "id": 42455829549,
+    "head_sha": "90976b9a6ef8cef5fdb4f1559b64819dc39a2689",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/zwh9616/campus-claw-plus/actions/runs/42455829549"
+  },
+  "main_ci": {
+    "id": 42456168251,
+    "head_sha": "3ef79f40e184f75ab4b8d1435c9ea57af56014f5",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/zwh9616/campus-claw-plus/actions/runs/42456168251"
+  },
+  "reviews": [
+    {
+      "id": 5810440803,
+      "state": "COMMENTED",
+      "commit_id": "b078747e122f4cdb05fe51ce08dea1a492965826",
+      "submitted_at": "2026-11-07T05:59:37Z",
+      "login": "zwh9616"
+    },
+    {
+      "id": 5811346162,
+      "state": "COMMENTED",
+      "commit_id": "bd581ecad4d2e52e13034f0e0fdf9bafa59f18a2",
+      "submitted_at": "2026-11-07T09:30:04Z",
+      "login": "zwh9616"
+    },
+    {
+      "id": 5816948613,
+      "state": "APPROVED",
+      "commit_id": "90976b9a6ef8cef5fdb4f1559b64819dc39a2689",
+      "submitted_at": "2026-11-08T06:47:17Z",
+      "login": "zwh9616"
+    }
+  ],
+  "protection": {
+    "url": "https://api.github.com/repos/zwh9616/campus-claw-plus/branches/main/protection",
+    "required_status_checks": {
+      "url": "https://api.github.com/repos/zwh9616/campus-claw-plus/branches/main/protection/required_status_checks",
+      "strict": true,
+      "contexts": [
+        "check"
+      ],
+      "contexts_url": "https://api.github.com/repos/zwh9616/campus-claw-plus/branches/main/protection/required_status_checks/contexts",
+      "checks": [
+        {
+          "context": "check",
+          "app_id": 15368
+        }
+      ]
+    },
+    "required_pull_request_reviews": {
+      "url": "https://api.github.com/repos/zwh9616/campus-claw-plus/branches/main/protection/required_pull_request_reviews",
+      "dismiss_stale_reviews": true,
+      "require_code_owner_reviews": false,
+      "require_last_push_approval": false,
+      "required_approving_review_count": 1
+    },
+    "required_signatures": {
+      "url": "https://api.github.com/repos/zwh9616/campus-claw-plus/branches/main/protection/required_signatures",
+      "enabled": false
+    },
+    "enforce_admins": {
+      "url": "https://api.github.com/repos/zwh9616/campus-claw-plus/branches/main/protection/enforce_admins",
+      "enabled": true
+    },
+    "required_linear_history": {
+      "enabled": false
+    },
+    "allow_force_pushes": {
+      "enabled": false
+    },
+    "allow_deletions": {
+      "enabled": false
+    },
+    "block_creations": {
+      "enabled": false
+    },
+    "required_conversation_resolution": {
+      "enabled": false
+    },
+    "lock_branch": {
+      "enabled": false
+    },
+    "allow_fork_syncing": {
+      "enabled": false
+    }
+  },
+  "fetched_at": "2026-11-08T06:54:18.699063+00:00",
+  "source": "GitHub REST selected public metadata; review bodies omitted",
+  "merge_parents": "3ef79f40e184f75ab4b8d1435c9ea57af56014f5 05965056098e6cb3b4d8411d62cbac482697b31c 90976b9a6ef8cef5fdb4f1559b64819dc39a2689",
+  "main_equals_reviewed_tree": true
+}
