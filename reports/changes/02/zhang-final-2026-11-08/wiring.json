@@ -1,0 +1,380 @@
+{
+  "time": "2026-11-08T06:30:04.169Z",
+  "scope": "default production Compose and real cmd/server with disposable test credentials/CA; no native browser or operator deployment claim",
+  "results": [
+    {
+      "label": "generate disposable wiring credentials/certificates",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "Disposable credentials and CA generated; values omitted\n"
+    },
+    {
+      "label": "dedicated internal proxy network",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "1341ce259822b747f73628d3b3464b365033d061b452daf2c0386d0e2b2517c1\n"
+    },
+    {
+      "label": "discover allocated proxy address",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "[{\"Subnet\":\"192.168.192.0/20\",\"Gateway\":\"192.168.192.1\"}]\n"
+    },
+    {
+      "label": "release automatically allocated proxy network",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "campus-wiring-8a09bb446f6f\n"
+    },
+    {
+      "label": "create explicit isolated proxy subnet",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "2a705c8ef4132c95c221bf701796090ffdcdd76aade91bcf5628e7d0868bcc75\n"
+    },
+    {
+      "label": "validate explicit candidate compose",
+      "exit_code": 0,
+      "expected": 0,
+      "output": ""
+    },
+    {
+      "label": "SC-09 missing HTTP_PORT is rejected before startup",
+      "exit_code": 1,
+      "expected": "nonzero",
+      "output": "error while interpolating services.backend.environment.HTTP_PORT: required variable HTTP_PORT is missing a value: Fill HTTP_PORT in the root .env\nerror while interpolating services.frontend.environment.HTTP_PORT: required variable HTTP_PORT is missing a value: Fill HTTP_PORT in the root .env\n"
+    },
+    {
+      "label": "missing HTTPS key is rejected before startup",
+      "exit_code": 1,
+      "expected": "nonzero",
+      "output": "error while interpolating services.frontend.volumes.[].source: required variable HTTPS_KEY_FILE is missing a value: Provide HTTPS_KEY_FILE\n"
+    },
+    {
+      "label": "build pinned MySQL, offline admin and production applications",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "#1 [internal] load local bake definitions\n#1 reading from stdin 2.50kB 0.0s done\n#1 DONE 0.0s\n\n#2 [backend internal] load build definition from Dockerfile\n#2 transferring dockerfile: 577B done\n#2 DONE 0.0s\n\n#3 [admin internal] load build definition from Dockerfile.identity\n#3 transferring dockerfile: 849B done\n#3 DONE 0.1s\n\n#4 [mysql internal] load build definition from Dockerfile\n#4 transferring dockerfile: 1.37kB done\n#4 DONE 0.1s\n\n#5 [frontend internal] load build definition from Dockerfile\n#5 transferring dockerfile: 696B done\n#5 DONE 0.1s\n\n#6 [backend internal] load metadata for docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb\n#6 DONE 0.0s\n\n#7 [backend internal] load .dockerignore\n#7 transferring context: 66B done\n#7 DONE 0.0s\n\n#8 [admin internal] load build context\n#8 DONE 0.0s\n\n#6 [mysql internal] load metadata for docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb\n#6 DONE 0.2s\n\n#9 [admin build 1/8] FROM docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb\n#9 resolve docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb\n#9 resolve docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb 0.1s done\n#9 DONE 0.1s\n\n#10 [mysql internal] load metadata for docker.io/library/mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902\n#10 DONE 0.1s\n\n#11 [frontend internal] load metadata for docker.io/library/node@sha256:fe4f6d74e20370acb04ad889077d14d0f64a9c8ea6a42bc60cddf1e844699914\n#11 DONE 0.1s\n\n#12 [frontend internal] load metadata for docker.io/library/nginx@sha256:583b7f2fce1cdb8da5ad5c39ebd3c33b98b87d493190e548bdee1fa8c619c311\n#12 DONE 0.2s\n\n#13 [mysql internal] load .dockerignore\n#13 transferring context: 2B done\n#13 DONE 0.0s\n\n#14 [mysql gosu 3/4] ADD --checksum=sha256:cd9719b775dbfedae53923c9b0dc792b66d42c51e0b36652ed6f747fbadc0164 https://codeload.github.com/tianon/gosu/tar.gz/refs/tags/1.19 /tmp/gosu.tar.gz\n#14 DONE 0.0s\n\n#15 [frontend internal] load .dockerignore\n#15 transferring context: 78B done\n#15 DONE 0.0s\n\n#16 [frontend internal] load build context\n#16 DONE 0.0s\n\n#17 [frontend stage-1 1/3] FROM docker.io/library/nginx@sha256:583b7f2fce1cdb8da5ad5c39ebd3c33b98b87d493190e548bdee1fa8c619c311\n#17 resolve docker.io/library/nginx@sha256:583b7f2fce1cdb8da5ad5c39ebd3c33b98b87d493190e548bdee1fa8c619c311\n#17 resolve docker.io/library/nginx@sha256:583b7f2fce1cdb8da5ad5c39ebd3c33b98b87d493190e548bdee1fa8c619c311 0.1s done\n#17 DONE 0.1s\n\n#18 [mysql stage-1 1/5] FROM docker.io/library/mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902\n#18 resolve docker.io/library/mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902 0.0s done\n#18 DONE 0.1s\n\n#8 [admin internal] load build context\n#8 transferring context: 15.75kB 0.0s done\n#8 DONE 0.1s\n\n#19 [mysql gosu 3/4] ADD --checksum=sha256:cd9719b775dbfedae53923c9b0dc792b66d42c51e0b36652ed6f747fbadc0164 https://codeload.github.com/tianon/gosu/tar.gz/refs/tags/1.19 /tmp/gosu.tar.gz\n#19 CACHED\n\n#20 [mysql gosu 4/4] RUN tar -xzf /tmp/gosu.tar.gz --strip-components=1 -C /src     && GOTOOLCHAIN=local CGO_ENABLED=0 go build -trimpath -buildvcs=false -o /out/gosu .\n#20 CACHED\n\n#21 [mysql stage-1 2/5] RUN microdnf remove -y mysql-shell     && microdnf clean all     && rm -rf -- /usr/lib/mysqlsh     && ! command -v mysqlsh     && test ! -d /usr/lib/mysqlsh     && mysqld --version | grep '8.4.13'     && mysql --version\n#21 CACHED\n\n#22 [mysql build 2/8] WORKDIR /src\n#22 CACHED\n\n#23 [mysql stage-1 3/5] COPY --from=gosu /out/gosu /usr/local/bin/gosu\n#23 CACHED\n\n#24 [mysql stage-1 4/5] COPY --from=gosu /src/LICENSE /usr/share/licenses/campus-gosu/LICENSE\n#24 CACHED\n\n#25 [frontend build 1/8] FROM docker.io/library/node@sha256:fe4f6d74e20370acb04ad889077d14d0f64a9c8ea6a42bc60cddf1e844699914\n#25 resolve docker.io/library/node@sha256:fe4f6d74e20370acb04ad889077d14d0f64a9c8ea6a42bc60cddf1e844699914 0.1s done\n#25 DONE 0.1s\n\n#26 [mysql stage-1 5/5] RUN gosu --version     && test \"$(gosu mysql id -u)\" = 999     && test \"$(gosu mysql id -g)\" = 999\n#26 CACHED\n\n#27 [backend build 7/7] RUN --mount=type=cache,target=/root/.cache/go-build CGO_ENABLED=0 go build -trimpath -buildvcs=false -ldflags=\"-s -w -buildid=\" -o /out/server ./cmd/server\n#27 CACHED\n\n#28 [admin build 4/8] COPY vendor ./vendor\n#28 CACHED\n\n#29 [admin build 6/8] COPY internal ./internal\n#29 CACHED\n\n#22 [admin build 2/8] WORKDIR /src\n#22 CACHED\n\n#30 [admin build 7/8] RUN --mount=type=cache,target=/root/.cache/go-build CGO_ENABLED=0 go build -trimpath -buildvcs=false -ldflags=\"-s -w -buildid=\" -o /out/identity-admin ./cmd/identity-admin\n#30 CACHED\n\n#31 [admin build 3/8] COPY go.mod go.sum ./\n#31 CACHED\n\n#32 [admin build 8/8] RUN --mount=type=cache,target=/root/.cache/go-build CGO_ENABLED=0 go build -trimpath -buildvcs=false -ldflags=\"-s -w -buildid=\" -o /out/wiring-preview ./internal/integration/wiringfixture\n#32 CACHED\n\n#33 [admin build 5/8] COPY cmd ./cmd\n#33 CACHED\n\n#34 [admin admin 1/1] COPY --from=build /out/identity-admin /identity-admin\n#34 CACHED\n\n#35 [backend stage-1 1/1] COPY --from=build /out/server /server\n#35 CACHED\n\n#16 [frontend internal] load build context\n#16 transferring context: 756B done\n#16 DONE 0.0s\n\n#36 [frontend build 8/8] RUN npm run build\n#36 CACHED\n\n#37 [frontend build 7/8] COPY public ./public\n#37 CACHED\n\n#38 [frontend build 3/8] COPY package.json package-lock.json ./\n#38 CACHED\n\n#39 [frontend build 2/8] WORKDIR /src\n#39 CACHED\n\n#40 [frontend build 6/8] COPY src ./src\n#40 CACHED\n\n#41 [frontend stage-1 2/3] COPY nginx.conf /etc/nginx/nginx.conf\n#41 CACHED\n\n#42 [frontend build 5/8] COPY index.html tsconfig.json vite.config.ts ./\n#42 CACHED\n\n#43 [frontend build 4/8] RUN --mount=type=cache,target=/root/.npm npm ci --ignore-scripts --prefer-offline --fetch-retries=5 --fetch-retry-mintimeout=1000 --fetch-retry-maxtimeout=10000 --fetch-timeout=60000\n#43 CACHED\n\n#44 [frontend stage-1 3/3] COPY --from=build /src/dist /usr/share/nginx/html\n#44 CACHED\n\n#45 [backend] exporting to image\n#45 exporting layers done\n#45 exporting manifest sha256:290d8db348e712a5c658e54806b6b3dfa51016c4d501afdff3b46dd1f7cca22a\n#45 exporting manifest sha256:290d8db348e712a5c658e54806b6b3dfa51016c4d501afdff3b46dd1f7cca22a 0.1s done\n#45 exporting config sha256:b6b07be95961e46b094180dd031362a371e5abe8f7e3dc5d56762f8ec0395d46\n#45 exporting config sha256:b6b07be95961e46b094180dd031362a371e5abe8f7e3dc5d56762f8ec0395d46 0.1s done\n#45 exporting attestation manifest sha256:9f2e1dc6f8814de6d4495a1565ece33b7db20cc340bdd523192bfa936fc1a0c6\n#45 exporting attestation manifest sha256:9f2e1dc6f8814de6d4495a1565ece33b7db20cc340bdd523192bfa936fc1a0c6 0.1s done\n#45 exporting manifest list sha256:e8e89b410314b4feff415905ce002c84940008135f8f3902ead862b890fefdc5 0.1s done\n#45 naming to docker.io/library/campus-wiring-8a09bb446f6f-backend:latest\n#45 naming to docker.io/library/campus-wiring-8a09bb446f6f-backend:latest 0.0s done\n#45 unpacking to docker.io/library/campus-wiring-8a09bb446f6f-backend:latest 0.0s done\n#45 DONE 0.6s\n\n#46 [mysql] exporting to image\n#46 exporting layers done\n#46 exporting manifest sha256:62bb7e9431d384b6a955925a1bbb74376046b71d7a02852485792ffe877872db 0.0s done\n#46 exporting config sha256:249872da7c8da983a5cd789736c58f8a2cd1075fd69e284f607ed6bbfa8b34f1 0.1s done\n#46 exporting attestation manifest sha256:a80882c5b6bb052b0eaa08957f2af412731bfd60ddbe67a71a4ca1820aca0640 0.2s done\n#46 exporting manifest list sha256:da1cd2a5db59a2d9e967d18269b79cc66a6580ebc735567882a8b156d0e8f991 0.1s done\n#46 naming to docker.io/library/campus-wiring-8a09bb446f6f-mysql:latest 0.1s done\n#46 unpacking to docker.io/library/campus-wiring-8a09bb446f6f-mysql:latest 0.0s done\n#46 DONE 0.6s\n\n#47 [admin] exporting to image\n#47 exporting layers done\n#47 exporting manifest sha256:20111acd7cccc01a5b850a00749fa7d53431f05b8722445ed1ce1d82ab7213e0 0.1s done\n#47 exporting config sha256:a6b236d7e8a38d49b4b25fb47114d21a7917fa60d0c3a83fe408000103c8a25b 0.1s done\n#47 exporting attestation manifest sha256:135c9ba32b1eec05b5403733ca7b8ae67ab0d45164bf10a25bc84f33c2abed11 0.1s done\n#47 exporting manifest list sha256:e2b5cb5118b0f880c4dda3570e7ee32b757cc936994882588373feb3d13a1d5b 0.1s done\n#47 naming to docker.io/library/campus-wiring-8a09bb446f6f-admin:latest 0.0s done\n#47 unpacking to docker.io/library/campus-wiring-8a09bb446f6f-admin:latest 0.0s done\n#47 DONE 0.6s\n\n#48 [frontend] exporting to image\n#48 exporting layers done\n#48 exporting manifest sha256:944ad793c70daf1bee881dfdc3854a4899dff053d9777143b3c82b1ce0bf772a 0.1s done\n#48 exporting config sha256:525623dc10885b074200aec825a01146a988323147e184cc97c764b86d08cc0a 0.1s done\n#48 exporting attestation manifest sha256:3cd17ee072fbc731dd8a30a4aaafa2dcde6c834acb0e19e936f9be11b923f5f3 0.1s done\n#48 exporting manifest list sha256:7f7a757cbbb39d5cda06e223630f5493d92f44c7de7de73c9f42838c60cc78f8 0.1s done\n#48 naming to docker.io/library/campus-wiring-8a09bb446f6f-frontend:latest 0.0s done\n#48 unpacking to docker.io/library/campus-wiring-8a09bb446f6f-frontend:latest 0.0s done\n#48 DONE 0.6s\n\n#49 [backend] resolving provenance for metadata file\n#49 ...\n\n#50 [admin] resolving provenance for metadata file\n#50 DONE 0.2s\n\n#51 [frontend] resolving provenance for metadata file\n#51 DONE 0.1s\n\n#49 [backend] resolving provenance for metadata file\n#49 DONE 0.3s\n\n#52 [mysql] resolving provenance for metadata file\n#52 DONE 0.0s\n Image campus-wiring-8a09bb446f6f-backend Building \n Image campus-wiring-8a09bb446f6f-frontend Building \n Image campus-wiring-8a09bb446f6f-mysql Building \n Image campus-wiring-8a09bb446f6f-admin Building \n Image campus-wiring-8a09bb446f6f-frontend Built \n Image campus-wiring-8a09bb446f6f-mysql Built \n Image campus-wiring-8a09bb446f6f-admin Built \n Image campus-wiring-8a09bb446f6f-backend Built \n"
+    },
+    {
+      "label": "start fresh persistent MySQL",
+      "exit_code": 0,
+      "expected": 0,
+      "output": " Network campus-wiring-8a09bb446f6f_data Creating \n Volume campus-wiring-8a09bb446f6f_mysql-data Creating \n Network campus-wiring-8a09bb446f6f_data Creating \n Volume campus-wiring-8a09bb446f6f_mysql-data Creating \n Volume campus-wiring-8a09bb446f6f_mysql-data Created \n Volume campus-wiring-8a09bb446f6f_mysql-data Created \n Network campus-wiring-8a09bb446f6f_data Created \n Network campus-wiring-8a09bb446f6f_data Created \n Container campus-wiring-8a09bb446f6f-mysql-1 Creating \n Container campus-wiring-8a09bb446f6f-mysql-1 Created \n Container campus-wiring-8a09bb446f6f-mysql-1 Starting \n Container campus-wiring-8a09bb446f6f-mysql-1 Started \n Container campus-wiring-8a09bb446f6f-mysql-1 Waiting \n Container campus-wiring-8a09bb446f6f-mysql-1 Healthy \n"
+    },
+    {
+      "label": "offline migrations",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "identity administration completed\n Container campus-wiring-8a09bb446f6f-admin-run-e93c07bf4472 Creating \n Container campus-wiring-8a09bb446f6f-admin-run-e93c07bf4472 Created \n"
+    },
+    {
+      "label": "offline manifest/schema check",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "identity administration completed\n Container campus-wiring-8a09bb446f6f-admin-run-9b5f4ea9ab52 Creating \n Container campus-wiring-8a09bb446f6f-admin-run-9b5f4ea9ab52 Created \n"
+    },
+    {
+      "label": "database CA file missing is rejected",
+      "exit_code": 2,
+      "expected": "nonzero",
+      "output": " Container campus-wiring-8a09bb446f6f-admin-run-3c411fffddf7 Creating \n Container campus-wiring-8a09bb446f6f-admin-run-3c411fffddf7 Created \noffline configuration invalid\n\n"
+    },
+    {
+      "label": "valid but wrong database trust certificate is rejected",
+      "exit_code": 1,
+      "expected": "nonzero",
+      "output": " Container campus-wiring-8a09bb446f6f-admin-run-2879552ebd16 Creating \n Container campus-wiring-8a09bb446f6f-admin-run-2879552ebd16 Created \ndatabase unavailable\n\n"
+    },
+    {
+      "label": "offline initialize via stdin",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "identity administration completed\n Container campus-wiring-8a09bb446f6f-admin-run-f1dc34bd8750 Creating \n Container campus-wiring-8a09bb446f6f-admin-run-f1dc34bd8750 Created \n"
+    },
+    {
+      "label": "repeat initialize does not replace existing password",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "identity administration completed\n Container campus-wiring-8a09bb446f6f-admin-run-8cf3cad58027 Creating \n Container campus-wiring-8a09bb446f6f-admin-run-8cf3cad58027 Created \n"
+    },
+    {
+      "label": "trusted fixture class lookup on database-only network",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "=== RUN   TestIDFWiring\n--- PASS: TestIDFWiring (0.02s)\nPASS\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/integration/wiring\t0.029s\n"
+    },
+    {
+      "label": "start isolated Go and HTTPS frontend",
+      "exit_code": 0,
+      "expected": 0,
+      "output": " Network campus-wiring-8a09bb446f6f_ingress Creating \n Container campus-wiring-8a09bb446f6f-backend-1 Creating \n Network campus-wiring-8a09bb446f6f_ingress Creating \n Network campus-wiring-8a09bb446f6f_ingress Created \n Network campus-wiring-8a09bb446f6f_ingress Created \n Container campus-wiring-8a09bb446f6f-backend-1 Created \n Container campus-wiring-8a09bb446f6f-frontend-1 Creating \n Container campus-wiring-8a09bb446f6f-frontend-1 Created \n Container campus-wiring-8a09bb446f6f-backend-1 Starting \n Container campus-wiring-8a09bb446f6f-backend-1 Started \n Container campus-wiring-8a09bb446f6f-backend-1 Waiting \n Container campus-wiring-8a09bb446f6f-backend-1 Healthy \n Container campus-wiring-8a09bb446f6f-frontend-1 Starting \n Container campus-wiring-8a09bb446f6f-frontend-1 Started \n Container campus-wiring-8a09bb446f6f-backend-1 Waiting \n Container campus-wiring-8a09bb446f6f-frontend-1 Waiting \n Container campus-wiring-8a09bb446f6f-backend-1 Healthy \n Container campus-wiring-8a09bb446f6f-frontend-1 Healthy \n"
+    },
+    {
+      "label": "resolve only this project HTTPS frontend",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "ec7beba73eddcab9df3dc4b4892dd621a0f8952d5deb356e2e016292d58b53ee\n"
+    },
+    {
+      "label": "inspect only published HTTPS binding",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "{\"443/tcp\":[{\"HostIp\":\"127.0.0.1\",\"HostPort\":\"32787\"}]}\n"
+    },
+    {
+      "label": "IDF-SC-18 actual host loopback HTTPS, CA/SAN and anonymous denial",
+      "exit_code": 0,
+      "health": 200,
+      "health_duration_ms": 46.38470000000234,
+      "page": 200,
+      "anonymous_me": 401,
+      "wrong_san_rejected": true,
+      "wrong_ca_rejected": true
+    },
+    {
+      "label": "resolve production backend image",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "e8e89b410314b4feff415905ce002c84940008135f8f3902ead862b890fefdc5\n"
+    },
+    {
+      "label": "SC-04/05 production process missing",
+      "exit_code": 2,
+      "expected": "nonzero",
+      "output": "{\"ts\":\"2026-11-08T06:29:07.975621988Z\",\"level\":\"error\",\"message\":\"HTTP_PORT is required\",\"module\":\"config\",\"request_id\":null}\n"
+    },
+    {
+      "label": "SC-04/05 production process empty",
+      "exit_code": 2,
+      "expected": "nonzero",
+      "output": "{\"ts\":\"2026-11-08T06:29:08.669556065Z\",\"level\":\"error\",\"message\":\"HTTP_PORT is required\",\"module\":\"config\",\"request_id\":null}\n"
+    },
+    {
+      "label": "SC-04/05 production process whitespace",
+      "exit_code": 2,
+      "expected": "nonzero",
+      "output": "{\"ts\":\"2026-11-08T06:29:09.164976184Z\",\"level\":\"error\",\"message\":\"HTTP_PORT is required\",\"module\":\"config\",\"request_id\":null}\n"
+    },
+    {
+      "label": "SC-04/05 production process letters",
+      "exit_code": 2,
+      "expected": "nonzero",
+      "output": "{\"ts\":\"2026-11-08T06:29:09.628219057Z\",\"level\":\"error\",\"message\":\"HTTP_PORT must contain decimal digits only\",\"module\":\"config\",\"request_id\":null}\n"
+    },
+    {
+      "label": "SC-04/05 production process zero",
+      "exit_code": 2,
+      "expected": "nonzero",
+      "output": "{\"ts\":\"2026-11-08T06:29:10.032703461Z\",\"level\":\"error\",\"message\":\"HTTP_PORT must be in range 1..65535\",\"module\":\"config\",\"request_id\":null}\n"
+    },
+    {
+      "label": "SC-04/05 production process negative",
+      "exit_code": 2,
+      "expected": "nonzero",
+      "output": "{\"ts\":\"2026-11-08T06:29:10.406807283Z\",\"level\":\"error\",\"message\":\"HTTP_PORT must contain decimal digits only\",\"module\":\"config\",\"request_id\":null}\n"
+    },
+    {
+      "label": "SC-04/05 production process aboveMaximum",
+      "exit_code": 2,
+      "expected": "nonzero",
+      "output": "{\"ts\":\"2026-11-08T06:29:10.798312589Z\",\"level\":\"error\",\"message\":\"HTTP_PORT must be in range 1..65535\",\"module\":\"config\",\"request_id\":null}\n"
+    },
+    {
+      "label": "SC-07 occupied port rejects second real server",
+      "exit_code": 1,
+      "expected": "nonzero",
+      "output": "{\"ts\":\"2026-11-08T06:29:11.262938792Z\",\"level\":\"error\",\"message\":\"HTTP_PORT listen failed\",\"module\":\"server\",\"request_id\":null}\n"
+    },
+    {
+      "label": "SC-06 start real server with trimmed valid port",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "2590fcada6ebcf451722d286c1aa6db1b2760720ecd1c2fd2d76f14167fc7884\n Container campus-wiring-8a09bb446f6f-backend-run-091035ba7fd6 Creating \n Container campus-wiring-8a09bb446f6f-backend-run-091035ba7fd6 Created \n"
+    },
+    {
+      "label": "SC-06 inspect own trimmed-port instance",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "starting\n"
+    },
+    {
+      "label": "SC-06 inspect own trimmed-port instance",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "starting\n"
+    },
+    {
+      "label": "SC-06 inspect own trimmed-port instance",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "starting\n"
+    },
+    {
+      "label": "SC-06 inspect own trimmed-port instance",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "starting\n"
+    },
+    {
+      "label": "SC-06 inspect own trimmed-port instance",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "starting\n"
+    },
+    {
+      "label": "SC-06 inspect own trimmed-port instance",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "starting\n"
+    },
+    {
+      "label": "SC-06 inspect own trimmed-port instance",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "starting\n"
+    },
+    {
+      "label": "SC-06 inspect own trimmed-port instance",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "starting\n"
+    },
+    {
+      "label": "SC-06 inspect own trimmed-port instance",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "healthy\n"
+    },
+    {
+      "label": "SC-06 active strict probe succeeds",
+      "exit_code": 0,
+      "expected": 0,
+      "output": ""
+    },
+    {
+      "label": "remove only trimmed-port test instance",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "2590fcada6ebcf451722d286c1aa6db1b2760720ecd1c2fd2d76f14167fc7884\n"
+    },
+    {
+      "label": "SC-01/02/03 real same-origin HTTPS, unique health, TLS rejection, login and revoked access",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "=== RUN   TestIDFWiring\n    wiring_test.go:270: IDF-SC-01/06/14/15/17/18 trusted HTTPS, TLS rejection, login/logout and persistence assertions passed\n--- PASS: TestIDFWiring (0.33s)\nPASS\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/integration/wiring\t0.335s\n"
+    },
+    {
+      "label": "capture sanitized Go request logs",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "{\"ts\":\"2026-11-08T06:28:55.95576647Z\",\"level\":\"info\",\"message\":\"server started\",\"module\":\"server\",\"request_id\":null}\n{\"ts\":\"2026-11-08T06:29:00.679593822Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"66e31271c0fdf1c77f9be7dc9ba99c3a\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.415}\n{\"ts\":\"2026-11-08T06:29:02.71406159Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"6421db397d2c11939ca96da8788cc7a9\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.349}\n{\"ts\":\"2026-11-08T06:29:04.744870223Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"b17823ace0c891d10fc4c151d84d7dda\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.252}\n{\"ts\":\"2026-11-08T06:29:06.774043501Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"85c01fab6f8165c7ac1f8138de3d22b6\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.261}\n{\"ts\":\"2026-11-08T06:29:07.265761721Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"9aa29b5d169e0a7d00a0ef2b99d76945\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.282}\n{\"ts\":\"2026-11-08T06:29:07.295518536Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"fd48b8e9a7f05a081c2ff9f52892d12d\",\"method\":\"GET\",\"path\":\"/api/v1/me\",\"status\":401,\"duration_ms\":0.702}\n{\"ts\":\"2026-11-08T06:29:08.802575107Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"24baf54b0a576ec795d5e45cdbbab70e\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.256}\n{\"ts\":\"2026-11-08T06:29:10.833354904Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"2095f8e849960acc3485510d437d278f\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.271}\n{\"ts\":\"2026-11-08T06:29:12.861644014Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"debde6583d97c92fc4fd026770aa8c39\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.235}\n{\"ts\":\"2026-11-08T06:29:14.889953736Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"06cab32b7a0d2210cf71afd3567e2339\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.295}\n{\"ts\":\"2026-11-08T06:29:16.917719813Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"2b57c495f5fcd24dda5bde0f9a28b2a9\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.295}\n{\"ts\":\"2026-11-08T06:29:18.945543334Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"b2e538ce227e78f9f1cb0109f9e4d215\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.256}\n{\"ts\":\"2026-11-08T06:29:19.172635647Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"ed16f404bde5feb6a8d05b1b13f31024\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.276}\n{\"ts\":\"2026-11-08T06:29:19.173451006Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"7025dd85fe35e7b9b170185d42acd97f\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.205}\n{\"ts\":\"2026-11-08T06:29:19.215840556Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"c7997853f2a251e89623eebdb0cf422c\",\"method\":\"POST\",\"path\":\"/api/v1/auth/login\",\"status\":413,\"duration_ms\":0.151}\n{\"ts\":\"2026-11-08T06:29:19.251810076Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"2d9d6a8be01cfe4e8cf0dd494014ce99\",\"method\":\"POST\",\"path\":\"/api/v1/auth/login\",\"status\":200,\"duration_ms\":35.344}\n{\"ts\":\"2026-11-08T06:29:19.261445462Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"e48897cc3804c9f8f8c6096fd2677db4\",\"method\":\"GET\",\"path\":\"/api/v1/me\",\"status\":200,\"duration_ms\":2.861}\n{\"ts\":\"2026-11-08T06:29:19.278094773Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"865e422bf8a39b9a9b1255766147e96a\",\"method\":\"GET\",\"path\":\"/api/v1/auth/csrf\",\"status\":200,\"duration_ms\":2.22}\n{\"ts\":\"2026-11-08T06:29:19.311345851Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"be40705ed423e1df9e772792e55f7122\",\"method\":\"POST\",\"path\":\"/api/v1/auth/refresh\",\"status\":200,\"duration_ms\":5.926}\n{\"ts\":\"2026-11-08T06:29:19.31728917Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"2177191b420f28dd9fc7e5a918d242b9\",\"method\":\"GET\",\"path\":\"/api/v1/me\",\"status\":200,\"duration_ms\":2.662}\n{\"ts\":\"2026-11-08T06:29:19.328881212Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"9c22fcf22b646bb42c4d82fa3ff2f889\",\"method\":\"GET\",\"path\":\"/api/v1/auth/csrf\",\"status\":401,\"duration_ms\":1.002}\n{\"ts\":\"2026-11-08T06:29:19.331207741Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"25ab3706b6c8a784e93cb89402ab006a\",\"method\":\"GET\",\"path\":\"/api/v1/auth/csrf\",\"status\":200,\"duration_ms\":1.771}\n{\"ts\":\"2026-11-08T06:29:19.34993563Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"b9e53c68d6cb8fb6822e0643d2688f42\",\"method\":\"POST\",\"path\":\"/api/v1/auth/switch-class\",\"status\":200,\"duration_ms\":7.652}\n{\"ts\":\"2026-11-08T06:29:19.355912831Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"f523cfe61122bf1c63008c68501fdb10\",\"method\":\"GET\",\"path\":\"/api/v1/me\",\"status\":401,\"duration_ms\":2.464}\n{\"ts\":\"2026-11-08T06:29:19.36314114Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"7ee4bfc80c2dc49b325b5f973d7b157d\",\"method\":\"GET\",\"path\":\"/api/v1/auth/csrf\",\"status\":200,\"duration_ms\":2.018}\n{\"ts\":\"2026-11-08T06:29:19.373913877Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"a770e631c3b7c1797d3d74d14940496a\",\"method\":\"POST\",\"path\":\"/api/v1/auth/logout\",\"status\":204,\"duration_ms\":7.562}\n{\"ts\":\"2026-11-08T06:29:19.37885365Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"42a8c161e5ec7329f1c59b9ec8afad57\",\"method\":\"GET\",\"path\":\"/api/v1/me\",\"status\":401,\"duration_ms\":2.006}\n{\"ts\":\"2026-11-08T06:29:19.382045763Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"5f224b4c5aca860e207bd96dffcafb86\",\"method\":\"GET\",\"path\":\"/api/v1/auth/csrf\",\"status\":401,\"duration_ms\":0.412}\n{\"ts\":\"2026-11-08T06:29:19.41071301Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"16d103fb3baf58af88a830e82e80255c\",\"method\":\"POST\",\"path\":\"/api/v1/auth/login\",\"status\":401,\"duration_ms\":21.385}\n{\"ts\":\"2026-11-08T06:29:19.438271139Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"1af258f50cbd315cfe06ec324391eb56\",\"method\":\"POST\",\"path\":\"/api/v1/auth/login\",\"status\":200,\"duration_ms\":21.915}\n{\"ts\":\"2026-11-08T06:29:19.446020707Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"3e9928670b677f096eace743d4eeefdc\",\"method\":\"GET\",\"path\":\"/api/v1/auth/csrf\",\"status\":200,\"duration_ms\":2.513}\n{\"ts\":\"2026-11-08T06:29:19.45811205Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"979b1823b01f2e6bd5cc8577dab85c68\",\"method\":\"POST\",\"path\":\"/api/v1/auth/switch-class\",\"status\":403,\"duration_ms\":4.184}\n{\"ts\":\"2026-11-08T06:29:19.465683717Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"0e67ed43addb207894b0398eef99c997\",\"method\":\"GET\",\"path\":\"/api/v1/me\",\"status\":200,\"duration_ms\":2.594}\n{\"ts\":\"2026-11-08T06:29:19.477349719Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"5c31844955682e61fbc105c39bece421\",\"method\":\"POST\",\"path\":\"/api/v1/auth/logout\",\"status\":204,\"duration_ms\":7.451}\n{\"ts\":\"2026-11-08T06:29:19.484098791Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"28619f8d44510cd7084c41a15f9aebb4\",\"method\":\"GET\",\"path\":\"/api/v1/me\",\"status\":401,\"duration_ms\":2.293}\n"
+    },
+    {
+      "label": "stop database only",
+      "exit_code": 0,
+      "expected": 0,
+      "output": " Container campus-wiring-8a09bb446f6f-mysql-1 Stopping \n Container campus-wiring-8a09bb446f6f-mysql-1 Stopped \n"
+    },
+    {
+      "label": "real database-down health 503 and login 503 without credentials",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "=== RUN   TestIDFWiring\n--- PASS: TestIDFWiring (0.01s)\nPASS\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/integration/wiring\t0.017s\n"
+    },
+    {
+      "label": "restore database",
+      "exit_code": 0,
+      "expected": 0,
+      "output": " Container campus-wiring-8a09bb446f6f-mysql-1 Starting \n Container campus-wiring-8a09bb446f6f-mysql-1 Started \n Container campus-wiring-8a09bb446f6f-mysql-1 Waiting \n Container campus-wiring-8a09bb446f6f-mysql-1 Healthy \n"
+    },
+    {
+      "label": "account and class persist after database restart",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "=== RUN   TestIDFWiring\n    wiring_test.go:270: IDF-SC-01/06/14/15/17/18 trusted HTTPS, TLS rejection, login/logout and persistence assertions passed\n--- PASS: TestIDFWiring (0.32s)\nPASS\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/integration/wiring\t0.335s\n"
+    },
+    {
+      "label": "remove candidate containers while retaining named data volume",
+      "exit_code": 0,
+      "expected": 0,
+      "output": " Container campus-wiring-8a09bb446f6f-frontend-1 Stopping \n Container campus-wiring-8a09bb446f6f-mysql-1 Stopping \n Container campus-wiring-8a09bb446f6f-frontend-1 Stopped \n Container campus-wiring-8a09bb446f6f-frontend-1 Removing \n Container campus-wiring-8a09bb446f6f-frontend-1 Removed \n Container campus-wiring-8a09bb446f6f-backend-1 Stopping \n Container campus-wiring-8a09bb446f6f-backend-1 Stopped \n Container campus-wiring-8a09bb446f6f-backend-1 Removing \n Container campus-wiring-8a09bb446f6f-backend-1 Removed \n Container campus-wiring-8a09bb446f6f-mysql-1 Stopped \n Container campus-wiring-8a09bb446f6f-mysql-1 Removing \n Container campus-wiring-8a09bb446f6f-mysql-1 Removed \n Network campus-wiring-8a09bb446f6f_data Removing \n Network campus-wiring-8a09bb446f6f_ingress Removing \n Network campus-wiring-8a09bb446f6f_data Removed \n Network campus-wiring-8a09bb446f6f_ingress Removed \n"
+    },
+    {
+      "label": "SC-10 stopped production HTTP and HTTPS are unreachable",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "=== RUN   TestIDFWiring\n--- PASS: TestIDFWiring (0.00s)\nPASS\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/integration/wiring\t0.011s\n"
+    },
+    {
+      "label": "SC-10 stopped host published HTTPS is unreachable",
+      "exit_code": 0
+    },
+    {
+      "label": "recreate MySQL on retained volume",
+      "exit_code": 0,
+      "expected": 0,
+      "output": " Network campus-wiring-8a09bb446f6f_data Creating \n Network campus-wiring-8a09bb446f6f_data Creating \n Network campus-wiring-8a09bb446f6f_data Created \n Network campus-wiring-8a09bb446f6f_data Created \n Container campus-wiring-8a09bb446f6f-mysql-1 Creating \n Container campus-wiring-8a09bb446f6f-mysql-1 Created \n Container campus-wiring-8a09bb446f6f-mysql-1 Starting \n Container campus-wiring-8a09bb446f6f-mysql-1 Started \n Container campus-wiring-8a09bb446f6f-mysql-1 Waiting \n Container campus-wiring-8a09bb446f6f-mysql-1 Healthy \n"
+    },
+    {
+      "label": "recreated database migration state unchanged",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "identity administration completed\n Container campus-wiring-8a09bb446f6f-admin-run-03546bec5c73 Creating \n Container campus-wiring-8a09bb446f6f-admin-run-03546bec5c73 Created \n"
+    },
+    {
+      "label": "recreate isolated HTTPS path",
+      "exit_code": 0,
+      "expected": 0,
+      "output": " Container campus-wiring-8a09bb446f6f-backend-1 Creating \n Network campus-wiring-8a09bb446f6f_ingress Creating \n Network campus-wiring-8a09bb446f6f_ingress Creating \n Network campus-wiring-8a09bb446f6f_ingress Created \n Network campus-wiring-8a09bb446f6f_ingress Created \n Container campus-wiring-8a09bb446f6f-backend-1 Created \n Container campus-wiring-8a09bb446f6f-frontend-1 Creating \n Container campus-wiring-8a09bb446f6f-frontend-1 Created \n Container campus-wiring-8a09bb446f6f-backend-1 Starting \n Container campus-wiring-8a09bb446f6f-backend-1 Started \n Container campus-wiring-8a09bb446f6f-backend-1 Waiting \n Container campus-wiring-8a09bb446f6f-backend-1 Healthy \n Container campus-wiring-8a09bb446f6f-frontend-1 Starting \n Container campus-wiring-8a09bb446f6f-frontend-1 Started \n Container campus-wiring-8a09bb446f6f-frontend-1 Waiting \n Container campus-wiring-8a09bb446f6f-backend-1 Waiting \n Container campus-wiring-8a09bb446f6f-backend-1 Healthy \n Container campus-wiring-8a09bb446f6f-frontend-1 Healthy \n"
+    },
+    {
+      "label": "resolve recreated HTTPS frontend",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "0c72708438af307f406a0e0af0cd9df65b132d41b81aae5d39a3c2b1fda0047a\n"
+    },
+    {
+      "label": "inspect recreated host binding",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "{\"443/tcp\":[{\"HostIp\":\"127.0.0.1\",\"HostPort\":\"32788\"}]}\n"
+    },
+    {
+      "label": "IDF-SC-18 recreated host HTTPS remains reachable",
+      "exit_code": 0,
+      "health": 200,
+      "health_duration_ms": 6.280399999988731,
+      "page": 200,
+      "anonymous_me": 401,
+      "wrong_san_rejected": true,
+      "wrong_ca_rejected": true
+    },
+    {
+      "label": "same account and original password after full container recreation",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "=== RUN   TestIDFWiring\n    wiring_test.go:270: IDF-SC-01/06/14/15/17/18 trusted HTTPS, TLS rejection, login/logout and persistence assertions passed\n--- PASS: TestIDFWiring (0.33s)\nPASS\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/integration/wiring\t0.342s\n"
+    },
+    {
+      "label": "check combined logs contain no generated passwords",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "{\"ts\":\"2026-11-08T06:29:46.708028388Z\",\"level\":\"info\",\"message\":\"server started\",\"module\":\"server\",\"request_id\":null}\n{\"ts\":\"2026-11-08T06:29:51.454422854Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"11cad512265cc66d395617c9184151bf\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.467}\n/docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration\n/docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/\n2026-11-08 06:29:39+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.13-1.el9 started.\n{\"ts\":\"2026-11-08T06:29:53.486184039Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"e63c87d7f3d55df41fbf029dee1c68ef\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.364}\n2026-11-08 06:29:39+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'\n{\"ts\":\"2026-11-08T06:29:55.515232228Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"13c8d63d46bd7c03061c884c3a91fb91\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.269}\n2026-11-08 06:29:39+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.13-1.el9 started.\n/docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh\n10-listen-on-ipv6-by-default.sh: info: Getting the checksum of /etc/nginx/conf.d/default.conf\n'/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'\n{\"ts\":\"2026-11-08T06:29:57.347620553Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"99b1804e08358254b9d8356857dc197e\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.265}\n{\"ts\":\"2026-11-08T06:29:57.358767815Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"3b51f7716953368f60c76e64281bff90\",\"method\":\"GET\",\"path\":\"/api/v1/me\",\"status\":401,\"duration_ms\":0.531}\n{\"ts\":\"2026-11-08T06:29:57.545595049Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"4cea8d46656cbd0742e09162164c02b3\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.246}\n10-listen-on-ipv6-by-default.sh: info: Enabled listen on IPv6 in /etc/nginx/conf.d/default.conf\n{\"ts\":\"2026-11-08T06:29:58.850941804Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"aa5b0c01678d0edc257fa899ef170cf5\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.241}\n/docker-entrypoint.sh: Sourcing /docker-entrypoint.d/15-local-resolvers.envsh\n{\"ts\":\"2026-11-08T06:29:58.851619492Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"323d440dfa948eb4c7fa8040194d0308\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.165}\n/docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh\n{\"ts\":\"2026-11-08T06:29:58.867172978Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"9587e981cf665147d626acc3ab41e8bf\",\"method\":\"POST\",\"path\":\"/api/v1/auth/login\",\"status\":413,\"duration_ms\":0.136}\n{\"ts\":\"2026-11-08T06:29:58.918064053Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"8adad3fa2296be70ef027025f94b75e7\",\"method\":\"POST\",\"path\":\"/api/v1/auth/login\",\"status\":200,\"duration_ms\":50.265}\n20-envsubst-on-templates.sh: Running envsubst on /etc/nginx/templates/identity-proxy.conf.template to /etc/nginx/identity-proxy.conf\n{\"ts\":\"2026-11-08T06:29:58.933463699Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"aa385ff0077b12b17980c37de195c07a\",\"method\":\"GET\",\"path\":\"/api/v1/me\",\"status\":200,\"duration_ms\":2.604}\n2026-11-08T06:29:40.034132Z 0 [System] [MY-015015] [Server] MySQL Server - start.\n20-envsubst-on-templates.sh: Running envsubst on /etc/nginx/templates/nginx.conf.template to /etc/nginx/nginx.conf\n2026-11-08T06:29:40.272941Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.13) starting as process 1\n/docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processes.sh\n2026-11-08T06:29:40.272945Z 0 [System] [MY-015150] [Server] Server version with update: '8.4.13.0'\n/docker-entrypoint.sh: Configuration complete; ready for start up\n2026-11-08T06:29:40.278851Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.\n{\"ts\":\"2026-11-08T06:29:58.94139363Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"08be3708f9d6c2a8b12793a1bd8e63ea\",\"method\":\"GET\",\"path\":\"/api/v1/auth/csrf\",\"status\":200,\"duration_ms\":2.539}\n2026-11-08T06:29:40.488553Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.\n{\"ts\":\"2026-11-08T06:29:58.963390525Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"0ad565d1ca6fd4b90ce8852752a2d9ab\",\"method\":\"POST\",\"path\":\"/api/v1/auth/refresh\",\"status\":200,\"duration_ms\":6.504}\n{\"ts\":\"2026-11-08T06:29:58.97036417Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"165917fcaf905156e4f9b5dade2c9b4e\",\"method\":\"GET\",\"path\":\"/api/v1/me\",\"status\":200,\"duration_ms\":2.744}\n{\"ts\":\"2026-11-08T06:29:58.976820726Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"74360f42a119c2999fbfabc94d065e62\",\"method\":\"GET\",\"path\":\"/api/v1/auth/csrf\",\"status\":401,\"duration_ms\":0.851}\n{\"ts\":\"2026-11-08T06:29:58.979705015Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"4ce14e1e9ac05a335c89a1d2e403ef80\",\"method\":\"GET\",\"path\":\"/api/v1/auth/csrf\",\"status\":200,\"duration_ms\":2.267}\n2026-11-08T06:29:40.675101Z 0 [Warning] [MY-010068] [Server] CA certificate /run/mysql-tls/ca.pem is self signed.\n{\"ts\":\"2026-11-08T06:29:58.994828256Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"29b7c23753d6112c4a8f3bf6ef176149\",\"method\":\"POST\",\"path\":\"/api/v1/auth/switch-class\",\"status\":200,\"duration_ms\":7.562}\n2026-11-08T06:29:40.675137Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.\n2026-11-08T06:29:40.677743Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.\n{\"ts\":\"2026-11-08T06:29:59.014320857Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"3cf945676dcbb07b0be8b1c903896967\",\"method\":\"GET\",\"path\":\"/api/v1/me\",\"status\":401,\"duration_ms\":2.467}\n2026-11-08T06:29:40.704007Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock\n{\"ts\":\"2026-11-08T06:29:59.026002006Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"c38a4aa84e9f348f2742d687a0c88b9b\",\"method\":\"GET\",\"path\":\"/api/v1/auth/csrf\",\"status\":200,\"duration_ms\":2.207}\n{\"ts\":\"2026-11-08T06:29:59.04517095Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"6ae761cb3a9b01c785c45856e060c4e0\",\"method\":\"POST\",\"path\":\"/api/v1/auth/logout\",\"status\":204,\"duration_ms\":7.548}\n2026-11-08T06:29:40.704065Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.4.13'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.\n{\"ts\":\"2026-11-08T06:29:59.050869793Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"a88b7174a2d517b5bc293748264b0057\",\"method\":\"GET\",\"path\":\"/api/v1/me\",\"status\":401,\"duration_ms\":2.371}\n{\"ts\":\"2026-11-08T06:29:59.054625286Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"5ec1803431d94076e31e38ff91c9228f\",\"method\":\"GET\",\"path\":\"/api/v1/auth/csrf\",\"status\":401,\"duration_ms\":0.422}\n{\"ts\":\"2026-11-08T06:29:59.07480993Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"177ce196293867da17824c6f96b9e6bd\",\"method\":\"POST\",\"path\":\"/api/v1/auth/login\",\"status\":401,\"duration_ms\":17.555}\n{\"ts\":\"2026-11-08T06:29:59.102069389Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"1911cfd4cd882693e3b9c55c3154bdfb\",\"method\":\"POST\",\"path\":\"/api/v1/auth/login\",\"status\":200,\"duration_ms\":21.836}\n{\"ts\":\"2026-11-08T06:29:59.107582341Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"23ee46930cd918462bd044bc095ba6d6\",\"method\":\"GET\",\"path\":\"/api/v1/auth/csrf\",\"status\":200,\"duration_ms\":2.323}\n{\"ts\":\"2026-11-08T06:29:59.121447776Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"35527ee5779258d84f7663a22d8a2869\",\"method\":\"POST\",\"path\":\"/api/v1/auth/switch-class\",\"status\":403,\"duration_ms\":4.745}\n{\"ts\":\"2026-11-08T06:29:59.143028359Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"1eec7b5ed57f8beae05e9d46bd51339b\",\"method\":\"GET\",\"path\":\"/api/v1/me\",\"status\":200,\"duration_ms\":2.604}\n{\"ts\":\"2026-11-08T06:29:59.154152159Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"1b197c85b7fe5af67f395ba44f3ae45e\",\"method\":\"POST\",\"path\":\"/api/v1/auth/logout\",\"status\":204,\"duration_ms\":7.104}\n{\"ts\":\"2026-11-08T06:29:59.15903784Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"4443138ae9c4ace98eeb45d7391e368a\",\"method\":\"GET\",\"path\":\"/api/v1/me\",\"status\":401,\"duration_ms\":2.175}\n{\"ts\":\"2026-11-08T06:29:59.579451319Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"0524485a9735b0fe30a8d163b974ad34\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.394}\n"
+    },
+    {
+      "label": "remove only this disposable project and test data volume",
+      "exit_code": 0,
+      "expected": 0,
+      "output": " Container campus-wiring-8a09bb446f6f-frontend-1 Stopping \n Container campus-wiring-8a09bb446f6f-mysql-1 Stopping \n Container campus-wiring-8a09bb446f6f-frontend-1 Stopped \n Container campus-wiring-8a09bb446f6f-frontend-1 Removing \n Container campus-wiring-8a09bb446f6f-frontend-1 Removed \n Container campus-wiring-8a09bb446f6f-backend-1 Stopping \n Container campus-wiring-8a09bb446f6f-backend-1 Stopped \n Container campus-wiring-8a09bb446f6f-backend-1 Removing \n Container campus-wiring-8a09bb446f6f-backend-1 Removed \n Container campus-wiring-8a09bb446f6f-mysql-1 Stopped \n Container campus-wiring-8a09bb446f6f-mysql-1 Removing \n Container campus-wiring-8a09bb446f6f-mysql-1 Removed \n Network campus-wiring-8a09bb446f6f_data Removing \n Network campus-wiring-8a09bb446f6f_ingress Removing \n Volume campus-wiring-8a09bb446f6f_mysql-data Removing \n Volume campus-wiring-8a09bb446f6f_mysql-data Removed \n Network campus-wiring-8a09bb446f6f_data Removed \n Network campus-wiring-8a09bb446f6f_ingress Removed \n"
+    },
+    {
+      "label": "remove dedicated proxy network",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "campus-wiring-8a09bb446f6f\n"
+    }
+  ],
+  "errors": [],
+  "exit_code": 0
+}

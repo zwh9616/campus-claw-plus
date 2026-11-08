@@ -1,0 +1,70 @@
+{
+  "time": "2026-11-08T06:22:45.321Z",
+  "mode": "real HTTPS + MySQL; native browser trust; no mocked responses",
+  "platform": "win32",
+  "cases": [
+    {
+      "label": "Default published host HTTPS loads with ordinary browser certificate validation",
+      "passed": true
+    },
+    {
+      "label": "Browser rejects valid-chain certificate with wrong hostname",
+      "passed": true
+    },
+    {
+      "label": "Wrong real password rejected and password input cleared",
+      "passed": true
+    },
+    {
+      "label": "Real teacher login and trusted identity display",
+      "passed": true
+    },
+    {
+      "label": "Secure HttpOnly Strict cookie and no persistent client credentials",
+      "passed": true
+    },
+    {
+      "label": "Page reload restores real session",
+      "passed": true
+    },
+    {
+      "label": "Other-class student real login and no teacher switch action at 360px",
+      "passed": true
+    },
+    {
+      "label": "Teacher switches to real second class; original access token is rejected",
+      "passed": true
+    },
+    {
+      "label": "Another tab switches class while actual old server me response is held; old identity never reappears",
+      "passed": true
+    },
+    {
+      "label": "Real logout invalidates both tabs and refuses protected route re-entry",
+      "passed": true
+    },
+    {
+      "label": "All five real accounts across two classes display the server-approved role",
+      "passed": true
+    },
+    {
+      "label": "Two real browser tabs compete to refresh: one 200, one 401; losing tab clears identity",
+      "passed": true,
+      "statuses": [
+        200,
+        401
+      ]
+    }
+  ],
+  "certificate_removed": true,
+  "os_trust_modified": false,
+  "trust_scope": "Disposable Firefox NSS profile only; no Windows trust store changes",
+  "trust_reference": "https://raw.githubusercontent.com/nss-dev/nss/master/lib/certdb/cert.h",
+  "browser": "144.0.2",
+  "relay": {
+    "authorization_present": true,
+    "http_status": 200,
+    "class_matches": true
+  },
+  "exit_code": 0
+}

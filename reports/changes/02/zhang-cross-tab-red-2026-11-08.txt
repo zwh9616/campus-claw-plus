@@ -1,0 +1,30 @@
+✔ FEF-SC-07/08 reviewer: late successful identity cannot resurrect a logged-out session (24.4535ms)
+✔ FEF-SC-04/08 reviewer: revoked access and refresh hide identity without retrying or logging out another session (2.2265ms)
+✖ FEF-SC-07 reviewer: another tab changing context invalidates an already pending old identity response (2.4889ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 2
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 223.009
+
+✖ failing tests:
+
+test at frontend\tests\reviewer-auth.test.mjs:51:1
+✖ FEF-SC-07 reviewer: another tab changing context invalidates an already pending old identity response (2.4889ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  false !== true
+
+      at TestContext.<anonymous> (file:///C:/Users/lenovo/Desktop/SoftwareDevelopment/group_project/output/review-02/frontend/tests/reviewer-auth.test.mjs:70:10)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

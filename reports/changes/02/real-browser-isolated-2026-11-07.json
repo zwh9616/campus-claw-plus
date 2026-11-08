@@ -1,0 +1,51 @@
+{
+  "browser": "156.0.4314.58",
+  "trust": "Node verified fixture CA and hostname; Edge process pinned fixture leaf SPKI, no OS trust changes",
+  "results": [
+    {
+      "fixture": "wiring-teacher",
+      "role": "teacher",
+      "login": true,
+      "reload": true,
+      "logout": true,
+      "protectedRejected": true,
+      "switched": true
+    },
+    {
+      "fixture": "wiring-student-a",
+      "role": "student",
+      "login": true,
+      "reload": true,
+      "logout": true,
+      "protectedRejected": true,
+      "switched": false
+    },
+    {
+      "fixture": "wiring-student-a2",
+      "role": "student",
+      "login": true,
+      "reload": true,
+      "logout": true,
+      "protectedRejected": true,
+      "switched": false
+    },
+    {
+      "fixture": "wiring-student-b",
+      "role": "student",
+      "login": true,
+      "reload": true,
+      "logout": true,
+      "protectedRejected": true,
+      "switched": false
+    },
+    {
+      "fixture": "wiring-teacher-b",
+      "role": "teacher",
+      "login": true,
+      "reload": true,
+      "logout": true,
+      "protectedRejected": true,
+      "switched": false
+    }
+  ]
+}

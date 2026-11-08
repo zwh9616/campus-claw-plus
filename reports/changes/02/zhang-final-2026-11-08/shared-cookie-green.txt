@@ -1,0 +1,23 @@
+
+> campus-claw-plus@0.0.1 check:frontend-auth
+> node --experimental-strip-types --test frontend/tests/auth.test.mjs frontend/tests/reviewer-auth.test.mjs
+
+✔ FEF-SC-03 login bounds, unchanged input, duplicate clicks and private credentials (20.6342ms)
+✔ FEF-SC-03/09 uniform 401, Retry-After and malformed CSRF are fail closed (1.7109ms)
+✔ FEF-SC-04/05 recover order, one refresh and one replay, no logout after contention (2.4052ms)
+✔ FEF-SC-06 switch role and int64 boundaries, retain original class only after verification (1.6481ms)
+✔ FEF-SC-07 late old class response is discarded and writes are serialized (0.8191ms)
+✔ FEF-SC-07/08 uncertain writes never replay; 204 and 401 clear identity (2.7551ms)
+✔ FEF-SC-09 malformed response cannot install identity or leak the response body (0.2693ms)
+✔ FEF-SC-07/08 reviewer: late successful identity cannot resurrect a logged-out session (18.5456ms)
+✔ FEF-SC-04/08 reviewer: revoked access and refresh hide identity without retrying or logging out another session (1.8096ms)
+✔ FEF-SC-07 reviewer: another tab changing context invalidates an already pending old identity response (1.8311ms)
+✔ FEF-SC-05/08 reviewer: logout obtains CSRF for the current shared cookie after another tab refreshes (0.5386ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 257.1965

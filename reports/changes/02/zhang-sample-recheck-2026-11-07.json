@@ -1,0 +1,27 @@
+{
+  "executor": "zwh9616 / 小张",
+  "timestamp": "2026-11-07T05:57:59.032929+00:00",
+  "ui_source": "fcdf726",
+  "reviewed_remote_head": "98802bdea398df122b7d61e79fdfa560a0982caa",
+  "scope": "same UI, integrate main e3c2f47 documents and review record; Docker recovered; initial failures preserved in review report",
+  "results": [
+    {
+      "command": "npm run check",
+      "exit_code": 0,
+      "seconds": 18.92,
+      "output": "\n> campus-claw-plus@0.0.1 check\n> npm run check:foundation && npm run check:contracts && npm run typecheck && npm run build && npm run check:sample-isolation && npm run check:backend && npm run check:spec\n\n\n> campus-claw-plus@0.0.1 check:foundation\n> node scripts/check-foundation.mjs\n\nFoundation: rule/skill entry points exist, sample keys are empty, .env is ignored.\nThis check is separate from real authorization review and full-history secret scanning.\n\n> campus-claw-plus@0.0.1 check:contracts\n> node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs scripts/contracts/identity-phase.test.mjs\n\nContracts: 24 schemas; 99 positive/negative fixtures and 6 semantic inputs agree in both paths; 41 operation examples; 7 current/frozen operations. Planned operations absent.\n✔ ICF-SC-01/02 only skeleton is active; future health is complete and anonymous (20.4214ms)\n✔ ICF-SC-03/04 frozen configuration cannot leak into active samples or lose safety metadata (21.0979ms)\n✔ ICF-SC-05/06 migration reservations reject duplicate numbers, forward dependencies and false evidence (8.756ms)\n✔ BC-SC-06 accepts trusted rubric, rejects incorrect grading, stale and missing context (3.4268ms)\n✔ BC-SC-05 nonempty Citation codepoint range (0.2161ms)\n✔ BC-SC-08/14 terminal sequence, cancellation and disconnected persistence (0.6941ms)\n✔ BC-SC-10 MCP exception remains exact, disabled and subject to both future reviews (0.8991ms)\n✔ BC-SC-09 registered empty keys only; no weakening historical HTTP_PORT requirement (5.2745ms)\n✔ BC-SC-18 planned operations and anonymous auth bypass cannot enter OpenAPI (28.4445ms)\nℹ tests 9\nℹ suites 0\nℹ pass 9\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 352.314\n\n> campus-claw-plus@0.0.1 typecheck\n> npm run typecheck --prefix frontend\n\n\n> @campus-claw-plus/frontend@0.0.1 typecheck\n> tsc --noEmit\n\n\n> campus-claw-plus@0.0.1 build\n> npm run build --prefix frontend\n\n\n> @campus-claw-plus/frontend@0.0.1 build\n> tsc --noEmit && vite build\n\nvite v8.3.5 building client environment for production...\ntransforming...\n✓ 15 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                   0.61 kB │ gzip:  0.41 kB\ndist/assets/index-xLwe3wJW.css    3.46 kB │ gzip:  1.23 kB\ndist/assets/index-B1-fZwUu.js   143.18 kB │ gzip: 46.85 kB\n\n✓ built in 152ms\n\n> campus-claw-plus@0.0.1 check:sample-isolation\n> node scripts/check-sample-isolation.mjs\n\nFEF-SC-13: production excludes samples; normal dev rejects test entry; explicit samples mode serves it.\n\n> campus-claw-plus@0.0.1 check:backend\n> node scripts/check-backend.mjs\n\n?   \tgithub.com/zwh9616/campus-claw-plus/backend/cmd/server\t[no test files]\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/config\t0.007s\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/httpserver\t0.021s\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/observability\t0.009s\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/probe\t0.015s\n\n> campus-claw-plus@0.0.1 check:spec\n> openspec validate --all --strict\n\n✓ change/2026-11-04-business-contracts\n✓ change/2026-11-04-identity-foundation\n✓ change/2026-11-05-delivery-observability\n✓ change/2026-11-05-frontend-foundation\n✓ change/2026-11-05-reviewer-fix-workflow\n✓ change/2026-11-06-identity-public-contracts\n✓ spec/project-bootstrap\nTotals: 7 passed, 0 failed (7 items)\n- Validating...\n"
+    },
+    {
+      "command": "npm run secret-scan",
+      "exit_code": 0,
+      "seconds": 3.56,
+      "output": "\n> campus-claw-plus@0.0.1 secret-scan\n> node scripts/check-secrets.mjs\n\nFull-history and staged-content secret scans passed.\n1:57PM INF 78 commits scanned.\n1:57PM INF scanned ~2258184 bytes (2.26 MB) in 1.54s\n1:57PM INF no leaks found\n1:57PM INF scanned ~0 bytes (0) in 134ms\n1:57PM INF no leaks found\n"
+    },
+    {
+      "command": "npm run verify",
+      "exit_code": 0,
+      "seconds": 30.08,
+      "output": "\n> campus-claw-plus@0.0.1 verify\n> node scripts/verify-skeleton.mjs\n\nPASS SC-09 Compose missing required configuration\nPASS SC-08 local Compose startup (not second-machine acceptance)\nPASS SC-02/03 healthy JSON with no external dependencies\nPASS SC-01 static frontend HTTP\nPASS SC-04/05 process configuration missing\nPASS SC-04/05 process configuration empty\nPASS SC-04/05 process configuration whitespace\nPASS SC-04/05 process configuration letters\nPASS SC-04/05 process configuration zero\nPASS SC-04/05 process configuration negative\nPASS SC-04/05 process configuration aboveMaximum\nPASS SC-07 occupied port is failure of new executable\nPASS SC-06 valid trimmed configuration and recovery\nPASS SC-16/17 JSON logs and request identifier correlation\nPASS SC-10 stop and restart\n"
+    }
+  ]
+}

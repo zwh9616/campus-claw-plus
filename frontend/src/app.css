@@ -1,0 +1,6 @@
+.app-brand{display:inline-flex;margin-bottom:24px;font-size:20px;font-weight:700;overflow-wrap:anywhere}
+.app-brand a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none}
+.topbar .app-brand{margin:0}
+.login-content h1{overflow-wrap:anywhere}
+.auth-actions{display:flex;flex-wrap:wrap;gap:8px}
+.account-content a,.login-content .panel>a{display:inline-flex;align-items:center;min-height:44px}

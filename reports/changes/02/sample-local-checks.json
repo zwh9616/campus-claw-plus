@@ -1,0 +1,37 @@
+{
+  "scope": "uncommitted sample source working tree; no business runtime",
+  "mutation": "disable sample-entry guard; restore original bytes",
+  "restored": true,
+  "records": [
+    {
+      "command": "npm run check:sample-isolation",
+      "exit_code": 1,
+      "stdout": "\n> campus-claw-plus@0.0.1 check:sample-isolation\n> node scripts/check-sample-isolation.mjs\n\n",
+      "stderr": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n200 !== 404\n\n    at file:///D:/campusclaw-mygroup/tmp/day2-campus-review/scripts/check-sample-isolation.mjs:26:12\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 200,\n  expected: 404,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v24.19.0\n"
+    },
+    {
+      "command": "npm run check:sample-isolation",
+      "exit_code": 0,
+      "stdout": "\n> campus-claw-plus@0.0.1 check:sample-isolation\n> node scripts/check-sample-isolation.mjs\n\nFEF-SC-13: production excludes samples; normal dev rejects test entry; explicit samples mode serves it.\n",
+      "stderr": ""
+    },
+    {
+      "command": "npm run check",
+      "exit_code": 1,
+      "stdout": "\n> campus-claw-plus@0.0.1 check\n> npm run check:foundation && npm run check:contracts && npm run typecheck && npm run build && npm run check:sample-isolation && npm run check:backend && npm run check:spec\n\n\n> campus-claw-plus@0.0.1 check:foundation\n> node scripts/check-foundation.mjs\n\nFoundation: rule/skill entry points exist, sample keys are empty, .env is ignored.\nThis check is separate from real authorization review and full-history secret scanning.\n\n> campus-claw-plus@0.0.1 check:contracts\n> node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs scripts/contracts/identity-phase.test.mjs\n\nContracts: 24 schemas; 99 positive/negative fixtures and 6 semantic inputs agree in both paths; 41 operation examples; 7 current/frozen operations. Planned operations absent.\n✔ ICF-SC-01/02 only skeleton is active; future health is complete and anonymous (15.4676ms)\n✔ ICF-SC-03/04 frozen configuration cannot leak into active samples or lose safety metadata (16.7854ms)\n✔ ICF-SC-05/06 migration reservations reject duplicate numbers, forward dependencies and false evidence (6.7406ms)\n✔ BC-SC-06 accepts trusted rubric, rejects incorrect grading, stale and missing context (2.7131ms)\n✔ BC-SC-05 nonempty Citation codepoint range (0.1813ms)\n✔ BC-SC-08/14 terminal sequence, cancellation and disconnected persistence (0.6472ms)\n✔ BC-SC-10 MCP exception remains exact, disabled and subject to both future reviews (1.2976ms)\n✔ BC-SC-09 registered empty keys only; no weakening historical HTTP_PORT requirement (3.8078ms)\n✔ BC-SC-18 planned operations and anonymous auth bypass cannot enter OpenAPI (27.216ms)\nℹ tests 9\nℹ suites 0\nℹ pass 9\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 169.4576\n\n> campus-claw-plus@0.0.1 typecheck\n> npm run typecheck --prefix frontend\n\n\n> @campus-claw-plus/frontend@0.0.1 typecheck\n> tsc --noEmit\n\n\n> campus-claw-plus@0.0.1 build\n> npm run build --prefix frontend\n\n\n> @campus-claw-plus/frontend@0.0.1 build\n> tsc --noEmit && vite build\n\nvite v8.3.5 building client environment for production...\ntransforming...\n✓ 15 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                   0.61 kB │ gzip:  0.41 kB\ndist/assets/index-xLwe3wJW.css    3.46 kB │ gzip:  1.23 kB\ndist/assets/index-B1-fZwUu.js   143.18 kB │ gzip: 46.85 kB\n\n✓ built in 75ms\n\n> campus-claw-plus@0.0.1 check:sample-isolation\n> node scripts/check-sample-isolation.mjs\n\nFEF-SC-13: production excludes samples; normal dev rejects test entry; explicit samples mode serves it.\n\n> campus-claw-plus@0.0.1 check:backend\n> node scripts/check-backend.mjs\n\n",
+      "stderr": "failed to connect to the docker API at npipe:////./pipe/dockerDesktopLinuxEngine; check if the path is correct and if the daemon is running: open //./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified.\n"
+    },
+    {
+      "command": "npm run audit",
+      "exit_code": 0,
+      "stdout": "\n> campus-claw-plus@0.0.1 audit\n> npm audit --audit-level=high && npm audit --prefix frontend --audit-level=high\n\nfound 0 vulnerabilities\nfound 0 vulnerabilities\n",
+      "stderr": ""
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "warning: in the working copy of 'docs/project-status.md', CRLF will be replaced by LF the next time Git touches it\nwarning: in the working copy of 'frontend/package.json', CRLF will be replaced by LF the next time Git touches it\nwarning: in the working copy of 'frontend/vite.config.ts', CRLF will be replaced by LF the next time Git touches it\nwarning: in the working copy of 'openspec/changes/2026-11-05-frontend-foundation/tasks.md', CRLF will be replaced by LF the next time Git touches it\nwarning: in the working copy of 'package.json', CRLF will be replaced by LF the next time Git touches it\n"
+    }
+  ]
+}

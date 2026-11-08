@@ -1,0 +1,1 @@
+FEF-SC-01/02/03/06/08/10: native 200% browser flow passed at 360 and 1440px (32 page states)
