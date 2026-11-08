@@ -5,6 +5,7 @@
 | 构建 | Docker分阶段；依赖精确锁定，基础镜像固定摘要；Go静态程序仅复制运行产物，前端仅复制dist | 干净目录同提交构建；禁止COPY .env与使用latest标签 |
 | 环境配置 | 开发/测试/生产隔离，同制品换运行配置；config-register.active登记键/所有者/必需性/缺失行为/超时，当前active键以登记表为准 | 样例空值且与active精确一致；HTTP_PORT原失败/恢复断言保留，新增键须新场景 |
 | 端口 | 后端/MySQL不发布主机端口；前端仅127.0.0.1:IDENTITY_HTTPS_PORT→443，同源HTTPS | 8080是示例，可用空闲端口写入.env并记录；不得停止无关项目来抢端口 |
+| 主机入口 | 仅frontend加入Compose自管ingress bridge；proxy/data内部网络及可信代理精确/32保持，backend/MySQL/admin不得加入ingress | verify必须从实际主机访问发布端口验证可信CA/SAN与健康、匿名拒绝、停机及重建；容器内443成功不能替代主机入口或真实浏览器 |
 | 健康 | /health免认证，200与status=ok、dependencies.mysql=up；失败503/status=error/mysql=down；镜像内/server --healthcheck检查真实状态/类型/载荷/标识 | 容器healthy而非仅running；不依赖镜像有curl |
 | 停机 | SIGTERM/SIGINT停止接新请求、10秒内排空；Compose停止宽限15秒 | 单元验证在途请求完成；实际容器停止后不再提供本项目响应 |
 | 日志 | stdout每行JSON，ts UTC RFC3339/level/module/message/request_id；请求加method/path/status/duration_ms | 启动request_id=null；HTTP标识非空、同X-Request-ID，禁止敏感值 |

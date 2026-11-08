@@ -1,0 +1,50 @@
+{
+  "source_head": "cf89432fdbf2b4f1e8239037b5af09bced14defa",
+  "tested_merge": "8343e499f6138eff5d44b7eb1e2b700ca8c2d54a",
+  "run": "https://github.com/zwh9616/campus-claw-plus/actions/runs/42450173795",
+  "artifact_id": 13605053919,
+  "conclusion": "success",
+  "images": [
+    {
+      "service": "mysql",
+      "image_id": "sha256:3c1664546ea7d652550ddeb6263b5f51b9b3ed7289ae8a52ec0a6b85eb2f4cbc",
+      "HIGH": 0,
+      "CRITICAL": 0,
+      "raw_sha256": "3343081bb98f5211a57859a1071ad48b0a14e65efc540cd60eaff4c667448d21",
+      "archive": "host-ingress-mysql-ci-scan-2026-11-08.json.gz"
+    },
+    {
+      "service": "backend",
+      "image_id": "sha256:99f219aa83f0865dd869360201722406e98557dc46fe8ae7e01b49d27b44ed91",
+      "HIGH": 0,
+      "CRITICAL": 0,
+      "raw_sha256": "3f8d60421d102e0e229bb80d998e440f35aa8c8956a519364fb92cfc36725a4b",
+      "archive": "host-ingress-backend-ci-scan-2026-11-08.json.gz"
+    },
+    {
+      "service": "admin",
+      "image_id": "sha256:6d6141b8d2594cd5696c21ed17271c18945c6089b9b47d965c79860a8f25a069",
+      "HIGH": 0,
+      "CRITICAL": 0,
+      "raw_sha256": "98658b9613a06386ee6a8674e7c3a2b2f12d80c492ab5d6620b80092f389c08a",
+      "archive": "host-ingress-admin-ci-scan-2026-11-08.json.gz"
+    },
+    {
+      "service": "frontend",
+      "image_id": "sha256:ab2a72a8c48393578a9fbf6402169829dff2d20517fd21ec8f0b5fc667df2fd4",
+      "HIGH": 0,
+      "CRITICAL": 0,
+      "raw_sha256": "668ae37cb0120e2f092ca1b9e76c674a68c1b70640007413bbc6b3f9b5a7e91c",
+      "archive": "host-ingress-frontend-ci-scan-2026-11-08.json.gz"
+    }
+  ],
+  "proof": [
+    "2026-11-08T05:19:56.0110174Z Actual host published HTTPS and CA/SAN rejection: PASS",
+    "2026-11-08T05:20:35.2488901Z inspect recreated host binding: PASS (exit 0)",
+    "2026-11-08T05:20:57.5740551Z Gate check: passed, exit=0",
+    "2026-11-08T05:20:57.5741237Z Gate audit: passed, exit=0",
+    "2026-11-08T05:20:57.5741822Z Gate secret-scan: passed, exit=0",
+    "2026-11-08T05:20:57.5742178Z Gate verify: passed, exit=0"
+  ],
+  "scope": "Complete CI gate and actual Linux runner host published HTTPS; original Windows Desktop and native browser normal trust still need actual replay."
+}

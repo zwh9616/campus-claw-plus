@@ -40,6 +40,8 @@ node scripts/identity-compose.mjs LOCAL_ENV --project-name campus-identity-revie
 
 `down`保留命名数据库卷；不得给真实数据环境加`--volumes`。应用不会自动迁移/种子初始化。仅发布`127.0.0.1:配置端口`的HTTPS，前端与冻结身份API同源。网关覆写单一`X-Real-IP`、移除客户端`X-Forwarded-For`，不记录URI/凭据访问日志。数据库探针只是TCP进程存活；真正的TLS/迁移检查由离线工具执行，应用健康每次真实Ping，HTTPS客户端另验载荷和请求标识。
 
+主机入口使用Compose自管的`ingress` bridge，仅frontend加入；内部`proxy`仍用于Nginx精确/32到backend的转发，`data`仍internal，backend/MySQL/admin不加入入口网且不发布端口。不要仅把frontend放在internal网络后就认为主机映射可用。该结构沿用[Docker官方前端桥接+内部后端示例](https://docs.docker.com/engine/network/)；没有新增配置键或放宽TLS/Origin。停止项目时Compose清理自己的入口网，外部proxy网络仍由持有人管理。
+
 不要分享`docker compose config`展开结果或容器完整inspect，它们含凭据。本机包装器仅校验键、文件和Origin，不打印值；它不会签发或替代证书。实际TLS可信性由客户端验证，不存在“配置文件存在即可信”的结论。
 
 ## 自动验证和装配交接
@@ -47,5 +49,7 @@ node scripts/identity-compose.mjs LOCAL_ENV --project-name campus-identity-revie
 `npm run check:identity-wiring`检查输入边界、进程凭据分离、只读挂载及代理规则，已纳入check。`npm run verify:identity-wiring`生成仅测试使用的临时CA/随机凭据，在新建独占项目中验证离线迁移/重复初始化、真实同源HTTPS、错误CA/主机名拒绝、200/503健康、登录/退出/旧凭证401、停库恢复及完整重建后账号/班级不变；最后仅清理自己随机项目及测试卷/密钥，脱敏结果留在`output/identity-wiring/results.json`。完整verify仍先执行原骨架与原身份测试，不以此替换。
 
 小张已接受输入并在本实施提交同步正式入口、默认Compose、严格健康探针/Schema和active空样例；由小陈复核最终head。探针读取真实server健康，拒绝旧空依赖成功。G3、镜像漏洞扫描、02真实浏览器和最终main验收继续按共享表，生产API测试通过也不勾尚未完成的页面/整体终审。
+
+2026-11-08入口补测：`verify`新增从运行Docker命令的实际主机连接`127.0.0.1`随机发布端口，验证证书链与DNS SAN、首页200、唯一MySQL健康200、匿名me401、错误CA/SAN拒绝；停机后连接拒绝、重建后重新发现端口并复验。连接目标使用环回但证书校验仍使用配置的测试主机名，不修改系统信任、不禁TLS验证。容器内原完整身份/数据回归保留。此测试不冒称正常信任链的原生浏览器或Windows Docker Desktop复测；各平台实际结果见共享表。
 
 实现依据：[官方MySQL入口](https://github.com/docker-library/mysql/blob/master/8.4/docker-entrypoint.sh)的`_FILE`及新卷初始化行为；[Nginx代理指令](https://nginx.org/en/docs/http/ngx_http_proxy_module.html)与[HTTPS配置](https://nginx.org/en/docs/http/configuring_https_servers.html)。镜像版本与许可仍沿用01 R1，不新增运行依赖。

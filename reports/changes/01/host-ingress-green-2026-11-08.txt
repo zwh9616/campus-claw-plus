@@ -1,0 +1,10 @@
+✔ IDF-SC-18 required input, hostname and exact proxy boundaries (8.7941ms)
+✔ IDF-SC-17/18 isolated wiring keeps secrets, ports and current phase separated (14.3732ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 113.2356

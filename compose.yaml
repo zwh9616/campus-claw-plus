@@ -128,6 +128,7 @@ services:
         bind:
           create_host_path: false
     networks:
+      ingress: {}
       proxy:
         ipv4_address: ${IDENTITY_PROXY_IP:?Provide IDENTITY_PROXY_IP}
         aliases:
@@ -147,6 +148,9 @@ services:
 volumes:
   mysql-data: {}
 networks:
+  # Only the HTTPS frontend joins this bridge for host port publishing.
+  ingress:
+    driver: bridge
   data:
     internal: true
   proxy:
