@@ -7,6 +7,7 @@
 - GET /health匿名，逐请求真实Ping MySQL，3秒预算；200为status=ok/mysql=up，失败503为status=error/mysql=down，均有服务端X-Request-ID。
 - 六个身份接口：登录、CSRF、刷新、me、登出、切班。具体输入/权限/失败响应见[公共合同](docs/contracts/README.md)。资料、作业、AI、MCP和成绩接口不提供。
 - 默认服务为frontend/backend/mysql；admin仅在tools profile用于离线操作。只向本机发布HTTPS，后端与数据库不发布主机端口；数据使用命名卷，server不自动DDL/初始化。
+- frontend单独加入Compose自管ingress bridge，负责本机端口入口；backend/MySQL/admin仍使用内部网络，后端只信任内部proxy中Nginx的精确/32。验收同时检查实际主机发布端口与容器内链路。
 
 ## 小组进度与协作入口
 

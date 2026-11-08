@@ -86,3 +86,7 @@ G3已随#17共同登记，main 7806b5d的完整CI42359879443成功；这只解�
 ## 2026-11-07 正式终审与正常合并（后续集成仍待办）
 
 小陈/Kevcco已对917596428392ca2bb66a061688b6d0c0e63055d6提交真实[APPROVED5811595197](https://github.com/zwh9616/campus-claw-plus/pull/14#pullrequestreview-5811595197)，同head完整CI42364213612成功；绑定预期head正常合并#14，main c2c34a298c9f53840c861bdf7c6181486a6150c2，tree与审查head完全相同，未使用绕过。合并后CI与下一步见[集成记录](../../../reports/changes/01/main-integration-2026-11-07.md)。4.2已完成正常合并部分，02真实浏览器/最终集成仍未验证，整项不勾；3.6b、4.3继续待办，不提前归档。小张独立完整gate0有其本人实际评论，尚未推送的原件由本人后续补入，不冒称已在仓库。
+
+## 2026-11-08 主机入口缺陷返修（保留旧合并/通过事实）
+
+#15真实隔离联验发现仅internal网络的frontend主机端口拒绝连接，容器内旧verify未覆盖。小陈在原#18仅给frontend/gateway增加ingress bridge，保留后端/数据库隔离、精确/32及本机发布；新增真实主机CA/SAN/健康/匿名拒绝、停机与重建回归。故意移除入口网附件红1、恢复绿0，完整check/audit见[实际记录](../../../reports/changes/01/host-ingress-local-2026-11-08.json)。当前head完整CI/独立Docker、原平台及02正常信任浏览器待验，3.6b/4.2/4.3不勾；不追改旧版本已执行结果或伪造02批准。

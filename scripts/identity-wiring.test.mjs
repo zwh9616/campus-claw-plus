@@ -39,6 +39,19 @@ test('IDF-SC-17/18 isolated wiring keeps secrets, ports and current phase separa
   assert.deepEqual(root.services.admin.profiles,['tools'])
   assert.equal(root.services.frontend.ports.length,1)
   assert.match(root.services.frontend.ports[0],/^127\.0\.0\.1:/)
+  for (const [config, gateway] of [[root, 'frontend'], [c, 'gateway']]) {
+    assert.equal(config.networks.ingress.driver, 'bridge')
+    assert.notEqual(config.networks.ingress.internal, true)
+    assert.deepEqual(Object.keys(config.services[gateway].networks).sort(), ['ingress', 'proxy'])
+    for (const [name, service] of Object.entries(config.services)) {
+      if (name === gateway) continue
+      const networks = Array.isArray(service.networks) ? service.networks : Object.keys(service.networks)
+      assert.ok(!networks.includes('ingress'), 'Private service must not join host ingress')
+      assert.equal(service.ports, undefined)
+    }
+    assert.equal(config.networks.data.internal, true)
+    assert.equal(config.networks.proxy.external, true)
+  }
   const productionProxy=readFileSync('deploy/identity/production-proxy.conf.template','utf8')
   assert.match(productionProxy,/proxy_pass http:\/\/backend:\$\{HTTP_PORT\}/)
   assert.doesNotMatch(productionProxy,/http_x_real_ip|proxy_add_x_forwarded_for/)
