@@ -1,6 +1,6 @@
 # CampusClawPlus
 
-本分支已把MySQL、离线迁移/初始化、身份HTTP服务和同源HTTPS接入默认Compose。本分支的前端已实现公开首页、登录、最小工作台与账号页，仅接六个已实现身份接口；真实浏览器、终审和main集成按共享表逐项验收。当前审查、接线和真实联验结果统一见[共享进度表](docs/project-status.md)。
+本分支已把MySQL、离线迁移/初始化、身份HTTP服务和同源HTTPS接入默认Compose。main已正常合入真实前端，提供公开首页、登录、最小工作台与账号页，仅接六个已实现身份接口；真实浏览器、终审和main集成按共享表逐项验收。当前审查、接线和真实联验结果统一见[共享进度表](docs/project-status.md)。
 
 ## 当前运行范围
 
@@ -9,11 +9,11 @@
 - 默认服务为frontend/backend/mysql；admin仅在tools profile用于离线操作。只向本机发布HTTPS，后端与数据库不发布主机端口；数据使用命名卷，server不自动DDL/初始化。
 - frontend单独加入Compose自管ingress bridge，负责本机端口入口；backend/MySQL/admin仍使用内部网络，后端只信任内部proxy中Nginx的精确/32。验收同时检查实际主机发布端口与容器内链路。
 
-本分支包含[#18主机入口修复](reports/changes/01/host-ingress-review-2026-11-08.md)：小张已在原Windows平台独立完整门禁通过，真实批准后正常合入main 0596505，同SHA CI42453041413成功。02已在原Windows默认入口完成正常证书信任的真实浏览器12项联验，含跨标签和并发刷新，见[独立联验](reports/changes/02/zhang-final-2026-11-08.md)；最终head CI、正常合入与main复验另按共享表核对。
+本分支包含[#18主机入口修复](reports/changes/01/host-ingress-review-2026-11-08.md)：小张已在原Windows平台独立完整门禁通过，真实批准后正常合入main 0596505，同SHA CI42453041413成功。02已在原Windows默认入口完成正常证书信任的真实浏览器12项联验，含跨标签和并发刷新，见[独立联验](reports/changes/02/zhang-final-2026-11-08.md)；最终head90976b9完整CI通过并经小张真实批准，#15正常合入main3ef79f4；main复验结果见[合入记录](reports/changes/02/main-integration-2026-11-08.md)。
 
 ## 小组进度与协作入口
 
-- [共享进度表](docs/project-status.md)：G2、G3已成立；01服务端#14已由小陈独立终审、正常合入main c2c34a2，四个实际制品扫描及独立Docker门禁通过，见[最终复核](reports/changes/01/chen-final-review-2026-11-07.md)及[合入记录](reports/changes/01/main-integration-2026-11-07.md)。02真实页面/客户端已在#15提交，正常信任真实浏览器已通过，最终head CI/合入及main集成复验另核，01暂不归档。
+- [共享进度表](docs/project-status.md)：G2、G3已成立；01服务端#14已由小陈独立终审、正常合入main c2c34a2，四个实际制品扫描及独立Docker门禁通过，见[最终复核](reports/changes/01/chen-final-review-2026-11-07.md)及[合入记录](reports/changes/01/main-integration-2026-11-07.md)。02真实页面/客户端已在#15提交，正常信任真实浏览器已通过，最终head CI/真实批准/正常合入已完成，main集成复验见合入记录，01暂不归档。
 - [公共合同](docs/contracts/README.md)：六个身份操作和MySQL健康已随本PR原子激活，planned教学操作仍不可调用；npm run check:contracts接入原检查入口。
 - [前端视觉规约](docs/standards/frontend-visual.md)：北大红#94070A、暖白、简约布局，参考Canvas/Moodle信息组织；小张已确认#15代表样板，真实页面已由小葛实现，最终联合验收由小张收口。
 - [协作规范](docs/standards/collaboration.md)：按变更两人接力；每组可提交修改必须同提交更新共享表。
