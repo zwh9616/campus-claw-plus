@@ -1,0 +1,38 @@
+✖ FEF-SC-07/08 reviewer: late successful identity cannot resurrect a logged-out session (22.6952ms)
+✔ FEF-SC-04/08 reviewer: revoked access and refresh hide identity without retrying or logging out another session (1.9107ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 1
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 210.5576
+
+✖ failing tests:
+
+test at frontend\tests\reviewer-auth.test.mjs:14:1
+✖ FEF-SC-07/08 reviewer: late successful identity cannot resurrect a logged-out session (22.6952ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + {
+  +   class_id: '2',
+  +   expires_at: '2030-01-01T00:00:00.000Z',
+  +   role: 'teacher',
+  +   session_id: 'dddddddddddddddddddddddddddddddd',
+  +   session_version: 1,
+  +   user_id: '1'
+  + }
+  - undefined
+
+      at TestContext.<anonymous> (file:///C:/Users/lenovo/Desktop/SoftwareDevelopment/group_project/output/review-02/frontend/tests/reviewer-auth.test.mjs:31:10)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { user_id: '1', class_id: '2', role: 'teacher', session_id: 'dddddddddddddddddddddddddddddddd', session_version: 1, expires_at: '2030-01-01T00:00:00.000Z' },
+    expected: undefined,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

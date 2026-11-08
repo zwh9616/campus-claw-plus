@@ -268,8 +268,10 @@ export function createAuthClient(fetcher: typeof fetch = (...args) => fetch(...a
     async externalChange() {
       if (write) await write
       if (view.phase === 'authenticated') {
-        publish({ phase: 'refreshing' })
-        await verify()
+        // A pending GET belongs to the previous tab context. Invalidate it
+        // before recovery so its delayed success cannot restore old identity.
+        reset({ phase: 'refreshing' })
+        await recover(true)
       }
     },
   }

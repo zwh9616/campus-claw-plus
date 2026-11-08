@@ -22,7 +22,7 @@
     "check:contracts": "node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs scripts/contracts/identity-phase.test.mjs",
     "check:gate": "node --test scripts/gate.test.mjs",
     "gate": "node scripts/gate.mjs",
-    "check:frontend-auth": "node --experimental-strip-types --test frontend/tests/auth.test.mjs",
+    "check:frontend-auth": "node --experimental-strip-types --test frontend/tests/auth.test.mjs frontend/tests/reviewer-auth.test.mjs",
     "check:sample-isolation": "node scripts/check-sample-isolation.mjs",
     "verify:identity": "node scripts/verify-identity.mjs",
     "verify:identity-wiring": "node scripts/verify-identity-wiring.mjs",
