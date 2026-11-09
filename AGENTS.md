@@ -21,6 +21,8 @@
 - 每次代码、测试、配置或脚本修改形成提交时，必须在同一提交更新共享进度表的对应行；阶段没变也写明本次改动、验证结果及下一步。交接、阻塞、返工、验收或规约变化也须同步；AI结束工作前同样检查，未测只能写未验证。详见协作规范。
 - 规约与规则不一致先同步明确约定，例外登记在具体规范中；不能默许两套健康契约。
 
+01归档候选同步至[身份主规约](openspec/specs/identity-foundation/spec.md)与[01历史变更](openspec/changes/archive/2026-11-04-identity-foundation/)，main归档状态仍以共享表和归档PR实际合入结果为准。02、00和10的未完成项保持各自原义。
+
 ## 当前命令
 根目录 npm ci；npm run setup 安装前端；npm run check 跑基础/类型/构建/Go测试/严格规约；npm run audit 检查npm；npm run verify 运行本机容器集成验收。
 Node最低22.19.0；check还包含npm run check:contracts（OpenAPI3.1、2020-12单源双路径与语义反例），不替代既有门禁。新证据写reports/changes/<编号>/，历史archive和docs/lesson-07不倒改；未做的终审、新会话或集成不勾完成。

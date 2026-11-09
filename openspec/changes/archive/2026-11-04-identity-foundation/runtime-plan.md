@@ -1,6 +1,6 @@
 # 01运行、迁移与公共合同冻结方案
 
-日期：2026-11-06。小陈提出方案，小张依据 72fe59b 的真实复审和组长“审查者直接修复”规则完成公共登记。本文件 R1/R4 是 01 版本、口令及初始化的冻结依据；配置、健康和迁移保留号以 [公共阶段登记](../../../docs/contracts/identity-phase.json)、[配置登记](../../../docs/contracts/config-register.json) 和 [原子切换设计](../2026-11-06-identity-public-contracts/design.md) 为准。最终批准绑定 PR 当前 head；尚未安装依赖或运行数据库。
+日期：2026-11-06。小陈提出方案，小张依据 72fe59b 的真实复审和组长“审查者直接修复”规则完成公共登记。本文件 R1/R4 是 01 版本、口令及初始化的冻结依据；配置、健康和迁移保留号以 [公共阶段登记](../../../../docs/contracts/identity-phase.json)、[配置登记](../../../../docs/contracts/config-register.json) 和 [原子切换设计](../../2026-11-06-identity-public-contracts/design.md) 为准。最终批准绑定 PR 当前 head；尚未安装依赖或运行数据库。
 
 ## R1 版本、许可及可复现来源
 
@@ -16,7 +16,7 @@
 
 冻结口令参数：Argon2id v19、m=19456KiB、t=2、p=1，密码学随机盐16字节、输出32字节，保存带版本/参数/盐/输出的可解析格式。19MiB/t2/p1来自[OWASP口令存储建议](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#argon2id)，盐与输出长度是本项目已确认选择。解析不允许任意超大m/t/p耗尽内存，01只接受本次冻结参数；不存在账号也执行同参数的虚拟口令校验。初始化新口令12..128 Unicode码点；登录仍按00接收1..128，不偷偷改变LoginRequest。改密服务采用同一创建规则，不做自动trim。必须用SC-02/03/17和固定资源基准验证，不能因耗时直接降参数。
 
-R1镜像修复补记（2026-11-07，小陈审修候选）：原官方摘要独立扫描失败2 CRITICAL/33 HIGH。保留服务端8.4.13、官方基础摘要和entrypoint；[同一衍生Dockerfile](../../../deploy/identity/mysql/Dockerfile)通过RPM移除未使用mysql-shell，使用原gosu1.19源码及SHA256校验归档、已锁Go1.27.3重建降权程序，保留LICENSE。默认/隔离Compose及真实身份验证复用该构建；`verify`增加实际制品的Trivy0.76.2固定摘要扫描、真实UID/GID降权与版本断言。此为现有01安全命中的最小修复，不改变公共健康/认证/配置合同；构建、扫描和数据库回归实际通过前不得登记安全修复完成，当前结果见共享表。
+R1镜像修复补记（2026-11-07，小陈审修候选）：原官方摘要独立扫描失败2 CRITICAL/33 HIGH。保留服务端8.4.13、官方基础摘要和entrypoint；[同一衍生Dockerfile](../../../../deploy/identity/mysql/Dockerfile)通过RPM移除未使用mysql-shell，使用原gosu1.19源码及SHA256校验归档、已锁Go1.27.3重建降权程序，保留LICENSE。默认/隔离Compose及真实身份验证复用该构建；`verify`增加实际制品的Trivy0.76.2固定摘要扫描、真实UID/GID降权与版本断言。此为现有01安全命中的最小修复，不改变公共健康/认证/配置合同；构建、扫描和数据库回归实际通过前不得登记安全修复完成，当前结果见共享表。
 
 ## R2 配置空键及失败合同（已冻结登记，尚未运行生效）
 
@@ -70,7 +70,7 @@ R1—R4 和 D3/D4/D7 边界已由小张绑定72fe59b复审接受；PCR-IDF-01..0
 
 ## R7 2026-11-07 接线子包交接候选（等待小张确认）
 
-按组长共享表B阶段，现有01最小补齐[deploy/identity](../../../deploy/identity/README.md)及[输入登记](../../../deploy/identity/inputs.json)：五个Compose专属输入负责本机文件目录、独占网络/代理精确地址、HTTPS主机和端口；复用既有HTTPS证书路径键，不直接加入公共active/frozen列表。MySQL原生root文件注入和首次卷SQL输入以本机文件提供，应用DML与离线DDL账号分开；命名卷持久化，TLS链/主机名验证、只读证书、同源代理及精确/32不放宽。
+按组长共享表B阶段，现有01最小补齐[deploy/identity](../../../../deploy/identity/README.md)及[输入登记](../../../../deploy/identity/inputs.json)：五个Compose专属输入负责本机文件目录、独占网络/代理精确地址、HTTPS主机和端口；复用既有HTTPS证书路径键，不直接加入公共active/frozen列表。MySQL原生root文件注入和首次卷SQL输入以本机文件提供，应用DML与离线DDL账号分开；命名卷持久化，TLS链/主机名验证、只读证书、同源代理及精确/32不放宽。
 
 此提交只提供显式选择的隔离测试装配和可复用接线配置；根入口、阶段、空样例和健康引用保持骨架。小张审查输入与实际证据后，在同一#14分支接手生产原子激活；未确认输入、未激活或未真实浏览器验收的项目不宣称完成。生成证书/随机账号仅为隔离测试临时材料，不产生可用部署默认值，也不安装系统信任。
 

@@ -1,0 +1,61 @@
+{
+  "date": "2026-11-08",
+  "actor": "小陈/Kevcco (AI辅助)",
+  "baseline_main": "ec1095ea0ad613ed74e5875c7fb7e22e2f20cf1c",
+  "environment": {
+    "node": "v24.22.1",
+    "npm": "10.5.0",
+    "go": "go1.27.3 windows/amd64"
+  },
+  "commands": [
+    {
+      "name": "install-root",
+      "command": "npm ci",
+      "exit_code": 0,
+      "duration_ms": 7856,
+      "output": "\nadded 96 packages, and audited 97 packages in 7s\n\n27 packages are looking for funding\n  run `npm fund` for details\n\nfound 0 vulnerabilities\nnpm notice \nnpm notice New major version of npm available! 10.5.0 -> 12.2.2\nnpm notice Changelog: <https://github.com/npm/cli/releases/tag/v12.2.2>\nnpm notice Run `npm install -g npm@12.2.2` to update!\nnpm notice \n"
+    },
+    {
+      "name": "install-frontend",
+      "command": "npm run setup",
+      "exit_code": 0,
+      "duration_ms": 2869,
+      "output": "\n> campus-claw-plus@0.0.1 setup\n> npm ci --prefix frontend\n\n\nadded 29 packages, and audited 30 packages in 2s\n\n8 packages are looking for funding\n  run `npm fund` for details\n\nfound 0 vulnerabilities\n"
+    },
+    {
+      "name": "check",
+      "command": "npm run check",
+      "exit_code": 0,
+      "duration_ms": 25739,
+      "output": "\n> campus-claw-plus@0.0.1 check\n> npm run check:foundation && npm run check:gate && npm run check:contracts && npm run check:identity-wiring && npm run check:frontend-auth && npm run typecheck && npm run build && npm run check:sample-isolation && npm run check:backend && npm run check:spec\n\n\n> campus-claw-plus@0.0.1 check:foundation\n> node scripts/check-foundation.mjs\n\nFoundation: rule/skill entry points exist, sample keys are empty, .env is ignored, Nginx runtime digest matches its register.\nThis check is separate from real authorization review and full-history secret scanning.\n\n> campus-claw-plus@0.0.1 check:gate\n> node --test scripts/gate.test.mjs\n\n✔ DO-SC-03 serial success executes all stages in order (173.7864ms)\n✔ DO-SC-04 check failure preserves exit code and prevents subsequent execution (46.4104ms)\n✔ DO-SC-04 audit failure preserves exit code and prevents subsequent execution (76.4013ms)\n✔ DO-SC-04 secret-scan failure preserves exit code and prevents subsequent execution (106.5401ms)\n✔ DO-SC-04 verify failure preserves exit code and prevents subsequent execution (160.9375ms)\n✔ DO-SC-05 missing executable is failure, not a skipped pass (3.2438ms)\n✔ DO-SC-05 signalled child cannot pass (38.5773ms)\n✔ DO-SC-05 timeout terminates stage and fails closed (214.2147ms)\n✔ DO-SC-05 cancellation before and during a stage prevents later commands (110.9502ms)\n✔ DO-SC-05 concurrent calls in one checkout fail without stealing its lock (2.3949ms)\n✔ DO-SC-05 different runs isolate images and atomically assigned ports; keep contract/probes (2.5046ms)\n✔ DO-SC-03/06 Make remains a thin npm wrapper, stable CI delegates complete gate (11.5976ms)\n✔ DO-SC-05 Make installation failure stops setup; -j does not run targets concurrently (2.8984ms)\nℹ GNU Make unavailable: real Make execution unverified here; use npm gate. CI and Docker test environment must execute this case.\nℹ tests 13\nℹ suites 0\nℹ pass 13\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 1064.3215\n\n> campus-claw-plus@0.0.1 check:contracts\n> node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs scripts/contracts/identity-phase.test.mjs\n\nContracts: 24 schemas; 99 positive/negative fixtures and 6 semantic inputs agree in both paths; 40 operation examples; 7 current/frozen operations. Planned operations absent.\n✔ ICF-SC-01/02 active identity health is unique and anonymous; no skeleton fallback (11.1125ms)\n✔ ICF-SC-03/04 activation preserves required, process-separated secret metadata (15.5998ms)\n✔ ICF-SC-05/06 available SQL rejects duplicates, forward dependencies and false deployment claims (5.7526ms)\n✔ BC-SC-06 accepts trusted rubric, rejects incorrect grading, stale and missing context (2.9359ms)\n✔ BC-SC-05 nonempty Citation codepoint range (0.2065ms)\n✔ BC-SC-08/14 terminal sequence, cancellation and disconnected persistence (0.7331ms)\n✔ BC-SC-10 MCP exception remains exact, disabled and subject to both future reviews (1.4879ms)\n✔ BC-SC-09 registered empty keys only; no weakening historical HTTP_PORT requirement (5.1114ms)\n✔ BC-SC-18 planned operations and anonymous auth bypass cannot enter OpenAPI (27.6635ms)\nℹ tests 9\nℹ suites 0\nℹ pass 9\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 152.8195\n\n> campus-claw-plus@0.0.1 check:identity-wiring\n> node --test scripts/identity-wiring.test.mjs scripts/application-image-report.test.mjs\n\n✔ IDF-SC-17 complete application coverage accepts a clean actual runtime report (1.1428ms)\n✔ IDF-SC-17 a vulnerability or absent binary coverage cannot become a scan pass (1.7668ms)\n✔ IDF-SC-18 required input, hostname and exact proxy boundaries (15.3197ms)\n✔ IDF-SC-17/18 isolated wiring keeps secrets, ports and current phase separated (41.9693ms)\n✔ IDF-SC-18 verification reserves distinct data/ingress subnets without consuming exhausted default pools (0.6703ms)\nℹ tests 5\nℹ suites 0\nℹ pass 5\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 190.1137\n\n> campus-claw-plus@0.0.1 check:frontend-auth\n> node --experimental-strip-types --test frontend/tests/auth.test.mjs frontend/tests/reviewer-auth.test.mjs\n\n✔ FEF-SC-03 login bounds, unchanged input, duplicate clicks and private credentials (25.9479ms)\n✔ FEF-SC-03/09 uniform 401, Retry-After and malformed CSRF are fail closed (1.8069ms)\n✔ FEF-SC-04/05 recover order, one refresh and one replay, no logout after contention (1.5841ms)\n✔ FEF-SC-06 switch role and int64 boundaries, retain original class only after verification (1.5151ms)\n✔ FEF-SC-07 late old class response is discarded and writes are serialized (0.7557ms)\n✔ FEF-SC-07/08 uncertain writes never replay; 204 and 401 clear identity (2.5341ms)\n✔ FEF-SC-09 malformed response cannot install identity or leak the response body (0.2938ms)\n✔ FEF-SC-07/08 reviewer: late successful identity cannot resurrect a logged-out session (25.6132ms)\n✔ FEF-SC-04/08 reviewer: revoked access and refresh hide identity without retrying or logging out another session (2.6574ms)\n✔ FEF-SC-07 reviewer: another tab changing context invalidates an already pending old identity response (1.1931ms)\n✔ FEF-SC-05/08 reviewer: logout obtains CSRF for the current shared cookie after another tab refreshes (0.6327ms)\nℹ tests 11\nℹ suites 0\nℹ pass 11\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 176.1168\n\n> campus-claw-plus@0.0.1 typecheck\n> npm run typecheck --prefix frontend\n\n\n> @campus-claw-plus/frontend@0.0.1 typecheck\n> tsc --noEmit\n\n\n> campus-claw-plus@0.0.1 build\n> npm run build --prefix frontend\n\n\n> @campus-claw-plus/frontend@0.0.1 build\n> tsc --noEmit && vite build\n\nvite v8.3.5 building client environment for production...\ntransforming...\n✓ 17 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                   0.61 kB │ gzip:  0.41 kB\ndist/assets/index-BZWXOWmF.css    4.56 kB │ gzip:  1.35 kB\ndist/assets/index-CB4drJkF.js   158.24 kB │ gzip: 52.13 kB\n\n✓ built in 128ms\n\n> campus-claw-plus@0.0.1 check:sample-isolation\n> node scripts/check-sample-isolation.mjs\n\nFEF-SC-13: production excludes samples; normal dev rejects test entry; explicit samples mode serves it.\n\n> campus-claw-plus@0.0.1 check:backend\n> node scripts/check-backend.mjs\n\n?   \tgithub.com/zwh9616/campus-claw-plus/backend/cmd/identity-admin\t[no test files]\n?   \tgithub.com/zwh9616/campus-claw-plus/backend/cmd/server\t[no test files]\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/config\t0.786s\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/httpserver\t1.902s\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/identity\t0.574s\n?   \tgithub.com/zwh9616/campus-claw-plus/backend/internal/identityapp\t[no test files]\n?   \tgithub.com/zwh9616/campus-claw-plus/backend/internal/integration/fixture\t[no test files]\n?   \tgithub.com/zwh9616/campus-claw-plus/backend/internal/integration/wiringfixture\t[no test files]\n?   \tgithub.com/zwh9616/campus-claw-plus/backend/internal/migrations\t[no test files]\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/mysqlstore\t0.653s\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/observability\t0.571s\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/probe\t1.906s\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/strictjson\t0.567s\n\n> campus-claw-plus@0.0.1 check:spec\n> openspec validate --all --strict\n\n✓ change/2026-11-04-business-contracts\n✓ change/2026-11-05-delivery-observability\n✓ change/2026-11-05-frontend-foundation\n✓ change/2026-11-05-reviewer-fix-workflow\n✓ change/2026-11-06-identity-public-contracts\n✓ spec/identity-foundation\n✓ spec/project-bootstrap\nTotals: 7 passed, 0 failed (7 items)\n- Validating...\n"
+    },
+    {
+      "name": "audit",
+      "command": "npm run audit",
+      "exit_code": 0,
+      "duration_ms": 2381,
+      "output": "\n> campus-claw-plus@0.0.1 audit\n> npm audit --audit-level=high && npm audit --prefix frontend --audit-level=high\n\nfound 0 vulnerabilities\nfound 0 vulnerabilities\n"
+    },
+    {
+      "name": "archive-consistency",
+      "command": "node output/protection-proof/validate-01-archive.mjs",
+      "exit_code": 0,
+      "duration_ms": 498,
+      "output": "{\n  \"baseline\": \"ec1095ea0ad613ed74e5875c7fb7e22e2f20cf1c\",\n  \"runtimeInputsUnchanged\": true,\n  \"contractMetadataOnlyRelocated\": true,\n  \"requirements\": 5,\n  \"scenarios\": 20,\n  \"requirementsSha256\": \"ea8811cdfd0d16be1aa205f712f759f5e50e6845b479e560b3ba4cbc967fdf81\",\n  \"uncheckedArchiveTasks\": 0,\n  \"localLinksChecked\": 132,\n  \"historicalLesson07Unchanged\": true\n}\n"
+    },
+    {
+      "name": "diff-check",
+      "command": "git diff --check",
+      "exit_code": 0,
+      "duration_ms": 258,
+      "output": ""
+    },
+    {
+      "name": "secret-scan",
+      "command": "npm run secret-scan",
+      "exit_code": 0,
+      "output": "\r\n> campus-claw-plus@0.0.1 secret-scan\r\n> node scripts/check-secrets.mjs\r\n\r\n3:21PM INF 109 commits scanned.\r\n3:21PM INF scanned ~3293374 bytes (3.29 MB) in 6.04s\r\n3:21PM INF no leaks found\r\n3:21PM INF scanned ~101355 bytes (101.36 KB) in 119ms\r\n3:21PM INF no leaks found\r\nFull-history and staged-content secret scans passed.\r\n"
+    }
+  ],
+  "runtimeRetest": "Not run in this archive-only pass; original independent Docker and browser evidence remains version-bound in archive-review-2026-11-08.md"
+}

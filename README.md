@@ -13,7 +13,7 @@
 
 ## 小组进度与协作入口
 
-- [共享进度表](docs/project-status.md)：G2、G3已成立；01服务端#14已由小陈独立终审、正常合入main c2c34a2，四个实际制品扫描及独立Docker门禁通过，见[最终复核](reports/changes/01/chen-final-review-2026-11-07.md)及[合入记录](reports/changes/01/main-integration-2026-11-07.md)。02真实页面/客户端已在#15提交，正常信任真实浏览器已通过，最终head CI/真实批准/正常合入已完成，main集成复验见合入记录，01暂不归档。
+- [共享进度表](docs/project-status.md)：G2、G3已成立；01服务端#14已由小陈独立终审、正常合入main c2c34a2，四个实际制品扫描及独立Docker门禁通过，见[最终复核](reports/changes/01/chen-final-review-2026-11-07.md)及[合入记录](reports/changes/01/main-integration-2026-11-07.md)。02真实页面/客户端已在#15提交，正常信任真实浏览器已通过，最终head CI/真实批准/正常合入已完成，main集成复验见合入记录。01归档候选及现行主规约已在本分支同步，归档PR未合入前不称main已归档，见[归档核对](reports/changes/01/archive-review-2026-11-08.md)。
 - [公共合同](docs/contracts/README.md)：六个身份操作和MySQL健康已随本PR原子激活，planned教学操作仍不可调用；npm run check:contracts接入原检查入口。
 - [前端视觉规约](docs/standards/frontend-visual.md)：北大红#94070A、暖白、简约布局，参考Canvas/Moodle信息组织；小张已确认#15代表样板，真实页面已由小葛实现，最终联合验收由小张收口。
 - [协作规范](docs/standards/collaboration.md)：按变更两人接力；每组可提交修改必须同提交更新共享表。
@@ -23,7 +23,7 @@
 
 需要Docker、Node>=22.19及持有人提供的数据库/HTTPS可信证书和本机秘密文件。无默认证书或账号口令；不把测试临时CA安装到系统，不跳过TLS校验。准备细节见[身份部署步骤](deploy/identity/README.md)。
 
-1. 获取本PR代码或合入后的main；已有目录先保留未提交修改，不能强制覆盖。
+1. 获取已合入的main；已有目录先保留未提交修改，不能强制覆盖。归档候选只改变文档及登记引用，不改变启动步骤。
 2. 在忽略的output/identity-local准备root-password、initialize.sql、数据库TLS材料、backend.env、admin.env和seed.json。应用DML账号与离线DDL账号分离；秘密不发群、不进Git/镜像/截图。
 3. 按部署步骤创建本项目独占internal代理网络，选择未占用静态地址。把根.env.example复制为本机.env（已有文件不要覆盖），填写HTTP_PORT、五个IDENTITY_*及HTTPS_CERT_FILE/HTTPS_KEY_FILE。MYSQL_*和AUTH_TRUSTED_ORIGIN由对应进程env文件提供；AUTH_TRUSTED_PROXY_CIDRS由Compose从代理IP派生为精确/32，不再在多个地方复制秘密。
 4. 按顺序构建、迁移、初始化、启动。以下均从仓库根执行，wrapper只校验键与文件，不打印配置值。
@@ -42,7 +42,7 @@ Get-Content -Raw output/identity-local/seed.json | node scripts/identity-compose
 node scripts/identity-compose.mjs .env up -d --wait --wait-timeout 90 backend frontend
 ```
 
-准备完成后，直接docker compose up --build -d --wait也运行同一默认身份入口。访问配置的HTTPS主机/端口；客户端必须信任证书且SAN匹配。/health应为mysql up；身份行为用真实API客户端验收，当前静态首页不宣称可点击登录。
+准备完成后，直接docker compose up --build -d --wait也运行同一默认身份入口。访问配置的HTTPS主机/端口；客户端必须信任证书且SAN匹配。/health应为mysql up；浏览器可从首页进入真实登录，登录后进入最小工作台与账号页。使用持有人本机初始化的真实账号；教师可切换其所属班级，学生不能越权，刷新恢复与退出按02身份客户端处理。
 
 重复初始化不覆盖既有口令；SQL/结构/摘要不一致或dirty时拒绝启动，按[迁移恢复](docs/identity-migrations.md)前向修复，不盲目force、不删库。首次卷的initialize.sql不会在已有卷自动重跑。
 
