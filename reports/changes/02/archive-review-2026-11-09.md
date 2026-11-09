@@ -12,4 +12,6 @@
 
 OpenSpec 1.13.0 归档命令退出 0，写入 7 项需求。4.4 表示本分支已完成证据核对、归档和主规约同步。小葛负责审查候选的主规约、路径和证据，主干归档状态按实际批准、CI 和合入更新。长期部署、版本回滚、00 独立阅读及 10 B/C 仍按各自任务跟踪。 [前端主规约](../../../openspec/specs/frontend-foundation/spec.md) · [02 归档](../../../openspec/changes/archive/2026-11-05-frontend-foundation/)
 
-在 Windows、Node 25.2.1、npm 11.6.2 和 Docker 29.8.0 的归档工作树上，`npm ci`、`npm run setup` 与 `git diff --cached --check` 通过。归档前后 7 项需求及 19 个场景正文一致，90 个本地链接有效，运行、测试、配置和第 7 课基线一致。`npm run gate` 的 check、audit 和 secret-scan 退出 0，OpenSpec strict 为 7/7。本地 verify 首次在 Trivy 下载漏洞库时遇到 `unexpected EOF`，退出 1，尚无该次扫描结论。保留失败原件，重跑 verify，候选仍使用完整 PR CI。
+在 Windows、Node 25.2.1、npm 11.6.2 和 Docker 29.8.0 的归档工作树上，`npm ci`、`npm run setup` 与 `git diff --cached --check` 通过。归档前后 7 项需求及 19 个场景正文一致，90 个本地链接有效，运行、测试、配置和第 7 课基线一致。`npm run gate` 的 check、audit 和 secret-scan 退出 0，OpenSpec strict 为 7/7。首次 verify 在 Trivy 下载漏洞库时遇到 `unexpected EOF`，重跑 `npm run verify` 时同一下载超时，两次均退出 1。失败原件留在本机 `output/`。本轮本机镜像扫描和后续容器验收仍无通过结果。
+
+#21 首轮远端 CI `42570665833` 在 Gitleaks 下载时失败，check 和 audit 已通过，后续 verify 未执行。归档交接提交仍需自己的完整 CI 以及小葛的正式审查。 [归档 PR #21](https://github.com/zwh9616/campus-claw-plus/pull/21) · [首轮 CI](https://github.com/zwh9616/campus-claw-plus/actions/runs/42570665833)
