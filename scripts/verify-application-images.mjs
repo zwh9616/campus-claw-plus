@@ -3,16 +3,16 @@ import { mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 import { randomBytes, createHash } from 'node:crypto'
 import { validateApplicationScan } from './application-image-report.mjs'
+import { auditCache, databaseArgs, scanner } from './verify-image-audits.mjs'
 
 // IDF-SC-14/17/18: scan exact production Dockerfiles before runtime acceptance.
-const scanner = 'aquasec/trivy@sha256:8f6bb947dbc528902e11f2f5be52f7b519f6a39d5d148f41166f2040499768fb'
 const id = 'campus-app-audit-' + randomBytes(6).toString('hex')
 const parent = resolve('output/application-image-verify')
 const directory = resolve(parent, id)
 if (dirname(directory) !== parent) throw new Error('Invalid audit directory')
 mkdirSync(directory, { recursive: true })
 for (const name of ['results', 'backend', 'admin', 'frontend']) rmSync(resolve(parent, name + '.json'), { force: true })
-const cacheVolume = id + '-cache'
+const { volume: cacheVolume, owned: ownsCache } = auditCache(id)
 const results = [], images = [], summaries = []
 let failed = false
 function run(label, args, timeout = 180000) {
@@ -39,7 +39,8 @@ try {
     try {
       run(`Trivy HIGH/CRITICAL ${service}`, ['run', '--rm', '--name', id + '-scanner',
         '--mount', `type=bind,source=${directory},target=/reports`, '-v', `${cacheVolume}:/root/.cache/trivy`, scanner,
-        'image', '--input', '/reports/image.tar', '--scanners', 'vuln', '--severity', 'HIGH,CRITICAL', '--exit-code', '1',
+        'image', '--input', '/reports/image.tar', ...databaseArgs, '--cache-backend', 'memory',
+        '--scanners', 'vuln', '--severity', 'HIGH,CRITICAL', '--exit-code', '1',
         '--list-all-pkgs', '--no-progress', '--timeout', '3m', '--format', 'json', '--output', '/reports/' + filename], 210000)
     } finally {
       try { writeFileSync(resolve(parent, filename), readFileSync(resolve(directory, filename))) } catch {}
@@ -59,7 +60,7 @@ try {
   for (const [label, args, absent] of [
     ['remove own scanner if timed out', ['rm', '-f', id + '-scanner'], 'No such container'],
     ...images.map(image => ['remove own image tag', ['image', 'rm', image], 'No such image']),
-    ['remove own scanner cache', ['volume', 'rm', cacheVolume], 'no such volume'],
+    ...(ownsCache ? [['remove own scanner cache', ['volume', 'rm', cacheVolume], 'no such volume']] : []),
   ]) {
     const child = spawnSync('docker', args, { encoding: 'utf8', timeout: 30000 })
     results.push({ label, exit_code: child.status })
