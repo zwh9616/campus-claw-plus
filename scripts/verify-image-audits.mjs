@@ -29,9 +29,10 @@ async function main(args) {
   process.on('SIGTERM', cancel)
   const container = 'campus-trivy-db-prep-' + randomBytes(6).toString('hex')
   try {
+    const sources = prepareOnly ? ['--db-repository', 'public.ecr.aws/aquasecurity/trivy-db:2', ...databaseArgs] : databaseArgs
     const steps = [{ name: 'prepare Trivy vulnerability database', command: 'docker', timeoutMs: prepareOnly ? 910000 : 190000,
       args: ['run', '--rm', '--name', container, '-v', `${databaseVolume}:/root/.cache/trivy`, scanner,
-        'image', '--download-db-only', ...databaseArgs, '--no-progress', '--timeout', prepareOnly ? '15m' : '3m'] }]
+        'image', '--download-db-only', ...sources, '--no-progress', '--timeout', prepareOnly ? '15m' : '3m'] }]
     if (!prepareOnly) {
       // If preparation fails, earlier reports cannot stand in for this run.
       for (const path of ['mysql-image-verify/results.json', 'mysql-image-verify/mysql.json',

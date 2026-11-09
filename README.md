@@ -77,7 +77,7 @@ npm run gate
 - audit：根与前端npm依赖high/critical阻断；不是Go/容器漏洞扫描的替代品。
 - secret-scan：官方Gitleaks8.30.1，首次下载验证SHA256；扫描全部Git历史和暂存内容并全量隐藏原值。当前支持Windows/Linux x64，其他平台可手动使用同版本。
 - verify：把原启动/配置/健康/日志/停止回归类别迁移到当前默认身份入口，再运行真实身份/迁移测试。使用随机独占项目、临时配置/CA和Docker分配的环回端口，保留唯一MySQL健康合同；只清理自己的测试容器、网络与数据卷，不影响普通运行项目。
-- 镜像验收先用固定版本的 Trivy 准备官方漏洞库。GHCR 优先，Google 镜像作为 Trivy 支持的临时错误备用源。四个镜像共用当前工作区的库缓存，每个镜像仍重新扫描。Trivy 按正常规则检查库的更新时间，准备失败会停止验收。慢网首次下载可先运行 `npm run prepare:scan-db`（最长 15 分钟），成功后再运行 `npm run gate`。准备命令只更新漏洞库，镜像扫描结果以 gate 的 verify 为准。准备和镜像扫描共用工作区锁。
+- 镜像验收先用固定版本的 Trivy 准备官方漏洞库。常规验收优先使用 GHCR，Google 镜像作为 Trivy 支持的临时错误备用源。慢网首次下载可先运行 `npm run prepare:scan-db`，该命令优先使用官方 ECR，限时 15 分钟。准备成功后运行 `npm run gate`。四个镜像共用当前工作区的库缓存，各自重新扫描，Trivy 按正常规则检查库的更新时间。准备和扫描共用工作区锁，准备失败会停止验收。
 - 10 A进度与验收边界见[门禁交接](reports/changes/10/A/README.md)。CI绿色不等于主干保护生效；G3还要求有效保护、受控阻断、小葛终审和main集成复验。
 - 输出：控制台；本机机器报告在output/verification/（忽略）；可审查结论和SC映射在[验收记录](docs/lesson-07/verification.md)。
 - CI在push/PR自动运行同一套检查。按2026-10-29确认的归档范围，采用C已提供的运行/页面/新会话证据和CI结果；已取消的三项前置见[归档记录](docs/lesson-07/archive-record.md)，未执行结果不冒充通过。
