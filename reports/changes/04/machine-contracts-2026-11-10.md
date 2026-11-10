@@ -13,6 +13,8 @@
 
 已创建[合同PR #25](https://github.com/zwh9616/campus-claw-plus/pull/25)，合同候选提交`5fd8969c58cc0faf68d6798d82a14c9238011931`；已通过GitHub向小张账号zwh9616正式请求review。本次后续提交仅同步PR与交接文档，机器合同/测试和运行输入不变；最终head的CI和审查以PR实时记录为准，未预填批准或合入。
 
+最终核对补记：检索q的OpenAPI参数显式声明`TrimSpace-before-schema`；引用Schema约束规范化值，不能把合法原始` q `误判为400。合同变异中新增删除该规范化声明即失败，16组用例仍全过；未改变规约的检索语义和运行范围。
+
 ## 实际验证
 
 Windows，Node v24.22.1、npm10.5.0、Go1.27.3 windows/amd64，GOTOOLCHAIN=local。本次未新增依赖，原锁文件未变；本机不具备Docker命令，本轮不在本机执行verify。远端当前head完整CI另在PR记录，不能预填成功。

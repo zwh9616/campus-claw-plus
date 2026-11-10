@@ -3326,7 +3326,8 @@
             "schema": {
               "$ref": "./schemas/KeywordSearchParameters.schema.json#/properties/q"
             },
-            "description": "单值参数；未知/重复/空值/非法整数400，不退化为全量。"
+            "description": "单值参数；URL解码后先TrimSpace，再按引用Schema验证规范化值。未知/重复参数400；去空白后为空400。",
+            "x-normalization": "TrimSpace-before-schema"
           },
           {
             "name": "mode",

@@ -43,6 +43,7 @@ export function validateMaterialOperationProfiles(api) {
       if (p.in === 'query') {
         assert.equal(p.required, p.name === 'q')
         assert.deepEqual(p.schema, ref(path === '/api/v1/search' ? 'KeywordSearchParameters' : 'MaterialListParameters', p.name))
+        if (p.name === 'q') assert.equal(p['x-normalization'], 'TrimSpace-before-schema', 'Validate normalized q, not the raw query string')
       }
       if (p.name === 'Idempotency-Key') { assert.equal(p.required, true); assert.deepEqual(p.schema, ref('MaterialIdempotencyKey')) }
     }
