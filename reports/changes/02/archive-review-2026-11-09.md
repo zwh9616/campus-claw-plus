@@ -21,3 +21,5 @@ OpenSpec 1.13.0 归档命令退出 0，写入 7 项需求。4.4 表示本分支�
 主干 `16211ca` 的完整 CI `42766929515` 四段均退出 0。MySQL、backend、admin、frontend 四个镜像实际扫描通过，真实 MySQL 身份测试通过。 [主干 CI](https://github.com/zwh9616/campus-claw-plus/actions/runs/42766929515)
 
 同步后，7 项需求、19 个场景、浏览器验收原件和 11 项运行与测试输入摘要均核对一致，90 个本地链接有效。OpenSpec strict 7/7、合同用例 9/9 和差异检查通过。#21 相对新主干的差异为归档与进度文档，归档状态按同步提交的完整 CI、实际批准和合入结果更新。 [漏洞库修复验收](../10/A/trivy-db-download-2026-11-09.md)
+
+2026-11-10 小陈收口：小葛对同步后 `23eb59c7f089349325a36bfc35d2357c2c3037f6` 的实际批准为 `5838237099`，完整 CI `42767447268` 成功。API 显示 clean/可合并；小陈再次核对差异只含归档/进度文档、运行输入无差异且 `git diff --check` 退出0，绑定该 head 正常合入 `c01fb9ba61dbe603e4f42367071a12da69d84fe5`，没有绕过保护。`git diff --quiet c01fb9b 23eb59c7` 退出0，整树与获批版本一致；同一 main 的完整 CI `42779317047` 已 completed/success。01、02归档均已在主干，不等于长期环境部署、回退演练或发布完成。[当前head批准](https://github.com/zwh9616/campus-claw-plus/pull/21#pullrequestreview-5838237099) · [PR检查](https://github.com/zwh9616/campus-claw-plus/actions/runs/42767447268) · [合入后主干检查](https://github.com/zwh9616/campus-claw-plus/actions/runs/42779317047)
