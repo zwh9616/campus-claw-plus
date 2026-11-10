@@ -1,0 +1,50 @@
+## Context
+
+基于主干 `16211ca`，按 [00 D2/D3/D4/D9](../2026-11-04-business-contracts/design.md) 和 [01 身份主规约](../../specs/identity-foundation/spec.md) 接入。01 的 MySQL、可信同源 HTTPS、访问令牌、切班和撤权已通过真实验收。04 的存储和检索采用现有 MySQL/InnoDB，因此健康继续按实际 MySQL Ping 返回，不引入配置键、独立存储服务或出站例外。
+
+## Goals / Non-Goals
+
+- 交付「老师上传 → 本班学生搜索 → 授权回看原文」；接口和真实容器可直接验收。
+- 本轮范围为纯文本、关键词、不可编辑的首版资料。向量/混合检索、PDF/Office、正文替换、删除、前端与模型接入均在后续；`deleted` 是 00 保留状态。
+- 关键词为区分大小写的 Unicode 字面子串匹配，不做分词、同义词或排名模型。07A 可在后续评审时选择使用 keyword。
+
+## Decisions
+
+### D1 授权及端点
+
+所有端点接受且只使用服务端验证的 Bearer 身份。沿用 01 对会话、权限与当前班级的校验，忽略客户端伪造的身份头。请求参数不接收班级或用户字段，多余字段按 400。写请求先认证、再判教师角色、再判资源归属和业务输入。无 Cookie 授权路径；携带 Origin 的写请求还须与现有可信入口完全同源，缺 Origin 的 Bearer API 调用可用，跨源 403，不开跨源许可。缺失或失效令牌 401，学生写 403，跨班和不存在同构 404。畸形传输或声明的上传长度越界可以在认证前拒绝。任何拒绝不改资料、正文、索引及重放记录。限流计数仅作流量控制。
+
+教师可读取活动班内所有资料状态（保留的 deleted 除外）；学生只看 ready，其他状态按不存在处理。两个同班学生都能读取本班公开给学生的 ready 资料。切班、撤权或退出后的旧凭证按 01 失效，不能用历史检索 URL 绕过认证。读响应及错误使用 `Cache-Control: no-store`。
+
+| 操作 | 权限与输入 | 成功响应 |
+| --- | --- | --- |
+| `GET /api/v1/materials` | 教师/学生；仅 page、page_size，默认 1/20，page 为 1..2147483647、page_size 1..50；按 id 降序，total 只含调用人可见资料；同一读快照内计数和取页，超末页为 200 空 items | 200 `{items:Material[],page,page_size,total}` |
+| `GET /api/v1/materials/{id}` | 按当前班级和状态授权，id 使用 00 ID | 200 `{material:Material,body:string}`；body 为规范化正文 |
+| `GET /api/v1/materials/{id}/download` | 与详情同一份授权 | 200 原始上传字节，`Content-Type: text/plain; charset=utf-8`、`Content-Disposition: attachment; filename="material-{id}.txt"`、`X-Content-Type-Options: nosniff` |
+| `POST /api/v1/materials` | 本班教师；multipart 和幂等键见 D2 | 首次创建 201 `Material`；同键同载荷重放 200 当前 `Material`，不重新索引 |
+| `POST /api/v1/materials/{id}/retry-index` | 本班教师；空请求体，无查询参数 | 200 `Material`；pending/failed 重新建索引，ready 返回当前状态 |
+| `GET /api/v1/search` | 教师/学生；参数见 D3 | 200 `{items:Citation[],mode:"keyword"}` |
+
+Material 必需字段为 `id:ID, title:string(1..200), version:1, index_status:enum, size_bytes:int(1..262144), created_at:Timestamp`。当前返回 pending/ready/failed；indexing 只作同一事务里的处理状态，deleted 不可读。返回对象不带额外属性。响应和 ID、Timestamp、Citation、Error 复用 00 格式。只允许操作声明的查询键，重复、空值（除 q 按 D3）和非法整数 400；拒绝未知 multipart 字段和重复项。普通 GET、retry 不接受请求体。
+
+本轮错误集合：所有操作有 400/401/503/504；上传和重试另有 403/429，详情、下载和重试另有 404，上传另有 409/413。状态码、业务码、请求标识以及 404 的固定消息沿用 00 D2。非法 ID 在身份与动作检查后返回 400；合法 ID 在解析其余输入前先判定可见性。MySQL 不可用 503，正常连接上的查询超过现有业务 DB 预算 504。新写接口共用按 user_id 的单实例限流，以 Unix 时间分钟为固定窗口，至多 12 次通过身份、同源、动作和资源校验的尝试（含重放）；达到上限后返回 429，`Retry-After` 为距离下一窗口的剩余整数秒（向上取整，最少 1）。切班不能重置计数。
+
+### D2 上传、事务与重试
+
+- 上传必须含一个 `title` 文本字段和一个 `file` 文件字段。标题 TrimSpace 后为 1..200 个 Unicode 码点，无控制字符；文件名以 `.txt` 结尾（不区分大小写），仅用于此校验，不保存为路径、响应文件名或日志字段。整个 multipart 体最多 278528 字节，文件最多 262144 字节，声明长度和流式读取都受限。超限 413；multipart 错误、非法 UTF-8、NUL 或除 TAB/CR/LF 之外的 Unicode 控制字符、仅空白正文均为 400。
+- 保留原始字节供下载。生成正文时只剥离开头一个 UTF-8 BOM、把 CRLF 和单独 CR 转为 LF，其余字符保持不变；详情和出处共用该正文，片段位置从 0 开始按 Unicode 码点计。
+- 上传必带单个 `Idempotency-Key`，ASCII `[A-Za-z0-9_-]{16,64}`。以用户、当前班级、键为唯一范围。用裁剪后的标题与原始文件字节（长度前缀区分）计算摘要。验证后同一事务写入资料、正文、原始字节和键，初始 pending；事务失败全回滚。唯一约束使并发同键只创建一份，已提交同键同摘要返回 200 当前记录，异摘要返回 409。重放记录与资料共存，本轮不自动删除。重放仍经过当次身份与班级授权。
+- 首次创建提交后尝试建索引。锁定当前班级内对应资料行后，依次将其标为 indexing、写入完整片段集、切到 ready，这三步同一事务，外部只可见提交前后状态。已知索引生成或写入失败先回滚所有片段；如仍可访问 MySQL，在单独事务中只将仍为 pending/failed 的同一版本标为 failed（并发已 ready 则保留 ready）。只要创建结果和当前状态都能确认，仍返回 201，响应的 index_status 表示结果；DB 不可达或超时且无法确认结果时按 503/504，重复提交使用同键找回状态。
+- pending 可在进程中断或无法标失败后保留。显式重试仍先授权，锁内复查状态；成功才改 ready，已 ready 直接 200，索引失败能持久化则返回 200 failed，数据库故障不能确认则返回 503/504。并发重试串行，最多一套提交片段。教师用列表/详情确认状态和发起重试；学生列表/检索不会看到半份索引。
+
+### D3 检索与出处
+
+只接受 q、mode、top_k。q 先 TrimSpace，1..2000 个码点，无 Unicode 控制字符；mode 缺省 keyword，显式只接受 keyword，vector/hybrid 与其它值为 400；top_k 缺省 4，范围 1..10。参数绑定，以码点精确字面值搜索片段，`%` 与 `_` 没有通配语义。
+
+片段从码点 0 起，最大 2000 码点，相邻片段重叠 200 码点，只在上一片段尚未覆盖结尾时生成下一片段。只匹配至少完整落在一段内的查询。按 material id 降序、ordinal 升序、chunk id 升序返回至多 top_k 个出处。索引先按当前班级和 ready 过滤；返回前同一读快照回查持久资料、版本及正文片段，核对授权、区间和 quote，越权候选永远排除，已授权数据不一致返回 503。Citation 沿用 00 原类型，url 为 `/api/v1/materials/{id}`，quote 等于对应正文区间，非公开 URL。无命中和只有外班命中均为 200 空数组。持久库或索引查询失败须报告 503/504。
+
+### D4 合同与数据库变更
+
+- 小陈开始写运行代码之前，先用受审合约提交补齐端点登记、OpenAPI 和单源 Schema（含 Material、MaterialPage、MaterialDetail、KeywordSearchResponse；复用公共 Citation/Error/ID/Timestamp）。同一批正反例跑两种校验路径，确认 06/07A 不消费未批准的能力。只在后续同一受审实现提交将已接线操作标为 current。
+- 复用 01 的数据库、离线迁移机制、业务账号和请求预算。小张预留 `000004_materials_retrieval`，apply 前在迁移登记确认编号、文件、依赖、兼容和恢复计划。原文/原始字节、幂等记录和片段都在 InnoDB，索引键支持按班级状态及资料/版本查找；外键和唯一键守住班级、资料/版本和序号约束。
+- 先加表并保持 01 旧表及其摘要不动；从空库及 000003 均须可升级。继续按离线校验、真实 SQL 摘要、逐条 DDL 注错和前向修复验证。先验证现有版本对更高迁移号及脏状态的实际行为，部署说明给出隔离备份恢复顺序。旧程序若拒绝新版库，用备份恢复旧库后回退应用并核对身份数据；有资料数据时禁止自动执行破坏性 down，不能拿删表当恢复。
