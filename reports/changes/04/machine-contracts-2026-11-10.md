@@ -11,6 +11,8 @@
 
 小张需审定：上述六操作的frozen边界、输入/输出与错误；原始UTF-8字节和multipart流式上限的分工；唯一键/原文/索引事务与真实失败场景；000004编号/文件/依赖、前向修复及旧制品回退计划。tasks1.2/1.3保持未完成，审定当前head并满足门禁后才能进入运行实现。
 
+已创建[合同PR #25](https://github.com/zwh9616/campus-claw-plus/pull/25)，合同候选提交`5fd8969c58cc0faf68d6798d82a14c9238011931`；已通过GitHub向小张账号zwh9616正式请求review。本次后续提交仅同步PR与交接文档，机器合同/测试和运行输入不变；最终head的CI和审查以PR实时记录为准，未预填批准或合入。
+
 ## 实际验证
 
 Windows，Node v24.22.1、npm10.5.0、Go1.27.3 windows/amd64，GOTOOLCHAIN=local。本次未新增依赖，原锁文件未变；本机不具备Docker命令，本轮不在本机执行verify。远端当前head完整CI另在PR记录，不能预填成功。
