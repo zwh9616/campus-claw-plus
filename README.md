@@ -13,7 +13,7 @@
 
 ## 小组进度与协作入口
 
-- [共享进度表](docs/project-status.md)记录当前验收和交接。G2、G3已成立，身份和真实登录已在主干复验。01归档已随[#20](https://github.com/zwh9616/campus-claw-plus/pull/20)合入。02归档候选已同步[前端主规约](openspec/specs/frontend-foundation/spec.md)，主干状态按实际审查与合入更新。
+- [共享进度表](docs/project-status.md)记录当前验收和交接。G2、G3已成立，身份和真实登录已在主干复验。01、02归档已分别随[#20](https://github.com/zwh9616/campus-claw-plus/pull/20)、[#21](https://github.com/zwh9616/campus-claw-plus/pull/21)合入，02主干完整检查42779317047成功；见[前端主规约](openspec/specs/frontend-foundation/spec.md)。下一轮仅准备[04资料规约与机器合同](openspec/changes/2026-11-10-materials-retrieval/proposal.md)，资料接口仍不可调用。
 - [公共合同](docs/contracts/README.md)：六个身份操作和MySQL健康已随本PR原子激活，planned教学操作仍不可调用；npm run check:contracts接入原检查入口。
 - [前端视觉规约](docs/standards/frontend-visual.md)：北大红#94070A、暖白、简约布局，参考Canvas/Moodle信息组织；小张已确认#15代表样板，真实页面已由小葛实现，最终联合验收由小张收口。
 - [协作规范](docs/standards/collaboration.md)：按变更两人接力；每组可提交修改必须同提交更新共享表。
