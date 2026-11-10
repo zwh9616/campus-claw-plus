@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/v1/Material.schema.json",
+  "title": "Material",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "ID.schema.json"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "^(?!\\p{White_Space})(?![\\s\\S]*\\p{White_Space}$)[^\\p{Cc}]+$"
+    },
+    "version": {
+      "type": "integer",
+      "const": 1
+    },
+    "index_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "ready",
+        "failed"
+      ]
+    },
+    "size_bytes": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 262144
+    },
+    "created_at": {
+      "$ref": "Timestamp.schema.json"
+    }
+  },
+  "required": [
+    "id",
+    "title",
+    "version",
+    "index_status",
+    "size_bytes",
+    "created_at"
+  ],
+  "additionalProperties": false
+}

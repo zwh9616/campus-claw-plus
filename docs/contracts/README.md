@@ -18,9 +18,9 @@
 ## 当前实现和规划的区别
 
 - **current**：`GET /health`与六个身份操作已经在本分支默认入口接线；健康真实Ping，200/mysql=up、503/mysql=down。最终终审/部署及前端联验仍以共享表为准。
-- **frozen**：本轮六个身份操作已转current，没有额外开放业务接口。
-- **planned**：资料、任务、成绩、流式会话和审计等操作只有责任登记，不出现在OpenAPI paths中，也不能接线或生成假入口。Task、Turn、Citation、GradeResult、SSE、Audit等Schema用于候选类型检查，不表示该能力已冻结为可调用API。
-- `Page.schema.json`是明确的`Page<Audit>`实例，items引用Audit；未来Material分页必须先定义Material及新的明确分页Schema，不使用裸object占位。
+- **frozen**：本分支依据已批准04规约提交六个资料操作的完整合同候选（列表、详情、下载、上传、索引重试、keyword检索）；当前合同提交待小张审定，运行路由和客户端尚未接线。frozen不等于已实现，只有后续受审实现及验收才改current。
+- **planned**：任务、成绩、流式会话和审计等其余操作仍只有责任登记，不出现在OpenAPI paths中，也不能接线或生成假入口。Task、Turn、GradeResult、SSE、Audit等候选Schema不表示能力已可调用；向量/混合检索不在04首版合同中。
+- `Page.schema.json`仍是明确的`Page<Audit>`实例；04单独用`MaterialPage`引用`Material`，不改旧Page或使用裸object占位。
 
 认证传输采用`Authorization: Bearer ...`、`X-CSRF-Token`与`Origin`，刷新Cookie传输名选为`campus_refresh`（00落地的具体命名，需本实现PR审查；01若调整须同步合同）。Cookie属性/期限遵循D3/D9；logout无成功body。auth/me只开放各操作声明的错误集合；通用Error还容纳后续已约定错误码，但不凭其存在开新路由。HTTP层拒绝未知/重复键及64KiB上限属于01运行检查，普通JSON Schema无法检测解析后已丢失的重复键。
 
@@ -46,6 +46,14 @@ Node最低版本提升为22.19.0以符合锁定校验工具要求；CI原有Node
 2. types只改schemas；端点operation只引用schemas。新增对象封闭属性、列必需字段；可空用null联合，不用3.0 nullable。planned升级须完整输入、成功/失败响应、权限、场景及审查依据。
 3. 正反例加入fixtures：结构例由双路径检查；求和/跨字段/可信rubric等由语义测试检查。每个新Schema需要正例及缺项/额外字段/边界反例。
 4. 运行原门禁；关键条件临时破坏确认失败，立即恢复重跑并留证。不能将这些内存合同样例称为真实数据库并发或模型测试。
+
+## 04合同候选的审查与使用
+
+依据[已批准04设计D1—D4](../../openspec/changes/2026-11-10-materials-retrieval/design.md)。`Material`、`MaterialPage`、`MaterialDetail`、`KeywordSearchResponse`及上传/列表参数/检索参数/幂等键共8个Schema为唯一类型源；OpenAPI参数和响应引用该源。参数对象样例表示已填默认值/完成TrimSpace后的合同值，不是另一种JSON请求体；上传JSON字符串样例表示文本结构，不能代替真实multipart文件名、重复字段、UTF-8字节与整个请求流式上限检查。
+
+六个操作只允许Bearer身份；教师写、学生只读本班ready，固定同构404、no-store、原文下载附件头、按user_id的12次/分钟配额和503/504边界见OpenAPI及设计。逐资源授权和事务仍需实现后真实执行；`scripts/contracts/materials.mjs`及其测试只验证合同声明和已提供原文的例子，不是运行中的授权服务。当前七个current操作、配置/健康、旧Schema和旧SQL保持原义。
+
+`npm run check:contracts`对同一批新增正反例经独立2020-12及OpenAPI解引用两条路径校验，再验证文本字节、分页计数、片段码点/出处等语义例子。附加属性、未授权的合同声明、误标current、未知planned路由等反例必须非零失败。迁移编号、兼容与恢复候选见[迁移登记](migration-register.md)；tasks1.2/1.3由小张审定当前提交后确认。06/07A只可据已审合同准备自己的候选，当前暂停安排不变，禁止提前调用。
 
 SSE fixture的`{event,data}`只是测试表达：真实wire仍为`event:`与JSON `data:`两行加空行；`SSEMeta/Token/Done/Error`分别约束data。断网不承诺终结帧送达，后续07A必须实际验证持久化查询。Grade语义检查要求可信rubric上下文；模型自己给的max_score不能当权威。
 

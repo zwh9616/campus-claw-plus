@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict'
 import { existsSync } from 'node:fs'
+import { materialOperations, validateMaterialOperationProfiles } from './materials.mjs'
 
 // BC-SC-09: configuration values are never accepted by this registry check.
 export function validateConfigSample(text, register, exists = existsSync) {
@@ -55,17 +56,20 @@ export function validateOperationBoundary(api, register) {
       if (!['get', 'post', 'put', 'delete', 'patch', 'head', 'options', 'trace'].includes(method)) continue
       const key = `${method.toUpperCase()} ${path}`
       seen.push(key)
-      const current = key === 'GET /health'
-      assert.equal(operation['x-contract-status'], 'current', `Wrong operation stage: ${key}`)
-      assert.equal(operation['x-owner-change'], current ? 'bootstrap' : '01')
+      const material = materialOperations.some(([m,p]) => `${m} ${p}` === key)
+      assert.equal(operation['x-contract-status'], material ? 'frozen' : 'current', `Wrong operation stage: ${key}`)
+      assert.equal(operation['x-owner-change'], material ? '04' : key === 'GET /health' ? 'bootstrap' : '01')
       const entry = register.operations.find(x => `${x.method} ${x.path}` === key)
       assert.ok(entry, `Unregistered operation: ${key}`)
       assert.equal(entry.status, operation['x-contract-status'])
       assert.equal(entry.owner, operation['x-owner-change'])
     }
   }
-  assert.deepEqual(seen.sort(), [...expectedOperations].sort(), 'Planned/missing operation in OpenAPI')
-  assert.deepEqual(register.operations.map(x => `${x.method} ${x.path}`).sort(), [...expectedOperations].sort())
+  const allowed = [...expectedOperations, ...materialOperations.map(([m,p]) => `${m} ${p}`)].sort()
+  assert.deepEqual(seen.sort(), allowed, 'Planned/missing operation in OpenAPI')
+  assert.deepEqual(register.operations.map(x => `${x.method} ${x.path}`).sort(), allowed)
+  assert.equal(register.planned.some(x => x.owner === '04'), false)
+  validateMaterialOperationProfiles(api)
   const security = (path, method = 'post') => api.paths[path][method].security
   assert.deepEqual(security('/health', 'get'), [])
   assert.deepEqual(security('/api/v1/auth/login'), [])

@@ -8,6 +8,7 @@ import { parseDocument } from 'yaml'
 import { validateOperationBoundary, validateConfigSample, validateOutboundCandidate } from './contracts/validate.mjs'
 
 import { validateIdentityPhase } from './contracts/identity-phase.mjs'
+import { materialBoundaryFixtures } from './contracts/materials.mjs'
 
 const root = resolve('docs/contracts')
 const json = path => JSON.parse(readFileSync(resolve(root, path), 'utf8'))
@@ -90,7 +91,8 @@ const semanticFixtures = [
     name: `semantic SSE ${event}`, schema: 'SSE', data: { event, data }, valid: true,
   })),
 ]
-for (const fixture of [...fixtures, ...semanticFixtures]) {
+const boundaryFixtures = materialBoundaryFixtures()
+for (const fixture of [...fixtures, ...semanticFixtures, ...boundaryFixtures]) {
   const a = standalone.getSchema(`https://campusclaw.invalid/contracts/v1/${fixture.schema}.schema.json`)
   const b = validators.get(fixture.schema)
   assert.ok(a && b, `Unknown schema ${fixture.schema}`)
@@ -113,4 +115,4 @@ function checkExamples(value) {
   for (const child of Object.values(value)) checkExamples(child)
 }
 checkExamples(parsed.paths)
-console.log(`Contracts: ${sources.length} schemas; ${fixtures.length} positive/negative fixtures and ${semanticFixtures.length} semantic inputs agree in both paths; ${exampleCount} operation examples; 7 current/frozen operations. Planned operations absent.`)
+console.log(`Contracts: ${sources.length} schemas; ${fixtures.length} positive/negative fixtures, ${semanticFixtures.length} semantic inputs and ${boundaryFixtures.length} generated boundary cases agree in both paths; ${exampleCount} operation examples; 7 current identity/health and 6 frozen material operations. Other planned operations absent.`)

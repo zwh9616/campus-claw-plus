@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/v1/MaterialDetail.schema.json",
+  "title": "MaterialDetail",
+  "type": "object",
+  "properties": {
+    "material": {
+      "$ref": "Material.schema.json"
+    },
+    "body": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 262144,
+      "description": "规范化正文；只移除开头一个BOM并将CRLF/CR转LF，位置按Unicode码点计。字节和空白规则另由语义及运行检查验证。"
+    }
+  },
+  "required": [
+    "material",
+    "body"
+  ],
+  "additionalProperties": false
+}

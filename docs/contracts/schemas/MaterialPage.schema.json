@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/v1/MaterialPage.schema.json",
+  "title": "MaterialPage",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "maxItems": 50,
+      "items": {
+        "$ref": "Material.schema.json"
+      }
+    },
+    "page": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 2147483647
+    },
+    "page_size": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 50
+    },
+    "total": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "items",
+    "page",
+    "page_size",
+    "total"
+  ],
+  "additionalProperties": false
+}
