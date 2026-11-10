@@ -56,7 +56,7 @@ export async function runSequence(steps, options = {}) {
 export function acquireLock(path) {
   let fd
   try { fd = openSync(path, 'wx') } catch (error) {
-    if (error.code === 'EEXIST') throw new Error('Gate lock exists: wait for the active gate; after a crash confirm it stopped before removing output/verification/gate.lock')
+    if (error.code === 'EEXIST') throw new Error(`Gate lock exists at ${path}. Wait for the active process. After a crash, confirm it stopped before removing that lock.`)
     throw error
   }
   writeFileSync(fd, String(process.pid))

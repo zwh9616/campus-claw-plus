@@ -3,15 +3,15 @@ import { spawnSync } from 'node:child_process'
 import { mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { randomBytes, createHash } from 'node:crypto'
+import { auditCache, databaseArgs, scanner } from './verify-image-audits.mjs'
 
 // IDF-SC-14/17/18: audit the same runtime used by Compose and real DB tests.
-const scanner = 'aquasec/trivy@sha256:8f6bb947dbc528902e11f2f5be52f7b519f6a39d5d148f41166f2040499768fb'
 const id = 'campus-mysql-audit-' + randomBytes(6).toString('hex')
 const image = id + ':verification'
 const directory = resolve('output/mysql-image-verify', id)
 const parent = resolve('output/mysql-image-verify')
 assert.equal(dirname(directory), parent)
-const cacheVolume = id + '-cache'
+const { volume: cacheVolume, owned: ownsCache } = auditCache(id)
 mkdirSync(directory, { recursive: true })
 for (const name of ['results', 'mysql']) rmSync(resolve(parent, name + '.json'), { force: true })
 const results = []
@@ -34,7 +34,7 @@ try {
   run('Trivy HIGH/CRITICAL audit of fixed artifact', ['run', '--rm', '--name', id + '-scanner',
     '--mount', `type=bind,source=${directory},target=/reports`,
     '-v', `${cacheVolume}:/root/.cache/trivy`, scanner,
-    'image', '--input', '/reports/image.tar', '--scanners', 'vuln', '--severity', 'HIGH,CRITICAL',
+    'image', '--input', '/reports/image.tar', ...databaseArgs, '--cache-backend', 'memory', '--scanners', 'vuln', '--severity', 'HIGH,CRITICAL',
     '--exit-code', '1', '--list-all-pkgs', '--no-progress', '--timeout', '3m', '--format', 'json', '--output', '/reports/mysql.json'], 210000)
   const raw = readFileSync(resolve(directory, 'mysql.json'))
   const report = JSON.parse(raw)
@@ -62,9 +62,11 @@ try {
   const cleanup = spawnSync('docker', ['image', 'rm', image], { encoding: 'utf8', timeout: 30000 })
   results.push({ label: 'remove only own image tag', exit_code: cleanup.status })
   if (cleanup.status !== 0 && !(cleanup.stderr ?? '').includes('No such image')) failed = true
-  const cacheCleanup = spawnSync('docker', ['volume', 'rm', cacheVolume], { encoding: 'utf8', timeout: 30000 })
-  results.push({ label: 'remove only own scanner cache volume', exit_code: cacheCleanup.status })
-  if (cacheCleanup.status !== 0 && !(cacheCleanup.stderr ?? '').includes('no such volume')) failed = true
+  if (ownsCache) {
+    const cacheCleanup = spawnSync('docker', ['volume', 'rm', cacheVolume], { encoding: 'utf8', timeout: 30000 })
+    results.push({ label: 'remove only own scanner cache volume', exit_code: cacheCleanup.status })
+    if (cacheCleanup.status !== 0 && !(cacheCleanup.stderr ?? '').includes('no such volume')) failed = true
+  }
   rmSync(directory, { recursive: true, force: true })
   writeFileSync(resolve(parent, 'results.json'), JSON.stringify({ time: new Date().toISOString(),
     source_dockerfile_sha256: createHash('sha256').update(readFileSync('deploy/identity/mysql/Dockerfile')).digest('hex'),
