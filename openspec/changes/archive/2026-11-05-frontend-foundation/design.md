@@ -1,6 +1,6 @@
 ## Context
 
-变更02；小张propose/终审，小葛审规约/apply。起草分支从历史main `2bf12e2`创建，现已同步main `4cfd61d8119c51bc3bf2870a17c9754f0975b3dc`。合同依据为[00已批准规约221be73](https://github.com/zwh9616/campus-claw-plus/blob/221be733194830daa9b35f810c37f035679e51bb/openspec/changes/2026-11-04-business-contracts/design.md)及[已合入main的机器合同](https://github.com/zwh9616/campus-claw-plus/blob/4cfd61d8119c51bc3bf2870a17c9754f0975b3dc/docs/contracts/README.md)。00终审、main CI与本机复验已确认G2成立，见[集成证据](../../../reports/changes/00/main-integration-2026-11-05.md)。02自身批准及01相关公共修订尚待确认；apply前核对最新main合同，有差异先修规约、重新审查。
+变更02；小张propose/终审，小葛审规约/apply。起草分支从历史main `2bf12e2`创建，现已同步main `4cfd61d8119c51bc3bf2870a17c9754f0975b3dc`。合同依据为[00已批准规约221be73](https://github.com/zwh9616/campus-claw-plus/blob/221be733194830daa9b35f810c37f035679e51bb/openspec/changes/2026-11-04-business-contracts/design.md)及[已合入main的机器合同](https://github.com/zwh9616/campus-claw-plus/blob/4cfd61d8119c51bc3bf2870a17c9754f0975b3dc/docs/contracts/README.md)。00终审、main CI与本机复验已确认G2成立，见[集成证据](../../../../reports/changes/00/main-integration-2026-11-05.md)。02自身批准及01相关公共修订尚待确认；apply前核对最新main合同，有差异先修规约、重新审查。
 
 ## Goals / Non-Goals
 
@@ -72,7 +72,7 @@ Origin由浏览器生成，不用JS伪造；同源HTTPS及Secure Cookie按01/10�
 
 ### D6 布局线框与统一组件
 
-2026-11-06按组长指定，02采用[前端视觉规约](../../../docs/standards/frontend-visual.md)：品牌北大红#94070A、暖白#F7F6F3、白面板#FFFFFF、正文#272421，替代02原深蓝/湖蓝方案。参考Canvas稳定导航及Moodle内容分组，具体来源、取舍和色值口径见该文档第1节；不增加竞品业务入口。正文16px、辅助14px、区块20px、桌面页标题32px/移动24px；间距4/8/16/24/32/48px，按钮输入圆角8px、面板12px。CSS变量集中，主色只用于品牌、主操作和选中标记，主体浅色；每任务区域最多一个实心主按钮、无嵌套卡片。系统字体，44px触控目标，状态有文字，文字对比度>=4.5:1，必要边界/焦点>=3:1。禁止渐变大海报、玻璃拟态、满屏红底和假统计。
+2026-11-06按组长指定，02采用[前端视觉规约](../../../../docs/standards/frontend-visual.md)：品牌北大红#94070A、暖白#F7F6F3、白面板#FFFFFF、正文#272421，替代02原深蓝/湖蓝方案。参考Canvas稳定导航及Moodle内容分组，具体来源、取舍和色值口径见该文档第1节；不增加竞品业务入口。正文16px、辅助14px、区块20px、桌面页标题32px/移动24px；间距4/8/16/24/32/48px，按钮输入圆角8px、面板12px。CSS变量集中，主色只用于品牌、主操作和选中标记，主体浅色；每任务区域最多一个实心主按钮、无嵌套卡片。系统字体，44px触控目标，状态有文字，文字对比度>=4.5:1，必要边界/焦点>=3:1。禁止渐变大海报、玻璃拟态、满屏红底和假统计。
 
 1440px文字线框（布局结构保留，配色按新增视觉规约；不是已实现截图）：
 

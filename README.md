@@ -13,7 +13,7 @@
 
 ## 小组进度与协作入口
 
-- [共享进度表](docs/project-status.md)：G2、G3已成立；01服务端#14已由小陈独立终审、正常合入main c2c34a2，四个实际制品扫描及独立Docker门禁通过，见[最终复核](reports/changes/01/chen-final-review-2026-11-07.md)及[合入记录](reports/changes/01/main-integration-2026-11-07.md)。02真实页面/客户端已在#15提交，正常信任真实浏览器已通过，最终head CI/真实批准/正常合入已完成，main集成复验见合入记录。01归档候选及现行主规约已在本分支同步，归档PR未合入前不称main已归档，见[归档核对](reports/changes/01/archive-review-2026-11-08.md)。
+- [共享进度表](docs/project-status.md)记录当前验收和交接。G2、G3已成立，身份和真实登录已在主干复验。01归档已随[#20](https://github.com/zwh9616/campus-claw-plus/pull/20)合入。02归档候选已同步[前端主规约](openspec/specs/frontend-foundation/spec.md)，主干状态按实际审查与合入更新。
 - [公共合同](docs/contracts/README.md)：六个身份操作和MySQL健康已随本PR原子激活，planned教学操作仍不可调用；npm run check:contracts接入原检查入口。
 - [前端视觉规约](docs/standards/frontend-visual.md)：北大红#94070A、暖白、简约布局，参考Canvas/Moodle信息组织；小张已确认#15代表样板，真实页面已由小葛实现，最终联合验收由小张收口。
 - [协作规范](docs/standards/collaboration.md)：按变更两人接力；每组可提交修改必须同提交更新共享表。
