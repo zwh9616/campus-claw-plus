@@ -69,7 +69,8 @@ test('DO-SC-05 concurrent calls in one checkout fail without stealing its lock',
   const path = join(directory, 'gate.lock')
   try {
     const release = acquireLock(path)
-    try { assert.throws(() => acquireLock(path), /Gate lock exists/) } finally { release() }
+    try { assert.throws(() => acquireLock(path), error => error.message.includes('Gate lock exists') && error.message.includes(path)) }
+    finally { release() }
     acquireLock(path)()
   } finally { rmSync(directory, { recursive: true, force: true }) }
 })

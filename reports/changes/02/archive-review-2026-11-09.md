@@ -15,3 +15,9 @@ OpenSpec 1.13.0 归档命令退出 0，写入 7 项需求。4.4 表示本分支�
 在 Windows、Node 25.2.1、npm 11.6.2 和 Docker 29.8.0 的归档工作树上，`npm ci`、`npm run setup` 与 `git diff --cached --check` 通过。归档前后 7 项需求及 19 个场景正文一致，90 个本地链接有效，运行、测试、配置和第 7 课基线一致。`npm run gate` 的 check、audit 和 secret-scan 退出 0，OpenSpec strict 为 7/7。首次 verify 在 Trivy 下载漏洞库时遇到 `unexpected EOF`，重跑 `npm run verify` 时同一下载超时，两次均退出 1。失败原件留在本机 `output/`。本轮本机镜像扫描和后续容器验收仍无通过结果。
 
 #21 首轮远端 CI `42570665833` 在 Gitleaks 下载时失败，check 和 audit 已通过，后续 verify 未执行。归档交接提交仍需自己的完整 CI 以及小葛的正式审查。 [归档 PR #21](https://github.com/zwh9616/campus-claw-plus/pull/21) · [首轮 CI](https://github.com/zwh9616/campus-claw-plus/actions/runs/42570665833)
+
+2026-11-10 同步主干。小葛对 `0e5186e` 的归档审查 `5824764941` 已批准，该提交完整 CI `42570908807` 成功。随后 #22 的 `76f54cb` 经小葛批准 `5824765821`、完整 CI `42574431617` 成功，正常合入 `16211ca27e4933eed28ceceb0f9fdf44a4963da4`，整棵树与已审提交一致。GitHub 要求 #21 同步该主干后复验。 [#21 原审查](https://github.com/zwh9616/campus-claw-plus/pull/21#pullrequestreview-5824764941) · [#22 合入](https://github.com/zwh9616/campus-claw-plus/pull/22) · [主干复验](https://github.com/zwh9616/campus-claw-plus/actions/runs/42766929515)
+
+主干 `16211ca` 的完整 CI `42766929515` 四段均退出 0。MySQL、backend、admin、frontend 四个镜像实际扫描通过，真实 MySQL 身份测试通过。 [主干 CI](https://github.com/zwh9616/campus-claw-plus/actions/runs/42766929515)
+
+同步后，7 项需求、19 个场景、浏览器验收原件和 11 项运行与测试输入摘要均核对一致，90 个本地链接有效。OpenSpec strict 7/7、合同用例 9/9 和差异检查通过。#21 相对新主干的差异为归档与进度文档，归档状态按同步提交的完整 CI、实际批准和合入结果更新。 [漏洞库修复验收](../10/A/trivy-db-download-2026-11-09.md)
