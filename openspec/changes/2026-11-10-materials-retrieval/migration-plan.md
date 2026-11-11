@@ -1,6 +1,6 @@
 # 000004 资料迁移登记与恢复候选
 
-对应 MR-SC-05/07/08、design D4、tasks 1.2；小陈准备，小张审定。04规约已随[#23](https://github.com/zwh9616/campus-claw-plus/pull/23)合入main `2a2c28e`，G2/G3和01真实身份可用。本文件是开工前计划，不声称SQL已存在、迁移已执行或数据库已备份；1.2须待小张确认后完成。
+对应 MR-SC-05/07/08、design D4、tasks 1.2；小陈准备，小张于2026-11-11核对并确认编号及恢复方案，见[审定记录](../../../reports/changes/04/zhang-contract-review-2026-11-11.md)。04规约已随[#23](https://github.com/zwh9616/campus-claw-plus/pull/23)合入main `2a2c28e`，G2/G3和01真实身份可用。1.2完成的是计划审定，SQL、迁移和隔离备份恢复仍需2.1真实实现与验收。
 
 ## 编号、文件和依赖
 

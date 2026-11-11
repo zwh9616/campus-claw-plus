@@ -23,7 +23,7 @@
 
 01已合入[身份主规约](openspec/specs/identity-foundation/spec.md)及[01归档](openspec/changes/archive/2026-11-04-identity-foundation/)。02主规约与历史设计见[前端主规约](openspec/specs/frontend-foundation/spec.md)及[02归档](openspec/changes/archive/2026-11-05-frontend-foundation/)，#21已合入main并复验。2026-11-10仅恢复[04规约](openspec/changes/2026-11-10-materials-retrieval/proposal.md)审查和机器合同准备；规约批准、迁移登记与机器合同审定后才可接线，资料接口尚未在运行时启用，其余教学变更继续暂停。主干状态见共享表。
 
-本合同候选分支按已合入#23的04设计补齐六个`frozen`资料操作及8个单源Schema，等待小张审定tasks1.2/1.3；frozen仅表示完整合同，不代表运行接口开放。当前仍只装配原七个current身份/健康操作，000004 SQL/真实摘要尚未生成；01配置、健康和已发布迁移不变。详见[合同入口](docs/contracts/README.md)和[迁移候选](openspec/changes/2026-11-10-materials-retrieval/migration-plan.md)。
+04六个`frozen`资料操作、8个单源Schema和000004迁移方案已由小张核对，tasks1.2/1.3完成；正式批准及正常合入后由小陈继续2.1—2.6。当前运行仍只装配原七个current身份/健康操作，000004 SQL/真实摘要尚未生成。详见[合同入口](docs/contracts/README.md)、[迁移方案](openspec/changes/2026-11-10-materials-retrieval/migration-plan.md)和[审定记录](reports/changes/04/zhang-contract-review-2026-11-11.md)。
 
 ## 当前命令
 根目录 npm ci；npm run setup 安装前端；npm run check 跑基础/类型/构建/Go测试/严格规约；npm run audit 检查npm；npm run verify 运行本机容器集成验收。
