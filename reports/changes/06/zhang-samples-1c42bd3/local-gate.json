@@ -1,0 +1,61 @@
+{
+  "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+  "platform": "Windows",
+  "node": "v25.2.1",
+  "npm": "11.6.2",
+  "command": "npm run gate",
+  "gate": {
+    "time": "2026-11-11T14:05:07.303Z",
+    "node": "v25.2.1",
+    "exitCode": 0,
+    "results": [
+      {
+        "name": "check",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 34429
+      },
+      {
+        "name": "audit",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 13403
+      },
+      {
+        "name": "secret-scan",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 7568
+      },
+      {
+        "name": "verify",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 241088
+      }
+    ],
+    "notRun": []
+  },
+  "scanResults": {
+    "mysql.json": {
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    "backend.json": {
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    "admin.json": {
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    "frontend.json": {
+      "HIGH": 0,
+      "CRITICAL": 0
+    }
+  }
+}

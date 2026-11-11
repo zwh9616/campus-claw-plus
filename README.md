@@ -17,7 +17,7 @@
 - [公共合同](docs/contracts/README.md)：现行13个current操作包括六个身份、MySQL健康及六个04资料操作，其余planned教学操作仍不可调用；npm run check:contracts接入原检查入口。
 - [前端视觉规约](docs/standards/frontend-visual.md)：北大红#94070A、暖白、简约布局，参考Canvas/Moodle信息组织；小张已确认#15代表样板，真实页面已由小葛实现，最终联合验收由小张收口。
 - [协作规范](docs/standards/collaboration.md)：按变更两人接力；每组可提交修改必须同提交更新共享表。
-- [06资料页面提案](openspec/changes/2026-11-11-materials-frontend/proposal.md)：小张起草、小葛审查并实现。先接已验收的资料闭环，作业页面继续依赖05；当前提案阶段，样板和运行页面待审定后推进。
+- [06资料页面规约](openspec/changes/2026-11-11-materials-frontend/proposal.md)已随#27经小葛批准合入并复验。#29代表样板经小张实际验收与修复确认，最终门禁收口后由小葛接真实资料接口，再交小张终审；作业页面仍依赖05，当前资料运行页面尚未实现。见[样板验收](reports/changes/06/zhang-sample-review-2026-11-11.md)。
 
 
 ## 从零启动身份服务
