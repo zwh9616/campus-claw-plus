@@ -143,7 +143,7 @@ func (s *Store) CreateMaterial(ctx context.Context, p identity.Principal, key st
 		return m, false, err
 	}
 	if err = tx.Commit(); err != nil {
-		return m, false, identity.ErrTimeout
+		return m, false, materialError(ctx, err)
 	}
 	return doc.Material, true, nil
 }
@@ -189,7 +189,7 @@ func (s *Store) IndexMaterial(ctx context.Context, p identity.Principal, id stri
 		return current.Material, e
 	}
 	if err = tx.Commit(); err != nil {
-		return out, identity.ErrTimeout
+		return out, materialError(ctx, err)
 	}
 	doc.Material.IndexStatus = "ready"
 	return doc.Material, nil

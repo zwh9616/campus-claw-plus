@@ -17,6 +17,7 @@ import (
 	"net/http"
 	"net/http/cookiejar"
 	"os"
+	"reflect"
 	"regexp"
 	"strconv"
 	"strings"
@@ -240,6 +241,19 @@ func TestIDFWiring(t *testing.T) {
 		t.Fatal("teacher switch did not change trusted class")
 	}
 	call("GET", "/api/v1/me", "", oldAccess, "", 401)
+	materialID, err := os.ReadFile("/fixtures/material-proof")
+	if err != nil {
+		t.Fatal("material persistence proof missing")
+	}
+	materialPath := "/api/v1/materials/" + string(materialID)
+	call("GET", materialPath, "", oldAccess, "", 401)
+	crossClass, _ := call("GET", materialPath, "", access, "", 404)
+	missingMaterial, _ := call("GET", "/api/v1/materials/9223372036854775807", "", access, "", 404)
+	delete(crossClass, "request_id")
+	delete(missingMaterial, "request_id")
+	if !reflect.DeepEqual(crossClass, missingMaterial) {
+		t.Fatal("MR-SC-02 cross-class response discloses material existence")
+	}
 	body, _ = call("GET", "/api/v1/auth/csrf", "", "", "", 200)
 	csrf, _ = body["csrf_token"].(string)
 	call("POST", "/api/v1/auth/logout", "", access, csrf, 204)
@@ -260,6 +274,17 @@ func TestIDFWiring(t *testing.T) {
 	if sp["role"] != "student" {
 		t.Fatal("student trusted role")
 	}
+	call("GET", materialPath, "", access, "", 200)
+	studentSearch, _ := call("GET", "/api/v1/search?q=%25_keyword", "", access, "", 200)
+	items, ok := studentSearch["items"].([]any)
+	if !ok || len(items) != 1 {
+		t.Fatal("MR-SC-01 student material search missing")
+	}
+	citation, ok := items[0].(map[string]any)
+	if !ok || citation["material_id"] != string(materialID) {
+		t.Fatal("MR-SC-09 student source points to another material")
+	}
+	call("POST", materialPath+"/retry-index", "", access, "", 403)
 	body, _ = call("GET", "/api/v1/auth/csrf", "", "", "", 200)
 	csrf, _ = body["csrf_token"].(string)
 	call("POST", "/api/v1/auth/switch-class", string(change), access, csrf, 403)

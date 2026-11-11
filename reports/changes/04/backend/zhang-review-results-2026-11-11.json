@@ -1,0 +1,385 @@
+{
+  "executor": "小张 / zwh9616 (AI辅助)",
+  "date": "2026-11-11",
+  "author_head": "873775eb321acaabc676817be82c616d5c5349d9",
+  "environment": {
+    "node": "25.2.1",
+    "npm": "11.6.2",
+    "docker": "29.8.0",
+    "go": "1.27.3 pinned container"
+  },
+  "red": {
+    "command": "npm run gate",
+    "check": 0,
+    "audit": 0,
+    "secret_scan": 0,
+    "verify": 1,
+    "test": "TestMRCommitFailureDistinguishesUnavailableAndTimeout/unavailable",
+    "actual": [
+      "create UPSTREAM_TIMEOUT",
+      "index UPSTREAM_TIMEOUT"
+    ],
+    "expected": "DEPENDENCY_UNAVAILABLE",
+    "deadline_case": "passed"
+  },
+  "green": {
+    "command": "npm run gate",
+    "exit": 0,
+    "test": "TestMRCommitFailureDistinguishesUnavailableAndTimeout",
+    "expected": "unavailable and timeout passed",
+    "runtime": [
+      {
+        "label": "build reviewed MySQL runtime without mysqlsh and with current Go gosu",
+        "exit_code": 0
+      },
+      {
+        "label": "test fixtures",
+        "exit_code": 0
+      },
+      {
+        "label": "build actual accepted pre-04 artifacts",
+        "exit_code": 0
+      },
+      {
+        "label": "isolated network",
+        "exit_code": 0
+      },
+      {
+        "label": "isolated MySQL",
+        "exit_code": 0
+      },
+      {
+        "label": "real MySQL identity scenarios",
+        "exit_code": 0
+      },
+      {
+        "label": "prepare real pre-upgrade v3 backup",
+        "exit_code": 0
+      },
+      {
+        "label": "real consistent v3 mysqldump",
+        "exit_code": 0
+      },
+      {
+        "label": "restore into independent v3 database",
+        "exit_code": 0
+      },
+      {
+        "label": "actual old artifact rejection and restored identities",
+        "exit_code": 0
+      },
+      {
+        "label": "remove test container and its anonymous volume",
+        "exit_code": 0
+      },
+      {
+        "label": "remove test network",
+        "exit_code": 0
+      },
+      {
+        "label": "remove only own MySQL image tag",
+        "exit_code": 0
+      }
+    ],
+    "image_scans": [
+      {
+        "service": "mysql",
+        "image_id": "sha256:9d6d756e8529599ad0d5778d14832810eb2b221f42e65f1035784a43bfed8d3c",
+        "scanner": "aquasec/trivy@sha256:8f6bb947dbc528902e11f2f5be52f7b519f6a39d5d148f41166f2040499768fb",
+        "raw_sha256": "6d4c82cdad3412b0b454480d52f58ded522cfb626a8e1c30971bbd7b44169c05",
+        "HIGH": 0,
+        "CRITICAL": 0,
+        "gosu_go": "1.27.3",
+        "vulnerability_database": {
+          "Version": 2,
+          "NextUpdate": "2026-11-11T19:01:23.081218965Z",
+          "UpdatedAt": "2026-11-10T19:01:23.081219346Z",
+          "DownloadedAt": "2026-11-11T08:07:19.180771671Z"
+        }
+      },
+      {
+        "service": "backend",
+        "image_id": "sha256:e9e96db9e1669a4a5dabee2196d4a98f2f28e4a629ef8cb64e25fdaff03aa643",
+        "dockerfile_sha256": "e3490fddcb1256f83301339d5b5d698b3b49f59bc31439cc494206f8a66be93a",
+        "raw_sha256": "3d8e95e926b1d6202381c203d0cffb418a08b14e02703cc81f1970a68fde76bb",
+        "HIGH": 0,
+        "CRITICAL": 0
+      },
+      {
+        "service": "admin",
+        "image_id": "sha256:7992569ac6813462d9c9124b6373dff5dfc88f1fa0eae07718f2f7cf302b68fc",
+        "dockerfile_sha256": "a78bf59efa36cd4ae91cefcbd1406a569b04f0930948604b4c547fdc993c2c82",
+        "raw_sha256": "512564b95b06615909f01d3c4f77644cd423638bba71b3f3330959b1901ebfa2",
+        "HIGH": 0,
+        "CRITICAL": 0
+      },
+      {
+        "service": "frontend",
+        "image_id": "sha256:1842840e77c3c1fcfa473d13740ae6113af9a9ec0fd167a791f6e427c7e0e2fa",
+        "dockerfile_sha256": "1ab71112b10a18955e12a43fc72262192562633d163af9bbde5ee8a9d61fda79",
+        "raw_sha256": "3dfbe6eda3ec4c8a98d645135ca328b7c0f6250ef753ee41b5ec3ee3658b0401",
+        "HIGH": 0,
+        "CRITICAL": 0
+      },
+      {
+        "vulnerability_database": {
+          "Version": 2,
+          "NextUpdate": "2026-11-11T19:01:23.081218965Z",
+          "UpdatedAt": "2026-11-10T19:01:23.081219346Z",
+          "DownloadedAt": "2026-11-11T08:07:19.180771671Z"
+        }
+      }
+    ],
+    "wiring": {
+      "exit_code": 0,
+      "errors": [],
+      "steps": [
+        {
+          "label": "generate disposable wiring credentials/certificates",
+          "exit_code": 0
+        },
+        {
+          "label": "dedicated internal proxy network",
+          "exit_code": 0
+        },
+        {
+          "label": "discover allocated proxy address",
+          "exit_code": 0
+        },
+        {
+          "label": "release automatically allocated proxy network",
+          "exit_code": 0
+        },
+        {
+          "label": "create explicit isolated proxy subnet",
+          "exit_code": 0
+        },
+        {
+          "label": "validate explicit candidate compose",
+          "exit_code": 0
+        },
+        {
+          "label": "SC-09 missing HTTP_PORT is rejected before startup",
+          "exit_code": 1
+        },
+        {
+          "label": "missing HTTPS key is rejected before startup",
+          "exit_code": 1
+        },
+        {
+          "label": "build pinned MySQL, offline admin and production applications",
+          "exit_code": 0
+        },
+        {
+          "label": "start fresh persistent MySQL",
+          "exit_code": 0
+        },
+        {
+          "label": "offline migrations",
+          "exit_code": 0
+        },
+        {
+          "label": "offline manifest/schema check",
+          "exit_code": 0
+        },
+        {
+          "label": "database CA file missing is rejected",
+          "exit_code": 2
+        },
+        {
+          "label": "valid but wrong database trust certificate is rejected",
+          "exit_code": 1
+        },
+        {
+          "label": "offline initialize via stdin",
+          "exit_code": 0
+        },
+        {
+          "label": "repeat initialize does not replace existing password",
+          "exit_code": 0
+        },
+        {
+          "label": "trusted fixture class lookup on database-only network",
+          "exit_code": 0
+        },
+        {
+          "label": "start isolated Go and HTTPS frontend",
+          "exit_code": 0
+        },
+        {
+          "label": "resolve only this project HTTPS frontend",
+          "exit_code": 0
+        },
+        {
+          "label": "inspect only published HTTPS binding",
+          "exit_code": 0
+        },
+        {
+          "label": "IDF-SC-18 actual host loopback HTTPS, CA/SAN and anonymous denial",
+          "exit_code": 0
+        },
+        {
+          "label": "resolve production backend image",
+          "exit_code": 0
+        },
+        {
+          "label": "SC-04/05 production process missing",
+          "exit_code": 2
+        },
+        {
+          "label": "SC-04/05 production process empty",
+          "exit_code": 2
+        },
+        {
+          "label": "SC-04/05 production process whitespace",
+          "exit_code": 2
+        },
+        {
+          "label": "SC-04/05 production process letters",
+          "exit_code": 2
+        },
+        {
+          "label": "SC-04/05 production process zero",
+          "exit_code": 2
+        },
+        {
+          "label": "SC-04/05 production process negative",
+          "exit_code": 2
+        },
+        {
+          "label": "SC-04/05 production process aboveMaximum",
+          "exit_code": 2
+        },
+        {
+          "label": "SC-07 occupied port rejects second real server",
+          "exit_code": 1
+        },
+        {
+          "label": "SC-06 start real server with trimmed valid port",
+          "exit_code": 0
+        },
+        {
+          "label": "SC-06 inspect own trimmed-port instance",
+          "exit_code": 0
+        },
+        {
+          "label": "SC-06 inspect own trimmed-port instance",
+          "exit_code": 0
+        },
+        {
+          "label": "SC-06 inspect own trimmed-port instance",
+          "exit_code": 0
+        },
+        {
+          "label": "SC-06 inspect own trimmed-port instance",
+          "exit_code": 0
+        },
+        {
+          "label": "SC-06 inspect own trimmed-port instance",
+          "exit_code": 0
+        },
+        {
+          "label": "SC-06 inspect own trimmed-port instance",
+          "exit_code": 0
+        },
+        {
+          "label": "SC-06 inspect own trimmed-port instance",
+          "exit_code": 0
+        },
+        {
+          "label": "SC-06 inspect own trimmed-port instance",
+          "exit_code": 0
+        },
+        {
+          "label": "SC-06 inspect own trimmed-port instance",
+          "exit_code": 0
+        },
+        {
+          "label": "SC-06 active strict probe succeeds",
+          "exit_code": 0
+        },
+        {
+          "label": "remove only trimmed-port test instance",
+          "exit_code": 0
+        },
+        {
+          "label": "SC-01/02/03 real same-origin HTTPS, unique health, TLS rejection, login and revoked access",
+          "exit_code": 0
+        },
+        {
+          "label": "capture sanitized Go request logs",
+          "exit_code": 0
+        },
+        {
+          "label": "stop database only",
+          "exit_code": 0
+        },
+        {
+          "label": "real database-down health 503 and login 503 without credentials",
+          "exit_code": 0
+        },
+        {
+          "label": "restore database",
+          "exit_code": 0
+        },
+        {
+          "label": "account and class persist after database restart",
+          "exit_code": 0
+        },
+        {
+          "label": "remove candidate containers while retaining named data volume",
+          "exit_code": 0
+        },
+        {
+          "label": "SC-10 stopped production HTTP and HTTPS are unreachable",
+          "exit_code": 0
+        },
+        {
+          "label": "SC-10 stopped host published HTTPS is unreachable",
+          "exit_code": 0
+        },
+        {
+          "label": "recreate MySQL on retained volume",
+          "exit_code": 0
+        },
+        {
+          "label": "recreated database migration state unchanged",
+          "exit_code": 0
+        },
+        {
+          "label": "recreate isolated HTTPS path",
+          "exit_code": 0
+        },
+        {
+          "label": "resolve recreated HTTPS frontend",
+          "exit_code": 0
+        },
+        {
+          "label": "inspect recreated host binding",
+          "exit_code": 0
+        },
+        {
+          "label": "IDF-SC-18 recreated host HTTPS remains reachable",
+          "exit_code": 0
+        },
+        {
+          "label": "same account and original password after full container recreation",
+          "exit_code": 0
+        },
+        {
+          "label": "check combined logs contain no generated passwords",
+          "exit_code": 0
+        },
+        {
+          "label": "remove only this disposable project and test data volume",
+          "exit_code": 0
+        },
+        {
+          "label": "remove dedicated proxy network",
+          "exit_code": 0
+        }
+      ]
+    }
+  },
+  "scope_note": "Real MySQL queries and rollback; injected commit response is a test adapter, not a real network disconnect. No cross-machine or browser claim."
+}
