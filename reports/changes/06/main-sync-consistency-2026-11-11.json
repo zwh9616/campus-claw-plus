@@ -1,12 +1,14 @@
 {
   "main": "78af20b897db0a295755a98b6759baf61effe34e",
   "original_pr27_head": "14f562cc354b09172de46b24e8bcdf815133d44a",
-  "original_06_documents_and_dependency_changes_unchanged": true,
+  "author_update_preserved": "425bd56889d7dfb466438206c78ca34b02b6e263",
+  "original_06_requirements_scenarios_and_dependency_changes_unchanged": true,
+  "design_only_author_context_updated": true,
   "runtime_and_other_contracts_unchanged": true,
   "archived_04_exact_bytes_preserved": true,
   "requirements": 5,
   "scenarios": 12,
   "completed_06_tasks": 0,
-  "local_links_checked": 109,
+  "local_links_checked": 110,
   "spec_sha256": "e1f53f8eb8f98b7fd0512ec8220579e7351b7a023edc17d79c2851a47befd6fe"
 }
