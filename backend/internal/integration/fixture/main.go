@@ -56,8 +56,9 @@ func main() {
 	write("https.key", pem.EncodeToMemory(&pem.Block{Type: "RSA PRIVATE KEY", Bytes: x509.MarshalPKCS1PrivateKey(httpsKey)}))
 	root, app, migration := secret(), secret(), secret()
 	write("root-password", []byte(root))
+	write("backup-client.cnf", []byte("[client]\nuser=root\npassword="+root+"\nprotocol=SOCKET\n"))
 	sql := fmt.Sprintf("CREATE USER 'idf_app'@'%%' IDENTIFIED BY '%s' REQUIRE SSL;\nCREATE USER 'idf_migration'@'%%' IDENTIFIED BY '%s' REQUIRE SSL;\n", app, migration)
-	for i := 0; i < 10; i++ {
+	for i := 0; i < 20; i++ {
 		db := fmt.Sprintf("idf_test_%d", i)
 		sql += fmt.Sprintf("CREATE DATABASE %s CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_bin;\nGRANT SELECT,INSERT,UPDATE,DELETE ON %s.* TO 'idf_app'@'%%';\nGRANT SELECT,INSERT,UPDATE,DELETE,CREATE,ALTER,DROP,INDEX,REFERENCES ON %s.* TO 'idf_migration'@'%%';\n", db, db, db)
 	}

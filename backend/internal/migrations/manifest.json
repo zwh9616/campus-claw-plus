@@ -5,4 +5,7 @@
   "000001_identity_users_classes.down.sql": "4aeb5022ed2575818082d6e4880b2f83a524c7cc7038d7b49b3debadfdd532da",
   "000002_identity_sessions.down.sql": "b44b4528eb1aa3bfddfea588249da54509871972f6febe26b2d448faf45a9773",
   "000002_identity_sessions.up.sql": "c600e1133f8ace63565fca713e13dd33a187f670d10bc94b028d66db351baeb0"
+  ,
+  "000004_materials_retrieval.up.sql": "6bad8d66dbfa671c3bc603467837580ff4336cd3417313b1556920e0299ae830",
+  "000004_materials_retrieval.down.sql": "d73567bd3c5318c1cde9f0f677e865982eb738004236437bdbdf258d8791bdac"
 }

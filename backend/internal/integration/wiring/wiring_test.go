@@ -189,6 +189,9 @@ func TestIDFWiring(t *testing.T) {
 		t.Fatal("persistence proof write")
 	}
 	call("GET", "/api/v1/me", "", access, "", 200)
+	if os.Getenv("WIRING_EXPECT") != "down" {
+		verifyMRWiring(t, client, access)
+	}
 	body, _ = call("GET", "/api/v1/auth/csrf", "", "", "", 200)
 	csrf, _ := body["csrf_token"].(string)
 	if csrf == "" {

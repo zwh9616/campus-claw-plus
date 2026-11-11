@@ -18,9 +18,9 @@ import (
 
 // Runs after creating its own migrated schema; no ordering dependency on other tests.
 func TestIDFAssemblyHealthAndConfiguration(t *testing.T) {
-	_, db, name := database(t, 0)
+	_, db, name := database(t, 10)
 	ex := migrations.Executor{DB: db, Database: name}
-	if ex.Up(context.Background(), 3) != nil {
+	if ex.Up(context.Background(), 4) != nil {
 		t.Fatal("migration")
 	}
 	lookup := func(k string) (string, bool) {
@@ -29,6 +29,9 @@ func TestIDFAssemblyHealthAndConfiguration(t *testing.T) {
 			return "https://campus.test", true
 		case "AUTH_TRUSTED_PROXY_CIDRS":
 			return "127.0.0.1/32", true
+		case "MYSQL_DSN":
+			value, ok := os.LookupEnv(k)
+			return strings.Replace(value, "/idf_test_0?", "/idf_test_10?", 1), ok
 		case "MYSQL_MIGRATION_DSN":
 			t.Fatal("server read offline credential")
 		}

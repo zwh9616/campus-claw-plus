@@ -24,7 +24,7 @@ import (
 //go:embed sql/*.sql manifest.json
 var files embed.FS
 var ErrState = errors.New("migration state requires inspection; no automatic repair")
-var names = []string{"identity_users_classes", "identity_sessions", "identity_auth_audit"}
+var names = []string{"identity_users_classes", "identity_sessions", "identity_auth_audit", "materials_retrieval"}
 
 type Executor struct {
 	DB       *sql.DB
@@ -51,7 +51,7 @@ func verifyFiles() error {
 	if e != nil {
 		return ErrState
 	}
-	if len(m) != 6 {
+	if len(m) != len(names)*2 {
 		return ErrState
 	}
 	for i, n := range names {
@@ -185,7 +185,7 @@ func (e Executor) history(ctx context.Context, v int) error {
 	return nil
 }
 func (e Executor) Up(ctx context.Context, target int) error {
-	if target < 1 || target > 3 || verifyFiles() != nil {
+	if target < 1 || target > len(names) || verifyFiles() != nil {
 		return ErrState
 	}
 	c, err := e.lock(ctx)
@@ -233,7 +233,7 @@ func (e Executor) Up(ctx context.Context, target int) error {
 	return e.Check(ctx, target)
 }
 func (e Executor) Check(ctx context.Context, want int) error {
-	if want < 1 || want > 3 || verifyFiles() != nil {
+	if want < 1 || want > len(names) || verifyFiles() != nil {
 		return ErrState
 	}
 	var v int
@@ -251,7 +251,7 @@ func (e Executor) Check(ctx context.Context, want int) error {
 // Only append-only CREATE statements are retried; incompatible existing tables
 // are never altered/dropped. No force command is exposed to operators.
 func (e Executor) Repair(ctx context.Context, version int) error {
-	if version < 1 || version > 3 || verifyFiles() != nil {
+	if version < 1 || version > len(names) || verifyFiles() != nil {
 		return ErrState
 	}
 	c, err := e.lock(ctx)
@@ -285,6 +285,12 @@ func (e Executor) Repair(ctx context.Context, version int) error {
 	}
 	if !dirty && count != 0 {
 		return e.Check(ctx, version)
+	}
+	if version > 1 && e.Structure(ctx, version-1) != nil {
+		return ErrState
+	}
+	if e.structure(ctx, version, true) != nil {
+		return ErrState
 	}
 	b, _ := files.ReadFile(fmt.Sprintf("sql/%06d_%s.up.sql", version, names[version-1]))
 	if err = d.Run(bytes.NewReader(b)); err != nil {

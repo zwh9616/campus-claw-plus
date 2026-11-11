@@ -20,13 +20,13 @@ func run() int {
 	if action != "migrate" && action != "check" && action != "initialize" && action != "repair" {
 		return 2
 	}
-	version := 3
+	version := 4
 	if action == "repair" {
 		if len(os.Args) != 3 {
 			return 2
 		}
 		n, e := strconv.Atoi(os.Args[2])
-		if e != nil || n < 1 || n > 3 {
+		if e != nil || n < 1 || n > 4 {
 			return 2
 		}
 		version = n
@@ -48,13 +48,13 @@ func run() int {
 	executor := migrations.Executor{DB: db, Database: database}
 	switch action {
 	case "migrate":
-		e = executor.Up(ctx, 3)
+		e = executor.Up(ctx, 4)
 	case "check":
-		e = executor.Check(ctx, 3)
+		e = executor.Check(ctx, 4)
 	case "repair":
 		e = executor.Repair(ctx, version)
 	case "initialize":
-		e = executor.Check(ctx, 3)
+		e = executor.Check(ctx, 4)
 		if e == nil {
 			seed, parseErr := mysqlstore.ReadSeed(os.Stdin)
 			e = parseErr

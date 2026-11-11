@@ -7,7 +7,11 @@ import (
 	"github.com/zwh9616/campus-claw-plus/backend/internal/identity"
 )
 
-type Store struct{ DB *sql.DB }
+type Store struct {
+	DB *sql.DB
+	// MaterialHook injects transaction failures in tests; production leaves it nil.
+	MaterialHook func(stage string, step int) error
+}
 type transaction struct {
 	tx  *sql.Tx
 	ctx context.Context

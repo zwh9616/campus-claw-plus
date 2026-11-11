@@ -8,6 +8,7 @@ import (
 	"github.com/zwh9616/campus-claw-plus/backend/internal/config"
 	"github.com/zwh9616/campus-claw-plus/backend/internal/httpserver"
 	"github.com/zwh9616/campus-claw-plus/backend/internal/identity"
+	"github.com/zwh9616/campus-claw-plus/backend/internal/materials"
 	"github.com/zwh9616/campus-claw-plus/backend/internal/migrations"
 	"github.com/zwh9616/campus-claw-plus/backend/internal/mysqlstore"
 	"log/slog"
@@ -34,7 +35,7 @@ func New(ctx context.Context, lookup func(string) (string, bool), logger *slog.L
 	if db.QueryRowContext(ctx, "SELECT DATABASE()").Scan(&name) != nil {
 		return fail()
 	}
-	if (migrations.Executor{DB: db, Database: name}).Check(ctx, 3) != nil {
+	if (migrations.Executor{DB: db, Database: name}).Check(ctx, 4) != nil {
 		return fail()
 	}
 	repo := &mysqlstore.Store{DB: db}
@@ -42,5 +43,6 @@ func New(ctx context.Context, lookup func(string) (string, bool), logger *slog.L
 	if e != nil {
 		return fail()
 	}
-	return httpserver.IdentityHandler(logger, service, repo, cfg, identity.NewLimiter(nil)), db.Close, nil
+	base := httpserver.IdentityHandler(logger, service, repo, cfg, identity.NewLimiter(nil))
+	return httpserver.MaterialsHandler(logger, service, &materials.Service{Repo: repo}, cfg.Origin, materials.NewLimiter(nil), base), db.Close, nil
 }

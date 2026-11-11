@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 
-// MR-SC-01..10: this independent allowlist permits contracts, never runtime routes.
+// MR-SC-01..10: only these six reviewed material operations are activated in 04.
 export const materialOperations = [
   ['GET', '/api/v1/materials', [200], [400, 401, 503, 504]],
   ['GET', '/api/v1/materials/{id}', [200], [400, 401, 404, 503, 504]],
@@ -24,7 +24,7 @@ export function validateMaterialOperationProfiles(api) {
   materialOperations.forEach(([method, path, success, errors], index) => {
     const op = api.paths[path]?.[method.toLowerCase()]
     assert.ok(op, `Missing 04 operation: ${method} ${path}`)
-    assert.equal(op['x-contract-status'], 'frozen', '04 cannot become current before its implementation review')
+    assert.equal(op['x-contract-status'], 'current', '04 implementation and machine contracts must activate together')
     assert.equal(op['x-owner-change'], '04')
     assert.equal(op['x-spec-change'], 'openspec/changes/2026-11-10-materials-retrieval')
     assert.deepEqual(op.security, [{BearerAuth:[]}], 'Material operations must not accept anonymous/Cookie authorization')

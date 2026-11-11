@@ -46,42 +46,42 @@
     {
       "method": "GET",
       "path": "/api/v1/materials",
-      "status": "frozen",
+      "status": "current",
       "owner": "04",
       "introduced_by": "openspec/changes/2026-11-10-materials-retrieval"
     },
     {
       "method": "GET",
       "path": "/api/v1/materials/{id}",
-      "status": "frozen",
+      "status": "current",
       "owner": "04",
       "introduced_by": "openspec/changes/2026-11-10-materials-retrieval"
     },
     {
       "method": "GET",
       "path": "/api/v1/materials/{id}/download",
-      "status": "frozen",
+      "status": "current",
       "owner": "04",
       "introduced_by": "openspec/changes/2026-11-10-materials-retrieval"
     },
     {
       "method": "POST",
       "path": "/api/v1/materials",
-      "status": "frozen",
+      "status": "current",
       "owner": "04",
       "introduced_by": "openspec/changes/2026-11-10-materials-retrieval"
     },
     {
       "method": "POST",
       "path": "/api/v1/materials/{id}/retry-index",
-      "status": "frozen",
+      "status": "current",
       "owner": "04",
       "introduced_by": "openspec/changes/2026-11-10-materials-retrieval"
     },
     {
       "method": "GET",
       "path": "/api/v1/search",
-      "status": "frozen",
+      "status": "current",
       "owner": "04",
       "introduced_by": "openspec/changes/2026-11-10-materials-retrieval"
     }

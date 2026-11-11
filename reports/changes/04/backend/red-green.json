@@ -1,0 +1,15 @@
+{
+  "scenario": "MR-SC-02",
+  "results": [
+    {
+      "stage": "removed teacher action check",
+      "exit_code": 1,
+      "output": "--- FAIL: TestMRStudentWriteHasNoSideEffects (0.00s)\n    materials_test.go:28: MR-SC-02 student reached persistent write\nFAIL\nFAIL\tgithub.com/zwh9616/campus-claw-plus/backend/internal/materials\t0.578s\nFAIL\n"
+    },
+    {
+      "stage": "restored exact source bytes",
+      "exit_code": 0,
+      "output": "ok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/materials\t0.429s\n"
+    }
+  ]
+}
