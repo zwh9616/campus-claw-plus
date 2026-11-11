@@ -1,6 +1,6 @@
 ## Context
 
-基线main `6634e51`，04已由小张独立终审并完成main CI42987148688。本轮消费[当前合同](../../../docs/contracts/README.md)与[04运行说明](../../../docs/materials-runtime.md)，视觉沿用[北大红规范](../../../docs/standards/frontend-visual.md)。小张负责规约/样板确认/最终审查，小葛审规约后apply。
+运行基线main `6634e51`，04已由小张独立终审并完成main CI42987148688；本提案现同步至含04归档的main `78af20b`，需求及接口语义保持一致。本轮消费[当前合同](../../../docs/contracts/README.md)与[04运行说明](../../../docs/materials-runtime.md)，视觉沿用[北大红规范](../../../docs/standards/frontend-visual.md)。小张负责规约/样板确认/最终审查，小葛审规约后apply。
 
 ## Goals / Non-Goals
 

@@ -1,6 +1,6 @@
 ## Context
 
-基于主干 `16211ca`，按 [00 D2/D3/D4/D9](../2026-11-04-business-contracts/design.md) 和 [01 身份主规约](../../specs/identity-foundation/spec.md) 接入。01 的 MySQL、可信同源 HTTPS、访问令牌、切班和撤权已通过真实验收。04 的存储和检索采用现有 MySQL/InnoDB，因此健康继续按实际 MySQL Ping 返回，不引入配置键、独立存储服务或出站例外。
+基于主干 `16211ca`，按 [00 D2/D3/D4/D9](../../2026-11-04-business-contracts/design.md) 和 [01 身份主规约](../../../specs/identity-foundation/spec.md) 接入。01 的 MySQL、可信同源 HTTPS、访问令牌、切班和撤权已通过真实验收。04 的存储和检索采用现有 MySQL/InnoDB，因此健康继续按实际 MySQL Ping 返回，不引入配置键、独立存储服务或出站例外。
 
 ## Goals / Non-Goals
 
