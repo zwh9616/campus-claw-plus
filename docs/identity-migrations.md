@@ -1,6 +1,6 @@
 # 01 离线迁移和初始化操作
 
-本入口随01提供，默认Compose已接入可信MySQL/HTTPS。04候选新增000004，离线migrate/check/initialize和server目标均为4；已有部署先停止写入并备份，再升级。01运行依据保留，04新增规则见[迁移计划](../openspec/changes/2026-11-10-materials-retrieval/migration-plan.md)；实际终审及执行结果见共享表。
+本入口随01提供，默认Compose已接入可信MySQL/HTTPS。04候选新增000004，离线migrate/check/initialize和server目标均为4；已有部署先停止写入并备份，再升级。01运行依据保留，04新增规则见[迁移计划](../openspec/changes/archive/2026-11-10-materials-retrieval/migration-plan.md)；实际终审及执行结果见共享表。
 
 离线程序通过环境读取已冻结的MYSQL_DSN、MYSQL_MIGRATION_DSN、MYSQL_CA_FILE。两个DSN必须同TCP目标/数据库、不同非root账号、验证CA及主机名；应用账号仅DML，离线账号具备该库最小DDL权限。真实值不写命令行、仓库或日志。服务进程不读取迁移账号。
 

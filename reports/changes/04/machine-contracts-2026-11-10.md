@@ -7,7 +7,7 @@
 - 八个2020-12单源Schema：Material、MaterialPage、MaterialDetail、KeywordSearchResponse、MaterialUpload、MaterialListParameters、KeywordSearchParameters、MaterialIdempotencyKey。所有对象封闭并明确必需字段，公共ID/Timestamp/Citation/Error保持原义。
 - 六个资料操作在OpenAPI及登记中为frozen候选，七个既有current操作不变；禁止其他planned操作或资料合同误标current。只有Bearer身份，教师写、本班学生只读ready；固定404、no-store、附件/nosniff头、角色/资源判定顺序、输入白名单、按主体限流、同键重放及503/504错误集合均有明确声明。
 - 首版仅UTF-8文本和区分大小写的片段内字面keyword；原始字节与规范化正文、码点区间分开。只剥离一个BOM，原始文件若有两个BOM，规范化正文仍可含第二个；不擅自多剥离。跨片段未完整匹配时为空结果，不扩大公共Citation的2000码点。
-- 000004在[迁移登记](../../../docs/contracts/migration-register.md)预留，详细[兼容/恢复候选](../../../openspec/changes/2026-11-10-materials-retrieval/migration-plan.md)含只加表、逐DDL中断、结构/摘要核对后的前向修复、旧程序精确版本拒绝及隔离备份恢复。当前没有SQL/真实摘要，没有将预留号标available；不修改01已发布SQL、配置、健康、服务或凭据。
+- 000004在[迁移登记](../../../docs/contracts/migration-register.md)预留，详细[兼容/恢复候选](../../../openspec/changes/archive/2026-11-10-materials-retrieval/migration-plan.md)含只加表、逐DDL中断、结构/摘要核对后的前向修复、旧程序精确版本拒绝及隔离备份恢复。当前没有SQL/真实摘要，没有将预留号标available；不修改01已发布SQL、配置、健康、服务或凭据。
 
 小张需审定：上述六操作的frozen边界、输入/输出与错误；原始UTF-8字节和multipart流式上限的分工；唯一键/原文/索引事务与真实失败场景；000004编号/文件/依赖、前向修复及旧制品回退计划。tasks1.2/1.3保持未完成，审定当前head并满足门禁后才能进入运行实现。
 

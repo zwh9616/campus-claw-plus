@@ -1,0 +1,33 @@
+{
+  "baseline": "6634e5128a59c4ac9d6e4443e67bb39ee43cc09c",
+  "requirements": [
+    "MR-01",
+    "MR-02",
+    "MR-03",
+    "MR-04"
+  ],
+  "scenarios": [
+    "MR-SC-01",
+    "MR-SC-02",
+    "MR-SC-03",
+    "MR-SC-04",
+    "MR-SC-05",
+    "MR-SC-06",
+    "MR-SC-07",
+    "MR-SC-08",
+    "MR-SC-09",
+    "MR-SC-10"
+  ],
+  "archived_delta_unchanged": true,
+  "main_requirement_clauses_unchanged": true,
+  "contracts_except_archive_metadata_unchanged": true,
+  "runtime_schemas_fixtures_and_config_unchanged": true,
+  "original_json_zip_evidence_unchanged": true,
+  "local_links_checked": 133,
+  "local_checks": {
+    "npm run check": 0,
+    "strict_specs_passed": 8,
+    "npm run audit": 0,
+    "git diff --check": 0
+  }
+}

@@ -4,7 +4,7 @@
 
 ## 启动与升级
 
-继续使用README既有可信HTTPS、独立DML/DDL账号、只读CA和持久卷配置，不新增键。先停止写流量并安全备份；构建新admin，按README运行离线`migrate`和`check`，目标必须为4，再启动新backend/frontend。server只检查结构和摘要，不自动迁移。失败不能force/down或删除带数据卷；按[离线恢复](identity-migrations.md)及[04方案](../openspec/changes/2026-11-10-materials-retrieval/migration-plan.md)处理。
+继续使用README既有可信HTTPS、独立DML/DDL账号、只读CA和持久卷配置，不新增键。先停止写流量并安全备份；构建新admin，按README运行离线`migrate`和`check`，目标必须为4，再启动新backend/frontend。server只检查结构和摘要，不自动迁移。失败不能force/down或删除带数据卷；按[离线恢复](identity-migrations.md)及[04方案](../openspec/changes/archive/2026-11-10-materials-retrieval/migration-plan.md)处理。
 
 01旧六个SQL及摘要不变。000004三张表保存原文件、规范化正文、班级/版本、幂等记录与片段；可执行摘要见manifest及identity-phase。旧版本精确要求3，不能直连4；回退先保全新版库，再在独立库恢复升级前备份并验证旧制品，不能承诺升级后数据自动带回旧版。
 

@@ -49,7 +49,7 @@ Node最低版本提升为22.19.0以符合锁定校验工具要求；CI原有Node
 
 ## 04合同候选的审查与使用
 
-依据[已批准04设计D1—D4](../../openspec/changes/2026-11-10-materials-retrieval/design.md)。`Material`、`MaterialPage`、`MaterialDetail`、`KeywordSearchResponse`及上传/列表参数/检索参数/幂等键共8个Schema为唯一类型源；OpenAPI参数和响应引用该源。参数对象样例表示已填默认值/完成TrimSpace后的合同值，不是另一种JSON请求体；上传JSON字符串样例表示文本结构，不能代替真实multipart文件名、重复字段、UTF-8字节与整个请求流式上限检查。
+依据[已批准04设计D1—D4](../../openspec/changes/archive/2026-11-10-materials-retrieval/design.md)。`Material`、`MaterialPage`、`MaterialDetail`、`KeywordSearchResponse`及上传/列表参数/检索参数/幂等键共8个Schema为唯一类型源；OpenAPI参数和响应引用该源。参数对象样例表示已填默认值/完成TrimSpace后的合同值，不是另一种JSON请求体；上传JSON字符串样例表示文本结构，不能代替真实multipart文件名、重复字段、UTF-8字节与整个请求流式上限检查。
 
 六个资料操作只允许Bearer身份；教师写、学生只读本班ready，固定同构404、no-store、原文下载附件头、按user_id的12次/分钟配额和503/504边界见OpenAPI及设计。本实现增加独立materials领域、mysqlstore持久层及HTTP装配；真实授权/事务测试与合同测试分列，结果见共享表。原七个身份/健康操作、配置、旧Schema和旧SQL保持原义；000004新增SQL及真实摘要另登记。
 

@@ -17,6 +17,7 @@
 - [公共合同](docs/contracts/README.md)：六个身份操作和MySQL健康已随本PR原子激活，planned教学操作仍不可调用；npm run check:contracts接入原检查入口。
 - [前端视觉规约](docs/standards/frontend-visual.md)：北大红#94070A、暖白、简约布局，参考Canvas/Moodle信息组织；小张已确认#15代表样板，真实页面已由小葛实现，最终联合验收由小张收口。
 - [协作规范](docs/standards/collaboration.md)：按变更两人接力；每组可提交修改必须同提交更新共享表。
+- [资料主规约](openspec/specs/materials-retrieval/spec.md)及[04归档候选](openspec/changes/archive/2026-11-10-materials-retrieval/)由本分支生成。#26已合入main6634e51并通过CI42987148688；本次归档待小陈核对，06页面提案见[#27](https://github.com/zwh9616/campus-claw-plus/pull/27)，运行页面未实现。
 
 
 ## 从零启动身份服务
