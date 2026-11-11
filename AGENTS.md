@@ -1,5 +1,5 @@
 # CampusClawPlus 工程约定
-本分支默认运行已接入01身份与MySQL阶段，实际合入/验收状态见共享表。第7课骨架为历史基线，历史主规约见[spec](openspec/specs/project-bootstrap/spec.md)，归档依据见[历史变更](openspec/changes/archive/2026-10-28-project-bootstrap/)。本轮执行[00规约](openspec/changes/2026-11-04-business-contracts/proposal.md)、[design](openspec/changes/2026-11-04-business-contracts/design.md)、[spec](openspec/changes/2026-11-04-business-contracts/specs/business-contracts/spec.md)及[tasks](openspec/changes/2026-11-04-business-contracts/tasks.md)；00只负责公共合同。当前01按已批准身份规约接入数据库/身份，02按已批准规约推进登录；教学业务仍暂停。PB/SC保留历史含义，新需求使用BC及后续change自己的前缀。
+本分支默认运行已接入01身份与MySQL阶段，实际合入/验收状态见共享表。第7课骨架为历史基线，历史主规约见[spec](openspec/specs/project-bootstrap/spec.md)，归档依据见[历史变更](openspec/changes/archive/2026-10-28-project-bootstrap/)。本轮执行[00规约](openspec/changes/2026-11-04-business-contracts/proposal.md)、[design](openspec/changes/2026-11-04-business-contracts/design.md)、[spec](openspec/changes/2026-11-04-business-contracts/specs/business-contracts/spec.md)及[tasks](openspec/changes/2026-11-04-business-contracts/tasks.md)；00只负责公共合同。当前01按已批准身份规约接入数据库/身份，02登录已验收；本候选继续已批准04，其他教学业务仍暂停。PB/SC保留历史含义，新需求使用BC及后续change自己的前缀。
 
 ## 每次开始工作
 - 必读 [安全规范](docs/standards/security.md)，按范围必须读取下表规则；这些文件是约束，不是可选参考。
