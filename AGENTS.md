@@ -21,7 +21,9 @@
 - 每次代码、测试、配置或脚本修改形成提交时，必须在同一提交更新共享进度表的对应行；阶段没变也写明本次改动、验证结果及下一步。交接、阻塞、返工、验收或规约变化也须同步；AI结束工作前同样检查，未测只能写未验证。详见协作规范。
 - 规约与规则不一致先同步明确约定，例外登记在具体规范中；不能默许两套健康契约。
 
-01已合入[身份主规约](openspec/specs/identity-foundation/spec.md)及[01归档](openspec/changes/archive/2026-11-04-identity-foundation/)。02主规约与历史设计见[前端主规约](openspec/specs/frontend-foundation/spec.md)及[02归档](openspec/changes/archive/2026-11-05-frontend-foundation/)，#21已合入main并复验。2026-11-10仅恢复[04规约](openspec/changes/2026-11-10-materials-retrieval/proposal.md)审查和机器合同准备；规约批准、迁移登记与机器合同审定后才可接线，资料接口仍planned，其余教学变更继续暂停。主干状态见共享表。
+01已合入[身份主规约](openspec/specs/identity-foundation/spec.md)及[01归档](openspec/changes/archive/2026-11-04-identity-foundation/)。02主规约与历史设计见[前端主规约](openspec/specs/frontend-foundation/spec.md)及[02归档](openspec/changes/archive/2026-11-05-frontend-foundation/)，#21已合入main并复验。2026-11-10仅恢复[04规约](openspec/changes/2026-11-10-materials-retrieval/proposal.md)审查和机器合同准备；规约批准、迁移登记与机器合同审定后才可接线，资料接口尚未在运行时启用，其余教学变更继续暂停。主干状态见共享表。
+
+04六个`frozen`资料操作、8个单源Schema和000004迁移方案已由小张核对，tasks1.2/1.3完成；正式批准及正常合入后由小陈继续2.1—2.6。当前运行仍只装配原七个current身份/健康操作，000004 SQL/真实摘要尚未生成。详见[合同入口](docs/contracts/README.md)、[迁移方案](openspec/changes/2026-11-10-materials-retrieval/migration-plan.md)和[审定记录](reports/changes/04/zhang-contract-review-2026-11-11.md)。
 
 ## 当前命令
 根目录 npm ci；npm run setup 安装前端；npm run check 跑基础/类型/构建/Go测试/严格规约；npm run audit 检查npm；npm run verify 运行本机容器集成验收。

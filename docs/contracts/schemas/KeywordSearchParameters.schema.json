@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/v1/KeywordSearchParameters.schema.json",
+  "title": "KeywordSearchParameters",
+  "type": "object",
+  "properties": {
+    "q": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000,
+      "pattern": "^(?!\\p{White_Space})(?![\\s\\S]*\\p{White_Space}$)[^\\p{Cc}]+$",
+      "description": "TrimSpace后的1..2000码点、无控制字符的区分大小写字面值。"
+    },
+    "mode": {
+      "type": "string",
+      "const": "keyword",
+      "default": "keyword"
+    },
+    "top_k": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10,
+      "default": 4
+    }
+  },
+  "required": [
+    "q",
+    "mode",
+    "top_k"
+  ],
+  "additionalProperties": false
+}

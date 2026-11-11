@@ -12,6 +12,7 @@
 | MySQL Community运行镜像 | 默认服务与真实数据库集成使用同一衍生Dockerfile | 8.4.13，官方基础摘要不变，见01 runtime-plan及[构建说明](../deploy/identity/mysql/README.md) / GPLv2及上游附加声明 |
 | gosu | 保留官方entrypoint的UID/GID降权 | 未修改的1.19源码，以已锁Go1.27.3重建 / Apache-2.0；原LICENSE随镜像保留 |
 | Trivy（仅验证工具） | 本机/CI共同verify入口审计实际MySQL、backend、admin、frontend制品 | 0.76.2官方镜像固定摘要 / Apache-2.0，不进入生产镜像 |
+| libxslt（前端Nginx既有运行依赖） | 2026-11-11实际扫描发现CVE-2026-87636、CVE-2026-9947后精确升级 | 1.1.43-r4，来自Alpine v3.24官方签名仓库 / X11；替换基础镜像内1.1.43-r3，实际扫描见[本次修复](../reports/changes/10/A/frontend-libxslt-2026-11-11.md) |
 
 MySQL上游来源：https://github.com/mysql/mysql-server/tree/mysql-8.4.13 ，许可：https://github.com/mysql/mysql-server/blob/mysql-8.4.13/LICENSE 。本PR不把MySQL源码或二进制嵌入Go服务镜像；使用官方容器时保留其许可与源码获取路径。课程项目的许可选择已由#6确认，未来分发范围变化另审。
 

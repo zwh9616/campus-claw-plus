@@ -1,0 +1,46 @@
+{
+  "material": {
+    "id": "12",
+    "title": "课堂资料",
+    "version": 1,
+    "index_status": "ready",
+    "size_bytes": 24,
+    "created_at": "2026-11-10T08:00:00.000Z"
+  },
+  "detail": {
+    "material": {
+      "id": "12",
+      "title": "课堂资料",
+      "version": 1,
+      "index_status": "ready",
+      "size_bytes": 24,
+      "created_at": "2026-11-10T08:00:00.000Z"
+    },
+    "body": "课堂资料\nUnicode😀"
+  },
+  "search": {
+    "items": [
+      {
+        "material_id": "12",
+        "chunk_id": "31",
+        "material_version": 1,
+        "title": "课堂资料",
+        "ordinal": 0,
+        "char_start": 0,
+        "char_end": 13,
+        "quote": "课堂资料\nUnicode😀",
+        "url": "/api/v1/materials/12"
+      }
+    ],
+    "mode": "keyword"
+  },
+  "upload": {
+    "title": "  课堂资料  ",
+    "file": "﻿原文\r\n😀"
+  },
+  "query": {
+    "q": "课堂",
+    "mode": "keyword",
+    "top_k": 4
+  }
+}

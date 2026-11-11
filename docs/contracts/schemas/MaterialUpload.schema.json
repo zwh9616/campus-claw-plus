@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/v1/MaterialUpload.schema.json",
+  "title": "MaterialUpload",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "先TrimSpace，随后1..200码点且无控制字符；此处是传输原值，不以原值长度替代规范化后边界。"
+    },
+    "file": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 262144,
+      "contentMediaType": "text/plain",
+      "description": "multipart原始文件字节，不作base64编码；文件名须.txt。JSON字符串样例仅验证文本结构，实际UTF-8、字节数、文件名与流式总大小须运行验证。"
+    }
+  },
+  "required": [
+    "title",
+    "file"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/v1/MaterialIdempotencyKey.schema.json",
+  "title": "MaterialIdempotencyKey",
+  "type": "string",
+  "minLength": 16,
+  "maxLength": 64,
+  "pattern": "^[A-Za-z0-9_-]{16,64}$"
+}

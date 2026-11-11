@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/v1/KeywordSearchResponse.schema.json",
+  "title": "KeywordSearchResponse",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "maxItems": 10,
+      "items": {
+        "$ref": "Citation.schema.json"
+      }
+    },
+    "mode": {
+      "type": "string",
+      "const": "keyword"
+    }
+  },
+  "required": [
+    "items",
+    "mode"
+  ],
+  "additionalProperties": false
+}

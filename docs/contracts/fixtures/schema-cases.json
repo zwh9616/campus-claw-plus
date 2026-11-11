@@ -1684,5 +1684,799 @@
       }
     },
     "valid": false
+  },
+  {
+    "name": "04 Material positive",
+    "schema": "Material",
+    "valid": true,
+    "data": {
+      "id": "12",
+      "title": "课堂资料",
+      "version": 1,
+      "index_status": "ready",
+      "size_bytes": 24,
+      "created_at": "2026-11-10T08:00:00.000Z"
+    },
+    "scenarios": [
+      "MR-SC-01",
+      "MR-SC-03"
+    ]
+  },
+  {
+    "name": "04 Material missing required",
+    "schema": "Material",
+    "valid": false,
+    "data": {
+      "title": "课堂资料",
+      "version": 1,
+      "index_status": "ready",
+      "size_bytes": 24,
+      "created_at": "2026-11-10T08:00:00.000Z"
+    },
+    "scenarios": [
+      "MR-SC-01",
+      "MR-SC-03"
+    ]
+  },
+  {
+    "name": "04 Material unknown property",
+    "schema": "Material",
+    "valid": false,
+    "data": {
+      "id": "12",
+      "title": "课堂资料",
+      "version": 1,
+      "index_status": "ready",
+      "size_bytes": 24,
+      "created_at": "2026-11-10T08:00:00.000Z",
+      "class_id": "2"
+    },
+    "scenarios": [
+      "MR-SC-01",
+      "MR-SC-03"
+    ]
+  },
+  {
+    "name": "04 MaterialPage positive",
+    "schema": "MaterialPage",
+    "valid": true,
+    "data": {
+      "items": [
+        {
+          "id": "12",
+          "title": "课堂资料",
+          "version": 1,
+          "index_status": "ready",
+          "size_bytes": 24,
+          "created_at": "2026-11-10T08:00:00.000Z"
+        }
+      ],
+      "page": 1,
+      "page_size": 20,
+      "total": 1
+    },
+    "scenarios": [
+      "MR-SC-01",
+      "MR-SC-03"
+    ]
+  },
+  {
+    "name": "04 MaterialPage missing required",
+    "schema": "MaterialPage",
+    "valid": false,
+    "data": {
+      "page": 1,
+      "page_size": 20,
+      "total": 1
+    },
+    "scenarios": [
+      "MR-SC-01",
+      "MR-SC-03"
+    ]
+  },
+  {
+    "name": "04 MaterialPage unknown property",
+    "schema": "MaterialPage",
+    "valid": false,
+    "data": {
+      "items": [
+        {
+          "id": "12",
+          "title": "课堂资料",
+          "version": 1,
+          "index_status": "ready",
+          "size_bytes": 24,
+          "created_at": "2026-11-10T08:00:00.000Z"
+        }
+      ],
+      "page": 1,
+      "page_size": 20,
+      "total": 1,
+      "class_id": "2"
+    },
+    "scenarios": [
+      "MR-SC-01",
+      "MR-SC-03"
+    ]
+  },
+  {
+    "name": "04 MaterialDetail positive",
+    "schema": "MaterialDetail",
+    "valid": true,
+    "data": {
+      "material": {
+        "id": "12",
+        "title": "课堂资料",
+        "version": 1,
+        "index_status": "ready",
+        "size_bytes": 24,
+        "created_at": "2026-11-10T08:00:00.000Z"
+      },
+      "body": "课堂资料\nUnicode😀"
+    },
+    "scenarios": [
+      "MR-SC-01",
+      "MR-SC-03"
+    ]
+  },
+  {
+    "name": "04 MaterialDetail missing required",
+    "schema": "MaterialDetail",
+    "valid": false,
+    "data": {
+      "body": "课堂资料\nUnicode😀"
+    },
+    "scenarios": [
+      "MR-SC-01",
+      "MR-SC-03"
+    ]
+  },
+  {
+    "name": "04 MaterialDetail unknown property",
+    "schema": "MaterialDetail",
+    "valid": false,
+    "data": {
+      "material": {
+        "id": "12",
+        "title": "课堂资料",
+        "version": 1,
+        "index_status": "ready",
+        "size_bytes": 24,
+        "created_at": "2026-11-10T08:00:00.000Z"
+      },
+      "body": "课堂资料\nUnicode😀",
+      "class_id": "2"
+    },
+    "scenarios": [
+      "MR-SC-01",
+      "MR-SC-03"
+    ]
+  },
+  {
+    "name": "04 KeywordSearchResponse positive",
+    "schema": "KeywordSearchResponse",
+    "valid": true,
+    "data": {
+      "items": [
+        {
+          "material_id": "12",
+          "chunk_id": "31",
+          "material_version": 1,
+          "title": "课堂资料",
+          "ordinal": 0,
+          "char_start": 0,
+          "char_end": 13,
+          "quote": "课堂资料\nUnicode😀",
+          "url": "/api/v1/materials/12"
+        }
+      ],
+      "mode": "keyword"
+    },
+    "scenarios": [
+      "MR-SC-09",
+      "MR-SC-10"
+    ]
+  },
+  {
+    "name": "04 KeywordSearchResponse missing required",
+    "schema": "KeywordSearchResponse",
+    "valid": false,
+    "data": {
+      "mode": "keyword"
+    },
+    "scenarios": [
+      "MR-SC-09",
+      "MR-SC-10"
+    ]
+  },
+  {
+    "name": "04 KeywordSearchResponse unknown property",
+    "schema": "KeywordSearchResponse",
+    "valid": false,
+    "data": {
+      "items": [
+        {
+          "material_id": "12",
+          "chunk_id": "31",
+          "material_version": 1,
+          "title": "课堂资料",
+          "ordinal": 0,
+          "char_start": 0,
+          "char_end": 13,
+          "quote": "课堂资料\nUnicode😀",
+          "url": "/api/v1/materials/12"
+        }
+      ],
+      "mode": "keyword",
+      "class_id": "2"
+    },
+    "scenarios": [
+      "MR-SC-09",
+      "MR-SC-10"
+    ]
+  },
+  {
+    "name": "04 MaterialUpload positive",
+    "schema": "MaterialUpload",
+    "valid": true,
+    "data": {
+      "title": "  课堂资料  ",
+      "file": "原文\r\n😀"
+    },
+    "scenarios": [
+      "MR-SC-04",
+      "MR-SC-05"
+    ]
+  },
+  {
+    "name": "04 MaterialUpload missing required",
+    "schema": "MaterialUpload",
+    "valid": false,
+    "data": {
+      "file": "原文\r\n😀"
+    },
+    "scenarios": [
+      "MR-SC-04",
+      "MR-SC-05"
+    ]
+  },
+  {
+    "name": "04 MaterialUpload unknown property",
+    "schema": "MaterialUpload",
+    "valid": false,
+    "data": {
+      "title": "  课堂资料  ",
+      "file": "原文\r\n😀",
+      "class_id": "2"
+    },
+    "scenarios": [
+      "MR-SC-04",
+      "MR-SC-05"
+    ]
+  },
+  {
+    "name": "04 MaterialListParameters positive",
+    "schema": "MaterialListParameters",
+    "valid": true,
+    "data": {
+      "page": 1,
+      "page_size": 20
+    },
+    "scenarios": [
+      "MR-SC-01",
+      "MR-SC-03"
+    ]
+  },
+  {
+    "name": "04 MaterialListParameters missing required",
+    "schema": "MaterialListParameters",
+    "valid": false,
+    "data": {
+      "page_size": 20
+    },
+    "scenarios": [
+      "MR-SC-01",
+      "MR-SC-03"
+    ]
+  },
+  {
+    "name": "04 MaterialListParameters unknown property",
+    "schema": "MaterialListParameters",
+    "valid": false,
+    "data": {
+      "page": 1,
+      "page_size": 20,
+      "class_id": "2"
+    },
+    "scenarios": [
+      "MR-SC-01",
+      "MR-SC-03"
+    ]
+  },
+  {
+    "name": "04 KeywordSearchParameters positive",
+    "schema": "KeywordSearchParameters",
+    "valid": true,
+    "data": {
+      "q": "课堂",
+      "mode": "keyword",
+      "top_k": 4
+    },
+    "scenarios": [
+      "MR-SC-09",
+      "MR-SC-10"
+    ]
+  },
+  {
+    "name": "04 KeywordSearchParameters missing required",
+    "schema": "KeywordSearchParameters",
+    "valid": false,
+    "data": {
+      "mode": "keyword",
+      "top_k": 4
+    },
+    "scenarios": [
+      "MR-SC-09",
+      "MR-SC-10"
+    ]
+  },
+  {
+    "name": "04 KeywordSearchParameters unknown property",
+    "schema": "KeywordSearchParameters",
+    "valid": false,
+    "data": {
+      "q": "课堂",
+      "mode": "keyword",
+      "top_k": 4,
+      "class_id": "2"
+    },
+    "scenarios": [
+      "MR-SC-09",
+      "MR-SC-10"
+    ]
+  },
+  {
+    "name": "04 MaterialIdempotencyKey positive",
+    "schema": "MaterialIdempotencyKey",
+    "valid": true,
+    "data": "classroom_upload_01",
+    "scenarios": [
+      "MR-SC-04",
+      "MR-SC-05"
+    ]
+  },
+  {
+    "name": "04 MaterialIdempotencyKey too short",
+    "schema": "MaterialIdempotencyKey",
+    "valid": false,
+    "data": "a",
+    "scenarios": [
+      "MR-SC-04",
+      "MR-SC-05"
+    ]
+  },
+  {
+    "name": "04 MaterialIdempotencyKey invalid character",
+    "schema": "MaterialIdempotencyKey",
+    "valid": false,
+    "data": "invalid/key-value!",
+    "scenarios": [
+      "MR-SC-04",
+      "MR-SC-05"
+    ]
+  },
+  {
+    "name": "04 Material ID overflow",
+    "schema": "Material",
+    "data": {
+      "id": "9223372036854775808",
+      "title": "课堂资料",
+      "version": 1,
+      "index_status": "ready",
+      "size_bytes": 24,
+      "created_at": "2026-11-10T08:00:00.000Z"
+    },
+    "valid": false,
+    "scenarios": [
+      "MR-SC-03",
+      "MR-SC-04",
+      "MR-SC-09",
+      "MR-SC-10"
+    ]
+  },
+  {
+    "name": "04 Material title overflow",
+    "schema": "Material",
+    "data": {
+      "id": "12",
+      "title": "题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题题",
+      "version": 1,
+      "index_status": "ready",
+      "size_bytes": 24,
+      "created_at": "2026-11-10T08:00:00.000Z"
+    },
+    "valid": false,
+    "scenarios": [
+      "MR-SC-03",
+      "MR-SC-04",
+      "MR-SC-09",
+      "MR-SC-10"
+    ]
+  },
+  {
+    "name": "04 Material control title",
+    "schema": "Material",
+    "data": {
+      "id": "12",
+      "title": "\u0000",
+      "version": 1,
+      "index_status": "ready",
+      "size_bytes": 24,
+      "created_at": "2026-11-10T08:00:00.000Z"
+    },
+    "valid": false,
+    "scenarios": [
+      "MR-SC-03",
+      "MR-SC-04",
+      "MR-SC-09",
+      "MR-SC-10"
+    ]
+  },
+  {
+    "name": "04 Material future version",
+    "schema": "Material",
+    "data": {
+      "id": "12",
+      "title": "课堂资料",
+      "version": 2,
+      "index_status": "ready",
+      "size_bytes": 24,
+      "created_at": "2026-11-10T08:00:00.000Z"
+    },
+    "valid": false,
+    "scenarios": [
+      "MR-SC-03",
+      "MR-SC-04",
+      "MR-SC-09",
+      "MR-SC-10"
+    ]
+  },
+  {
+    "name": "04 Material uncommitted state",
+    "schema": "Material",
+    "data": {
+      "id": "12",
+      "title": "课堂资料",
+      "version": 1,
+      "index_status": "indexing",
+      "size_bytes": 24,
+      "created_at": "2026-11-10T08:00:00.000Z"
+    },
+    "valid": false,
+    "scenarios": [
+      "MR-SC-03",
+      "MR-SC-04",
+      "MR-SC-09",
+      "MR-SC-10"
+    ]
+  },
+  {
+    "name": "04 Material reserved deleted",
+    "schema": "Material",
+    "data": {
+      "id": "12",
+      "title": "课堂资料",
+      "version": 1,
+      "index_status": "deleted",
+      "size_bytes": 24,
+      "created_at": "2026-11-10T08:00:00.000Z"
+    },
+    "valid": false,
+    "scenarios": [
+      "MR-SC-03",
+      "MR-SC-04",
+      "MR-SC-09",
+      "MR-SC-10"
+    ]
+  },
+  {
+    "name": "04 Material zero bytes",
+    "schema": "Material",
+    "data": {
+      "id": "12",
+      "title": "课堂资料",
+      "version": 1,
+      "index_status": "ready",
+      "size_bytes": 0,
+      "created_at": "2026-11-10T08:00:00.000Z"
+    },
+    "valid": false,
+    "scenarios": [
+      "MR-SC-03",
+      "MR-SC-04",
+      "MR-SC-09",
+      "MR-SC-10"
+    ]
+  },
+  {
+    "name": "04 Material file limit",
+    "schema": "Material",
+    "data": {
+      "id": "12",
+      "title": "课堂资料",
+      "version": 1,
+      "index_status": "ready",
+      "size_bytes": 262145,
+      "created_at": "2026-11-10T08:00:00.000Z"
+    },
+    "valid": false,
+    "scenarios": [
+      "MR-SC-03",
+      "MR-SC-04",
+      "MR-SC-09",
+      "MR-SC-10"
+    ]
+  },
+  {
+    "name": "04 MaterialPage invalid page",
+    "schema": "MaterialPage",
+    "data": {
+      "items": [],
+      "page": 0,
+      "page_size": 20,
+      "total": 0
+    },
+    "valid": false,
+    "scenarios": [
+      "MR-SC-03",
+      "MR-SC-04",
+      "MR-SC-09",
+      "MR-SC-10"
+    ]
+  },
+  {
+    "name": "04 MaterialPage page size overflow",
+    "schema": "MaterialPage",
+    "data": {
+      "items": [],
+      "page": 1,
+      "page_size": 51,
+      "total": 0
+    },
+    "valid": false,
+    "scenarios": [
+      "MR-SC-03",
+      "MR-SC-04",
+      "MR-SC-09",
+      "MR-SC-10"
+    ]
+  },
+  {
+    "name": "04 KeywordSearchResponse future mode",
+    "schema": "KeywordSearchResponse",
+    "data": {
+      "items": [],
+      "mode": "vector"
+    },
+    "valid": false,
+    "scenarios": [
+      "MR-SC-03",
+      "MR-SC-04",
+      "MR-SC-09",
+      "MR-SC-10"
+    ]
+  },
+  {
+    "name": "04 KeywordSearchResponse too many citations",
+    "schema": "KeywordSearchResponse",
+    "data": {
+      "items": [
+        {
+          "material_id": "12",
+          "chunk_id": "31",
+          "material_version": 1,
+          "title": "课堂资料",
+          "ordinal": 0,
+          "char_start": 0,
+          "char_end": 13,
+          "quote": "课堂资料\nUnicode😀",
+          "url": "/api/v1/materials/12"
+        },
+        {
+          "material_id": "12",
+          "chunk_id": "31",
+          "material_version": 1,
+          "title": "课堂资料",
+          "ordinal": 0,
+          "char_start": 0,
+          "char_end": 13,
+          "quote": "课堂资料\nUnicode😀",
+          "url": "/api/v1/materials/12"
+        },
+        {
+          "material_id": "12",
+          "chunk_id": "31",
+          "material_version": 1,
+          "title": "课堂资料",
+          "ordinal": 0,
+          "char_start": 0,
+          "char_end": 13,
+          "quote": "课堂资料\nUnicode😀",
+          "url": "/api/v1/materials/12"
+        },
+        {
+          "material_id": "12",
+          "chunk_id": "31",
+          "material_version": 1,
+          "title": "课堂资料",
+          "ordinal": 0,
+          "char_start": 0,
+          "char_end": 13,
+          "quote": "课堂资料\nUnicode😀",
+          "url": "/api/v1/materials/12"
+        },
+        {
+          "material_id": "12",
+          "chunk_id": "31",
+          "material_version": 1,
+          "title": "课堂资料",
+          "ordinal": 0,
+          "char_start": 0,
+          "char_end": 13,
+          "quote": "课堂资料\nUnicode😀",
+          "url": "/api/v1/materials/12"
+        },
+        {
+          "material_id": "12",
+          "chunk_id": "31",
+          "material_version": 1,
+          "title": "课堂资料",
+          "ordinal": 0,
+          "char_start": 0,
+          "char_end": 13,
+          "quote": "课堂资料\nUnicode😀",
+          "url": "/api/v1/materials/12"
+        },
+        {
+          "material_id": "12",
+          "chunk_id": "31",
+          "material_version": 1,
+          "title": "课堂资料",
+          "ordinal": 0,
+          "char_start": 0,
+          "char_end": 13,
+          "quote": "课堂资料\nUnicode😀",
+          "url": "/api/v1/materials/12"
+        },
+        {
+          "material_id": "12",
+          "chunk_id": "31",
+          "material_version": 1,
+          "title": "课堂资料",
+          "ordinal": 0,
+          "char_start": 0,
+          "char_end": 13,
+          "quote": "课堂资料\nUnicode😀",
+          "url": "/api/v1/materials/12"
+        },
+        {
+          "material_id": "12",
+          "chunk_id": "31",
+          "material_version": 1,
+          "title": "课堂资料",
+          "ordinal": 0,
+          "char_start": 0,
+          "char_end": 13,
+          "quote": "课堂资料\nUnicode😀",
+          "url": "/api/v1/materials/12"
+        },
+        {
+          "material_id": "12",
+          "chunk_id": "31",
+          "material_version": 1,
+          "title": "课堂资料",
+          "ordinal": 0,
+          "char_start": 0,
+          "char_end": 13,
+          "quote": "课堂资料\nUnicode😀",
+          "url": "/api/v1/materials/12"
+        },
+        {
+          "material_id": "12",
+          "chunk_id": "31",
+          "material_version": 1,
+          "title": "课堂资料",
+          "ordinal": 0,
+          "char_start": 0,
+          "char_end": 13,
+          "quote": "课堂资料\nUnicode😀",
+          "url": "/api/v1/materials/12"
+        }
+      ],
+      "mode": "keyword"
+    },
+    "valid": false,
+    "scenarios": [
+      "MR-SC-03",
+      "MR-SC-04",
+      "MR-SC-09",
+      "MR-SC-10"
+    ]
+  },
+  {
+    "name": "04 KeywordSearchParameters query overflow",
+    "schema": "KeywordSearchParameters",
+    "data": {
+      "q": "字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字",
+      "mode": "keyword",
+      "top_k": 4
+    },
+    "valid": false,
+    "scenarios": [
+      "MR-SC-03",
+      "MR-SC-04",
+      "MR-SC-09",
+      "MR-SC-10"
+    ]
+  },
+  {
+    "name": "04 KeywordSearchParameters future mode",
+    "schema": "KeywordSearchParameters",
+    "data": {
+      "q": "q",
+      "mode": "hybrid",
+      "top_k": 4
+    },
+    "valid": false,
+    "scenarios": [
+      "MR-SC-03",
+      "MR-SC-04",
+      "MR-SC-09",
+      "MR-SC-10"
+    ]
+  },
+  {
+    "name": "04 KeywordSearchParameters top_k overflow",
+    "schema": "KeywordSearchParameters",
+    "data": {
+      "q": "q",
+      "mode": "keyword",
+      "top_k": 11
+    },
+    "valid": false,
+    "scenarios": [
+      "MR-SC-03",
+      "MR-SC-04",
+      "MR-SC-09",
+      "MR-SC-10"
+    ]
+  },
+  {
+    "name": "04 KeywordSearchParameters control query",
+    "schema": "KeywordSearchParameters",
+    "data": {
+      "q": "q\n",
+      "mode": "keyword",
+      "top_k": 4
+    },
+    "valid": false,
+    "scenarios": [
+      "MR-SC-03",
+      "MR-SC-04",
+      "MR-SC-09",
+      "MR-SC-10"
+    ]
+  },
+  {
+    "name": "04 MaterialIdempotencyKey key overflow",
+    "schema": "MaterialIdempotencyKey",
+    "data": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "valid": false,
+    "scenarios": [
+      "MR-SC-03",
+      "MR-SC-04",
+      "MR-SC-09",
+      "MR-SC-10"
+    ]
   }
 ]
