@@ -1,0 +1,90 @@
+{
+  "checked_at": "2026-11-11T13:18:53Z",
+  "pr": {
+    "number": 27,
+    "html_url": "https://github.com/zwh9616/campus-claw-plus/pull/27",
+    "merged": true,
+    "merged_at": "2026-11-11T13:15:24Z",
+    "merge_commit_sha": "6ff6287869631b43d48d59487c16eec5c42403b0"
+  },
+  "approved_head": "9df9704a8a69b6f808659318407aceb7c6f8244b",
+  "merge_actor": "gjj6666",
+  "reviews": [
+    {
+      "id": 5857563184,
+      "state": "APPROVED",
+      "commit_id": "9df9704a8a69b6f808659318407aceb7c6f8244b",
+      "html_url": "https://github.com/zwh9616/campus-claw-plus/pull/27#pullrequestreview-5857563184",
+      "actor": "gjj6666"
+    }
+  ],
+  "main_ci": {
+    "id": 43027475479,
+    "head_sha": "6ff6287869631b43d48d59487c16eec5c42403b0",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/zwh9616/campus-claw-plus/actions/runs/43027475479",
+    "event": "push"
+  },
+  "jobs": [
+    {
+      "id": 130545714122,
+      "name": "check",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/zwh9616/campus-claw-plus/actions/runs/43027475479/job/130545714122",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run setup",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run the same complete gate as local development",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Retain runtime image scan evidence",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ]
+}
