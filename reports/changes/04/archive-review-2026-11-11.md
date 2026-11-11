@@ -29,3 +29,5 @@
 本机 Windows，Node 24.22.1、npm 10.5.0、Go 1.27.3。`npm ci`、`npm run setup`、`npm run check`、`npm run audit` 均退出 0，OpenSpec strict 为 8/8，根与前端依赖均 0 漏洞。归档命令退出 0，4 项需求/10 个场景正文一致、149 个本地链接有效；运行输入及旧归档逐项比较一致，合同及其断言只迁移来源路径，未放宽校验。[一致性核对](archive/archive-consistency.json)
 
 完整历史/暂存秘密扫描退出 0（131 个历史提交及本次暂存差异），差异检查通过。本机 `npm run verify` 因 Docker 命令不可用，在漏洞库准备阶段报 ENOENT 并退出 1，镜像扫描及容器验收未运行；失败原件保留在本机忽略目录 `output/04-archive-verify.txt`。归档候选仍需自己的完整远端 CI，不沿用实现版本的 CI 代替。
+
+归档候选已提交为 [PR #28](https://github.com/zwh9616/campus-claw-plus/pull/28)，已实际请求小张（zwh9616）审查；请求不等于批准。后续仅补交接链接，未改变运行输入或规约正文。小张核对当前最终 head 的检查与证据后收口；本次保留原四份未跟踪文本，未代小张批准或合并。
