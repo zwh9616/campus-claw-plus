@@ -10,3 +10,5 @@
 frontend扫描识别Alpine3.24.4、Nginx1.30.6-r1。已从[Alpine v3.24官方仓库](https://dl-cdn.alpinelinux.org/alpine/v3.24/main/x86_64/)及其APKINDEX核对libxslt1.1.43-r4，许可X11。frontend/Dockerfile用现有Alpine签名仓库精确安装该版本。基础镜像摘要、现有Nginx配置及服务入口保持现有版本；包下载或签名验证失败则构建非零退出。
 
 这是既有门禁发现并直接修复的镜像依赖问题，按DO-SC-04/05及IDF-SC-17记录，修复随原PR验证。最终head需重新批准、实际四镜像扫描、可信HTTPS/身份容器回归及主干完整门禁通过。失败记录保留，最终CI/批准/合入版本见#25收口记录。本机Docker不可连接，因此本机镜像构建与容器回归未执行。
+
+本机foundation、差异检查及全历史/暂存秘密扫描通过后，补丁保存为本地提交。推送时Git连续报告TLS unexpected EOF，GitHub连接器同时无法连接服务，官方包站随后也超时。补丁尚未推送，修复后的真实镜像扫描未执行，#25当前不能合入；网络恢复后推送、重跑完整CI并对最终head重新批准。
