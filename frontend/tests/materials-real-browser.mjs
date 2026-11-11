@@ -46,9 +46,17 @@ export async function browserProof({ directory, port, playwrightPath, markFailed
       proof.screenshots.push({file:name+'.png',role,url:page.url(),width,height,mock:false})
     }
     const teacher=await login(seed.users[0]);const firstClass=teacher.principal.class_id
-    const boundary=await page.evaluate(async token=>(await fetch('/api/v1/search?'+new URLSearchParams({q:'𠮷'.repeat(2000),mode:'keyword',top_k:'4'}),{headers:{Authorization:'Bearer '+token}})).status,teacher.access_token)
-    proof.queryBoundary={codepoints:2000,status:boundary}
-    assert.equal(boundary,200,'2000-codepoint keyword contract through actual HTTPS gateway')
+    const boundary=await page.evaluate(async token=>{
+      const headers={Authorization:'Bearer '+token}
+      const valid=await fetch('/api/v1/search?'+new URLSearchParams({q:'𠮷'.repeat(2000),mode:'keyword',top_k:'4'}),{headers})
+      const value=valid.status===200?await valid.json():null
+      const invalid=await fetch('/api/v1/search?'+new URLSearchParams({q:'𠮷'.repeat(2001),mode:'keyword',top_k:'4'}),{headers})
+      const large=await fetch('/api/v1/search?q='+'x'.repeat(40000),{headers})
+      return {status:valid.status,mode:value?.mode,oversizedCodepoints:invalid.status,oversizedRequestLine:large.status}
+    },teacher.access_token)
+    proof.queryBoundary={codepoints:2000,...boundary}
+    assert.equal(boundary.status,200,'2000-codepoint keyword contract through actual HTTPS gateway');assert.equal(boundary.mode,'keyword');assert.equal(boundary.oversizedCodepoints,400);assert.equal(boundary.oversizedRequestLine,414)
+    mark('默认HTTPS合法2000非BMP码点成功，2001码点400，超过32KiB请求行仍414')
     await page.getByRole('link',{name:'查看班级资料',exact:true}).click();await page.getByRole('link',{name:'上传资料',exact:true}).click()
     await page.getByLabel('标题',{exact:false}).fill(title);await page.getByLabel('文本文件',{exact:false}).setInputFiles({name:'lesson.TXT',mimeType:'text/plain',buffer:raw})
     const uploaded=page.waitForResponse(response=>new URL(response.url()).pathname==='/api/v1/materials'&&response.request().method()==='POST')
