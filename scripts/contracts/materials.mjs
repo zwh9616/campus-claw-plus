@@ -26,7 +26,7 @@ export function validateMaterialOperationProfiles(api) {
     assert.ok(op, `Missing 04 operation: ${method} ${path}`)
     assert.equal(op['x-contract-status'], 'current', '04 implementation and machine contracts must activate together')
     assert.equal(op['x-owner-change'], '04')
-    assert.equal(op['x-spec-change'], 'openspec/changes/2026-11-10-materials-retrieval')
+    assert.equal(op['x-spec-change'], 'openspec/changes/archive/2026-11-10-materials-retrieval')
     assert.deepEqual(op.security, [{BearerAuth:[]}], 'Material operations must not accept anonymous/Cookie authorization')
     assert.deepEqual(op['x-authorization'], {
       source:'validated-server-session', roles:method === 'POST' ? ['teacher'] : ['teacher','student'],

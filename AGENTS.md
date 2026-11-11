@@ -21,9 +21,9 @@
 - 每次代码、测试、配置或脚本修改形成提交时，必须在同一提交更新共享进度表的对应行；阶段没变也写明本次改动、验证结果及下一步。交接、阻塞、返工、验收或规约变化也须同步；AI结束工作前同样检查，未测只能写未验证。详见协作规范。
 - 规约与规则不一致先同步明确约定，例外登记在具体规范中；不能默许两套健康契约。
 
-01已合入[身份主规约](openspec/specs/identity-foundation/spec.md)及[01归档](openspec/changes/archive/2026-11-04-identity-foundation/)。02主规约与历史设计见[前端主规约](openspec/specs/frontend-foundation/spec.md)及[02归档](openspec/changes/archive/2026-11-05-frontend-foundation/)，#21已合入main并复验。04规约#23及机器合同#25已正常合入main；本实现候选按[04规约](openspec/changes/2026-11-10-materials-retrieval/proposal.md)启用六个资料操作，待小张终审及主干集成，其余教学变更继续暂停。主干状态见共享表。
+01已合入[身份主规约](openspec/specs/identity-foundation/spec.md)及[01归档](openspec/changes/archive/2026-11-04-identity-foundation/)。02主规约与历史设计见[前端主规约](openspec/specs/frontend-foundation/spec.md)及[02归档](openspec/changes/archive/2026-11-05-frontend-foundation/)，#21已合入main并复验。04规约#23、机器合同#25及实现#26已正常合入main6634e51；小张最终head批准及主干完整CI42987148688成功。本分支生成[资料主规约](openspec/specs/materials-retrieval/spec.md)及[04归档候选](openspec/changes/archive/2026-11-10-materials-retrieval/)，待小张核对和归档PR正常合入。其余教学实现仍须各自批准与依赖；06规约候选见#27。主干状态见共享表。
 
-本候选原子装配六个`current`资料操作（共13个current操作），新增000004三张资料表及真实SQL摘要，server只读检查精确目标4、离线admin迁移至4。资料以可信会话当前班级授权，学生只读ready；原始字节保留、索引事务及幂等、5秒业务预算/503与504、12次/分钟按用户配额和同快照出处回查遵循04。配置/服务/原健康及01旧SQL不变；前端仍只调用身份操作。详见[合同入口](docs/contracts/README.md)、[迁移方案](openspec/changes/2026-11-10-materials-retrieval/migration-plan.md)和[运行交接](docs/materials-runtime.md)。可执行代码不表示终审、部署或集成已经通过。
+当前已装配六个`current`资料操作（共13个current操作），新增000004三张资料表及真实SQL摘要，server只读检查精确目标4、离线admin迁移至4。资料以可信会话当前班级授权，学生只读ready；原始字节保留、索引事务及幂等、5秒业务预算/503与504、12次/分钟按用户配额和同快照出处回查遵循04。配置/服务/原健康及01旧SQL不变；前端仍只调用身份操作。详见[合同入口](docs/contracts/README.md)、[迁移方案](openspec/changes/archive/2026-11-10-materials-retrieval/migration-plan.md)和[运行交接](docs/materials-runtime.md)。04实现终审与main集成已通过；本次归档候选尚待审查合入，持有人长期部署与生产回退不由CI推定。
 
 ## 当前命令
 根目录 npm ci；npm run setup 安装前端；npm run check 跑基础/类型/构建/Go测试/严格规约；npm run audit 检查npm；npm run verify 运行本机容器集成验收。
