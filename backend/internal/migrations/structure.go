@@ -2,6 +2,8 @@ package migrations
 
 import (
 	"context"
+	"database/sql"
+	"errors"
 	"sort"
 	"strings"
 )
@@ -9,23 +11,32 @@ import (
 // Expected column order/types/nullability and every index/FK are checked before
 // repairing dirty metadata. CREATE IF NOT EXISTS alone is not a schema check.
 var columns = map[string]string{
-	"users":              "id:bigint unsigned:NO,username:varchar(64):NO,password_hash:varchar(255):NO,role:enum('teacher','student'):NO,enabled:tinyint(1):NO,security_version:bigint:NO",
-	"classes":            "id:bigint unsigned:NO,stable_key:varchar(64):NO,name:varchar(128):NO,active:tinyint(1):NO",
-	"class_memberships":  "user_id:bigint unsigned:NO,class_id:bigint unsigned:NO,active:tinyint(1):NO",
-	"sessions":           "id:char(32):NO,user_id:bigint unsigned:NO,class_id:bigint unsigned:NO,version:bigint:NO,security_version:bigint:NO,refresh_hash:binary(32):NO,refresh_expires:datetime(3):NO,revoked:tinyint(1):NO",
-	"access_credentials": "token_hash:binary(32):NO,session_id:char(32):NO,session_version:bigint:NO,expires_at:datetime(3):NO",
-	"auth_audit":         "id:bigint unsigned:NO,action:varchar(32):NO,result:varchar(16):NO,user_id:bigint unsigned:YES,session_id:char(32):YES,request_id:char(32):NO,occurred_at:datetime(3):NO",
+	"users":                "id:bigint unsigned:NO,username:varchar(64):NO,password_hash:varchar(255):NO,role:enum('teacher','student'):NO,enabled:tinyint(1):NO,security_version:bigint:NO",
+	"classes":              "id:bigint unsigned:NO,stable_key:varchar(64):NO,name:varchar(128):NO,active:tinyint(1):NO",
+	"class_memberships":    "user_id:bigint unsigned:NO,class_id:bigint unsigned:NO,active:tinyint(1):NO",
+	"sessions":             "id:char(32):NO,user_id:bigint unsigned:NO,class_id:bigint unsigned:NO,version:bigint:NO,security_version:bigint:NO,refresh_hash:binary(32):NO,refresh_expires:datetime(3):NO,revoked:tinyint(1):NO",
+	"access_credentials":   "token_hash:binary(32):NO,session_id:char(32):NO,session_version:bigint:NO,expires_at:datetime(3):NO",
+	"auth_audit":           "id:bigint unsigned:NO,action:varchar(32):NO,result:varchar(16):NO,user_id:bigint unsigned:YES,session_id:char(32):YES,request_id:char(32):NO,occurred_at:datetime(3):NO",
+	"materials":            "id:bigint unsigned:NO,class_id:bigint unsigned:NO,created_by:bigint unsigned:NO,title:varchar(200):NO,version:int:NO,index_status:enum('pending','indexing','ready','failed','deleted'):NO,raw_bytes:mediumblob:NO,size_bytes:int:NO,body:mediumtext:NO,created_at:datetime(3):NO",
+	"material_idempotency": "user_id:bigint unsigned:NO,class_id:bigint unsigned:NO,idempotency_key:varchar(64):NO,payload_digest:char(64):NO,material_id:bigint unsigned:NO,material_version:int:NO",
+	"material_chunks":      "id:bigint unsigned:NO,class_id:bigint unsigned:NO,material_id:bigint unsigned:NO,material_version:int:NO,ordinal:int:NO,char_start:int:NO,char_end:int:NO,quote:text:NO",
 }
 var indexes = map[string][]string{
-	"users":              {"PRIMARY:0:1:id", "uq_users_username:0:1:username"},
-	"classes":            {"PRIMARY:0:1:id", "uq_classes_key:0:1:stable_key"},
-	"class_memberships":  {"PRIMARY:0:1:user_id", "PRIMARY:0:2:class_id", "ix_membership_class:1:1:class_id"},
-	"sessions":           {"PRIMARY:0:1:id", "uq_session_refresh:0:1:refresh_hash", "ix_session_user:1:1:user_id", "ix_session_class:1:1:class_id"},
-	"access_credentials": {"PRIMARY:0:1:token_hash", "ix_access_session:1:1:session_id"},
-	"auth_audit":         {"PRIMARY:0:1:id", "ix_audit_request:1:1:request_id", "ix_audit_time:1:1:occurred_at"},
+	"users":                {"PRIMARY:0:1:id", "uq_users_username:0:1:username"},
+	"classes":              {"PRIMARY:0:1:id", "uq_classes_key:0:1:stable_key"},
+	"class_memberships":    {"PRIMARY:0:1:user_id", "PRIMARY:0:2:class_id", "ix_membership_class:1:1:class_id"},
+	"sessions":             {"PRIMARY:0:1:id", "uq_session_refresh:0:1:refresh_hash", "ix_session_user:1:1:user_id", "ix_session_class:1:1:class_id"},
+	"access_credentials":   {"PRIMARY:0:1:token_hash", "ix_access_session:1:1:session_id"},
+	"auth_audit":           {"PRIMARY:0:1:id", "ix_audit_request:1:1:request_id", "ix_audit_time:1:1:occurred_at"},
+	"materials":            {"PRIMARY:0:1:id", "uq_material_version:0:1:id", "uq_material_version:0:2:class_id", "uq_material_version:0:3:version", "ix_material_class:1:1:class_id", "ix_material_class:1:2:index_status", "ix_material_class:1:3:id", "ix_material_creator:1:1:created_by"},
+	"material_idempotency": {"PRIMARY:0:1:user_id", "PRIMARY:0:2:class_id", "PRIMARY:0:3:idempotency_key", "ix_replay_material:1:1:material_id", "ix_replay_material:1:2:class_id", "ix_replay_material:1:3:material_version"},
+	"material_chunks":      {"PRIMARY:0:1:id", "uq_chunk_ordinal:0:1:material_id", "uq_chunk_ordinal:0:2:class_id", "uq_chunk_ordinal:0:3:material_version", "uq_chunk_ordinal:0:4:ordinal", "ix_chunk_class:1:1:class_id", "ix_chunk_class:1:2:material_id", "ix_chunk_class:1:3:material_version", "ix_chunk_class:1:4:ordinal"},
 }
 var foreignKeys = map[string][]string{
 	"class_memberships": {"class_id:classes:id", "user_id:users:id"}, "sessions": {"class_id:classes:id", "user_id:users:id"}, "access_credentials": {"session_id:sessions:id"},
+	"materials":            {"class_id:classes:id", "created_by:users:id"},
+	"material_idempotency": {"user_id:users:id", "material_id:materials:id", "class_id:materials:class_id", "material_version:materials:version"},
+	"material_chunks":      {"material_id:materials:id", "class_id:materials:class_id", "material_version:materials:version"},
 }
 
 func (e Executor) strings(ctx context.Context, query, table string) ([]string, error) {
@@ -55,6 +66,12 @@ func equal(a, b []string) bool {
 	return strings.Join(a, "|") == strings.Join(b, "|")
 }
 func (e Executor) Structure(ctx context.Context, version int) error {
+	return e.structure(ctx, version, false)
+}
+
+// During explicit repair, validate every already-created object before issuing
+// another DDL statement. Missing tables alone are allowed in this preflight.
+func (e Executor) structure(ctx context.Context, version int, partial bool) error {
 	tables := []string{"users", "classes", "class_memberships"}
 	if version >= 2 {
 		tables = append(tables, "sessions", "access_credentials")
@@ -62,9 +79,16 @@ func (e Executor) Structure(ctx context.Context, version int) error {
 	if version >= 3 {
 		tables = append(tables, "auth_audit")
 	}
+	if version >= 4 {
+		tables = append(tables, "materials", "material_idempotency", "material_chunks")
+	}
 	for _, table := range tables {
 		var engine string
-		if e.DB.QueryRowContext(ctx, "SELECT ENGINE FROM information_schema.TABLES WHERE TABLE_SCHEMA=? AND TABLE_NAME=?", e.Database, table).Scan(&engine) != nil || engine != "InnoDB" {
+		err := e.DB.QueryRowContext(ctx, "SELECT ENGINE FROM information_schema.TABLES WHERE TABLE_SCHEMA=? AND TABLE_NAME=?", e.Database, table).Scan(&engine)
+		if partial && errors.Is(err, sql.ErrNoRows) {
+			continue
+		}
+		if err != nil || engine != "InnoDB" {
 			return ErrState
 		}
 		cols, err := e.strings(ctx, "SELECT CONCAT(COLUMN_NAME,':',COLUMN_TYPE,':',IS_NULLABLE) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=? AND TABLE_NAME=? ORDER BY ORDINAL_POSITION", table)
@@ -77,6 +101,27 @@ func (e Executor) Structure(ctx context.Context, version int) error {
 		query := `SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=? AND TABLE_NAME=? AND ((COLUMN_NAME IN ('username','stable_key') AND COLLATION_NAME<>'utf8mb4_0900_bin') OR (COLUMN_NAME IN ('password_hash','session_id','request_id') AND COLLATION_NAME<>'ascii_bin') OR (COLUMN_NAME='id' AND DATA_TYPE='char' AND COLLATION_NAME<>'ascii_bin') OR (COLUMN_NAME='id' AND DATA_TYPE='bigint' AND EXTRA<>'auto_increment') OR ((COLUMN_NAME IN ('enabled','active') OR (TABLE_NAME='users' AND COLUMN_NAME='security_version')) AND COALESCE(COLUMN_DEFAULT,'')<>'1') OR (COLUMN_NAME='revoked' AND COALESCE(COLUMN_DEFAULT,'')<>'0'))`
 		if e.DB.QueryRowContext(ctx, query, e.Database, table).Scan(&invalid) != nil || invalid != 0 {
 			return ErrState
+		}
+		if version >= 4 && (table == "materials" || table == "material_idempotency" || table == "material_chunks") {
+			query = `SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=? AND TABLE_NAME=? AND ((COLUMN_NAME IN ('title','body','quote') AND COLLATION_NAME<>'utf8mb4_0900_bin') OR (COLUMN_NAME IN ('idempotency_key','payload_digest') AND COLLATION_NAME<>'ascii_bin') OR (COLUMN_NAME='index_status' AND COALESCE(COLUMN_DEFAULT,'')<>'pending') OR (COLUMN_NAME<>'index_status' AND COLUMN_DEFAULT IS NOT NULL) OR (COLUMN_NAME<>'id' AND EXTRA<>'') OR GENERATION_EXPRESSION<>'')`
+			if e.DB.QueryRowContext(ctx, query, e.Database, table).Scan(&invalid) != nil || invalid != 0 {
+				return ErrState
+			}
+			// A cascaded delete or split composite FK is not the approved schema.
+			query = `SELECT COUNT(*) FROM information_schema.REFERENTIAL_CONSTRAINTS WHERE CONSTRAINT_SCHEMA=? AND TABLE_NAME=? AND (DELETE_RULE<>'NO ACTION' AND DELETE_RULE<>'RESTRICT' OR UPDATE_RULE<>'NO ACTION' AND UPDATE_RULE<>'RESTRICT')`
+			if e.DB.QueryRowContext(ctx, query, e.Database, table).Scan(&invalid) != nil || invalid != 0 {
+				return ErrState
+			}
+			if table != "materials" {
+				grouped, er := e.strings(ctx, `SELECT CONCAT(CONSTRAINT_NAME,':',ORDINAL_POSITION,':',COLUMN_NAME,':',REFERENCED_COLUMN_NAME) FROM information_schema.KEY_COLUMN_USAGE WHERE TABLE_SCHEMA=? AND TABLE_NAME=? AND REFERENCED_TABLE_NAME='materials'`, table)
+				name := "fk_chunk_material"
+				if table == "material_idempotency" {
+					name = "fk_replay_material"
+				}
+				if er != nil || !equal(grouped, []string{name + ":1:material_id:id", name + ":2:class_id:class_id", name + ":3:material_version:version"}) {
+					return ErrState
+				}
+			}
 		}
 		keys, err := e.strings(ctx, "SELECT CONCAT(INDEX_NAME,':',NON_UNIQUE,':',SEQ_IN_INDEX,':',COLUMN_NAME) FROM information_schema.STATISTICS WHERE TABLE_SCHEMA=? AND TABLE_NAME=?", table)
 		if err != nil || !equal(keys, indexes[table]) {

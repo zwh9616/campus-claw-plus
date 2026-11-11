@@ -60,6 +60,19 @@
       ],
       "checksum": "b83195b44f354ba2909b01a5aceb5b18954e04b075a68095039d4849e5f99c1e",
       "down_checksum": "2b2562162a904817521e01a0482d0665eaabfff88df0a86e71237c7fb08372b4"
+    },
+    {
+      "number": "000004",
+      "name": "materials_retrieval",
+      "owner": "04",
+      "status": "available",
+      "depends_on": [
+        "000001",
+        "000002",
+        "000003"
+      ],
+      "checksum": "6bad8d66dbfa671c3bc603467837580ff4336cd3417313b1556920e0299ae830",
+      "down_checksum": "d73567bd3c5318c1cde9f0f677e865982eb738004236437bdbdf258d8791bdac"
     }
   ],
   "previous_phase": "skeleton"

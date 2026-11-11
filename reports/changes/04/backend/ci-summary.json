@@ -1,0 +1,35 @@
+{
+  "node": "v22.23.4",
+  "scope": "GitHub CI; not another member local reproduction",
+  "source_head": "f0c94b75cc0124c61aaf02fcde1c9f55fc4cbe73",
+  "ci_merge_ref": "5332cf2c05eb7ad2b68d3bbedf349036578d878f",
+  "conclusion": "success",
+  "identity_exit_codes": [
+    0
+  ],
+  "wiring_exit_code": 0,
+  "scans": [
+    {
+      "image": "backend",
+      "high_critical": 0,
+      "recognized": true
+    },
+    {
+      "image": "admin",
+      "high_critical": 0,
+      "recognized": true
+    },
+    {
+      "image": "frontend",
+      "high_critical": 0,
+      "recognized": true
+    },
+    {
+      "image": "mysql",
+      "high_critical": 0,
+      "recognized": true
+    }
+  ],
+  "artifact_id": 13837128500,
+  "run_id": 42980740410
+}

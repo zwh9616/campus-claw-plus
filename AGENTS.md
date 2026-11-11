@@ -1,5 +1,5 @@
 # CampusClawPlus 工程约定
-本分支默认运行已接入01身份与MySQL阶段，实际合入/验收状态见共享表。第7课骨架为历史基线，历史主规约见[spec](openspec/specs/project-bootstrap/spec.md)，归档依据见[历史变更](openspec/changes/archive/2026-10-28-project-bootstrap/)。本轮执行[00规约](openspec/changes/2026-11-04-business-contracts/proposal.md)、[design](openspec/changes/2026-11-04-business-contracts/design.md)、[spec](openspec/changes/2026-11-04-business-contracts/specs/business-contracts/spec.md)及[tasks](openspec/changes/2026-11-04-business-contracts/tasks.md)；00只负责公共合同。当前01按已批准身份规约接入数据库/身份，02按已批准规约推进登录；教学业务仍暂停。PB/SC保留历史含义，新需求使用BC及后续change自己的前缀。
+本分支默认运行已接入01身份与MySQL阶段，实际合入/验收状态见共享表。第7课骨架为历史基线，历史主规约见[spec](openspec/specs/project-bootstrap/spec.md)，归档依据见[历史变更](openspec/changes/archive/2026-10-28-project-bootstrap/)。本轮执行[00规约](openspec/changes/2026-11-04-business-contracts/proposal.md)、[design](openspec/changes/2026-11-04-business-contracts/design.md)、[spec](openspec/changes/2026-11-04-business-contracts/specs/business-contracts/spec.md)及[tasks](openspec/changes/2026-11-04-business-contracts/tasks.md)；00只负责公共合同。当前01按已批准身份规约接入数据库/身份，02登录已验收；本候选继续已批准04，其他教学业务仍暂停。PB/SC保留历史含义，新需求使用BC及后续change自己的前缀。
 
 ## 每次开始工作
 - 必读 [安全规范](docs/standards/security.md)，按范围必须读取下表规则；这些文件是约束，不是可选参考。
@@ -21,9 +21,9 @@
 - 每次代码、测试、配置或脚本修改形成提交时，必须在同一提交更新共享进度表的对应行；阶段没变也写明本次改动、验证结果及下一步。交接、阻塞、返工、验收或规约变化也须同步；AI结束工作前同样检查，未测只能写未验证。详见协作规范。
 - 规约与规则不一致先同步明确约定，例外登记在具体规范中；不能默许两套健康契约。
 
-01已合入[身份主规约](openspec/specs/identity-foundation/spec.md)及[01归档](openspec/changes/archive/2026-11-04-identity-foundation/)。02主规约与历史设计见[前端主规约](openspec/specs/frontend-foundation/spec.md)及[02归档](openspec/changes/archive/2026-11-05-frontend-foundation/)，#21已合入main并复验。2026-11-10仅恢复[04规约](openspec/changes/2026-11-10-materials-retrieval/proposal.md)审查和机器合同准备；规约批准、迁移登记与机器合同审定后才可接线，资料接口尚未在运行时启用，其余教学变更继续暂停。主干状态见共享表。
+01已合入[身份主规约](openspec/specs/identity-foundation/spec.md)及[01归档](openspec/changes/archive/2026-11-04-identity-foundation/)。02主规约与历史设计见[前端主规约](openspec/specs/frontend-foundation/spec.md)及[02归档](openspec/changes/archive/2026-11-05-frontend-foundation/)，#21已合入main并复验。04规约#23及机器合同#25已正常合入main；本实现候选按[04规约](openspec/changes/2026-11-10-materials-retrieval/proposal.md)启用六个资料操作，待小张终审及主干集成，其余教学变更继续暂停。主干状态见共享表。
 
-04六个`frozen`资料操作、8个单源Schema和000004迁移方案已由小张核对，tasks1.2/1.3完成；正式批准及正常合入后由小陈继续2.1—2.6。当前运行仍只装配原七个current身份/健康操作，000004 SQL/真实摘要尚未生成。详见[合同入口](docs/contracts/README.md)、[迁移方案](openspec/changes/2026-11-10-materials-retrieval/migration-plan.md)和[审定记录](reports/changes/04/zhang-contract-review-2026-11-11.md)。
+本候选原子装配六个`current`资料操作（共13个current操作），新增000004三张资料表及真实SQL摘要，server只读检查精确目标4、离线admin迁移至4。资料以可信会话当前班级授权，学生只读ready；原始字节保留、索引事务及幂等、5秒业务预算/503与504、12次/分钟按用户配额和同快照出处回查遵循04。配置/服务/原健康及01旧SQL不变；前端仍只调用身份操作。详见[合同入口](docs/contracts/README.md)、[迁移方案](openspec/changes/2026-11-10-materials-retrieval/migration-plan.md)和[运行交接](docs/materials-runtime.md)。可执行代码不表示终审、部署或集成已经通过。
 
 ## 当前命令
 根目录 npm ci；npm run setup 安装前端；npm run check 跑基础/类型/构建/Go测试/严格规约；npm run audit 检查npm；npm run verify 运行本机容器集成验收。

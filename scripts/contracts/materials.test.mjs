@@ -13,10 +13,10 @@ const upload = a => a.paths['/api/v1/materials'].post
 const search = a => a.paths['/api/v1/search'].get
 const download = a => a.paths['/api/v1/materials/{id}/download'].get
 
-test('MR-SC-01/02 six frozen contracts cannot activate routes or weaken identity/class/role declarations', () => {
+test('MR-SC-01/02 six implemented contracts preserve activation and identity/class/role declarations', () => {
   validateOperationBoundary(api,endpoints)
   for (const mutate of [
-    a => upload(a)['x-contract-status']='current',
+    a => upload(a)['x-contract-status']='frozen',
     a => upload(a).security=[],
     a => search(a).security=[{RefreshCookie:[]}],
     a => upload(a)['x-authorization'].roles.push('student'),
@@ -28,7 +28,7 @@ test('MR-SC-01/02 six frozen contracts cannot activate routes or weaken identity
     a => download(a).responses['404'].content['application/json'].examples.contract.value.error.message='另一班级存在此资料',
     a => search(a).responses['200'].headers['Cache-Control'].schema.const='public',
   ]) { const bad=copy(api);mutate(bad);assert.throws(()=>validateOperationBoundary(bad,endpoints)) }
-  const bad=copy(endpoints);bad.operations.find(e=>e.owner==='04').status='current'
+  const bad=copy(endpoints);bad.operations.find(e=>e.owner==='04').status='frozen'
   assert.throws(()=>validateOperationBoundary(api,bad))
 })
 
