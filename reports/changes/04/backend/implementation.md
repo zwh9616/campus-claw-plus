@@ -39,4 +39,12 @@ Windows，Node24.22.1、npm10.5.0、Go1.27.3。未触碰原四份未跟踪文本
 
 本次再补MR-SC-03在count与page之间从另一连接真实插入的快照断言，MR-SC-08真实MySQL SLEEP查询超时504、连接不可用503后同一查询恢复命中，以及MR-SC-09跨片段完整查询/大小写空结果。仅测试钩子与边界断言新增，标准入口未绕过；独立单元/集成编译通过，完整本机check再次0。CI增加保留已脱敏identity/wiring/gate原始JSON，避免只保留镜像报告而丢失具体运行用例。新head完整CI结果需另核，不能沿用首轮绿灯代替。
 
-tasks2.1—2.4/2.6待新增边界的完整CI后收口；2.5合同/装配/规则同步已完成。小张3.1独立终审、正常合并及main复验和归档均未执行。
+## 边界补证完成与终审交接
+
+f0c94b7的[完整CI42980740410](https://github.com/zwh9616/campus-claw-plus/actions/runs/42980740410)实际success，check/audit/secret-scan/verify均0、无未执行门禁；CI Node22.23.4、Go1.27.3、真实MySQL8.4.13。MR真实授权/事务/查询超时恢复/快照测试、三处DDL中断、空库down、01既有回归均成功。生产可信HTTPS的创建与搜索/原字节下载、数据库重启和完整服务重建后三轮回查均成功；MySQL/容器/网络仅清理本次隔离资源。
+
+已下载artifact13837128500并核对内容；GitHub测试合并引用为5332cf2c，对应源码head为f0c94b7，不混作main集成。[门禁JSON](ci-gate-results.json)、[身份/资料/迁移及备份恢复JSON](ci-identity-results.json)、[生产HTTPS/卷重建JSON](ci-wiring-results.json)是下载的原始脱敏文件；[完整原始artifact](ci-runtime-evidence.zip)包含上述及四镜像实际扫描报告，[汇总](ci-summary.json)明确来源。所有镜像HIGH/CRITICAL均0，扫描识别实际制品；没有把CI写成另一成员机器复现。
+
+该原始记录在总集显示备份测试的一次阶段skip，随后的显式prepare/verify两阶段真实执行成功。补证提交将两阶段改为mrbackup专用标签，仍由同一verify强制执行两次；本机已编译该标签，最终head完整门禁另核，不删备份恢复断言或历史结果。
+
+tasks2.1—2.6自测交付已完成；2.5合同/装配/规则同步已完成。交小张按3.1在可信HTTPS独立复核上传、本班搜索、跨班拒绝、失败重试与重启回查，审当前最终head；可按协作规范在原PR修复。小张独立终审、正常合并及main复验和归档均未执行，3.1—3.3保持未勾选。

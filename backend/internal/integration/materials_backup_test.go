@@ -1,4 +1,4 @@
-//go:build integration
+//go:build integration && mrbackup
 
 package integration
 
@@ -23,9 +23,6 @@ import (
 // Old binaries come from the exact accepted pre-04 Git commit, not a mock.
 func TestMRBackupRestoreAndOldArtifact(t *testing.T) {
 	stage := os.Getenv("MR_BACKUP_STAGE")
-	if stage == "" {
-		t.Skip("executed in two explicit backup harness phases")
-	}
 	ctx := context.Background()
 	_, original, name := database(t, 15)
 	ex := migrations.Executor{DB: original, Database: name}
