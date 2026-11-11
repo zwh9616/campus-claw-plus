@@ -1,35 +1,43 @@
-# 06真实资料前端候选与待修边界
+# 06资料页面实现与自测交接
 
-草稿PR：[#30](https://github.com/zwh9616/campus-claw-plus/pull/30)，当前保留真实边界失败，不请求合并。
+[PR #30](https://github.com/zwh9616/campus-claw-plus/pull/30)交小张/zwh9616独立终审。执行者：gjj6666（小葛），AI辅助。已完成本人的2.1—2.5；任务总进度7/9，3.1/3.2由小张负责，未代批准、未合并或归档。基线main1fa47ee已确认并合入样板#29，其主干CI43037165627成功。
 
-执行者：gjj6666（小葛），AI辅助。基线main `1fa47ee2c3d486ba4fcfb615ee73ea22de0b05c7`：#29已由小张批准最终0059ee6并正常合入，主干完整CI43037165627成功，样板1.2已确认。按已批准06规约实施；作业、AI、MCP和成绩未扩展。
+## 实际实现
 
-## 已实现的行为
+资料列表每页20、显式keyword检索top_k4、清除回第一页；三类受保护路由和工作台/导航入口，正常/加载/空/错误分开。查询留在内存和API请求中；公开/非法路径不发身份或资料请求，合法深链登录后回到原资料路由。
 
-- 三类受保护路由、工作台/导航入口；列表每页20、显式关键词检索top_k4、清除回第一页、独立空/错/加载/正常状态。查询只留内存和API请求；非法ID/公开页不发身份或资料请求，合法深链登录后恢复原资料路由。
-- 六个固定资料操作封闭在认证客户端内。Bearer不暴露页面，不接受任意URL；保持同源、禁止重定向、no-store、可取消且10秒截止。读取401恢复/核验后至多重试一次且须同一用户/班级；上传、重试处理和下载不自动重放。后台同身份刷新保留表单；切班/退出/跨标签变化取消旧请求并清理旧内容。
-- 标题码点/控制字符、文件字节/扩展名/严格UTF-8预检；浏览器生成multipart boundary，保留File原始字节。同键手动确认不确定结果，更换内容需显式确认后新键；429倒计时后只允许手动操作。failed说明“已保存、暂不可检索”，教师可显式刷新/重新处理。
-- 出处ID/URL/版本/Unicode码点与授权原文回查，正文转义并保留换行；下载经Bearer取得Blob并按资料ID命名，完成/离开/身份变化释放object URL，旧响应不能触发下载。
+六个固定资料操作封闭在认证客户端中，Bearer不暴露页面，不接受任意外部URL。请求同源、no-store、禁止重定向、可取消且10秒截止；读取401最多同身份核验后重试一次，上传/处理重试/下载不自动重放。后台同身份刷新保留表单，切班/退出/跨标签变化清理旧内容和文件，迟到响应不回填或触发下载。
 
-## 已验证与未通过项
+教师上传按码点/控制字符、文件字节/扩展名/严格UTF-8预检，浏览器生成multipart boundary且保留原始File字节。不确定结果由用户手动同键确认，更换内容须明确确认并使用新键；429倒计时后只允许手动重试。failed显示“已保存、暂不可检索”，教师可显式刷新/重新处理，学生只提供只读动作。
 
-运行源码为 `2ff02b9af75df572dcd389f2d03ba14feff60365`；`b3d52b187ae05ec8b99138bdccfc859351961915`只补浏览器控件测量与状态文档，生产源码及正常check用例不变。
+出处ID/规范URL/版本/Unicode码点须与授权原文匹配；正文转义并保留换行。原文件经Bearer取Blob后按material-ID命名，完成/离开/身份变化释放object URL；旧下载不能在切班后触发。没有新增后端业务路径、数据库、依赖或环境键，作业/AI/MCP/成绩继续按各自依赖推进。
 
-| 场景/命令 | 实际结果 |
+## 验证版本与结果
+
+最终运行源码：`14eefcf8bb3035214144ee9e906037c0d059a7df`。后续提交只补证据、状态和任务勾选，运行和检查输入不变。b3d52b1的8个前端输入与此版本逐项摘要相同，因此保留该版114张mock原始截图；真实HTTPS截图及最终门禁另在14eefcf干净源码执行，不把旧截图改写成新SHA。
+
+| 检查 | 实际结果与原件 |
 | --- | --- |
-| npm ci/setup；check:frontend-auth；typecheck/build | 全0；原认证11项保留，新增资料15项共26项。MF-SC-01..09覆盖非法路由/输入、码点/字节/编码、响应畸形、401单次恢复、写不重放、跨上下文/迟到响应、状态与原字节 |
-| 生产路由HTTP mock浏览器 | b3d52b1干净源码114张截图、6组交互全通过：360×800、1440×900、767/768断点、原生200%（getZoom=2、DPR=2、布局180/720）、四态、分页、长内容、键盘、师生权限、同键确认/新键、429、Blob释放与切班旧下载取消。实际文字/placeholder≥4.5，控件边界/焦点≥3，焦点2px可见。[逐图清单/源码指纹](implementation-mock-b3d52b1/manifest.json) |
-| 原完整npm run gate | check/audit/secret-scan/verify四段全0；四实际镜像HIGH/CRITICAL均0，资料/身份、可信主机HTTPS、迁移和真实恢复回归通过；verify177427ms。[汇总](implementation-gate-2ff02b9.json) · [原始JSON ZIP](implementation-gate-2ff02b9.zip) |
-| 受控红绿 | 临时允许上传/下载401自动重放，对应断言真实退出1；finally原字节恢复，原认证+资料26项退出0。[原件](implementation-red-green-2ff02b9.json) |
-| 默认HTTPS+MySQL双班五人 | 开发预检17项通过（Firefox142.0.1、临时NSS正常信任CA/SAN，未忽略TLS）：真实教师上传、两名同班学生检索/原文/原字节下载、学生真实写403、外班师生同构404、刷新恢复、真实双标签切班/退出清理、隔离库受控failed后真实UI恢复ready。预检不是最终版本验收，后续边界检查失败，当前完整真实浏览器命令仍非零 |
-| 合法最长查询经过默认网关 | **未通过，阻断完整验收。** `q=𠮷×2000`，`mode=keyword`、`top_k=4`，正常Bearer及可信HTTPS，返回414。后端合同允许2000码点，URL百分号编码后约24KB，原Nginx单行缓冲不足；[真实失败原件](long-query-414-red.json)的sourceDirty=true按实际保留，不伪称干净提交通过 |
+| npm ci/setup、类型/构建、前端检查 | 全0；原认证11项与新增资料15项共26项通过，均在原check入口。含非法输入/路由、码点/字节/编码、响应畸形、401单次恢复、写不重放、上下文/迟到响应、状态和原字节 |
+| 生产路由HTTP mock | b3d52b1干净源码114张原始截图、6组交互通过；360×800/1440×900、767/768断点和原生200%（getZoom=2、DPR=2、布局180/720）无横向溢出。分页、四态、长内容、键盘、同键确认/新键、429、Blob释放、切班旧下载取消及师生权限均通过。[清单/文件指纹](implementation-mock-b3d52b1/manifest.json) |
+| 实际计算样式 | 文字/placeholder≥4.5:1；输入边界3.632:1，placeholder4.608:1，焦点8.471:1且2px可见。使用真实元素的前景、背景、边界/轮廓样式计算，不以静态色板代替实测 |
+| 写不重放的受控红绿 | 临时允许上传/下载401自动重放，真实断言退出1；finally原字节恢复，原认证+资料26项退出0。[完整输出](implementation-red-green-2ff02b9.json)，其客户端输入与最终版本一致 |
+| 最终原完整npm gate | 14eefcf干净源码check/audit/secret-scan/verify四段全0、notRun为空，verify155653ms。Go vet/随机测试、合同正反例、类型/构建、生产样板隔离、strict9/9、资料/身份/迁移/真实恢复均保留；四实际镜像HIGH/CRITICAL均0。[最终汇总](implementation-gate-14eefcf.json) · [原始JSON ZIP](implementation-gate-14eefcf.zip) |
+| 真实默认HTTPS+MySQL | 14eefcf干净源码Firefox142.0.1双班五人18项通过：教师上传、两名同班学生检索→出处/原文→原字节下载，学生真实写403、外班师生同构404、刷新恢复、真实双标签切班/退出清理，以及隔离库受控failed后通过真实UI恢复ready。[18项及信任说明](implementation-real-14eefcf/browser.json) · [默认Compose运行原件](implementation-real-14eefcf/runtime.json) |
+| 真实截图 | [教师详情1440](implementation-real-14eefcf/real-teacher-detail.png)、[教师failed](implementation-real-14eefcf/real-teacher-failed.png)、[学生详情360](implementation-real-14eefcf/real-student-detail-360.png)、[外班404](implementation-real-14eefcf/real-other-class-404.png) |
 
-Windows本机无GNU Make，原npm入口实际通过，Linux CI的Make保留；未声称跨机器/另一成员已终审。mock HTTP响应、原容器API回归、真实浏览器预检及失败分列。失败浏览器的临时NSS配置、测试项目/卷/网络均已清理，系统信任库未改。开发工具首次定位密码标签/404完整错误文本的两次脚本定位超时不计通过；后续生产路由完整mock重跑成功。
+Windows本机无GNU Make，实际执行npm原入口，远端Linux Make检查保留。真实浏览器仅在临时Firefox NSS配置中正常信任测试CA/SAN，明确验证错误SAN被拒，没有忽略TLS或修改操作系统信任库；测试项目/卷/网络和临时NSS配置均清理。fault注入只将本次隔离MySQL中的对应测试资料置为failed，随后响应来自真实后端；没有伪造真实浏览器HTTP响应。
 
-## 待确认的最小修订
+## 最长查询缺陷与已完成修复
 
-现行design D5要求服务端配置保持不变。已向用户提出、尚未写入的修订为：proposal的Impact登记这一静态网关例外；design D2/D5限定只设`large_client_header_buffers 2 32k`；MF-SC-02明确最长合法非BMP查询在默认HTTPS也须到达后端；tasks补单行上限/超限/红绿和完整回归。不开新环境键、不改URL/认证/数据库/查询上限，不扩大教学范围。
+原网关对合法`q=𠮷×2000`返回414。开发首次失败[sourceDirty=true原件](long-query-414-red.json)按实际保留，随后在干净提交7ee112a再次复现，[受控红原件](gateway-red-7ee112a/browser.json)及[运行退出1](gateway-red-7ee112a/runtime.json)可追溯，未用早先普通流程预检代替边界通过。
 
-依据[Nginx官方说明](https://nginx.org/en/docs/http/ngx_http_core_module.html#large_client_header_buffers)，单条请求行必须放入一个缓冲，超出返回414；增加数量不能代替足够的单缓冲大小。32KiB容纳最长合法查询，2个缓冲仍有界；拟另测大于32KiB的请求行保持拒绝、合法2000码点成功及2001码点应用拒绝。此段是待确认方案，不表示规约已批准或配置已改变。
+用户已明确同意修订proposal/design/spec/tasks。已在D2a/D5登记唯一静态例外`large_client_header_buffers 2 32k`；不新增环境键、不改URL、认证、代理信任、数据库、查询2000码点上限或依赖。依据[Nginx官方说明](https://nginx.org/en/docs/http/ngx_http_core_module.html#large_client_header_buffers)，单条请求行须放入一个缓冲，增数量不能代替足够的单缓冲大小；此修复容纳约24KB的合法百分号编码请求行，仍保持有界。
 
-当前任务1.1/1.2、2.1/2.3/2.4已完成；2.2/2.5因上述真实失败保留未完成。3.1/3.2仍由小张终审、按实际门禁与授权合入/复验，不代批准、不擅自合并。先以draft交接，用户确认修订后再补受审规约和网关修复。
+14eefcf的真实Firefox绿结果：2000非BMP码点返回200和keyword JSON，2001码点应用400，超过32KiB请求行仍414。新断言已加入原`verifyMRWiring`，在最终完整gate的首次运行/数据库重启/全容器重建三个真实链路中均实际通过，未来CI可阻止这项回归。原失败和早期[未覆盖此边界的门禁](implementation-gate-2ff02b9.json)保留，不以CI绿灯代替真实浏览器或他人批准。
+
+## 交接
+
+小张按最终head独立复跑3.1，核对D2a例外、客户端/页面、真实双班五人和受影响视觉/认证回归，按流程直接修复。正式批准与远端强制检查满足后，才由有授权的负责人正常合入、复验main、完成3.2及归档；本次不执行这些动作，不把本机结果冒充另一成员或长期生产部署。
+
+复跑：`npm run gate`；Windows真实浏览器另执行`npm run verify:materials-browser -- --playwright ABSOLUTE_EXTERNAL_PLAYWRIGHT_PATH`，准备匹配Firefox/Python；mock使用`node frontend/tests/materials-browser.mjs --playwright ABSOLUTE_EXTERNAL_PLAYWRIGHT_PATH --origin http://127.0.0.1:5197 --output output/material-browser`。浏览器工具不写入应用依赖，普通、mock、真实和远端CI证据分别记录。

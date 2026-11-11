@@ -23,9 +23,9 @@
 
 01已合入[身份主规约](openspec/specs/identity-foundation/spec.md)及[01归档](openspec/changes/archive/2026-11-04-identity-foundation/)。02主规约与历史设计见[前端主规约](openspec/specs/frontend-foundation/spec.md)及[02归档](openspec/changes/archive/2026-11-05-frontend-foundation/)，#21已合入main并复验。04规约#23、机器合同#25及实现#26已正常合入main6634e51；小张最终head批准及主干完整CI42987148688成功。[资料主规约](openspec/specs/materials-retrieval/spec.md)及[04归档](openspec/changes/archive/2026-11-10-materials-retrieval/)已随#28合入main78af20b，主干完整CI43002888185复验通过。其余教学实现仍须各自批准与依赖；06已批准资料规约见#27。主干状态见共享表。
 
-当前已装配六个`current`资料操作（共13个current操作），新增000004三张资料表及真实SQL摘要，server只读检查精确目标4、离线admin迁移至4。资料以可信会话当前班级授权，学生只读ready；原始字节保留、索引事务及幂等、5秒业务预算/503与504、12次/分钟按用户配额和同快照出处回查遵循04。配置/服务/原健康及01旧SQL不变；前端仍只调用身份操作。详见[合同入口](docs/contracts/README.md)、[迁移方案](openspec/changes/archive/2026-11-10-materials-retrieval/migration-plan.md)和[运行交接](docs/materials-runtime.md)。04实现终审与main集成已通过；04归档#28已正常合入，持有人长期部署与生产回退不由CI推定。
+当前已装配六个`current`资料操作（共13个current操作），新增000004三张资料表及真实SQL摘要，server只读检查精确目标4、离线admin迁移至4。资料以可信会话当前班级授权，学生只读ready；原始字节保留、索引事务及幂等、5秒业务预算/503与504、12次/分钟按用户配额和同快照出处回查遵循04。配置/服务/原健康及01旧SQL不变；本06候选前端已按批准规约消费资料操作，独立终审及合入见共享表。详见[合同入口](docs/contracts/README.md)、[迁移方案](openspec/changes/archive/2026-11-10-materials-retrieval/migration-plan.md)和[运行交接](docs/materials-runtime.md)。04实现终审与main集成已通过；04归档#28已正常合入，持有人长期部署与生产回退不由CI推定。
 
-2026-11-11，已批准[06资料页面规约](openspec/changes/2026-11-11-materials-frontend/proposal.md)随#27正常合入main6ff6287并完成主干复验。小张写规约、确认样板及终审，小葛审规约并apply；小张已在#29实际验收修复后的隔离代表样板，1.2完成。#29按最终head门禁正常收口后，小葛继续2.1—2.5真实接线，交小张终审；当前运行前端仍只有已验收02范围，不把样板当真实资料页面。资料阶段依赖02/04，作业阶段仍等05，00 D8与依赖表保持已批准范围。
+2026-11-11，已批准[06资料页面规约](openspec/changes/2026-11-11-materials-frontend/proposal.md)随#27正常合入main6ff6287并完成主干复验。小张写规约、确认样板及终审，小葛审规约并apply；小张已在#29实际验收修复后的隔离代表样板，1.2完成。#29按最终head门禁正常收口后，小葛继续2.1—2.5真实接线，交小张终审；已验收main前端仍为02；本06候选真实资料页面及本人自测已完成，独立终审另计，不把样板当真实接线。资料阶段依赖02/04，作业阶段仍等05，00 D8与依赖表保持已批准范围。
 
 ## 当前命令
 
@@ -34,4 +34,4 @@ Node最低22.19.0；check还包含npm run check:contracts（OpenAPI3.1、2020-12
 npm run dev 启动前端；完整运行按README填.env后 docker compose up --build -d。
 使用Docker Go工具链时镜像摘要见scripts/toolchain.json；没有本地Go也可验证。任一子项失败阻断。
 
-06真实资料页面候选（本分支）：样板#29已合入main1fa47ee，当前按已批准2.x消费六个current资料操作；生产认证闭包保持令牌私有，新增资料列表/检索/上传/详情/原字节下载及教师显式处理。身份与资料回归保留；实际终审及集成见共享表。已发现合法2000非BMP码点查询被原Nginx 414拒绝，用户已明确确认D2a最小例外，四份规约已同步；仅允许Nginx有界大缓冲修复，需真实红绿及完整复验后交小张终审，不得据局部通过合并或将06标完成。
+06真实资料页面候选（本分支）：样板#29已合入main1fa47ee，当前已按批准2.x消费六个current资料操作；生产认证闭包保持令牌私有，新增资料列表/检索/上传/详情/原字节下载及教师显式处理。身份与资料回归保留；实际终审及集成见共享表。已发现合法2000非BMP码点查询被原Nginx 414拒绝，用户已明确确认D2a最小例外，四份规约已同步；仅允许Nginx有界大缓冲修复；14eefcf本人真实红绿、完整gate及双班五人18项已通过，现交小张独立终审，不得据本人通过代批准/合并或将06整体标完成。
