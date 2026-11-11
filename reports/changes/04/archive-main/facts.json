@@ -1,0 +1,136 @@
+{
+  "source": "2026-11-11 GitHub API与原始artifact；小陈核对，不冒称他人批准或本机Docker复测",
+  "pr": {
+    "number": 28,
+    "head": "f81d1f308a019aa242ed83149f452efa17c9ce62",
+    "merged": true,
+    "merged_at": "2026-11-11T10:21:06Z",
+    "merged_by": "zwh9616",
+    "merge_commit_sha": "78af20b897db0a295755a98b6759baf61effe34e"
+  },
+  "review": {
+    "id": 5857163986,
+    "author": "zwh9616",
+    "state": "APPROVED",
+    "commit_id": "f81d1f308a019aa242ed83149f452efa17c9ce62"
+  },
+  "approved_and_merged_trees_equal": true,
+  "ci": {
+    "id": 43002888185,
+    "head_sha": "78af20b897db0a295755a98b6759baf61effe34e",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/zwh9616/campus-claw-plus/actions/runs/43002888185"
+  },
+  "artifact": {
+    "id": 13846598212,
+    "name": "runtime-image-scans-78af20b897db0a295755a98b6759baf61effe34e",
+    "sha256": "ce7bc7bccc004ab103bf5dae8f0fcc06d68280735ac9ef49b98b852d0a7a60f6"
+  },
+  "gate": [
+    {
+      "name": "check",
+      "exitCode": 0,
+      "durationMs": 38365
+    },
+    {
+      "name": "audit",
+      "exitCode": 0,
+      "durationMs": 523
+    },
+    {
+      "name": "secret-scan",
+      "exitCode": 0,
+      "durationMs": 1082
+    },
+    {
+      "name": "verify",
+      "exitCode": 0,
+      "durationMs": 151985
+    }
+  ],
+  "notRun": [],
+  "identity_steps": [
+    {
+      "label": "build reviewed MySQL runtime without mysqlsh and with current Go gosu",
+      "exit_code": 0
+    },
+    {
+      "label": "test fixtures",
+      "exit_code": 0
+    },
+    {
+      "label": "build actual accepted pre-04 artifacts",
+      "exit_code": 0
+    },
+    {
+      "label": "isolated network",
+      "exit_code": 0
+    },
+    {
+      "label": "isolated MySQL",
+      "exit_code": 0
+    },
+    {
+      "label": "real MySQL identity scenarios",
+      "exit_code": 0
+    },
+    {
+      "label": "prepare real pre-upgrade v3 backup",
+      "exit_code": 0
+    },
+    {
+      "label": "real consistent v3 mysqldump",
+      "exit_code": 0
+    },
+    {
+      "label": "restore into independent v3 database",
+      "exit_code": 0
+    },
+    {
+      "label": "actual old artifact rejection and restored identities",
+      "exit_code": 0
+    },
+    {
+      "label": "remove test container and its anonymous volume",
+      "exit_code": 0
+    },
+    {
+      "label": "remove test network",
+      "exit_code": 0
+    },
+    {
+      "label": "remove only own MySQL image tag",
+      "exit_code": 0
+    }
+  ],
+  "identity_skip_count": 0,
+  "wiring_exit_code": 0,
+  "wiring_errors": [],
+  "scans": [
+    {
+      "image": "backend",
+      "artifact_id": "sha256:5bf29f465033aaf9e460d9cb9ef97b246f49b6f339a8c635d95c0662f5d2cbb7",
+      "recognized": true,
+      "high_critical": 0
+    },
+    {
+      "image": "admin",
+      "artifact_id": "sha256:7a050fdac03dec84efbee3f54931264d1e1f7c647f3b91650be5b6e7f6dcea8f",
+      "recognized": true,
+      "high_critical": 0
+    },
+    {
+      "image": "frontend",
+      "artifact_id": "sha256:a6e1a44fd0d49e052ff9a8aaf408eac58f2dbfbf62bb9ad65f830454b2b688a9",
+      "recognized": true,
+      "high_critical": 0
+    },
+    {
+      "image": "mysql",
+      "artifact_id": "sha256:edd846bf8250890039ba8fbf63906f56df5ef0ddd029097ee26c24902cb755fc",
+      "recognized": true,
+      "high_critical": 0
+    }
+  ]
+}

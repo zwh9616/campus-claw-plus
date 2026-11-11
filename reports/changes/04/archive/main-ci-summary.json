@@ -1,0 +1,117 @@
+{
+  "scope": "main 6634e51 GitHub CI原件；不是本次归档候选或小陈本机Docker复测",
+  "head": "6634e5128a59c4ac9d6e4443e67bb39ee43cc09c",
+  "run_id": 42987148688,
+  "artifact_id": 13839499042,
+  "node": "v22.23.4",
+  "gate": [
+    {
+      "name": "check",
+      "exitCode": 0,
+      "durationMs": 40827
+    },
+    {
+      "name": "audit",
+      "exitCode": 0,
+      "durationMs": 682
+    },
+    {
+      "name": "secret-scan",
+      "exitCode": 0,
+      "durationMs": 1451
+    },
+    {
+      "name": "verify",
+      "exitCode": 0,
+      "durationMs": 156275
+    }
+  ],
+  "notRun": [],
+  "identity_steps": [
+    {
+      "label": "build reviewed MySQL runtime without mysqlsh and with current Go gosu",
+      "exit_code": 0
+    },
+    {
+      "label": "test fixtures",
+      "exit_code": 0
+    },
+    {
+      "label": "build actual accepted pre-04 artifacts",
+      "exit_code": 0
+    },
+    {
+      "label": "isolated network",
+      "exit_code": 0
+    },
+    {
+      "label": "isolated MySQL",
+      "exit_code": 0
+    },
+    {
+      "label": "real MySQL identity scenarios",
+      "exit_code": 0
+    },
+    {
+      "label": "prepare real pre-upgrade v3 backup",
+      "exit_code": 0
+    },
+    {
+      "label": "real consistent v3 mysqldump",
+      "exit_code": 0
+    },
+    {
+      "label": "restore into independent v3 database",
+      "exit_code": 0
+    },
+    {
+      "label": "actual old artifact rejection and restored identities",
+      "exit_code": 0
+    },
+    {
+      "label": "remove test container and its anonymous volume",
+      "exit_code": 0
+    },
+    {
+      "label": "remove test network",
+      "exit_code": 0
+    },
+    {
+      "label": "remove only own MySQL image tag",
+      "exit_code": 0
+    }
+  ],
+  "identity_skipped_tests": 0,
+  "wiring_exit_code": 0,
+  "wiring_errors": [],
+  "scans": [
+    {
+      "image": "backend",
+      "high_critical": 0,
+      "report_sha256": "6d45843ae561d42f47c58dfa54191c03f01821d08121ebaf814c2b58143df3c1",
+      "artifact_id": "sha256:fdb9d2bceb958f86cf73f73952fd47c7d9945a04e8b0daff3b40eb8d4ba28e9e",
+      "artifact_name": "/reports/image.tar"
+    },
+    {
+      "image": "admin",
+      "high_critical": 0,
+      "report_sha256": "f2bb68afa162fa8e5d300245c82e1ed2799476ac80d6221f1c65c54e029918f4",
+      "artifact_id": "sha256:b254c08a14ee34f1e85fbd230fbcb0259495b980aecc9eb3a6723f810d3391f8",
+      "artifact_name": "/reports/image.tar"
+    },
+    {
+      "image": "frontend",
+      "high_critical": 0,
+      "report_sha256": "0f669a8c2a4425ad73575666271055d2290a88e368e5eb9a26ee65aded084df6",
+      "artifact_id": "sha256:0f0c482e14cc7a718a123ad4d0934b81c351b9f01f2a9c5dad230029cd8137f5",
+      "artifact_name": "/reports/image.tar"
+    },
+    {
+      "image": "mysql",
+      "high_critical": 0,
+      "report_sha256": "7601a7867551ca5006b004b62d1aea39458ebafa847d9aeb2f20a131b351c786",
+      "artifact_id": "sha256:1df052b25d888cdce4cc2e87ec7ffab7a82e2250864dfbd75e5f0098a8055389",
+      "artifact_name": "/reports/image.tar"
+    }
+  ]
+}

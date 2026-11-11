@@ -1556,7 +1556,7 @@
         "summary": "本班可见资料列表",
         "x-contract-status": "current",
         "x-owner-change": "04",
-        "x-spec-change": "openspec/changes/2026-11-10-materials-retrieval",
+        "x-spec-change": "openspec/changes/archive/2026-11-10-materials-retrieval",
         "security": [
           {
             "BearerAuth": []
@@ -1822,7 +1822,7 @@
         "summary": "教师上传UTF-8文本",
         "x-contract-status": "current",
         "x-owner-change": "04",
-        "x-spec-change": "openspec/changes/2026-11-10-materials-retrieval",
+        "x-spec-change": "openspec/changes/archive/2026-11-10-materials-retrieval",
         "security": [
           {
             "BearerAuth": []
@@ -2326,7 +2326,7 @@
         "summary": "授权资料和规范化正文",
         "x-contract-status": "current",
         "x-owner-change": "04",
-        "x-spec-change": "openspec/changes/2026-11-10-materials-retrieval",
+        "x-spec-change": "openspec/changes/archive/2026-11-10-materials-retrieval",
         "security": [
           {
             "BearerAuth": []
@@ -2622,7 +2622,7 @@
         "summary": "授权下载原始文件",
         "x-contract-status": "current",
         "x-owner-change": "04",
-        "x-spec-change": "openspec/changes/2026-11-10-materials-retrieval",
+        "x-spec-change": "openspec/changes/archive/2026-11-10-materials-retrieval",
         "security": [
           {
             "BearerAuth": []
@@ -2915,7 +2915,7 @@
         "summary": "教师显式重试索引",
         "x-contract-status": "current",
         "x-owner-change": "04",
-        "x-spec-change": "openspec/changes/2026-11-10-materials-retrieval",
+        "x-spec-change": "openspec/changes/archive/2026-11-10-materials-retrieval",
         "security": [
           {
             "BearerAuth": []
@@ -3312,7 +3312,7 @@
         "summary": "本班ready资料的字面关键词检索",
         "x-contract-status": "current",
         "x-owner-change": "04",
-        "x-spec-change": "openspec/changes/2026-11-10-materials-retrieval",
+        "x-spec-change": "openspec/changes/archive/2026-11-10-materials-retrieval",
         "security": [
           {
             "BearerAuth": []
