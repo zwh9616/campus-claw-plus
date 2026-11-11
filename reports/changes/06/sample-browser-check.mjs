@@ -28,7 +28,7 @@ const manifest = { source, sourceDirty, browser: context.browser().version(), ex
 for (const file of sourceFiles) manifest.files[file] = { algorithm: 'sha256', digest: createHash('sha256').update(await readFile(file)).digest('hex') }
 const contrastSeen = new Set()
 try {
-  for (const [width, zoom] of [[360, 1], [1440, 1], [767, 1], [768, 1], [360, 2], [1440, 2]]) {
+  for (const [width, zoom] of [[360, 1], [1440, 1], [767, 1], [768, 1], [844, 1.1], [845, 1.1], [360, 2], [1440, 2]]) {
     const height = width === 1440 ? 900 : 800
     const page = await context.newPage()
     await page.setViewportSize({ width, height })
@@ -46,9 +46,10 @@ try {
     }, { origin, zoom })
     assert.equal(actualZoom, zoom)
     const cdp = await context.newCDPSession(page)
-    const views = width === 767 || width === 768 ? ['teacher-list', 'teacher-detail', 'student-list'] : zoom === 2 ? ['teacher-list', 'teacher-detail', 'student-list'] : ['teacher-list', 'teacher-detail', 'student-list', 'student-detail']
+    const breakpoint = [767, 768, 844, 845].includes(width)
+    const views = breakpoint ? ['teacher-list', 'teacher-detail', 'student-list'] : zoom === 2 ? ['teacher-list', 'teacher-detail', 'student-list'] : ['teacher-list', 'teacher-detail', 'student-list', 'student-detail']
     for (const view of views) {
-      for (const variant of width === 767 || width === 768 ? ['normal'] : ['normal', 'loading', 'empty', 'error', 'short']) {
+      for (const variant of breakpoint ? ['normal'] : ['normal', 'loading', 'empty', 'error', 'short']) {
         const state = variant === 'short' ? 'normal' : variant
         const role = view.startsWith('teacher') ? 'teacher' : 'student'
         const detail = view.endsWith('detail')
@@ -59,6 +60,7 @@ try {
         // Wait for native zoom reflow; setZoom completion alone is insufficient.
         await page.waitForFunction(({ width, zoom }) => Math.abs(document.documentElement.clientWidth - width / zoom) <= 1 && Math.abs(devicePixelRatio - zoom) < .01, { width, zoom })
         assert.equal(await page.locator('h1').count(), 1)
+        assert.equal(await page.locator('.workspace').evaluate(el => getComputedStyle(el).display), width / zoom < 768 ? 'block' : 'grid', 'MF-SC-11 fractional zoom must use the same 768px boundary')
         assert.equal(await page.locator('nav [aria-current="page"]').innerText(), '资料')
         const metrics = await page.evaluate(() => ({ layoutWidth: document.documentElement.clientWidth, scrollWidth: document.documentElement.scrollWidth, dpr: devicePixelRatio, visualScale: visualViewport.scale }))
         assert.ok(metrics.scrollWidth <= metrics.layoutWidth, `Horizontal overflow: ${view}/${state}/${width}/${zoom}`)
