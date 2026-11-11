@@ -5,7 +5,7 @@
 ## 当前运行范围
 
 - GET /health匿名，逐请求真实Ping MySQL，3秒预算；200为status=ok/mysql=up，失败503为status=error/mysql=down，均有服务端X-Request-ID。
-- 六个身份接口：登录、CSRF、刷新、me、登出、切班。本04候选另提供列表、详情、原文下载、教师上传、索引重试和keyword检索；具体输入/权限/失败响应见[公共合同](docs/contracts/README.md)及[资料运行交接](docs/materials-runtime.md)。前端资料页尚未接线，作业、AI、MCP和成绩接口不提供。
+- 六个身份接口：登录、CSRF、刷新、me、登出、切班。04已合入主干，另提供列表、详情、原文下载、教师上传、索引重试和keyword检索；具体输入/权限/失败响应见[公共合同](docs/contracts/README.md)及[资料运行交接](docs/materials-runtime.md)。前端资料页尚未接线，作业、AI、MCP和成绩接口不提供。
 - 默认服务为frontend/backend/mysql；admin仅在tools profile用于离线操作。只向本机发布HTTPS，后端与数据库不发布主机端口；数据使用命名卷，server不自动DDL/初始化。
 - frontend单独加入Compose自管ingress bridge，负责本机端口入口；backend/MySQL/admin仍使用内部网络，后端只信任内部proxy中Nginx的精确/32。验收同时检查实际主机发布端口与容器内链路。
 
@@ -13,8 +13,8 @@
 
 ## 小组进度与协作入口
 
-- [共享进度表](docs/project-status.md)记录当前验收和交接。G2、G3已成立，身份和真实登录已在主干复验。01、02归档已分别随[#20](https://github.com/zwh9616/campus-claw-plus/pull/20)、[#21](https://github.com/zwh9616/campus-claw-plus/pull/21)合入，02主干完整检查42779317047成功；见[前端主规约](openspec/specs/frontend-foundation/spec.md)。04规约和机器合同已审定并随#23/#25合入；本候选实现六个资料后端操作，终审和集成仍看共享表。
-- [公共合同](docs/contracts/README.md)：六个身份操作和MySQL健康已随本PR原子激活，planned教学操作仍不可调用；npm run check:contracts接入原检查入口。
+- [共享进度表](docs/project-status.md)记录当前验收和交接。G2、G3已成立，身份和真实登录已在主干复验。01、02归档已分别随[#20](https://github.com/zwh9616/campus-claw-plus/pull/20)、[#21](https://github.com/zwh9616/campus-claw-plus/pull/21)合入，02主干完整检查42779317047成功；见[前端主规约](openspec/specs/frontend-foundation/spec.md)。04规约和机器合同已审定并随#23/#25合入；六个资料后端操作已随#26经小张批准合入main6634e51，主干完整CI42987148688成功。本分支同步[资料主规约](openspec/specs/materials-retrieval/spec.md)与[04归档候选](openspec/changes/archive/2026-11-10-materials-retrieval/)，待小张核对及归档PR合入，见[归档证据](reports/changes/04/archive-review-2026-11-11.md)。
+- [公共合同](docs/contracts/README.md)：现行13个current操作包括六个身份、MySQL健康及六个04资料操作，其余planned教学操作仍不可调用；npm run check:contracts接入原检查入口。
 - [前端视觉规约](docs/standards/frontend-visual.md)：北大红#94070A、暖白、简约布局，参考Canvas/Moodle信息组织；小张已确认#15代表样板，真实页面已由小葛实现，最终联合验收由小张收口。
 - [协作规范](docs/standards/collaboration.md)：按变更两人接力；每组可提交修改必须同提交更新共享表。
 
@@ -61,7 +61,7 @@ Docker自动地址池耗尽时不要清理无关项目网络：为本项目data�
 
 npm run gate串行执行check、audit、secret-scan、verify；失败阻断。verify在随机独占项目验证默认生产server/Compose、可信HTTPS和MySQL、原启动/配置/日志/停止回归，再执行真实身份/迁移测试。临时测试CA和随机秘密随运行清理；它不证明持有人证书已就绪或浏览器真实联验已完成。
 
-[共享进度](docs/project-status.md)、[协作规范](docs/standards/collaboration.md)、[前端视觉](docs/standards/frontend-visual.md)。01/02登录闭环已验收；本轮仅继续04资料后端，其余教学业务暂停。下方第7课分工/历史章节保留历史含义，不反向修改归档证据。
+[共享进度](docs/project-status.md)、[协作规范](docs/standards/collaboration.md)、[前端视觉](docs/standards/frontend-visual.md)。01/02登录闭环已验收；04资料后端已合入并复验，本分支准备归档；06资料页面规约见#27，其余教学实现按各自批准与依赖推进。下方第7课分工/历史章节保留历史含义，不反向修改归档证据。
 
 ## 开发者检查（同伴启动系统无需执行）
 要求Node22.19+（推荐22系列最新补丁）、npm、Docker及Compose v2。Go可用本机1.27.3，或自动使用固定摘要的Go1.27.3容器工具链，无需全局安装。
