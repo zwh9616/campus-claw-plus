@@ -6,7 +6,7 @@
 
 | 项目 | 候选 |
 | --- | --- |
-| 编号 / 名称 | 小张在D4预留 `000004_materials_retrieval`；当前清单仅有000001..000003，未发现占用 |
+| 编号 / 名称 | 小张在D4预留 `000004_materials_retrieval`；本候选已追加000004，旧三项号码及SQL不变 |
 | 依赖 | 000001身份/班级、000002会话、000003审计均成功，历史摘要及结构一致；仅从空库或干净000003向前升级 |
 | SQL文件 | 本实现候选已新增 `backend/internal/migrations/sql/000004_materials_retrieval.up.sql` 及 `.down.sql` |
 | 摘要与状态 | 已按实际SQL字节计算SHA-256，加入manifest和identity-phase，状态available只表示代码可执行；01六个SQL及摘要不变，实际验收/部署见共享表 |

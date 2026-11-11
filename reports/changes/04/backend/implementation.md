@@ -33,4 +33,10 @@ Windows，Node24.22.1、npm10.5.0、Go1.27.3。未触碰原四份未跟踪文本
 | npm run secret-scan | 首次历史0/暂存1：匹配的是未改变的000003 down SQL公开摘要在diff上下文中的旧误报。逐字节保留旧六项行，追加分隔逗号单独成行后复跑，完整历史及暂存均0；未修改扫描器、规则、例外或范围 |
 | npm run verify | 退出1；Docker命令ENOENT，镜像扫描及真实容器验收未运行；不算通过 |
 
-本候选完整CI、实际镜像/数据库/HTTPS/恢复结果待执行补记。tasks2.1—2.6未提前勾完；小张3.1独立终审、正常合并及main复验和归档均未执行。CI即使通过也不冒称小张本机复现或独立批准。
+## 首轮完整CI与后续边界补证
+
+[PR #26](https://github.com/zwh9616/campus-claw-plus/pull/26)，源码636f0a4；[完整CI42979621938](https://github.com/zwh9616/campus-claw-plus/actions/runs/42979621938)实际success，check/audit/secret-scan/verify全部退出0。已回读job130386705416原始日志：生产HTTPS、主机入口、数据库停机/恢复、保留卷完整重建、真实身份/资料集成、三个DDL断点及旧制品构建、真实备份/隔离恢复均通过。下载实际artifact13837430857，backend/admin/frontend/mysql四份扫描HIGH/CRITICAL均0；这是本候选CI执行，不能写成小张本机复测。
+
+本次再补MR-SC-03在count与page之间从另一连接真实插入的快照断言，MR-SC-08真实MySQL SLEEP查询超时504、连接不可用503后同一查询恢复命中，以及MR-SC-09跨片段完整查询/大小写空结果。仅测试钩子与边界断言新增，标准入口未绕过；独立单元/集成编译通过，完整本机check再次0。CI增加保留已脱敏identity/wiring/gate原始JSON，避免只保留镜像报告而丢失具体运行用例。新head完整CI结果需另核，不能沿用首轮绿灯代替。
+
+tasks2.1—2.4/2.6待新增边界的完整CI后收口；2.5合同/装配/规则同步已完成。小张3.1独立终审、正常合并及main复验和归档均未执行。

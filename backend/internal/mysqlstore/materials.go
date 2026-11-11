@@ -65,6 +65,9 @@ func (s *Store) ListMaterials(ctx context.Context, p identity.Principal, page, s
 	if err = tx.QueryRowContext(ctx, "SELECT COUNT(*) FROM materials"+filter, p.ClassID).Scan(&out.Total); err != nil {
 		return out, materialError(ctx, err)
 	}
+	if err = s.materialHook("list-count", 0); err != nil {
+		return out, materialError(ctx, err)
+	}
 	rows, err := tx.QueryContext(ctx, "SELECT "+materialColumns+" FROM materials"+filter+" ORDER BY id DESC LIMIT ? OFFSET ?", p.ClassID, size, (int64(page)-1)*int64(size))
 	if err != nil {
 		return out, materialError(ctx, err)
@@ -193,6 +196,9 @@ func (s *Store) IndexMaterial(ctx context.Context, p identity.Principal, id stri
 }
 func (s *Store) SearchMaterials(ctx context.Context, p identity.Principal, q string, top int) (out materials.SearchResult, err error) {
 	out = materials.SearchResult{Items: []materials.Citation{}, Mode: "keyword"}
+	if err = s.materialHook("search", 0); err != nil {
+		return out, materialError(ctx, err)
+	}
 	tx, err := s.DB.BeginTx(ctx, &sql.TxOptions{Isolation: sql.LevelRepeatableRead, ReadOnly: true})
 	if err != nil {
 		return out, materialError(ctx, err)

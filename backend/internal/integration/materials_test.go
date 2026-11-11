@@ -262,6 +262,11 @@ func TestMRRealUploadSearchAuthorizationAndRecovery(t *testing.T) {
 		t.Fatal("half-index survived")
 	}
 	call("GET", "/api/v1/materials/"+failed.ID, student.Body.AccessToken, "", "", "", nil, 404)
+	failedView, _ := call("GET", "/api/v1/materials/"+failed.ID, teacher.Body.AccessToken, "", "", "", nil, 200)
+	var failedDoc materials.Document
+	if json.Unmarshal(failedView, &failedDoc) != nil || failedDoc.Material.IndexStatus != "failed" {
+		t.Fatal("teacher must see confirmable failed state")
+	}
 	repo.MaterialHook = nil
 	fresh := &mysqlstore.Store{DB: app}
 	errs = make(chan error, 8)
@@ -302,11 +307,39 @@ func TestMRRealUploadSearchAuthorizationAndRecovery(t *testing.T) {
 			seen[out.Items[0].ID] = true
 		}
 	}
+	// Insert from an independent connection between count and page SELECT. Both
+	// reads must retain the original repeatable-read snapshot, including total.
+	repo.MaterialHook = func(stage string, _ int) error {
+		if stage == "list-count" {
+			_, _, e := fresh.CreateMaterial(ctx, teacher.Body.Principal, "snapshot_write_01", u)
+			return e
+		}
+		return nil
+	}
+	snapshot, e := repo.ListMaterials(ctx, teacher.Body.Principal, 1, 50)
+	repo.MaterialHook = nil
+	if e != nil || snapshot.Total != 3 || len(snapshot.Items) != 3 || count(t, db, "materials") != 4 {
+		t.Fatal("MR-SC-03 count and page drifted between snapshots")
+	}
 	maximum, maximumType := mrMultipart(t, "maximum", "max.txt", bytes.Repeat([]byte("x"), materials.MaxFile))
 	maxResult, _ := call("POST", "/api/v1/materials", teacher.Body.AccessToken, maximumType, "maximum_file_0001", "", maximum, 201)
 	var maxMaterial materials.Material
 	if json.Unmarshal(maxResult, &maxMaterial) != nil || maxMaterial.SizeBytes != materials.MaxFile || maxMaterial.IndexStatus != "ready" {
 		t.Fatal("inclusive maximum must persist")
+	}
+	// A legitimate query spanning both overlapping chunks is not promised a
+	// match unless its complete text appears inside at least one chunk.
+	crossQ := "L" + strings.Repeat("x", 298) + "Z"
+	crossUpload, _ := materials.PrepareUpload("cross boundary", "f.txt", []byte(strings.Repeat("a", 1790)+crossQ+strings.Repeat("b", 2100)))
+	if _, _, e = service.Create(ctx, teacher.Body.Principal, "cross_boundary_01", crossUpload); e != nil {
+		t.Fatal("cross boundary fixture")
+	}
+	for _, q := range []string{crossQ, "%_case", "no such material"} {
+		b, _ = call("GET", "/api/v1/search?q="+url.QueryEscape(q), student.Body.AccessToken, "", "", "", nil, 200)
+		var out materials.SearchResult
+		if json.Unmarshal(b, &out) != nil || len(out.Items) != 0 {
+			t.Fatal("literal/case-sensitive/cross-chunk empty result")
+		}
 	}
 	child := exec.Command(os.Args[0], "-test.run=^TestMRPendingCommitExit$")
 	child.Env = append(os.Environ(), "MR_PENDING_CHILD=1")
@@ -373,14 +406,28 @@ func TestMRRealUploadSearchAuthorizationAndRecovery(t *testing.T) {
 		t.Fatal("revoke fixture")
 	}
 	call("GET", path, student2.Body.AccessToken, "", "", "", nil, 401)
-	timed, cancel := context.WithTimeout(ctx, time.Nanosecond)
-	time.Sleep(time.Millisecond)
+	timed, cancel := context.WithTimeout(ctx, 250*time.Millisecond)
 	defer cancel()
+	fresh.MaterialHook = func(stage string, _ int) error {
+		if stage == "search" {
+			_, e := app.ExecContext(timed, "SELECT SLEEP(5)")
+			return e
+		}
+		return nil
+	}
 	if _, e = fresh.SearchMaterials(timed, switched.Body.Principal, "x", 4); !errors.Is(e, identity.ErrTimeout) {
 		t.Fatal("query budget must yield504")
 	}
+	fresh.MaterialHook = nil
 	app.Close()
-	call("GET", "/api/v1/search?q=x", switched.Body.AccessToken, "", "", "", nil, 503)
+	call("GET", "/api/v1/search?q=concurrent", switched.Body.AccessToken, "", "", "", nil, 503)
+	recovered, _, _ := database(t, 11)
+	repo.DB = recovered
+	b, _ = call("GET", "/api/v1/search?q=concurrent", switched.Body.AccessToken, "", "", "", nil, 200)
+	var recoveredResult materials.SearchResult
+	if json.Unmarshal(b, &recoveredResult) != nil || len(recoveredResult.Items) == 0 {
+		t.Fatal("same query must recover after unavailable connection")
+	}
 }
 
 func TestMRPendingCommitExit(t *testing.T) {

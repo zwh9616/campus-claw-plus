@@ -1,5 +1,5 @@
 # 后端开发规范
-当前运行已按01接入MySQL及六个身份操作，不引入模型或教学业务。00只落实[公共合同](../contracts/README.md)与检查；G2及自身规约批准后，各业务按OpenAPI3.1和唯一2020-12 Schema实施。health仅采用MySQL up/down合同；planned操作禁止假实现。
+当前运行已按01接入MySQL及六个身份操作，本04候选另接线六个已批准的资料操作，不引入模型或其他教学业务。00只落实[公共合同](../contracts/README.md)与检查；G2及自身规约批准后，各业务按OpenAPI3.1和唯一2020-12 Schema实施。health仅采用MySQL up/down合同；planned操作禁止假实现。
 | 条目 | 规则/示例 | 检查 |
 | --- | --- | --- |
 | 分层 | backend/cmd/server装配；internal/config读取配置；internal/httpserver处理HTTP；未来service业务、repository接口、adapter实现 | 当前import单向，入口不写HTTP业务；后续service不依赖transport/adapter，SQL只在存储适配器 |
