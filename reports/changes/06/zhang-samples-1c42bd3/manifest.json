@@ -1,0 +1,1303 @@
+{
+  "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+  "executor": "zwh9616（小张），AI辅助",
+  "executedAt": "2026-11-11T14:07:13.031769+00:00",
+  "browser": "Codex in-app Chromium via CUA; native 200% separately in Windows Lenovo browser",
+  "sourceDirty": false,
+  "filesSha256": {
+    "frontend/src/samples/MaterialSamples.tsx": "d78d853f952d5a36346c0a9c3e456b7a7eb70d3abf5267c9ae889914e5e2983e",
+    "frontend/src/samples/material-samples.css": "bbd17fa94af71e835fbac883789b2728c9878258e12a139ab06629b75284b1e0",
+    "frontend/src/samples/main.tsx": "34eeacfd90f947b66883b1b789bfde736279b46e1292efad28b50b95235fa6f1",
+    "frontend/src/sample-theme.css": "b3545fa6304c5004954620e5e843975bed91b71abe933bc77a7066e7a6b16c7d",
+    "frontend/src/styles.css": "b9a1b425e9e60bdb33c8474f1479203d82bc297cac5b06c04e2d42d9e8cf99db",
+    "frontend/vite.config.ts": "1731c59f53e9c64649f9c332523f5a625df2bb56fa05f0c85e0b2903ec9c05db",
+    "scripts/check-sample-isolation.mjs": "8da2de212079a851c4f365a75cfbd56e804797bc8822333553fb69625d9604b8",
+    "reports/changes/06/sample-browser-check.mjs": "8238b1eccae7afa9b3fa47a7e0983af34c29f2c3044e87eb71e53d4dec14e460"
+  },
+  "captureNotes": "CSS viewport measured through document.defaultView; inherited 110% zoom calibrated with viewport override. PNG is the untouched image returned by CUA; API pixel dimensions differ from CSS viewport and are recorded separately. No stretching or CSS zoom was used.",
+  "cases": [
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=materials&role=teacher&state=normal&long=1",
+      "requestedCssViewport": {
+        "width": 360,
+        "height": 800
+      },
+      "screenshot": "teacher-materials-normal-360.png",
+      "display": "block",
+      "dpr": 1.1000000963608445,
+      "h1": 1,
+      "headingLength": 4,
+      "height": 800,
+      "layout": 346,
+      "retries": 0,
+      "rows": 3,
+      "scroll": 346,
+      "text": "班级资料\n\n查找本班资料，阅读原文并核对出处。\n\n上传资料\n关键词\n搜索\n清除\n本班资料\n资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题𠮷📚标题边界检查\n\n资料 ID：9223372036854775806\n\n可检索\n12 KiB\n2026/11/11 10:00\n资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题𠮷📚标题边界检查\n\n资料 ID：9223372036854775805\n\n待处理\n8 KiB\n2026/11/11 10:00\n资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题𠮷📚标题边界检查\n\n资料 ID：9223372036854775804\n\n处理失败\n6 KiB\n2026/11/11 10:00\n上一页\n第 1 页\n下一页",
+      "unsafe": 0,
+      "uploads": 1,
+      "width": 360,
+      "pngPixels": [
+        315,
+        1927
+      ],
+      "pngSha256": "66aa80d79aa03d1c8841cea932d2ec64db20f3c7147e9205df23029204aad4b9"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=materials&role=teacher&state=loading",
+      "requestedCssViewport": {
+        "width": 360,
+        "height": 800
+      },
+      "screenshot": "teacher-materials-loading-360.png",
+      "display": "block",
+      "dpr": 1.1000000963608445,
+      "h1": 1,
+      "headingLength": 4,
+      "height": 800,
+      "layout": 346,
+      "retries": 0,
+      "rows": 0,
+      "scroll": 346,
+      "text": "班级资料\n\n查找本班资料，阅读原文并核对出处。\n\n上传资料\n关键词\n搜索\n清除\n本班资料\n正在加载资料…",
+      "unsafe": 0,
+      "uploads": 1,
+      "width": 360,
+      "pngPixels": [
+        315,
+        808
+      ],
+      "pngSha256": "8c66b47d10007ddb8372fb98bc8b9b24a49bb786cc079406141c2e083403cba8"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=materials&role=teacher&state=empty",
+      "requestedCssViewport": {
+        "width": 360,
+        "height": 800
+      },
+      "screenshot": "teacher-materials-empty-360.png",
+      "display": "block",
+      "dpr": 1.1000000963608445,
+      "h1": 1,
+      "headingLength": 4,
+      "height": 800,
+      "layout": 346,
+      "retries": 0,
+      "rows": 0,
+      "scroll": 346,
+      "text": "班级资料\n\n查找本班资料，阅读原文并核对出处。\n\n上传资料\n关键词\n搜索\n清除\n本班资料\n\n当前班级还没有资料\n\n使用页面上方的“上传资料”添加本班学习材料。",
+      "unsafe": 0,
+      "uploads": 1,
+      "width": 360,
+      "pngPixels": [
+        315,
+        808
+      ],
+      "pngSha256": "80487d1b2e4ea1937b6e6a2341c32d7026dcdf90bc3f29d44eb76355f7743c21"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=materials&role=teacher&state=error&long=1",
+      "requestedCssViewport": {
+        "width": 360,
+        "height": 800
+      },
+      "screenshot": "teacher-materials-error-360.png",
+      "display": "block",
+      "dpr": 1.1000000963608445,
+      "h1": 1,
+      "headingLength": 4,
+      "height": 800,
+      "layout": 346,
+      "retries": 0,
+      "rows": 0,
+      "scroll": 346,
+      "text": "班级资料\n\n查找本班资料，阅读原文并核对出处。\n\n上传资料\n关键词\n搜索\n清除\n本班资料\n\n资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法\n\n重试加载",
+      "unsafe": 0,
+      "uploads": 1,
+      "width": 360,
+      "pngPixels": [
+        315,
+        1073
+      ],
+      "pngSha256": "ee8ee2208d2583575f90d14ea9e05f89959732ec0e545bd4432c45354969bdb7"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=material-detail&role=teacher&state=normal&long=1",
+      "requestedCssViewport": {
+        "width": 360,
+        "height": 800
+      },
+      "screenshot": "teacher-material-detail-normal-360.png",
+      "display": "block",
+      "dpr": 1.1000000963608445,
+      "h1": 1,
+      "headingLength": 200,
+      "height": 800,
+      "layout": 346,
+      "retries": 1,
+      "rows": 0,
+      "scroll": 346,
+      "text": "← 返回资料列表\n资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题𠮷📚标题边界检查\n\n资料 ID：9223372036854775804\n\n资料内容\n处理失败\n6 KiB · 2026/11/11 10:00\n下载原文件\n\n资料已保存，暂时无法检索。\n\n1. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n2. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n3. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n4. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n5. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n6. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n7. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n8. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n9. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n10. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n11. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n12. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n资料处理\n\n原文已保存。处理失败不会删除资料，可先刷新状态，再按需重新处理。\n\n刷新状态\n重新处理",
+      "unsafe": 0,
+      "uploads": 0,
+      "width": 360,
+      "pngPixels": [
+        315,
+        5179
+      ],
+      "pngSha256": "00d31597f93061e541494a7207eca5c4ef92c0b3260e2538c5be7a0b18c9b364"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=material-detail&role=teacher&state=loading",
+      "requestedCssViewport": {
+        "width": 360,
+        "height": 800
+      },
+      "screenshot": "teacher-material-detail-loading-360.png",
+      "display": "block",
+      "dpr": 1.1000000963608445,
+      "h1": 1,
+      "headingLength": 9,
+      "height": 800,
+      "layout": 346,
+      "retries": 0,
+      "rows": 0,
+      "scroll": 346,
+      "text": "← 返回资料列表\n实验步骤与记录方法\n\n资料 ID：9223372036854775804\n\n资料内容\n正在加载资料…",
+      "unsafe": 0,
+      "uploads": 0,
+      "width": 360,
+      "pngPixels": [
+        315,
+        808
+      ],
+      "pngSha256": "61945dcffce7a22284184bd4e6fdd33a6b2211622fcf4903c12703e2a512f997"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=material-detail&role=teacher&state=empty",
+      "requestedCssViewport": {
+        "width": 360,
+        "height": 800
+      },
+      "screenshot": "teacher-material-detail-empty-360.png",
+      "display": "block",
+      "dpr": 1.1000000963608445,
+      "h1": 1,
+      "headingLength": 9,
+      "height": 800,
+      "layout": 346,
+      "retries": 0,
+      "rows": 0,
+      "scroll": 346,
+      "text": "← 返回资料列表\n实验步骤与记录方法\n\n资料 ID：9223372036854775804\n\n资料内容\n\n资料内容异常：服务端返回了空正文。请重试或联系任课教师。\n\n重试加载",
+      "unsafe": 0,
+      "uploads": 0,
+      "width": 360,
+      "pngPixels": [
+        315,
+        808
+      ],
+      "pngSha256": "6ba845617411f734815c7591b85311ec4500d7c2956ac58fcdbdee55e033e83c"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=material-detail&role=teacher&state=error&long=1",
+      "requestedCssViewport": {
+        "width": 360,
+        "height": 800
+      },
+      "screenshot": "teacher-material-detail-error-360.png",
+      "display": "block",
+      "dpr": 1.1000000963608445,
+      "h1": 1,
+      "headingLength": 200,
+      "height": 800,
+      "layout": 346,
+      "retries": 0,
+      "rows": 0,
+      "scroll": 346,
+      "text": "← 返回资料列表\n资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题𠮷📚标题边界检查\n\n资料 ID：9223372036854775804\n\n资料内容\n\n资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法\n\n重试加载",
+      "unsafe": 0,
+      "uploads": 0,
+      "width": 360,
+      "pngPixels": [
+        315,
+        1341
+      ],
+      "pngSha256": "03cd18702f5aa998639093c38bba9054129321a98769156de4b4849f7ca450fb"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=materials&role=student&state=normal&long=1",
+      "requestedCssViewport": {
+        "width": 360,
+        "height": 800
+      },
+      "screenshot": "student-materials-normal-360.png",
+      "display": "block",
+      "dpr": 1.1000000963608445,
+      "h1": 1,
+      "headingLength": 4,
+      "height": 800,
+      "layout": 346,
+      "retries": 0,
+      "rows": 1,
+      "scroll": 346,
+      "text": "班级资料\n\n查找本班资料，阅读原文并核对出处。\n\n关键词\n搜索\n清除\n本班资料\n资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题𠮷📚标题边界检查\n\n资料 ID：9223372036854775806\n\n可检索\n12 KiB\n2026/11/11 10:00\n上一页\n第 1 页\n下一页",
+      "unsafe": 0,
+      "uploads": 0,
+      "width": 360,
+      "pngPixels": [
+        315,
+        1061
+      ],
+      "pngSha256": "dba7fab727ce380ff8e0f7e5928674c07d1d8dc9a1fddad0ff1e310fd52d495e"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=materials&role=student&state=loading",
+      "requestedCssViewport": {
+        "width": 360,
+        "height": 800
+      },
+      "screenshot": "student-materials-loading-360.png",
+      "display": "block",
+      "dpr": 1.1000000963608445,
+      "h1": 1,
+      "headingLength": 4,
+      "height": 800,
+      "layout": 346,
+      "retries": 0,
+      "rows": 0,
+      "scroll": 346,
+      "text": "班级资料\n\n查找本班资料，阅读原文并核对出处。\n\n关键词\n搜索\n清除\n本班资料\n正在加载资料…",
+      "unsafe": 0,
+      "uploads": 0,
+      "width": 360,
+      "pngPixels": [
+        315,
+        808
+      ],
+      "pngSha256": "3372050a490304786c4eeb71e30cc35f4032779517cf02e1e8429163e1d47c48"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=materials&role=student&state=empty",
+      "requestedCssViewport": {
+        "width": 360,
+        "height": 800
+      },
+      "screenshot": "student-materials-empty-360.png",
+      "display": "block",
+      "dpr": 1.1000000963608445,
+      "h1": 1,
+      "headingLength": 4,
+      "height": 800,
+      "layout": 346,
+      "retries": 0,
+      "rows": 0,
+      "scroll": 346,
+      "text": "班级资料\n\n查找本班资料，阅读原文并核对出处。\n\n关键词\n搜索\n清除\n本班资料\n\n当前班级还没有资料\n\n请等待任课教师提供资料。",
+      "unsafe": 0,
+      "uploads": 0,
+      "width": 360,
+      "pngPixels": [
+        315,
+        808
+      ],
+      "pngSha256": "9abc580e2f5fb3baf78530983fc25c6d3eeb4dfd7fb1b281aa8d8c1347f9effd"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=materials&role=student&state=error&long=1",
+      "requestedCssViewport": {
+        "width": 360,
+        "height": 800
+      },
+      "screenshot": "student-materials-error-360.png",
+      "display": "block",
+      "dpr": 1.1000000963608445,
+      "h1": 1,
+      "headingLength": 4,
+      "height": 800,
+      "layout": 346,
+      "retries": 0,
+      "rows": 0,
+      "scroll": 346,
+      "text": "班级资料\n\n查找本班资料，阅读原文并核对出处。\n\n关键词\n搜索\n清除\n本班资料\n\n资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法\n\n重试加载",
+      "unsafe": 0,
+      "uploads": 0,
+      "width": 360,
+      "pngPixels": [
+        315,
+        1018
+      ],
+      "pngSha256": "db367c3e04d6461d31f51e20134663e38fe5daa7a6fca4fbf1196fc35849f7d5"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=material-detail&role=student&state=normal&long=1",
+      "requestedCssViewport": {
+        "width": 360,
+        "height": 800
+      },
+      "screenshot": "student-material-detail-normal-360.png",
+      "display": "block",
+      "dpr": 1.1000000963608445,
+      "h1": 1,
+      "headingLength": 200,
+      "height": 800,
+      "layout": 346,
+      "retries": 0,
+      "rows": 0,
+      "scroll": 346,
+      "text": "← 返回资料列表\n资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题𠮷📚标题边界检查\n\n资料 ID：9223372036854775806\n\n资料内容\n可检索\n12 KiB · 2026/11/11 10:00\n下载原文件\n\n1. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n2. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n3. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n4. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n5. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n6. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n7. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n8. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n9. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n10. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n11. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n12. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText",
+      "unsafe": 0,
+      "uploads": 0,
+      "width": 360,
+      "pngPixels": [
+        315,
+        4926
+      ],
+      "pngSha256": "d064f97a0be6d5f72c30ceda7ca27abb498d5dcd189f21dc70d923747eedef8c"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=material-detail&role=student&state=loading",
+      "requestedCssViewport": {
+        "width": 360,
+        "height": 800
+      },
+      "screenshot": "student-material-detail-loading-360.png",
+      "display": "block",
+      "dpr": 1.1000000963608445,
+      "h1": 1,
+      "headingLength": 15,
+      "height": 800,
+      "layout": 346,
+      "retries": 0,
+      "rows": 0,
+      "scroll": 346,
+      "text": "← 返回资料列表\n微积分第一讲：从变化率理解导数\n\n资料 ID：9223372036854775806\n\n资料内容\n正在加载资料…",
+      "unsafe": 0,
+      "uploads": 0,
+      "width": 360,
+      "pngPixels": [
+        315,
+        808
+      ],
+      "pngSha256": "a98d5a5f7b29469499e91eae2b098fa7090c7ac070e8aa00e8a5adee1349f50d"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=material-detail&role=student&state=empty",
+      "requestedCssViewport": {
+        "width": 360,
+        "height": 800
+      },
+      "screenshot": "student-material-detail-empty-360.png",
+      "display": "block",
+      "dpr": 1.1000000963608445,
+      "h1": 1,
+      "headingLength": 15,
+      "height": 800,
+      "layout": 346,
+      "retries": 0,
+      "rows": 0,
+      "scroll": 346,
+      "text": "← 返回资料列表\n微积分第一讲：从变化率理解导数\n\n资料 ID：9223372036854775806\n\n资料内容\n\n资料内容异常：服务端返回了空正文。请重试或联系任课教师。\n\n重试加载",
+      "unsafe": 0,
+      "uploads": 0,
+      "width": 360,
+      "pngPixels": [
+        315,
+        808
+      ],
+      "pngSha256": "37325c517059f5105c8a6a58934264b736b6a432a15299ed6fa52199f3e5b755"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=material-detail&role=student&state=error&long=1",
+      "requestedCssViewport": {
+        "width": 360,
+        "height": 800
+      },
+      "screenshot": "student-material-detail-error-360.png",
+      "display": "block",
+      "dpr": 1.1000000963608445,
+      "h1": 1,
+      "headingLength": 200,
+      "height": 800,
+      "layout": 346,
+      "retries": 0,
+      "rows": 0,
+      "scroll": 346,
+      "text": "← 返回资料列表\n资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题𠮷📚标题边界检查\n\n资料 ID：9223372036854775806\n\n资料内容\n\n资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法\n\n重试加载",
+      "unsafe": 0,
+      "uploads": 0,
+      "width": 360,
+      "pngPixels": [
+        315,
+        1341
+      ],
+      "pngSha256": "486f97e0245e9f5c1bee03752cf5cbfb105742e5afafd7c886013c18b742fc9b"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=materials&role=teacher&state=normal&long=1",
+      "requestedCssViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "screenshot": "teacher-materials-normal-1440.png",
+      "display": "grid",
+      "dpr": 1.1000000963608445,
+      "h1": 1,
+      "headingLength": 4,
+      "height": 900,
+      "layout": 1426,
+      "retries": 0,
+      "rows": 3,
+      "scroll": 1426,
+      "text": "班级资料\n\n查找本班资料，阅读原文并核对出处。\n\n上传资料\n关键词\n搜索\n清除\n本班资料\n资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题𠮷📚标题边界检查\n\n资料 ID：9223372036854775806\n\n可检索\n12 KiB\n2026/11/11 10:00\n资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题𠮷📚标题边界检查\n\n资料 ID：9223372036854775805\n\n待处理\n8 KiB\n2026/11/11 10:00\n资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题𠮷📚标题边界检查\n\n资料 ID：9223372036854775804\n\n处理失败\n6 KiB\n2026/11/11 10:00\n上一页\n第 1 页\n下一页",
+      "unsafe": 0,
+      "uploads": 1,
+      "width": 1440,
+      "pngPixels": [
+        1296,
+        1047
+      ],
+      "pngSha256": "98e3ad104c333184d96993a7e79bd1f1b1998d83d14dc76b6a43e9fcf1f89ab7"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=materials&role=teacher&state=loading",
+      "requestedCssViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "screenshot": "teacher-materials-loading-1440.png",
+      "display": "grid",
+      "dpr": 1.1000000963608445,
+      "h1": 1,
+      "headingLength": 4,
+      "height": 900,
+      "layout": 1440,
+      "retries": 0,
+      "rows": 0,
+      "scroll": 1440,
+      "text": "班级资料\n\n查找本班资料，阅读原文并核对出处。\n\n上传资料\n关键词\n搜索\n清除\n本班资料\n正在加载资料…",
+      "unsafe": 0,
+      "uploads": 1,
+      "width": 1440,
+      "pngPixels": [
+        1308,
+        817
+      ],
+      "pngSha256": "9efdceb25e76d1a38314a3ceb6aaac20b983bd1a102bcf5d19a8329f2cf6fee7"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=materials&role=teacher&state=empty",
+      "requestedCssViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "screenshot": "teacher-materials-empty-1440.png",
+      "display": "grid",
+      "dpr": 1.1000000963608445,
+      "h1": 1,
+      "headingLength": 4,
+      "height": 900,
+      "layout": 1440,
+      "retries": 0,
+      "rows": 0,
+      "scroll": 1440,
+      "text": "班级资料\n\n查找本班资料，阅读原文并核对出处。\n\n上传资料\n关键词\n搜索\n清除\n本班资料\n\n当前班级还没有资料\n\n使用页面上方的“上传资料”添加本班学习材料。",
+      "unsafe": 0,
+      "uploads": 1,
+      "width": 1440,
+      "pngPixels": [
+        1308,
+        817
+      ],
+      "pngSha256": "829aa1ba5e783ea3548eda3b2284cc114fedd212fbeea2d62ca399c981aa708a"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=materials&role=teacher&state=error&long=1",
+      "requestedCssViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "screenshot": "teacher-materials-error-1440.png",
+      "display": "grid",
+      "dpr": 1.1000000963608445,
+      "h1": 1,
+      "headingLength": 4,
+      "height": 900,
+      "layout": 1440,
+      "retries": 0,
+      "rows": 0,
+      "scroll": 1440,
+      "text": "班级资料\n\n查找本班资料，阅读原文并核对出处。\n\n上传资料\n关键词\n搜索\n清除\n本班资料\n\n资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法\n\n重试加载",
+      "unsafe": 0,
+      "uploads": 1,
+      "width": 1440,
+      "pngPixels": [
+        1308,
+        817
+      ],
+      "pngSha256": "3ebff42cfb2d4600f8b1b3d2a290f435a07e22097398eabc3c16986b97a8911e"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=material-detail&role=teacher&state=normal&long=1",
+      "requestedCssViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "screenshot": "teacher-material-detail-normal-1440.png",
+      "display": "grid",
+      "dpr": 1.1000000963608445,
+      "h1": 1,
+      "headingLength": 200,
+      "height": 900,
+      "layout": 1426,
+      "retries": 1,
+      "rows": 0,
+      "scroll": 1426,
+      "text": "← 返回资料列表\n资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题𠮷📚标题边界检查\n\n资料 ID：9223372036854775804\n\n资料内容\n处理失败\n6 KiB · 2026/11/11 10:00\n下载原文件\n\n资料已保存，暂时无法检索。\n\n1. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n2. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n3. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n4. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n5. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n6. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n7. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n8. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n9. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n10. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n11. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n12. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n资料处理\n\n原文已保存。处理失败不会删除资料，可先刷新状态，再按需重新处理。\n\n刷新状态\n重新处理",
+      "unsafe": 0,
+      "uploads": 0,
+      "width": 1440,
+      "pngPixels": [
+        1296,
+        2559
+      ],
+      "pngSha256": "e2df72e49bd4d0e9c262bd9afd800af7678768502d33118ea1834336740fcaed"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=material-detail&role=teacher&state=loading",
+      "requestedCssViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "screenshot": "teacher-material-detail-loading-1440.png",
+      "display": "grid",
+      "dpr": 1.1000000963608445,
+      "h1": 1,
+      "headingLength": 9,
+      "height": 900,
+      "layout": 1440,
+      "retries": 0,
+      "rows": 0,
+      "scroll": 1440,
+      "text": "← 返回资料列表\n实验步骤与记录方法\n\n资料 ID：9223372036854775804\n\n资料内容\n正在加载资料…",
+      "unsafe": 0,
+      "uploads": 0,
+      "width": 1440,
+      "pngPixels": [
+        1308,
+        817
+      ],
+      "pngSha256": "4f7e270dcc6de6254f7c90065090a8e976e8f088f73dbdbe9f86a2e0e359ac13"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=material-detail&role=teacher&state=empty",
+      "requestedCssViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "screenshot": "teacher-material-detail-empty-1440.png",
+      "display": "grid",
+      "dpr": 1.1000000963608445,
+      "h1": 1,
+      "headingLength": 9,
+      "height": 900,
+      "layout": 1440,
+      "retries": 0,
+      "rows": 0,
+      "scroll": 1440,
+      "text": "← 返回资料列表\n实验步骤与记录方法\n\n资料 ID：9223372036854775804\n\n资料内容\n\n资料内容异常：服务端返回了空正文。请重试或联系任课教师。\n\n重试加载",
+      "unsafe": 0,
+      "uploads": 0,
+      "width": 1440,
+      "pngPixels": [
+        1308,
+        817
+      ],
+      "pngSha256": "c03246ebbb9df380a5760faec7154857f9dd0e362c8c5285f2515dea2502e2bd"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=material-detail&role=teacher&state=error&long=1",
+      "requestedCssViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "screenshot": "teacher-material-detail-error-1440.png",
+      "display": "grid",
+      "dpr": 1.1000000963608445,
+      "h1": 1,
+      "headingLength": 200,
+      "height": 900,
+      "layout": 1440,
+      "retries": 0,
+      "rows": 0,
+      "scroll": 1440,
+      "text": "← 返回资料列表\n资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题𠮷📚标题边界检查\n\n资料 ID：9223372036854775804\n\n资料内容\n\n资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法\n\n重试加载",
+      "unsafe": 0,
+      "uploads": 0,
+      "width": 1440,
+      "pngPixels": [
+        1308,
+        817
+      ],
+      "pngSha256": "10db7f8a860a571f2082bb0643dc030b97ed98081d7a2fc5ab5a786340d97548"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=materials&role=student&state=normal&long=1",
+      "requestedCssViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "screenshot": "student-materials-normal-1440.png",
+      "display": "grid",
+      "dpr": 1.1000000963608445,
+      "h1": 1,
+      "headingLength": 4,
+      "height": 900,
+      "layout": 1440,
+      "retries": 0,
+      "rows": 1,
+      "scroll": 1440,
+      "text": "班级资料\n\n查找本班资料，阅读原文并核对出处。\n\n关键词\n搜索\n清除\n本班资料\n资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题𠮷📚标题边界检查\n\n资料 ID：9223372036854775806\n\n可检索\n12 KiB\n2026/11/11 10:00\n上一页\n第 1 页\n下一页",
+      "unsafe": 0,
+      "uploads": 0,
+      "width": 1440,
+      "pngPixels": [
+        1308,
+        817
+      ],
+      "pngSha256": "9cfa0dbd0d59434ae79f10d80ccfd476aea10ed381b2c1bf4c37c42b05d36b46"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=materials&role=student&state=loading",
+      "requestedCssViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "screenshot": "student-materials-loading-1440.png",
+      "display": "grid",
+      "dpr": 1.1000000963608445,
+      "h1": 1,
+      "headingLength": 4,
+      "height": 900,
+      "layout": 1440,
+      "retries": 0,
+      "rows": 0,
+      "scroll": 1440,
+      "text": "班级资料\n\n查找本班资料，阅读原文并核对出处。\n\n关键词\n搜索\n清除\n本班资料\n正在加载资料…",
+      "unsafe": 0,
+      "uploads": 0,
+      "width": 1440,
+      "pngPixels": [
+        1308,
+        817
+      ],
+      "pngSha256": "75c03f4550c12d7371938f0d3c2b5abb0aa121dcf1abee854a998055fd949047"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=materials&role=student&state=empty",
+      "requestedCssViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "screenshot": "student-materials-empty-1440.png",
+      "display": "grid",
+      "dpr": 1.1000000963608445,
+      "h1": 1,
+      "headingLength": 4,
+      "height": 900,
+      "layout": 1440,
+      "retries": 0,
+      "rows": 0,
+      "scroll": 1440,
+      "text": "班级资料\n\n查找本班资料，阅读原文并核对出处。\n\n关键词\n搜索\n清除\n本班资料\n\n当前班级还没有资料\n\n请等待任课教师提供资料。",
+      "unsafe": 0,
+      "uploads": 0,
+      "width": 1440,
+      "pngPixels": [
+        1308,
+        817
+      ],
+      "pngSha256": "fab45192cc33e58d1200f463f029978837ca962238dcc71f3932b8533dcebbc8"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=materials&role=student&state=error&long=1",
+      "requestedCssViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "screenshot": "student-materials-error-1440.png",
+      "display": "grid",
+      "dpr": 1.1000000963608445,
+      "h1": 1,
+      "headingLength": 4,
+      "height": 900,
+      "layout": 1440,
+      "retries": 0,
+      "rows": 0,
+      "scroll": 1440,
+      "text": "班级资料\n\n查找本班资料，阅读原文并核对出处。\n\n关键词\n搜索\n清除\n本班资料\n\n资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法\n\n重试加载",
+      "unsafe": 0,
+      "uploads": 0,
+      "width": 1440,
+      "pngPixels": [
+        1308,
+        817
+      ],
+      "pngSha256": "71912363756e9389c62a12f66b1e8d4a6001b9cd1cf6c6d6ad335180e4d5d8e4"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=material-detail&role=student&state=normal&long=1",
+      "requestedCssViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "screenshot": "student-material-detail-normal-1440.png",
+      "display": "grid",
+      "dpr": 1.1000000963608445,
+      "h1": 1,
+      "headingLength": 200,
+      "height": 900,
+      "layout": 1426,
+      "retries": 0,
+      "rows": 0,
+      "scroll": 1426,
+      "text": "← 返回资料列表\n资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题𠮷📚标题边界检查\n\n资料 ID：9223372036854775806\n\n资料内容\n可检索\n12 KiB · 2026/11/11 10:00\n下载原文件\n\n1. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n2. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n3. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n4. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n5. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n6. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n7. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n8. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n9. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n10. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n11. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText\n\n12. 学习笔记：先写出已知条件，再说明推理依据。非 BMP 文字示例：𠮷、📚。正文中的 <script> 与 <img src=x onerror=alert(1)> 是普通文字，不会执行。\n连续英文字符连续英文字符：UnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeTextUnicodeText",
+      "unsafe": 0,
+      "uploads": 0,
+      "width": 1440,
+      "pngPixels": [
+        1296,
+        2330
+      ],
+      "pngSha256": "09d7377220a0d24f8c45092d7269520bddb73c5203d9970891c091423664a799"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=material-detail&role=student&state=loading",
+      "requestedCssViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "screenshot": "student-material-detail-loading-1440.png",
+      "display": "grid",
+      "dpr": 1.1000000963608445,
+      "h1": 1,
+      "headingLength": 15,
+      "height": 900,
+      "layout": 1440,
+      "retries": 0,
+      "rows": 0,
+      "scroll": 1440,
+      "text": "← 返回资料列表\n微积分第一讲：从变化率理解导数\n\n资料 ID：9223372036854775806\n\n资料内容\n正在加载资料…",
+      "unsafe": 0,
+      "uploads": 0,
+      "width": 1440,
+      "pngPixels": [
+        1308,
+        817
+      ],
+      "pngSha256": "ab0edd3c5679e8d4b87cbfe25eecbc2b25dce852c47da7a1d10d18eb464dc5b6"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=material-detail&role=student&state=empty",
+      "requestedCssViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "screenshot": "student-material-detail-empty-1440.png",
+      "display": "grid",
+      "dpr": 1.1000000963608445,
+      "h1": 1,
+      "headingLength": 15,
+      "height": 900,
+      "layout": 1440,
+      "retries": 0,
+      "rows": 0,
+      "scroll": 1440,
+      "text": "← 返回资料列表\n微积分第一讲：从变化率理解导数\n\n资料 ID：9223372036854775806\n\n资料内容\n\n资料内容异常：服务端返回了空正文。请重试或联系任课教师。\n\n重试加载",
+      "unsafe": 0,
+      "uploads": 0,
+      "width": 1440,
+      "pngPixels": [
+        1308,
+        817
+      ],
+      "pngSha256": "16c9cfd16a7dac5df9b06e84b3334137b309a94b06583bb44fed728f8ea221fb"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=material-detail&role=student&state=error&long=1",
+      "requestedCssViewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "screenshot": "student-material-detail-error-1440.png",
+      "display": "grid",
+      "dpr": 1.1000000963608445,
+      "h1": 1,
+      "headingLength": 200,
+      "height": 900,
+      "layout": 1440,
+      "retries": 0,
+      "rows": 0,
+      "scroll": 1440,
+      "text": "← 返回资料列表\n资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题资料样板边界标题𠮷📚标题边界检查\n\n资料 ID：9223372036854775806\n\n资料内容\n\n资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法加载，请保留当前输入，检查连接后重试。资料暂时无法\n\n重试加载",
+      "unsafe": 0,
+      "uploads": 0,
+      "width": 1440,
+      "pngPixels": [
+        1308,
+        817
+      ],
+      "pngSha256": "9d612dff994b8866b8d73576c6c52acf021dda87fd5410c53eb5af70b50354fd"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=materials&role=teacher&long=1",
+      "screenshot": "teacher-materials-breakpoint-767.png",
+      "display": "block",
+      "dpr": 1.1000000963608445,
+      "height": 800,
+      "layout": 753,
+      "scroll": 753,
+      "width": 767,
+      "pngPixels": [
+        685,
+        1427
+      ],
+      "pngSha256": "57bad0ed2205246e460a2ba804a58bae3893a93de31d6aed8c009f5bd308a9f6"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=material-detail&role=teacher&long=1",
+      "screenshot": "teacher-material-detail-breakpoint-767.png",
+      "display": "block",
+      "dpr": 1.1000000963608445,
+      "height": 800,
+      "layout": 753,
+      "scroll": 753,
+      "width": 767,
+      "pngPixels": [
+        685,
+        2816
+      ],
+      "pngSha256": "039155743cc25ff03f19aeeecacaa86285d28dbfcd6e3461af2cfd6bbc54e12b"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=materials&role=student&long=1",
+      "screenshot": "student-materials-breakpoint-767.png",
+      "display": "block",
+      "dpr": 1.1000000963608445,
+      "height": 800,
+      "layout": 753,
+      "scroll": 753,
+      "width": 767,
+      "pngPixels": [
+        685,
+        840
+      ],
+      "pngSha256": "62f78005656a8cb2e257be9e9b50b3e42f737259fb0fdd2960a1b3cc671c616b"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=materials&role=teacher&long=1",
+      "screenshot": "teacher-materials-breakpoint-768.png",
+      "display": "grid",
+      "dpr": 1.1000000963608445,
+      "height": 800,
+      "layout": 754,
+      "scroll": 754,
+      "width": 768,
+      "pngPixels": [
+        685,
+        1427
+      ],
+      "pngSha256": "9cc5ed73bba4767bf15a1b16e97513c8ec25b86faf1f518d7b47c28d541ef81c"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=material-detail&role=teacher&long=1",
+      "screenshot": "teacher-material-detail-breakpoint-768.png",
+      "display": "grid",
+      "dpr": 1.1000000963608445,
+      "height": 800,
+      "layout": 754,
+      "scroll": 754,
+      "width": 768,
+      "pngPixels": [
+        685,
+        3675
+      ],
+      "pngSha256": "b37b8499c0288e31b7ffbd5c9f32431c63641e62ba2bb9b951daccd35d9a293a"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=materials&role=student&long=1",
+      "screenshot": "student-materials-breakpoint-768.png",
+      "display": "grid",
+      "dpr": 1.1000000963608445,
+      "height": 800,
+      "layout": 754,
+      "scroll": 754,
+      "width": 768,
+      "pngPixels": [
+        685,
+        800
+      ],
+      "pngSha256": "2ef55968ddbe568128a5c305a5aea23217f3216f9e94287305bfb3534b58e872"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=materials&role=teacher",
+      "screenshot": "teacher-materials-short-360.png",
+      "height": 800,
+      "layout": 346,
+      "scroll": 346,
+      "width": 360,
+      "pngPixels": [
+        315,
+        1229
+      ],
+      "pngSha256": "4dc0388d78b1cc4b708935796813f1ef7fcc54480be342e21d6a36cc9d0316ac"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=material-detail&role=teacher",
+      "screenshot": "teacher-material-detail-short-360.png",
+      "height": 800,
+      "layout": 346,
+      "scroll": 346,
+      "width": 360,
+      "pngPixels": [
+        315,
+        1105
+      ],
+      "pngSha256": "7ddbd1d18895a99471bc79425ad8b34a1b4a040999e958d88b03dd79c1f15b34"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=materials&role=student",
+      "screenshot": "student-materials-short-360.png",
+      "height": 800,
+      "layout": 346,
+      "scroll": 346,
+      "width": 360,
+      "pngPixels": [
+        315,
+        829
+      ],
+      "pngSha256": "dc1b308957185eff9a0565713a8ff9462bbc2ae65574e611789a8c47a4636b99"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=materials&role=teacher",
+      "screenshot": "teacher-materials-short-1440.png",
+      "height": 900,
+      "layout": 1440,
+      "scroll": 1440,
+      "width": 1440,
+      "pngPixels": [
+        1308,
+        817
+      ],
+      "pngSha256": "288fbf283029b27b46e9e4c0daf485fdfaacc6269bca92c5587d41314b4ace6a"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=material-detail&role=teacher",
+      "screenshot": "teacher-material-detail-short-1440.png",
+      "height": 900,
+      "layout": 1426,
+      "scroll": 1426,
+      "width": 1440,
+      "pngPixels": [
+        1296,
+        827
+      ],
+      "pngSha256": "185c90cfe56bcfffac6e946143a18e56852c37ee740bcf8265133879f9e3f11b"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=materials&role=student",
+      "screenshot": "student-materials-short-1440.png",
+      "height": 900,
+      "layout": 1440,
+      "scroll": 1440,
+      "width": 1440,
+      "pngPixels": [
+        1308,
+        817
+      ],
+      "pngSha256": "13c1326e17682b0e083fdab98b10a6f5873b4df11ac2c8069898d856b5ee5842"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=login",
+      "screenshot": "existing-login-360.png",
+      "height": 800,
+      "layout": 360,
+      "scroll": 360,
+      "width": 360,
+      "scope": "existing 02 synthetic login layout, not real login",
+      "pngPixels": [
+        326,
+        726
+      ],
+      "pngSha256": "bccd44b58ef84fa37bc2aa064bb4c5f70b273f78dad331c92cb4b60490cc92f3"
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "url": "http://127.0.0.1:5197/samples.html?page=login",
+      "screenshot": "existing-login-1440.png",
+      "height": 900,
+      "layout": 1440,
+      "scroll": 1440,
+      "width": 1440,
+      "scope": "existing 02 synthetic login layout, not real login",
+      "pngPixels": [
+        1308,
+        817
+      ],
+      "pngSha256": "54b038a0a600f56b1502c22ec4cf8b2ddfe457ecc7442a44f2868042fcb831a0"
+    }
+  ],
+  "keyboard": [
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "height": 800,
+      "width": 360,
+      "result": "pass",
+      "invalidQuery": {
+        "id": "material-query-error",
+        "text": "请输入 1–2000 个字符的关键词。"
+      },
+      "focus": {
+        "style": "solid",
+        "text": "下载原文件",
+        "width": "1.81818px"
+      },
+      "checks": [
+        "Enter validation focus",
+        "no-match empty state",
+        "clear list",
+        "no q in route",
+        "filtered title ID and detail agree",
+        "Shift+Tab and Tab visible focus",
+        "Enter download/reprocess samples-only notices"
+      ]
+    },
+    {
+      "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+      "height": 900,
+      "width": 1440,
+      "result": "pass",
+      "invalidQuery": {
+        "id": "material-query-error",
+        "text": "请输入 1–2000 个字符的关键词。"
+      },
+      "focus": {
+        "style": "solid",
+        "text": "下载原文件",
+        "width": "1.81818px"
+      },
+      "checks": [
+        "Enter validation focus",
+        "no-match empty state",
+        "clear list",
+        "no q in route",
+        "filtered title ID and detail agree",
+        "Shift+Tab and Tab visible focus",
+        "Enter download/reprocess samples-only notices"
+      ]
+    }
+  ],
+  "contrast": {
+    "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+    "border": {
+      "background": "rgb(255, 255, 255)",
+      "foreground": "rgb(140, 133, 128)",
+      "ratio": 3.632084452693414
+    },
+    "placeholder": {
+      "background": "rgb(255, 255, 255)",
+      "foreground": "rgb(117, 117, 117)",
+      "ratio": 4.607518093747377
+    },
+    "text": [
+      {
+        "background": "rgb(255, 255, 255)",
+        "foreground": "rgb(39, 36, 33)",
+        "ratio": 15.434610156785826,
+        "text": "CampusClawPlus"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "foreground": "rgb(104, 97, 92)",
+        "ratio": 6.081614815988506,
+        "text": "教师 · 当前班级 ID：92233720368547758"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "foreground": "rgb(39, 36, 33)",
+        "ratio": 15.434610156785826,
+        "text": "工作台"
+      },
+      {
+        "background": "rgb(250, 238, 238)",
+        "foreground": "rgb(148, 7, 10)",
+        "ratio": 8.077415242054448,
+        "text": "资料"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "foreground": "rgb(39, 36, 33)",
+        "ratio": 15.434610156785826,
+        "text": "账号与班级"
+      },
+      {
+        "background": "rgb(247, 246, 243)",
+        "foreground": "rgb(39, 36, 33)",
+        "ratio": 14.281682400505913,
+        "text": "班级资料"
+      },
+      {
+        "background": "rgb(247, 246, 243)",
+        "foreground": "rgb(104, 97, 92)",
+        "ratio": 5.627333013394766,
+        "text": "查找本班资料，阅读原文并核对出处。"
+      },
+      {
+        "background": "rgb(148, 7, 10)",
+        "foreground": "rgb(255, 255, 255)",
+        "ratio": 9.154497551025868,
+        "text": "上传资料"
+      },
+      {
+        "background": "rgb(247, 246, 243)",
+        "foreground": "rgb(39, 36, 33)",
+        "ratio": 14.281682400505913,
+        "text": "关键词"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "foreground": "rgb(39, 36, 33)",
+        "ratio": 15.434610156785826,
+        "text": "搜索"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "foreground": "rgb(39, 36, 33)",
+        "ratio": 15.434610156785826,
+        "text": "清除"
+      },
+      {
+        "background": "rgb(247, 246, 243)",
+        "foreground": "rgb(39, 36, 33)",
+        "ratio": 14.281682400505913,
+        "text": "本班资料"
+      },
+      {
+        "background": "rgb(247, 246, 243)",
+        "foreground": "rgb(104, 97, 92)",
+        "ratio": 5.627333013394766,
+        "text": "资料 ID：9223372036854775806"
+      },
+      {
+        "background": "rgb(247, 246, 243)",
+        "foreground": "rgb(23, 105, 68)",
+        "ratio": 6.1872784822701465,
+        "text": "可检索"
+      },
+      {
+        "background": "rgb(247, 246, 243)",
+        "foreground": "rgb(104, 97, 92)",
+        "ratio": 5.627333013394766,
+        "text": "资料 ID：9223372036854775805"
+      },
+      {
+        "background": "rgb(247, 246, 243)",
+        "foreground": "rgb(128, 89, 0)",
+        "ratio": 5.805966226094827,
+        "text": "待处理"
+      },
+      {
+        "background": "rgb(247, 246, 243)",
+        "foreground": "rgb(104, 97, 92)",
+        "ratio": 5.627333013394766,
+        "text": "资料 ID：9223372036854775804"
+      },
+      {
+        "background": "rgb(247, 246, 243)",
+        "foreground": "rgb(180, 35, 50)",
+        "ratio": 6.021247892873438,
+        "text": "处理失败"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "foreground": "rgb(104, 97, 92)",
+        "ratio": 6.081614815988506,
+        "text": "上一页"
+      },
+      {
+        "background": "rgb(255, 255, 255)",
+        "foreground": "rgb(104, 97, 92)",
+        "ratio": 6.081614815988506,
+        "text": "下一页"
+      }
+    ]
+  },
+  "native200": {
+    "source": "1c42bd371282176134e416c328c829abbaa3cb04",
+    "executor": "zwh9616（小张），AI辅助",
+    "browser": "Windows 联想浏览器",
+    "url": "http://127.0.0.1:5197/samples.html?page=material-detail&role=teacher&long=1",
+    "zoom": "200%",
+    "checks": [
+      "toolbar AX reports 200%",
+      "200-codepoint title and non-BMP/continuous text readable",
+      "Control+End reaches processing actions below long body",
+      "processing button produces sample-only notice"
+    ],
+    "rawScreenshotsKeptLocal": [
+      "native-200-final-top-private.png",
+      "native-200-final-actions-private.png"
+    ],
+    "reasonNotCommitted": "Browser chrome contains unrelated user tabs and bookmarks.",
+    "localScreenshotSha256": {
+      "native-200-final-top-private.png": "2238bb92f64dd3300306fc4db637a2d3d2d7b50934fdefc44147cc3544774e0a",
+      "native-200-final-actions-private.png": "29a1cfd94f9c3b3d35011c512f5d531407373bbb19acc07ef6f4c041fd9324e9"
+    }
+  },
+  "scope": "isolated synthetic UI acceptance; no real frontend material upload/search/download integration",
+  "result": "pass"
+}

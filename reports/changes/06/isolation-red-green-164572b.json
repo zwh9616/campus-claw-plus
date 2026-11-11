@@ -1,0 +1,21 @@
+{
+  "source": "164572b920dc3d4522d5d6b19f1581286f9706be",
+  "requirement": "MF-05 / MF-SC-10/11; production fixture isolation",
+  "controlled_mutation": "append sample marker to only frontend/dist/index.html; restore exact original bytes in finally",
+  "red": {
+    "exit": 1,
+    "stdout": "",
+    "stderr": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Sample fixture leaked into production: 资料样板边界标题\n    at inspect (file:///D:/campusclaw-mygroup/tmp/ge-material-samples/scripts/check-sample-isolation.mjs:14:131)\n    at file:///D:/campusclaw-mygroup/tmp/ge-material-samples/scripts/check-sample-isolation.mjs:18:1\n    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)\n    at async node:internal/modules/esm/loader:643:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v24.19.0\n"
+  },
+  "green": {
+    "exit": 0,
+    "stdout": "FEF-SC-13: production excludes samples; normal dev rejects test entry; explicit samples mode serves it.\n",
+    "stderr": ""
+  },
+  "restored": true,
+  "artifact": {
+    "path": "frontend\\dist\\index.html",
+    "algorithm": "sha256",
+    "digest": "b99cff92650b356666f1afaca1a3a16c5e93a1c9a732700e6c0f9b47a0271052"
+  }
+}

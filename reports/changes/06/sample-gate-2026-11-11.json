@@ -1,0 +1,120 @@
+{
+  "source": "164572b920dc3d4522d5d6b19f1581286f9706be",
+  "scope": "original gate regression; browser samples have separate clean-source manifest",
+  "version_note": "gate began after source files finalized; source commit was created during verify, without runtime input changes; screenshot run was separately performed after commit",
+  "result": {
+    "time": "2026-11-11T13:35:39.672Z",
+    "node": "v24.19.0",
+    "exitCode": 0,
+    "results": [
+      {
+        "name": "check",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 14103
+      },
+      {
+        "name": "audit",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 3730
+      },
+      {
+        "name": "secret-scan",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 1342
+      },
+      {
+        "name": "verify",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 194635
+      }
+    ],
+    "notRun": []
+  },
+  "archive": {
+    "path": "sample-gate-2026-11-11.zip",
+    "algorithm": "sha256",
+    "digest": "ad5ff47851e0fb06f25395ee3e4486c6be00487db69f3674afcf2800e29b962d"
+  },
+  "entries": [
+    {
+      "path": "output/verification/gate-results.json",
+      "bytes": 645,
+      "algorithm": "sha256",
+      "digest": "4f13ab306ad6d5ccfef7dc3117165ced6843803bd4f5279384ba1ab3941c7377"
+    },
+    {
+      "path": "output/verification/material-samples/gate-download-timeout.json",
+      "bytes": 530,
+      "algorithm": "sha256",
+      "digest": "9ebf42d3fdd4d152808d29b4360f991b939906b62049d5996fd9a162d6182420"
+    },
+    {
+      "path": "output/identity/results.json",
+      "bytes": 10993,
+      "algorithm": "sha256",
+      "digest": "6eee49029bf4a3a256a0d440d64591bbd5e977460a56e8d84a30b87cc4e45fcf"
+    },
+    {
+      "path": "output/identity-wiring/results.json",
+      "bytes": 51912,
+      "algorithm": "sha256",
+      "digest": "3c08aa7ab36aa4065d1c98a1d049b8a82b7ceaa0310e0c9f3deee608afd529e1"
+    },
+    {
+      "path": "output/mysql-image-verify/results.json",
+      "bytes": 6060,
+      "algorithm": "sha256",
+      "digest": "6cc59b48a7c4dcdabe307c9b8ed90abfa222532ffdfd36a99a68b4d2af6f1ed5"
+    },
+    {
+      "path": "output/mysql-image-verify/mysql.json",
+      "bytes": 1195719,
+      "algorithm": "sha256",
+      "digest": "b034e679ac401e77dee2f46911dcddbb3048eede26492c7fa832c2e3f7cbf4fe"
+    },
+    {
+      "path": "output/application-image-verify/results.json",
+      "bytes": 12932,
+      "algorithm": "sha256",
+      "digest": "0653c655a4207660d231da4a416ed968d91bb03d5e2339adbb334cd56bea8373"
+    },
+    {
+      "path": "output/application-image-verify/admin.json",
+      "bytes": 6551,
+      "algorithm": "sha256",
+      "digest": "3586254a251ea0e3ea25d9a3403a7f77c3b18ed1421f591b56defe43605d94d7"
+    },
+    {
+      "path": "output/application-image-verify/backend.json",
+      "bytes": 7059,
+      "algorithm": "sha256",
+      "digest": "140712373bfa1a33bf7ccbb854de6757b1e860ad910e9b2d23ffbc6ce6c420a2"
+    },
+    {
+      "path": "output/application-image-verify/frontend.json",
+      "bytes": 162295,
+      "algorithm": "sha256",
+      "digest": "c1e7e25effa58782f483aa2f4720a56cc79929db03021d29bbe3126c22e3874e"
+    },
+    {
+      "path": "output/verification/secrets-history.json",
+      "bytes": 3,
+      "algorithm": "sha256",
+      "digest": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "output/verification/secrets-staged.json",
+      "bytes": 3,
+      "algorithm": "sha256",
+      "digest": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    }
+  ]
+}
