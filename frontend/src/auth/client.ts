@@ -1,4 +1,7 @@
-type RecordValue = Record<string, unknown>
+import { bounded, shape, validId } from '../shared/values.ts'
+import { parseDetail, parseMaterial, parsePage, parseSearch, trimSpace, validateUpload } from '../materials/contracts.ts'
+import type { Material, UploadPayload } from '../materials/contracts.ts'
+export { validId } from '../shared/values.ts'
 export type Principal = {
   user_id: string; class_id: string; role: 'student' | 'teacher'
   session_id: string; session_version: number; expires_at: string
@@ -18,7 +21,7 @@ const endpoints = {
 type Operation = keyof typeof endpoints
 const codes: Record<number, string> = {
   400: 'VALIDATION_ERROR', 401: 'UNAUTHENTICATED', 403: 'FORBIDDEN',
-  413: 'PAYLOAD_TOO_LARGE', 429: 'RATE_LIMITED', 503: 'DEPENDENCY_UNAVAILABLE', 504: 'UPSTREAM_TIMEOUT',
+  404: 'NOT_FOUND', 409: 'CONFLICT', 413: 'PAYLOAD_TOO_LARGE', 429: 'RATE_LIMITED', 503: 'DEPENDENCY_UNAVAILABLE', 504: 'UPSTREAM_TIMEOUT',
 }
 export class AuthError extends Error {
   status: number
@@ -35,14 +38,7 @@ export class AuthError extends Error {
 }
 const obsolete = () => new AuthError(0, '会话上下文已更新。')
 const formatError = (id = '') => new AuthError(0, '服务响应异常，请重试或联系教师。', id)
-const object = (v: unknown): v is RecordValue => typeof v === 'object' && v !== null && !Array.isArray(v)
-const shape = (v: unknown, keys: string[]): v is RecordValue =>
-  object(v) && Object.keys(v).length === keys.length && keys.every(k => Object.hasOwn(v, k))
-const bounded = (v: unknown, min: number, max: number): v is string =>
-  typeof v === 'string' && [...v].length >= min && [...v].length <= max
 const hex = (v: unknown): v is string => typeof v === 'string' && /^[0-9a-f]{32}$/.test(v)
-export const validId = (v: unknown): v is string =>
-  typeof v === 'string' && /^[1-9][0-9]{0,18}$/.test(v) && BigInt(v) <= 9223372036854775807n
 function principal(v: unknown): Principal {
   if (!shape(v, ['user_id', 'class_id', 'role', 'session_id', 'session_version', 'expires_at']) ||
       !validId(v.user_id) || !validId(v.class_id) || (v.role !== 'student' && v.role !== 'teacher') ||
@@ -63,16 +59,17 @@ function retryAfter(value: string | null): number {
   const at = /^\d+$/.test(value) ? now + Number(value) * 1000 : /GMT$/.test(value) ? Date.parse(value) : 0
   return Number.isSafeInteger(at) && at > now ? at : 0
 }
-function errorFor(op: Operation, status: number, v: unknown, headers: Headers): AuthError {
+function errorFor(op: Operation, status: number, v: unknown, headers: Headers, allowed: readonly number[] = endpoints[op][3]): AuthError {
   const id = headers.get('X-Request-ID')
-  if (!endpoints[op][3].some(n => n === status) ||
+  if (!allowed.includes(status) ||
       !shape(v, ['error', 'request_id']) || !hex(v.request_id) ||
       !shape(v.error, ['code', 'message', 'fields', 'details']) || v.error.code !== codes[status] ||
       !bounded(v.error.message, 1, 256) || v.error.details !== null || !Array.isArray(v.error.fields) ||
       !v.error.fields.every(f => shape(f, ['field', 'reason']) && bounded(f.field, 1, 64) && bounded(f.reason, 1, 256))) return formatError(hex(id) ? id : '')
   const messages: Record<number, string> = {
     400: '输入有误，请检查后重试。', 401: '会话已更新或失效，请重新登录。',
-    403: '当前操作未获授权，请重新验证会话。', 413: '提交内容过长，请检查输入。',
+    403: '当前操作未获授权，请重新验证会话。', 404: '资料不存在或当前不可查看。',
+    409: '该上传标识已用于不同内容，请核对列表后明确发起新上传。', 413: '提交内容过长，请缩小文件或检查输入。',
     429: '操作过于频繁，请稍后重试。', 503: '服务暂不可用，请稍后重试。',
     504: '服务响应超时，请稍后重试。',
   }
@@ -91,6 +88,7 @@ export function createAuthClient(fetcher: typeof fetch = (...args) => fetch(...a
   let controller = new AbortController()
   let write: Promise<void> | undefined
   let lastRead: Promise<void> | undefined
+  let materialWrite: { key: string; payload?: UploadPayload; promise: Promise<Material> } | undefined
   const listeners = new Set<() => void>()
   const publish = (next: View) => { view = next; listeners.forEach(fn => fn()) }
   const reset = (next: View) => {
@@ -100,6 +98,7 @@ export function createAuthClient(fetcher: typeof fetch = (...args) => fetch(...a
     credentials = undefined
     csrf = ''
     lastRead = undefined
+    materialWrite = undefined
     publish(next)
     return epoch
   }
@@ -169,7 +168,7 @@ export function createAuthClient(fetcher: typeof fetch = (...args) => fetch(...a
       }
     })
   }
-  function verify() {
+  function verify(keepMaterialContext = false) {
     if (lastRead) return lastRead
     if (write) return write
     if (!credentials) return recover()
@@ -181,7 +180,10 @@ export function createAuthClient(fetcher: typeof fetch = (...args) => fetch(...a
       } catch (error) {
         if (id !== epoch) return
         const e = failure(error)
-        if (e.status === 401) await recover(true)
+        if (e.status === 401) {
+          if (keepMaterialContext) { try { await recoverMaterial(active, id) } catch { /* recovery already cleared the failed identity */ } }
+          else await recover(true)
+        }
         else reset({ phase: 'recovery-error', error: e })
       }
     })().finally(() => { if (lastRead === pending) lastRead = undefined })
@@ -261,7 +263,149 @@ export function createAuthClient(fetcher: typeof fetch = (...args) => fetch(...a
       }
     })
   }
+  // MF-SC-07..09: six fixed operations only; Bearer never leaves this closure.
+  function materialIdentity() {
+    if (!credentials || view.phase !== 'authenticated') throw new AuthError(401, '请先重新登录。')
+    return credentials
+  }
+  function sameIdentity(a: Principal, b: Principal) {
+    return a.user_id === b.user_id && a.class_id === b.class_id && a.role === b.role && a.session_id === b.session_id
+  }
+  async function recoverMaterial(active: Session, id: number) {
+    // Same 02 CSRF/refresh/CSRF/me sequence, serialized with identity writes.
+    // Keep the mounted form while rotating the same identity; context changes
+    // still reset epoch, abort requests and remove private page state.
+    await serial(async () => {
+      current(id)
+      try {
+        const first = await getCsrf(id)
+        const next = session(await request('refresh', id, '', first))
+        const protection = await getCsrf(id)
+        const verified = principal(await request('me', id, next.access_token))
+        if (!sameIdentity(active.principal, verified)) throw new AuthError(401, '会话身份已变化，请重新登录。')
+        install(id, next, protection, verified)
+      } catch (error) {
+        if (id !== epoch) throw obsolete()
+        const e = failure(error)
+        reset(e.status === 401 ? { phase: 'anonymous', notice: e.message } : { phase: 'recovery-error', error: e })
+        throw e
+      }
+    })
+    current(id)
+    if (!credentials || !sameIdentity(active.principal, credentials.principal)) throw obsolete()
+  }
+  type MaterialOperation = 'list' | 'search' | 'detail' | 'download' | 'upload' | 'retry'
+  const allowedErrors: Record<MaterialOperation, number[]> = {
+    list: [400, 401, 503, 504], search: [400, 401, 503, 504], detail: [400, 401, 404, 503, 504],
+    download: [400, 401, 404, 503, 504], upload: [400, 401, 403, 409, 413, 429, 503, 504],
+    retry: [400, 401, 403, 404, 429, 503, 504],
+  }
+  async function materialRequest(op: MaterialOperation, path: string, caller?: AbortSignal, body?: FormData, key?: string): Promise<unknown> {
+    const active = materialIdentity(), id = epoch
+    if ((op === 'upload' || op === 'retry') && active.principal.role !== 'teacher') throw new AuthError(403, '只有当前班级教师可以操作资料。')
+    const once = async (token: string) => {
+      current(id)
+      const timeout = AbortSignal.timeout(10000)
+      const signal = AbortSignal.any([controller.signal, timeout, ...(caller ? [caller] : [])])
+      const headers: Record<string, string> = { Accept: op === 'download' ? 'text/plain' : 'application/json', Authorization: 'Bearer ' + token }
+      if (key) headers['Idempotency-Key'] = key
+      let rejectAbort: () => void = () => {}
+      const aborted = new Promise<never>((_, reject) => { rejectAbort = () => reject(new AuthError(0, timeout.aborted ? '请求超时，请检查网络后重试。' : '请求已取消。')) })
+      signal.addEventListener('abort', rejectAbort, { once: true })
+      if (signal.aborted) rejectAbort()
+      try {
+        return await Promise.race([aborted, (async () => {
+          const response = await fetcher(path, { method: op === 'upload' || op === 'retry' ? 'POST' : 'GET', headers,
+            body, credentials: 'same-origin', cache: 'no-store', redirect: 'error', signal })
+          current(id); signal.throwIfAborted()
+          const success = response.status === 200 || (op === 'upload' && response.status === 201)
+          if (success && op === 'download') {
+            if (!/^text\/plain\s*(?:;|$)/i.test(response.headers.get('Content-Type') ?? '') || response.headers.get('X-Content-Type-Options') !== 'nosniff') throw formatError()
+            const blob = await response.blob()
+            current(id); signal.throwIfAborted()
+            if (blob.size < 1 || blob.size > 262144) throw formatError()
+            return blob
+          }
+          if (!/^application\/json\s*(?:;|$)/i.test(response.headers.get('Content-Type') ?? '')) throw formatError()
+          const value: unknown = await response.json()
+          current(id); signal.throwIfAborted()
+          if (!success) throw errorFor('me', response.status, value, response.headers, allowedErrors[op])
+          return value
+        })()])
+      } catch (error) {
+        current(id)
+        if (error instanceof AuthError) throw error
+        throw new AuthError(0, signal.aborted ? (timeout.aborted ? '请求超时，请检查网络后重试。' : '请求已取消。') : '资料请求失败，请检查连接后重试。')
+      } finally { signal.removeEventListener('abort', rejectAbort) }
+    }
+    try { return await once(active.access_token) }
+    catch (error) {
+      const e = failure(error)
+      if (caller?.aborted) throw e
+      current(id)
+      if (e.status === 401) {
+        await recoverMaterial(active, id)
+        if (caller?.aborted) throw obsolete()
+        if (op === 'list' || op === 'search' || op === 'detail') {
+          try { return await once(materialIdentity().access_token) }
+          catch (again) {
+            if (failure(again).status === 401 && id === epoch) reset({ phase: 'anonymous', notice: '会话已失效，请重新登录。' })
+            throw again
+          }
+        }
+        // Upload, index retry and download never replay automatically.
+      } else if (e.status === 403) await verify()
+      throw e
+    }
+  }
+  async function decode<T>(run: Promise<unknown>, parse: (value: unknown) => T): Promise<T> {
+    const value = await run
+    try { return parse(value) } catch { throw formatError() }
+  }
+  const requireId = (id: string) => { if (!validId(id)) throw new AuthError(400, '资料ID无效。') }
+  function materialMutation(key: string, payload: UploadPayload | undefined, run: () => Promise<Material>): Promise<Material> {
+    if (materialWrite) {
+      if (materialWrite.key === key && materialWrite.payload?.title === payload?.title && materialWrite.payload?.file === payload?.file) return materialWrite.promise
+      return Promise.reject(new AuthError(409, '已有资料操作正在提交，请等待结果。'))
+    }
+    const pending = Promise.resolve().then(run).finally(() => { if (materialWrite?.promise === pending) materialWrite = undefined })
+    materialWrite = { key, payload, promise: pending }
+    return pending
+  }
+  const materials = {
+    list(page = 1, signal?: AbortSignal) {
+      if (!Number.isInteger(page) || page < 1 || page > 2147483647) return Promise.reject(new AuthError(400, '页码无效。'))
+      return decode(materialRequest('list', `/api/v1/materials?page=${page}&page_size=20`, signal), value => parsePage(value, page))
+    },
+    search(query: string, signal?: AbortSignal) {
+      const q = trimSpace(query)
+      if (!bounded(q, 1, 2000) || /[\p{Cc}\uD800-\uDFFF]/u.test(q)) return Promise.reject(new AuthError(400, '请输入 1–2000 个有效字符的关键词。', '', 0, ['q']))
+      return decode(materialRequest('search', '/api/v1/search?' + new URLSearchParams({ q, mode: 'keyword', top_k: '4' }), signal), parseSearch)
+    },
+    detail(id: string, signal?: AbortSignal) { requireId(id); return decode(materialRequest('detail', `/api/v1/materials/${id}`, signal), value => parseDetail(value, id)) },
+    download(id: string, signal?: AbortSignal) { requireId(id); return materialRequest('download', `/api/v1/materials/${id}/download`, signal) as Promise<Blob> },
+    upload(payload: UploadPayload, key: string, signal?: AbortSignal) {
+      const id = epoch
+      if (!/^[A-Za-z0-9_-]{16,64}$/.test(key)) return Promise.reject(new AuthError(400, '上传标识无效，请发起新上传。'))
+      return materialMutation('upload:' + key, payload, async () => {
+        const valid = await validateUpload(payload)
+        current(id)
+        const data = new FormData(); data.set('title', valid.title); data.set('file', valid.file)
+        return decode(materialRequest('upload', '/api/v1/materials', signal, data, key), parseMaterial)
+      })
+    },
+    retry(id: string, signal?: AbortSignal) {
+      requireId(id)
+      return materialMutation('retry:' + id, undefined, () => decode(materialRequest('retry', `/api/v1/materials/${id}/retry-index`, signal), value => {
+        const item = parseMaterial(value)
+        if (item.id !== id) throw formatError()
+        return item
+      }))
+    },
+  }
   return {
+    materials,
+    refreshMaterialIdentity: () => { const active = materialIdentity(); return recoverMaterial(active, epoch) },
     snapshot: () => view,
     subscribe: (fn: () => void) => { listeners.add(fn); return () => { listeners.delete(fn) } },
     login, recover, verify, switchClass: (target: string) => change('switchClass', target),
@@ -269,11 +413,13 @@ export function createAuthClient(fetcher: typeof fetch = (...args) => fetch(...a
     clear: () => reset({ phase: 'anonymous' }),
     clearError: () => publish({ phase: view.phase, principal: view.principal }),
     async externalChange() {
-      if (write) await write
-      if (view.phase === 'authenticated') {
+      const invalidated = view.phase === 'authenticated'
+      if (invalidated) reset({ phase: 'refreshing' })
+      if (write) { try { await write } catch { /* old context is already invalid */ } }
+      if (invalidated || view.phase === 'authenticated') {
         // A pending GET belongs to the previous tab context. Invalidate it
         // before recovery so its delayed success cannot restore old identity.
-        reset({ phase: 'refreshing' })
+        if (!invalidated) reset({ phase: 'refreshing' })
         await recover(true)
       }
     },

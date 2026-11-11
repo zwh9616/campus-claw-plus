@@ -33,3 +33,5 @@
 Node最低22.19.0；check还包含npm run check:contracts（OpenAPI3.1、2020-12单源双路径与语义反例），不替代既有门禁。新证据写reports/changes/<编号>/，历史archive和docs/lesson-07不倒改；未做的终审、新会话或集成不勾完成。
 npm run dev 启动前端；完整运行按README填.env后 docker compose up --build -d。
 使用Docker Go工具链时镜像摘要见scripts/toolchain.json；没有本地Go也可验证。任一子项失败阻断。
+
+06真实资料页面候选（本分支）：样板#29已合入main1fa47ee，当前按已批准2.x消费六个current资料操作；生产认证闭包保持令牌私有，新增资料列表/检索/上传/详情/原字节下载及教师显式处理。身份与资料回归保留；实际终审及集成见共享表。已发现合法2000非BMP码点查询被原Nginx 414拒绝，最小配置例外仍待规约确认，不得据本机局部通过合并或将06标完成。
