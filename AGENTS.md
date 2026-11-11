@@ -13,7 +13,7 @@
 ## 硬约束
 - 配置样例仅含[配置登记](docs/contracts/config-register.json)active的空值键，本分支已按01原子激活HTTP_PORT、七个身份键及五个R7接线键，均为空值；新增键须受审change及缺失/超时规则。真实值只在本机.env/进程环境，不进Git、镜像、日志。
 - 当前公开GET /health每请求真实MySQL Ping，总预算3秒；200为status=ok/dependencies.mysql=up，失败503为status=error/mysql=down，不加业务码外层。六个已登记身份接口按01鉴权，planned业务仍不可调用；服务端生成X-Request-ID与JSON日志关联。
-- 当前frontend按已批准02提供公开首页、登录、最小工作台与账号页，仅调用已实现的六个current身份接口；公开首页/404不发身份请求，生产禁止mock/samples入口。planned教学操作禁止提前接线；实际合入/验收以共享表为准。
+- 当前06候选复用已验收02的首页/登录/账号，新增本班资料列表/检索/上传/详情/下载及教师显式处理，只调用已实现的六个身份与六个资料current操作；公开首页/404不发身份请求，生产禁止mock/samples入口。planned教学操作禁止提前接线；实际合入/验收以共享表为准。
 - cmd/server只装配；config负责配置；httpserver负责HTTP边界；后续业务/存储不得反向依赖HTTP，不为骨架创建空业务层。
 - 失败退出非零；不能删断言、放宽门禁、伪造新会话或跨机器通过。
 - 分支和PR协作，提交说明关联当前change的Requirement/Scenario（历史PB/SC、新00为BC）；用户明确授权的合并仍须遵守远端门禁，不伪造其他成员批准。

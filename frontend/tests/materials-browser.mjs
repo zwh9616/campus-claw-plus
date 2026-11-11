@@ -120,6 +120,16 @@ try {
       report.cases.push({name,role:roleName,url:page.url(),width,height,nativeZoom:actualZoom,...metrics,screenshot:filename})
     }
     await capture('teacher-list-long')
+    await page.getByLabel('关键词',{exact:true}).press('Tab');await page.keyboard.press('Shift+Tab')
+    const controls=await page.getByLabel('关键词',{exact:true}).evaluate(el=>{
+      const css=getComputedStyle(el),placeholder=getComputedStyle(el,'::placeholder')
+      const lum=c=>c.match(/[\d.]+/g).slice(0,3).map(Number).map(x=>{x/=255;return x<=.04045?x/12.92:((x+.055)/1.055)**2.4}).reduce((sum,x,i)=>sum+x*[.2126,.7152,.0722][i],0)
+      const ratio=(a,b)=>{const c=[lum(a),lum(b)].sort((a,b)=>b-a);return(c[0]+.05)/(c[1]+.05)}
+      let background='rgb(247, 246, 243)';for(let p=el.parentElement;p;p=p.parentElement){const c=getComputedStyle(p).backgroundColor;if(c!=='transparent'&&c!=='rgba(0, 0, 0, 0)'){background=c;break}}
+      return {border:{foreground:css.borderTopColor,background:css.backgroundColor,ratio:ratio(css.borderTopColor,css.backgroundColor)},placeholder:{foreground:placeholder.color,background:css.backgroundColor,ratio:ratio(placeholder.color,css.backgroundColor)},focus:{foreground:css.outlineColor,background,ratio:ratio(css.outlineColor,background),width:css.outlineWidth,style:css.outlineStyle}}
+    })
+    assert.ok(controls.border.ratio>=3);assert.ok(controls.placeholder.ratio>=4.5);assert.ok(controls.focus.ratio>=3);assert.equal(controls.focus.width,'2px');assert.equal(controls.focus.style,'solid')
+    report.contrast.push({width,zoom,controls})
     mode='empty';await goto('/app/materials');await page.getByText('当前班级还没有资料',{exact:true}).waitFor();await capture('teacher-list-empty')
     mode='error';await goto('/app/materials');await page.locator('[role=alert]').waitFor();await capture('teacher-list-error')
     mode='loading';await goto('/app/materials');await page.getByText('正在加载资料…',{exact:true}).waitFor();await capture('teacher-list-loading');mode='normal';releaseList();await page.locator('.material-list').waitFor()
