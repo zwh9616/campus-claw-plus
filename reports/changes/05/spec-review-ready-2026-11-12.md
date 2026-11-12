@@ -8,6 +8,7 @@
 - G2/G3和01依赖已有共享表证据；06真实资料页面#30尚待审查，不是05依赖，本分支不合入其代码。
 - [候选规约](../../../openspec/changes/2026-11-12-assignment-tasks/proposal.md)：8项AT需求、21个AT-SC场景、九个候选操作、五表000005候选；机器登记/运行目标仍为4，13个current操作不变。
 - 00 D5的授权后重放、原202快照、三次claim/epoch/60秒租约、旧worker拒绝及取消优先保持原义。特别明确终态取消先于旧version判断、取消后失败不能退避复活。
+- 首提交`e5806a95ad5cf49fe1e479c9094ebab88ab11363`已推送，创建[PR #31](https://github.com/zwh9616/campus-claw-plus/pull/31)，已通过GitHub实际请求小张/zwh9616审查；本提交仅补交接链接，未代批准或合并。最终完整CI看PR当前head检查，不沿用旧SHA成功。
 
 ## 真实校验
 
@@ -18,7 +19,7 @@
 | `npm run check` | 退出0；基础/门禁/合同/接线/前端认证、类型/构建、样板隔离、Go vet/test/build及OpenSpec strict全通过（10/10） | 验证现有运行基线和新规约结构，不能证明未实现05业务 |
 | `npm run audit` | 退出0；根目录及frontend均0 vulnerabilities | 当前锁文件，未新增依赖 |
 | `git diff --check` / 暂存差异复核 | 退出0 | 仅本change文档及对应共享状态，无用户未跟踪文件 |
-| `npm run secret-scan` | 退出0；Gitleaks 8.30.1，全历史141提交及本次暂存内容均无泄露 | 不缩小全历史、不增豁免 |
+| `npm run secret-scan` | 退出0；Gitleaks 8.30.1，全历史（首次141提交）及本次暂存内容均无泄露 | 不缩小全历史、不增豁免 |
 | 本地链接/需求场景核对 | 退出0；本次10份文档119个本地链接存在，8需求/21唯一场景 | 临时核对脚本位于忽略的output目录，不新增运行门禁 |
 | `npm run verify` / 完整容器gate | 本机未验证（无可用Docker命令）；PR完整CI另核 | 本次未改运行实现，无05真实数据库/worker测试，不能写通过 |
 
