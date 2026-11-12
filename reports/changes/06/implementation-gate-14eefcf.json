@@ -1,0 +1,104 @@
+{
+  "source": "14eefcf8bb3035214144ee9e906037c0d059a7df",
+  "sourceDirty": false,
+  "gate": {
+    "time": "2026-11-11T15:30:04.926Z",
+    "node": "v24.19.0",
+    "exitCode": 0,
+    "results": [
+      {
+        "name": "check",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 14888
+      },
+      {
+        "name": "audit",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 3385
+      },
+      {
+        "name": "secret-scan",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 1369
+      },
+      {
+        "name": "verify",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 155653
+      }
+    ],
+    "notRun": []
+  },
+  "archive": {
+    "path": "implementation-gate-14eefcf.zip",
+    "algorithm": "sha256",
+    "digest": "73016483403ce2fdc99226c9e79b7e32ce335607ceba716c14ae455fc4023a85"
+  },
+  "entries": [
+    {
+      "path": "output/verification/gate-results.json",
+      "algorithm": "sha256",
+      "digest": "0a561f034d26e40f58587fd0401fcaee062695fedf9d3573bee4b68a3d805cf1"
+    },
+    {
+      "path": "output/identity/results.json",
+      "algorithm": "sha256",
+      "digest": "2ef091ba2dd80359b415a6b8bb48954aedbb44a549b7d52facf9fa7d9184ae63"
+    },
+    {
+      "path": "output/identity-wiring/results.json",
+      "algorithm": "sha256",
+      "digest": "6ccd93841f68d7c5b39692828cb5919bbf10038b2112560af8791366833fdfa5"
+    },
+    {
+      "path": "output/mysql-image-verify/results.json",
+      "algorithm": "sha256",
+      "digest": "6cb98bb8841d1354f5403c35d062f66b5d140c29436ba22fe19fe768aee2c4f1"
+    },
+    {
+      "path": "output/mysql-image-verify/mysql.json",
+      "algorithm": "sha256",
+      "digest": "6c3333c87bffdb81995e7d4c6f1f99a24643d20f62e424a3ff153666960fee11"
+    },
+    {
+      "path": "output/application-image-verify/results.json",
+      "algorithm": "sha256",
+      "digest": "9323dd935c4127c4c7044ac6dad2171ec6a785fba7c3b684816d3b0496614bfc"
+    },
+    {
+      "path": "output/application-image-verify/admin.json",
+      "algorithm": "sha256",
+      "digest": "5718f4a8a14cec1e8ae17d86c0539778d30c277b13ff4ec739ec93d2dbbedc61"
+    },
+    {
+      "path": "output/application-image-verify/backend.json",
+      "algorithm": "sha256",
+      "digest": "5aaa1872edcc9c7f9df014d7a6ba873561757cb888c429b4fd708971553f29f0"
+    },
+    {
+      "path": "output/application-image-verify/frontend.json",
+      "algorithm": "sha256",
+      "digest": "c29d004c8282d974f264a25f173a902bff4ff8ab36cfc26a6016ed55bb3abf99"
+    },
+    {
+      "path": "output/verification/secrets-history.json",
+      "algorithm": "sha256",
+      "digest": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "output/verification/secrets-staged.json",
+      "algorithm": "sha256",
+      "digest": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    }
+  ],
+  "gateway_checks_in_original_gate": 3,
+  "visual_inputs_unchanged_since_b3d52b1": true
+}

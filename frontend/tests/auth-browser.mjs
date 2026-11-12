@@ -48,6 +48,7 @@ try {
         return route.fulfill({ json: session() })
       }
       if (name === 'logout') { loggedIn = false; return route.fulfill({ status: 204 }) }
+      if (name === 'materials' && req.method() === 'GET') return route.fulfill({ json: { items: [], page: 1, page_size: 20, total: 0 } })
       throw new Error('Unexpected API route: ' + name)
     })
     async function capture(name, title) {
@@ -96,10 +97,10 @@ try {
     await capture('switch-error', '账号与班级')
     await target.fill('9223372036854775807')
     await target.press('Enter')
-    await capture('switched', '工作台')
+    await capture('switched', '班级资料')
     assert.match(await page.locator('header').innerText(), /9223372036854775807/)
     await page.reload()
-    await capture('recovered', '工作台')
+    await capture('recovered', '班级资料')
     await page.getByRole('link', { name: '账号与班级', exact: true }).click()
     await page.getByRole('button', { name: '退出登录' }).click()
     await capture('logged-out', '登录你的账号')

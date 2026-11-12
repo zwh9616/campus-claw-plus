@@ -32,7 +32,7 @@ export function validateBatch({ registry, compose, config, dockerfiles }) {
   assert.deepEqual([...names].sort(), Object.keys(compose.services).sort(), 'Compose service inventory differs from batch')
   const changes = new Set(registry.changes.map(c => c.id))
   assert.equal(changes.size, registry.changes.length)
-  assert.deepEqual([...changes].sort(), ['01', '02', '04'], 'Batch approval scope differs')
+  assert.deepEqual([...changes].sort(), ['01', '02', '04', '06'], 'Batch approval scope differs')
   for (const change of registry.changes) {
     assert.ok(existsSync(change.spec), 'Approved spec link missing')
     assert.match(change.integrated_commit, /^[a-f0-9]{40}$/, 'Integration commit must be explicit')

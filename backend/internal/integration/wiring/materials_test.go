@@ -3,14 +3,19 @@
 package wiring
 
 import (
+	"bufio"
 	"bytes"
+	"crypto/tls"
 	"encoding/json"
 	"io"
 	"mime/multipart"
+	"net"
 	"net/http"
+	"net/url"
 	"os"
 	"strings"
 	"testing"
+	"time"
 
 	"github.com/zwh9616/campus-claw-plus/backend/internal/materials"
 )
@@ -38,7 +43,7 @@ func verifyMRWiring(t *testing.T, client *http.Client, access string) {
 		defer res.Body.Close()
 		b, e := io.ReadAll(res.Body)
 		if e != nil || res.StatusCode != want {
-			t.Fatalf("MR %s status %d want %d", path, res.StatusCode, want)
+			t.Fatalf("MR %s status %d want %d", strings.SplitN(path, "?", 2)[0], res.StatusCode, want)
 		}
 		if res.Header.Get("Cache-Control") != "no-store" || len(res.Header.Get("X-Request-ID")) != 32 {
 			t.Fatal("MR cache/request id")
@@ -86,5 +91,46 @@ func verifyMRWiring(t *testing.T, client *http.Client, access string) {
 	if !bytes.Equal(request("GET", "/api/v1/materials/"+m.ID+"/download", "", nil, 200), raw) {
 		t.Fatal("MR raw bytes lost")
 	}
+	// MF-SC-02/12: keep the real gateway boundary in the ordinary CI gate.
+	for _, query := range []string{strings.Repeat("中", 2000), strings.Repeat("𠮷", 2000)} {
+		b = request("GET", "/api/v1/search?q="+url.QueryEscape(query)+"&mode=keyword&top_k=4", "", nil, 200)
+		if json.Unmarshal(b, &result) != nil || result.Mode != "keyword" || len(result.Items) != 0 {
+			t.Fatal("MF valid maximum Unicode keyword contract")
+		}
+	}
+	request("GET", "/api/v1/search?q="+url.QueryEscape(strings.Repeat("𠮷", 2001)), "", nil, 400)
+	for range 10 {
+		verifyOversizedRequestLine(t, client.Transport.(*http.Transport).TLSClientConfig)
+	}
+	t.Log("MF-SC-02/12 valid 2000-codepoint queries pass; 2001 and request-line overflow remain rejected")
 	t.Log("MR-SC-01/08/09 production HTTPS upload, literal search, raw download and persistence passed")
+}
+
+func verifyOversizedRequestLine(t *testing.T, config *tls.Config) {
+	t.Helper()
+	conn, err := tls.DialWithDialer(&net.Dialer{Timeout: 7 * time.Second}, "tcp", "campus.test:443", config.Clone())
+	if err != nil {
+		t.Fatal("MF oversized trusted TLS connection")
+	}
+	defer conn.Close()
+	if err := conn.SetDeadline(time.Now().Add(7 * time.Second)); err != nil {
+		t.Fatal("MF oversized deadline")
+	}
+	// Nginx may return 414 before it has consumed the complete oversized line.
+	// Read concurrently with writing so a late write error cannot hide that
+	// response. Only an actual HTTP 414 passes; EOF/reset/timeout still fail.
+	written := make(chan struct{})
+	go func() {
+		defer close(written)
+		_, _ = io.WriteString(conn, "GET /api/v1/search?q="+strings.Repeat("x", 40000)+" HTTP/1.1\r\nHost: campus.test\r\nConnection: close\r\n\r\n")
+	}()
+	defer func() { conn.Close(); <-written }()
+	limited, err := http.ReadResponse(bufio.NewReader(conn), &http.Request{Method: http.MethodGet})
+	if err != nil {
+		t.Fatal("MF oversized request-line transport")
+	}
+	limited.Body.Close()
+	if limited.StatusCode != 414 {
+		t.Fatal("MF request-line bound must remain enforced")
+	}
 }
