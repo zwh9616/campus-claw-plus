@@ -277,6 +277,10 @@ export function createAuthClient(fetcher: typeof fetch = (...args) => fetch(...a
     // still reset epoch, abort requests and remove private page state.
     await serial(async () => {
       current(id)
+      // A response sent with the old token can arrive after another request
+      // completed recovery. Reuse its verified credentials; rotating again
+      // would invalidate a fresh retry that is still in flight.
+      if (credentials && credentials.access_token !== active.access_token && sameIdentity(active.principal, credentials.principal)) return
       try {
         const first = await getCsrf(id)
         const next = session(await request('refresh', id, '', first))

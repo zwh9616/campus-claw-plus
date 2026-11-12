@@ -131,3 +131,49 @@ test('MF-SC-04/08 same-identity background refresh keeps the material form conte
   await f.client.refreshMaterialIdentity();stop()
   assert.deepEqual(phases,['authenticated']);assert.equal(f.client.snapshot().principal.class_id,'2')
 })
+
+async function delayedOldToken401(operation) {
+  const deferred = () => { let resolve; const promise = new Promise(r => { resolve = r }); return { promise, resolve } }
+  const firstRetry = deferred(), delayed401 = deferred(), finishFirst = deferred()
+  let refreshes = 0, downloads = 0
+  const token = () => 'synthetic-material-generation-' + refreshes
+  const identity = () => ({ ...session(), access_token: token() })
+  const client = createAuthClient(async (path, init) => {
+    if (path.endsWith('/auth/login')) return json(identity())
+    if (path.endsWith('/auth/csrf')) return json(csrf)
+    if (path.endsWith('/auth/refresh')) {
+      ++refreshes
+      if (refreshes > 1) finishFirst.resolve()
+      return json(identity())
+    }
+    if (path === '/api/v1/me') return json(principal())
+    const authorization = init.headers.Authorization
+    if (path.includes('?page=')) {
+      if (authorization.endsWith('-0')) return denied(401)
+      firstRetry.resolve()
+      await finishFirst.promise
+      return authorization === 'Bearer ' + token() ? json(page()) : denied(401)
+    }
+    if (path === '/api/v1/materials/' + material().id || path === '/api/v1/materials/' + material().id + '/download') {
+      if (operation === 'download') ++downloads
+      if (authorization.endsWith('-0')) { await delayed401.promise; return denied(401) }
+      assert.equal(operation, 'detail', 'a download must never replay automatically')
+      finishFirst.resolve()
+      return authorization === 'Bearer ' + token() ? json(detail()) : denied(401)
+    }
+    assert.fail('Unexpected test request: ' + path)
+  })
+  await client.login('u', 'p')
+  const first = client.materials.list()
+  const second = operation === 'detail' ? client.materials.detail(material().id) : client.materials.download(material().id)
+  const pending = Promise.allSettled([first, second.finally(() => finishFirst.resolve())])
+  await firstRetry.promise
+  delayed401.resolve()
+  const results = await pending
+  assert.deepEqual(results.map(result => result.status), ['fulfilled', operation === 'detail' ? 'fulfilled' : 'rejected'])
+  if (operation === 'download') { assert.equal(downloads, 1); assert.equal(results[1].reason.status, 401) }
+  assert.equal(refreshes, 1, 'an old response must not rotate the recovered token again')
+  assert.equal(client.snapshot().phase, 'authenticated')
+}
+test('MF-SC-08/09 delayed old-token 401 reuses recovered credentials while another read is in flight', { timeout: 3000 }, () => delayedOldToken401('detail'))
+test('MF-SC-08/09 delayed download 401 does not refresh again or replay the download', { timeout: 3000 }, () => delayedOldToken401('download'))
