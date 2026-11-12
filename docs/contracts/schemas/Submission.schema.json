@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/v1/Submission.schema.json",
+  "title": "Submission",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "ID.schema.json"
+    },
+    "assignment_id": {
+      "$ref": "ID.schema.json"
+    },
+    "assignment_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "student_id": {
+      "$ref": "ID.schema.json"
+    },
+    "answer": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 20000,
+      "pattern": "^[^\\uD800-\\uDFFF]+$"
+    },
+    "task_id": {
+      "$ref": "ID.schema.json"
+    },
+    "created_at": {
+      "$ref": "Timestamp.schema.json"
+    }
+  },
+  "required": [
+    "id",
+    "assignment_id",
+    "assignment_version",
+    "student_id",
+    "answer",
+    "task_id",
+    "created_at"
+  ],
+  "additionalProperties": false
+}

@@ -18,8 +18,8 @@
 ## 当前实现和规划的区别
 
 - **current**：原`GET /health`与六个身份操作，以及本04实现候选原子接线的六个资料操作，共13个。健康真实Ping，200/mysql=up、503/mysql=down。current表示本分支有运行装配，不等于部署、终审或主干集成通过，实际结果见共享表。
-- **frozen**：04机器合同已由小张审定并随[#25](https://github.com/zwh9616/campus-claw-plus/pull/25)合入；本实现按同一合同升级为current。没有额外的未批准操作。
-- **planned**：任务、成绩、流式会话和审计等其余操作仍只有责任登记，不出现在OpenAPI paths中，也不能接线或生成假入口。Task、Turn、GradeResult、SSE、Audit等候选Schema不表示能力已可调用；向量/混合检索不在04首版合同中。
+- **frozen**：05机器合同已随#35由小陈审定并正常合入main e617cc0，完整描述九个作业/提交/任务操作，尚未接入运行服务；原实现人按已批准05任务进入2.x。04六个操作已按#25合同实施为current，冻结不等于已运行。
+- **planned**：成绩、流式会话和审计等其余操作仍只有责任登记，不出现在OpenAPI paths中，也不能接线或生成假入口。Task、Turn、GradeResult、SSE、Audit等候选Schema不表示能力已可调用；向量/混合检索不在04首版合同中。
 - `Page.schema.json`仍是明确的`Page<Audit>`实例；04单独用`MaterialPage`引用`Material`，不改旧Page或使用裸object占位。
 
 认证传输采用`Authorization: Bearer ...`、`X-CSRF-Token`与`Origin`，刷新Cookie传输名选为`campus_refresh`（00落地的具体命名，需本实现PR审查；01若调整须同步合同）。Cookie属性/期限遵循D3/D9；logout无成功body。auth/me只开放各操作声明的错误集合；通用Error还容纳后续已约定错误码，但不凭其存在开新路由。HTTP层拒绝未知/重复键及64KiB上限属于01运行检查，普通JSON Schema无法检测解析后已丢失的重复键。
@@ -68,3 +68,9 @@ SSE fixture的`{event,data}`只是测试表达：真实wire仍为`event:`与JSON
 ## 三条用户路径的文档入口
 
 见[00设计D0](../../openspec/changes/2026-11-04-business-contracts/design.md)：资料答疑、作业批改复核和错题订正。错题订正为待审流程说明，具体08/09接口仍planned；不以补文档冒充独立阅读或业务实现通过。
+
+## 05作业与持久任务机器合同候选
+
+依据已审定合入#31的[05设计D1—D8及本PR新增D9](../../openspec/changes/2026-11-12-assignment-tasks/design.md)。D9随本次机器合同审定，不属于#31的历史批准范围。本分支提交九个frozen操作与10个新增Schema；Task只细化既有字段的安全错误和状态关联，不增加公开worker/租约字段，不改00 D5。分页复用既有公共参数，资源请求/响应通过本地$ref引用单一字段定义；原13个current操作、健康/配置/迁移目标4和既有SQL不变。
+
+原`check:contracts`现增加05结构双路径、权限/错误/配额/授权后原202重放声明变异、任务CAS/取消声明、页面计数/排序与请求字节语义；Go独立生成的5组摘要向量作为跨语言固定原件。仅验证机器声明和合成示例，未执行真实05数据库授权、并发、worker、崩溃或取消事务；这些全部保留apply后的真实验收责任。候选待小陈审定，不将frozen当current，也不开放作业页面。[本次候选与验证](../../reports/changes/05/contracts-freeze-2026-11-12.md)

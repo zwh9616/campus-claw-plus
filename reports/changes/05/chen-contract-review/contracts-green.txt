@@ -1,0 +1,39 @@
+
+> campus-claw-plus@0.0.1 check:contracts
+> node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs scripts/contracts/identity-phase.test.mjs scripts/contracts/materials.test.mjs scripts/contracts/assignments.test.mjs
+
+Contracts: 42 schemas; 215 positive/negative fixtures, 6 semantic inputs and 30 generated boundary cases agree in both paths; 155 operation examples; 13 current identity/health/material operations and 9 frozen assignment operations. Other planned operations absent.
+✔ AT-SC-01 nine frozen contracts cannot activate early or admit an unreviewed operation (27.3229ms)
+✔ AT-SC-02/03/08 actions, owner chain and original class precede all business conditions (19.9052ms)
+✔ AT-SC-04 input framing, exact parameters, independent quota and error responses stay closed (25.93ms)
+✔ AT-SC-05..08 only committed authorized same-payload records replay the original 202 before new conditions (20.9836ms)
+✔ AT-SC-06 canonical payload bytes and digest match five independently generated Go vectors (4.1646ms)
+✔ AT-SC-04 request byte cap is distinct from codepoint cap; deadline equality fails (2.7674ms)
+✔ AT-SC-02/03 consistent pages sort created time before exact string ID tie-breaks (0.4969ms)
+✔ AT-SC-09..19 task mechanism declarations forbid fake production execution, stale CAS and cancellation revival (31.032ms)
+✔ AT-SC-09/13..18 Task snapshots preserve safe errors, counts, version and cancellation flags (1.1162ms)
+✔ AT-SC-13/14/15 pending cannot requeue an exhausted third claim (0.2622ms)
+✔ ICF-SC-01/02 active identity health is unique and anonymous; no skeleton fallback (18.2134ms)
+✔ ICF-SC-03/04 activation preserves required, process-separated secret metadata (21.9892ms)
+✔ ICF-SC-05/06 available SQL rejects duplicates, forward dependencies and false deployment claims (10.9338ms)
+✔ MR-SC-01/02 six implemented contracts preserve activation and identity/class/role declarations (34.3651ms)
+✔ MR-SC-03/04/05/06 wire declarations reject unknown inputs, missing quotas, wrong replay and download headers (36.4825ms)
+✔ MR-SC-07/08/10 dependency failures must remain 503/504, not a successful empty search (6.5056ms)
+✔ MR-SC-04 Unicode examples enforce original UTF-8 bytes, normalized whitespace and title codepoints (7.0664ms)
+✔ MR-SC-01/03 material examples preserve original byte size, canonical detail and unique pagination (1.3437ms)
+✔ MR-SC-03/09 optional query defaults remain 1/20 and keyword/4 in sole-source schemas (0.5192ms)
+✔ MR-SC-09/10 citation examples bind codepoint range, exact quote, source/version, URL and literal query (1.1087ms)
+✔ BC-SC-06 accepts trusted rubric, rejects incorrect grading, stale and missing context (3.0826ms)
+✔ BC-SC-05 nonempty Citation codepoint range (0.2097ms)
+✔ BC-SC-08/14 terminal sequence, cancellation and disconnected persistence (0.7857ms)
+✔ BC-SC-10 MCP exception remains exact, disabled and subject to both future reviews (1.0681ms)
+✔ BC-SC-09 registered empty keys only; no weakening historical HTTP_PORT requirement (6.2824ms)
+✔ BC-SC-18 planned operations and anonymous auth bypass cannot enter OpenAPI (99.2443ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 344.1457

@@ -1,0 +1,12 @@
+{
+  "go_vectors": {
+    "count": 5,
+    "exit_code": 0,
+    "match": true
+  },
+  "existing_current_operations": {
+    "count": 13,
+    "unchanged": true
+  },
+  "contracts_head": "f253ae7e91feda514f37e8e5988da39d4f9e54e2"
+}
