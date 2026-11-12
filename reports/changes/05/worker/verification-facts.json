@@ -1,0 +1,115 @@
+{
+  "source_commit": "0857354c17a10e46e25ac4e90ec614a874a83579",
+  "gate": {
+    "time": "2026-11-12T14:42:01.385Z",
+    "node": "v25.2.1",
+    "exitCode": 0,
+    "results": [
+      {
+        "name": "check",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 35646
+      },
+      {
+        "name": "audit",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 9207
+      },
+      {
+        "name": "secret-scan",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 6199
+      },
+      {
+        "name": "verify",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 333728
+      }
+    ],
+    "notRun": []
+  },
+  "batch_source": {
+    "commit": "0857354c17a10e46e25ac4e90ec614a874a83579",
+    "dirty": false,
+    "fingerprint": "869f13290f15685416a7819da621927f9dea11d08f9955907f5c12d7630b905b"
+  },
+  "images": [
+    {
+      "service": "mysql",
+      "image_id": "sha256:0609e40b8afb3f73fa862bce8eee7574881ce1db9475545a3876c34db431f580",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "admin",
+      "image_id": "sha256:0656d91bcc1a2185c7b05e69177d67001c2c863ceb3d53aceccb615a44715504",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "backend",
+      "image_id": "sha256:7ed8627a7c987aa5dbee19230236738e643c1afa6360541a75e6f754c53756f9",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "frontend",
+      "image_id": "sha256:b8bfd2f0528f570e2829ad4fd0b589037c7e56a261c20a1c4f26923b3915cc65",
+      "HIGH": 0,
+      "CRITICAL": 0
+    }
+  ],
+  "cleanup": [
+    {
+      "tag": "campus-mysql-audit-23548595d7a5:verification",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "tag": "campus-app-audit-9b867c669c5f-backend:verification",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "tag": "campus-app-audit-9b867c669c5f-admin:verification",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "tag": "campus-app-audit-9b867c669c5f-frontend:verification",
+      "exit_code": 0,
+      "ok": true
+    }
+  ],
+  "mutation": {
+    "case": "AT-SC-11/21 expired lease must reject old renew/complete before takeover",
+    "red_exit": 1,
+    "restored": true,
+    "source_sha256": "74ab7c79c82379ef6a241c08912e77ecd2ae977838790696180bb3562c897a11"
+  },
+  "scope": "AT-SC-01..21 implementation/self-test only; no independent peer/main integration or real AI/grade/UI claim",
+  "executor": "production unbound; no claim",
+  "receipt_table": "test-only isolated SQL; no production migration",
+  "code_ci": {
+    "id": 43239277911,
+    "head_sha": "0857354c17a10e46e25ac4e90ec614a874a83579",
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "migration": {
+    "pr": 38,
+    "approved_head": "22860fdebab955bd701ee2e0c7e439d60559f21d",
+    "reviewer": "Kevcco",
+    "main": "fc5c2355d386739542dd75d25fd6154cf49575d1",
+    "main_ci": 43239351413,
+    "main_ci_conclusion": "success"
+  }
+}

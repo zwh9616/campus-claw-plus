@@ -1,0 +1,148 @@
+{
+  "source_commit": "0857354c17a10e46e25ac4e90ec614a874a83579",
+  "source_clean": true,
+  "archive": "final-code-gate-raw.zip",
+  "archive_sha256": "8c932adbce544ba9aa4c830e8824db2e448cc5737bb010ac06919db424942f35",
+  "files": [
+    {
+      "path": "output/application-image-verify/admin.json",
+      "size": 6551,
+      "sha256": "6013562f9b23e80ece8cddbbc0ac5a3cef90fe6d2c7ad4f56c71492ef7692e42"
+    },
+    {
+      "path": "output/application-image-verify/backend.json",
+      "size": 7075,
+      "sha256": "bbe944afb438195f07929fb11ecbe5d3b36edf24b8d4e7952e7ad3671d11afa4"
+    },
+    {
+      "path": "output/application-image-verify/frontend.json",
+      "size": 162295,
+      "sha256": "86cb55bef4f1b6ed8d4cd1675112ac71463e035ccb9ae5dfa3d5b66d8ec6dd6f"
+    },
+    {
+      "path": "output/application-image-verify/results.json",
+      "size": 11815,
+      "sha256": "424aa07fabac4b691a56cd2c87acaa735354bdb361afde0493b5fb201f00af0f"
+    },
+    {
+      "path": "output/identity/results.json",
+      "size": 18237,
+      "sha256": "6631b1f8fc6fd6f63372e018f7f3994aebc30b4feabe89ac3f3336cdea7e74df"
+    },
+    {
+      "path": "output/identity-wiring/results.json",
+      "size": 90034,
+      "sha256": "d48fbeb6d60ddf22ee5c6fdcef7f151690c5abd9b1cfb5f23515e4152e719699"
+    },
+    {
+      "path": "output/mysql-image-verify/mysql.json",
+      "size": 1195720,
+      "sha256": "43b5d6e8e6b0db4680f6b3a2d7f0448ee03a2f903dba7125218676edd1a69842"
+    },
+    {
+      "path": "output/mysql-image-verify/results.json",
+      "size": 5765,
+      "sha256": "518c08dbdc5a317997cacfc510aaf00c204e0dd5f818ec38382ee523a5a0a56f"
+    },
+    {
+      "path": "output/service-batches/results.json",
+      "size": 4577,
+      "sha256": "59f17e88619391de5b4d7e94cca0e29bf7081c634d35c5abd601ce151adaa64a"
+    },
+    {
+      "path": "output/verification/gate-results.json",
+      "size": 644,
+      "sha256": "920085bd32d0af4287caa28493ab13ac1b84d9752108284d11f2e9ccafeb60cf"
+    },
+    {
+      "path": "output/verification/secrets-history.json",
+      "size": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "output/verification/secrets-staged.json",
+      "size": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "output/worker-logs/controlled-lease-mutation.json",
+      "size": 213,
+      "sha256": "4aaa2018783b5a7fb8e2c862488e65aab0a72cf8254ed6e1dbf4f08f0c06871d"
+    },
+    {
+      "path": "output/worker-logs/controlled-lease-red-results.json",
+      "size": 16096,
+      "sha256": "275ae9f25af40e90ac3d68f64362a7f36275a5558d1558686c811a86fc926b3c"
+    },
+    {
+      "path": "output/worker-logs/controlled-lease-red.log",
+      "size": 339,
+      "sha256": "eb94d0ab5d56949a376e513f6e4584d3a10c6a9d51a22d39497afe1746288881"
+    },
+    {
+      "path": "output/worker-logs/domain-and-compile.log",
+      "size": 174,
+      "sha256": "fff95b3a1fd5dd807831facbe5bd66a4c7d2b6eec64d8cb5dbf2b3bf31c20fe6"
+    },
+    {
+      "path": "output/worker-logs/domain-race-with-compiler.log",
+      "size": 1131,
+      "sha256": "9be23f1479426e813434ab3b418eda4be2035e442978dd070a78342fb877efbe"
+    },
+    {
+      "path": "output/worker-logs/domain-race.log",
+      "size": 189,
+      "sha256": "488cf09f47ac8106c91c952338a2fe53002f610cc0f7adff1cba7d4fde4e39ba"
+    },
+    {
+      "path": "output/worker-logs/final-code-gate.log",
+      "size": 20429,
+      "sha256": "d61c979ac21fac78c79d24138a386f7c9cc227143fd57080a32c22f68a213b14"
+    },
+    {
+      "path": "output/worker-logs/first-real-worker-results.json",
+      "size": 17003,
+      "sha256": "1234c3bfffcea22d1d59c744ae80b53ee58568d20b24820b38508163c7d844c0"
+    },
+    {
+      "path": "output/worker-logs/first-real-worker.log",
+      "size": 515,
+      "sha256": "7caf6d55c39a550fd6af68796d3ece9f877da212e6d91ef386b4f14cde7485a2"
+    },
+    {
+      "path": "output/worker-logs/initial-race-toolchain.txt",
+      "size": 139,
+      "sha256": "ae9da7c3c3e84722c9c24dff670d071bf70a23d574974c28b635603e6a35970f"
+    },
+    {
+      "path": "output/worker-logs/npm-ci.log",
+      "size": 148,
+      "sha256": "1a404496625b0e111c59e706ebf1aac03fff8b9a0a983fffea7da19f6f58424f"
+    },
+    {
+      "path": "output/worker-logs/npm-setup.log",
+      "size": 211,
+      "sha256": "e4b27eea19f80415019ae324d0ffba9ae57bd4ecfd4d1ef5b5a7ff9c1e57b72c"
+    },
+    {
+      "path": "output/worker-logs/precommit-secret-scan.log",
+      "size": 329,
+      "sha256": "fdf8a5ffd9886658b5dd145e40eb4ddece66b12c4b439ba3b2ce73eae574cf51"
+    },
+    {
+      "path": "output/worker-logs/second-real-worker-results.json",
+      "size": 18389,
+      "sha256": "3a3de3cc483ed595efa5fd89f3463f858975a01bd499ae691d1d3bed8302063e"
+    },
+    {
+      "path": "output/worker-logs/second-real-worker.log",
+      "size": 515,
+      "sha256": "7caf6d55c39a550fd6af68796d3ece9f877da212e6d91ef386b4f14cde7485a2"
+    },
+    {
+      "path": "output/worker-logs/worker-unit-check.log",
+      "size": 1397,
+      "sha256": "feccc6e7e7bed6bfc66cfcd23669f0bda1155f5777b81c1ec0c2b09f19ac8d67"
+    }
+  ]
+}
