@@ -1,0 +1,65 @@
+{
+  "main": "da8624cdb7793e64c4c3d29793b4c7a329adc2b8",
+  "reviewedHead": "ef3553f376dd7f448b34950ec8aee100b0c5bd11",
+  "reviewId": 5871577319,
+  "prCI": 43185758473,
+  "mainCI": 43186361938,
+  "mainArtifact": 13928284107,
+  "gate": {
+    "time": "2026-11-12T08:55:11.499Z",
+    "node": "v22.23.4",
+    "exitCode": 0,
+    "results": [
+      {
+        "name": "check",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 49162
+      },
+      {
+        "name": "audit",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 874
+      },
+      {
+        "name": "secret-scan",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 1751
+      },
+      {
+        "name": "verify",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 173308
+      }
+    ],
+    "notRun": []
+  },
+  "scans": {
+    "mysql.json": {
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    "backend.json": {
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    "admin.json": {
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    "frontend.json": {
+      "HIGH": 0,
+      "CRITICAL": 0
+    }
+  },
+  "realGatewayBoundaryChecks": 3,
+  "mainTree": "0484f9f3fec96597b7762433945788700bd9981e",
+  "reviewedTree": "0484f9f3fec96597b7762433945788700bd9981e"
+}

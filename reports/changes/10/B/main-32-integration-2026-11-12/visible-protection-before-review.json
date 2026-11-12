@@ -1,0 +1,33 @@
+{
+  "admin_configuration_read": "not accessible to WRITE user, same limitation as existing G3 audit",
+  "current_enforcement": {
+    "viewerPermission": "WRITE",
+    "pullRequest": {
+      "headRefOid": "510e882c9f20f349c909fba7ceeaf84ecb8f9b88",
+      "reviewDecision": "REVIEW_REQUIRED",
+      "mergeStateStatus": "BLOCKED",
+      "commits": {
+        "nodes": [
+          {
+            "commit": {
+              "oid": "510e882c9f20f349c909fba7ceeaf84ecb8f9b88",
+              "statusCheckRollup": {
+                "contexts": {
+                  "nodes": [
+                    {
+                      "name": "check",
+                      "status": "COMPLETED",
+                      "conclusion": "SUCCESS",
+                      "isRequired": true
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "existing_admin_snapshot": "reports/changes/10/A/main-protection-applied-2026-11-06.json"
+}
