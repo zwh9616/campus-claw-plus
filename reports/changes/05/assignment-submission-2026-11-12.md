@@ -40,6 +40,6 @@
 
 四实际镜像HIGH/CRITICAL全0，原同轮扫描/实际运行ID一致断言通过，四标签与隔离项目/卷/网络清理0。真实默认Nginx→Go→TLS MySQL正常、DB重启、全容器重建三阶段均通过：使用同一持久学生会话和原key，仍返回相同submission/task/原pending202；读取真实Task为pending/attempt0/epoch0/version1，没有生产假执行。原登录/切班/退出、双班与同班他人隔离、健康真实Ping/DB503、原文下载/检索和30次严格真实414均保留。原身份/资料/迁移全套真实MySQL、五组新增业务用例、两种提交丢回执、4备份隔离恢复及真实4/5旧新制品矩阵全通过；受控异载荷拒绝红1后最终恢复绿，未删断言/放宽配额。
 
-[原始ZIP](submission/final-code-gate-raw.zip)包含31个原件（先前失败、受控红、最终全gate/四源及镜像原始扫描），SHA256 `ec82328fe7b16d79f87706c152ac052ea18939d1d7fe2f3cd4ce175bd8489bdc`；[逐文件摘要清单](submission/evidence-manifest.json)、[结构化结论](submission/verification-facts.json)、[原件秘密扫描0](submission/evidence-secret-scan.log)。不含临时账号/证书/答案/幂等原key；清单不打包临时测试私有会话文件。
+[原始ZIP](submission/final-code-gate-raw.zip)包含31个原件（先前失败、受控红、最终全gate/四源及镜像原始扫描），SHA256 `ec82328fe7b16d79f87706c152ac052ea18939d1d7fe2f3cd4ce175bd8489bdc`；[逐文件摘要清单](submission/evidence-manifest.json)、[结构化结论](submission/verification-facts.json)、[原件秘密扫描0](submission/evidence-secret-scan.txt)。不含临时账号/证书/答案/幂等原key；清单不打包临时测试私有会话文件。
 
 已创建[#40](https://github.com/zwh9616/campus-claw-plus/pull/40)，原作者小张/zwh9616，按既定分工交小陈/Kevcco。#38仍需其实际批准并正常合入，本PR保留独立分支不改迁移审查输入；当前main差异中的既有SQL/摘要/阶段输入与#38最终7878164逐字不变。2.4 worker、2.5全部21场景、3.x、终审/合入/main复验及真实模型/成绩/页面仍未完成。本批动作SQL夹具不能替代worker竞争、续租、ABA与终态执行事务的验收。
