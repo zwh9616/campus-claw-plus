@@ -4,14 +4,17 @@ package wiring
 
 import (
 	"bytes"
+	"crypto/tls"
 	"encoding/json"
 	"io"
 	"mime/multipart"
+	"net"
 	"net/http"
 	"net/url"
 	"os"
 	"strings"
 	"testing"
+	"time"
 
 	"github.com/zwh9616/campus-claw-plus/backend/internal/materials"
 )
@@ -95,15 +98,13 @@ func verifyMRWiring(t *testing.T, client *http.Client, access string) {
 		}
 	}
 	request("GET", "/api/v1/search?q="+url.QueryEscape(strings.Repeat("𠮷", 2001)), "", nil, 400)
-	oversized, _ := http.NewRequest("GET", "https://campus.test/api/v1/search?q="+strings.Repeat("x", 40000), nil)
-	oversized.Header.Set("Authorization", "Bearer "+access)
-	limited, err := client.Do(oversized)
+	transport := client.Transport.(*http.Transport)
+	connection, err := tls.DialWithDialer(&net.Dialer{Timeout: client.Timeout}, "tcp", "campus.test:443", transport.TLSClientConfig.Clone())
 	if err != nil {
-		t.Fatal("MF oversized request-line transport")
+		t.Fatal("MF oversized request-line trusted TLS connection")
 	}
-	limited.Body.Close()
-	if limited.StatusCode != 414 {
-		t.Fatal("MF request-line bound must remain enforced")
+	if err := requestLineLimit(connection, 7*time.Second); err != nil {
+		t.Fatalf("MF request-line bound: %v", err)
 	}
 	t.Log("MF-SC-02/12 valid 2000-codepoint queries pass; 2001 and request-line overflow remain rejected")
 	t.Log("MR-SC-01/08/09 production HTTPS upload, literal search, raw download and persistence passed")

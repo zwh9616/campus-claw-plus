@@ -28,3 +28,9 @@
 | 04 / 小张终审、小陈实现 | `000004_materials_retrieval`；已新增 `backend/internal/migrations/sql/000004_materials_retrieval.up.sql` 和 `.down.sql` | 依赖干净000001..000003，只加资料、幂等和片段表；01旧SQL及摘要不改；本候选精确要求4，旧版要求3，不能直接接4 | [方案](../../openspec/changes/archive/2026-11-10-materials-retrieval/migration-plan.md)已审定；真实SHA-256已在manifest和identity-phase登记available，仅表示可执行代码。新增逐DDL中断、结构漂移阻断、真实mysqldump隔离恢复和旧制品测试，执行结果及终审仍看共享表 |
 
 01的identity-phase运行阶段、配置、健康和三条已发布迁移不变。04在同一实现候选中扩充既有迁移清单/检查，运行目标4；不让旧程序忽略更高版本，不将代码available当作任一数据库已升级。
+
+## 05规约候选预留（未批准、无SQL）
+
+| 变更 / 负责人 | 候选号与计划文件 | 依赖与兼容 | 恢复与当前状态 |
+| --- | --- | --- | --- |
+| 05 / 小陈起草终审、小张审查实现 | `000005_assignment_tasks`；计划文件位于既有migrations/sql目录，实际文件/摘要尚未创建，待小张确认编号 | 依赖干净000004，仅追加作业/提交/任务/outbox/幂等五表与约束索引；批准apply时原子将admin/server精确目标切5，已发布SQL不改 | [方案D7](../../openspec/changes/2026-11-12-assignment-tasks/design.md)待审；须真实逐DDL失败恢复、重跑及隔离恢复4备份并验证旧制品。当前机器登记/运行目标仍4，不能把预留当available或已部署 |
