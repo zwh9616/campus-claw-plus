@@ -2,7 +2,7 @@
 
 2026-11-12用户明确授权推进10-B。小陈（Kevcco，AI辅助）实现/自测，小葛（gjj6666）逐批终审。本批从main `1fa47ee2c3d486ba4fcfb615ee73ea22de0b05c7`开始，起始仅核对已批准并集成的01/02/04；终审现已对齐main da8624c，登记已合入#30的06资料前端，仍只使用四个服务，不实现planned能力。
 
-已交[PR #32](https://github.com/zwh9616/campus-claw-plus/pull/32)，实际请求小葛/gjj6666审查。首实现head7d4373e完整CI43181709752通过，四门禁全0及真实批次摘要0；原始artifact已下载核对，见[CI事实](ci/facts.json)、[完整门禁](ci/gate-results.json)、[批次摘要](ci/batch-results.json)和[原件](ci/evidence.zip)。本提交仅补交接与真实结果，当前head CI另看PR，不将旧head成功代替新head；小葛终审及合入/main复验未做。
+已交[PR #32](https://github.com/zwh9616/campus-claw-plus/pull/32)，实际请求小葛/gjj6666审查。首实现head7d4373e完整CI43181709752通过，四门禁全0及真实批次摘要0；原始artifact已下载核对，见[CI事实](ci/facts.json)、[完整门禁](ci/gate-results.json)、[批次摘要](ci/batch-results.json)和[原件](ci/evidence.zip)。当前已保留小葛27247a6的[初审及直接修复](ge-review-2026-11-12.md)，并同步#31最新主干；最终head CI、完整终审及合入/main复验仍待核对，不以旧head成功代替。
 
 ## 服务登记与准入
 
@@ -13,11 +13,11 @@
 | mysql / 01及04持久库 | 既有固定MySQL8.4.13摘要及Go gosu构建；仅data内部网、命名卷 | mysqladmin ping为进程连通探针（2秒），不代替TLS/权限/迁移就绪；业务与健康真实DB操作另验 |
 | admin / 01及04离线迁移初始化 | 既有scratch admin；仅data，tools profile | 非常驻服务、无health；离线命令失败非零，独立DDL账号，不成为在线health依赖 |
 | backend / 01身份及04资料 | 固定Go构建→scratch；data/proxy、不发布端口 | 真实MySQL为必需依赖；`/server --healthcheck`、Go请求及Compose/Docker最大3秒，无空依赖回退 |
-| frontend / 已合入02身份及06资料页面 | 固定Node构建、固定Nginx摘要和现有libxslt补丁；ingress/proxy，仅主机环回HTTPS | nginx -t只校验配置；另从真实主机发布端口验证CA/SAN、健康与API。DB停机静态首页仍200，身份/资料依其合同失败 |
+| frontend / 已验收02身份及已合入06资料页面 | 固定Node构建、固定Nginx摘要和现有libxslt补丁；ingress/proxy，仅主机环回HTTPS | nginx -t只校验配置；另从真实主机发布端口验证CA/SAN、健康与API。DB停机静态首页仍200，身份/资料依其合同失败 |
 
 完整配置键/消费者取config-register.active，索引逐服务覆盖全部13键。backend不读取MYSQL_MIGRATION_DSN；admin只离线读取；证书/私钥只读挂载，秘密不在ARG/镜像层/前端/日志/仓库。网络、profile和构建目标与唯一根Compose匹配，新增服务/未登记键/未固定镜像/超过3秒探针均阻断check。
 
-材料检索是04已验收Go/MySQL模块，无独立检索容器或向量库。03 MCP、05任务、07模型、08成绩待各自准入；06资料页面已随#30合入，终审对齐其批准来源；05规约随#31合入但机器合同及真实任务运行仍未接线。可选LLM尚未运行，不能用一个假容器制造“可选依赖停机通过”。
+材料检索是04已验收Go/MySQL模块，无独立检索容器或向量库。03 MCP、05任务、07模型、08成绩待各自准入；06资料页面现已随#30合入，#31修复其提前414测试，main da8624c完整CI43186361938成功；本批在同一frontend登记06来源并保留其检查。可选LLM尚未运行，不能用一个假容器制造“可选依赖停机通过”。
 
 ## 本次改动与执行入口
 
@@ -39,6 +39,8 @@
 结构性Node测试用合成报告验证失败边界，与真实Docker执行分列；原历史成功只作来源，不能作为本批新SHA通过。检查记录见[本次自测](self-check-2026-11-12.md)。
 
 本批逐项通过并经小葛终审后可记第一批完成；10-B的全量4.1..4.4仍须等待其余受审服务逐批接齐，10-C和10整体归档继续待办。
+
+2026-11-12同步实现head5bf9d7c完整CI43190088894四门禁/三容器程序全0，四镜像0高危/严重、运行与扫描ID一致，真实HTTPS/数据库停启重建及30次414通过；[本轮原件及核对](main-sync-2026-11-12.md)。本次补证提交不改运行程序，最终head检查及小葛最终批准仍待核对；不替代其独立复测或10-B全量/C。
 
 ## 2026-11-12 小葛终审对齐
 

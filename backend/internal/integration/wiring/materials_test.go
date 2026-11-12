@@ -98,6 +98,8 @@ func verifyMRWiring(t *testing.T, client *http.Client, access string) {
 		}
 	}
 	request("GET", "/api/v1/search?q="+url.QueryEscape(strings.Repeat("𠮷", 2001)), "", nil, 400)
+	// Keep Ge's repeated real gateway checks while sharing the main helper
+	// covered by ordinary Go success/failure transport tests.
 	for range 10 {
 		transport := client.Transport.(*http.Transport)
 		connection, err := tls.DialWithDialer(&net.Dialer{Timeout: client.Timeout}, "tcp", "campus.test:443", transport.TLSClientConfig.Clone())

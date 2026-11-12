@@ -71,6 +71,7 @@ export function validateBatch({ registry, compose, config, dockerfiles }) {
   }
   const knownKeys = new Set(config.active.map(k => k.name))
   const declared = new Map(registry.services.map(s => [s.name, s]))
+  assert.deepEqual([...declared.get('frontend').changes].sort(), ['01', '02', '06'], 'Frontend must include the integrated materials pages')
   const owner = { backend: 'backend', migration: 'admin', initializer: 'admin', nginx: 'frontend' }
   for (const key of config.active) for (const consumer of key.consumers ?? []) {
     if (owner[consumer]) assert.ok(declared.get(owner[consumer]).config_keys.includes(key.name), 'Per-process configuration not covered')
