@@ -36,3 +36,22 @@ func TestIDFStrictInput(t *testing.T) {
 		t.Fatal("64KiB+1")
 	}
 }
+
+func TestATUnicodeScalarsAndRawNumberTypes(t *testing.T) {
+	for _, raw := range []string{`{"a":"\ud800"}`, `{"a":"\udfff"}`, `{"a":"\ud842x\udfb7"}`, `{"a":"\ud842\u0041"}`} {
+		var out struct {
+			A string `json:"a"`
+		}
+		if Decode([]byte(raw), &out) == nil {
+			t.Fatal("lone surrogate silently replaced")
+		}
+	}
+	for _, raw := range []string{`{"a":"\ud842\udfb7"}`, `{"a":"𠮷�"}`, `{"a":"\\ud800"}`} {
+		var out struct {
+			A string `json:"a"`
+		}
+		if Decode([]byte(raw), &out) != nil {
+			t.Fatal("valid scalar/literal backslash rejected")
+		}
+	}
+}

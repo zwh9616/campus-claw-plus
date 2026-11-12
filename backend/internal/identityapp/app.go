@@ -5,6 +5,7 @@ package identityapp
 import (
 	"context"
 	"errors"
+	"github.com/zwh9616/campus-claw-plus/backend/internal/assignments"
 	"github.com/zwh9616/campus-claw-plus/backend/internal/config"
 	"github.com/zwh9616/campus-claw-plus/backend/internal/httpserver"
 	"github.com/zwh9616/campus-claw-plus/backend/internal/identity"
@@ -44,5 +45,7 @@ func New(ctx context.Context, lookup func(string) (string, bool), logger *slog.L
 		return fail()
 	}
 	base := httpserver.IdentityHandler(logger, service, repo, cfg, identity.NewLimiter(nil))
-	return httpserver.MaterialsHandler(logger, service, &materials.Service{Repo: repo}, cfg.Origin, materials.NewLimiter(nil), base), db.Close, nil
+	base = httpserver.MaterialsHandler(logger, service, &materials.Service{Repo: repo}, cfg.Origin, materials.NewLimiter(nil), base)
+	logger.Info("task executor is not bound; accepted tasks remain pending", "module", "assignments", "request_id", nil)
+	return httpserver.AssignmentsHandler(logger, service, &assignments.Service{Repo: repo, Limiter: assignments.NewLimiter(nil)}, cfg.Origin, base), db.Close, nil
 }

@@ -88,63 +88,63 @@
     {
       "method": "POST",
       "path": "/api/v1/assignments",
-      "status": "frozen",
+      "status": "current",
       "owner": "05",
       "introduced_by": "openspec/changes/2026-11-12-assignment-tasks"
     },
     {
       "method": "GET",
       "path": "/api/v1/assignments",
-      "status": "frozen",
+      "status": "current",
       "owner": "05",
       "introduced_by": "openspec/changes/2026-11-12-assignment-tasks"
     },
     {
       "method": "GET",
       "path": "/api/v1/assignments/{id}",
-      "status": "frozen",
+      "status": "current",
       "owner": "05",
       "introduced_by": "openspec/changes/2026-11-12-assignment-tasks"
     },
     {
       "method": "POST",
       "path": "/api/v1/assignments/{id}/submissions",
-      "status": "frozen",
+      "status": "current",
       "owner": "05",
       "introduced_by": "openspec/changes/2026-11-12-assignment-tasks"
     },
     {
       "method": "GET",
       "path": "/api/v1/assignments/{id}/submissions",
-      "status": "frozen",
+      "status": "current",
       "owner": "05",
       "introduced_by": "openspec/changes/2026-11-12-assignment-tasks"
     },
     {
       "method": "GET",
       "path": "/api/v1/submissions/{id}",
-      "status": "frozen",
+      "status": "current",
       "owner": "05",
       "introduced_by": "openspec/changes/2026-11-12-assignment-tasks"
     },
     {
       "method": "GET",
       "path": "/api/v1/tasks/{id}",
-      "status": "frozen",
+      "status": "current",
       "owner": "05",
       "introduced_by": "openspec/changes/2026-11-12-assignment-tasks"
     },
     {
       "method": "POST",
       "path": "/api/v1/tasks/{id}/retry",
-      "status": "frozen",
+      "status": "current",
       "owner": "05",
       "introduced_by": "openspec/changes/2026-11-12-assignment-tasks"
     },
     {
       "method": "POST",
       "path": "/api/v1/tasks/{id}/cancel",
-      "status": "frozen",
+      "status": "current",
       "owner": "05",
       "introduced_by": "openspec/changes/2026-11-12-assignment-tasks"
     }

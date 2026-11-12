@@ -1,7 +1,7 @@
 # CampusClawPlus 工程约定
 本分支默认运行已接入01身份与MySQL阶段，实际合入/验收状态见共享表。第7课骨架为历史基线，历史主规约见[spec](openspec/specs/project-bootstrap/spec.md)，归档依据见[历史变更](openspec/changes/archive/2026-10-28-project-bootstrap/)。本轮执行[00规约](openspec/changes/2026-11-04-business-contracts/proposal.md)、[design](openspec/changes/2026-11-04-business-contracts/design.md)、[spec](openspec/changes/2026-11-04-business-contracts/specs/business-contracts/spec.md)及[tasks](openspec/changes/2026-11-04-business-contracts/tasks.md)；00只负责公共合同。当前01/02/04已验收，06真实资料页面已随#30合入，测试修复#31及主干完整CI43186361938通过；2026-11-12组长恢复05规约工作，其他暂停项未恢复。PB/SC保留历史含义，新需求使用BC及后续change自己的前缀。
 
-2026-11-12最新冻结事实：#35已获小陈对7fe5b5d真实批准5872964547，正常合入main e617cc0，主干完整CI43202284398通过；05任务1.3完成，原13 current/目标4与九个frozen合同分列，05业务实现仍待原负责人按2.x推进。#33/#34只补实际状态与证据，B全量/C和资料归档尚未完成。
+2026-11-12最新冻结事实：#35已获小陈对7fe5b5d真实批准5872964547，正常合入main e617cc0，主干完整CI43202284398通过；05任务1.3完成，原13 current/目标4与九个frozen合同分列，05业务实现仍待原负责人按2.x推进。#33/#34只补实际状态与证据，B全量/C仍未完成；资料归档#37已获小葛批准合入main3c45f31并通过完整CI43224927460。
 
 ## 每次开始工作
 - 必读 [安全规范](docs/standards/security.md)，按范围必须读取下表规则；这些文件是约束，不是可选参考。
@@ -29,7 +29,7 @@
 
 2026-11-12，06资料阶段规约#27经小葛批准合入复验、代表样板#29经小张确认、真实实现#30经小张终审合入，严格414测试修复#31后main da8624c完整门禁及真实HTTPS双班五人18项复验通过。小张据小葛清单准备[资料前端主规约](openspec/specs/materials-frontend/spec.md)及[原change归档候选](openspec/changes/archive/2026-11-11-materials-frontend/)，实际归档合入状态见共享表；未获审合入不记主干已归档。小张写规约/确认样板/终审，小葛审规约/apply；资料阶段依赖02/04，作业页面仍另等05真实接口，未恢复AI/成绩等暂停项。
 
-2026-11-12组长明确启动[05作业与持久任务规约](openspec/changes/2026-11-12-assignment-tasks/proposal.md)，小陈起草/终审、小张审规约/apply。规约已获小张对ef3553f批准、随#31合入main da8624c并通过主干完整CI；公共机器合同#35已获小陈批准、合入e617cc0并完整复验，交接#36已合入；G2/G3已有证据不替代05各阶段终审。当前仅实施2.1迁移基础：000005五表/摘要available、server/admin共享Target=5；九个作业/提交/任务操作仍frozen，未提供运行服务，2.2—2.5仍待办；生产未接真实执行器时不允许假批改成功。此决定只恢复05，06作业页面、07/08等仍按各自批准和依赖推进。
+2026-11-12组长明确启动[05作业与持久任务规约](openspec/changes/2026-11-12-assignment-tasks/proposal.md)，小陈起草/终审、小张审规约/apply。规约已获小张对ef3553f批准、随#31合入main da8624c并通过主干完整CI；公共机器合同#35已获小陈批准、合入e617cc0并完整复验，交接#36已合入；G2/G3已有证据不替代05各阶段终审。首批#38为2.1迁移基础，仍待小陈实际批准；本独立2.2/2.3候选实际装配九操作并原子同步22 current，实现逐资源授权与原子幂等202，尚待门禁与终审。000005及Target=5保持，2.4 worker/2.5完整21场景/3.x仍待办；生产未接真实执行器时不允许假批改成功。此决定只恢复05，06作业页面、07/08等仍按各自批准和依赖推进。
 
 ## 当前命令
 
