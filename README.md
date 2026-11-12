@@ -22,7 +22,7 @@
 - [前端视觉规约](docs/standards/frontend-visual.md)：北大红#94070A、暖白、简约布局，参考Canvas/Moodle信息组织；小张已确认#15代表样板，真实页面已由小葛实现，最终联合验收由小张收口。
 - [协作规范](docs/standards/collaboration.md)：按变更两人接力；每组可提交修改必须同提交更新共享表。
 - [06资料阶段原change](openspec/changes/archive/2026-11-11-materials-frontend/proposal.md)已随#27获小葛批准，样板#29经小张确认，真实实现#30和严格414修复#31已合入复验。五项MF需求/十二场景完整同步[主规约](openspec/specs/materials-frontend/spec.md)，本候选仅做资料阶段归档与索引，最终head批准/合入仍待实际门禁；作业页面另等05。[归档核对](reports/changes/06/archive-review-2026-11-12.md)。
-- 05规约#31与公共冻结#35已实际获审合入复验，交接#36已合入b63dfdd并通过主干完整CI；迁移首批[#38](https://github.com/zwh9616/campus-claw-plus/pull/38)最终7878164完整CI43225308205通过，待小陈审查。本独立2.2/2.3候选原子启用九个实际HTTP操作，共22 current，提供授权和原子幂等受理；完整门禁/终审另核，worker/AI/成绩与页面未完成。本迁移候选精确Target=5，已有4先停写备份后离线升级。
+- 05规约#31与公共冻结#35已实际获审合入复验，交接#36已合入b63dfdd并通过主干完整CI；迁移首批[#38](https://github.com/zwh9616/campus-claw-plus/pull/38)最终7878164完整CI43225308205通过，待小陈审查。本独立2.2/2.3候选原子启用九个实际HTTP操作，共22 current，提供授权和原子幂等受理；干净fdac13f完整本机gate/代码CI43230410080通过，终审另核，worker/AI/成绩与页面未完成。本迁移候选精确Target=5，已有4先停写备份后离线升级。
 
 ## 从零启动身份服务
 
