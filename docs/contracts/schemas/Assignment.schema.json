@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/v1/Assignment.schema.json",
+  "title": "Assignment",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "ID.schema.json"
+    },
+    "class_id": {
+      "$ref": "ID.schema.json"
+    },
+    "teacher_id": {
+      "$ref": "ID.schema.json"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "^(?![\\p{White_Space}]*$)[^\\uD800-\\uDFFF]+$"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 20000,
+      "pattern": "^(?![\\p{White_Space}]*$)[^\\uD800-\\uDFFF]+$"
+    },
+    "deadline": {
+      "$ref": "Timestamp.schema.json"
+    },
+    "version": {
+      "type": "integer",
+      "const": 1
+    },
+    "created_at": {
+      "$ref": "Timestamp.schema.json"
+    }
+  },
+  "required": [
+    "id",
+    "class_id",
+    "teacher_id",
+    "title",
+    "description",
+    "deadline",
+    "version",
+    "created_at"
+  ],
+  "additionalProperties": false
+}

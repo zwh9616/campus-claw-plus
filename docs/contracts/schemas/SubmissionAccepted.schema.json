@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/v1/SubmissionAccepted.schema.json",
+  "title": "SubmissionAccepted",
+  "type": "object",
+  "properties": {
+    "submission_id": {
+      "$ref": "ID.schema.json"
+    },
+    "task_id": {
+      "$ref": "ID.schema.json"
+    },
+    "status": {
+      "const": "pending"
+    }
+  },
+  "required": [
+    "submission_id",
+    "task_id",
+    "status"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/v1/AssignmentPage.schema.json",
+  "title": "AssignmentPage",
+  "type": "object",
+  "properties": {
+    "items": {
+      "type": "array",
+      "maxItems": 50,
+      "items": {
+        "$ref": "Assignment.schema.json"
+      }
+    },
+    "page": {
+      "$ref": "MaterialListParameters.schema.json#/properties/page"
+    },
+    "page_size": {
+      "$ref": "MaterialListParameters.schema.json#/properties/page_size"
+    },
+    "total": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "items",
+    "page",
+    "page_size",
+    "total"
+  ],
+  "additionalProperties": false
+}

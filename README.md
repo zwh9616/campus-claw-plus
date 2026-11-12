@@ -2,6 +2,8 @@
 
 本分支已将MySQL、离线迁移/初始化、身份HTTP服务和同源HTTPS接入默认Compose。身份及真实资料页面已在main合入，提供资料列表、检索、上传、原文及下载；小张已完成独立复验，合入及最终主干复验见[共享进度表](docs/project-status.md)和PR #30实际记录为准。
 
+2026-11-12最新冻结事实：#35已获小陈对7fe5b5d真实批准5872964547，正常合入main e617cc0，主干完整CI43202284398通过；05任务1.3完成，原13 current/目标4与九个frozen合同分列，05业务实现仍待原负责人按2.x推进。#33/#34只补实际状态与证据，B全量/C和资料归档尚未完成。
+
 ## 当前运行范围
 
 - GET /health匿名，逐请求真实Ping MySQL，3秒预算；200为status=ok/mysql=up，失败503为status=error/mysql=down，均有服务端X-Request-ID。
