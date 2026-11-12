@@ -1,0 +1,1787 @@
+{
+  "files": {
+    "frontend/src/auth/client.ts": {
+      "algorithm": "sha256",
+      "digest": "d7c75e26c287d80c1d145439998bec6bb270e55b4ffee9f28119085a38213a25"
+    },
+    "frontend/src/components/ui.tsx": {
+      "algorithm": "sha256",
+      "digest": "968cd32b2ce5010d688a22ab2be0de250289e9bc7190b7277c24c64e664885c5"
+    },
+    "frontend/src/pages/App.tsx": {
+      "algorithm": "sha256",
+      "digest": "d65cf9f60f3c588e98546fa26812dae398feff6b51c5d90b10d733b914b18471"
+    },
+    "frontend/src/materials/Pages.tsx": {
+      "algorithm": "sha256",
+      "digest": "7e3a044af9593289d0657f08c154cc54691d040a8680ea357519e1026d04c777"
+    },
+    "frontend/src/materials/contracts.ts": {
+      "algorithm": "sha256",
+      "digest": "a44ac6e7697ebc150bc4cc0f7bb4a8c72e15e3ec15062015556f2c588fa0691e"
+    },
+    "frontend/src/materials/materials.css": {
+      "algorithm": "sha256",
+      "digest": "717a4ef5605cace3398b38108cdb68a9ffa6eb0818394214f0e5210d21072ea6"
+    },
+    "frontend/src/shared/values.ts": {
+      "algorithm": "sha256",
+      "digest": "6aec7483f46215c5ddd3b0843e323fee468da638f27b52c42c5a238cfe50eb71"
+    },
+    "frontend/src/sample-theme.css": {
+      "algorithm": "sha256",
+      "digest": "b3545fa6304c5004954620e5e843975bed91b71abe933bc77a7066e7a6b16c7d"
+    }
+  },
+  "source": "ff93c7b91ca7592059b1c0b41939202c708740b4",
+  "sourceDirty": false,
+  "browser": "143.0.7499.4",
+  "executedAt": "2026-11-12T07:57:27.621Z",
+  "executor": "zwh9616-小张-AI辅助",
+  "sourceType": "mock HTTP responses on actual production app routes",
+  "cases": [
+    {
+      "name": "teacher-list-long",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 360,
+      "scrollWidth": 360,
+      "dpr": 1,
+      "screenshot": "teacher-list-long-360-zoom1.png"
+    },
+    {
+      "name": "teacher-list-empty",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 360,
+      "scrollWidth": 360,
+      "dpr": 1,
+      "screenshot": "teacher-list-empty-360-zoom1.png"
+    },
+    {
+      "name": "teacher-list-error",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 360,
+      "scrollWidth": 360,
+      "dpr": 1,
+      "screenshot": "teacher-list-error-360-zoom1.png"
+    },
+    {
+      "name": "teacher-list-loading",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 360,
+      "scrollWidth": 360,
+      "dpr": 1,
+      "screenshot": "teacher-list-loading-360-zoom1.png"
+    },
+    {
+      "name": "list-page-two",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 360,
+      "scrollWidth": 360,
+      "dpr": 1,
+      "screenshot": "list-page-two-360-zoom1.png"
+    },
+    {
+      "name": "search-empty",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 360,
+      "scrollWidth": 360,
+      "dpr": 1,
+      "screenshot": "search-empty-360-zoom1.png"
+    },
+    {
+      "name": "search-error",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 360,
+      "scrollWidth": 360,
+      "dpr": 1,
+      "screenshot": "search-error-360-zoom1.png"
+    },
+    {
+      "name": "search-citation",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 360,
+      "scrollWidth": 360,
+      "dpr": 1,
+      "screenshot": "search-citation-360-zoom1.png"
+    },
+    {
+      "name": "detail-citation",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 360,
+      "scrollWidth": 360,
+      "dpr": 1,
+      "screenshot": "detail-citation-360-zoom1.png"
+    },
+    {
+      "name": "detail-empty-contract-error",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 360,
+      "scrollWidth": 360,
+      "dpr": 1,
+      "screenshot": "detail-empty-contract-error-360-zoom1.png"
+    },
+    {
+      "name": "detail-not-viewable",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 360,
+      "scrollWidth": 360,
+      "dpr": 1,
+      "screenshot": "detail-not-viewable-360-zoom1.png"
+    },
+    {
+      "name": "upload-invalid",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/upload",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 360,
+      "scrollWidth": 360,
+      "dpr": 1,
+      "screenshot": "upload-invalid-360-zoom1.png"
+    },
+    {
+      "name": "upload-uncertain",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/upload",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 360,
+      "scrollWidth": 360,
+      "dpr": 1,
+      "screenshot": "upload-uncertain-360-zoom1.png"
+    },
+    {
+      "name": "detail-failed-saved",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 360,
+      "scrollWidth": 360,
+      "dpr": 1,
+      "screenshot": "detail-failed-saved-360-zoom1.png"
+    },
+    {
+      "name": "detail-failed-action",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 360,
+      "scrollWidth": 360,
+      "dpr": 1,
+      "screenshot": "detail-failed-action-360-zoom1.png"
+    },
+    {
+      "name": "upload-429",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/upload",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 360,
+      "scrollWidth": 360,
+      "dpr": 1,
+      "screenshot": "upload-429-360-zoom1.png"
+    },
+    {
+      "name": "student-list",
+      "role": "student",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 360,
+      "scrollWidth": 360,
+      "dpr": 1,
+      "screenshot": "student-list-360-zoom1.png"
+    },
+    {
+      "name": "student-upload-denied",
+      "role": "student",
+      "url": "http://127.0.0.1:5199/app/materials/upload",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 360,
+      "scrollWidth": 360,
+      "dpr": 1,
+      "screenshot": "student-upload-denied-360-zoom1.png"
+    },
+    {
+      "name": "student-detail",
+      "role": "student",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 360,
+      "scrollWidth": 360,
+      "dpr": 1,
+      "screenshot": "student-detail-360-zoom1.png"
+    },
+    {
+      "name": "teacher-list-long",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 767,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 767,
+      "scrollWidth": 767,
+      "dpr": 1,
+      "screenshot": "teacher-list-long-767-zoom1.png"
+    },
+    {
+      "name": "teacher-list-empty",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 767,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 767,
+      "scrollWidth": 767,
+      "dpr": 1,
+      "screenshot": "teacher-list-empty-767-zoom1.png"
+    },
+    {
+      "name": "teacher-list-error",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 767,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 767,
+      "scrollWidth": 767,
+      "dpr": 1,
+      "screenshot": "teacher-list-error-767-zoom1.png"
+    },
+    {
+      "name": "teacher-list-loading",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 767,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 767,
+      "scrollWidth": 767,
+      "dpr": 1,
+      "screenshot": "teacher-list-loading-767-zoom1.png"
+    },
+    {
+      "name": "list-page-two",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 767,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 767,
+      "scrollWidth": 767,
+      "dpr": 1,
+      "screenshot": "list-page-two-767-zoom1.png"
+    },
+    {
+      "name": "search-empty",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 767,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 767,
+      "scrollWidth": 767,
+      "dpr": 1,
+      "screenshot": "search-empty-767-zoom1.png"
+    },
+    {
+      "name": "search-error",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 767,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 767,
+      "scrollWidth": 767,
+      "dpr": 1,
+      "screenshot": "search-error-767-zoom1.png"
+    },
+    {
+      "name": "search-citation",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 767,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 767,
+      "scrollWidth": 767,
+      "dpr": 1,
+      "screenshot": "search-citation-767-zoom1.png"
+    },
+    {
+      "name": "detail-citation",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 767,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 767,
+      "scrollWidth": 767,
+      "dpr": 1,
+      "screenshot": "detail-citation-767-zoom1.png"
+    },
+    {
+      "name": "detail-empty-contract-error",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 767,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 767,
+      "scrollWidth": 767,
+      "dpr": 1,
+      "screenshot": "detail-empty-contract-error-767-zoom1.png"
+    },
+    {
+      "name": "detail-not-viewable",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 767,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 767,
+      "scrollWidth": 767,
+      "dpr": 1,
+      "screenshot": "detail-not-viewable-767-zoom1.png"
+    },
+    {
+      "name": "upload-invalid",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/upload",
+      "width": 767,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 767,
+      "scrollWidth": 767,
+      "dpr": 1,
+      "screenshot": "upload-invalid-767-zoom1.png"
+    },
+    {
+      "name": "upload-uncertain",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/upload",
+      "width": 767,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 767,
+      "scrollWidth": 767,
+      "dpr": 1,
+      "screenshot": "upload-uncertain-767-zoom1.png"
+    },
+    {
+      "name": "detail-failed-saved",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 767,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 767,
+      "scrollWidth": 767,
+      "dpr": 1,
+      "screenshot": "detail-failed-saved-767-zoom1.png"
+    },
+    {
+      "name": "detail-failed-action",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 767,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 767,
+      "scrollWidth": 767,
+      "dpr": 1,
+      "screenshot": "detail-failed-action-767-zoom1.png"
+    },
+    {
+      "name": "upload-429",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/upload",
+      "width": 767,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 767,
+      "scrollWidth": 767,
+      "dpr": 1,
+      "screenshot": "upload-429-767-zoom1.png"
+    },
+    {
+      "name": "student-list",
+      "role": "student",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 767,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 767,
+      "scrollWidth": 767,
+      "dpr": 1,
+      "screenshot": "student-list-767-zoom1.png"
+    },
+    {
+      "name": "student-upload-denied",
+      "role": "student",
+      "url": "http://127.0.0.1:5199/app/materials/upload",
+      "width": 767,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 767,
+      "scrollWidth": 767,
+      "dpr": 1,
+      "screenshot": "student-upload-denied-767-zoom1.png"
+    },
+    {
+      "name": "student-detail",
+      "role": "student",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 767,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 767,
+      "scrollWidth": 767,
+      "dpr": 1,
+      "screenshot": "student-detail-767-zoom1.png"
+    },
+    {
+      "name": "teacher-list-long",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 768,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 768,
+      "scrollWidth": 768,
+      "dpr": 1,
+      "screenshot": "teacher-list-long-768-zoom1.png"
+    },
+    {
+      "name": "teacher-list-empty",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 768,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 768,
+      "scrollWidth": 768,
+      "dpr": 1,
+      "screenshot": "teacher-list-empty-768-zoom1.png"
+    },
+    {
+      "name": "teacher-list-error",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 768,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 768,
+      "scrollWidth": 768,
+      "dpr": 1,
+      "screenshot": "teacher-list-error-768-zoom1.png"
+    },
+    {
+      "name": "teacher-list-loading",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 768,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 768,
+      "scrollWidth": 768,
+      "dpr": 1,
+      "screenshot": "teacher-list-loading-768-zoom1.png"
+    },
+    {
+      "name": "list-page-two",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 768,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 768,
+      "scrollWidth": 768,
+      "dpr": 1,
+      "screenshot": "list-page-two-768-zoom1.png"
+    },
+    {
+      "name": "search-empty",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 768,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 768,
+      "scrollWidth": 768,
+      "dpr": 1,
+      "screenshot": "search-empty-768-zoom1.png"
+    },
+    {
+      "name": "search-error",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 768,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 768,
+      "scrollWidth": 768,
+      "dpr": 1,
+      "screenshot": "search-error-768-zoom1.png"
+    },
+    {
+      "name": "search-citation",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 768,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 768,
+      "scrollWidth": 768,
+      "dpr": 1,
+      "screenshot": "search-citation-768-zoom1.png"
+    },
+    {
+      "name": "detail-citation",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 768,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 768,
+      "scrollWidth": 768,
+      "dpr": 1,
+      "screenshot": "detail-citation-768-zoom1.png"
+    },
+    {
+      "name": "detail-empty-contract-error",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 768,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 768,
+      "scrollWidth": 768,
+      "dpr": 1,
+      "screenshot": "detail-empty-contract-error-768-zoom1.png"
+    },
+    {
+      "name": "detail-not-viewable",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 768,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 768,
+      "scrollWidth": 768,
+      "dpr": 1,
+      "screenshot": "detail-not-viewable-768-zoom1.png"
+    },
+    {
+      "name": "upload-invalid",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/upload",
+      "width": 768,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 768,
+      "scrollWidth": 768,
+      "dpr": 1,
+      "screenshot": "upload-invalid-768-zoom1.png"
+    },
+    {
+      "name": "upload-uncertain",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/upload",
+      "width": 768,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 768,
+      "scrollWidth": 768,
+      "dpr": 1,
+      "screenshot": "upload-uncertain-768-zoom1.png"
+    },
+    {
+      "name": "detail-failed-saved",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 768,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 768,
+      "scrollWidth": 768,
+      "dpr": 1,
+      "screenshot": "detail-failed-saved-768-zoom1.png"
+    },
+    {
+      "name": "detail-failed-action",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 768,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 768,
+      "scrollWidth": 768,
+      "dpr": 1,
+      "screenshot": "detail-failed-action-768-zoom1.png"
+    },
+    {
+      "name": "upload-429",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/upload",
+      "width": 768,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 768,
+      "scrollWidth": 768,
+      "dpr": 1,
+      "screenshot": "upload-429-768-zoom1.png"
+    },
+    {
+      "name": "student-list",
+      "role": "student",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 768,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 768,
+      "scrollWidth": 768,
+      "dpr": 1,
+      "screenshot": "student-list-768-zoom1.png"
+    },
+    {
+      "name": "student-upload-denied",
+      "role": "student",
+      "url": "http://127.0.0.1:5199/app/materials/upload",
+      "width": 768,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 768,
+      "scrollWidth": 768,
+      "dpr": 1,
+      "screenshot": "student-upload-denied-768-zoom1.png"
+    },
+    {
+      "name": "student-detail",
+      "role": "student",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 768,
+      "height": 800,
+      "nativeZoom": 1,
+      "layoutWidth": 768,
+      "scrollWidth": 768,
+      "dpr": 1,
+      "screenshot": "student-detail-768-zoom1.png"
+    },
+    {
+      "name": "teacher-list-long",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 1,
+      "layoutWidth": 1440,
+      "scrollWidth": 1440,
+      "dpr": 1,
+      "screenshot": "teacher-list-long-1440-zoom1.png"
+    },
+    {
+      "name": "teacher-list-empty",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 1,
+      "layoutWidth": 1440,
+      "scrollWidth": 1440,
+      "dpr": 1,
+      "screenshot": "teacher-list-empty-1440-zoom1.png"
+    },
+    {
+      "name": "teacher-list-error",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 1,
+      "layoutWidth": 1440,
+      "scrollWidth": 1440,
+      "dpr": 1,
+      "screenshot": "teacher-list-error-1440-zoom1.png"
+    },
+    {
+      "name": "teacher-list-loading",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 1,
+      "layoutWidth": 1440,
+      "scrollWidth": 1440,
+      "dpr": 1,
+      "screenshot": "teacher-list-loading-1440-zoom1.png"
+    },
+    {
+      "name": "list-page-two",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 1,
+      "layoutWidth": 1440,
+      "scrollWidth": 1440,
+      "dpr": 1,
+      "screenshot": "list-page-two-1440-zoom1.png"
+    },
+    {
+      "name": "search-empty",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 1,
+      "layoutWidth": 1440,
+      "scrollWidth": 1440,
+      "dpr": 1,
+      "screenshot": "search-empty-1440-zoom1.png"
+    },
+    {
+      "name": "search-error",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 1,
+      "layoutWidth": 1440,
+      "scrollWidth": 1440,
+      "dpr": 1,
+      "screenshot": "search-error-1440-zoom1.png"
+    },
+    {
+      "name": "search-citation",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 1,
+      "layoutWidth": 1440,
+      "scrollWidth": 1440,
+      "dpr": 1,
+      "screenshot": "search-citation-1440-zoom1.png"
+    },
+    {
+      "name": "detail-citation",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 1,
+      "layoutWidth": 1440,
+      "scrollWidth": 1440,
+      "dpr": 1,
+      "screenshot": "detail-citation-1440-zoom1.png"
+    },
+    {
+      "name": "detail-empty-contract-error",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 1,
+      "layoutWidth": 1440,
+      "scrollWidth": 1440,
+      "dpr": 1,
+      "screenshot": "detail-empty-contract-error-1440-zoom1.png"
+    },
+    {
+      "name": "detail-not-viewable",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 1,
+      "layoutWidth": 1440,
+      "scrollWidth": 1440,
+      "dpr": 1,
+      "screenshot": "detail-not-viewable-1440-zoom1.png"
+    },
+    {
+      "name": "upload-invalid",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/upload",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 1,
+      "layoutWidth": 1440,
+      "scrollWidth": 1440,
+      "dpr": 1,
+      "screenshot": "upload-invalid-1440-zoom1.png"
+    },
+    {
+      "name": "upload-uncertain",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/upload",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 1,
+      "layoutWidth": 1440,
+      "scrollWidth": 1440,
+      "dpr": 1,
+      "screenshot": "upload-uncertain-1440-zoom1.png"
+    },
+    {
+      "name": "detail-failed-saved",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 1,
+      "layoutWidth": 1440,
+      "scrollWidth": 1440,
+      "dpr": 1,
+      "screenshot": "detail-failed-saved-1440-zoom1.png"
+    },
+    {
+      "name": "detail-failed-action",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 1,
+      "layoutWidth": 1440,
+      "scrollWidth": 1440,
+      "dpr": 1,
+      "screenshot": "detail-failed-action-1440-zoom1.png"
+    },
+    {
+      "name": "upload-429",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/upload",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 1,
+      "layoutWidth": 1440,
+      "scrollWidth": 1440,
+      "dpr": 1,
+      "screenshot": "upload-429-1440-zoom1.png"
+    },
+    {
+      "name": "student-list",
+      "role": "student",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 1,
+      "layoutWidth": 1440,
+      "scrollWidth": 1440,
+      "dpr": 1,
+      "screenshot": "student-list-1440-zoom1.png"
+    },
+    {
+      "name": "student-upload-denied",
+      "role": "student",
+      "url": "http://127.0.0.1:5199/app/materials/upload",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 1,
+      "layoutWidth": 1440,
+      "scrollWidth": 1440,
+      "dpr": 1,
+      "screenshot": "student-upload-denied-1440-zoom1.png"
+    },
+    {
+      "name": "student-detail",
+      "role": "student",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 1,
+      "layoutWidth": 1440,
+      "scrollWidth": 1440,
+      "dpr": 1,
+      "screenshot": "student-detail-1440-zoom1.png"
+    },
+    {
+      "name": "teacher-list-long",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 2,
+      "layoutWidth": 180,
+      "scrollWidth": 180,
+      "dpr": 2,
+      "screenshot": "teacher-list-long-360-zoom2.png"
+    },
+    {
+      "name": "teacher-list-empty",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 2,
+      "layoutWidth": 180,
+      "scrollWidth": 180,
+      "dpr": 2,
+      "screenshot": "teacher-list-empty-360-zoom2.png"
+    },
+    {
+      "name": "teacher-list-error",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 2,
+      "layoutWidth": 180,
+      "scrollWidth": 180,
+      "dpr": 2,
+      "screenshot": "teacher-list-error-360-zoom2.png"
+    },
+    {
+      "name": "teacher-list-loading",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 2,
+      "layoutWidth": 180,
+      "scrollWidth": 180,
+      "dpr": 2,
+      "screenshot": "teacher-list-loading-360-zoom2.png"
+    },
+    {
+      "name": "list-page-two",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 2,
+      "layoutWidth": 180,
+      "scrollWidth": 180,
+      "dpr": 2,
+      "screenshot": "list-page-two-360-zoom2.png"
+    },
+    {
+      "name": "search-empty",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 2,
+      "layoutWidth": 180,
+      "scrollWidth": 180,
+      "dpr": 2,
+      "screenshot": "search-empty-360-zoom2.png"
+    },
+    {
+      "name": "search-error",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 2,
+      "layoutWidth": 180,
+      "scrollWidth": 180,
+      "dpr": 2,
+      "screenshot": "search-error-360-zoom2.png"
+    },
+    {
+      "name": "search-citation",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 2,
+      "layoutWidth": 180,
+      "scrollWidth": 180,
+      "dpr": 2,
+      "screenshot": "search-citation-360-zoom2.png"
+    },
+    {
+      "name": "detail-citation",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 2,
+      "layoutWidth": 180,
+      "scrollWidth": 180,
+      "dpr": 2,
+      "screenshot": "detail-citation-360-zoom2.png"
+    },
+    {
+      "name": "detail-empty-contract-error",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 2,
+      "layoutWidth": 180,
+      "scrollWidth": 180,
+      "dpr": 2,
+      "screenshot": "detail-empty-contract-error-360-zoom2.png"
+    },
+    {
+      "name": "detail-not-viewable",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 2,
+      "layoutWidth": 180,
+      "scrollWidth": 180,
+      "dpr": 2,
+      "screenshot": "detail-not-viewable-360-zoom2.png"
+    },
+    {
+      "name": "upload-invalid",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/upload",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 2,
+      "layoutWidth": 180,
+      "scrollWidth": 180,
+      "dpr": 2,
+      "screenshot": "upload-invalid-360-zoom2.png"
+    },
+    {
+      "name": "upload-uncertain",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/upload",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 2,
+      "layoutWidth": 180,
+      "scrollWidth": 180,
+      "dpr": 2,
+      "screenshot": "upload-uncertain-360-zoom2.png"
+    },
+    {
+      "name": "detail-failed-saved",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 2,
+      "layoutWidth": 180,
+      "scrollWidth": 180,
+      "dpr": 2,
+      "screenshot": "detail-failed-saved-360-zoom2.png"
+    },
+    {
+      "name": "detail-failed-action",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 2,
+      "layoutWidth": 180,
+      "scrollWidth": 180,
+      "dpr": 2,
+      "screenshot": "detail-failed-action-360-zoom2.png"
+    },
+    {
+      "name": "upload-429",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/upload",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 2,
+      "layoutWidth": 180,
+      "scrollWidth": 180,
+      "dpr": 2,
+      "screenshot": "upload-429-360-zoom2.png"
+    },
+    {
+      "name": "student-list",
+      "role": "student",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 2,
+      "layoutWidth": 180,
+      "scrollWidth": 180,
+      "dpr": 2,
+      "screenshot": "student-list-360-zoom2.png"
+    },
+    {
+      "name": "student-upload-denied",
+      "role": "student",
+      "url": "http://127.0.0.1:5199/app/materials/upload",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 2,
+      "layoutWidth": 180,
+      "scrollWidth": 180,
+      "dpr": 2,
+      "screenshot": "student-upload-denied-360-zoom2.png"
+    },
+    {
+      "name": "student-detail",
+      "role": "student",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 360,
+      "height": 800,
+      "nativeZoom": 2,
+      "layoutWidth": 180,
+      "scrollWidth": 180,
+      "dpr": 2,
+      "screenshot": "student-detail-360-zoom2.png"
+    },
+    {
+      "name": "teacher-list-long",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 2,
+      "layoutWidth": 720,
+      "scrollWidth": 720,
+      "dpr": 2,
+      "screenshot": "teacher-list-long-1440-zoom2.png"
+    },
+    {
+      "name": "teacher-list-empty",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 2,
+      "layoutWidth": 720,
+      "scrollWidth": 720,
+      "dpr": 2,
+      "screenshot": "teacher-list-empty-1440-zoom2.png"
+    },
+    {
+      "name": "teacher-list-error",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 2,
+      "layoutWidth": 720,
+      "scrollWidth": 720,
+      "dpr": 2,
+      "screenshot": "teacher-list-error-1440-zoom2.png"
+    },
+    {
+      "name": "teacher-list-loading",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 2,
+      "layoutWidth": 720,
+      "scrollWidth": 720,
+      "dpr": 2,
+      "screenshot": "teacher-list-loading-1440-zoom2.png"
+    },
+    {
+      "name": "list-page-two",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 2,
+      "layoutWidth": 720,
+      "scrollWidth": 720,
+      "dpr": 2,
+      "screenshot": "list-page-two-1440-zoom2.png"
+    },
+    {
+      "name": "search-empty",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 2,
+      "layoutWidth": 720,
+      "scrollWidth": 720,
+      "dpr": 2,
+      "screenshot": "search-empty-1440-zoom2.png"
+    },
+    {
+      "name": "search-error",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 2,
+      "layoutWidth": 720,
+      "scrollWidth": 720,
+      "dpr": 2,
+      "screenshot": "search-error-1440-zoom2.png"
+    },
+    {
+      "name": "search-citation",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 2,
+      "layoutWidth": 720,
+      "scrollWidth": 720,
+      "dpr": 2,
+      "screenshot": "search-citation-1440-zoom2.png"
+    },
+    {
+      "name": "detail-citation",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 2,
+      "layoutWidth": 720,
+      "scrollWidth": 720,
+      "dpr": 2,
+      "screenshot": "detail-citation-1440-zoom2.png"
+    },
+    {
+      "name": "detail-empty-contract-error",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 2,
+      "layoutWidth": 720,
+      "scrollWidth": 720,
+      "dpr": 2,
+      "screenshot": "detail-empty-contract-error-1440-zoom2.png"
+    },
+    {
+      "name": "detail-not-viewable",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 2,
+      "layoutWidth": 720,
+      "scrollWidth": 720,
+      "dpr": 2,
+      "screenshot": "detail-not-viewable-1440-zoom2.png"
+    },
+    {
+      "name": "upload-invalid",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/upload",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 2,
+      "layoutWidth": 720,
+      "scrollWidth": 720,
+      "dpr": 2,
+      "screenshot": "upload-invalid-1440-zoom2.png"
+    },
+    {
+      "name": "upload-uncertain",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/upload",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 2,
+      "layoutWidth": 720,
+      "scrollWidth": 720,
+      "dpr": 2,
+      "screenshot": "upload-uncertain-1440-zoom2.png"
+    },
+    {
+      "name": "detail-failed-saved",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 2,
+      "layoutWidth": 720,
+      "scrollWidth": 720,
+      "dpr": 2,
+      "screenshot": "detail-failed-saved-1440-zoom2.png"
+    },
+    {
+      "name": "detail-failed-action",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 2,
+      "layoutWidth": 720,
+      "scrollWidth": 720,
+      "dpr": 2,
+      "screenshot": "detail-failed-action-1440-zoom2.png"
+    },
+    {
+      "name": "upload-429",
+      "role": "teacher",
+      "url": "http://127.0.0.1:5199/app/materials/upload",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 2,
+      "layoutWidth": 720,
+      "scrollWidth": 720,
+      "dpr": 2,
+      "screenshot": "upload-429-1440-zoom2.png"
+    },
+    {
+      "name": "student-list",
+      "role": "student",
+      "url": "http://127.0.0.1:5199/app/materials",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 2,
+      "layoutWidth": 720,
+      "scrollWidth": 720,
+      "dpr": 2,
+      "screenshot": "student-list-1440-zoom2.png"
+    },
+    {
+      "name": "student-upload-denied",
+      "role": "student",
+      "url": "http://127.0.0.1:5199/app/materials/upload",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 2,
+      "layoutWidth": 720,
+      "scrollWidth": 720,
+      "dpr": 2,
+      "screenshot": "student-upload-denied-1440-zoom2.png"
+    },
+    {
+      "name": "student-detail",
+      "role": "student",
+      "url": "http://127.0.0.1:5199/app/materials/9223372036854775807",
+      "width": 1440,
+      "height": 900,
+      "nativeZoom": 2,
+      "layoutWidth": 720,
+      "scrollWidth": 720,
+      "dpr": 2,
+      "screenshot": "student-detail-1440-zoom2.png"
+    }
+  ],
+  "checks": [
+    {
+      "width": 360,
+      "zoom": 1,
+      "passed": [
+        "public/invalid path zero requests",
+        "deep-link login resumes material route",
+        "teacher list four states",
+        "search validation/empty/error/citation",
+        "Unicode quote matches detail",
+        "escaped body",
+        "original download bytes and filename",
+        "Blob release",
+        "empty body contract failure",
+        "404 indistinguishable",
+        "uncertain upload manual same-key confirmation",
+        "saved failed state and manual retry",
+        "429 cooldown without automatic write",
+        "new upload explicit confirmation",
+        "late search ignored",
+        "old download cannot fire after class change",
+        "student read-only and direct upload denied",
+        "no persistent credentials"
+      ],
+      "uploads": 4,
+      "indexRetries": 1,
+      "download": {
+        "bytes": 2243,
+        "algorithm": "sha256",
+        "digest": "baec52d8ccabee351c8824acb1c843c54904bfac8eb67e1b7cb016d4f6e66cfd"
+      }
+    },
+    {
+      "width": 767,
+      "zoom": 1,
+      "passed": [
+        "public/invalid path zero requests",
+        "deep-link login resumes material route",
+        "teacher list four states",
+        "search validation/empty/error/citation",
+        "Unicode quote matches detail",
+        "escaped body",
+        "original download bytes and filename",
+        "Blob release",
+        "empty body contract failure",
+        "404 indistinguishable",
+        "uncertain upload manual same-key confirmation",
+        "saved failed state and manual retry",
+        "429 cooldown without automatic write",
+        "new upload explicit confirmation",
+        "late search ignored",
+        "old download cannot fire after class change",
+        "student read-only and direct upload denied",
+        "no persistent credentials"
+      ],
+      "uploads": 4,
+      "indexRetries": 1,
+      "download": {
+        "bytes": 2243,
+        "algorithm": "sha256",
+        "digest": "baec52d8ccabee351c8824acb1c843c54904bfac8eb67e1b7cb016d4f6e66cfd"
+      }
+    },
+    {
+      "width": 768,
+      "zoom": 1,
+      "passed": [
+        "public/invalid path zero requests",
+        "deep-link login resumes material route",
+        "teacher list four states",
+        "search validation/empty/error/citation",
+        "Unicode quote matches detail",
+        "escaped body",
+        "original download bytes and filename",
+        "Blob release",
+        "empty body contract failure",
+        "404 indistinguishable",
+        "uncertain upload manual same-key confirmation",
+        "saved failed state and manual retry",
+        "429 cooldown without automatic write",
+        "new upload explicit confirmation",
+        "late search ignored",
+        "old download cannot fire after class change",
+        "student read-only and direct upload denied",
+        "no persistent credentials"
+      ],
+      "uploads": 4,
+      "indexRetries": 1,
+      "download": {
+        "bytes": 2243,
+        "algorithm": "sha256",
+        "digest": "baec52d8ccabee351c8824acb1c843c54904bfac8eb67e1b7cb016d4f6e66cfd"
+      }
+    },
+    {
+      "width": 1440,
+      "zoom": 1,
+      "passed": [
+        "public/invalid path zero requests",
+        "deep-link login resumes material route",
+        "teacher list four states",
+        "search validation/empty/error/citation",
+        "Unicode quote matches detail",
+        "escaped body",
+        "original download bytes and filename",
+        "Blob release",
+        "empty body contract failure",
+        "404 indistinguishable",
+        "uncertain upload manual same-key confirmation",
+        "saved failed state and manual retry",
+        "429 cooldown without automatic write",
+        "new upload explicit confirmation",
+        "late search ignored",
+        "old download cannot fire after class change",
+        "student read-only and direct upload denied",
+        "no persistent credentials"
+      ],
+      "uploads": 4,
+      "indexRetries": 1,
+      "download": {
+        "bytes": 2243,
+        "algorithm": "sha256",
+        "digest": "baec52d8ccabee351c8824acb1c843c54904bfac8eb67e1b7cb016d4f6e66cfd"
+      }
+    },
+    {
+      "width": 360,
+      "zoom": 2,
+      "passed": [
+        "public/invalid path zero requests",
+        "deep-link login resumes material route",
+        "teacher list four states",
+        "search validation/empty/error/citation",
+        "Unicode quote matches detail",
+        "escaped body",
+        "original download bytes and filename",
+        "Blob release",
+        "empty body contract failure",
+        "404 indistinguishable",
+        "uncertain upload manual same-key confirmation",
+        "saved failed state and manual retry",
+        "429 cooldown without automatic write",
+        "new upload explicit confirmation",
+        "late search ignored",
+        "old download cannot fire after class change",
+        "student read-only and direct upload denied",
+        "no persistent credentials"
+      ],
+      "uploads": 4,
+      "indexRetries": 1,
+      "download": {
+        "bytes": 2243,
+        "algorithm": "sha256",
+        "digest": "baec52d8ccabee351c8824acb1c843c54904bfac8eb67e1b7cb016d4f6e66cfd"
+      }
+    },
+    {
+      "width": 1440,
+      "zoom": 2,
+      "passed": [
+        "public/invalid path zero requests",
+        "deep-link login resumes material route",
+        "teacher list four states",
+        "search validation/empty/error/citation",
+        "Unicode quote matches detail",
+        "escaped body",
+        "original download bytes and filename",
+        "Blob release",
+        "empty body contract failure",
+        "404 indistinguishable",
+        "uncertain upload manual same-key confirmation",
+        "saved failed state and manual retry",
+        "429 cooldown without automatic write",
+        "new upload explicit confirmation",
+        "late search ignored",
+        "old download cannot fire after class change",
+        "student read-only and direct upload denied",
+        "no persistent credentials"
+      ],
+      "uploads": 4,
+      "indexRetries": 1,
+      "download": {
+        "bytes": 2243,
+        "algorithm": "sha256",
+        "digest": "baec52d8ccabee351c8824acb1c843c54904bfac8eb67e1b7cb016d4f6e66cfd"
+      }
+    }
+  ],
+  "errors": [],
+  "contrast": [
+    {
+      "foreground": "rgb(39, 36, 33)",
+      "background": "rgb(247, 246, 243)",
+      "ratio": 14.281682400505913
+    },
+    {
+      "foreground": "rgb(104, 97, 92)",
+      "background": "rgb(247, 246, 243)",
+      "ratio": 5.627333013394766
+    },
+    {
+      "foreground": "rgb(255, 255, 255)",
+      "background": "rgb(148, 7, 10)",
+      "ratio": 9.154497551025868
+    },
+    {
+      "foreground": "rgb(39, 36, 33)",
+      "background": "rgb(255, 255, 255)",
+      "ratio": 15.434610156785826
+    },
+    {
+      "foreground": "rgb(148, 7, 10)",
+      "background": "rgb(247, 246, 243)",
+      "ratio": 8.470678898389933
+    },
+    {
+      "foreground": "rgb(23, 105, 68)",
+      "background": "rgb(247, 246, 243)",
+      "ratio": 6.1872784822701465
+    },
+    {
+      "foreground": "rgb(104, 97, 92)",
+      "background": "rgb(255, 255, 255)",
+      "ratio": 6.081614815988506
+    },
+    {
+      "width": 360,
+      "zoom": 1,
+      "controls": {
+        "border": {
+          "foreground": "rgb(140, 133, 128)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 3.632084452693414
+        },
+        "placeholder": {
+          "foreground": "rgb(117, 117, 117)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 4.607518093747377
+        },
+        "focus": {
+          "foreground": "rgb(148, 7, 10)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 8.470678898389933,
+          "width": "2px",
+          "style": "solid"
+        }
+      }
+    },
+    {
+      "foreground": "rgb(180, 35, 50)",
+      "background": "rgb(247, 246, 243)",
+      "ratio": 6.021247892873438
+    },
+    {
+      "foreground": "rgb(128, 89, 0)",
+      "background": "rgb(247, 246, 243)",
+      "ratio": 5.805966226094827
+    },
+    {
+      "width": 767,
+      "zoom": 1,
+      "controls": {
+        "border": {
+          "foreground": "rgb(140, 133, 128)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 3.632084452693414
+        },
+        "placeholder": {
+          "foreground": "rgb(117, 117, 117)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 4.607518093747377
+        },
+        "focus": {
+          "foreground": "rgb(148, 7, 10)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 8.470678898389933,
+          "width": "2px",
+          "style": "solid"
+        }
+      }
+    },
+    {
+      "width": 768,
+      "zoom": 1,
+      "controls": {
+        "border": {
+          "foreground": "rgb(140, 133, 128)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 3.632084452693414
+        },
+        "placeholder": {
+          "foreground": "rgb(117, 117, 117)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 4.607518093747377
+        },
+        "focus": {
+          "foreground": "rgb(148, 7, 10)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 8.470678898389933,
+          "width": "2px",
+          "style": "solid"
+        }
+      }
+    },
+    {
+      "width": 1440,
+      "zoom": 1,
+      "controls": {
+        "border": {
+          "foreground": "rgb(140, 133, 128)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 3.632084452693414
+        },
+        "placeholder": {
+          "foreground": "rgb(117, 117, 117)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 4.607518093747377
+        },
+        "focus": {
+          "foreground": "rgb(148, 7, 10)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 8.470678898389933,
+          "width": "2px",
+          "style": "solid"
+        }
+      }
+    },
+    {
+      "width": 360,
+      "zoom": 2,
+      "controls": {
+        "border": {
+          "foreground": "rgb(140, 133, 128)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 3.632084452693414
+        },
+        "placeholder": {
+          "foreground": "rgb(117, 117, 117)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 4.607518093747377
+        },
+        "focus": {
+          "foreground": "rgb(148, 7, 10)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 8.470678898389933,
+          "width": "2px",
+          "style": "solid"
+        }
+      }
+    },
+    {
+      "width": 1440,
+      "zoom": 2,
+      "controls": {
+        "border": {
+          "foreground": "rgb(140, 133, 128)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 3.632084452693414
+        },
+        "placeholder": {
+          "foreground": "rgb(117, 117, 117)",
+          "background": "rgb(255, 255, 255)",
+          "ratio": 4.607518093747377
+        },
+        "focus": {
+          "foreground": "rgb(148, 7, 10)",
+          "background": "rgb(247, 246, 243)",
+          "ratio": 8.470678898389933,
+          "width": "2px",
+          "style": "solid"
+        }
+      }
+    }
+  ],
+  "result": "pass"
+}

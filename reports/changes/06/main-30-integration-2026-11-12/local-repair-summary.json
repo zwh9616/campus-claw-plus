@@ -1,0 +1,58 @@
+{
+  "source": "a9212e028b706772067ca86d208ac7d7acc0ca0e",
+  "gate": {
+    "time": "2026-11-12T08:45:29.834Z",
+    "node": "v25.2.1",
+    "exitCode": 0,
+    "results": [
+      {
+        "name": "check",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 28932
+      },
+      {
+        "name": "audit",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 10621
+      },
+      {
+        "name": "secret-scan",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 5913
+      },
+      {
+        "name": "verify",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 294922
+      }
+    ],
+    "notRun": []
+  },
+  "scans": {
+    "mysql.json": {
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    "backend.json": {
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    "admin.json": {
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    "frontend.json": {
+      "HIGH": 0,
+      "CRITICAL": 0
+    }
+  },
+  "changedProductionFiles": []
+}

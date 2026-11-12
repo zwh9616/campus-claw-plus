@@ -32,7 +32,7 @@ export function validateBatch({ registry, compose, config, dockerfiles }) {
   assert.deepEqual([...names].sort(), Object.keys(compose.services).sort(), 'Compose service inventory differs from batch')
   const changes = new Set(registry.changes.map(c => c.id))
   assert.equal(changes.size, registry.changes.length)
-  assert.deepEqual([...changes].sort(), ['01', '02', '04'], 'Batch approval scope differs')
+  assert.deepEqual([...changes].sort(), ['01', '02', '04', '06'], 'Batch approval scope differs')
   for (const change of registry.changes) {
     assert.ok(existsSync(change.spec), 'Approved spec link missing')
     assert.match(change.integrated_commit, /^[a-f0-9]{40}$/, 'Integration commit must be explicit')
@@ -40,6 +40,7 @@ export function validateBatch({ registry, compose, config, dockerfiles }) {
   }
   const knownKeys = new Set(config.active.map(k => k.name))
   const declared = new Map(registry.services.map(s => [s.name, s]))
+  assert.deepEqual([...declared.get('frontend').changes].sort(), ['01', '02', '06'], 'Frontend must include the integrated materials pages')
   const owner = { backend: 'backend', migration: 'admin', initializer: 'admin', nginx: 'frontend' }
   for (const key of config.active) for (const consumer of key.consumers ?? []) {
     if (owner[consumer]) assert.ok(declared.get(owner[consumer]).config_keys.includes(key.name), 'Per-process configuration not covered')

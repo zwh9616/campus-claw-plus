@@ -1,0 +1,484 @@
+{
+  "source": "ff93c7b91ca7592059b1c0b41939202c708740b4",
+  "reviewedPeer": "1fabfc5081969f52f6903a95932d193b045b2b44",
+  "baseMain": "1fa47ee2c3d486ba4fcfb615ee73ea22de0b05c7",
+  "reviewer": "zwh9616（小张），AI辅助",
+  "date": "2026-11-12 Asia/Shanghai",
+  "node": "v25.2.1",
+  "npm": "11.6.2",
+  "docker": "29.8.0",
+  "playwright": "1.57.0, external ignored evidence tool; not app dependency",
+  "mockBrowser": "143.0.7499.4",
+  "realBrowser": "144.0.2",
+  "frontendSha256": {
+    "frontend/src/auth/client.ts": "d7c75e26c287d80c1d145439998bec6bb270e55b4ffee9f28119085a38213a25",
+    "frontend/src/components/ui.tsx": "968cd32b2ce5010d688a22ab2be0de250289e9bc7190b7277c24c64e664885c5",
+    "frontend/src/pages/App.tsx": "d65cf9f60f3c588e98546fa26812dae398feff6b51c5d90b10d733b914b18471",
+    "frontend/src/materials/Pages.tsx": "7e3a044af9593289d0657f08c154cc54691d040a8680ea357519e1026d04c777",
+    "frontend/src/materials/contracts.ts": "a44ac6e7697ebc150bc4cc0f7bb4a8c72e15e3ec15062015556f2c588fa0691e",
+    "frontend/src/materials/materials.css": "717a4ef5605cace3398b38108cdb68a9ffa6eb0818394214f0e5210d21072ea6",
+    "frontend/src/shared/values.ts": "6aec7483f46215c5ddd3b0843e323fee468da638f27b52c42c5a238cfe50eb71",
+    "frontend/src/sample-theme.css": "b3545fa6304c5004954620e5e843975bed91b71abe933bc77a7066e7a6b16c7d"
+  },
+  "mockScreenshots": [
+    {
+      "file": "teacher-list-long-360-zoom1.png",
+      "sha256": "8d6a796e9c71df21a62f9a889a048aa750f0882b7674ae5e5afed22373dfd2d0"
+    },
+    {
+      "file": "teacher-list-empty-360-zoom1.png",
+      "sha256": "f270501008335f09f729888a42becc580fd2c613a50802f4cb4e15d637abf52a"
+    },
+    {
+      "file": "teacher-list-error-360-zoom1.png",
+      "sha256": "ab044c308ecd29b6ac3114e5a686068be7a84eb1218b03d5217938e6a71c255c"
+    },
+    {
+      "file": "teacher-list-loading-360-zoom1.png",
+      "sha256": "8f17f8044ff6e71dfa7852f194b73dafd27f9b04e7b213b42901f7df1d89d0d5"
+    },
+    {
+      "file": "list-page-two-360-zoom1.png",
+      "sha256": "14596020d39ad64a393ec990b22d29d7e4f34c3f56ece65a32ea5bb61d2eeed1"
+    },
+    {
+      "file": "search-empty-360-zoom1.png",
+      "sha256": "5da5af441de1b30b09a26a65c5b67eb790aa6ba96811b8b51b7e146950a73379"
+    },
+    {
+      "file": "search-error-360-zoom1.png",
+      "sha256": "17b31d15482b3092579ce4e90d177c0f345a985005eedb9dd4a3fd62ef46f6bf"
+    },
+    {
+      "file": "search-citation-360-zoom1.png",
+      "sha256": "7cdaa8a42c0335f72b1308f592a84babde072ada91589b22c274babc37f118bd"
+    },
+    {
+      "file": "detail-citation-360-zoom1.png",
+      "sha256": "7885386150ec1f4775ebacf2abb9a2894ff4b42475019711c21bbd799094339b"
+    },
+    {
+      "file": "detail-empty-contract-error-360-zoom1.png",
+      "sha256": "58eec9afae96e7f2f43f6cd483908ad8b2b0daee76a5d3b3afc0d4667fef91ab"
+    },
+    {
+      "file": "detail-not-viewable-360-zoom1.png",
+      "sha256": "df33c310b9dc2a64b46b0aef21316ef77f1a872e052bfed256a6f35d3972cfb5"
+    },
+    {
+      "file": "upload-invalid-360-zoom1.png",
+      "sha256": "0fba9de54d8a32ed1d4a61fb35b7f2e66f394ecc45e6c8175edff27de448aa66"
+    },
+    {
+      "file": "upload-uncertain-360-zoom1.png",
+      "sha256": "30c48b32929c62b7818a881214539c971f484301d873cf04a0e7d47c556b1dde"
+    },
+    {
+      "file": "detail-failed-saved-360-zoom1.png",
+      "sha256": "b375feda94dcf9b36b60ef2829ceb6bed43b18efbd1d8227d3862c7070aa1ddd"
+    },
+    {
+      "file": "detail-failed-action-360-zoom1.png",
+      "sha256": "80a276a4113ef6852e1fe48dc59b7e49fcf5c5830b8946c39882301f399cec97"
+    },
+    {
+      "file": "upload-429-360-zoom1.png",
+      "sha256": "70789f620192c0c6a4a6a495216151670717d665906079398f414e2e859842cb"
+    },
+    {
+      "file": "student-list-360-zoom1.png",
+      "sha256": "6b42ac2d772740f13df76e2d78e658eec40e3345e08b052761ed2f2d9cc0dbfa"
+    },
+    {
+      "file": "student-upload-denied-360-zoom1.png",
+      "sha256": "dd473b256fb2bd60dd45a8122d786eb2761a48bd5103fa128023a36522092170"
+    },
+    {
+      "file": "student-detail-360-zoom1.png",
+      "sha256": "d1e00dde906acbd3202a2c036f8739ad75059886d8693eac4c849db4c54822f4"
+    },
+    {
+      "file": "teacher-list-long-767-zoom1.png",
+      "sha256": "1d951cf5541803081d7fbb7c0190e01eb270803a92bc8c379061f2a1ea70eee4"
+    },
+    {
+      "file": "teacher-list-empty-767-zoom1.png",
+      "sha256": "38c8ca55675628ef28c100c6cd706cc5c527c69cd3aae36a6660dac6a964a2f4"
+    },
+    {
+      "file": "teacher-list-error-767-zoom1.png",
+      "sha256": "6403ddfff78842375413df848dd6e971ead2611ab5331b99aa9a1216a8983e71"
+    },
+    {
+      "file": "teacher-list-loading-767-zoom1.png",
+      "sha256": "c48b08e49cfd7455659828faf5a1ad18690c52deb3ceae8bf19d011ea74469f8"
+    },
+    {
+      "file": "list-page-two-767-zoom1.png",
+      "sha256": "a33001fc1bd6d67ce5df899b2d11aefa59c8a181e608f6e01294049906d3fa1c"
+    },
+    {
+      "file": "search-empty-767-zoom1.png",
+      "sha256": "745c6339be5b6e845d84165158163fe538b879be9e652e6ef45c43ec4ebcebdc"
+    },
+    {
+      "file": "search-error-767-zoom1.png",
+      "sha256": "d41da2c5ffb28f7a38802241673f3d8b149dda38d5620985ded0c286b02fff6e"
+    },
+    {
+      "file": "search-citation-767-zoom1.png",
+      "sha256": "42a3936a899f4dfc1e762e946678dd7ba7e18a51a70c7988237e98dfac6f851d"
+    },
+    {
+      "file": "detail-citation-767-zoom1.png",
+      "sha256": "4606df4f71e18be3a04152271a823bd3873f14da4144676bb6dde21453d718f1"
+    },
+    {
+      "file": "detail-empty-contract-error-767-zoom1.png",
+      "sha256": "d2226a2b0fc22386555ba0ff1b2d033e7ae41258b3d6e3b6fa9278a104b95e65"
+    },
+    {
+      "file": "detail-not-viewable-767-zoom1.png",
+      "sha256": "078fae8a7dfe1c04e7effa5d68f9283bc95c442f4e21e378b74c04d6bdba9e38"
+    },
+    {
+      "file": "upload-invalid-767-zoom1.png",
+      "sha256": "6beb6699ee50cc2301ef68b1472322cda6bd2e4780722640d266af475e6100cf"
+    },
+    {
+      "file": "upload-uncertain-767-zoom1.png",
+      "sha256": "9102b81c643406ace87adabb04d59cbf23d1441caa868d38aefb2891a91b04aa"
+    },
+    {
+      "file": "detail-failed-saved-767-zoom1.png",
+      "sha256": "e495482ada129c2730f55be2afec3c6a9054efa51f35b2dc48dc6b28a5cfa1d6"
+    },
+    {
+      "file": "detail-failed-action-767-zoom1.png",
+      "sha256": "e495482ada129c2730f55be2afec3c6a9054efa51f35b2dc48dc6b28a5cfa1d6"
+    },
+    {
+      "file": "upload-429-767-zoom1.png",
+      "sha256": "6cd00a302603d6d53f463f0641b42d8fef5683fd83bff92a8c1499b77ecfaef6"
+    },
+    {
+      "file": "student-list-767-zoom1.png",
+      "sha256": "5c944f721ea01a9b873a73fe2f452b2a86e882ac16d1a1f1ff991ad3482649ea"
+    },
+    {
+      "file": "student-upload-denied-767-zoom1.png",
+      "sha256": "7990aa84541d958e2389c21a7f37af2095149e79e47f7e78fda1426cc9dfea04"
+    },
+    {
+      "file": "student-detail-767-zoom1.png",
+      "sha256": "3568a4e57ff2ce67b219af5248a1a2d6f06bd37ce611ba5e900e20c4446bda9a"
+    },
+    {
+      "file": "teacher-list-long-768-zoom1.png",
+      "sha256": "d53bed7603f2d126499f3b3f66b1742e7e2eb72725edd5ab6c90f272625f8601"
+    },
+    {
+      "file": "teacher-list-empty-768-zoom1.png",
+      "sha256": "66bedbc2912340fce1dd034164174fa9422a6c7f9793192e893d58a759ee728e"
+    },
+    {
+      "file": "teacher-list-error-768-zoom1.png",
+      "sha256": "9de83efeee3b829df90294cc47df9f163e016d29b637a31996baf542a1407e2c"
+    },
+    {
+      "file": "teacher-list-loading-768-zoom1.png",
+      "sha256": "7f5ed5cc06735691d8e81b46963566afb91b9bb4ec5e93048b2c9cdbc3eb074e"
+    },
+    {
+      "file": "list-page-two-768-zoom1.png",
+      "sha256": "31d8ab084de96e89879b72430c06916cad2a7c067131f870ff3cc30095cde5d3"
+    },
+    {
+      "file": "search-empty-768-zoom1.png",
+      "sha256": "70c71bf0ff413c2a6f65dde2a322331f371c36a59b746cce79d5a0807e13b74d"
+    },
+    {
+      "file": "search-error-768-zoom1.png",
+      "sha256": "3ee987c28a1da662a47a528198d6dda998ab3b926bbb10e4235c75b07f683021"
+    },
+    {
+      "file": "search-citation-768-zoom1.png",
+      "sha256": "0e1e2fd69553b6b78b30dc8cc2775b9e61bde37fc9f0335a2c3b516591e7c531"
+    },
+    {
+      "file": "detail-citation-768-zoom1.png",
+      "sha256": "4f662f0e5922a9d884dad90b164b3b61c3ec726e5da496c3f1e6be46165cf007"
+    },
+    {
+      "file": "detail-empty-contract-error-768-zoom1.png",
+      "sha256": "533e8b524eeeceea01ff86da15f7bbeb5d286f3939b08ce005978f2473c4fbd2"
+    },
+    {
+      "file": "detail-not-viewable-768-zoom1.png",
+      "sha256": "b2685bbc536a01c4024966c8982e79d3090c005711ef5890d0e4e804a218877e"
+    },
+    {
+      "file": "upload-invalid-768-zoom1.png",
+      "sha256": "d45fcd6989e35c86e0b4f6d870964a6ae1faeee6496518d63f9f30764297aaee"
+    },
+    {
+      "file": "upload-uncertain-768-zoom1.png",
+      "sha256": "c4a178760ad7aba38d4726352352e08ec08d9c22d080aa65ffe7680a49051e1d"
+    },
+    {
+      "file": "detail-failed-saved-768-zoom1.png",
+      "sha256": "8b1792ac7c7a9c3884463a3601d02c65fa9b15521d10d626c7252fa6e9a7bad5"
+    },
+    {
+      "file": "detail-failed-action-768-zoom1.png",
+      "sha256": "8b1792ac7c7a9c3884463a3601d02c65fa9b15521d10d626c7252fa6e9a7bad5"
+    },
+    {
+      "file": "upload-429-768-zoom1.png",
+      "sha256": "2c4e5615d383c833c0b976035e0471bf5c9ba3b7ee80a42353ca4f72bfd8ad41"
+    },
+    {
+      "file": "student-list-768-zoom1.png",
+      "sha256": "4edb8d5500675ce77d90c07f0dc751255954b418f1da6080625309cb24e9fe44"
+    },
+    {
+      "file": "student-upload-denied-768-zoom1.png",
+      "sha256": "0e38b7413d3c3670cb546aa06bcef0a2767e7766de3285959d976aa87636adb5"
+    },
+    {
+      "file": "student-detail-768-zoom1.png",
+      "sha256": "4a4e90b404fba5c0b0fee7829739ded9f8877ac03c35afa839ac1f6dad1776fd"
+    },
+    {
+      "file": "teacher-list-long-1440-zoom1.png",
+      "sha256": "8d7e7b2aa59a24219f5550b941e636caba4fe017df40d4136d77875245b80505"
+    },
+    {
+      "file": "teacher-list-empty-1440-zoom1.png",
+      "sha256": "5fc4a6f4c480ffa7477a393144dd2d847025b53fa310d9a58cbeca93c0722d3f"
+    },
+    {
+      "file": "teacher-list-error-1440-zoom1.png",
+      "sha256": "1eaffdc940b010e17e490cdbe073f30fafe49782829fef50508bb9364688c99f"
+    },
+    {
+      "file": "teacher-list-loading-1440-zoom1.png",
+      "sha256": "f964920830b78cb8b7f87c12bcb0a4b5be5530d372d3de4bc3f0f71a3611a5eb"
+    },
+    {
+      "file": "list-page-two-1440-zoom1.png",
+      "sha256": "3b1cfae4114043a3d6bc52d7f9f47e38fa10244539da0dd7ca243c8e098e6955"
+    },
+    {
+      "file": "search-empty-1440-zoom1.png",
+      "sha256": "da2151c7854908815431c00fa512c5c55c0484cbc7eccd3feb2ebb2b4cfa733f"
+    },
+    {
+      "file": "search-error-1440-zoom1.png",
+      "sha256": "8551cce392c7ef45ad1a9d85bd703899f6d0b86eb20f48d85d4f7d44cfc7c56a"
+    },
+    {
+      "file": "search-citation-1440-zoom1.png",
+      "sha256": "8b49f2d91a2d54815dc128de8752213b41cb48c9f3c20025c44cf2ee6177ddf2"
+    },
+    {
+      "file": "detail-citation-1440-zoom1.png",
+      "sha256": "c46c83b9e7a538cc21a219d6ca4f6360aafabebaaf9e1bebbb76be3ab0867e40"
+    },
+    {
+      "file": "detail-empty-contract-error-1440-zoom1.png",
+      "sha256": "6f0dbdd24b0e91509aa0225af1d518b03e7cf334b03fddc77d39e5bb13392328"
+    },
+    {
+      "file": "detail-not-viewable-1440-zoom1.png",
+      "sha256": "5a683b881b24af9e2b16595e917aef0ccc0ef10f68dcef975dc4f3548777470e"
+    },
+    {
+      "file": "upload-invalid-1440-zoom1.png",
+      "sha256": "726f2766041953688e1bd2211f4d07675316c09f42b254fa415ba90cf4f45327"
+    },
+    {
+      "file": "upload-uncertain-1440-zoom1.png",
+      "sha256": "f8d0fc9aa638ac7932bfc6b0e56d5f51f756c78c7637e9adf261ad62832dd4e6"
+    },
+    {
+      "file": "detail-failed-saved-1440-zoom1.png",
+      "sha256": "f0b4ae0a7df3d5a944ee5bab54c8a79f3bfea92a201302b0781253d8e3b54f01"
+    },
+    {
+      "file": "detail-failed-action-1440-zoom1.png",
+      "sha256": "f0b4ae0a7df3d5a944ee5bab54c8a79f3bfea92a201302b0781253d8e3b54f01"
+    },
+    {
+      "file": "upload-429-1440-zoom1.png",
+      "sha256": "c019da2b3f5242b723b5f345259db3ef72cc646e79898781dc4bc49f2c1b75b4"
+    },
+    {
+      "file": "student-list-1440-zoom1.png",
+      "sha256": "62d3a742b6f36472d159e6b0f9aef4b5a75143bcc41a240b41963509797cc891"
+    },
+    {
+      "file": "student-upload-denied-1440-zoom1.png",
+      "sha256": "8c0061be1c187cb1d424c9b57f3a3798e6ddf7479a04f18d96b94bef89889e0f"
+    },
+    {
+      "file": "student-detail-1440-zoom1.png",
+      "sha256": "23ab35b2de544efdb62895cb88a2150a52f5141db27838a27bc81d4847452ec5"
+    },
+    {
+      "file": "teacher-list-long-360-zoom2.png",
+      "sha256": "55ef6b399d3b0a8904b8f7c0c5da6f0d9c549ffaa11ff31b415f3dfcdbe4f120"
+    },
+    {
+      "file": "teacher-list-empty-360-zoom2.png",
+      "sha256": "55ef6b399d3b0a8904b8f7c0c5da6f0d9c549ffaa11ff31b415f3dfcdbe4f120"
+    },
+    {
+      "file": "teacher-list-error-360-zoom2.png",
+      "sha256": "c5ff8f5d4ba1fcd85fe4edac73a483c7384abde99f8ebc7525a9aa1337d6b6b1"
+    },
+    {
+      "file": "teacher-list-loading-360-zoom2.png",
+      "sha256": "55ef6b399d3b0a8904b8f7c0c5da6f0d9c549ffaa11ff31b415f3dfcdbe4f120"
+    },
+    {
+      "file": "list-page-two-360-zoom2.png",
+      "sha256": "1c96efcae0956322cebb1fd7c244d2aad88f1738a17776fbc94cd9318f7a9726"
+    },
+    {
+      "file": "search-empty-360-zoom2.png",
+      "sha256": "cc17f1c3212550f9b38d1d3c61a8ef758a9c16ef24f04913ab529ace5c1ebe2b"
+    },
+    {
+      "file": "search-error-360-zoom2.png",
+      "sha256": "29222293cc5d523bffbbc95e473cdfaea0f2c25d8723bd28e473330625a77226"
+    },
+    {
+      "file": "search-citation-360-zoom2.png",
+      "sha256": "6425b903451afad30ce945eec205348e8638eb49f5c2fd2927be7f10ee236436"
+    },
+    {
+      "file": "detail-citation-360-zoom2.png",
+      "sha256": "936e86fd3b9c691ee83a89f6e42a375cc013a6706c2a3ae2c865e13ca07a1c2b"
+    },
+    {
+      "file": "detail-empty-contract-error-360-zoom2.png",
+      "sha256": "edbbe6f06cf9b40301a29ea0d4184991ccaa31150543fe2a5caf45f9236056bb"
+    },
+    {
+      "file": "detail-not-viewable-360-zoom2.png",
+      "sha256": "859614d3aef0e1af3e3c227735ea782374761fcb30c979c8778ffd5c960f7b68"
+    },
+    {
+      "file": "upload-invalid-360-zoom2.png",
+      "sha256": "d3c4c5982810638406c59adc12c6bec61c82c127d0b5efe97067508014bd583c"
+    },
+    {
+      "file": "upload-uncertain-360-zoom2.png",
+      "sha256": "24aa0745496fb23f3df685a132142a4a9d535dcec524fc4eb9b16f762038574e"
+    },
+    {
+      "file": "detail-failed-saved-360-zoom2.png",
+      "sha256": "a6607f785e2ac9f032a5d8a78ee85a59ffa2e9d5019cf90958b2367ac493daef"
+    },
+    {
+      "file": "detail-failed-action-360-zoom2.png",
+      "sha256": "a71b68917e1e37e5788aa71fe76f87035de7272b35f953ebccfa293efd5b7fb5"
+    },
+    {
+      "file": "upload-429-360-zoom2.png",
+      "sha256": "69b2612339dd51215b3428d678f5fafe0dea21d19c0914aa3d95af147aefbbc6"
+    },
+    {
+      "file": "student-list-360-zoom2.png",
+      "sha256": "ed8d89fad0271964515ddae99e15695f3006f2ac907dc5e227b8733a8e8864e8"
+    },
+    {
+      "file": "student-upload-denied-360-zoom2.png",
+      "sha256": "62a377d466acbe365b398cb0931c7ca9f3e547c11d235a11e202696bba1d9690"
+    },
+    {
+      "file": "student-detail-360-zoom2.png",
+      "sha256": "c987112a363fd790aabff52bd1523ae309066d99188e12b65a26c54a52aa5cb0"
+    },
+    {
+      "file": "teacher-list-long-1440-zoom2.png",
+      "sha256": "28a1b50c0e07f8ca325a43317923b4c913d57bfd00ca798a581bbfcbaceeef35"
+    },
+    {
+      "file": "teacher-list-empty-1440-zoom2.png",
+      "sha256": "aa2d7d738809d1847dcb90224adaa15b896be055ef010ed99f9bfad18193c0a1"
+    },
+    {
+      "file": "teacher-list-error-1440-zoom2.png",
+      "sha256": "fa74aaf9c6d62d7e976ec581398176c35e9fce4019a4ed2e82be6337bf1e4dfa"
+    },
+    {
+      "file": "teacher-list-loading-1440-zoom2.png",
+      "sha256": "aa2d7d738809d1847dcb90224adaa15b896be055ef010ed99f9bfad18193c0a1"
+    },
+    {
+      "file": "list-page-two-1440-zoom2.png",
+      "sha256": "815dd3486d49c0972eafe0e50d13ebd7eeff3c039ffae66ae2ca5deaedfcb808"
+    },
+    {
+      "file": "search-empty-1440-zoom2.png",
+      "sha256": "8b40040b1920da7d838a4d4606b13703636d738ccf85cd91b091d4c8f95e8d9d"
+    },
+    {
+      "file": "search-error-1440-zoom2.png",
+      "sha256": "8f803939f424a1f85c56f79f3c71f0c3165106a388fd93c374b7b9992166b4ba"
+    },
+    {
+      "file": "search-citation-1440-zoom2.png",
+      "sha256": "4b6db8208ac2a60c4d8255ab1beb4caff37b1197573c0efdc61538e0872810d8"
+    },
+    {
+      "file": "detail-citation-1440-zoom2.png",
+      "sha256": "e6b983fd4153fc1419f5899d959ddf3d659be240152e8ea00119a183bc9d5cd2"
+    },
+    {
+      "file": "detail-empty-contract-error-1440-zoom2.png",
+      "sha256": "d8386a8ff33512185dd8c0a4456a1d247f1df3cef0960d075ef0547f12674da9"
+    },
+    {
+      "file": "detail-not-viewable-1440-zoom2.png",
+      "sha256": "379f28685fa3a03b8dc2d8ff3e932422f6647348767f05e110b2961f1e9ffde8"
+    },
+    {
+      "file": "upload-invalid-1440-zoom2.png",
+      "sha256": "0fd6cd0c59387d906bd7604e2505bc2995f14d3f831a0b85cba2ec8cca760ca9"
+    },
+    {
+      "file": "upload-uncertain-1440-zoom2.png",
+      "sha256": "8c1bc35b377e6c064f88fbbd88d5a9f868c52a70eb4bd3a404cbe1ecac0edfcb"
+    },
+    {
+      "file": "detail-failed-saved-1440-zoom2.png",
+      "sha256": "0fb2bd87c8c3490e47e88cee3cca7ec0b93fe539871a492d7a61bf107eb7378d"
+    },
+    {
+      "file": "detail-failed-action-1440-zoom2.png",
+      "sha256": "96c7699409c9015810a6c0d12d7f15763a889ab4f25fa53e0c76c60afa4c5fa1"
+    },
+    {
+      "file": "upload-429-1440-zoom2.png",
+      "sha256": "00ab558efce5789e0649e0743527c5b530987a8f55d55d4c0423d57234e2d526"
+    },
+    {
+      "file": "student-list-1440-zoom2.png",
+      "sha256": "04314b112f9db3fded2bdec55b117f1b78f7b59c946a5d4670ee5c5883fe18f1"
+    },
+    {
+      "file": "student-upload-denied-1440-zoom2.png",
+      "sha256": "fc2dfdc5be10bc3b64f0392dcba77692fadb81b73a342c3917ff2d5a3e99d6f2"
+    },
+    {
+      "file": "student-detail-1440-zoom2.png",
+      "sha256": "0ca24e7c9b96f351d1da46b44d517e863399eba73ceae110716e531a14242241"
+    }
+  ],
+  "trust": "disposable Firefox NSS profile; ordinary CA/SAN validation; no OS trust change or ignoreTLS options",
+  "scope": "Independent mock plus real default HTTPS/two-class five-user MySQL verification; not production deployment or fault-injected real refresh race",
+  "modelCorrection": "Initial stricter token-invalidated-on-refresh model was discarded. Formal red/green follows 01: previously issued unexpired access remains valid. Failure is redundant second refresh (2 versus 1), not proof of real backend invalidating another read."
+}

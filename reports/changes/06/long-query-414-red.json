@@ -1,0 +1,27 @@
+{
+  "source": "1fa47ee2c3d486ba4fcfb615ee73ea22de0b05c7",
+  "sourceDirty": true,
+  "time": "2026-11-11T15:04:04.573Z",
+  "origin": "https://campus.test:32771",
+  "mode": "real default HTTPS frontend/backend/MySQL; no mocked HTTP responses",
+  "trust": "disposable Firefox NSS profile; ordinary CA/SAN validation; no OS trust change or ignoreTLS options",
+  "cases": [
+    {
+      "label": "默认发布HTTPS入口在正常CA/SAN校验下可用",
+      "passed": true
+    },
+    {
+      "label": "浏览器拒绝错误SAN，没有跳过证书验证",
+      "passed": true
+    }
+  ],
+  "screenshots": [],
+  "browser": "142.0.1",
+  "queryBoundary": {
+    "codepoints": 2000,
+    "status": 414
+  },
+  "result": "fail",
+  "error": "AssertionError [ERR_ASSERTION]: 2000-codepoint keyword contract through actual HTTPS gateway\n\n414 !== 200\n\n    at browserProof (file:///D:/campusclaw-mygroup/tmp/ge-materials-frontend/frontend/tests/materials-real-browser.mjs:51:12)\n    at async file:///D:/campusclaw-mygroup/tmp/ge-materials-frontend/scripts/verify-materials-browser.mjs:111:16",
+  "profileRemoved": true
+}

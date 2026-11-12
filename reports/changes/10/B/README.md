@@ -1,6 +1,6 @@
 # 10-B 第一批：身份、MySQL、资料运行接入
 
-2026-11-12用户明确授权推进10-B。小陈（Kevcco，AI辅助）实现/自测，小葛（gjj6666）逐批终审。本批从main `1fa47ee2c3d486ba4fcfb615ee73ea22de0b05c7`开始，仅核对已批准并集成的01/02/04；不重复实现业务，不把05/06未合入代码或planned服务加入部署。
+2026-11-12用户明确授权推进10-B。小陈（Kevcco，AI辅助）实现/自测，小葛（gjj6666）逐批终审。本批从main `1fa47ee2c3d486ba4fcfb615ee73ea22de0b05c7`开始，仅核对已批准并集成的01/02/04；不重复实现业务，不把当时05/06未合入代码或planned服务加入部署。现已同步main da8624c及已合入06，详见[本次增量](main-sync-2026-11-12.md)；原CI仅证明其当时范围，新版本另验。
 
 已交[PR #32](https://github.com/zwh9616/campus-claw-plus/pull/32)，实际请求小葛/gjj6666审查。首实现head7d4373e完整CI43181709752通过，四门禁全0及真实批次摘要0；原始artifact已下载核对，见[CI事实](ci/facts.json)、[完整门禁](ci/gate-results.json)、[批次摘要](ci/batch-results.json)和[原件](ci/evidence.zip)。本提交仅补交接与真实结果，当前head CI另看PR，不将旧head成功代替新head；小葛终审及合入/main复验未做。
 
@@ -13,11 +13,11 @@
 | mysql / 01及04持久库 | 既有固定MySQL8.4.13摘要及Go gosu构建；仅data内部网、命名卷 | mysqladmin ping为进程连通探针（2秒），不代替TLS/权限/迁移就绪；业务与健康真实DB操作另验 |
 | admin / 01及04离线迁移初始化 | 既有scratch admin；仅data，tools profile | 非常驻服务、无health；离线命令失败非零，独立DDL账号，不成为在线health依赖 |
 | backend / 01身份及04资料 | 固定Go构建→scratch；data/proxy、不发布端口 | 真实MySQL为必需依赖；`/server --healthcheck`、Go请求及Compose/Docker最大3秒，无空依赖回退 |
-| frontend / 已验收02身份页面 | 固定Node构建、固定Nginx摘要和现有libxslt补丁；ingress/proxy，仅主机环回HTTPS | nginx -t只校验配置；另从真实主机发布端口验证CA/SAN、健康与API。DB停机静态首页仍200，身份/资料依其合同失败 |
+| frontend / 已验收02身份及已合入06资料页面 | 固定Node构建、固定Nginx摘要和现有libxslt补丁；ingress/proxy，仅主机环回HTTPS | nginx -t只校验配置；另从真实主机发布端口验证CA/SAN、健康与API。DB停机静态首页仍200，身份/资料依其合同失败 |
 
 完整配置键/消费者取config-register.active，索引逐服务覆盖全部13键。backend不读取MYSQL_MIGRATION_DSN；admin只离线读取；证书/私钥只读挂载，秘密不在ARG/镜像层/前端/日志/仓库。网络、profile和构建目标与唯一根Compose匹配，新增服务/未登记键/未固定镜像/超过3秒探针均阻断check。
 
-材料检索是04已验收Go/MySQL模块，无独立检索容器或向量库。03 MCP、05任务、07模型、08成绩待各自准入；06 PR #30资料页面尚未合入，不在本批。可选LLM尚未运行，不能用一个假容器制造“可选依赖停机通过”。
+材料检索是04已验收Go/MySQL模块，无独立检索容器或向量库。03 MCP、05任务、07模型、08成绩待各自准入；06资料页面现已随#30合入，#31修复其提前414测试，main da8624c完整CI43186361938成功；本批在同一frontend登记06来源并保留其检查。可选LLM尚未运行，不能用一个假容器制造“可选依赖停机通过”。
 
 ## 本次改动与执行入口
 

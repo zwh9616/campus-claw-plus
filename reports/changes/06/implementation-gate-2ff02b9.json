@@ -1,0 +1,108 @@
+{
+  "source": "2ff02b9af75df572dcd389f2d03ba14feff60365",
+  "scope": "unchanged complete npm gate; separate native browser long-query failure remains blocking",
+  "version_note": "gate began on clean 2ff02b9; b3d52b1 later changes only external browser checks and status docs, with production/normal-check inputs unchanged",
+  "gate": {
+    "time": "2026-11-11T15:11:44.289Z",
+    "node": "v24.19.0",
+    "exitCode": 0,
+    "results": [
+      {
+        "name": "check",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 14651
+      },
+      {
+        "name": "audit",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 4350
+      },
+      {
+        "name": "secret-scan",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 1809
+      },
+      {
+        "name": "verify",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 177427
+      }
+    ],
+    "notRun": []
+  },
+  "archive": {
+    "path": "implementation-gate-2ff02b9.zip",
+    "algorithm": "sha256",
+    "digest": "36dd84129aa9ac5fe26f473557ebee6972403d188d50cf3c991f72a88cb81ea1"
+  },
+  "entries": [
+    {
+      "path": "output/verification/gate-results.json",
+      "algorithm": "sha256",
+      "digest": "ea6336dd24689f39d1867c6c6b661a788733372c14fce1ccb34621b77aa427f5"
+    },
+    {
+      "path": "output/identity/results.json",
+      "algorithm": "sha256",
+      "digest": "32907fede10b02db1ca077776018e0119b2c9c99d43119ff1011082ba4d8a4e9"
+    },
+    {
+      "path": "output/identity-wiring/results.json",
+      "algorithm": "sha256",
+      "digest": "f3fd7b9c603f8eb09ae0c9cea29512cad8271d08f6304c5febefed29716111ab"
+    },
+    {
+      "path": "output/mysql-image-verify/results.json",
+      "algorithm": "sha256",
+      "digest": "5eaeb9a4367e40169fa3d35e3c4c71a77941a61b213634f4acdaf13e505bbbc0"
+    },
+    {
+      "path": "output/mysql-image-verify/mysql.json",
+      "algorithm": "sha256",
+      "digest": "60ff8abee85ab923e6e217a1e35ed4f7adde78fa2362395ebca71c8de62eda7f"
+    },
+    {
+      "path": "output/application-image-verify/results.json",
+      "algorithm": "sha256",
+      "digest": "95dcdc1743c2f4d9a6b4fa1b60575749d79248077398fc1c44d911cb23d379d0"
+    },
+    {
+      "path": "output/application-image-verify/admin.json",
+      "algorithm": "sha256",
+      "digest": "a5a0c9db0e78ac25056f71873b7f0a088e28c1b1dd5f7f4ef2fee261dc0a966a"
+    },
+    {
+      "path": "output/application-image-verify/backend.json",
+      "algorithm": "sha256",
+      "digest": "db4151d47a2b797004b73b14312a44e9489e8def206caf84bebd51c1392ce0f4"
+    },
+    {
+      "path": "output/application-image-verify/frontend.json",
+      "algorithm": "sha256",
+      "digest": "90b5a3af8c3f219a1ed0d3e7b6536e24ef1651b1a32ca2297cd0d145d72458cb"
+    },
+    {
+      "path": "output/verification/secrets-history.json",
+      "algorithm": "sha256",
+      "digest": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "output/verification/secrets-staged.json",
+      "algorithm": "sha256",
+      "digest": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "output/06-long-query-failure/runtime.json",
+      "algorithm": "sha256",
+      "digest": "644fb33ed683c3f799bfc854e49b449dbfb2ac75eb0d3cfcfa392428e42a536c"
+    }
+  ]
+}
