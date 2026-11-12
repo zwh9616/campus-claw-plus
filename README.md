@@ -1,11 +1,11 @@
 # CampusClawPlus
 
-本分支已把MySQL、离线迁移/初始化、身份HTTP服务和同源HTTPS接入默认Compose。main已正常合入真实前端，提供公开首页、登录、最小工作台与账号页，仅接六个已实现身份接口；真实浏览器、终审和main集成按共享表逐项验收。当前审查、接线和真实联验结果统一见[共享进度表](docs/project-status.md)。
+本分支已将MySQL、离线迁移/初始化、身份HTTP服务和同源HTTPS接入默认Compose。身份前端已在main验收，本分支新增真实资料列表、检索、上传、原文及下载；小张已完成独立复验，最终正常合入与main复验以[共享进度表](docs/project-status.md)和PR #30实际记录为准。
 
 ## 当前运行范围
 
 - GET /health匿名，逐请求真实Ping MySQL，3秒预算；200为status=ok/mysql=up，失败503为status=error/mysql=down，均有服务端X-Request-ID。
-- 六个身份接口：登录、CSRF、刷新、me、登出、切班。04后端已随#26合入main6634e51并复验，另提供列表、详情、原文下载、教师上传、索引重试和keyword检索；具体输入/权限/失败响应见[公共合同](docs/contracts/README.md)及[资料运行交接](docs/materials-runtime.md)。前端资料页尚未接线，作业、AI、MCP和成绩接口不提供。
+- 六个身份接口：登录、CSRF、刷新、me、登出、切班。04后端已随#26合入main6634e51并复验，另提供列表、详情、原文下载、教师上传、索引重试和keyword检索；具体输入/权限/失败响应见[公共合同](docs/contracts/README.md)及[资料运行交接](docs/materials-runtime.md)。本06候选已接资料页面，小张独立复验已通过，最终合入与主干复验见共享表；作业、AI、MCP和成绩接口不提供。
 - 默认服务为frontend/backend/mysql；admin仅在tools profile用于离线操作。只向本机发布HTTPS，后端与数据库不发布主机端口；数据使用命名卷，server不自动DDL/初始化。
 - frontend单独加入Compose自管ingress bridge，负责本机端口入口；backend/MySQL/admin仍使用内部网络，后端只信任内部proxy中Nginx的精确/32。验收同时检查实际主机发布端口与容器内链路。
 
@@ -17,7 +17,7 @@
 - [公共合同](docs/contracts/README.md)：现行13个current操作包括六个身份、MySQL健康及六个04资料操作，其余planned教学操作仍不可调用；npm run check:contracts接入原检查入口。
 - [前端视觉规约](docs/standards/frontend-visual.md)：北大红#94070A、暖白、简约布局，参考Canvas/Moodle信息组织；小张已确认#15代表样板，真实页面已由小葛实现，最终联合验收由小张收口。
 - [协作规范](docs/standards/collaboration.md)：按变更两人接力；每组可提交修改必须同提交更新共享表。
-- [06资料页面规约](openspec/changes/2026-11-11-materials-frontend/proposal.md)已随#27经小葛批准合入并复验。#29代表样板经小张实际验收与修复确认，最终门禁收口后由小葛接真实资料接口，再交小张终审；作业页面仍依赖05，当前资料运行页面尚未实现。见[样板验收](reports/changes/06/zhang-sample-review-2026-11-11.md)。
+- [06资料页面规约](openspec/changes/2026-11-11-materials-frontend/proposal.md)已随#27经小葛批准合入并复验。#29代表样板经小张实际验收与修复确认，最终门禁收口后由小葛接真实资料接口，再交小张终审；作业页面仍依赖05；本候选真实资料页面已由小张独立复验，D2a长查询边界及四镜像实扫通过；最终合入与主干复验见共享表，并见[独立终审](reports/changes/06/zhang-final-review-2026-11-12.md)。见[样板验收](reports/changes/06/zhang-sample-review-2026-11-11.md)。
 - 2026-11-12组长恢复[05作业与持久任务规约](openspec/changes/2026-11-12-assignment-tasks/proposal.md)：小陈起草/终审，小张审规约/apply。当前提交九个候选操作、幂等/outbox/租约/取消及迁移方案供审查；自身规约与公共机器合同批准合入前不实现，接口仍planned、数据库目标仍4。真实AI批改/成绩与06作业页面另验。[05检查与交接](reports/changes/05/spec-review-ready-2026-11-12.md)
 
 
@@ -124,3 +124,9 @@ go run ./cmd/server
 - 密钥误入历史：持有人立即撤销旧值并轮换、更新环境并验证旧值失效，组长再协调历史清理；删除文件不等于撤销。完整流程见[安全规范](docs/standards/security.md)。
 
 课程依据：[第7课任务清单](https://devops.hello1023.com/课程任务清单-第7课.html)。实际完成状态以[验证证据入口](docs/lesson-07/README.md)为准。
+
+## 06资料页面候选的检查
+
+资料路由：`/app/materials`、`/app/materials/upload`、`/app/materials/{id}`。仅可信教师身份可上传/重新处理，学生只读ready。上传结果不确定时手动点击“确认上传结果”，更换内容须确认新上传；刷新、离开或身份变化会清理内存，请先核对列表。
+
+`npm run check:frontend-auth`包含原认证与资料用例。mock页面：使用外部Playwright1.56.0，运行`node frontend/tests/materials-browser.mjs --playwright ABSOLUTE_PLAYWRIGHT_PATH --origin http://127.0.0.1:5197 --output output/material-browser`。Windows可信真实浏览器：`npm run verify:materials-browser -- --playwright ABSOLUTE_PLAYWRIGHT_PATH`，需已安装相应Firefox/Python与Docker；只在临时NSS配置导入测试CA，不改操作系统信任库。完整原门禁仍为`npm run gate`；浏览器证据单列，不用它代替完整门禁。
