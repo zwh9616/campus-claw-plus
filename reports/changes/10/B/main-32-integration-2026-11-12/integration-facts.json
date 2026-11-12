@@ -1,0 +1,43 @@
+{
+  "main": "b4b13fde47bf39f2d478ff6a2721df23a04680d9",
+  "reviewed_head": "510e882c9f20f349c909fba7ceeaf84ecb8f9b88",
+  "review_id": 5872222879,
+  "reviewer": "gjj6666",
+  "merged_by": "gjj6666",
+  "merged_at": "2026-11-12T09:46:16Z",
+  "tree": "9c58992145b8df0e930e547ee003191f706e41d4",
+  "reviewed_tree": "9c58992145b8df0e930e547ee003191f706e41d4",
+  "main_ci": 43194409869,
+  "main_artifact": 13931299762,
+  "protected": true,
+  "visible_required_status_checks": {
+    "enforcement_level": "everyone",
+    "contexts": [
+      "check"
+    ],
+    "checks": [
+      {
+        "context": "check",
+        "app_id": 15368
+      }
+    ]
+  },
+  "user_confirmation": "允许合入并复验（推荐）",
+  "local_clean_main_checks": {
+    "npm_ci": 0,
+    "npm_setup": 0,
+    "npm_check": 0,
+    "npm_audit": 0,
+    "history_and_staged_secret_scan": 0
+  },
+  "local_full_gate": "not rerun; previous Windows verify timeout124 is preserved; actual main full gate is the CI run above",
+  "peer_pr33_review": {
+    "head_before_review": "f423192c821354866ff82bd94b45e4124b999678",
+    "pr31_review": 5871577319,
+    "pr31_ci": 43185758473,
+    "main31_ci": 43186361938,
+    "artifact31_digest_matches": true,
+    "real_browser_cases": 18,
+    "real_browser_source": "da8624cdb7793e64c4c3d29793b4c7a329adc2b8"
+  }
+}

@@ -1,6 +1,8 @@
 # CampusClawPlus
 
-本分支已将MySQL、离线迁移/初始化、身份HTTP服务和同源HTTPS接入默认Compose。身份前端已在main验收，本分支新增真实资料列表、检索、上传、原文及下载；小张已完成独立复验，#30已合入、测试修复#31随main da8624c完整CI43186361938通过；实际归档状态见[共享进度表](docs/project-status.md)。
+本分支已将MySQL、离线迁移/初始化、身份HTTP服务和同源HTTPS接入默认Compose。身份及真实资料页面已在main合入，提供资料列表、检索、上传、原文及下载；小张已完成独立复验，合入及最终主干复验见[共享进度表](docs/project-status.md)和PR #30实际记录为准。
+
+2026-11-12最新冻结事实：#35已获小陈对7fe5b5d真实批准5872964547，正常合入main e617cc0，主干完整CI43202284398通过；05任务1.3完成，原13 current/目标4与九个frozen合同分列，05业务实现仍待原负责人按2.x推进。#33/#34只补实际状态与证据，B全量/C和资料归档尚未完成。
 
 ## 当前运行范围
 
@@ -20,7 +22,7 @@
 - [前端视觉规约](docs/standards/frontend-visual.md)：北大红#94070A、暖白、简约布局，参考Canvas/Moodle信息组织；小张已确认#15代表样板，真实页面已由小葛实现，最终联合验收由小张收口。
 - [协作规范](docs/standards/collaboration.md)：按变更两人接力；每组可提交修改必须同提交更新共享表。
 - [06资料阶段原change](openspec/changes/archive/2026-11-11-materials-frontend/proposal.md)已随#27获小葛批准，样板#29经小张确认，真实实现#30和严格414修复#31已合入复验。五项MF需求/十二场景完整同步[主规约](openspec/specs/materials-frontend/spec.md)，本候选仅做资料阶段归档与索引，最终head批准/合入仍待实际门禁；作业页面另等05。[归档核对](reports/changes/06/archive-review-2026-11-12.md)。
-- 2026-11-12组长恢复[05作业与持久任务规约](openspec/changes/2026-11-12-assignment-tasks/proposal.md)：小陈起草/终审，小张审规约/apply。当前提交九个候选操作、幂等/outbox/租约/取消及迁移方案供审查；规约已获小张批准并随#31合入main da8624c，公共机器合同批准合入前不实现，接口仍planned、数据库目标仍4。真实AI批改/成绩与06作业页面另验。[05检查与交接](reports/changes/05/spec-review-ready-2026-11-12.md)
+- 05规约#31与公共冻结#35已实际获审合入复验，交接#36已合入b63dfdd并通过主干完整CI；迁移首批[#38](https://github.com/zwh9616/campus-claw-plus/pull/38)本机完整gate及旧head5df0faa CI通过、待小陈审查，九个业务操作仍frozen，作业服务/worker/AI/成绩与页面未完成。本归档不携带目标5 SQL。
 
 
 ## 从零启动身份服务
@@ -134,3 +136,4 @@ go run ./cmd/server
 `npm run check:frontend-auth`包含原认证与资料用例。mock页面：使用外部Playwright1.56.0，运行`node frontend/tests/materials-browser.mjs --playwright ABSOLUTE_PLAYWRIGHT_PATH --origin http://127.0.0.1:5197 --output output/material-browser`。Windows可信真实浏览器：`npm run verify:materials-browser -- --playwright ABSOLUTE_PLAYWRIGHT_PATH`，需已安装相应Firefox/Python与Docker；只在临时NSS配置导入测试CA，不改操作系统信任库。完整原门禁仍为`npm run gate`；浏览器证据单列，不用它代替完整门禁。
 
 06资料阶段已通过#30/#31主干复验，本PR仅同步[资料前端主规约](openspec/specs/materials-frontend/spec.md)与[原change归档候选](openspec/changes/archive/2026-11-11-materials-frontend/)。归档合入按实际PR记录为准，资料现有运行代码保持已验收main，作业页面另等05。
+2026-11-12运行批次更新：#32最终510e882获小葛实际批准，用户明确授权后正常合入main b4b13fd，主干完整CI43194409869通过，10-B第一批B1.3完成；[实际原件](reports/changes/10/B/main-32-integration-2026-11-12.md)。B全量/C及其他未就绪服务仍按原准入待验；06资料归档候选见[清单](reports/changes/06/archive-candidate-2026-11-12.md)。

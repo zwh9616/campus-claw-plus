@@ -1,6 +1,8 @@
 # CampusClawPlus 工程约定
 本分支默认运行已接入01身份与MySQL阶段，实际合入/验收状态见共享表。第7课骨架为历史基线，历史主规约见[spec](openspec/specs/project-bootstrap/spec.md)，归档依据见[历史变更](openspec/changes/archive/2026-10-28-project-bootstrap/)。本轮执行[00规约](openspec/changes/2026-11-04-business-contracts/proposal.md)、[design](openspec/changes/2026-11-04-business-contracts/design.md)、[spec](openspec/changes/2026-11-04-business-contracts/specs/business-contracts/spec.md)及[tasks](openspec/changes/2026-11-04-business-contracts/tasks.md)；00只负责公共合同。当前01/02/04已验收，06真实资料页面已随#30合入，测试修复#31及主干完整CI43186361938通过；2026-11-12组长恢复05规约工作，其他暂停项未恢复。PB/SC保留历史含义，新需求使用BC及后续change自己的前缀。
 
+2026-11-12最新冻结事实：#35已获小陈对7fe5b5d真实批准5872964547，正常合入main e617cc0，主干完整CI43202284398通过；05任务1.3完成，原13 current/目标4与九个frozen合同分列，05业务实现仍待原负责人按2.x推进。#33/#34只补实际状态与证据，B全量/C和资料归档尚未完成。
+
 ## 每次开始工作
 - 必读 [安全规范](docs/standards/security.md)，按范围必须读取下表规则；这些文件是约束，不是可选参考。
 - 必读 [共享进度表](docs/project-status.md) 与 [协作规范](docs/standards/collaboration.md)，先确认本次变更、两位负责人、前置条件和下一步；不得按人固定前端/后端/AI职责。
@@ -39,3 +41,5 @@ npm run dev 启动前端；完整运行按README填.env后 docker compose up --b
 使用Docker Go工具链时镜像摘要见scripts/toolchain.json；没有本地Go也可验证。任一子项失败阻断。
 
 06真实资料页面候选（本分支）：样板#29已合入main1fa47ee，当前已按批准2.x消费六个current资料操作；生产认证闭包保持令牌私有，新增资料列表/检索/上传/详情/原字节下载及教师显式处理。身份与资料回归保留；实际终审及集成见共享表。已发现合法2000非BMP码点查询被原Nginx 414拒绝，用户已明确确认D2a最小例外，四份规约已同步；仅允许Nginx有界大缓冲修复；14eefcf本人真实红绿、完整gate及双班五人18项已通过，现交小张独立终审，不得据本人通过代批准/合并或将06整体标完成。
+
+2026-11-12运行批次更新：#32最终510e882获小葛实际批准，用户明确授权后正常合入main b4b13fd，主干完整CI43194409869通过，10-B第一批B1.3完成；[实际原件](reports/changes/10/B/main-32-integration-2026-11-12.md)。B全量/C及其他未就绪服务仍按原准入待验；06资料归档候选见[清单](reports/changes/06/archive-candidate-2026-11-12.md)。
