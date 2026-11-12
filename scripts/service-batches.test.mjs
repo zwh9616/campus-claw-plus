@@ -1,7 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
-import { loadBatchInputs, validateBatch, validateRuntimeEvidence, evidencePaths, runtimeSteps } from './service-batches.mjs'
+import { loadBatchInputs, validateBatch, validateRuntimeEvidence, evidencePaths, runtimeSteps, auditedImageServices, retainedImageTags } from './service-batches.mjs'
 
 const inputs = () => loadBatchInputs()
 const valid = () => {
@@ -83,4 +83,29 @@ test('DO-SC-03/11 npm verify retains the original three real programs and CI ret
   assert.equal(pkg.scripts.verify, 'node scripts/verify-service-batches.mjs')
   assert.ok(pkg.scripts.check.includes('npm run check:service-batches'))
   assert.ok(readFileSync('.github/workflows/check.yml', 'utf8').includes('output/service-batches/results.json'))
+})
+
+test('DO-SC-11 exact audited IDs are selected with no pulls; incomplete/unsafe scans cannot start runtime', () => {
+  const { reports, inventory } = valid()
+  const select = () => auditedImageServices(reports[evidencePaths[0]], reports[evidencePaths[1]], inventory)
+  const services = select()
+  assert.equal(Object.keys(services).length, 4)
+  assert.equal(services.mysql.image, reports[evidencePaths[0]].summary.image_id)
+  assert.ok(Object.values(services).every(s => s.pull_policy === 'never'))
+  for (const mutate of [
+    r => { r[evidencePaths[1]].summaries.pop() },
+    r => { r[evidencePaths[0]].summary.image_id = 'mysql:latest' },
+    r => { r[evidencePaths[1]].summaries[0].HIGH = 1 },
+    r => { r[evidencePaths[0]].exit_code = 1 },
+    r => { r[evidencePaths[1]].summaries[0].dockerfile_sha256 = 'wrong' },
+  ]) { const x = valid(); mutate(x.reports); assert.throws(() => auditedImageServices(x.reports[evidencePaths[0]], x.reports[evidencePaths[1]], x.inventory)) }
+})
+
+test('DO-SC-11 verification cleanup excludes old reports and unrelated image references', () => {
+  const { reports } = valid()
+  reports[evidencePaths[0]].retained_tags = ['campus-mysql-audit-0123456789ab:verification']
+  assert.equal(retainedImageTags(reports, 1000).length, 1)
+  assert.deepEqual(retainedImageTags(reports, 3000), [])
+  reports[evidencePaths[0]].retained_tags = ['other-project:latest']
+  assert.throws(() => retainedImageTags(reports, 1000))
 })
