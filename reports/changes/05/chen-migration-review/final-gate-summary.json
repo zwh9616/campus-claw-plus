@@ -1,0 +1,132 @@
+{
+  "observer": "小陈 / Kevcco (AI辅助)",
+  "time": "2026-11-12T14:29:55.642Z",
+  "source": {
+    "commit": "4fbc93b94a16b20a335d887e0debf16015a7b32c",
+    "dirty": false,
+    "fingerprint": "de6c74dd5fa97b7c613d4c585a415517372d7dcc1de5e93dbc305f2e56062de8"
+  },
+  "versions": [
+    "v22.23.4",
+    "10.9.9",
+    "Docker version 28.3.3, build 980b856",
+    "Docker Compose version v2.39.1"
+  ],
+  "gate": [
+    {
+      "name": "check",
+      "exit": 0,
+      "duration_ms": 14959
+    },
+    {
+      "name": "audit",
+      "exit": 0,
+      "duration_ms": 2934
+    },
+    {
+      "name": "secret-scan",
+      "exit": 0,
+      "duration_ms": 1225
+    },
+    {
+      "name": "verify",
+      "exit": 0,
+      "duration_ms": 138475
+    }
+  ],
+  "not_run": [],
+  "images": [
+    {
+      "service": "mysql",
+      "image_id": "sha256:6f93716f1ba8f4b149c2c0e8ba8b77ef040f54554949aabba3d906473650bdc9",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "admin",
+      "image_id": "sha256:26f2fc24d26023c084232985d34df81cc44f985eb11038e6e4e70fca5449670e",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "backend",
+      "image_id": "sha256:254c73a9131d4b6506074d3d6bb84adc739cc274ff3d753c8be94262f3e5c889",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "frontend",
+      "image_id": "sha256:c1774c0c6e481ec5636e414591b22f9f59366d72f5b61451c3a513bde379f4ae",
+      "HIGH": 0,
+      "CRITICAL": 0
+    }
+  ],
+  "cleanup": [
+    {
+      "tag": "campus-mysql-audit-da8d66b69f3a:verification",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "tag": "campus-app-audit-ac6ce9d0239f-backend:verification",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "tag": "campus-app-audit-ac6ce9d0239f-admin:verification",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "tag": "campus-app-audit-ac6ce9d0239f-frontend:verification",
+      "exit_code": 0,
+      "ok": true
+    }
+  ],
+  "source_report_hashes": [
+    {
+      "path": "output/mysql-image-verify/results.json",
+      "sha256": "99a1fcfa18200ed36836d34f91b62691d37150019240e7ef3953a19b49a08e22"
+    },
+    {
+      "path": "output/application-image-verify/results.json",
+      "sha256": "126f66c177e586a63c6cc763df1d96fd615d506c6621d32282da64bb0af6e8ce"
+    },
+    {
+      "path": "output/identity-wiring/results.json",
+      "sha256": "790358bd8558516928560b44ec64237b29c6103156ff0c205f31e32e6ab8938a"
+    },
+    {
+      "path": "output/identity/results.json",
+      "sha256": "a580d436f59d19e45c7727aff5ccf120d688c8fed69fe50b7834e12cef02dc3c"
+    }
+  ],
+  "new_regression_and_real_backup_passed": true,
+  "db_preparation": {
+    "downloaded_at": "2026-11-12T14:15:38.582Z",
+    "registry": "https://public.ecr.aws",
+    "repository": "aquasecurity/trivy-db",
+    "tag": "2",
+    "manifest": "sha256:5e2a3a2838b5cb483653e8b440a99b597704219dbc4b48ebe05848b3caa669d8",
+    "layer": "sha256:523a109699fb29b54b033fa2456aeaff1bd95ce271730a632f685986d9ef1abb",
+    "size": 139989650,
+    "complete_layer_digest_verified": true,
+    "metadata_unmodified": false,
+    "original_metadata": {
+      "Version": 2,
+      "NextUpdate": "2026-11-13T12:59:19.777478511Z",
+      "UpdatedAt": "2026-11-12T12:59:19.777478911Z",
+      "DownloadedAt": "0001-01-01T00:00:00Z"
+    },
+    "metadata": {
+      "Version": 2,
+      "NextUpdate": "2026-11-13T12:59:19.777478511Z",
+      "UpdatedAt": "2026-11-12T12:59:19.777478911Z",
+      "DownloadedAt": "2026-11-12T14:15:38.582Z"
+    },
+    "official_updated_at_and_next_update_unmodified": true,
+    "downloaded_at_records_verified_real_download": true,
+    "volume": "campus-trivy-db-cc837959fa1ffe18",
+    "exit_code": 0
+  }
+}
