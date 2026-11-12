@@ -1,0 +1,140 @@
+{
+  "run_id": 43202284398,
+  "run_url": "https://github.com/zwh9616/campus-claw-plus/actions/runs/43202284398",
+  "event": "push",
+  "head_sha": "e617cc00f067cfee84aca0fd69687c385c9b2982",
+  "status": "completed",
+  "conclusion": "success",
+  "artifact_id": 13935334564,
+  "artifact_name": "runtime-image-scans-e617cc00f067cfee84aca0fd69687c385c9b2982",
+  "artifact_digest": "sha256:ab9f5deb957475865584ce38c5e6bc2d2b92d99cfd27b1af49a8101c552f1eb2",
+  "actor": "Kevcco",
+  "artifact_digest_verified": true,
+  "source": {
+    "commit": "e617cc00f067cfee84aca0fd69687c385c9b2982",
+    "dirty": false,
+    "fingerprint": "27527ce262b9dbd40463b9d6c3b7750f5f8e323885294c54833282569df2a91d"
+  },
+  "gate": {
+    "exit_code": 0,
+    "results": [
+      {
+        "name": "check",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 56778
+      },
+      {
+        "name": "audit",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 910
+      },
+      {
+        "name": "secret-scan",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 1810
+      },
+      {
+        "name": "verify",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 159263
+      }
+    ],
+    "notRun": []
+  },
+  "runtime_stages": [
+    {
+      "name": "scripts/verify-image-audits.mjs",
+      "exitCode": 0,
+      "reason": "passed",
+      "signal": null,
+      "durationMs": 60416
+    },
+    {
+      "name": "scripts/verify-skeleton.mjs",
+      "exitCode": 0,
+      "reason": "passed",
+      "signal": null,
+      "durationMs": 71639
+    },
+    {
+      "name": "scripts/verify-identity.mjs",
+      "exitCode": 0,
+      "reason": "passed",
+      "signal": null,
+      "durationMs": 26574
+    }
+  ],
+  "images": [
+    {
+      "service": "mysql",
+      "image_id": "sha256:e1a59e3f18c6630924f253ebd9bc0fae5bb651366fd947bd308004a27746561d",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "admin",
+      "image_id": "sha256:2ad7531e5717488b548bc4cfbde05d155917cce2243d67d4555b6cfdd7897e9e",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "backend",
+      "image_id": "sha256:0168b8e1d486f87503d188b91a0c6b4ff40d3957b9c57918aaa8e52c26f65793",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "frontend",
+      "image_id": "sha256:1b459ecc0cc52e3cd8342e6916424462a7661d9bef60290f34a19b331fce578e",
+      "HIGH": 0,
+      "CRITICAL": 0
+    }
+  ],
+  "cleanup_count": 4,
+  "source_report_hashes": [
+    {
+      "path": "output/mysql-image-verify/results.json",
+      "sha256": "fd5090db5fc25445dc17a8197d9265b64ea959a68e24ea53b9412691e940584b"
+    },
+    {
+      "path": "output/application-image-verify/results.json",
+      "sha256": "d22fccf88983cdc833bf4fdeac980c949149be9827360917f68c7d481246b42b"
+    },
+    {
+      "path": "output/identity-wiring/results.json",
+      "sha256": "120db39ad1679ed9a8e1853cf4ff03e5dd735e78be7662e4ed15263b022362b5"
+    },
+    {
+      "path": "output/identity/results.json",
+      "sha256": "3fa4d6a987215483107584b9367d4bafc9b32fc5379016de133d601c7b040b23"
+    }
+  ],
+  "real_gateway_checks": [
+    {
+      "label": "SC-01/02/03 real same-origin HTTPS, unique health, TLS rejection, login and revoked access",
+      "exit_code": 0,
+      "completed_scenario": "MF-SC-02/12",
+      "request_line_iterations_in_verified_source": 10
+    },
+    {
+      "label": "account and class persist after database restart",
+      "exit_code": 0,
+      "completed_scenario": "MF-SC-02/12",
+      "request_line_iterations_in_verified_source": 10
+    },
+    {
+      "label": "same account and original password after full container recreation",
+      "exit_code": 0,
+      "completed_scenario": "MF-SC-02/12",
+      "request_line_iterations_in_verified_source": 10
+    }
+  ]
+}
