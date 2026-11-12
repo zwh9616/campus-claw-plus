@@ -23,3 +23,9 @@
 小张提交候选供小陈审定。1.2规约批准已有远端事实，1.3仅候选与编号方案已准备，实际两人审定/正常合入前保持未勾，2.x/3.x不提前启动或完成。小葛另审#32/#33及交06资料归档，不冒充他人批准。
 
 提交前扫描首次被固定的合成幂等键样例命中generic-api-key（stdin diff224，定位assignment-semantic-cases.json的SubmissionIdempotencyKey，与schema正例共用同值）；该值仅静态虚构样例，无账号/服务用途。改用同样满足16字符ASCII合同的低熵有效样例，保留高/低边界与动态字符反例；未加任何豁免或改变扫描规则/范围。[原始脱敏扫描结果](contracts/precommit-scan-failure.json)。恢复扫描及完整gate按后续真实输出补记。
+
+## 本机最终结果（代码源码92246e2）
+
+原`npm run gate`的check/audit/secret-scan/verify四段均退出0，notRun为空；四个实际镜像HIGH/CRITICAL全0，原身份/资料/可信HTTPS、停库/恢复、保留卷重建、迁移与隔离备份恢复保留通过。13个现有操作对象与main逐项一致；本轮没有backend/frontend/deploy/Compose/配置或SQL修改。[汇总](contracts/gate-summary.json) · [原始JSON ZIP](contracts/gate-raw-json.zip) · [初次Schema失败/授权红绿/完整门禁日志](contracts/contract-check-logs.zip)
+
+原提交前扫描命中的合成键已替换为有效低熵样例；全历史/暂存扫描及原完整gate中的扫描均通过，没有增豁免或缩小范围。后续仅补本次证据与排版，最终head的PR CI仍须独立核对。真实05业务、并发/任务/迁移测试仍未实施，机器合同1.3仍待小陈实际审定/合入。

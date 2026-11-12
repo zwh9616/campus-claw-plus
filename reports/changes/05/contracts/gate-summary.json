@@ -1,0 +1,71 @@
+{
+  "source": "92246e200ca19c2c2e53b418b72b43ca33f0dfa3",
+  "base": "da8624cdb7793e64c4c3d29793b4c7a329adc2b8",
+  "command": "npm run gate",
+  "gate": {
+    "time": "2026-11-12T09:53:25.496Z",
+    "node": "v25.2.1",
+    "exitCode": 0,
+    "results": [
+      {
+        "name": "check",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 36787
+      },
+      {
+        "name": "audit",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 12561
+      },
+      {
+        "name": "secret-scan",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 6464
+      },
+      {
+        "name": "verify",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 319981
+      }
+    ],
+    "notRun": []
+  },
+  "scans": {
+    "mysql.json": {
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    "backend.json": {
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    "admin.json": {
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    "frontend.json": {
+      "HIGH": 0,
+      "CRITICAL": 0
+    }
+  },
+  "runtimeCurrentOperations": 13,
+  "frozenCandidateOperations": 9,
+  "newSchemas": 10,
+  "schemaTotal": 42,
+  "structureCases": 213,
+  "generatedBoundaryCases": 30,
+  "operationExamples": 155,
+  "contractTestGroups": 25,
+  "independentGoDigestVectors": 5,
+  "redExit": 1,
+  "greenExit": 0,
+  "businessImplementation": false
+}
