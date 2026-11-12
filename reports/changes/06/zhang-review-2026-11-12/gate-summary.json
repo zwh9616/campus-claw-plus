@@ -1,0 +1,58 @@
+{
+  "source": "ff93c7b91ca7592059b1c0b41939202c708740b4",
+  "command": "npm run gate",
+  "gate": {
+    "time": "2026-11-12T08:04:28.287Z",
+    "node": "v25.2.1",
+    "exitCode": 0,
+    "results": [
+      {
+        "name": "check",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 40008
+      },
+      {
+        "name": "audit",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 9583
+      },
+      {
+        "name": "secret-scan",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 8704
+      },
+      {
+        "name": "verify",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 223768
+      }
+    ],
+    "notRun": []
+  },
+  "scans": {
+    "mysql.json": {
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    "backend.json": {
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    "admin.json": {
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    "frontend.json": {
+      "HIGH": 0,
+      "CRITICAL": 0
+    }
+  }
+}

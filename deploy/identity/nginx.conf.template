@@ -5,6 +5,9 @@ pid /var/run/nginx.pid;
 events { worker_connections 1024; }
 http {
     include /etc/nginx/mime.types;
+    # MF-SC-02/12: 2000 UTF-8 codepoints can encode to a 24KB request line.
+    # Keep the allocation bounded; larger request lines still fail closed.
+    large_client_header_buffers 2 32k;
     # Request URI, headers and credentials must not enter auxiliary logs.
     access_log off;
     server_tokens off;

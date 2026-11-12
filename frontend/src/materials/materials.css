@@ -1,0 +1,43 @@
+/* MF-SC-10/11: approved materials layout, shared theme variables. */
+.materials-page{--color-success:#176944;--color-warning:#805900}
+.materials-page h1,.materials-page h2,.materials-page p,.materials-page a{overflow-wrap:anywhere}
+.materials-page .topbar>span{min-width:0}
+.materials-page nav>button{display:flex;align-items:center;width:100%;margin-bottom:8px;padding:8px 16px;border-color:transparent;text-align:left;background:transparent;overflow-wrap:anywhere}
+.material-title-row{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;margin-bottom:24px;flex-wrap:wrap}
+.material-title-row h1{margin-bottom:8px}.material-title-row p{margin:0}
+.material-title-row>button{flex-shrink:0}
+.material-search{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:32px}
+.material-search-field{flex:1;min-width:min(240px,100%)}
+.material-search>p{flex-basis:100%;margin:0}
+.material-no-error:empty{display:none}
+.material-actions{display:flex;gap:8px;flex-wrap:wrap;min-width:0}
+.material-results{border-top:1px solid var(--color-divider);padding-top:24px}
+.material-list{list-style:none;padding:0;margin:0}
+.material-list li{display:grid;grid-template-columns:minmax(0,1fr) 80px 64px 144px;gap:16px;align-items:start;padding:24px 0;border-bottom:1px solid var(--color-divider)}
+.material-record-title{min-width:0}.material-record-title>a{font-weight:600;text-decoration:none}
+.material-record-title>a:hover{text-decoration:underline}
+.material-id{font-size:14px;line-height:1.5;margin:8px 0 0;overflow-wrap:anywhere}
+.material-list time,.material-list li>span{font-size:14px;line-height:1.5}
+.material-status{font-size:14px;line-height:1.5;font-weight:600;overflow-wrap:anywhere}
+.material-status-ready{color:var(--color-success)}.material-status-pending{color:var(--color-warning)}.material-status-failed{color:var(--color-error)}
+.material-pagination{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding-top:24px}
+.material-pagination button{padding:8px 16px;cursor:default;color:var(--color-text-muted)}
+.material-state{padding:24px 0;min-height:160px}.material-state .error-message{margin-top:0}
+.material-back{display:inline-flex;align-items:center;min-height:44px;margin-bottom:16px}
+.material-result-heading{margin-top:24px}.material-detail-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin:16px 0}
+.material-detail-meta>button{margin-left:auto}
+.material-saved{color:var(--color-warning)}
+.material-body{padding:24px;background:var(--color-surface);border:1px solid var(--color-divider);border-radius:12px}
+.material-body p{white-space:pre-wrap;overflow-wrap:anywhere;margin:0}
+.material-processing{margin-top:32px}.material-notice{margin:24px 0 0;font-size:14px;line-height:1.5}
+.materials-page h2:focus{outline:2px solid var(--color-focus);outline-offset:4px}
+@media(max-width:1000px){.material-list li{grid-template-columns:minmax(0,1fr) 80px}.material-list time{grid-column:1}.material-list li>span:not(.material-status){grid-column:2;grid-row:2}}
+@media(width < 768px){.materials-page nav>button{width:auto;margin:0}.materials-page nav>*{max-width:100%}.material-title-row{gap:16px}.material-title-row>button{width:100%}.material-search-field{flex-basis:100%;min-width:0}.material-list li{grid-template-columns:minmax(0,1fr);gap:8px}.material-list time,.material-list li>span:not(.material-status){grid-column:auto;grid-row:auto}.material-pagination{gap:8px}.material-pagination button{padding:8px}.material-detail-meta>button{margin-left:0}.material-body{padding:16px}.materials-page button,.materials-page input{max-width:100%;overflow-wrap:anywhere}.materials-page .material-actions{width:100%}}
+
+.material-upload-link{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 24px;border:1px solid var(--color-brand);border-radius:8px;background:var(--color-brand);color:var(--color-surface);text-decoration:none}
+.material-upload-link:hover{background:var(--color-brand-hover)}.material-upload-link:active{background:var(--color-brand-pressed)}
+.material-upload-link:focus-visible{box-shadow:0 0 0 2px var(--color-surface)}
+.material-citations{list-style:none;margin:0;padding:0}.material-citations li{padding:24px 0;border-bottom:1px solid var(--color-divider)}
+.material-quote{white-space:pre-wrap;margin-top:16px}.material-upload-form{max-width:640px}.material-upload-form .material-actions{margin-top:24px}
+.materials-page h1,.materials-page h2,.materials-page p,.materials-page a,.materials-page code{overflow-wrap:anywhere}
+.materials-page input[type=file]{padding:8px;max-width:100%}.materials-page mark{background:var(--color-brand-soft);color:var(--color-text)}
