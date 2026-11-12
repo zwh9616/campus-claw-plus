@@ -15,6 +15,7 @@ const { volume: cacheVolume, owned: ownsCache } = auditCache(id)
 mkdirSync(directory, { recursive: true })
 for (const name of ['results', 'mysql']) rmSync(resolve(parent, name + '.json'), { force: true })
 const results = []
+const retainImages = process.argv.includes('--retain-images')
 let failed = false, summary
 function run(label, args, timeout = 180000) {
   const child = spawnSync('docker', args, { encoding: 'utf8', timeout, maxBuffer: 8 * 1024 * 1024 })
@@ -59,9 +60,11 @@ try {
   const scannerCleanup = spawnSync('docker', ['rm', '-f', id + '-scanner'], { encoding: 'utf8', timeout: 30000 })
   results.push({ label: 'remove own scanner if its client timed out', exit_code: scannerCleanup.status })
   if (scannerCleanup.status !== 0 && !(scannerCleanup.stderr ?? '').includes('No such container')) failed = true
-  const cleanup = spawnSync('docker', ['image', 'rm', image], { encoding: 'utf8', timeout: 30000 })
-  results.push({ label: 'remove only own image tag', exit_code: cleanup.status })
-  if (cleanup.status !== 0 && !(cleanup.stderr ?? '').includes('No such image')) failed = true
+  if (!retainImages || failed) {
+    const cleanup = spawnSync('docker', ['image', 'rm', image], { encoding: 'utf8', timeout: 30000 })
+    results.push({ label: 'remove only own image tag', exit_code: cleanup.status })
+    if (cleanup.status !== 0 && !(cleanup.stderr ?? '').includes('No such image')) failed = true
+  }
   if (ownsCache) {
     const cacheCleanup = spawnSync('docker', ['volume', 'rm', cacheVolume], { encoding: 'utf8', timeout: 30000 })
     results.push({ label: 'remove only own scanner cache volume', exit_code: cacheCleanup.status })
@@ -70,6 +73,6 @@ try {
   rmSync(directory, { recursive: true, force: true })
   writeFileSync(resolve(parent, 'results.json'), JSON.stringify({ time: new Date().toISOString(),
     source_dockerfile_sha256: createHash('sha256').update(readFileSync('deploy/identity/mysql/Dockerfile')).digest('hex'),
-    results, summary, exit_code: failed ? 1 : 0 }, null, 2) + '\n')
+    results, summary, retained_tags: retainImages && !failed ? [image] : [], exit_code: failed ? 1 : 0 }, null, 2) + '\n')
 }
 process.exitCode = failed ? 1 : 0

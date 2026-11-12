@@ -20,7 +20,8 @@ export function auditCache(runId) {
 // IDF-SC-17 / DO-SC-04: share the database, then scan every actual image.
 async function main(args) {
   const prepareOnly = args.length === 1 && args[0] === '--prepare-only'
-  if (args.length && !prepareOnly) throw new Error('Expected --prepare-only or no arguments')
+  const retainImages = args.length === 1 && args[0] === '--retain-images'
+  if (args.length && !prepareOnly && !retainImages) throw new Error('Expected --prepare-only, --retain-images or no arguments')
   mkdirSync('output/verification', { recursive: true })
   const release = acquireLock(resolve('output/verification/trivy-db.lock'))
   const controller = new AbortController()
@@ -41,7 +42,7 @@ async function main(args) {
         rmSync(resolve('output', path), { force: true })
       }
       for (const script of ['verify-mysql-image.mjs', 'verify-application-images.mjs']) {
-        steps.push({ name: script, command: process.execPath, args: [`scripts/${script}`, '--prepared-db'], timeoutMs: 540000 })
+        steps.push({ name: script, command: process.execPath, args: [`scripts/${script}`, '--prepared-db', ...(retainImages ? ['--retain-images'] : [])], timeoutMs: 540000 })
       }
     }
     const result = await runSequence(steps, { signal: controller.signal, onStart: name => console.log(name) })

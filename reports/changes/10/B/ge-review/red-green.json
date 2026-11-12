@@ -1,0 +1,38 @@
+[
+  {
+    "scenario": "DO-SC-12",
+    "mutation": "compose-probe-4s",
+    "red_exit": 1,
+    "source_sha256": "3c43969f6a8c2c85fc44d9f914ccd3398c370f6b71e89119a3e8f484f00856f4",
+    "red_gate": {
+      "time": "2026-11-12T09:07:24.336Z",
+      "node": "v24.19.0",
+      "exitCode": 1,
+      "results": [
+        {
+          "name": "check",
+          "exitCode": 1,
+          "reason": "failed",
+          "signal": null,
+          "durationMs": 4267
+        }
+      ],
+      "notRun": [
+        "audit",
+        "secret-scan",
+        "verify"
+      ]
+    }
+  },
+  {
+    "scenario": "DO-SC-12",
+    "mutation": "probe-3500ms",
+    "red_exit": 1,
+    "source_sha256": "b275dde931065809c32b925cb919df2084cd00d0b1834612d2848261bffdb85e",
+    "restored_green_exit": 0
+  },
+  {
+    "byte_restoration": true,
+    "full_gate_after_restoration": "pending"
+  }
+]

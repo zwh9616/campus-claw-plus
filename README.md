@@ -1,6 +1,6 @@
 # CampusClawPlus
 
-本分支已将MySQL、离线迁移/初始化、身份HTTP服务和同源HTTPS接入默认Compose。身份及真实资料页面已在main合入，提供资料列表、检索、上传、原文及下载；小张已完成独立复验，合入及最终主干复验见[共享进度表](docs/project-status.md)和PR #30实际记录为准。
+本分支已将MySQL、离线迁移/初始化、身份HTTP服务和同源HTTPS接入默认Compose。身份前端已在main验收，本分支新增真实资料列表、检索、上传、原文及下载；小张已完成独立复验，#30已合入、测试修复#31随main da8624c完整CI43186361938通过；实际归档状态见[共享进度表](docs/project-status.md)。
 
 ## 当前运行范围
 
@@ -12,6 +12,8 @@
 本分支包含[#18主机入口修复](reports/changes/01/host-ingress-review-2026-11-08.md)：小张已在原Windows平台独立完整门禁通过，真实批准后正常合入main 0596505，同SHA CI42453041413成功。02已在原Windows默认入口完成正常证书信任的真实浏览器12项联验，含跨标签和并发刷新，见[独立联验](reports/changes/02/zhang-final-2026-11-08.md)；最终head90976b9完整CI通过并经小张真实批准，#15正常合入main3ef79f4；main复验结果见[合入记录](reports/changes/02/main-integration-2026-11-08.md)。
 
 ## 小组进度与协作入口
+
+- [10-B运行批次](reports/changes/10/B/README.md)：当前01/02/04/06四服务登记见deploy/service-batches.json，`check:service-batches`核对来源/配置/网络/固定镜像及3秒探针；原`verify`三程序照常运行，再保存同轮同镜像摘要。小陈本批自测后交小葛终审，后续服务及10-C另验。
 
 - [共享进度表](docs/project-status.md)记录当前验收和交接。G2、G3已成立，身份和真实登录已在主干复验。01、02归档已分别随[#20](https://github.com/zwh9616/campus-claw-plus/pull/20)、[#21](https://github.com/zwh9616/campus-claw-plus/pull/21)合入，02主干完整检查42779317047成功；见[前端主规约](openspec/specs/frontend-foundation/spec.md)。04规约和机器合同已审定并随#23/#25合入；六个资料后端操作已随#26经小张批准合入main6634e51，主干完整CI42987148688成功。[资料主规约](openspec/specs/materials-retrieval/spec.md)与[04归档](openspec/changes/archive/2026-11-10-materials-retrieval/)已随#28经小张批准正常合入main78af20b，主干完整CI43002888185复验通过，见[归档证据](reports/changes/04/archive-review-2026-11-11.md)。
 - [公共合同](docs/contracts/README.md)：现行13个current操作包括六个身份、MySQL健康及六个04资料操作，其余planned教学操作仍不可调用；npm run check:contracts接入原检查入口。
