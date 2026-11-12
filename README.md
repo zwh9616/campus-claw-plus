@@ -19,7 +19,7 @@
 - [公共合同](docs/contracts/README.md)：现行13个current操作包括六个身份、MySQL健康及六个04资料操作，其余planned教学操作仍不可调用；npm run check:contracts接入原检查入口。
 - [前端视觉规约](docs/standards/frontend-visual.md)：北大红#94070A、暖白、简约布局，参考Canvas/Moodle信息组织；小张已确认#15代表样板，真实页面已由小葛实现，最终联合验收由小张收口。
 - [协作规范](docs/standards/collaboration.md)：按变更两人接力；每组可提交修改必须同提交更新共享表。
-- [06资料页面规约](openspec/changes/2026-11-11-materials-frontend/proposal.md)已随#27经小葛批准合入并复验。#29代表样板经小张实际验收与修复确认，最终门禁收口后由小葛接真实资料接口，再交小张终审；作业页面仍依赖05；本候选真实资料页面已由小张独立复验，D2a长查询边界及四镜像实扫通过；最终合入与主干复验见共享表，并见[独立终审](reports/changes/06/zhang-final-review-2026-11-12.md)。见[样板验收](reports/changes/06/zhang-sample-review-2026-11-11.md)。
+- [06资料阶段原change](openspec/changes/archive/2026-11-11-materials-frontend/proposal.md)已随#27获小葛批准，样板#29经小张确认，真实实现#30和严格414修复#31已合入复验。五项MF需求/十二场景完整同步[主规约](openspec/specs/materials-frontend/spec.md)，本候选仅做资料阶段归档与索引，最终head批准/合入仍待实际门禁；作业页面另等05。[归档核对](reports/changes/06/archive-review-2026-11-12.md)。
 - 2026-11-12组长恢复[05作业与持久任务规约](openspec/changes/2026-11-12-assignment-tasks/proposal.md)：小陈起草/终审，小张审规约/apply。当前提交九个候选操作、幂等/outbox/租约/取消及迁移方案供审查；规约已获小张批准并随#31合入main da8624c，公共机器合同批准合入前不实现，接口仍planned、数据库目标仍4。真实AI批改/成绩与06作业页面另验。[05检查与交接](reports/changes/05/spec-review-ready-2026-11-12.md)
 
 
@@ -132,3 +132,5 @@ go run ./cmd/server
 资料路由：`/app/materials`、`/app/materials/upload`、`/app/materials/{id}`。仅可信教师身份可上传/重新处理，学生只读ready。上传结果不确定时手动点击“确认上传结果”，更换内容须确认新上传；刷新、离开或身份变化会清理内存，请先核对列表。
 
 `npm run check:frontend-auth`包含原认证与资料用例。mock页面：使用外部Playwright1.56.0，运行`node frontend/tests/materials-browser.mjs --playwright ABSOLUTE_PLAYWRIGHT_PATH --origin http://127.0.0.1:5197 --output output/material-browser`。Windows可信真实浏览器：`npm run verify:materials-browser -- --playwright ABSOLUTE_PLAYWRIGHT_PATH`，需已安装相应Firefox/Python与Docker；只在临时NSS配置导入测试CA，不改操作系统信任库。完整原门禁仍为`npm run gate`；浏览器证据单列，不用它代替完整门禁。
+
+06资料阶段已通过#30/#31主干复验，本PR仅同步[资料前端主规约](openspec/specs/materials-frontend/spec.md)与[原change归档候选](openspec/changes/archive/2026-11-11-materials-frontend/)。归档合入按实际PR记录为准，资料现有运行代码保持已验收main，作业页面另等05。
