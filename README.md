@@ -13,7 +13,7 @@
 
 ## 小组进度与协作入口
 
-- [10-B运行批次](reports/changes/10/B/README.md)：当前01/02/04/06四服务登记见deploy/service-batches.json，`check:service-batches`核对来源/配置/网络/固定镜像及3秒探针；原`verify`三程序照常运行，再保存同轮同镜像摘要。小陈本批自测后交小葛终审，后续服务及10-C另验。
+- [10-B运行批次](reports/changes/10/B/README.md)：当前01/02/04/06四服务登记见deploy/service-batches.json，`check:service-batches`核对来源/配置/网络/固定镜像及3秒探针；原`verify`三程序照常运行，再保存同轮同镜像摘要。首批#32获小葛终审后正常合入main b4b13fd并通过主干完整CI，[集成原件](reports/changes/10/B/main-integration-2026-11-12.md)已核对；后续服务及10-C另验。
 
 - [共享进度表](docs/project-status.md)记录当前验收和交接。G2、G3已成立，身份和真实登录已在主干复验。01、02归档已分别随[#20](https://github.com/zwh9616/campus-claw-plus/pull/20)、[#21](https://github.com/zwh9616/campus-claw-plus/pull/21)合入，02主干完整检查42779317047成功；见[前端主规约](openspec/specs/frontend-foundation/spec.md)。04规约和机器合同已审定并随#23/#25合入；六个资料后端操作已随#26经小张批准合入main6634e51，主干完整CI42987148688成功。[资料主规约](openspec/specs/materials-retrieval/spec.md)与[04归档](openspec/changes/archive/2026-11-10-materials-retrieval/)已随#28经小张批准正常合入main78af20b，主干完整CI43002888185复验通过，见[归档证据](reports/changes/04/archive-review-2026-11-11.md)。
 - [公共合同](docs/contracts/README.md)：现行13个current操作包括六个身份、MySQL健康及六个04资料操作，其余planned教学操作仍不可调用；npm run check:contracts接入原检查入口。
