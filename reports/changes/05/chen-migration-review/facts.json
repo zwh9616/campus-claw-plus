@@ -21,7 +21,16 @@
     "backend/internal/integration/assignments_schema_test.go": "3daed9c7d87e17309a08b7a4c5803a64683497079e5b6dc99683517cc5f64707"
   },
   "raw_zip_sha256": "98a5be8698757157ca6c48c4a479af2e0faa550fabdeef8ef18bb867f2d9ff58",
-  "full_clean_source_gate": "pending",
-  "final_head_approval": "pending",
-  "main_integration": "pending"
+  "full_clean_source_gate": {
+    "commit": "4fbc93b94a16b20a335d887e0debf16015a7b32c",
+    "check": 0,
+    "audit": 0,
+    "secret_scan": 0,
+    "verify": 0,
+    "verify_duration_ms": 138475,
+    "not_run": []
+  },
+  "final_head_approval": "Recorded separately on PR38 for the final head; not prefilled by this evidence commit",
+  "main_integration": "Read back after normal merge; not asserted by these local test records",
+  "final_raw_zip_sha256": "ef1927117fbac558aaa38b1a33f5f2a02c66fb40f968d929e9e78a5a289b1ec9"
 }
