@@ -47,3 +47,15 @@
 按AT-SC-07/21受控临时把同键异载荷拒绝改为接受，`node scripts/verify-identity.mjs`真实退出1；finally逐字恢复原生产文件后同命令退出0，工作树干净。失败原因来自HTTP409预期被错误202替代，未弱化测试、配额或事务。原件与结构化事实见[独立复测ZIP](chen-http-worker-review/http-independent.zip)，SHA-256 `b28d8c559df1394581c2d52cff52951822d1700966c9a6b443323b0b611198ac`；[解包原件秘密扫描0](chen-http-worker-review/http-independent-secret-scan.txt)。
 
 本次补证仅改报告/共享表，运行输入不变。补证最终head完整CI、本人实际批准、正常合入及main复验仍据GitHub实时结果记录；不把#40这一批算作#41独立终审或05全量3.x完成。
+
+## #40实际合入与#41独立复测
+
+#40最终`a485b94ffa4b7c2d31a6564014e5e3bb444f51ad`完整CI43249864667成功，本人实际[APPROVED5877403365](https://github.com/zwh9616/campus-claw-plus/pull/40#pullrequestreview-5877403365)绑定该head，随后正常合入main `f7eb856952793c23ec139ad233c60386b1b394b6`；精确main完整CI43250820540另核，不以PR绿灯冒称主干验收。
+
+#41在原分支逐块保留双方共享表/tasks与原件，运行输入与实现者已自测0857354逐路径无差异。本人在干净`463c6335bf54f7fdfc0e1d41b057ba7b74b22ed1`独立执行原完整`npm run gate`，check14042ms/audit4394ms/secret-scan1157ms/verify170254ms，全部0、notRun=[]；同轮四镜像HIGH/CRITICAL0、实扫/运行ID及四清理0，四源报告摘要和三阶段真实HTTPS均核验通过。Node22.23.4、Docker28.3.3、Compose2.39.1。
+
+真实MySQL独立通过八组worker关键场景：到期未接管的旧续租/成功/失败/重试/取消拒绝，owner/epoch/ABA及一次结果；1/2秒退避、第三次失败/到期和陈旧清理；真实行锁屏障控制claim与取消、成功与取消两种排序；claim/续租/回排/终态/结果适配器每个故障点整体回滚；24个持久任务的20批次/2并发和不绑定时零claim；真实子进程在claim前后kill、新随机owner恢复，以及实际SIGTERM有界退出。原业务并发幂等/权限/失效与迁移备份恢复仍通过，不把测试回执表或受控执行器算作AI/成绩。
+
+受控仅移除`workerAuthority`的`lease_until > DB now`条件，原真实`verify-identity`退出1，原件确认到期旧续租错误放行被拒绝断言发现；finally逐字恢复后同命令退出0，工作树干净。本人未改生产机制、放宽断言或增加忽略。[独立worker原件ZIP](chen-http-worker-review/worker-independent.zip) SHA-256 `f9f7d87f7365c06f044c46ee5664829ec93481bc97a714a973969321c9b56310`；[解包秘密扫描0](chen-http-worker-review/worker-independent-secret-scan.txt)。
+
+用户要求本次收尾、明天接着做。本提交同步已合入#40的main并补独立证据，运行输入仍为已测463c633；3.1关键独立复跑完成，#41最终head CI/本人正式批准/正常合入、3.2精确main全量复验与3.3归档留待下一次，未冒称已完成。测试目录保留已同步源码及脱敏输出供接续；本次两条同标识临时SSH授权收尾删除，真实配置与私钥不提交。
