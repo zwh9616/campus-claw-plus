@@ -17,5 +17,7 @@
   "pr_main_zip_sha256": {
     "pr-final-runtime-scans.zip": "54cd5e9c6cbb22c237b1508964ccaca0906d8459bf8e511393e643fed108baeb",
     "main-runtime-scans.zip": "219c9bc110c2034ac13b311e0189db9dc9c99e85ecb68829fa4e72abb3f5be81"
-  }
+  },
+  "final_local_links": 139,
+  "pr": 37
 }
