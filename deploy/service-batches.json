@@ -1,7 +1,7 @@
 {
   "version": 1,
   "batch": "identity-materials",
-  "review_status": "pending_ge_review",
+  "review_status": "reviewed",
   "probe_timeout_ms": 3000,
   "deployment_wait_ms": 120000,
   "changes": [
