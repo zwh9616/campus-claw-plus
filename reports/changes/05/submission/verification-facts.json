@@ -1,0 +1,105 @@
+{
+  "source_commit": "fdac13f919d35fb3a6b553dd91fcf73b5ef901c2",
+  "pull_request": 40,
+  "dependency_pull_request": 38,
+  "dependency_head": "7878164a5fd65c0fd8d938cce6dcb9b0b9c81424",
+  "dependency_review": "pending actual Kevcco approval",
+  "code_ci": {
+    "id": 43230410080,
+    "head_sha": "fdac13f919d35fb3a6b553dd91fcf73b5ef901c2",
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "gate": {
+    "time": "2026-11-12T13:50:46.499Z",
+    "node": "v25.2.1",
+    "exitCode": 0,
+    "results": [
+      {
+        "name": "check",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 35676
+      },
+      {
+        "name": "audit",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 9596
+      },
+      {
+        "name": "secret-scan",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 8159
+      },
+      {
+        "name": "verify",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 244630
+      }
+    ],
+    "notRun": []
+  },
+  "images": [
+    {
+      "service": "mysql",
+      "image_id": "sha256:5d31687948e62c77bf52ef22f84cae812aa28fd9f7f3f70df8cc0c859020527c",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "admin",
+      "image_id": "sha256:5a21e810edb7dfafa70742410d7974b7fee886d70a6e29f63276101f559239a0",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "backend",
+      "image_id": "sha256:0a77214ca72c5a81e9a9d90bd8177f0a561dcf48b38374a96af12fe364fa6cb7",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "frontend",
+      "image_id": "sha256:2c87564958718ded898414edb4df0e53b3b4d3315e133a52c7d874ae64c61426",
+      "HIGH": 0,
+      "CRITICAL": 0
+    }
+  ],
+  "cleanup": [
+    {
+      "tag": "campus-mysql-audit-18cd85132b7d:verification",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "tag": "campus-app-audit-61fe4d2b9add-backend:verification",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "tag": "campus-app-audit-61fe4d2b9add-admin:verification",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "tag": "campus-app-audit-61fe4d2b9add-frontend:verification",
+      "exit_code": 0,
+      "ok": true
+    }
+  ],
+  "archive_sha256": "ec82328fe7b16d79f87706c152ac052ea18939d1d7fe2f3cd4ce175bd8489bdc",
+  "limitations": [
+    "worker tasks2.4 not implemented",
+    "full21 scenarios tasks2.5 incomplete",
+    "no final peer review or main integration",
+    "no real model/grade/assignment UI"
+  ],
+  "executor": "unbound; genuinely pending"
+}

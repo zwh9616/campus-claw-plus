@@ -13,7 +13,7 @@ import (
 // reviewed foreign-key target. Neither check nor explicit repair may accept it.
 func TestATMigrationRejectsForeignDatabase(t *testing.T) {
 	ctx := context.Background()
-	_, db, name := database(t, 31)
+	_, db, name := database(t, 36)
 	_, shadow, shadowName := database(t, 19)
 	ex := migrations.Executor{DB: db, Database: name}
 	if ex.Up(ctx, 5) != nil {

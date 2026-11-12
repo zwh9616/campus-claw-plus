@@ -16,13 +16,13 @@ const cancel=a=>a.paths['/api/v1/tasks/{id}/cancel'].post
 const task=a=>a.paths['/api/v1/tasks/{id}'].get
 function rejects(mutate){const bad=copy(api);mutate(bad);assert.throws(()=>validateOperationBoundary(bad,register))}
 
-test('AT-SC-01 nine business operations stay frozen while reviewed migration5 is available',()=>{
+test('AT-SC-01 nine implemented business operations activate atomically with exact migration5',()=>{
  validateOperationBoundary(api,register)
- assert.equal(register.operations.filter(o=>o.status==='current').length,13)
+ assert.equal(register.operations.filter(o=>o.status==='current').length,22)
  const phase=JSON.parse(readFileSync('docs/contracts/identity-phase.json','utf8'))
  assert.deepEqual(phase.migrations.map(m=>m.number),['000001','000002','000003','000004','000005'])
- assert.equal(register.operations.filter(o=>o.owner==='05'&&o.status==='frozen').length,9)
- for(const [m,p] of assignmentOperations)rejects(a=>a.paths[p][m.toLowerCase()]['x-contract-status']='current')
+ assert.equal(register.operations.filter(o=>o.owner==='05'&&o.status==='current').length,9)
+ for(const [m,p] of assignmentOperations)rejects(a=>a.paths[p][m.toLowerCase()]['x-contract-status']='frozen')
  for(const mutate of [a=>delete a.paths['/api/v1/tasks/{id}'],a=>a.paths['/api/v1/assignments'].delete=copy(submit(a))])rejects(mutate)
  for(const mutate of [r=>r.operations.pop(),r=>r.operations.find(o=>o.owner==='05').owner='08',r=>r.operations.find(o=>o.owner==='05').introduced_by='openspec/changes/unknown']){const bad=copy(register);mutate(bad);assert.throws(()=>validateOperationBoundary(api,bad))}
 })

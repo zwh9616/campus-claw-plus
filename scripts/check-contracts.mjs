@@ -116,4 +116,9 @@ function checkExamples(value) {
   for (const child of Object.values(value)) checkExamples(child)
 }
 checkExamples(parsed.paths)
-console.log(`Contracts: ${sources.length} schemas; ${fixtures.length} positive/negative fixtures, ${semanticFixtures.length} semantic inputs and ${boundaryFixtures.length} generated boundary cases agree in both paths; ${exampleCount} operation examples; 13 current identity/health/material operations and 9 frozen assignment operations. Other planned operations absent.`)
+console.log(`Contracts: ${sources.length} schemas; ${fixtures.length} positive/negative fixtures, ${semanticFixtures.length} semantic inputs and ${boundaryFixtures.length} generated boundary cases agree in both paths; ${exampleCount} operation examples; 22 current identity/health/material/assignment operations. Other planned operations absent.`)
+
+// The backend-only Docker toolchain embeds test goldens. The root fixture stays
+// authoritative, and changing either copy alone must block the normal gate.
+assert.deepEqual(readFileSync('backend/internal/assignments/testdata/assignment-digest-cases.json'),
+  readFileSync('docs/contracts/fixtures/assignment-digest-cases.json'), 'AT-SC-06 backend golden copy must match the frozen single source')

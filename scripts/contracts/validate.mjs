@@ -59,7 +59,7 @@ export function validateOperationBoundary(api, register) {
       seen.push(key)
       const material = materialOperations.some(([m,p]) => `${m} ${p}` === key)
       const assignment = assignmentOperations.some(([m,p]) => `${m} ${p}` === key)
-      assert.equal(operation['x-contract-status'], assignment ? 'frozen' : 'current', `Wrong operation stage: ${key}`)
+      assert.equal(operation['x-contract-status'], 'current', `Wrong operation stage: ${key}`)
       assert.equal(operation['x-owner-change'], assignment ? '05' : material ? '04' : key === 'GET /health' ? 'bootstrap' : '01')
       const entry = register.operations.find(x => `${x.method} ${x.path}` === key)
       assert.ok(entry, `Unregistered operation: ${key}`)

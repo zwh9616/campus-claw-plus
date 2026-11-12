@@ -1,0 +1,204 @@
+{
+  "source_commit": "fdac13f919d35fb3a6b553dd91fcf73b5ef901c2",
+  "source_clean": true,
+  "gate": {
+    "time": "2026-11-12T13:50:46.499Z",
+    "node": "v25.2.1",
+    "exitCode": 0,
+    "results": [
+      {
+        "name": "check",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 35676
+      },
+      {
+        "name": "audit",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 9596
+      },
+      {
+        "name": "secret-scan",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 8159
+      },
+      {
+        "name": "verify",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 244630
+      }
+    ],
+    "notRun": []
+  },
+  "batch_source": {
+    "commit": "fdac13f919d35fb3a6b553dd91fcf73b5ef901c2",
+    "dirty": false,
+    "fingerprint": "31c311c16a26f833e897ed98abedfa6e31b56fce3775924148649f6067b62d4e"
+  },
+  "archive": "final-code-gate-raw.zip",
+  "archive_sha256": "ec82328fe7b16d79f87706c152ac052ea18939d1d7fe2f3cd4ce175bd8489bdc",
+  "files": [
+    {
+      "path": "output/application-image-verify/admin.json",
+      "size": 6551,
+      "sha256": "7444fbcbaf238de93496223a917b74ab29157d1b431178adaae34a6b71417888"
+    },
+    {
+      "path": "output/application-image-verify/backend.json",
+      "size": 7075,
+      "sha256": "1431cc14b3eb584e9b82c092932ec7d9af828584a2e2b91c036df94e7389b513"
+    },
+    {
+      "path": "output/application-image-verify/frontend.json",
+      "size": 162295,
+      "sha256": "fd965382fc2a8fb9d0c6112ac71e7d5009a4b9a43f2702eeae161d2575766334"
+    },
+    {
+      "path": "output/application-image-verify/results.json",
+      "size": 11724,
+      "sha256": "550fb55d4c31a40ee4c1073e484d63eac05ea4a32854c0adeb89632256f251bf"
+    },
+    {
+      "path": "output/business-logs/contracts-first.log",
+      "size": 3309,
+      "sha256": "794065c917fbe0b7d183de732a4379283f12ba8cfb070200cc06f42cdc6a72a5"
+    },
+    {
+      "path": "output/business-logs/controlled-replay-mutation.json",
+      "size": 187,
+      "sha256": "8bc9d95ce3b366f9fada2a554bb336804bf79f204b20d33a15b8da61fb9573ff"
+    },
+    {
+      "path": "output/business-logs/controlled-replay-red-results.json",
+      "size": 14293,
+      "sha256": "cd621b1bfb7f722e2e5d2ac313fffee2e56b036acda2a4154edc757a9c50b9d8"
+    },
+    {
+      "path": "output/business-logs/controlled-replay-red.log",
+      "size": 339,
+      "sha256": "eb94d0ab5d56949a376e513f6e4584d3a10c6a9d51a22d39497afe1746288881"
+    },
+    {
+      "path": "output/business-logs/final-code-gate-second.log",
+      "size": 20097,
+      "sha256": "b3bf8d84c894c155b78aaa360a911e9dbae6c82f96df058a6785d9c8fe26136d"
+    },
+    {
+      "path": "output/business-logs/final-code-gate.log",
+      "size": 19329,
+      "sha256": "5587f1f39abe50170c8456228471181405213f1d0b5154bd1f4f837e62cb42db"
+    },
+    {
+      "path": "output/business-logs/first-full-gate/application-image-results.json",
+      "size": 11810,
+      "sha256": "b2078408ee3752ca48e6e77577702ae5becdff2fc1c739bfe3274cd8bca46a07"
+    },
+    {
+      "path": "output/business-logs/first-full-gate/gate-results.json",
+      "size": 644,
+      "sha256": "df8908ed5fca7129d5b97048c6d3ff5b2713d2ba9a44a0cbc3ee1d69e413d0d7"
+    },
+    {
+      "path": "output/business-logs/first-full-gate/gate.log",
+      "size": 19329,
+      "sha256": "5587f1f39abe50170c8456228471181405213f1d0b5154bd1f4f837e62cb42db"
+    },
+    {
+      "path": "output/business-logs/first-full-gate/identity-wiring-results.json",
+      "size": 77829,
+      "sha256": "3c9af72e20ae406ed404866ea1144f53a7d7d400540b772f5c872770f2d2362e"
+    },
+    {
+      "path": "output/business-logs/first-full-gate/mysql-image-results.json",
+      "size": 5775,
+      "sha256": "6e41cfc7d04f480dadcbbf83c3e0cbf93cf1fb904b210f8fe565aac2c91d5c85"
+    },
+    {
+      "path": "output/business-logs/first-full-gate/results.json",
+      "size": 77829,
+      "sha256": "3c9af72e20ae406ed404866ea1144f53a7d7d400540b772f5c872770f2d2362e"
+    },
+    {
+      "path": "output/business-logs/first-full-gate/service-batches-results.json",
+      "size": 3209,
+      "sha256": "93091ff8462148b80679cddc8a53ad14feab39a44bd83ec488d168910c69e677"
+    },
+    {
+      "path": "output/business-logs/first-unit-fixture-failure.log",
+      "size": 288,
+      "sha256": "06cb3f90475a2892acbffb4fff721676ab194ad4fe691c8f760d6f33394e970b"
+    },
+    {
+      "path": "output/business-logs/precommit-secret-scan.log",
+      "size": 325,
+      "sha256": "738a4eb59c777a0c7c08f749108c317f018924dfa0dad09e0f05127737f1e25e"
+    },
+    {
+      "path": "output/business-logs/real-business-first-results.json",
+      "size": 15949,
+      "sha256": "f47e397c19e39cf46ef517cc60a54d191586bc77ed00890f4b6e19d0b5920706"
+    },
+    {
+      "path": "output/business-logs/real-business-first.log",
+      "size": 515,
+      "sha256": "7caf6d55c39a550fd6af68796d3ece9f877da212e6d91ef386b4f14cde7485a2"
+    },
+    {
+      "path": "output/business-logs/real-business-second-results.json",
+      "size": 16248,
+      "sha256": "981e894843504cbcc77886fb35991c57c3ed32f48d2d8d6a5382643972cef925"
+    },
+    {
+      "path": "output/business-logs/real-business-second.log",
+      "size": 515,
+      "sha256": "7caf6d55c39a550fd6af68796d3ece9f877da212e6d91ef386b4f14cde7485a2"
+    },
+    {
+      "path": "output/identity/results.json",
+      "size": 16350,
+      "sha256": "41cfddc10f95cf53ac771a6ea7444d53fadd31b61d20e68583a3d02274430234"
+    },
+    {
+      "path": "output/identity-wiring/results.json",
+      "size": 89894,
+      "sha256": "af1c6b6088d3545796d19cb34854d6cbe29396d04dbe57c6184ddb3264ba6d14"
+    },
+    {
+      "path": "output/mysql-image-verify/mysql.json",
+      "size": 1195720,
+      "sha256": "01bc898278b73e1fc941813009a0255a82f6e0bcc4e1fbb46967e0f1cef83da9"
+    },
+    {
+      "path": "output/mysql-image-verify/results.json",
+      "size": 5834,
+      "sha256": "6424092838d00e1766603251afb75943a105f7a4edf278786c1909b0aadedb22"
+    },
+    {
+      "path": "output/service-batches/results.json",
+      "size": 4577,
+      "sha256": "7c8b92c9ddeb6457696d4d5564908519a9a84c42a7e1a3c85299ea71f0478cd9"
+    },
+    {
+      "path": "output/verification/gate-results.json",
+      "size": 644,
+      "sha256": "a38ef93617f001e61df817f5df5f027841d31fa4ae8d9783546535de659491e8"
+    },
+    {
+      "path": "output/verification/secrets-history.json",
+      "size": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "output/verification/secrets-staged.json",
+      "size": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    }
+  ]
+}

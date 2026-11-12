@@ -65,7 +65,7 @@ export function validateAssignmentOperationProfiles(api) {
   for(const [method,path,status,responseSchema,bodySchema,errors] of assignmentOperations){
     const op=api.paths[path]?.[method.toLowerCase()]
     assert.ok(op,`Missing 05 contract: ${method} ${path}`)
-    assert.equal(op['x-contract-status'],'frozen','05 must not activate before its reviewed implementation')
+    assert.equal(op['x-contract-status'],'current','05 implementation and operation stage must activate atomically')
     assert.equal(op['x-owner-change'],'05')
     assert.equal(op['x-spec-change'],'openspec/changes/2026-11-12-assignment-tasks')
     assert.deepEqual(op.security,[{BearerAuth:[]}])

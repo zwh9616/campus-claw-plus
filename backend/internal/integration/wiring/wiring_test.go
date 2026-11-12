@@ -192,6 +192,7 @@ func TestIDFWiring(t *testing.T) {
 	call("GET", "/api/v1/me", "", access, "", 200)
 	if os.Getenv("WIRING_EXPECT") != "down" {
 		verifyMRWiring(t, client, access)
+		verifyATWiring(t, client, access, &observedSecrets)
 	}
 	body, _ = call("GET", "/api/v1/auth/csrf", "", "", "", 200)
 	csrf, _ := body["csrf_token"].(string)
@@ -247,6 +248,17 @@ func TestIDFWiring(t *testing.T) {
 	}
 	materialPath := "/api/v1/materials/" + string(materialID)
 	call("GET", materialPath, "", oldAccess, "", 401)
+	assignmentProof, err := os.ReadFile("/fixtures/assignment-proof")
+	if err != nil {
+		t.Fatal("AT persistence proof missing")
+	}
+	var atProof struct{ AssignmentID string }
+	if json.Unmarshal(assignmentProof, &atProof) != nil || atProof.AssignmentID == "" {
+		t.Fatal("AT invalid persistence proof")
+	}
+	assignmentPath := "/api/v1/assignments/" + atProof.AssignmentID
+	call("GET", assignmentPath, "", oldAccess, "", 401)
+	call("GET", assignmentPath, "", access, "", 404)
 	crossClass, _ := call("GET", materialPath, "", access, "", 404)
 	missingMaterial, _ := call("GET", "/api/v1/materials/9223372036854775807", "", access, "", 404)
 	delete(crossClass, "request_id")

@@ -5,12 +5,17 @@ import (
 	"database/sql"
 	"errors"
 	"github.com/zwh9616/campus-claw-plus/backend/internal/identity"
+	"time"
 )
 
 type Store struct {
 	DB *sql.DB
 	// MaterialHook injects transaction failures in tests; production leaves it nil.
 	MaterialHook func(stage string, step int) error
+	// Assignment hooks are nil in production; deterministic SQL/transaction
+	// fault boundaries exist only for integration-test assembly.
+	AssignmentHook  func(stage string, step int) error
+	AssignmentClock func(context.Context, *sql.Tx) (time.Time, error)
 }
 type transaction struct {
 	tx  *sql.Tx

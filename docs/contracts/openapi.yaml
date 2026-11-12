@@ -4,7 +4,7 @@
   "info": {
     "title": "CampusClawPlus 公共合同",
     "version": "business-contracts/v1",
-    "description": "health及六个身份操作已实现；04资料六个操作为受审frozen合同候选，未接线。其余planned操作不生成paths。凭据样例均不可用。"
+    "description": "health、六个身份和六个资料操作已实现；本05候选原子装配九个已冻结作业/提交/任务操作，共22 current。生产执行器未绑定，受理保持pending；终审和合入状态见共享表。其余planned操作不生成paths。凭据样例均不可用。"
   },
   "paths": {
     "/health": {
@@ -3589,7 +3589,7 @@
       "post": {
         "operationId": "post_assignments",
         "summary": "05候选：POST /api/v1/assignments",
-        "x-contract-status": "frozen",
+        "x-contract-status": "current",
         "x-owner-change": "05",
         "x-spec-change": "openspec/changes/2026-11-12-assignment-tasks",
         "security": [
@@ -4038,7 +4038,7 @@
       "get": {
         "operationId": "get_assignments",
         "summary": "05候选：GET /api/v1/assignments",
-        "x-contract-status": "frozen",
+        "x-contract-status": "current",
         "x-owner-change": "05",
         "x-spec-change": "openspec/changes/2026-11-12-assignment-tasks",
         "security": [
@@ -4338,7 +4338,7 @@
       "get": {
         "operationId": "get_assignments_by_id",
         "summary": "05候选：GET /api/v1/assignments/{id}",
-        "x-contract-status": "frozen",
+        "x-contract-status": "current",
         "x-owner-change": "05",
         "x-spec-change": "openspec/changes/2026-11-12-assignment-tasks",
         "security": [
@@ -4664,7 +4664,7 @@
       "post": {
         "operationId": "post_assignments_by_id_submissions",
         "summary": "05候选：POST /api/v1/assignments/{id}/submissions",
-        "x-contract-status": "frozen",
+        "x-contract-status": "current",
         "x-owner-change": "05",
         "x-spec-change": "openspec/changes/2026-11-12-assignment-tasks",
         "security": [
@@ -5244,7 +5244,7 @@
       "get": {
         "operationId": "get_assignments_by_id_submissions",
         "summary": "05候选：GET /api/v1/assignments/{id}/submissions",
-        "x-contract-status": "frozen",
+        "x-contract-status": "current",
         "x-owner-change": "05",
         "x-spec-change": "openspec/changes/2026-11-12-assignment-tasks",
         "security": [
@@ -5592,7 +5592,7 @@
       "get": {
         "operationId": "get_submissions_by_id",
         "summary": "05候选：GET /api/v1/submissions/{id}",
-        "x-contract-status": "frozen",
+        "x-contract-status": "current",
         "x-owner-change": "05",
         "x-spec-change": "openspec/changes/2026-11-12-assignment-tasks",
         "security": [
@@ -5918,7 +5918,7 @@
       "get": {
         "operationId": "get_tasks_by_id",
         "summary": "05候选：GET /api/v1/tasks/{id}",
-        "x-contract-status": "frozen",
+        "x-contract-status": "current",
         "x-owner-change": "05",
         "x-spec-change": "openspec/changes/2026-11-12-assignment-tasks",
         "security": [
@@ -6248,7 +6248,7 @@
       "post": {
         "operationId": "post_tasks_by_id_retry",
         "summary": "05候选：POST /api/v1/tasks/{id}/retry",
-        "x-contract-status": "frozen",
+        "x-contract-status": "current",
         "x-owner-change": "05",
         "x-spec-change": "openspec/changes/2026-11-12-assignment-tasks",
         "security": [
@@ -6813,7 +6813,7 @@
       "post": {
         "operationId": "post_tasks_by_id_cancel",
         "summary": "05候选：POST /api/v1/tasks/{id}/cancel",
-        "x-contract-status": "frozen",
+        "x-contract-status": "current",
         "x-owner-change": "05",
         "x-spec-change": "openspec/changes/2026-11-12-assignment-tasks",
         "security": [
