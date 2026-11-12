@@ -1,0 +1,33 @@
+{
+  "checked_at": "2026-11-12T11:04:38.057Z",
+  "previous_pr_head": "eede651b693b86d9904e420da582ec9bd698e00e",
+  "incoming_main": "b63dfdd2d118cef45d310910ea99156914cd669b",
+  "scope": "shared-table conflict resolution; preserve PR36 approval/handoff and original PR34 changes",
+  "environment": {
+    "platform": "win32",
+    "node": "v24.22.1",
+    "npm": "10.5.0",
+    "go": "1.27.3"
+  },
+  "checks": [
+    {
+      "command": "npm run check",
+      "exit_code": 0,
+      "strict": "10/10",
+      "output": "sync-b63-check.txt"
+    },
+    {
+      "command": "npm run audit",
+      "exit_code": 0,
+      "output": "sync-b63-audit.txt"
+    },
+    {
+      "command": "git diff --cached --check",
+      "exit_code": 0
+    }
+  ],
+  "full_runtime_locally": {
+    "status": "not rerun",
+    "reason": "Docker command unavailable; final-head complete CI required"
+  }
+}

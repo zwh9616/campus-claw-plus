@@ -1,0 +1,153 @@
+{
+  "time": "2026-11-12T09:47:16.621Z",
+  "exit_code": 0,
+  "scope": "DO-SC-11..13 current identity/materials batch; no independent reviewer or full10B/C claim",
+  "source": {
+    "commit": "b4b13fde47bf39f2d478ff6a2721df23a04680d9",
+    "dirty": false,
+    "fingerprint": "2082f39f902a17fea5ee5d81c2b56752b51dc8fa12d650a7e56a245d5234d129"
+  },
+  "inventory": {
+    "batch": "identity-materials",
+    "review_status": "pending_ge_review",
+    "sources": [
+      {
+        "service": "mysql",
+        "dockerfile": "deploy/identity/mysql/Dockerfile",
+        "dockerfile_sha256": "055eb6378eb40d305b7a28ea9d4a735bfd5e0137a806e330799965074e999c5a",
+        "target": null,
+        "from": [
+          "golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb",
+          "mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902"
+        ]
+      },
+      {
+        "service": "admin",
+        "dockerfile": "backend/Dockerfile.identity",
+        "dockerfile_sha256": "a78bf59efa36cd4ae91cefcbd1406a569b04f0930948604b4c547fdc993c2c82",
+        "target": "admin",
+        "from": [
+          "golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb",
+          "scratch",
+          "scratch"
+        ]
+      },
+      {
+        "service": "backend",
+        "dockerfile": "backend/Dockerfile",
+        "dockerfile_sha256": "d2acdc74c62d5b4ac69116513207e76091c8deab136ce234567577ff4c760fd2",
+        "target": null,
+        "from": [
+          "golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb",
+          "scratch"
+        ]
+      },
+      {
+        "service": "frontend",
+        "dockerfile": "frontend/Dockerfile",
+        "dockerfile_sha256": "1ab71112b10a18955e12a43fc72262192562633d163af9bbde5ee8a9d61fda79",
+        "target": null,
+        "from": [
+          "node@sha256:fe4f6d74e20370acb04ad889077d14d0f64a9c8ea6a42bc60cddf1e844699914",
+          "nginx@sha256:583b7f2fce1cdb8da5ad5c39ebd3c33b98b87d493190e548bdee1fa8c619c311"
+        ]
+      }
+    ],
+    "probe_timeout_ms": 3000,
+    "deployment_wait_ms": 120000
+  },
+  "stages": {
+    "exitCode": 0,
+    "results": [
+      {
+        "name": "scripts/verify-image-audits.mjs",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 59471
+      },
+      {
+        "name": "scripts/verify-skeleton.mjs",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 69309
+      },
+      {
+        "name": "scripts/verify-identity.mjs",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 22573
+      }
+    ],
+    "notRun": []
+  },
+  "images": [
+    {
+      "service": "mysql",
+      "image_id": "sha256:0a8db74b16481f60d03961bb72add26583317429c6ea929f5ef6203d102bb342",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "admin",
+      "image_id": "sha256:aaab356f8080623092db54e90680e80fbca996f7775c87cc8c8c80e6dd06c85c",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "backend",
+      "image_id": "sha256:3c5884baaad9465078ab196ff218d4c6bdb9fbcb750fd8dd863e01d809cc5ef1",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "frontend",
+      "image_id": "sha256:7c6580f22bc06e3081000c5e85b334e7db94a6eeae71bdff6855378aa11a1a13",
+      "HIGH": 0,
+      "CRITICAL": 0
+    }
+  ],
+  "evidence": [
+    {
+      "path": "output/mysql-image-verify/results.json",
+      "sha256": "cd1c5690c72206cea7c4c4d0b1f4e178241dc1384f39fbb1da7e3689ce74c6d7"
+    },
+    {
+      "path": "output/application-image-verify/results.json",
+      "sha256": "b9537e6c2741ee5f348babef259a751344bc6ee8549bf305099f7a524a083b8a"
+    },
+    {
+      "path": "output/identity-wiring/results.json",
+      "sha256": "c131ab76c43f1234b639d415b7fd29ee2bd343cd340e900a1f30c7fc9a003e5a"
+    },
+    {
+      "path": "output/identity/results.json",
+      "sha256": "217b9addf017636277c193e7e97f077ae5035693c1d074cab32d2001f09a9538"
+    }
+  ],
+  "cleanup": [
+    {
+      "tag": "campus-mysql-audit-afa613e9fe90:verification",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "tag": "campus-app-audit-85fea9944710-backend:verification",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "tag": "campus-app-audit-85fea9944710-admin:verification",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "tag": "campus-app-audit-85fea9944710-frontend:verification",
+      "exit_code": 0,
+      "ok": true
+    }
+  ],
+  "finished_at": "2026-11-12T09:49:48.268Z"
+}

@@ -1,0 +1,38 @@
+{
+  "checked_at": "2026-11-12T10:54:14.547Z",
+  "original_pr_head": "510cf58d490c56f2f66a8a91bf9cee77f772961a",
+  "incoming_main": "e617cc00f067cfee84aca0fd69687c385c9b2982",
+  "scope": "PR34 main merge with exactly two shared-table conflict blocks; original peer edits and all incoming main code preserved",
+  "environment": {
+    "platform": "win32",
+    "node": "v24.22.1",
+    "npm": "10.5.0",
+    "go": "1.27.3"
+  },
+  "checks": [
+    {
+      "command": "npm run check",
+      "exit_code": 0,
+      "strict": "10/10",
+      "output": "sync-e617-check.txt"
+    },
+    {
+      "command": "npm run audit",
+      "exit_code": 0,
+      "output": "sync-e617-audit.txt"
+    },
+    {
+      "command": "npm run secret-scan",
+      "exit_code": 0,
+      "output": "sync-e617-secrets.txt"
+    },
+    {
+      "command": "git diff --cached --check",
+      "exit_code": 0
+    }
+  ],
+  "verify": {
+    "status": "not rerun locally",
+    "reason": "Docker command unavailable; final-head complete CI remains required"
+  }
+}

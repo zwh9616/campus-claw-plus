@@ -39,3 +39,7 @@
 [最终原始报告/完整日志](migration/final-code-gate-raw.zip) · [来源/门禁/镜像ID/清理与摘要汇总](migration/final-code-gate-summary.json)。后续仅补报告/任务/交接文档，运行输入不改；最终PR head自身CI仍须核对，不把314b3ba的本机结果说成后来head重复本机运行。
 
 已创建[PR #38](https://github.com/zwh9616/campus-claw-plus/pull/38)，来源codex/05-runtime-2026-11-12，交小陈/Kevcco审查迁移基础。2.1按上述真实源码自测勾选；3.x最终独立终审/集成/归档未完成，不能据本首批或表内SQL夹具宣称AT-SC-02..19运行通过。2.2—2.5的业务HTTP/授权/配额/原子提交/租约CAS与完整竞争测试在后续实施，九操作仍frozen。06资料归档[PR #37](https://github.com/zwh9616/campus-claw-plus/pull/37)另交小葛，不随本分支提前归档。
+
+最新主干整合：#33已获小葛批准并正常合入b631065，main完整CI43210635125成功；#34合入冲突由小张原分支处理，最终568c1ad实际批准5873900783/CI43211623059后正常合入86c9680，main完整CI43212246246已success。本提交逐块保留新主干两套原始证据和本候选范围；既有本机/旧head CI只对应其真实源码，不冒称新整合head已检查或批准，整合后的原合同/批次/strict/链接与秘密检查按实际输出确认。
+
+整合收口：已对齐main86c9680并保留#33/#34全部实际合入及主干成功事实，见[进度合入事实](../10/B/progress-main-2026-11-12.json)。本次foundation、原26组合同行为/双路径、批次8项、strict10/10均通过，本地相对链接157个存在；秘密扫描及diff按本提交真实输出执行。backend/frontend/scripts/Compose/机器合同/阶段登记及服务批次输入与314b3ba逐路径比较无差异，原完整本机gate原件继续绑定314b3ba，不把当前纯进度整合说成另一次容器执行。最终整合head完整CI和实际成员审查另核，未获批准或合入。
