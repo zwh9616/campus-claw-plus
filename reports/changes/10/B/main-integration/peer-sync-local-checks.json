@@ -1,0 +1,34 @@
+{
+  "checked_at": "2026-11-12T11:08:25.467Z",
+  "incoming_main": "b63dfdd2d118cef45d310910ea99156914cd669b",
+  "preserved_peer_head": "59cd47dfbd0efcec6d686d14a18a0d4bbb937b12",
+  "environment": {
+    "platform": "win32",
+    "node": "v24.22.1",
+    "npm": "10.5.0",
+    "go": "1.27.3"
+  },
+  "checks": [
+    {
+      "command": "npm run check",
+      "exit_code": 0,
+      "output": "peer-sync-check.txt"
+    },
+    {
+      "command": "npm run audit",
+      "exit_code": 0,
+      "output": "peer-sync-audit.txt"
+    },
+    {
+      "command": "npm run secret-scan",
+      "exit_code": 0,
+      "output": "peer-sync-secrets.txt"
+    }
+  ],
+  "checked_links": 149,
+  "original_four_untracked_files_unchanged": true,
+  "local_verify": {
+    "status": "not rerun",
+    "reason": "Docker command unavailable; final-head complete CI required"
+  }
+}
