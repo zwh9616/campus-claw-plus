@@ -1,0 +1,83 @@
+{
+  "executor": "gjj6666 (AI assisted)",
+  "source": {
+    "commit": "f723b2177aab74dca44815a49044da11c20823a0",
+    "dirty": false
+  },
+  "node": "v24.19.0",
+  "local_gate_exit": 124,
+  "gate": [
+    {
+      "name": "check",
+      "exit": 0,
+      "duration_ms": 18060
+    },
+    {
+      "name": "audit",
+      "exit": 0,
+      "duration_ms": 4439
+    },
+    {
+      "name": "secret-scan",
+      "exit": 0,
+      "duration_ms": 1861
+    },
+    {
+      "name": "verify",
+      "exit": 124,
+      "duration_ms": 600140
+    }
+  ],
+  "independent_runtime_validation_exit": 0,
+  "independent_runtime_note": "DB verification rerun after local gate timeout; not a completed local gate",
+  "images": [
+    {
+      "service": "mysql",
+      "image_id": "sha256:a70c46ff64b995b77061eb0f09093ff41202c23ac964134e67f18244d3b22843",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "admin",
+      "image_id": "sha256:8b3b2390825ae326d3c34c1d7f5520bc0655f6deeed31babe6ab107a8b924d22",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "backend",
+      "image_id": "sha256:8462db84fd7df635b65c3b1255e7ac0553152815aebfce991fc0016f36c938c7",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "frontend",
+      "image_id": "sha256:05ce6e3598db87919bb571173ad81283df81593d6553a943b05c1ef6b37f37a9",
+      "HIGH": 0,
+      "CRITICAL": 0
+    }
+  ],
+  "cleanup": [
+    {
+      "tag": "campus-mysql-audit-66c294e7869d:verification",
+      "manual_after_gate_timeout": true,
+      "absence_verified": true
+    },
+    {
+      "tag": "campus-app-audit-dae0b1e0fb39-backend:verification",
+      "manual_after_gate_timeout": true,
+      "absence_verified": true
+    },
+    {
+      "tag": "campus-app-audit-dae0b1e0fb39-admin:verification",
+      "manual_after_gate_timeout": true,
+      "absence_verified": true
+    },
+    {
+      "tag": "campus-app-audit-dae0b1e0fb39-frontend:verification",
+      "manual_after_gate_timeout": true,
+      "absence_verified": true
+    }
+  ],
+  "raw_json_secret_scan_exit": 0,
+  "archive_sha256": "c29bf0c349440271edcaaea15c27f9a79275ea31c41e8473297a970a57f6f1c6"
+}
