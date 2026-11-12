@@ -392,7 +392,9 @@ func TestATRealHTTPAuthorizationInputsAndIdempotency(t *testing.T) {
 			t.Fatal("AT sensitive value in HTTP logs")
 		}
 	}
-	t.Log("AT-SC-02..08 actual MySQL/HTTPS authorization, inputs, concurrent atomic snapshots, deadline/quota precedence and session revocation passed")
+	if !t.Failed() {
+		t.Log("AT-SC-02..08 actual MySQL/HTTPS authorization, inputs, concurrent atomic snapshots, deadline/quota precedence and session revocation passed")
+	}
 }
 
 func TestATBusinessWritePointRollbackAndControlledDeadline(t *testing.T) {

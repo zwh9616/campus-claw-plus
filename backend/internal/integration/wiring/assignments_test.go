@@ -83,15 +83,35 @@ func verifyATWiring(t *testing.T, client *http.Client, teacher string, secrets *
 		}
 		return c, auth.Access
 	}
-	studentClient, student := login(1)
-	otherClient, other := login(2)
-	foreignClient, foreign := login(4)
+	persist := os.Getenv("WIRING_EXPECT") == "persist"
+	// Preserve real access sessions in this disposable private fixture. Repeated
+	// logins during the DB-restart phase would consume the unchanged source-IP
+	// login quota. Reusing the session also proves that it survives recreation.
+	const accessPath = "/fixtures/assignment-access"
+	var accesses []string
+	if persist {
+		raw, e := os.ReadFile(accessPath)
+		if e != nil || json.Unmarshal(raw, &accesses) != nil || len(accesses) != 3 {
+			t.Fatal("AT retained real sessions")
+		}
+	} else {
+		for _, index := range []int{1, 2, 4} {
+			_, access := login(index)
+			accesses = append(accesses, access)
+		}
+		raw, _ := json.Marshal(accesses)
+		if os.WriteFile(accessPath, raw, 0600) != nil {
+			t.Fatal("AT private real-session fixture")
+		}
+	}
+	*secrets = append(*secrets, accesses...)
+	student, other, foreign := accesses[0], accesses[1], accesses[2]
+	studentClient, otherClient, foreignClient := client, client, client
 	var proof struct {
 		AssignmentID string
 		Accepted     assignments.Accepted
 	}
 	const proofPath = "/fixtures/assignment-proof"
-	persist := os.Getenv("WIRING_EXPECT") == "persist"
 	if persist {
 		b, e := os.ReadFile(proofPath)
 		if e != nil || json.Unmarshal(b, &proof) != nil || proof.AssignmentID == "" {
