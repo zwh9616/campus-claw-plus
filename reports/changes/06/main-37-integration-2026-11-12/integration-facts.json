@@ -1,0 +1,109 @@
+{
+  "observer": "gjj6666 (AI assisted)",
+  "time_utc": "2026-11-12T13:17:44.206483+00:00",
+  "authorization": "User explicitly allowed PR37 normal merge and main verification; already merged by zwh9616 when checked, no duplicate merge performed",
+  "head": "ae64bb49f51f87f358183783a4ad537623fa4b27",
+  "approval": 5874954533,
+  "approved_by": "gjj6666",
+  "main": "3c45f3187f9b37ab5abe8b4f3dc3079b2afb2f42",
+  "merged_by": "zwh9616",
+  "merged_at": "2026-11-12T13:11:29Z",
+  "head_and_main_tree": "797f77a8977d74bf793c86909819bf64822e8051",
+  "main_protected": true,
+  "ci": {
+    "run": 43224927460,
+    "url": "https://github.com/zwh9616/campus-claw-plus/actions/runs/43224927460",
+    "head": "3c45f3187f9b37ab5abe8b4f3dc3079b2afb2f42",
+    "artifact": 13946909078,
+    "digest": "sha256:8668ebd94bcadcde1bb9b92a14004709e90c1ae9db3273666fe6140fa97d9e55",
+    "source": {
+      "commit": "3c45f3187f9b37ab5abe8b4f3dc3079b2afb2f42",
+      "dirty": false,
+      "fingerprint": "8c77469ea2a2e9ac93c663f06b3d827aebd54d83580bf44795a4593bc835f3b4"
+    },
+    "gate": [
+      {
+        "name": "check",
+        "exit": 0,
+        "duration_ms": 57058
+      },
+      {
+        "name": "audit",
+        "exit": 0,
+        "duration_ms": 984
+      },
+      {
+        "name": "secret-scan",
+        "exit": 0,
+        "duration_ms": 1894
+      },
+      {
+        "name": "verify",
+        "exit": 0,
+        "duration_ms": 166348
+      }
+    ],
+    "images": [
+      {
+        "service": "mysql",
+        "image_id": "sha256:523d878525416074bbfed22dabd8d92272cc651c2c0962d193ad72f9c4b59f93",
+        "HIGH": 0,
+        "CRITICAL": 0
+      },
+      {
+        "service": "admin",
+        "image_id": "sha256:6aaa50809d9c88fd9a0aaf17745c261415f4969c94e6a2acd5b222d6f0824071",
+        "HIGH": 0,
+        "CRITICAL": 0
+      },
+      {
+        "service": "backend",
+        "image_id": "sha256:1c05f49a4cc3844fef663ff3bd6bfb5e602059cdefe67907d83a2c498febf392",
+        "HIGH": 0,
+        "CRITICAL": 0
+      },
+      {
+        "service": "frontend",
+        "image_id": "sha256:145bd8d6640aedfc7708bb2b39db5c3916f86d956d6b9732e4954d6169b158df",
+        "HIGH": 0,
+        "CRITICAL": 0
+      }
+    ],
+    "cleanup": [
+      {
+        "tag": "campus-mysql-audit-25af0b356700:verification",
+        "exit_code": 0,
+        "ok": true
+      },
+      {
+        "tag": "campus-app-audit-4867c80c13ad-backend:verification",
+        "exit_code": 0,
+        "ok": true
+      },
+      {
+        "tag": "campus-app-audit-4867c80c13ad-admin:verification",
+        "exit_code": 0,
+        "ok": true
+      },
+      {
+        "tag": "campus-app-audit-4867c80c13ad-frontend:verification",
+        "exit_code": 0,
+        "ok": true
+      }
+    ]
+  },
+  "four_source_hashes_match": true,
+  "original_runtime_validator_passed": true,
+  "local": {
+    "source": "3c45f3187f9b37ab5abe8b4f3dc3079b2afb2f42",
+    "clean": true,
+    "npm_ci": 0,
+    "setup": 0,
+    "check": 0,
+    "audit": 0,
+    "secret_scan": 0,
+    "strict_spec_items": 10,
+    "full_local_docker_gate": "not rerun; original main CI reports independently verified",
+    "node": "v24.19.0"
+  }
+}
