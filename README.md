@@ -4,8 +4,6 @@
 
 2026-11-12最新冻结事实：#35已获小陈对7fe5b5d真实批准5872964547，正常合入main e617cc0，主干完整CI43202284398通过；05任务1.3完成，原13 current/目标4与九个frozen合同分列，05业务实现仍待原负责人按2.x推进。#33/#34只补实际状态与证据，B全量/C和资料归档尚未完成。
 
-2026-11-12最新冻结事实：#35已获小陈对7fe5b5d真实批准5872964547，正常合入main e617cc0，主干完整CI43202284398通过；05任务1.3完成，原13 current/目标4与九个frozen合同分列，05业务实现仍待原负责人按2.x推进。#33/#34只补实际状态与证据，B全量/C和资料归档尚未完成。
-
 ## 当前运行范围
 
 - GET /health匿名，逐请求真实Ping MySQL，3秒预算；200为status=ok/mysql=up，失败503为status=error/mysql=down，均有服务端X-Request-ID。
@@ -25,7 +23,6 @@
 - [协作规范](docs/standards/collaboration.md)：按变更两人接力；每组可提交修改必须同提交更新共享表。
 - [06资料页面规约](openspec/changes/2026-11-11-materials-frontend/proposal.md)已随#27经小葛批准合入并复验。#29代表样板经小张实际验收与修复确认，最终门禁收口后由小葛接真实资料接口，再交小张终审；作业页面仍依赖05；真实资料页面已随#30合入、#31补严格414观测修复；main da8624c完整CI43186361938及小张真实浏览器18项复验通过，资料阶段待归档，见共享表，并见[独立终审](reports/changes/06/zhang-final-review-2026-11-12.md)。见[样板验收](reports/changes/06/zhang-sample-review-2026-11-11.md)。
 - 2026-11-12组长恢复[05作业与持久任务规约](openspec/changes/2026-11-12-assignment-tasks/proposal.md)：小陈起草/终审，小张审规约/apply。九个候选操作、幂等/outbox/租约/取消及迁移方案已由小张批准，随#31合入main da8624c；公共机器合同两人审定合入前不实现，接口仍planned、数据库目标仍4。真实AI批改/成绩与06作业页面另验。[05检查与交接](reports/changes/05/spec-review-ready-2026-11-12.md)
-
 
 ## 从零启动身份服务
 
