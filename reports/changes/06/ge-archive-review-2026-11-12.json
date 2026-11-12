@@ -1,0 +1,32 @@
+{
+  "reviewer": "gjj6666 (AI assisted)",
+  "reviewed_input_head": "fd825f25333f3d16f756797368154acddee88766",
+  "base": "86c9680f927fcc26df9dfc565f9e0bb0b584be07",
+  "all_four_original_files_preserved": true,
+  "metadata_originally_absent": true,
+  "proposal_and_delta_unchanged": true,
+  "design_only_relative_links": true,
+  "requirements_exact": 5,
+  "scenarios_exact": 12,
+  "registry_only_materials_spec_path": true,
+  "duplicate_task_append_removed": true,
+  "browser_source": "da8624cdb7793e64c4c3d29793b4c7a329adc2b8",
+  "browser_source_dirty": false,
+  "real_browser_cases_passed": 18,
+  "screenshots": 4,
+  "actual_pr31_approval_verified": 5871577319,
+  "artifacts": [
+    {
+      "artifact": 13928556863,
+      "file": "pr-final-runtime-scans.zip",
+      "digest_matches_github": true
+    },
+    {
+      "artifact": 13928284107,
+      "file": "main-runtime-scans.zip",
+      "digest_matches_github": true
+    }
+  ],
+  "relative_links": 135,
+  "missing_links": []
+}
