@@ -1,0 +1,213 @@
+{
+  "observer": "小陈 / Kevcco (AI辅助)",
+  "checked_at": "2026-11-12T13:52:37.062Z",
+  "results": [
+    {
+      "pr": 33,
+      "head": "bb7dd5eafe82d6f4368df36302f237ac1fae2919",
+      "merge": "b6310659369ed760c18a68ac8c965b9eb4c6c6c9",
+      "approval": {
+        "id": 5873502838,
+        "user": "gjj6666",
+        "head": "bb7dd5eafe82d6f4368df36302f237ac1fae2919"
+      },
+      "run": {
+        "id": 43210635125,
+        "status": "completed",
+        "conclusion": "success",
+        "head": "b6310659369ed760c18a68ac8c965b9eb4c6c6c9"
+      },
+      "artifact": {
+        "id": 13940668673,
+        "name": "runtime-image-scans-b6310659369ed760c18a68ac8c965b9eb4c6c6c9",
+        "digest": "sha256:018408f99c7cd24ad02ec6dc70dc67a4c16549862f45b8b4cf8edeeb2670e669"
+      },
+      "zip_sha256_verified": true,
+      "four_source_hashes_verified": true,
+      "runtime_validator_passed": true,
+      "gate": [
+        {
+          "name": "check",
+          "exit": 0
+        },
+        {
+          "name": "audit",
+          "exit": 0
+        },
+        {
+          "name": "secret-scan",
+          "exit": 0
+        },
+        {
+          "name": "verify",
+          "exit": 0
+        }
+      ],
+      "images": [
+        {
+          "service": "mysql",
+          "image_id": "sha256:ab06de9972d1c06ea38c6923eede87ee09c1062db8c1d1dbf2fce1e8fedf9db7",
+          "HIGH": 0,
+          "CRITICAL": 0
+        },
+        {
+          "service": "admin",
+          "image_id": "sha256:1a20ee1347a1c4e2584b35dabb9ae5bf4ef0379d34551547bfc10c570e83ef91",
+          "HIGH": 0,
+          "CRITICAL": 0
+        },
+        {
+          "service": "backend",
+          "image_id": "sha256:ee63d15d65e71c2fe768abdc07b03107c96c8c1b677da9f9ca9cfc3415367d5c",
+          "HIGH": 0,
+          "CRITICAL": 0
+        },
+        {
+          "service": "frontend",
+          "image_id": "sha256:748d151eb1925fc36160375e6f8bed80947d6139421693baafce95b666b8b1a9",
+          "HIGH": 0,
+          "CRITICAL": 0
+        }
+      ],
+      "cleanup_count": 4
+    },
+    {
+      "pr": 34,
+      "head": "568c1ad418df28febf83bdc88719a33ec1b55653",
+      "merge": "86c9680f927fcc26df9dfc565f9e0bb0b584be07",
+      "approval": {
+        "id": 5873900783,
+        "user": "zwh9616",
+        "head": "568c1ad418df28febf83bdc88719a33ec1b55653"
+      },
+      "run": {
+        "id": 43212246246,
+        "status": "completed",
+        "conclusion": "success",
+        "head": "86c9680f927fcc26df9dfc565f9e0bb0b584be07"
+      },
+      "artifact": {
+        "id": 13942331767,
+        "name": "runtime-image-scans-86c9680f927fcc26df9dfc565f9e0bb0b584be07",
+        "digest": "sha256:f8e6573648e1ac30966ff5b0970960a959b28137a1f24613278d078c979ae70b"
+      },
+      "zip_sha256_verified": true,
+      "four_source_hashes_verified": true,
+      "runtime_validator_passed": true,
+      "gate": [
+        {
+          "name": "check",
+          "exit": 0
+        },
+        {
+          "name": "audit",
+          "exit": 0
+        },
+        {
+          "name": "secret-scan",
+          "exit": 0
+        },
+        {
+          "name": "verify",
+          "exit": 0
+        }
+      ],
+      "images": [
+        {
+          "service": "mysql",
+          "image_id": "sha256:015513e61ed376189a9818a0d7f35668c5b76356e908e67f3b2b573e35bc6830",
+          "HIGH": 0,
+          "CRITICAL": 0
+        },
+        {
+          "service": "admin",
+          "image_id": "sha256:d32614ff628e750c24181416ccf093ce523b74efa1b88091ba58541174fb39e3",
+          "HIGH": 0,
+          "CRITICAL": 0
+        },
+        {
+          "service": "backend",
+          "image_id": "sha256:a45b67d2a818f6eff9d2c247da33068155743e92a6a5bdf9f2a4d3885070eaed",
+          "HIGH": 0,
+          "CRITICAL": 0
+        },
+        {
+          "service": "frontend",
+          "image_id": "sha256:32bee3dc2f56319e4848082515dd614f9af829c6bc87bb4f5464d7bc767470e3",
+          "HIGH": 0,
+          "CRITICAL": 0
+        }
+      ],
+      "cleanup_count": 4
+    },
+    {
+      "pr": 37,
+      "head": "ae64bb49f51f87f358183783a4ad537623fa4b27",
+      "merge": "3c45f3187f9b37ab5abe8b4f3dc3079b2afb2f42",
+      "approval": {
+        "id": 5874954533,
+        "user": "gjj6666",
+        "head": "ae64bb49f51f87f358183783a4ad537623fa4b27"
+      },
+      "run": {
+        "id": 43224927460,
+        "status": "completed",
+        "conclusion": "success",
+        "head": "3c45f3187f9b37ab5abe8b4f3dc3079b2afb2f42"
+      },
+      "artifact": {
+        "id": 13946909078,
+        "name": "runtime-image-scans-3c45f3187f9b37ab5abe8b4f3dc3079b2afb2f42",
+        "digest": "sha256:8668ebd94bcadcde1bb9b92a14004709e90c1ae9db3273666fe6140fa97d9e55"
+      },
+      "zip_sha256_verified": true,
+      "four_source_hashes_verified": true,
+      "runtime_validator_passed": true,
+      "gate": [
+        {
+          "name": "check",
+          "exit": 0
+        },
+        {
+          "name": "audit",
+          "exit": 0
+        },
+        {
+          "name": "secret-scan",
+          "exit": 0
+        },
+        {
+          "name": "verify",
+          "exit": 0
+        }
+      ],
+      "images": [
+        {
+          "service": "mysql",
+          "image_id": "sha256:523d878525416074bbfed22dabd8d92272cc651c2c0962d193ad72f9c4b59f93",
+          "HIGH": 0,
+          "CRITICAL": 0
+        },
+        {
+          "service": "admin",
+          "image_id": "sha256:6aaa50809d9c88fd9a0aaf17745c261415f4969c94e6a2acd5b222d6f0824071",
+          "HIGH": 0,
+          "CRITICAL": 0
+        },
+        {
+          "service": "backend",
+          "image_id": "sha256:1c05f49a4cc3844fef663ff3bd6bfb5e602059cdefe67907d83a2c498febf392",
+          "HIGH": 0,
+          "CRITICAL": 0
+        },
+        {
+          "service": "frontend",
+          "image_id": "sha256:145bd8d6640aedfc7708bb2b39db5c3916f86d956d6b9732e4954d6169b158df",
+          "HIGH": 0,
+          "CRITICAL": 0
+        }
+      ],
+      "cleanup_count": 4
+    }
+  ]
+}

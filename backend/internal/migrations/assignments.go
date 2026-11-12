@@ -18,6 +18,12 @@ func (e Executor) assignmentStructure(ctx context.Context, table string) error {
 	if e.DB.QueryRowContext(ctx, query, e.Database, table).Scan(&invalid) != nil || invalid != 0 {
 		return ErrState
 	}
+	// A same-named table in another database is not the reviewed ownership
+	// target. Reject it before Check or Repair can accept the schema as clean.
+	query = `SELECT COUNT(*) FROM information_schema.KEY_COLUMN_USAGE WHERE TABLE_SCHEMA=? AND TABLE_NAME=? AND REFERENCED_TABLE_SCHEMA IS NOT NULL AND REFERENCED_TABLE_SCHEMA<>TABLE_SCHEMA`
+	if e.DB.QueryRowContext(ctx, query, e.Database, table).Scan(&invalid) != nil || invalid != 0 {
+		return ErrState
+	}
 	query = `SELECT COUNT(*) FROM information_schema.REFERENTIAL_CONSTRAINTS WHERE CONSTRAINT_SCHEMA=? AND TABLE_NAME=? AND (DELETE_RULE NOT IN ('NO ACTION','RESTRICT') OR UPDATE_RULE NOT IN ('NO ACTION','RESTRICT'))`
 	if e.DB.QueryRowContext(ctx, query, e.Database, table).Scan(&invalid) != nil || invalid != 0 {
 		return ErrState

@@ -43,3 +43,7 @@
 [原始ZIP](submission/final-code-gate-raw.zip)包含31个原件（先前失败、受控红、最终全gate/四源及镜像原始扫描），SHA256 `ec82328fe7b16d79f87706c152ac052ea18939d1d7fe2f3cd4ce175bd8489bdc`；[逐文件摘要清单](submission/evidence-manifest.json)、[结构化结论](submission/verification-facts.json)、[原件秘密扫描0](submission/evidence-secret-scan.txt)。不含临时账号/证书/答案/幂等原key；清单不打包临时测试私有会话文件。
 
 已创建[#40](https://github.com/zwh9616/campus-claw-plus/pull/40)，原作者小张/zwh9616，按既定分工交小陈/Kevcco。#38仍需其实际批准并正常合入，本PR保留独立分支不改迁移审查输入；当前main差异中的既有SQL/摘要/阶段输入与#38最终7878164逐字不变。2.4 worker、2.5全部21场景、3.x、终审/合入/main复验及真实模型/成绩/页面仍未完成。本批动作SQL夹具不能替代worker竞争、续租、ABA与终态执行事务的验收。
+
+## 持续跟进：同步迁移审查修复与最新主干
+
+2026-11-12小陈在原#38发现并修复跨库外键漂移漏拒（4fbc93b，真实红1→绿0），随后整合#39主干2e4a71b，远端head0eabe92。本#40仅继承其修复/新增真实集成用例及主干证据，SQL与摘要不改；逐行解决共享表冲突，保留原执行者及#39主干原件。原c4e28b3完整CI43231722149成功仅说明原输入，新整合改变迁移检查运行代码，原完整gate/本head CI重新验证，不复用旧绿。#38终审期间不向其分支推送，2.4在后续独立分支继续，不混入#40审查范围。
