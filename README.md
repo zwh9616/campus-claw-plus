@@ -1,6 +1,6 @@
 # CampusClawPlus
 
-本分支已将MySQL、离线迁移/初始化、身份HTTP服务和同源HTTPS接入默认Compose。身份前端已在main验收，本分支新增真实资料列表、检索、上传、原文及下载；小张已完成独立复验，最终正常合入与main复验以[共享进度表](docs/project-status.md)和PR #30实际记录为准。
+本分支已将MySQL、离线迁移/初始化、身份HTTP服务和同源HTTPS接入默认Compose。身份前端已在main验收，本分支新增真实资料列表、检索、上传、原文及下载；小张已完成独立复验，#30已合入、测试修复#31随main da8624c完整CI43186361938通过；实际归档状态见[共享进度表](docs/project-status.md)。
 
 ## 当前运行范围
 
@@ -13,12 +13,14 @@
 
 ## 小组进度与协作入口
 
+- [10-B运行批次](reports/changes/10/B/README.md)：当前01/02/04/06四服务登记见deploy/service-batches.json，`check:service-batches`核对来源/配置/网络/固定镜像及3秒探针；原`verify`三程序照常运行，再保存同轮同镜像摘要。小陈本批自测后交小葛终审，后续服务及10-C另验。
+
 - [共享进度表](docs/project-status.md)记录当前验收和交接。G2、G3已成立，身份和真实登录已在主干复验。01、02归档已分别随[#20](https://github.com/zwh9616/campus-claw-plus/pull/20)、[#21](https://github.com/zwh9616/campus-claw-plus/pull/21)合入，02主干完整检查42779317047成功；见[前端主规约](openspec/specs/frontend-foundation/spec.md)。04规约和机器合同已审定并随#23/#25合入；六个资料后端操作已随#26经小张批准合入main6634e51，主干完整CI42987148688成功。[资料主规约](openspec/specs/materials-retrieval/spec.md)与[04归档](openspec/changes/archive/2026-11-10-materials-retrieval/)已随#28经小张批准正常合入main78af20b，主干完整CI43002888185复验通过，见[归档证据](reports/changes/04/archive-review-2026-11-11.md)。
 - [公共合同](docs/contracts/README.md)：现行13个current操作包括六个身份、MySQL健康及六个04资料操作，其余planned教学操作仍不可调用；npm run check:contracts接入原检查入口。
 - [前端视觉规约](docs/standards/frontend-visual.md)：北大红#94070A、暖白、简约布局，参考Canvas/Moodle信息组织；小张已确认#15代表样板，真实页面已由小葛实现，最终联合验收由小张收口。
 - [协作规范](docs/standards/collaboration.md)：按变更两人接力；每组可提交修改必须同提交更新共享表。
 - [06资料页面规约](openspec/changes/2026-11-11-materials-frontend/proposal.md)已随#27经小葛批准合入并复验。#29代表样板经小张实际验收与修复确认，最终门禁收口后由小葛接真实资料接口，再交小张终审；作业页面仍依赖05；本候选真实资料页面已由小张独立复验，D2a长查询边界及四镜像实扫通过；最终合入与主干复验见共享表，并见[独立终审](reports/changes/06/zhang-final-review-2026-11-12.md)。见[样板验收](reports/changes/06/zhang-sample-review-2026-11-11.md)。
-- 2026-11-12组长恢复[05作业与持久任务规约](openspec/changes/2026-11-12-assignment-tasks/proposal.md)：小陈起草/终审，小张审规约/apply。当前提交九个候选操作、幂等/outbox/租约/取消及迁移方案供审查；自身规约与公共机器合同批准合入前不实现，接口仍planned、数据库目标仍4。真实AI批改/成绩与06作业页面另验。[05检查与交接](reports/changes/05/spec-review-ready-2026-11-12.md)
+- 2026-11-12组长恢复[05作业与持久任务规约](openspec/changes/2026-11-12-assignment-tasks/proposal.md)：小陈起草/终审，小张审规约/apply。当前提交九个候选操作、幂等/outbox/租约/取消及迁移方案供审查；规约已获小张批准并随#31合入main da8624c，公共机器合同批准合入前不实现，接口仍planned、数据库目标仍4。真实AI批改/成绩与06作业页面另验。[05检查与交接](reports/changes/05/spec-review-ready-2026-11-12.md)
 
 
 ## 从零启动身份服务

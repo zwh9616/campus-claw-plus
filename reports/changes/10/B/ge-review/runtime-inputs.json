@@ -1,0 +1,1237 @@
+{
+  "source": "f723b2177aab74dca44815a49044da11c20823a0",
+  "files": [
+    {
+      "path": ".github/workflows/check.yml",
+      "sha256": "54f5468e568a2cca5e61d5d3ede8c2dadf2f0ca0747fcb0e87b4238b8f9ba3f6"
+    },
+    {
+      "path": "backend/.dockerignore",
+      "sha256": "0ae87c95cb5bb90a867f83c54efabcdbf802a772b2aed40bc82dc7465e034f7c"
+    },
+    {
+      "path": "backend/Dockerfile",
+      "sha256": "d2acdc74c62d5b4ac69116513207e76091c8deab136ce234567577ff4c760fd2"
+    },
+    {
+      "path": "backend/Dockerfile.identity",
+      "sha256": "a78bf59efa36cd4ae91cefcbd1406a569b04f0930948604b4c547fdc993c2c82"
+    },
+    {
+      "path": "backend/cmd/identity-admin/main.go",
+      "sha256": "4a99c86ccad90a4f32105f241871487072630ea5f9969405344e0b3e539eb5e2"
+    },
+    {
+      "path": "backend/cmd/server/main.go",
+      "sha256": "abc14c228340f04a0f15497bf5c88a4609c7282ee99aa5e7836751f36b11f7e5"
+    },
+    {
+      "path": "backend/go.mod",
+      "sha256": "e979b7555c1de0264c5d085b6a9b520f72c5b0b69ce43be9ed3f88a2129e3184"
+    },
+    {
+      "path": "backend/go.sum",
+      "sha256": "49703f5fcdf3f4d6ae4b37ac4e37936fa50ee4b8f8c71c1e7602cf2d17b29344"
+    },
+    {
+      "path": "backend/internal/config/config.go",
+      "sha256": "ac0aef77801e7579625ac201ff48e0fc5f8aaa20e930be7c66bee70b3d828360"
+    },
+    {
+      "path": "backend/internal/config/config_test.go",
+      "sha256": "dca59bbe98e50de6db12368619bf0287437366d80b424e176ce446b9a564c295"
+    },
+    {
+      "path": "backend/internal/config/identity.go",
+      "sha256": "12b557193852df338b650c087430c5ac873f74f278ebd42fe871fb00592a539f"
+    },
+    {
+      "path": "backend/internal/config/identity_test.go",
+      "sha256": "5cda0f19dee6201b2e4094aec8bf9d1b6614a2c810244849226637ac6e5aa9a2"
+    },
+    {
+      "path": "backend/internal/httpserver/handler.go",
+      "sha256": "acdf5a131ebece805992a7e71b3e0868bbc2dbaabfc4f3c88050f26d394c3001"
+    },
+    {
+      "path": "backend/internal/httpserver/handler_test.go",
+      "sha256": "62e642e2c940a14b52ea12ce8af45d7cca84c4ea0f461d04f5cbc3180a863c07"
+    },
+    {
+      "path": "backend/internal/httpserver/identity.go",
+      "sha256": "319078d6a201c777298b1dc94d18b6426b49b8c145df45e0b30f994c51aa0fc2"
+    },
+    {
+      "path": "backend/internal/httpserver/materials.go",
+      "sha256": "a1c13b97cf578a12e3794dabc826884b147ebd9454ccffe218e91ff497148c92"
+    },
+    {
+      "path": "backend/internal/httpserver/materials_test.go",
+      "sha256": "1207c835381995e439752685ba40f354504408a8b1737290fc110335898ba055"
+    },
+    {
+      "path": "backend/internal/httpserver/server.go",
+      "sha256": "44a8ede25648fdf96124bf15975b9894e2a4934b6c4583c7f4aea80efb22c248"
+    },
+    {
+      "path": "backend/internal/httpserver/server_test.go",
+      "sha256": "2a22cf4f54165c16d55011d4444d6a937f1059f58118ae238d523d1269942f32"
+    },
+    {
+      "path": "backend/internal/identity/crypto.go",
+      "sha256": "d96550b90ed5b0ef540679372f90e462c06fbabbda9ec281d4c833709cb7aa6b"
+    },
+    {
+      "path": "backend/internal/identity/identity_test.go",
+      "sha256": "5447851fe12dfe3e81a05b99f7683b048600de98033fb5c87a1ce8ad66605287"
+    },
+    {
+      "path": "backend/internal/identity/limiter.go",
+      "sha256": "b1bc018683762d83caef8dc3f113e309d1519e6a86fe046c143ec76f8879ae0e"
+    },
+    {
+      "path": "backend/internal/identity/model.go",
+      "sha256": "d95ab80dca2c1b4b0bc0c6d3ae59283adcb6abac63ef0c2e5397945d7df4819f"
+    },
+    {
+      "path": "backend/internal/identity/service.go",
+      "sha256": "b770cf5cc39ef3366dbf6d58ec7268541ff5c792fc1dc25a57bc300e2211aa18"
+    },
+    {
+      "path": "backend/internal/identityapp/app.go",
+      "sha256": "43729c084ef3f82704305fddec671fb782987940c4ce016e09339153dc6a7492"
+    },
+    {
+      "path": "backend/internal/integration/app_test.go",
+      "sha256": "72b2a4abfd76b18ba8f42ea57da46aba89955ff2b22d0d09db154c18ae6e5a04"
+    },
+    {
+      "path": "backend/internal/integration/failures_test.go",
+      "sha256": "bb5628d29edf3d4129e0085edefbffc9083b3f2e3225f654611e551293c4449f"
+    },
+    {
+      "path": "backend/internal/integration/fixture/main.go",
+      "sha256": "3647432df8b58b959ad2279b21023dcf9d30eb7763cdc0fcaa81b8a12ae03304"
+    },
+    {
+      "path": "backend/internal/integration/identity_test.go",
+      "sha256": "8e382fa40850af50682dc6ac7d8c3e063ab23ed357c7102b3b48d8e0bdd6480f"
+    },
+    {
+      "path": "backend/internal/integration/materials_backup_test.go",
+      "sha256": "32f7064088531ecc0535546bd152176847218466428d0fb2708116a05605c837"
+    },
+    {
+      "path": "backend/internal/integration/materials_commit_test.go",
+      "sha256": "26ddd2dbedf6b8eb630caf31f55576dc9f90979d719d7767965fa19b3a091b90"
+    },
+    {
+      "path": "backend/internal/integration/materials_test.go",
+      "sha256": "8caaba70ffb7964561d0657bdcd8120b2729a254d992dda62c1037e1de8e5701"
+    },
+    {
+      "path": "backend/internal/integration/migration_checks_test.go",
+      "sha256": "54e23b05c2ab555e5a2e4e591dcc6cec0f9d432dc1294de2931b3c11d77b343a"
+    },
+    {
+      "path": "backend/internal/integration/reviewer_test.go",
+      "sha256": "278ec7224d475f462ca65fefd1c9e091e08e150d21d2a74f268c6684763422a3"
+    },
+    {
+      "path": "backend/internal/integration/wiring/materials_test.go",
+      "sha256": "f752215fda9f6a49337bca6bd63185eefba2ef9f33fde599cafe80c1216638b4"
+    },
+    {
+      "path": "backend/internal/integration/wiring/materials_transport_test.go",
+      "sha256": "5ea417e54c3a708c1edeff7aaa67fbba28f0b6b35b5ec25cd5a7c2787be50728"
+    },
+    {
+      "path": "backend/internal/integration/wiring/wiring_test.go",
+      "sha256": "8b5f89093211c8fb21082aaf2642cd3f0c69ff3a0def4f1fcd5f8b6ba39e5896"
+    },
+    {
+      "path": "backend/internal/integration/wiringfixture/main.go",
+      "sha256": "2b53fc29962ca0faca37074f5ad33cffa84399d01c1375894730da3a25a0ad95"
+    },
+    {
+      "path": "backend/internal/materials/materials.go",
+      "sha256": "924ba15b2554fae22266627c05456c22ff01b304b18f60d03c4cb6d99b8b2283"
+    },
+    {
+      "path": "backend/internal/materials/materials_test.go",
+      "sha256": "18cfbef069ac2faf702fe5f0483f7c26764bab5fcc4c0e2773e822624791799d"
+    },
+    {
+      "path": "backend/internal/migrations/manifest.json",
+      "sha256": "baba7dc9469ebc673393d8235b82f6f73cfe86ca34a76ad131ed16b887d30f6b"
+    },
+    {
+      "path": "backend/internal/migrations/migrations.go",
+      "sha256": "668434eb7f95ac7ff93edc0bbeeb414bc6377544031c4b8faf8012663eb8862d"
+    },
+    {
+      "path": "backend/internal/migrations/sql/000001_identity_users_classes.down.sql",
+      "sha256": "4aeb5022ed2575818082d6e4880b2f83a524c7cc7038d7b49b3debadfdd532da"
+    },
+    {
+      "path": "backend/internal/migrations/sql/000001_identity_users_classes.up.sql",
+      "sha256": "07947f4fd66c751eb549c07917266eb65d8e4e9352d26506fb8002b5e65e05c7"
+    },
+    {
+      "path": "backend/internal/migrations/sql/000002_identity_sessions.down.sql",
+      "sha256": "b44b4528eb1aa3bfddfea588249da54509871972f6febe26b2d448faf45a9773"
+    },
+    {
+      "path": "backend/internal/migrations/sql/000002_identity_sessions.up.sql",
+      "sha256": "c600e1133f8ace63565fca713e13dd33a187f670d10bc94b028d66db351baeb0"
+    },
+    {
+      "path": "backend/internal/migrations/sql/000003_identity_auth_audit.down.sql",
+      "sha256": "2b2562162a904817521e01a0482d0665eaabfff88df0a86e71237c7fb08372b4"
+    },
+    {
+      "path": "backend/internal/migrations/sql/000003_identity_auth_audit.up.sql",
+      "sha256": "b83195b44f354ba2909b01a5aceb5b18954e04b075a68095039d4849e5f99c1e"
+    },
+    {
+      "path": "backend/internal/migrations/sql/000004_materials_retrieval.down.sql",
+      "sha256": "d73567bd3c5318c1cde9f0f677e865982eb738004236437bdbdf258d8791bdac"
+    },
+    {
+      "path": "backend/internal/migrations/sql/000004_materials_retrieval.up.sql",
+      "sha256": "6bad8d66dbfa671c3bc603467837580ff4336cd3417313b1556920e0299ae830"
+    },
+    {
+      "path": "backend/internal/migrations/structure.go",
+      "sha256": "defbf5996cda9ba0d2e1dbc4f516e549550b028ca595bb00755730dcde2e8091"
+    },
+    {
+      "path": "backend/internal/mysqlstore/connect.go",
+      "sha256": "350a29502070265fc8df4fe01a7851f09f2cc5d25ac24185a9fffb431c57b2d2"
+    },
+    {
+      "path": "backend/internal/mysqlstore/initialize.go",
+      "sha256": "00d87c2ab5bd1af30b55d7dfcb937defb14a66a5263b304eda9c443b68863ee9"
+    },
+    {
+      "path": "backend/internal/mysqlstore/initialize_test.go",
+      "sha256": "0918359b046c1740f98a0a5c5886766843a9d8445bed76d2641f071cc0d81fbc"
+    },
+    {
+      "path": "backend/internal/mysqlstore/materials.go",
+      "sha256": "e32796783332934b846f03a5153dda9c84ea3666895d65486d810ab58377d894"
+    },
+    {
+      "path": "backend/internal/mysqlstore/store.go",
+      "sha256": "70fd1dbc3bd7fcafc18c7f78e6e352f550e4f08098cd2cdfbaf44fb4cdfb9f81"
+    },
+    {
+      "path": "backend/internal/observability/log.go",
+      "sha256": "10f30c19e4ab0750e0cab49130f21446ff0309134ff82e4e20148ce4594db8d5"
+    },
+    {
+      "path": "backend/internal/observability/log_test.go",
+      "sha256": "2f11a116440b4bde2b57ca447998dd65d01ff25950ad80536167110a58853c60"
+    },
+    {
+      "path": "backend/internal/probe/probe.go",
+      "sha256": "b275dde931065809c32b925cb919df2084cd00d0b1834612d2848261bffdb85e"
+    },
+    {
+      "path": "backend/internal/probe/probe_test.go",
+      "sha256": "a14ec3b483bcb7013d3c4feb29d7cf5bed4db00b68150c65705a8f39cd1e3b27"
+    },
+    {
+      "path": "backend/internal/strictjson/strictjson.go",
+      "sha256": "6147096fa65027ca17d1a51d3a97cc6cd9a4a92a1c5975d6ec733f54ff030d6d"
+    },
+    {
+      "path": "backend/internal/strictjson/strictjson_test.go",
+      "sha256": "f24314103b641d298c05dc0dbe31b0b0d2615aaa066e3dfb4c2961331a27ae9c"
+    },
+    {
+      "path": "backend/vendor/filippo.io/edwards25519/LICENSE",
+      "sha256": "2d36597f7117c38b006835ae7f537487207d8ec407aa9d9980794b2030cbc067"
+    },
+    {
+      "path": "backend/vendor/filippo.io/edwards25519/README.md",
+      "sha256": "39760d8b144d127d4b3be241cf93f7c12fbc1d0b6d3ac4e2da8f0ba68a3b1532"
+    },
+    {
+      "path": "backend/vendor/filippo.io/edwards25519/doc.go",
+      "sha256": "d6616c2fb2fb2d14d4fa886057286cab81f877fd945638618bc9966203fc0a84"
+    },
+    {
+      "path": "backend/vendor/filippo.io/edwards25519/edwards25519.go",
+      "sha256": "cd82641c426a8c294e2b80d746116eb1b1707bfb980199599ef4cbb94cbb25b3"
+    },
+    {
+      "path": "backend/vendor/filippo.io/edwards25519/extra.go",
+      "sha256": "e646542ebc4c8f751de2ca30d98d66a6289d5885b91ed3a3f44327b1d937dd24"
+    },
+    {
+      "path": "backend/vendor/filippo.io/edwards25519/field/fe.go",
+      "sha256": "2ba45341ad3167343c18812b92d0fcddfad17e159e0770622a30fd190c565f06"
+    },
+    {
+      "path": "backend/vendor/filippo.io/edwards25519/field/fe_amd64.go",
+      "sha256": "1d1ea6a61ee950e19ce37b8be7b9250e962a922fb768bfc64cfbca63952af4d1"
+    },
+    {
+      "path": "backend/vendor/filippo.io/edwards25519/field/fe_amd64.s",
+      "sha256": "affcfc732685da135acea57e6c0a09d893ad21547128b67c2e9583c23654f7c7"
+    },
+    {
+      "path": "backend/vendor/filippo.io/edwards25519/field/fe_amd64_noasm.go",
+      "sha256": "3f3d670d4da11ac2e68a8dfd69d869f955ea9a85264cf88ee55184e61f74ba2e"
+    },
+    {
+      "path": "backend/vendor/filippo.io/edwards25519/field/fe_extra.go",
+      "sha256": "8fda2b521aaa3e7506fd4556f82d115068222e5843a0822ec75376bfa7216024"
+    },
+    {
+      "path": "backend/vendor/filippo.io/edwards25519/field/fe_generic.go",
+      "sha256": "75d213650f76b7c5501202bf5cae1f0cdc1f84fbaa8bed5f93c0109189e01dba"
+    },
+    {
+      "path": "backend/vendor/filippo.io/edwards25519/pull.sh",
+      "sha256": "47729255f459cabf394b7b0de04e15d5b31b224b1b3a1dd93bde7182b219237d"
+    },
+    {
+      "path": "backend/vendor/filippo.io/edwards25519/scalar.go",
+      "sha256": "e4aebdd46ca174b66c9bb782aae062020f6984a20434c9f119ce271a6f30abce"
+    },
+    {
+      "path": "backend/vendor/filippo.io/edwards25519/scalar_fiat.go",
+      "sha256": "a9bc7ecfd7715467b3fcb3924ecddb9f4200324c1db4d1f804c4fa3e94fe896f"
+    },
+    {
+      "path": "backend/vendor/filippo.io/edwards25519/scalarmult.go",
+      "sha256": "11f525c854f8e9738a5779adf61d8b3cb39067bd9ccad6a908355811242ecc1f"
+    },
+    {
+      "path": "backend/vendor/filippo.io/edwards25519/tables.go",
+      "sha256": "3ca8e777db7ff27a99c2994254ea7afe4ccf29de8bb1f0f6b422f4b3f0c9c616"
+    },
+    {
+      "path": "backend/vendor/github.com/go-sql-driver/mysql/.gitignore",
+      "sha256": "56c720c4ddfb35644002823cfbfb2ba77a7b9933ac50f9896d70e5635a647fa0"
+    },
+    {
+      "path": "backend/vendor/github.com/go-sql-driver/mysql/AUTHORS",
+      "sha256": "ccb046784741000e0704273e837d4a3c310cb52d357adc09d47f93c06e46d6ed"
+    },
+    {
+      "path": "backend/vendor/github.com/go-sql-driver/mysql/CHANGELOG.md",
+      "sha256": "1ad55c42e420bf29ddda6d4cf873b07bb140b4292a99b44ad43c6e59cae470c1"
+    },
+    {
+      "path": "backend/vendor/github.com/go-sql-driver/mysql/LICENSE",
+      "sha256": "fab3dd6bdab226f1c08630b1dd917e11fcb4ec5e1e020e2c16f83a0a13863e85"
+    },
+    {
+      "path": "backend/vendor/github.com/go-sql-driver/mysql/README.md",
+      "sha256": "19393e3f1a9b4303cb7e64ad9163e3ea3e61d57d975f1028c0e1a7979a03f0a1"
+    },
+    {
+      "path": "backend/vendor/github.com/go-sql-driver/mysql/auth.go",
+      "sha256": "7071a9f57f4c21f01122910f7464c199755470e946c6453b9feaf81089cd6915"
+    },
+    {
+      "path": "backend/vendor/github.com/go-sql-driver/mysql/buffer.go",
+      "sha256": "f63627cc1bc44b4f472b9f18c4edd75b89d229cfad0876d4e0d53dad32c140ac"
+    },
+    {
+      "path": "backend/vendor/github.com/go-sql-driver/mysql/collations.go",
+      "sha256": "2df2fd9dcc7f66b16026f8fcab7b906bcd06717009bab0909f73769a6abcbfa9"
+    },
+    {
+      "path": "backend/vendor/github.com/go-sql-driver/mysql/compress.go",
+      "sha256": "1de9e2f3ddfcb2d376467263a91bae6002aa52b02a37e1a76a7e09b7841b8cd1"
+    },
+    {
+      "path": "backend/vendor/github.com/go-sql-driver/mysql/conncheck.go",
+      "sha256": "fd0efe94d657b5f57f5199aa77e87875703e14ee5fabdd4bf333986d05a08f36"
+    },
+    {
+      "path": "backend/vendor/github.com/go-sql-driver/mysql/conncheck_dummy.go",
+      "sha256": "72ff9c7b66c8d7a7d8026911efd9ae297648c5e6e9bd96e27b5546459508442d"
+    },
+    {
+      "path": "backend/vendor/github.com/go-sql-driver/mysql/connection.go",
+      "sha256": "dc9eed2dc445196caac176e8f9f89e6c602900c15e475fec432b86451f6f4bde"
+    },
+    {
+      "path": "backend/vendor/github.com/go-sql-driver/mysql/connector.go",
+      "sha256": "e1d69cc4da682c80d2d0281ea648a2e7253541b1926a69eb640399a6a95d408d"
+    },
+    {
+      "path": "backend/vendor/github.com/go-sql-driver/mysql/const.go",
+      "sha256": "3f575e6e1188f098a270ff5ba633e6b3de608456bea52441c564db256287797e"
+    },
+    {
+      "path": "backend/vendor/github.com/go-sql-driver/mysql/driver.go",
+      "sha256": "69b3efca35a5b27f16db60892018c82267c77200e38be061690fe393a582ea0c"
+    },
+    {
+      "path": "backend/vendor/github.com/go-sql-driver/mysql/dsn.go",
+      "sha256": "5148d4c2cd31f251a7bbf3f5c9352bd7d1af33fb7b32356ee6b51beecefb90e9"
+    },
+    {
+      "path": "backend/vendor/github.com/go-sql-driver/mysql/errors.go",
+      "sha256": "93cb2247b8c2d7a614b7f53099caec43a4020cc618e27168c1b7372ebc8eeff6"
+    },
+    {
+      "path": "backend/vendor/github.com/go-sql-driver/mysql/fields.go",
+      "sha256": "ef3c703bc610948ddc0f56d7e5b8f1b8aa4c899c2fd63095907f9d404a06dfd5"
+    },
+    {
+      "path": "backend/vendor/github.com/go-sql-driver/mysql/infile.go",
+      "sha256": "1ef47d89f5845790074f5304b89b6436c40cba7bb34996a826aa5ae393064e62"
+    },
+    {
+      "path": "backend/vendor/github.com/go-sql-driver/mysql/nulltime.go",
+      "sha256": "5608bcccd778ffe7b98531323270229ccfc5530fc5507933656f1a6d6b693708"
+    },
+    {
+      "path": "backend/vendor/github.com/go-sql-driver/mysql/packets.go",
+      "sha256": "996d361199426ff8efa4f090f77be36ac2108e70da28b781eba7f3ea274c7d90"
+    },
+    {
+      "path": "backend/vendor/github.com/go-sql-driver/mysql/result.go",
+      "sha256": "16d9f9e0860e45bfa4999ae936e2622bcd1f4ec8b14bae15b9d758fe28cda29e"
+    },
+    {
+      "path": "backend/vendor/github.com/go-sql-driver/mysql/rows.go",
+      "sha256": "110c1a9355a070264203f25cfc1406b0299150e15bc65b4fe9ef81c513e53cde"
+    },
+    {
+      "path": "backend/vendor/github.com/go-sql-driver/mysql/statement.go",
+      "sha256": "f39ba38d48e1894ea11e3319e1a696e43e9dfbde13a498062e3de41ae93340a4"
+    },
+    {
+      "path": "backend/vendor/github.com/go-sql-driver/mysql/transaction.go",
+      "sha256": "43ec4944533ae998a841c2c3a3f24f8fd93e42b74547a784725aeb6be603ff7a"
+    },
+    {
+      "path": "backend/vendor/github.com/go-sql-driver/mysql/utils.go",
+      "sha256": "1d72414c4b7b2360dfa595e61efba29c023e82f6e0f02a6bf15fd96bb568c10c"
+    },
+    {
+      "path": "backend/vendor/github.com/golang-migrate/migrate/v4/.dockerignore",
+      "sha256": "ca20541866b37296273ad4c921a6d3b67d53d85215d1164ff76813806b5d5952"
+    },
+    {
+      "path": "backend/vendor/github.com/golang-migrate/migrate/v4/.gitignore",
+      "sha256": "d429ecd71f03d15c614baf6db14814c1ba947088092ef227f8aba43b5700994e"
+    },
+    {
+      "path": "backend/vendor/github.com/golang-migrate/migrate/v4/.golangci.yml",
+      "sha256": "95b8ac865babf4dc7050362d0f6dc09bcee786197a9c18dc6c09df51f1bc567b"
+    },
+    {
+      "path": "backend/vendor/github.com/golang-migrate/migrate/v4/.goreleaser.yml",
+      "sha256": "a2f63a23a33da7042e480fbbd7f248d6b468e9e24bfd1e753b4269c5ca5ca3b4"
+    },
+    {
+      "path": "backend/vendor/github.com/golang-migrate/migrate/v4/.travis.yml",
+      "sha256": "5027638ce439faa23968da77707820e91e2bc9a256357bd6ebc8a82d851908f5"
+    },
+    {
+      "path": "backend/vendor/github.com/golang-migrate/migrate/v4/CONTRIBUTING.md",
+      "sha256": "25c5d9b5bbe689f8c7052ff3b9aec63a94a45943815da6cb175bea2fcb72c47a"
+    },
+    {
+      "path": "backend/vendor/github.com/golang-migrate/migrate/v4/Dockerfile",
+      "sha256": "a47557b029afffe973e44c6fb36fb9fc0e0aa3f475a17bd1dea95a429b5b2199"
+    },
+    {
+      "path": "backend/vendor/github.com/golang-migrate/migrate/v4/Dockerfile.circleci",
+      "sha256": "f1bcdf10c6f4b93da60eee3dd927f76b92732a4a18557e78a78c5858cbf3c3bb"
+    },
+    {
+      "path": "backend/vendor/github.com/golang-migrate/migrate/v4/Dockerfile.github-actions",
+      "sha256": "30cb0c5578a4e86470c140d870fbcbf40a5c06ba8cd1def34561b0aa4c29b165"
+    },
+    {
+      "path": "backend/vendor/github.com/golang-migrate/migrate/v4/FAQ.md",
+      "sha256": "92da5b2969ded53916906e55766fcb3a88566e8dbf391283a4390ece01287ede"
+    },
+    {
+      "path": "backend/vendor/github.com/golang-migrate/migrate/v4/GETTING_STARTED.md",
+      "sha256": "624b035400cd2ddd3030f4f91517e445c0b6554b10c961d19af278d21a216afc"
+    },
+    {
+      "path": "backend/vendor/github.com/golang-migrate/migrate/v4/LICENSE",
+      "sha256": "4c250e1d2cb21c738d5ec785f6fb1e03cd1e9adecfab46feb9494847872455be"
+    },
+    {
+      "path": "backend/vendor/github.com/golang-migrate/migrate/v4/MIGRATIONS.md",
+      "sha256": "53b7717dc1586a64df2323a90066faf200d7d83a482b8d39be57b8a949bf4bf5"
+    },
+    {
+      "path": "backend/vendor/github.com/golang-migrate/migrate/v4/Makefile",
+      "sha256": "5b4e9ebad1df9ffa09418e036a95b753f07fe54a9b22860758c6247cfb43a76d"
+    },
+    {
+      "path": "backend/vendor/github.com/golang-migrate/migrate/v4/README.md",
+      "sha256": "18365155c79e5374042e80a12f2960d9ff4b804963d3d2e0f86ee03db43c9e06"
+    },
+    {
+      "path": "backend/vendor/github.com/golang-migrate/migrate/v4/SECURITY.md",
+      "sha256": "a9e9657dd9bb65ae6961a40b249b3a7c241ddd8c89c5e7666af462f2e7085d29"
+    },
+    {
+      "path": "backend/vendor/github.com/golang-migrate/migrate/v4/database/driver.go",
+      "sha256": "db7d9fc009b15812638a29646699876498d2b6cbf50be250bf3fd799aee9b1d2"
+    },
+    {
+      "path": "backend/vendor/github.com/golang-migrate/migrate/v4/database/error.go",
+      "sha256": "0bbb1e8b15ac4dd1367d2aa8b68e7068ee46e30d5b1a95ab2713e98b97cf9bea"
+    },
+    {
+      "path": "backend/vendor/github.com/golang-migrate/migrate/v4/database/mysql/README.md",
+      "sha256": "ce5c9972f186bbf45e363b4384cc1a9b9e2c0e06e21cfd4b898f00f427777c42"
+    },
+    {
+      "path": "backend/vendor/github.com/golang-migrate/migrate/v4/database/mysql/mysql.go",
+      "sha256": "a5b31655908c6a0e0af4e3f0615dc6484b93357c47e35a6b5ddccce4dd9e2baa"
+    },
+    {
+      "path": "backend/vendor/github.com/golang-migrate/migrate/v4/database/util.go",
+      "sha256": "392d9f975284a856ad8d9f5b0dcffddc628a103bd0929202f9dfaf5294d55ab6"
+    },
+    {
+      "path": "backend/vendor/github.com/golang-migrate/migrate/v4/docker-deploy.sh",
+      "sha256": "e81f75284afcace4a8b3704be15177204e0288f9adeb184efebcd652a0d61ac2"
+    },
+    {
+      "path": "backend/vendor/github.com/golang-migrate/migrate/v4/internal/url/url.go",
+      "sha256": "2eb4e4cd475ed09910933250cfb484d79971eea88a4f1f2673e4b8a3ed032d63"
+    },
+    {
+      "path": "backend/vendor/github.com/golang-migrate/migrate/v4/log.go",
+      "sha256": "5c02cbe3a61690c3897324b05ba96e8ffd29c3e33e03a9a9d02af2d3ee6c348d"
+    },
+    {
+      "path": "backend/vendor/github.com/golang-migrate/migrate/v4/migrate.go",
+      "sha256": "43b6dc16f9e9dbbdf61df74dd8d99e72a5617e247f5ff154e0771993e3f44fae"
+    },
+    {
+      "path": "backend/vendor/github.com/golang-migrate/migrate/v4/migration.go",
+      "sha256": "11b93755e143b85c4aec744875e6e4250683558e815e09d3127da4609030ecb1"
+    },
+    {
+      "path": "backend/vendor/github.com/golang-migrate/migrate/v4/source/driver.go",
+      "sha256": "137c608022d14503d71c2640f6e6370c15bcdb08ee50ecec7d47e3034bde7f7b"
+    },
+    {
+      "path": "backend/vendor/github.com/golang-migrate/migrate/v4/source/errors.go",
+      "sha256": "81852bd0ecac264755c6add39f6a697ef543d9b02782c8384ccedc19cf8761ce"
+    },
+    {
+      "path": "backend/vendor/github.com/golang-migrate/migrate/v4/source/iofs/README.md",
+      "sha256": "4b99ac89bcf3a8b3f356c566440d9859c8708327beaf8d819d3f6a681d2cac9d"
+    },
+    {
+      "path": "backend/vendor/github.com/golang-migrate/migrate/v4/source/iofs/doc.go",
+      "sha256": "c5dfdff7e66696dce67a326456f35ddbf43839bbdf233f8274364f939c275b57"
+    },
+    {
+      "path": "backend/vendor/github.com/golang-migrate/migrate/v4/source/iofs/iofs.go",
+      "sha256": "1a2c3bc2e8fd2dcb39be098b5600a5fe5fa05f15198d0c1d16cbada5aa72afb7"
+    },
+    {
+      "path": "backend/vendor/github.com/golang-migrate/migrate/v4/source/migration.go",
+      "sha256": "0a674dcadb62faa7927653e30e53cad4e744c8d99b87d4466eb878bf29636544"
+    },
+    {
+      "path": "backend/vendor/github.com/golang-migrate/migrate/v4/source/parse.go",
+      "sha256": "dbc3bf93cad61b93586047b2c7c9e07250a8032dd4fd2bfe23e85dd6c11e334a"
+    },
+    {
+      "path": "backend/vendor/github.com/golang-migrate/migrate/v4/util.go",
+      "sha256": "384ef4b5ba6abec0568bf89bf602c1415f555904a7b16977971ed65f6eb925bd"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/crypto/LICENSE",
+      "sha256": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/crypto/PATENTS",
+      "sha256": "96f408bfae65bf137fc2525d3ecb030271c50c1e90799f87abf8846d8dd505cc"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/crypto/argon2/argon2.go",
+      "sha256": "3675c69f8a2efbd5ae4d35d00f5679113b50ec32f3fe6482c669ef7b401a38d5"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/crypto/argon2/blake2b.go",
+      "sha256": "00b7ed36b3569e067ce4e34c92b44914e98a26f3666a2cf01b6785cc4b8201e6"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/crypto/argon2/blamka_amd64.go",
+      "sha256": "3f579a886e71b212df75178fef7876aa2b3ea059db0baab44cd3fb4239edca12"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/crypto/argon2/blamka_amd64.s",
+      "sha256": "34956c458ac293db0748178d62e110ac45837063e535a813c8a253c3fe50729f"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/crypto/argon2/blamka_generic.go",
+      "sha256": "168ed535967c760875407a802f810d76cf527f6c1bb111612dbc81c66fcaf34c"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/crypto/argon2/blamka_loong64.go",
+      "sha256": "f656d6f7de87592eff8e9502f395e947d6b3e103ffcb820d34c0dcf5a22c3c96"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/crypto/argon2/blamka_loong64.s",
+      "sha256": "36c96607033dd21fbff85ff1ef4b473825d944e7043738f799f2584993d2c6b4"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/crypto/argon2/blamka_ref.go",
+      "sha256": "5ee521fdb6238d46888482d6cac64f825816d52a649b894447890c80450c657a"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/crypto/blake2b/blake2b.go",
+      "sha256": "f370186a863f5ef09589b842c688747c480dfd4d3d6bb89661e08de78ed49bb8"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/crypto/blake2b/blake2bAVX2_amd64.go",
+      "sha256": "1a2952821dcf30e5f49a9eec1091ba5f74d6f900cde45eb842bdf36204430982"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/crypto/blake2b/blake2bAVX2_amd64.s",
+      "sha256": "5c29c80d50428e8541c97c6f31846c8d38b646f0f70bfc6325cd7b620b402651"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/crypto/blake2b/blake2b_amd64.s",
+      "sha256": "f499772b4f15bc364b1c3d862a3c604c1b95a6ca9a11c131f080f31cc6f373bf"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/crypto/blake2b/blake2b_generic.go",
+      "sha256": "3ca806fe8939d7688d4dfa70003bef7ff55e66088176b6c6b794fb32fe02725f"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/crypto/blake2b/blake2b_loong64.go",
+      "sha256": "5008116cce4e710a64ada1c754ff69630861f08fcabaa4d65729057396009b45"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/crypto/blake2b/blake2b_loong64.s",
+      "sha256": "319ba1cca96ea6bdb30af8d15cad424bb394a040410f0b91bbea822ddbbd5cc5"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/crypto/blake2b/blake2b_ref.go",
+      "sha256": "12bdf4ad93117b295576a63cd477c884ebdf182b3a30888dd961cc208fa80579"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/crypto/blake2b/blake2x.go",
+      "sha256": "0d146268afeda5a3461adaeb0ecb8eafad5fe0e77748bf487cf36544b0ab68d7"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/crypto/blake2b/register.go",
+      "sha256": "f010131c5e272dde27a5d1d30ce1329d681fdd74b5f5025d197c29448e57deae"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/LICENSE",
+      "sha256": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/PATENTS",
+      "sha256": "96f408bfae65bf137fc2525d3ecb030271c50c1e90799f87abf8846d8dd505cc"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/asm_aix_ppc64.s",
+      "sha256": "5a50f8f52ea89a7c638bdd6798f576523ecfc1e4ec2cb657d445f1a7dc0dfab2"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/asm_darwin_arm64_gc.s",
+      "sha256": "6f6f35fbf284f205f49db2410b6554bd72aa1fc8ccf35f30a619482277e31ccd"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/asm_darwin_x86_gc.s",
+      "sha256": "21022bf7461861b3744775075f4a4ef960c036cc469914684f87a4da9fc8b3a8"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/byteorder.go",
+      "sha256": "825146fd4557b1cbd8161fa28bb4be8820089848d695316edeecb7fd5a551f8a"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu.go",
+      "sha256": "b3ec218edc560fbb89ff9b5049dcada60b0aac8ff7cf31c98155081ff4a26d88"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_aix.go",
+      "sha256": "1e9265c7703fe4b8b2bd6813e05f2fc15a83eb60e237dcafa0911b5b19a7e25f"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_arm.go",
+      "sha256": "23e6d65d2ba6bf988f6413643cb336b49b438b2b15659c0b22c2d0c63a25e3c0"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_arm64.go",
+      "sha256": "8497751085f331e75f297ed0eef3ceb7c31725f63e3a142a543ec2d29befae36"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_arm64.s",
+      "sha256": "704264fabff92f961c0bc68f0cb3cc49a21f62141e44ba709caf0ee2eccb0e5d"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_darwin_arm64.go",
+      "sha256": "b8d13328eed17809afb4f807512caded369fdbd2ecdd78f80d54651079bb12a3"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_darwin_arm64_other.go",
+      "sha256": "70f4e3eefb56f34752172c26187dcb8f86439b1d61abeefa5ca0a454d8762c6f"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_darwin_x86.go",
+      "sha256": "4d90cd4b64eed4f9bbfe8e6c4b856f785659d6f22f56f8f6cf1b172c10e9c518"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_gc_arm64.go",
+      "sha256": "58e20a70f4400b4969c85e01f017f36bd6eeb240fb1c49799cd18ccdf8bd8bc2"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_gc_riscv64.go",
+      "sha256": "84f4e329b250e23507d50447c66ceb104f3af4d4b94e41f8eb885c948abd57e9"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_gc_s390x.go",
+      "sha256": "9af08f2d1f95402635813d6303faae72ddd1218fc27115252002282da415f7e8"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_gc_x86.go",
+      "sha256": "2eec0a58e170f14b054a9d0c006fede8cd5c075c5d7cde1fbab688b4b793588e"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_gc_x86.s",
+      "sha256": "74ac7fc7ef9c56c3306238cf031ea8ef7c0312a7116cb9fba6d07f0b1382df80"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_gccgo_arm64.go",
+      "sha256": "7aad4d607a87b279d42f484a3ad479819991678faaa3767be85ecd42292d5f2a"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_gccgo_s390x.go",
+      "sha256": "89f09aa36fdb1fef1a4ec171178cc12daf4f49e6ee368fec496c482d04ddf145"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_gccgo_x86.c",
+      "sha256": "50585132982aa1dda61a887bb62f468a1a843cf1993d59a4b0fe6ca2e8a5c8f7"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_gccgo_x86.go",
+      "sha256": "60315ffb16a8330d4653429d52c60d2b087073487b79366bfd640a858f56453c"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_linux.go",
+      "sha256": "cf0f4c7211c4cc912689fecbd30bd4747b6dadf577b065ac03823d74ae1ac870"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_linux_arm.go",
+      "sha256": "5c2f68fd8e53218eb96b8d67375564242a6bf825021a4ecbc8347af6f47898c0"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_linux_arm64.go",
+      "sha256": "1f0f5c5f113cf222529b724855e636312388dc5f2bac1d4b71620422ea9baf4a"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_linux_loong64.go",
+      "sha256": "d6231726a9727715da997a63711856ab9ec8f3b20d0a7c37e77e9fd6166e7e72"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_linux_mips64x.go",
+      "sha256": "2527fa939ae3ba4ff7a7a5190c865cdde199d079e5f25b7aa52b1b56e4e11016"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_linux_noinit.go",
+      "sha256": "620abd97199a2230f59165a2bc58c3ba780b6801ec0246cfb7319553dd795226"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_linux_ppc64x.go",
+      "sha256": "f1cbe4be0d99327b20cf81f45783984a3effcad26a809d9ca1c4c971da10c5b9"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_linux_riscv64.go",
+      "sha256": "7e863667b64d38af55d2df166247f00106f186cfaff2bce869ba80ccc2dcac4b"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_linux_s390x.go",
+      "sha256": "290f658b0d8e7e9dd93d3b908cd202f13b3a4f228071d4211f4e1947050dbbcc"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_loong64.go",
+      "sha256": "9e680f8d3915c412a40896bb2dfddf20620839598ecaace0f1cd490b4f446cea"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_loong64.s",
+      "sha256": "254c8be780a37245bf80cf206a706d5ab0ede28ddf2d867c5c0368749f4125f5"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_mips64x.go",
+      "sha256": "77a333aebca444ef9f718d27df30422a9ac88cba29add1029c30d3dc1c6dc781"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_mipsx.go",
+      "sha256": "35bb6ba0d168ee41f3763110d65e39e8f6271995b59e6422dc65690fb69e2a9a"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_netbsd_amd64.go",
+      "sha256": "0cf2a5c8fee9f3078afa34a3d98311a3e22bfbd75a924024b409e0ea22df8fba"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_netbsd_arm64.go",
+      "sha256": "b250e2406e45f0c972605266c3d67dd7a6ad614cb0fba5467d87facf62464436"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_openbsd_arm64.go",
+      "sha256": "681c260436ffe0d3d591bc99e9e08a3218e0017589552a7f6a374fcd4a54aad8"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_openbsd_arm64.s",
+      "sha256": "5ab9396eff64294fd703389dfae36d4d794f6261c79b6cbfc347699b38f361cc"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_other_arm.go",
+      "sha256": "54da156f719d6aee6e14693c79a062680db425f5580d6222d56e57c53e228ca6"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_other_arm64.go",
+      "sha256": "d19d8a37ad7b797aa4c5113c8210d93b0aa6aa9399378e786a92b51d6e73a29d"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_other_mips64x.go",
+      "sha256": "f0ff8ddcebee1e3652369ff24d1f09c22702048266e0c64e0ebac908247c0829"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_other_ppc64x.go",
+      "sha256": "0baab277f0a08d9b958cd1dc3c06f35ebd63c453bfff47adb65e7bbdbf94cb97"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_other_riscv64.go",
+      "sha256": "f4595d128c37d0b779b788170d6e7976b0b488644b3df07774c0ffbfb4fac28c"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_other_x86.go",
+      "sha256": "4773a7cdfa25670c552bdd78cbe2bd874bd4b8f2d90f614c325ae79d2ffc0a7e"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_ppc64x.go",
+      "sha256": "63aa31373ef16a2ca856ca2a1e54496d4cc91602ebf64bf5df99fbdfc334a896"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_riscv64.go",
+      "sha256": "b19cf4854d2b32f81268f780d279abc4ac4fd47bb7f88abc07a7ea2fcc98690f"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_riscv64.s",
+      "sha256": "9325b481b33cb82046e12fb3e77b0d2f7e7fdbe73eb769c6f452532f3d752277"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_s390x.go",
+      "sha256": "0abc36c54a82044ad48a406a2828e522f24b70247c922a79330cf8f616debbef"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_s390x.s",
+      "sha256": "2ab869aa3b38626aba388fa6db352a3be80f1efdfd2085bdf97c2ef594a5e777"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_sparc64.go",
+      "sha256": "a1f5e7379f5400d5d572c685dce141d42c90dac9399c6e7b7151fe39e8a91ce8"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_wasm.go",
+      "sha256": "0da8add0ce546dfed3a844f94ce693137b6833712c016561f598e6d8b08c474e"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_windows.go",
+      "sha256": "af3d72b6e5d5b0d6e801eaff989e8a38f6d26ad253faf057fa618682a1875a36"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_windows_arm64.go",
+      "sha256": "908ca3b754cda425b194ca564edf0ecdd8923f75b2e0864f3f52a35a6e30253b"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_x86.go",
+      "sha256": "11df8d8a344644766603b3094ce22ff772a4f642e2dee7275ced0959a0083e38"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_zos.go",
+      "sha256": "ff82e534d4d81726e13f34919386becdcb65cb9fc24c0f5835314e00fe13070d"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/cpu_zos_s390x.go",
+      "sha256": "53b684a51586ff413570961780bea6526a6eab2568dce27c15efdf0d8e421d05"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/endian_big.go",
+      "sha256": "005d2761cef8d501304f73be92a7f43174bf738a380c9d5d7bc0cac926075f57"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/endian_little.go",
+      "sha256": "c6bc70c372d9e1fe86fcf295f406b17bf04bf8d1af25c2456f58520cdaef3be9"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/hwcap_linux.go",
+      "sha256": "4101df793fddf76dfae477f917928008bc4a797446cd4ad44cde6e906c3f8713"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/parse.go",
+      "sha256": "97b269ea4f0b6d4071a9eed8a74f05055965c307bbab9090d9002bb01f7365a9"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/proc_cpuinfo_linux.go",
+      "sha256": "dfdf71a1c8d94e7cc44117cadb1cf6f66fa2e8cdfb873dd5f1d85831d19841aa"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/runtime_auxv.go",
+      "sha256": "d898ace395866bed261d403c8cd0ea6eab6d6d77f52042204957e389c38938cf"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/runtime_auxv_go121.go",
+      "sha256": "6eee9d1a593dce53d22545dc5d5f6ed9127a43e6568ef5f5521920946510d445"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/syscall_aix_gccgo.go",
+      "sha256": "a384f5e0e1f961a15295f30078e8c8cf16ec28672b659b7ff80829ccf8a2a848"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/syscall_aix_ppc64_gc.go",
+      "sha256": "33f76a8da28ee51d3db32944949fc2ddcb9870ba0f2d22d29732dfcf2a6ba119"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/syscall_darwin_arm64_gc.go",
+      "sha256": "2ec90937ba10bdeb3a646e3fcefd531bd99ce0c3653eaa6c8de2c6d86362e758"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/syscall_darwin_x86_gc.go",
+      "sha256": "66059b45534544bdcde771fa793eca91d04de079e21adc4b2732e0912a57900a"
+    },
+    {
+      "path": "backend/vendor/golang.org/x/sys/cpu/zcpu_windows.go",
+      "sha256": "f6f4da36899a0308a16b8c80589bf1eb807520f5132ab9ec63bf8edb23bc5596"
+    },
+    {
+      "path": "backend/vendor/modules.txt",
+      "sha256": "09a4af88bbb028835695d3705248e4ff9e93c06461404679c1623e4b29b627b5"
+    },
+    {
+      "path": "compose.yaml",
+      "sha256": "3c43969f6a8c2c85fc44d9f914ccd3398c370f6b71e89119a3e8f484f00856f4"
+    },
+    {
+      "path": "deploy/identity/README.md",
+      "sha256": "9af45967b5bec32ee0261729c44b6007e2346608dec587c7ca995ffdb7028f3f"
+    },
+    {
+      "path": "deploy/identity/compose.yaml",
+      "sha256": "4522a060c8151c09396f8d35c39f0c206f37140576c9645f4c2ccdd91da2aeab"
+    },
+    {
+      "path": "deploy/identity/identity-proxy.conf",
+      "sha256": "e373c8bad152eb29712fd234583bf6cb0f25352cb01c469b9be36dbff4a5567a"
+    },
+    {
+      "path": "deploy/identity/inputs.json",
+      "sha256": "43b3b704105db526c3211f4c466fe33979be1e172e4d9fb729a44b54522b5da0"
+    },
+    {
+      "path": "deploy/identity/mysql-entrypoint.sh",
+      "sha256": "c8c5b58045095cfe9387e28443b386371023b7ccd46fca36c2ba6617d3dbebe9"
+    },
+    {
+      "path": "deploy/identity/mysql/Dockerfile",
+      "sha256": "055eb6378eb40d305b7a28ea9d4a735bfd5e0137a806e330799965074e999c5a"
+    },
+    {
+      "path": "deploy/identity/mysql/README.md",
+      "sha256": "6c1fbe6c7180acefedb5efe4997cbe930142430262bae8d41dbfc216db68ca4a"
+    },
+    {
+      "path": "deploy/identity/nginx.conf.template",
+      "sha256": "873fdc34ecdec8c28c9acd4f7c73c83581b2f1c4b0a2214b2c902ee896df8ed3"
+    },
+    {
+      "path": "deploy/identity/production-proxy.conf.template",
+      "sha256": "165bbb3542b16b8c8554aa9d1794ebaa09bf211b1ed9a3b611ab456b7e98b55b"
+    },
+    {
+      "path": "deploy/service-batches.json",
+      "sha256": "930ef135d118c54e6eb62fd00330fb6b9c0c1a4a46174eb40a05beb2593e4895"
+    },
+    {
+      "path": "frontend/.dockerignore",
+      "sha256": "a98486a0709b7b7ae3901e4639f9888919e4dde8ecd7401a81843d0f6ae40a21"
+    },
+    {
+      "path": "frontend/Dockerfile",
+      "sha256": "1ab71112b10a18955e12a43fc72262192562633d163af9bbde5ee8a9d61fda79"
+    },
+    {
+      "path": "frontend/index.html",
+      "sha256": "ca7614470bcc9e215aa14229384d625f4d45f283f7381780f0cf7e8e0a2666d1"
+    },
+    {
+      "path": "frontend/nginx.conf",
+      "sha256": "1c04226abe1405b1ff61d560f69a0f05c21191c72b31a3234dc29702876be52f"
+    },
+    {
+      "path": "frontend/package-lock.json",
+      "sha256": "ca3730fcf5b23af46bdd1183563455bf17e04f96643fcb253a7c53aedaba0a35"
+    },
+    {
+      "path": "frontend/package.json",
+      "sha256": "19688349d655aa682bd6dd66c04c33b1a3ba9af28deb91d4577c316c7d8cb015"
+    },
+    {
+      "path": "frontend/public/favicon.svg",
+      "sha256": "ebc815c7f0958ab665be6c3c5f01bb5ceff8188ad5679238f41ab8a734053975"
+    },
+    {
+      "path": "frontend/samples.html",
+      "sha256": "fe78fc69617efc8c6cfce3155a6f8cb2b119e0eb75f708c08611c3d4831aa63a"
+    },
+    {
+      "path": "frontend/src/app.css",
+      "sha256": "0f7ced8a542c2a4ebdb4dd43adc60d6959bd488d7533c808ebea21003e45a57c"
+    },
+    {
+      "path": "frontend/src/auth/client.ts",
+      "sha256": "d7c75e26c287d80c1d145439998bec6bb270e55b4ffee9f28119085a38213a25"
+    },
+    {
+      "path": "frontend/src/components/IdentitySamples.tsx",
+      "sha256": "2dd28d9dc695bc1be22429eb461cc9603eb1be68413fd3c9d1fdf9ff643f6f09"
+    },
+    {
+      "path": "frontend/src/components/ui.tsx",
+      "sha256": "968cd32b2ce5010d688a22ab2be0de250289e9bc7190b7277c24c64e664885c5"
+    },
+    {
+      "path": "frontend/src/main.tsx",
+      "sha256": "d5b5d535fa1f9e27721635b108f59a73848d3cc8d6bf02c579fada8baac756b5"
+    },
+    {
+      "path": "frontend/src/materials/Pages.tsx",
+      "sha256": "7e3a044af9593289d0657f08c154cc54691d040a8680ea357519e1026d04c777"
+    },
+    {
+      "path": "frontend/src/materials/contracts.ts",
+      "sha256": "a44ac6e7697ebc150bc4cc0f7bb4a8c72e15e3ec15062015556f2c588fa0691e"
+    },
+    {
+      "path": "frontend/src/materials/materials.css",
+      "sha256": "717a4ef5605cace3398b38108cdb68a9ffa6eb0818394214f0e5210d21072ea6"
+    },
+    {
+      "path": "frontend/src/pages/App.tsx",
+      "sha256": "d65cf9f60f3c588e98546fa26812dae398feff6b51c5d90b10d733b914b18471"
+    },
+    {
+      "path": "frontend/src/pages/HomePage.tsx",
+      "sha256": "5473bc71f09b49113399eb822698929c6323ba096d1ce6b5a26cc72ca873bc60"
+    },
+    {
+      "path": "frontend/src/sample-theme.css",
+      "sha256": "b3545fa6304c5004954620e5e843975bed91b71abe933bc77a7066e7a6b16c7d"
+    },
+    {
+      "path": "frontend/src/samples/MaterialSamples.tsx",
+      "sha256": "d78d853f952d5a36346c0a9c3e456b7a7eb70d3abf5267c9ae889914e5e2983e"
+    },
+    {
+      "path": "frontend/src/samples/main.tsx",
+      "sha256": "34eeacfd90f947b66883b1b789bfde736279b46e1292efad28b50b95235fa6f1"
+    },
+    {
+      "path": "frontend/src/samples/material-samples.css",
+      "sha256": "bbd17fa94af71e835fbac883789b2728c9878258e12a139ab06629b75284b1e0"
+    },
+    {
+      "path": "frontend/src/shared/values.ts",
+      "sha256": "6aec7483f46215c5ddd3b0843e323fee468da638f27b52c42c5a238cfe50eb71"
+    },
+    {
+      "path": "frontend/src/styles.css",
+      "sha256": "b9a1b425e9e60bdb33c8474f1479203d82bc297cac5b06c04e2d42d9e8cf99db"
+    },
+    {
+      "path": "frontend/tests/auth-browser.mjs",
+      "sha256": "ab23efd1d899fa62ee2569b9f4839152fc0c07130fa3045bc4a1956d7bfce99f"
+    },
+    {
+      "path": "frontend/tests/auth.test.mjs",
+      "sha256": "68d139f59dfdb4362506475814e211535eaa245cfd78f166e5052bb449aa85ba"
+    },
+    {
+      "path": "frontend/tests/import-profile-ca.py",
+      "sha256": "fcde066261fdd7c11ed654f6762922b6b47be2b8254ec64ab330f89d5c1e5149"
+    },
+    {
+      "path": "frontend/tests/materials-browser.mjs",
+      "sha256": "5820c06ad39387618c6075a4574d643f4753368c8436ae58179f80e94ec0da1f"
+    },
+    {
+      "path": "frontend/tests/materials-real-browser.mjs",
+      "sha256": "77d5a9eff9758fd0767c2a770d83866eea934b5a1d87299f85f673bd5004fc52"
+    },
+    {
+      "path": "frontend/tests/materials.test.mjs",
+      "sha256": "c1e029cac15e394c81d4df412a13f614151f1f4f227d2c6095ecb051aca44571"
+    },
+    {
+      "path": "frontend/tests/reviewer-auth.test.mjs",
+      "sha256": "4565b0413a5904978908b917bf12591ae808eb1e3d72574e48a56a05d73a8691"
+    },
+    {
+      "path": "frontend/tsconfig.json",
+      "sha256": "fb70192dca6feb9f1add4af9195e1b697a02fb9138179e1c55f2a4ec6ffa9511"
+    },
+    {
+      "path": "frontend/vite.config.ts",
+      "sha256": "1731c59f53e9c64649f9c332523f5a625df2bb56fa05f0c85e0b2903ec9c05db"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "4a5962456c6bb661ae8b7222cc0d5e692635a9196a997e1fa42c64bbfc8da7c6"
+    },
+    {
+      "path": "package.json",
+      "sha256": "3168cbb77f9c3a1d5cc58ba832a05817b6332248a89da17a02f8b1f19e51b9df"
+    },
+    {
+      "path": "scripts/application-image-report.mjs",
+      "sha256": "1517f4f7b54d7c0a86d1d7a9b57de25b7bfd7fff8ae2c7086bdf035961c0966c"
+    },
+    {
+      "path": "scripts/application-image-report.test.mjs",
+      "sha256": "98188981dfbc9c77506ff09fabb7c950bfd9c5f6ae7e83933dcfdbf12768fb20"
+    },
+    {
+      "path": "scripts/check-backend.mjs",
+      "sha256": "d2ce4bfc939a757828f715128a5ff9c97a83e1e4c821cb932ce0fca67fe039f5"
+    },
+    {
+      "path": "scripts/check-contracts.mjs",
+      "sha256": "58d78f3786b394468132084e836da7e3e14abf792f47c2f2405341f466893657"
+    },
+    {
+      "path": "scripts/check-foundation.mjs",
+      "sha256": "7d3de0b986f0c192be61ed054d0218501c97ed38745b0c1e119e5e85943e7721"
+    },
+    {
+      "path": "scripts/check-sample-isolation.mjs",
+      "sha256": "8da2de212079a851c4f365a75cfbd56e804797bc8822333553fb69625d9604b8"
+    },
+    {
+      "path": "scripts/check-secrets.mjs",
+      "sha256": "c9baacfe869cb53a26635699b68f00abd4f8bb53a22a168b441072dd345e5205"
+    },
+    {
+      "path": "scripts/check-service-batches.mjs",
+      "sha256": "83e2f5d6dd580a074973c7fcfbcdef954a668a94fa03474a6a33c25a17b46b7e"
+    },
+    {
+      "path": "scripts/contracts/identity-phase.mjs",
+      "sha256": "0d556091a93a46f965420e7d6178089a393307612399b210fccf130317d247ac"
+    },
+    {
+      "path": "scripts/contracts/identity-phase.test.mjs",
+      "sha256": "4eb168d5cb2302e473a3a277d34285ac341fe8a332db19077473b7851ac1bdf6"
+    },
+    {
+      "path": "scripts/contracts/materials.mjs",
+      "sha256": "5319740fabac43f7f991f307c272c472405488f90b38685c3f8c4018c08fba4e"
+    },
+    {
+      "path": "scripts/contracts/materials.test.mjs",
+      "sha256": "df91de9c9a9c363989dc19e4f96a8b795bd9df7012cd7c5f8ad6ff59f70fe843"
+    },
+    {
+      "path": "scripts/contracts/validate.mjs",
+      "sha256": "4a8ca99df3ef7d9529158a2588a0a2e327394546a16f68ff4b0f7b9c74d6559f"
+    },
+    {
+      "path": "scripts/contracts/validate.test.mjs",
+      "sha256": "6798255f39544b929f03c272ed38855093b268ae85ebb2c0880cd7d6cd48a4bd"
+    },
+    {
+      "path": "scripts/gate-runner.mjs",
+      "sha256": "9b9e3005ab82e88e320a9f92cbc8aa9677c53824feea61cd8cb3eb88405efe6d"
+    },
+    {
+      "path": "scripts/gate.mjs",
+      "sha256": "9e759d12d0d3e859c499ff8f3714549f2ad03b0f378ea1337ce9083a8965c0e1"
+    },
+    {
+      "path": "scripts/gate.test.mjs",
+      "sha256": "de7cdf0fdc9702146de272103c40ed5494e8f75d0e46dcfdb217feed6d4339cd"
+    },
+    {
+      "path": "scripts/identity-compose.mjs",
+      "sha256": "19397afda8dafd069f2a298b52c3e0d21b9a07f1e94ce2f7e9b4c016cb96284f"
+    },
+    {
+      "path": "scripts/identity-host-ingress.mjs",
+      "sha256": "b836421506578245642a2911892203c44b7c500c2b67216f96f842a51f82043c"
+    },
+    {
+      "path": "scripts/identity-wiring.test.mjs",
+      "sha256": "49234e61f2f1fa3cea86b1d9cbc586b643d3acf7d4163ee96bddd8d6e97aba5a"
+    },
+    {
+      "path": "scripts/service-batches.mjs",
+      "sha256": "cc7457fed0bd1d74594e0efe2619537b61e37eb76da0134ea357a13f70e1b0ec"
+    },
+    {
+      "path": "scripts/service-batches.test.mjs",
+      "sha256": "fbd1a4ddc293484f7251dd2436ebad3ae3470f85e134ebe7f0609fc828a8c2b1"
+    },
+    {
+      "path": "scripts/toolchain.json",
+      "sha256": "0bda3685bcdbe882a8f7291bc76a463d8ef281ba3d6d1dd9069e96e1ae4e4eac"
+    },
+    {
+      "path": "scripts/verification-resources.mjs",
+      "sha256": "b423fb7aa7ae591b5a11bd920169e93347c833c0295a7f3f47bd43b7fd891a01"
+    },
+    {
+      "path": "scripts/verification-subnets.mjs",
+      "sha256": "78d49ec2abe4db4f277bb1376ff9d44e8403899a9a27a458fdeb7cc8b60265bf"
+    },
+    {
+      "path": "scripts/verify-application-images.mjs",
+      "sha256": "e8bcf3ccee5ae8953bfcd4339aadf4a15bfc86f8942840e7b729d9b5bd952e2b"
+    },
+    {
+      "path": "scripts/verify-identity-wiring.mjs",
+      "sha256": "e26884346e0eef1b1cfea6650cc5a051881c2203be8eb8446ff272c19371fba4"
+    },
+    {
+      "path": "scripts/verify-identity.mjs",
+      "sha256": "778b192dcf8c998c4894d4eafc6c8a665edc13762117493ae179d496e3501c58"
+    },
+    {
+      "path": "scripts/verify-image-audits.mjs",
+      "sha256": "30812c3255edc98f1c900bdd09f078b19c6fa09f3d9f02a8ddb6bb7fc347dfff"
+    },
+    {
+      "path": "scripts/verify-materials-browser.mjs",
+      "sha256": "36bd72c13960f107b8e24571e0ea00ad524bfaf55115043e6c14ea1029341144"
+    },
+    {
+      "path": "scripts/verify-mysql-image.mjs",
+      "sha256": "d3ac90fc77c8ff53fe107a9cc12f7336a264d95c0e914028ebe883c5091b2ac2"
+    },
+    {
+      "path": "scripts/verify-service-batches.mjs",
+      "sha256": "af5fc5d60cafec3420408cfc7cf3052be6c30aa08f034d08ee2621d89190d7c3"
+    },
+    {
+      "path": "scripts/verify-skeleton.mjs",
+      "sha256": "7f90f8352aa59d62e3210cd2834c838d3d5d8a2df920b0b934a1212d7e3ee313"
+    }
+  ]
+}
