@@ -1,0 +1,27 @@
+{
+  "observer": "小陈 / Kevcco (AI辅助)",
+  "base_head": "7878164a5fd65c0fd8d938cce6dcb9b0b9c81424",
+  "red": {
+    "source": "base_head + new regression test",
+    "command": "npm run verify:identity",
+    "exit": 1,
+    "failure": "cross-database FK accepted by Check/Repair; dirty incorrectly cleared"
+  },
+  "green": {
+    "source": "base_head + test + assignments.go fix",
+    "command": "npm run verify:identity",
+    "exit": 0
+  },
+  "local": {
+    "check": 0,
+    "audit": 0
+  },
+  "files": {
+    "backend/internal/migrations/assignments.go": "21adecf396a5b0fdf84c6e74215ccb8ee7ac67e58afcd651e4f723ef61b5eb77",
+    "backend/internal/integration/assignments_schema_test.go": "3daed9c7d87e17309a08b7a4c5803a64683497079e5b6dc99683517cc5f64707"
+  },
+  "raw_zip_sha256": "98a5be8698757157ca6c48c4a479af2e0faa550fabdeef8ef18bb867f2d9ff58",
+  "full_clean_source_gate": "pending",
+  "final_head_approval": "pending",
+  "main_integration": "pending"
+}
