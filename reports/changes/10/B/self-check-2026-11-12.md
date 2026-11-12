@@ -15,6 +15,14 @@
 | 关键条件红绿 | 临时将Compose探针3s改4s，原`npm run gate`在check退出1、后续未运行，逐字节恢复后批次检查0；将Go3秒改旧3.5秒，两个3.2秒慢头/慢体用例失败退出1，逐字节恢复后probe全包0 |
 | 小葛独立终审、正常合入及main复验 | 未执行 |
 
+## 首实现head真实CI结果
+
+[PR #32](https://github.com/zwh9616/campus-claw-plus/pull/32)首实现head `7d4373eba2c4634ce3f654b6bd50a084a59c6fc9` 的[完整CI43181709752](https://github.com/zwh9616/campus-claw-plus/actions/runs/43181709752)为completed/success。CI执行PR测试合并SHA `c4daafb70697bdd0e91da8c18a3aad5725da304c`，Node22.23.4，check/audit/secret-scan/verify全0、notRun=[]；verify167125ms。小陈下载原始artifact13927020905，重算ZIP摘要与GitHub API一致；[事实](ci/facts.json)、[原件](ci/evidence.zip)、[门禁](ci/gate-results.json)、[批次](ci/batch-results.json)可核对。
+
+同轮四个实际镜像HIGH/CRITICAL全0；mysql/backend/frontend的运行image_id与扫描image_id完全相同。缺HTTP_PORT/HTTPS私钥、非法配置和进程占用均真实非零；默认主机发布HTTPS/CA/SAN及匿名拒绝通过；DB停机真实probe退出1（121ms），主机health503且静态首页200，恢复、保留卷全容器重建、01/04真实SQL/权限/幂等/迁移/隔离恢复全部通过，无FAIL/SKIP。镜像元数据/history、前端产物和应用日志排除本轮生成秘密通过。
+
+此为GitHub CI执行，小陈回读原件，不能当本机Docker通过或小葛独立终审。当前补证提交不改运行代码，最终head仍须PR强制检查；B1.2的首实现自测已有真实记录，B1.3保持待办。
+
 ## 原检查保留
 
 原npm check各子项、四镜像实扫、默认Compose和真实MySQL/资料/恢复程序均保留。verify薄包装仅增加来源/时间/镜像一致性摘要，原程序任一失败停止且非零，旧报告不能替代。门禁600秒、CI20分钟、部署等待最大120秒、健康DB总预算3秒保持原约定；探针客户端和容器超时收紧至3秒。

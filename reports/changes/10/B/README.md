@@ -2,6 +2,8 @@
 
 2026-11-12用户明确授权推进10-B。小陈（Kevcco，AI辅助）实现/自测，小葛（gjj6666）逐批终审。本批从main `1fa47ee2c3d486ba4fcfb615ee73ea22de0b05c7`开始，仅核对已批准并集成的01/02/04；不重复实现业务，不把05/06未合入代码或planned服务加入部署。
 
+已交[PR #32](https://github.com/zwh9616/campus-claw-plus/pull/32)，实际请求小葛/gjj6666审查。首实现head7d4373e完整CI43181709752通过，四门禁全0及真实批次摘要0；原始artifact已下载核对，见[CI事实](ci/facts.json)、[完整门禁](ci/gate-results.json)、[批次摘要](ci/batch-results.json)和[原件](ci/evidence.zip)。本提交仅补交接与真实结果，当前head CI另看PR，不将旧head成功代替新head；小葛终审及合入/main复验未做。
+
 ## 服务登记与准入
 
 机器索引：[deploy/service-batches.json](../../../../deploy/service-batches.json)。仅登记键名、镜像来源和来源SHA，不包含运行凭据或本机路径。G2/G3沿用[既有共同记录](../A/main-integration-2026-11-07.md)，各业务依据已验收主规约，不能用本批放行后续服务。
@@ -30,8 +32,8 @@
 | 任务 / 场景 | 检查和证据入口 | 当前状态 |
 | --- | --- | --- |
 | 4.1 / DO-SC-11、13 | service-batches索引 + check；全部服务来源/网络/配置/探针一致 | 本批已登记并可检查；不代表后续批次完成 |
-| 4.2 / DO-SC-11、12 | 原verify三程序；默认Compose缺配置、healthy、真实主机HTTPS、DB停启/静态可用、保留卷重建、身份/资料真实回归 | 最终head完整CI待执行；本机Docker未验证 |
-| 4.3 / DO-SC-13 | 原全历史/暂存扫描、四镜像实扫、生成秘密排除、权限/TLS与MCP默认禁用回归 | 最终head完整CI待执行；不能仅凭登记写通过 |
+| 4.2 / DO-SC-11、12 | 原verify三程序；默认Compose缺配置、healthy、真实主机HTTPS、DB停启/静态可用、保留卷重建、身份/资料真实回归 | 7d4373e完整CI43181709752通过，verify167125ms；本机Docker失败保留，新head CI另核 |
+| 4.3 / DO-SC-13 | 原全历史/暂存扫描、四镜像实扫、生成秘密排除、权限/TLS与MCP默认禁用回归 | 同轮四镜像0高危/严重、实际镜像与扫描一致、秘密排除通过；不冒充小葛独立复跑 |
 | 4.4 / 本批终审 | 小葛核对最终head及运行原件并亲自复跑关键项，直接修复后收口 | 待小葛；不代批准/合并 |
 
 结构性Node测试用合成报告验证失败边界，与真实Docker执行分列；原历史成功只作来源，不能作为本批新SHA通过。检查记录见[本次自测](self-check-2026-11-12.md)。
