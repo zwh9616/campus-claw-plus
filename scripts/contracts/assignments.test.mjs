@@ -16,11 +16,11 @@ const cancel=a=>a.paths['/api/v1/tasks/{id}/cancel'].post
 const task=a=>a.paths['/api/v1/tasks/{id}'].get
 function rejects(mutate){const bad=copy(api);mutate(bad);assert.throws(()=>validateOperationBoundary(bad,register))}
 
-test('AT-SC-01 nine frozen contracts cannot activate early or admit an unreviewed operation',()=>{
+test('AT-SC-01 nine business operations stay frozen while reviewed migration5 is available',()=>{
  validateOperationBoundary(api,register)
  assert.equal(register.operations.filter(o=>o.status==='current').length,13)
  const phase=JSON.parse(readFileSync('docs/contracts/identity-phase.json','utf8'))
- assert.deepEqual(phase.migrations.map(m=>m.number),['000001','000002','000003','000004'])
+ assert.deepEqual(phase.migrations.map(m=>m.number),['000001','000002','000003','000004','000005'])
  assert.equal(register.operations.filter(o=>o.owner==='05'&&o.status==='frozen').length,9)
  for(const [m,p] of assignmentOperations)rejects(a=>a.paths[p][m.toLowerCase()]['x-contract-status']='current')
  for(const mutate of [a=>delete a.paths['/api/v1/tasks/{id}'],a=>a.paths['/api/v1/assignments'].delete=copy(submit(a))])rejects(mutate)

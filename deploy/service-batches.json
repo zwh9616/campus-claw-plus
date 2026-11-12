@@ -1,18 +1,19 @@
 {
   "version": 1,
-  "batch": "identity-materials",
-  "review_status": "reviewed",
+  "batch": "identity-materials-assignment-schema",
+  "review_status": "pending_ge_review",
   "probe_timeout_ms": 3000,
   "deployment_wait_ms": 120000,
   "changes": [
     { "id": "01", "spec": "openspec/specs/identity-foundation/spec.md", "integrated_commit": "c2c34a298c9f53840c861bdf7c6181486a6150c2", "pull_request": 14 },
     { "id": "02", "spec": "openspec/specs/frontend-foundation/spec.md", "integrated_commit": "3ef79f40e184f75ab4b8d1435c9ea57af56014f5", "pull_request": 15 },
     { "id": "04", "spec": "openspec/specs/materials-retrieval/spec.md", "integrated_commit": "6634e5128a59c4ac9d6e4443e67bb39ee43cc09c", "pull_request": 26 },
+    { "id": "05", "spec": "openspec/changes/2026-11-12-assignment-tasks/specs/assignment-tasks/spec.md", "integrated_commit": "e617cc00f067cfee84aca0fd69687c385c9b2982", "pull_request": 35 },
     { "id": "06", "spec": "openspec/specs/materials-frontend/spec.md", "integrated_commit": "86f0ca3c3832962b0946434f1d99cc7377693840", "pull_request": 30 }
   ],
   "services": [
     {
-      "name": "mysql", "changes": ["01", "04"],
+      "name": "mysql", "changes": ["01", "04", "05"],
       "build": { "context": "deploy/identity/mysql", "dockerfile": "deploy/identity/mysql/Dockerfile", "target": null },
       "networks": ["data"], "profile": null,
       "config_keys": ["IDENTITY_STATE_DIR"],
@@ -21,7 +22,7 @@
       "unavailable": "MySQL unavailable: backend health503; identity/material database actions fail under their frozen budgets"
     },
     {
-      "name": "admin", "changes": ["01", "04"],
+      "name": "admin", "changes": ["01", "04", "05"],
       "build": { "context": "backend", "dockerfile": "backend/Dockerfile.identity", "target": "admin" },
       "networks": ["data"], "profile": "tools",
       "config_keys": ["MYSQL_MIGRATION_DSN", "MYSQL_CA_FILE", "IDENTITY_STATE_DIR"],
@@ -29,7 +30,7 @@
       "unavailable": "Offline migrate/check/initialize fail nonzero; not a long-running service or health dependency"
     },
     {
-      "name": "backend", "changes": ["01", "04"],
+      "name": "backend", "changes": ["01", "04", "05"],
       "build": { "context": "backend", "dockerfile": "backend/Dockerfile", "target": null },
       "networks": ["data", "proxy"], "profile": null,
       "config_keys": ["HTTP_PORT", "MYSQL_DSN", "MYSQL_CA_FILE", "AUTH_TRUSTED_ORIGIN", "AUTH_TRUSTED_PROXY_CIDRS", "IDENTITY_STATE_DIR", "IDENTITY_PROXY_NETWORK", "IDENTITY_PROXY_IP"],
@@ -49,7 +50,7 @@
   ],
   "pending": [
     { "change": "03", "capability": "MCP service", "reason": "Own spec and exact03/07C outbound activation not approved" },
-    { "change": "05", "capability": "Durable task worker", "reason": "Spec PR31 only; no task runtime or migration5" },
+    { "change": "05", "capability": "Durable task worker", "reason": "Only reviewed migration5 is implemented in this candidate; nine HTTP operations stay frozen and durable worker is not implemented" },
     { "change": "07A", "capability": "Model adapter", "reason": "Own spec, model configuration and real validation not ready" },
     { "change": "08", "capability": "Grades", "reason": "05 and real07B/result contract not ready" }
   ]

@@ -67,7 +67,7 @@ func run() error {
 	var name string
 	err = db.QueryRowContext(ctx, "SELECT DATABASE()").Scan(&name)
 	if err == nil {
-		err = (migrations.Executor{DB: db, Database: name}).Check(ctx, 4)
+		err = (migrations.Executor{DB: db, Database: name}).Check(ctx, migrations.Target)
 	}
 	cancel()
 	if err != nil {

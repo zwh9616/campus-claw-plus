@@ -20,7 +20,7 @@ import (
 func TestIDFAssemblyHealthAndConfiguration(t *testing.T) {
 	_, db, name := database(t, 10)
 	ex := migrations.Executor{DB: db, Database: name}
-	if ex.Up(context.Background(), 4) != nil {
+	if ex.Up(context.Background(), migrations.Target) != nil {
 		t.Fatal("migration")
 	}
 	lookup := func(k string) (string, bool) {

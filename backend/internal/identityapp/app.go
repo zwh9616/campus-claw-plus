@@ -35,7 +35,7 @@ func New(ctx context.Context, lookup func(string) (string, bool), logger *slog.L
 	if db.QueryRowContext(ctx, "SELECT DATABASE()").Scan(&name) != nil {
 		return fail()
 	}
-	if (migrations.Executor{DB: db, Database: name}).Check(ctx, 4) != nil {
+	if (migrations.Executor{DB: db, Database: name}).Check(ctx, migrations.Target) != nil {
 		return fail()
 	}
 	repo := &mysqlstore.Store{DB: db}

@@ -25,11 +25,11 @@
 
 01已合入[身份主规约](openspec/specs/identity-foundation/spec.md)及[01归档](openspec/changes/archive/2026-11-04-identity-foundation/)。02主规约与历史设计见[前端主规约](openspec/specs/frontend-foundation/spec.md)及[02归档](openspec/changes/archive/2026-11-05-frontend-foundation/)，#21已合入main并复验。04规约#23、机器合同#25及实现#26已正常合入main6634e51；小张最终head批准及主干完整CI42987148688成功。[资料主规约](openspec/specs/materials-retrieval/spec.md)及[04归档](openspec/changes/archive/2026-11-10-materials-retrieval/)已随#28合入main78af20b，主干完整CI43002888185复验通过。其余教学实现仍须各自批准与依赖；06已批准资料规约见#27。主干状态见共享表。
 
-当前已装配六个`current`资料操作（共13个current操作），新增000004三张资料表及真实SQL摘要，server只读检查精确目标4、离线admin迁移至4。资料以可信会话当前班级授权，学生只读ready；原始字节保留、索引事务及幂等、5秒业务预算/503与504、12次/分钟按用户配额和同快照出处回查遵循04。配置/服务/原健康及01旧SQL不变；本06候选前端已按批准规约消费资料操作，独立终审及合入见共享表。详见[合同入口](docs/contracts/README.md)、[迁移方案](openspec/changes/archive/2026-11-10-materials-retrieval/migration-plan.md)和[运行交接](docs/materials-runtime.md)。04实现终审与main集成已通过；04归档#28已正常合入，持有人长期部署与生产回退不由CI推定。
+当前已装配六个`current`资料操作（共13个current操作），新增000004三张资料表及真实SQL摘要，04历史目标4；本05首批候选server/admin改为共享精确目标5。资料以可信会话当前班级授权，学生只读ready；原始字节保留、索引事务及幂等、5秒业务预算/503与504、12次/分钟按用户配额和同快照出处回查遵循04。配置/服务/原健康及01旧SQL不变；本06候选前端已按批准规约消费资料操作，独立终审及合入见共享表。详见[合同入口](docs/contracts/README.md)、[迁移方案](openspec/changes/archive/2026-11-10-materials-retrieval/migration-plan.md)和[运行交接](docs/materials-runtime.md)。04实现终审与main集成已通过；04归档#28已正常合入，持有人长期部署与生产回退不由CI推定。
 
 2026-11-12，06资料阶段规约#27经小葛批准合入复验、代表样板#29经小张确认、真实实现#30经小张终审合入，严格414测试修复#31后main da8624c完整门禁及真实HTTPS双班五人18项复验通过。小张据小葛清单准备[资料前端主规约](openspec/specs/materials-frontend/spec.md)及[原change归档候选](openspec/changes/archive/2026-11-11-materials-frontend/)，实际归档合入状态见共享表；未获审合入不记主干已归档。小张写规约/确认样板/终审，小葛审规约/apply；资料阶段依赖02/04，作业页面仍另等05真实接口，未恢复AI/成绩等暂停项。
 
-2026-11-12组长明确启动[05作业与持久任务规约](openspec/changes/2026-11-12-assignment-tasks/proposal.md)，小陈起草/终审、小张审规约/apply。规约已获小张对ef3553f批准、随#31合入main da8624c并通过主干完整CI；公共机器合同仍须两位负责人审定合入后才apply；G2/G3已有证据不替代05自身批准。作业/提交/任务仍planned，000005仅候选预留，运行精确目标仍4；生产未接真实执行器时不允许假批改成功。此决定只恢复05，06作业页面、07/08等仍按各自批准和依赖推进。
+2026-11-12组长明确启动[05作业与持久任务规约](openspec/changes/2026-11-12-assignment-tasks/proposal.md)，小陈起草/终审、小张审规约/apply。规约已获小张对ef3553f批准、随#31合入main da8624c并通过主干完整CI；公共机器合同#35已获小陈批准、合入e617cc0并完整复验，交接#36已合入；G2/G3已有证据不替代05各阶段终审。当前仅实施2.1迁移基础：000005五表/摘要available、server/admin共享Target=5；九个作业/提交/任务操作仍frozen，未提供运行服务，2.2—2.5仍待办；生产未接真实执行器时不允许假批改成功。此决定只恢复05，06作业页面、07/08等仍按各自批准和依赖推进。
 
 ## 当前命令
 

@@ -22,13 +22,13 @@
 - [前端视觉规约](docs/standards/frontend-visual.md)：北大红#94070A、暖白、简约布局，参考Canvas/Moodle信息组织；小张已确认#15代表样板，真实页面已由小葛实现，最终联合验收由小张收口。
 - [协作规范](docs/standards/collaboration.md)：按变更两人接力；每组可提交修改必须同提交更新共享表。
 - [06资料阶段原change](openspec/changes/archive/2026-11-11-materials-frontend/proposal.md)已随#27获小葛批准，样板#29经小张确认，真实实现#30和严格414修复#31已合入复验。五项MF需求/十二场景完整同步[主规约](openspec/specs/materials-frontend/spec.md)，本候选仅做资料阶段归档与索引，最终head批准/合入仍待实际门禁；作业页面另等05。[归档核对](reports/changes/06/archive-review-2026-11-12.md)。
-- 05规约#31与公共冻结#35已实际获审合入复验，交接#36已合入b63dfdd并通过主干完整CI；迁移首批[#38](https://github.com/zwh9616/campus-claw-plus/pull/38)本机完整gate及旧head5df0faa CI通过、待小陈审查，九个业务操作仍frozen，作业服务/worker/AI/成绩与页面未完成。本归档不携带目标5 SQL。
+- 05规约#31与公共冻结#35已实际获审合入复验，交接#36已合入b63dfdd并通过主干完整CI；迁移首批[#38](https://github.com/zwh9616/campus-claw-plus/pull/38)本机完整gate及旧head5df0faa CI通过、待小陈审查，九个业务操作仍frozen，作业服务/worker/AI/成绩与页面未完成。本迁移候选精确Target=5，已有4先停写备份后离线升级。
 
 ## 从零启动身份服务
 
 需要Docker、Node>=22.19及持有人提供的数据库/HTTPS可信证书和本机秘密文件。无默认证书或账号口令；不把测试临时CA安装到系统，不跳过TLS校验。准备细节见[身份部署步骤](deploy/identity/README.md)。
 
-1. 获取受审版本；已有目录先保留未提交修改，不能强制覆盖。当前04版本要求数据库版本4，已有版本3须先停止写流量并备份，再离线升级；旧程序拒绝数据库4，回退须隔离恢复升级前备份，见[迁移恢复](docs/identity-migrations.md)。
+1. 获取受审版本；已有目录先保留未提交修改，不能强制覆盖。本05迁移基础候选精确要求数据库版本5，已有版本4须先停止写流量并保存一致备份，再离线升级；旧程序拒绝数据库5、新程序拒绝4，回退须隔离恢复版本4备份，见[迁移恢复](docs/identity-migrations.md)。
 2. 在忽略的output/identity-local准备root-password、initialize.sql、数据库TLS材料、backend.env、admin.env和seed.json。应用DML账号与离线DDL账号分离；秘密不发群、不进Git/镜像/截图。
 3. 按部署步骤创建本项目独占internal代理网络，选择未占用静态地址。把根.env.example复制为本机.env（已有文件不要覆盖），填写HTTP_PORT、五个IDENTITY_*及HTTPS_CERT_FILE/HTTPS_KEY_FILE。MYSQL_*和AUTH_TRUSTED_ORIGIN由对应进程env文件提供；AUTH_TRUSTED_PROXY_CIDRS由Compose从代理IP派生为精确/32，不再在多个地方复制秘密。
 4. 按顺序构建、迁移、初始化、启动。以下均从仓库根执行，wrapper只校验键与文件，不打印配置值。
@@ -134,5 +134,6 @@ go run ./cmd/server
 
 `npm run check:frontend-auth`包含原认证与资料用例。mock页面：使用外部Playwright1.56.0，运行`node frontend/tests/materials-browser.mjs --playwright ABSOLUTE_PLAYWRIGHT_PATH --origin http://127.0.0.1:5197 --output output/material-browser`。Windows可信真实浏览器：`npm run verify:materials-browser -- --playwright ABSOLUTE_PLAYWRIGHT_PATH`，需已安装相应Firefox/Python与Docker；只在临时NSS配置导入测试CA，不改操作系统信任库。完整原门禁仍为`npm run gate`；浏览器证据单列，不用它代替完整门禁。
 
+05首批仅提供000005五表与精确目标5迁移基础，九个作业/提交/任务接口仍frozen，暂无业务接线/执行器/成绩或作业页面。真实自测及终审状态以共享表为准，不把SQL available当成任一持有人数据库已升级。
 06资料阶段已通过#30/#31主干复验，本PR仅同步[资料前端主规约](openspec/specs/materials-frontend/spec.md)与[原change归档候选](openspec/changes/archive/2026-11-11-materials-frontend/)。归档合入按实际PR记录为准，资料现有运行代码保持已验收main，作业页面另等05。
 2026-11-12运行批次更新：#32最终510e882获小葛实际批准，用户明确授权后正常合入main b4b13fd，主干完整CI43194409869通过，10-B第一批B1.3完成；[实际原件](reports/changes/10/B/main-32-integration-2026-11-12.md)。B全量/C及其他未就绪服务仍按原准入待验；06资料归档候选见[清单](reports/changes/06/archive-candidate-2026-11-12.md)。

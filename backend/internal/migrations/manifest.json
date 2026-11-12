@@ -8,4 +8,7 @@
   ,
   "000004_materials_retrieval.up.sql": "6bad8d66dbfa671c3bc603467837580ff4336cd3417313b1556920e0299ae830",
   "000004_materials_retrieval.down.sql": "d73567bd3c5318c1cde9f0f677e865982eb738004236437bdbdf258d8791bdac"
+  ,
+  "000005_assignment_tasks.up.sql": "ad2f53dc0e9960b153fa9058c568e22d23150118d134dea5d293fcf1e7acd21c",
+  "000005_assignment_tasks.down.sql": "f0e9e62df01fcd6f3eddc9912dfa2fa21e22c2430e6146a4cc0b271fbf6f39eb"
 }

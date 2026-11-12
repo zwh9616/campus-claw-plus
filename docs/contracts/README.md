@@ -71,6 +71,8 @@ SSE fixture的`{event,data}`只是测试表达：真实wire仍为`event:`与JSON
 
 ## 05作业与持久任务机器合同冻结
 
-依据已审定合入#31的[05设计D1—D8及#35新增D9](../../openspec/changes/2026-11-12-assignment-tasks/design.md)。D9已随#35获小陈对最终7fe5b5d实际批准5872964547，正常合入main e617cc0并通过完整CI43202284398；不属于#31的历史批准范围。九个frozen操作与10个新增Schema完成公共冻结；Task只细化既有字段的安全错误和状态关联，不增加公开worker/租约字段，不改00 D5。分页复用既有公共参数，资源请求/响应通过本地$ref引用单一字段定义；原13个current操作、健康/配置/迁移目标4和既有SQL不变。
+依据已审定合入#31的[05设计D1—D8及#35新增D9](../../openspec/changes/2026-11-12-assignment-tasks/design.md)。D9已随#35获小陈对最终7fe5b5d实际批准5872964547，正常合入main e617cc0并通过完整CI43202284398；不属于#31的历史批准范围。九个frozen操作与10个新增Schema完成公共冻结；Task只细化既有字段的安全错误和状态关联，不增加公开worker/租约字段，不改00 D5。分页复用既有公共参数，资源请求/响应通过本地$ref引用单一字段定义；该次公共冻结时原13 current、健康/配置/精确目标4和既有SQL未改；本次迁移实施候选的目标5见下文。
 
 原`check:contracts`现增加05结构双路径、权限/错误/配额/授权后原202重放声明变异、任务CAS/取消声明、页面计数/排序与请求字节语义；Go独立生成的5组摘要向量作为跨语言固定原件。仅验证机器声明和合成示例，未执行真实05数据库授权、并发、worker、崩溃或取消事务；这些全部保留apply后的真实验收责任。小张可按已批准规约开展2.x，完成后交小陈独立终审；不将frozen当current，也不开放作业页面。[候选原件](../../reports/changes/05/contracts-freeze-2026-11-12.md)与[审定及main验收](../../reports/changes/05/contracts-main-integration-2026-11-12.md)。
+
+05首批实施候选仅追加000005及admin/server共享精确Target=5，13 current/9 frozen保持；尚未提供作业HTTP/提交/worker。available只表示嵌入SQL及真实摘要已存在，实际迁移/恢复/终审结果见共享表与迁移登记。已有4部署须按停写、备份、离线迁移流程升级，不能直接启动新程序。

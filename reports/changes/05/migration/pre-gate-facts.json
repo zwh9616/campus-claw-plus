@@ -1,0 +1,57 @@
+{
+  "executor": "zwh9616 / 小张 (AI辅助)",
+  "baseline": "b63dfdd2d118cef45d310910ea99156914cd669b",
+  "scope": "05 tasks2.1 migration foundation only; 13 current / 9 frozen",
+  "node": "v25.2.1",
+  "old_sql": [
+    {
+      "file": "000001_identity_users_classes.down.sql",
+      "sha256": "4aeb5022ed2575818082d6e4880b2f83a524c7cc7038d7b49b3debadfdd532da",
+      "unchanged_from_b63dfdd": true
+    },
+    {
+      "file": "000001_identity_users_classes.up.sql",
+      "sha256": "07947f4fd66c751eb549c07917266eb65d8e4e9352d26506fb8002b5e65e05c7",
+      "unchanged_from_b63dfdd": true
+    },
+    {
+      "file": "000002_identity_sessions.down.sql",
+      "sha256": "b44b4528eb1aa3bfddfea588249da54509871972f6febe26b2d448faf45a9773",
+      "unchanged_from_b63dfdd": true
+    },
+    {
+      "file": "000002_identity_sessions.up.sql",
+      "sha256": "c600e1133f8ace63565fca713e13dd33a187f670d10bc94b028d66db351baeb0",
+      "unchanged_from_b63dfdd": true
+    },
+    {
+      "file": "000003_identity_auth_audit.down.sql",
+      "sha256": "2b2562162a904817521e01a0482d0665eaabfff88df0a86e71237c7fb08372b4",
+      "unchanged_from_b63dfdd": true
+    },
+    {
+      "file": "000003_identity_auth_audit.up.sql",
+      "sha256": "b83195b44f354ba2909b01a5aceb5b18954e04b075a68095039d4849e5f99c1e",
+      "unchanged_from_b63dfdd": true
+    },
+    {
+      "file": "000004_materials_retrieval.down.sql",
+      "sha256": "d73567bd3c5318c1cde9f0f677e865982eb738004236437bdbdf258d8791bdac",
+      "unchanged_from_b63dfdd": true
+    },
+    {
+      "file": "000004_materials_retrieval.up.sql",
+      "sha256": "6bad8d66dbfa671c3bc603467837580ff4336cd3417313b1556920e0299ae830",
+      "unchanged_from_b63dfdd": true
+    }
+  ],
+  "full_gate": "not yet run on committed final source",
+  "ordinary_check_exit": 0,
+  "real_verify_before_final_index_guard_exit": 0,
+  "controlled_red": {
+    "experiment": "AT-SC-20/21 remove internal-owner/route binary-collation rejection",
+    "command": "node scripts/verify-identity.mjs",
+    "exit_code": 1,
+    "expected_drift_assertion_present": true
+  }
+}
