@@ -17,7 +17,7 @@ func Check(ctx context.Context, url string) error {
 	if err != nil {
 		return errors.New("invalid health address")
 	}
-	client := &http.Client{Timeout: 3500 * time.Millisecond}
+	client := &http.Client{Timeout: 3 * time.Second}
 	response, err := client.Do(request)
 	if err != nil {
 		return errors.New("health request failed")

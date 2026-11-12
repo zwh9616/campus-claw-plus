@@ -29,6 +29,8 @@
 
 ## 当前命令
 
+2026-11-12推进10-B第一批：只核对已批准01/02/04实际四服务，索引deploy/service-batches.json；小陈实现/自测，小葛逐批终审。check新增服务登记/3秒探针漂移断言，verify仍顺序执行原镜像扫描、默认Compose和真实MySQL程序并核对同轮同镜像摘要；不能把合成报告或旧CI当本批通过，B全量/C及planned服务保持待验。详见[本批记录](reports/changes/10/B/README.md)。
+
 根目录 npm ci；npm run setup 安装前端；npm run check 跑基础/类型/构建/Go测试/严格规约；npm run audit 检查npm；npm run verify 运行本机容器集成验收。
 Node最低22.19.0；check还包含npm run check:contracts（OpenAPI3.1、2020-12单源双路径与语义反例），不替代既有门禁。新证据写reports/changes/<编号>/，历史archive和docs/lesson-07不倒改；未做的终审、新会话或集成不勾完成。
 npm run dev 启动前端；完整运行按README填.env后 docker compose up --build -d。
