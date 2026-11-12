@@ -67,3 +67,9 @@ Windows，Node24.22.1/npm10.5.0/Go1.27.3。本次仅改变进度、任务、文�
 
 
 最终双方整合后实际复跑完整check/audit/secret-scan及diff均0（26合同、28前端、8批次、Go、strict10/10），原始文本与[记录](main-integration/peer-sync-local-checks.json)随本提交保留。API随后确认main b63dfdd完整CI43205383891已成功；前述“进行中”保留为当时快照。本机verify仍因缺Docker未重跑，当前提交自身完整CI和小葛实际review不能由该主干成功替代。
+
+## 小葛最终同步main b63dfdd
+
+#36由小张对486852f真实批准5873233078后正常合入b63dfdd，主干完整CI43205383891成功；本轮继承原审查记录和05 tasks 1.3，不代审#36，不实现05业务。逐块保留双方进度及原始日志，修正重新出现的“#32正在同步”过时状态；生产代码/Schema/合同检查与main无差异，#34仅将已完成终审的首批review_status登记为reviewed。本候选最终head仍须本人实际review与完整CI；旧批准不代替新批准，合入#33/#34仍待本次明确授权。
+
+本轮小葛亲自复跑foundation、strict10/10通过；#33合同双路径及26组测试通过，#34批次8项通过。当前候选143个相对文档链接均存在，运行代码及机器合同与b63dfdd无差异；本次属于文档/审查登记复核，不声称重新在本机执行完整Docker gate。最终完整CI与review在GitHub绑定当前head记录。
