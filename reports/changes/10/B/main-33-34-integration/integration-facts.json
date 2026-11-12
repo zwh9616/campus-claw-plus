@@ -6,7 +6,7 @@
   "records": [
     {
       "pr": 33,
-      "head": "b6310659369ed760c18a68ac8c965b9eb4c6c6c9",
+      "head": "bb7dd5eafe82d6f4368df36302f237ac1fae2919",
       "approved_by": "gjj6666",
       "approval": 5873502838,
       "merged_by": "zwh9616",
@@ -96,7 +96,7 @@
     },
     {
       "pr": 34,
-      "head": "86c9680f927fcc26df9dfc565f9e0bb0b584be07",
+      "head": "568c1ad418df28febf83bdc88719a33ec1b55653",
       "approved_by": "zwh9616",
       "approval": 5873900783,
       "merged_by": "zwh9616",
