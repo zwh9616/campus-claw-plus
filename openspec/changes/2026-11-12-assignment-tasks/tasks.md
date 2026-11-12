@@ -21,3 +21,5 @@
 2026-11-12小张已逐项确认design D8规约内容及000005五表候选方案，见[规约审查](../../../reports/changes/05/zhang-spec-review-2026-11-12.md)。1.2现已依据#31最终ef3553f真实批准、正常合入main da8624c及主干完整CI43186361938完成；1.3公共机器合同审定合入仍待办，不apply。
 
 1.2实际收口：小张/zwh9616批准5871577319绑定ef3553f376dd7f448b34950ec8aee100b0c5bd11，完整CI43185758473成功，绑定预期head正常合入main da8624cdb7793e64c4c3d29793b4c7a329adc2b8，整树一致。1.3只确认000005候选方案，公共机器合同尚未冻结合入，不勾完成、不apply。[合入与复验](../../../reports/changes/05/main-31-integration-2026-11-12.md)。
+
+当前公共机器合同候选已提交[#35](https://github.com/zwh9616/campus-claw-plus/pull/35)，交小陈/Kevcco审定；未批准合入前1.3继续待办，九个操作不接运行服务。

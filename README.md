@@ -1,6 +1,6 @@
 # CampusClawPlus
 
-本分支已将MySQL、离线迁移/初始化、身份HTTP服务和同源HTTPS接入默认Compose。身份前端已在main验收，本分支新增真实资料列表、检索、上传、原文及下载；小张已完成独立复验，#30已合入、测试修复#31随main da8624c完整CI43186361938通过；实际归档状态见[共享进度表](docs/project-status.md)。
+本分支已将MySQL、离线迁移/初始化、身份HTTP服务和同源HTTPS接入默认Compose。身份及真实资料页面已在main合入，提供资料列表、检索、上传、原文及下载；小张已完成独立复验，合入及最终主干复验见[共享进度表](docs/project-status.md)和PR #30实际记录为准。
 
 ## 当前运行范围
 
@@ -132,3 +132,5 @@ go run ./cmd/server
 资料路由：`/app/materials`、`/app/materials/upload`、`/app/materials/{id}`。仅可信教师身份可上传/重新处理，学生只读ready。上传结果不确定时手动点击“确认上传结果”，更换内容须确认新上传；刷新、离开或身份变化会清理内存，请先核对列表。
 
 `npm run check:frontend-auth`包含原认证与资料用例。mock页面：使用外部Playwright1.56.0，运行`node frontend/tests/materials-browser.mjs --playwright ABSOLUTE_PLAYWRIGHT_PATH --origin http://127.0.0.1:5197 --output output/material-browser`。Windows可信真实浏览器：`npm run verify:materials-browser -- --playwright ABSOLUTE_PLAYWRIGHT_PATH`，需已安装相应Firefox/Python与Docker；只在临时NSS配置导入测试CA，不改操作系统信任库。完整原门禁仍为`npm run gate`；浏览器证据单列，不用它代替完整门禁。
+
+2026-11-12运行批次更新：#32最终510e882获小葛实际批准，用户明确授权后正常合入main b4b13fd，主干完整CI43194409869通过，10-B第一批B1.3完成；[实际原件](reports/changes/10/B/main-32-integration-2026-11-12.md)。B全量/C及其他未就绪服务仍按原准入待验；06资料归档候选见[清单](reports/changes/06/archive-candidate-2026-11-12.md)。
