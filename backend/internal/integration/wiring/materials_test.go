@@ -3,7 +3,6 @@
 package wiring
 
 import (
-	"bufio"
 	"bytes"
 	"crypto/tls"
 	"encoding/json"
@@ -100,37 +99,15 @@ func verifyMRWiring(t *testing.T, client *http.Client, access string) {
 	}
 	request("GET", "/api/v1/search?q="+url.QueryEscape(strings.Repeat("𠮷", 2001)), "", nil, 400)
 	for range 10 {
-		verifyOversizedRequestLine(t, client.Transport.(*http.Transport).TLSClientConfig)
+		transport := client.Transport.(*http.Transport)
+		connection, err := tls.DialWithDialer(&net.Dialer{Timeout: client.Timeout}, "tcp", "campus.test:443", transport.TLSClientConfig.Clone())
+		if err != nil {
+			t.Fatal("MF oversized request-line trusted TLS connection")
+		}
+		if err := requestLineLimit(connection, 7*time.Second); err != nil {
+			t.Fatalf("MF request-line bound: %v", err)
+		}
 	}
 	t.Log("MF-SC-02/12 valid 2000-codepoint queries pass; 2001 and request-line overflow remain rejected")
 	t.Log("MR-SC-01/08/09 production HTTPS upload, literal search, raw download and persistence passed")
-}
-
-func verifyOversizedRequestLine(t *testing.T, config *tls.Config) {
-	t.Helper()
-	conn, err := tls.DialWithDialer(&net.Dialer{Timeout: 7 * time.Second}, "tcp", "campus.test:443", config.Clone())
-	if err != nil {
-		t.Fatal("MF oversized trusted TLS connection")
-	}
-	defer conn.Close()
-	if err := conn.SetDeadline(time.Now().Add(7 * time.Second)); err != nil {
-		t.Fatal("MF oversized deadline")
-	}
-	// Nginx may return 414 before it has consumed the complete oversized line.
-	// Read concurrently with writing so a late write error cannot hide that
-	// response. Only an actual HTTP 414 passes; EOF/reset/timeout still fail.
-	written := make(chan struct{})
-	go func() {
-		defer close(written)
-		_, _ = io.WriteString(conn, "GET /api/v1/search?q="+strings.Repeat("x", 40000)+" HTTP/1.1\r\nHost: campus.test\r\nConnection: close\r\n\r\n")
-	}()
-	defer func() { conn.Close(); <-written }()
-	limited, err := http.ReadResponse(bufio.NewReader(conn), &http.Request{Method: http.MethodGet})
-	if err != nil {
-		t.Fatal("MF oversized request-line transport")
-	}
-	limited.Body.Close()
-	if limited.StatusCode != 414 {
-		t.Fatal("MF request-line bound must remain enforced")
-	}
 }

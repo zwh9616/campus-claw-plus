@@ -7,6 +7,9 @@ import { parseEnv } from 'node:util'
 import { validateWiringInputs } from './identity-compose.mjs'
 import { hostRequest, verifyHostIngress } from './identity-host-ingress.mjs'
 import { verificationSubnets } from './verification-subnets.mjs'
+import { auditedImageServices, validateBatch, loadBatchInputs } from './service-batches.mjs'
+
+const useAuditedImages = process.argv.includes('--audited-images')
 
 const { goImage } = JSON.parse(readFileSync('scripts/toolchain.json', 'utf8'))
 const id = 'campus-wiring-' + randomBytes(6).toString('hex')
@@ -27,7 +30,9 @@ function run(label, args, { input, expected = 0, timeout = 300000, environment }
 }
 const goArgs = ['run', '--rm', '-e', 'GOTOOLCHAIN=local', '-v', 'campus-claw-plus-go-modules:/go/pkg/mod', '-v', 'campus-claw-plus-go-cache:/root/.cache/go-build', '--mount', `type=bind,source=${resolve('backend')},target=/src,readonly`, '-w', '/src']
 const composeArgs = ['compose', '--project-name', id, '--env-file', resolve(directory, 'compose.env'), '--file', 'compose.yaml', '--file', resolve(directory,'network-override.json')]
-const compose = (label, args, options = {}) => run(label, [...composeArgs, ...args], { ...options, environment: { ...process.env, ...env, ...options.overrides } })
+const compose = (label, args, options = {}) => run(label, [...composeArgs,
+  ...(useAuditedImages && args[0] === 'up' ? ['up', '--no-build', '--pull', 'never', ...args.slice(1)] : args)],
+  { ...options, environment: { ...process.env, ...env, ...options.overrides } })
 const client = (phase, label) => {
   run(label, [...goArgs, '--network', phase==='lookup'?id+'_data':id, '-e', `WIRING_EXPECT=${phase}`, '--mount', `type=bind,source=${directory},target=/fixtures`, goImage, 'go', 'test', '-count=1', '-tags=integration', '-timeout=60s', '-v', './internal/integration/wiring'])
   const proof = resolve(directory, 'credential-proof')
@@ -85,6 +90,13 @@ try {
 try {
   if (failed) throw new Error('Wiring preparation failed')
   compose('build pinned MySQL, offline admin and production applications', ['--profile', 'tools', 'build', 'mysql', 'admin', 'backend', 'frontend'])
+  if (useAuditedImages) {
+    const services = auditedImageServices(JSON.parse(readFileSync('output/mysql-image-verify/results.json')),
+      JSON.parse(readFileSync('output/application-image-verify/results.json')), validateBatch(loadBatchInputs()))
+    const path = resolve(directory, 'network-override.json')
+    writeFileSync(path, JSON.stringify({ ...JSON.parse(readFileSync(path)), services }))
+    evidence.push({ label: 'DO-SC-11 exact audited artifacts selected; rebuild/pull disabled for runtime', exit_code: 0, services })
+  }
   compose('start fresh persistent MySQL', ['up', '-d', '--wait', '--wait-timeout', '120', 'mysql'])
   compose('offline migrations', ['run', '--rm', '-T', 'admin', 'migrate'])
   compose('offline manifest/schema check', ['run', '--rm', '-T', 'admin', 'check'])

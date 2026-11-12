@@ -1,5 +1,5 @@
 # CampusClawPlus 工程约定
-本分支默认运行已接入01身份与MySQL阶段，实际合入/验收状态见共享表。第7课骨架为历史基线，历史主规约见[spec](openspec/specs/project-bootstrap/spec.md)，归档依据见[历史变更](openspec/changes/archive/2026-10-28-project-bootstrap/)。本轮执行[00规约](openspec/changes/2026-11-04-business-contracts/proposal.md)、[design](openspec/changes/2026-11-04-business-contracts/design.md)、[spec](openspec/changes/2026-11-04-business-contracts/specs/business-contracts/spec.md)及[tasks](openspec/changes/2026-11-04-business-contracts/tasks.md)；00只负责公共合同。当前01按已批准身份规约接入数据库/身份，02登录已验收；本候选交付已批准06资料页面，其他教学业务仍按共享表安排。PB/SC保留历史含义，新需求使用BC及后续change自己的前缀。
+本分支默认运行已接入01身份与MySQL阶段，实际合入/验收状态见共享表。第7课骨架为历史基线，历史主规约见[spec](openspec/specs/project-bootstrap/spec.md)，归档依据见[历史变更](openspec/changes/archive/2026-10-28-project-bootstrap/)。本轮执行[00规约](openspec/changes/2026-11-04-business-contracts/proposal.md)、[design](openspec/changes/2026-11-04-business-contracts/design.md)、[spec](openspec/changes/2026-11-04-business-contracts/specs/business-contracts/spec.md)及[tasks](openspec/changes/2026-11-04-business-contracts/tasks.md)；00只负责公共合同。当前01/02/04已验收，06真实资料页面已随#30合入、主干复验进行中；2026-11-12组长恢复05规约工作，其他暂停项未恢复。PB/SC保留历史含义，新需求使用BC及后续change自己的前缀。
 
 ## 每次开始工作
 - 必读 [安全规范](docs/standards/security.md)，按范围必须读取下表规则；这些文件是约束，不是可选参考。
@@ -26,6 +26,8 @@
 当前已装配六个`current`资料操作（共13个current操作），新增000004三张资料表及真实SQL摘要，server只读检查精确目标4、离线admin迁移至4。资料以可信会话当前班级授权，学生只读ready；原始字节保留、索引事务及幂等、5秒业务预算/503与504、12次/分钟按用户配额和同快照出处回查遵循04。配置/服务/原健康及01旧SQL不变；本06候选前端已按批准规约消费资料操作，独立终审及合入见共享表。详见[合同入口](docs/contracts/README.md)、[迁移方案](openspec/changes/archive/2026-11-10-materials-retrieval/migration-plan.md)和[运行交接](docs/materials-runtime.md)。04实现终审与main集成已通过；04归档#28已正常合入，持有人长期部署与生产回退不由CI推定。
 
 2026-11-11，已批准[06资料页面规约](openspec/changes/2026-11-11-materials-frontend/proposal.md)随#27正常合入main6ff6287并完成主干复验。小张写规约、确认样板及终审，小葛审规约并apply；小张已在#29实际验收修复后的隔离代表样板，1.2完成。#29按最终head门禁正常收口后，小葛继续2.1—2.5真实接线，交小张终审；本06候选真实资料页面已由小张在2026-11-12独立复验通过，终审记录见reports/changes/06/zhang-final-review-2026-11-12.md；最终head批准、正常合入及主干复验以#30实际收口为准，不以样板代替真实接线。资料阶段依赖02/04，作业阶段仍等05，00 D8与依赖表保持已批准范围。
+
+2026-11-12组长明确启动[05作业与持久任务规约](openspec/changes/2026-11-12-assignment-tasks/proposal.md)，小陈起草/终审、小张审规约/apply。当前仅规约候选，须小张批准、正常合入及公共机器合同冻结合入后才apply；G2/G3已有证据不替代05自身批准。作业/提交/任务仍planned，000005仅候选预留，运行精确目标仍4；生产未接真实执行器时不允许假批改成功。此决定只恢复05，06作业页面、07/08等仍按各自批准和依赖推进。
 
 ## 当前命令
 

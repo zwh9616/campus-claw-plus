@@ -20,6 +20,37 @@ export function loadBatchInputs() {
   return { registry, compose, config, dockerfiles }
 }
 
+// Compose may add project-specific image labels during its own build. Runtime
+// acceptance must use the exact audited artifacts, rather than hope two builds
+// produce the same ID or relax comparison to matching filesystem layers.
+export function auditedImageServices(mysql, applications, inventory) {
+  assert.equal(mysql.exit_code, 0, 'MySQL scan must pass before runtime')
+  assert.equal(applications.exit_code, 0, 'Application scans must pass before runtime')
+  assert.equal(mysql.source_dockerfile_sha256, inventory.sources.find(s => s.service === 'mysql').dockerfile_sha256)
+  const images = [{ service: 'mysql', ...mysql.summary }, ...applications.summaries.filter(s => s.service)]
+  assert.deepEqual(images.map(s => s.service).sort(), ['admin', 'backend', 'frontend', 'mysql'])
+  return Object.fromEntries(images.map(image => {
+    assert.match(image.image_id ?? '', /^sha256:[a-f0-9]{64}$/, 'Only immutable audited image IDs may run')
+    assert.equal(image.HIGH, 0)
+    assert.equal(image.CRITICAL, 0)
+    if (image.service !== 'mysql') assert.equal(image.dockerfile_sha256, inventory.sources.find(s => s.service === image.service).dockerfile_sha256)
+    return [image.service, { image: image.image_id, pull_policy: 'never' }]
+  }))
+}
+
+export function retainedImageTags(reports, started) {
+  const tags = []
+  for (const path of evidencePaths.slice(0, 2)) {
+    const report = reports[path]
+    if (!report || Date.parse(report.time) < started || !Number.isFinite(Date.parse(report.time))) continue
+    for (const tag of report.retained_tags ?? []) {
+      assert.match(tag, /^campus-(?:mysql-audit-[a-f0-9]{12}|app-audit-[a-f0-9]{12}-(?:backend|admin|frontend)):verification$/, 'Cleanup is limited to this verification image tag format')
+      tags.push(tag)
+    }
+  }
+  return [...new Set(tags)]
+}
+
 // DO-SC-11/13: this index documents existing approved services; it cannot activate planned ones.
 export function validateBatch({ registry, compose, config, dockerfiles }) {
   assert.equal(registry.version, 1)

@@ -1,7 +1,7 @@
-import { execFileSync } from 'node:child_process'
+import { execFileSync, spawnSync } from 'node:child_process'
 import { mkdirSync, readFileSync, writeFileSync, rmSync } from 'node:fs'
 import { runSequence } from './gate-runner.mjs'
-import { runtimeSteps, evidencePaths, loadBatchInputs, validateBatch, validateRuntimeEvidence, sha256 } from './service-batches.mjs'
+import { runtimeSteps, evidencePaths, loadBatchInputs, validateBatch, validateRuntimeEvidence, sha256, retainedImageTags } from './service-batches.mjs'
 
 const directory = 'output/service-batches'
 mkdirSync(directory, { recursive: true })
@@ -20,7 +20,8 @@ try {
   const before = source()
   output.source = before
   const inventory = validateBatch(loadBatchInputs())
-  const stages = await runSequence(runtimeSteps.map(path => ({ name: path, command: process.execPath, args: [path], timeoutMs: 590000 })),
+  const stages = await runSequence(runtimeSteps.map((path, i) => ({ name: path, command: process.execPath,
+    args: [path, ...(i === 0 ? ['--retain-images'] : i === 1 ? ['--audited-images'] : [])], timeoutMs: 590000 })),
     { signal: controller.signal, onStart: name => console.log('Batch verify: ' + name) })
   output = { ...output, inventory, stages }
   if (stages.exitCode !== 0) throw new Error('Original runtime verification failed; later stages were not run')
@@ -35,6 +36,17 @@ try {
   output.error = error.message
   console.error(error.message)
 } finally {
+  try {
+    const reports = Object.fromEntries(evidencePaths.slice(0, 2).map(path => {
+      try { return [path, JSON.parse(readFileSync(path))] } catch { return [path, null] }
+    }))
+    output.cleanup = retainedImageTags(reports, started).map(tag => {
+      const result = spawnSync('docker', ['image', 'rm', tag], { encoding: 'utf8', timeout: 30000 })
+      const ok = result.status === 0 || (result.stderr ?? '').includes('No such image')
+      if (!ok) output.exit_code = 1
+      return { tag, exit_code: result.status, ok }
+    })
+  } catch (error) { output.exit_code = 1; output.cleanup_error = error.message }
   output.finished_at = new Date().toISOString()
   writeFileSync(directory + '/results.json', JSON.stringify(output, null, 2) + '\n')
   process.off('SIGINT', cancel)
