@@ -43,17 +43,31 @@
       "$ref": "Timestamp.schema.json"
     },
     "error": {
-      "anyOf": [
+      "oneOf": [
         {
           "type": "object",
           "properties": {
             "code": {
-              "type": "string",
-              "minLength": 1
+              "const": "EXECUTION_FAILED"
             },
             "message": {
-              "type": "string",
-              "minLength": 1
+              "const": "任务执行失败"
+            }
+          },
+          "required": [
+            "code",
+            "message"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "code": {
+              "const": "RETRY_EXHAUSTED"
+            },
+            "message": {
+              "const": "重试次数已用尽"
             }
           },
           "required": [
@@ -80,5 +94,147 @@
     "updated_at",
     "error"
   ],
-  "additionalProperties": false
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "pending"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "attempt": {
+            "type": "integer",
+            "maximum": 2
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "failed"
+            ]
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "error": {
+            "not": {
+              "type": "null"
+            }
+          },
+          "attempt": {
+            "minimum": 1,
+            "type": "integer"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "error": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "running",
+              "succeeded"
+            ]
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "attempt": {
+            "minimum": 1,
+            "type": "integer"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "cancelled"
+            ]
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "cancel_requested": {
+            "const": true
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "pending",
+              "failed",
+              "succeeded"
+            ]
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "cancel_requested": {
+            "const": false
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "error": {
+            "const": {
+              "code": "RETRY_EXHAUSTED",
+              "message": "重试次数已用尽"
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "attempt": {
+            "const": 3
+          }
+        }
+      }
+    }
+  ]
 }

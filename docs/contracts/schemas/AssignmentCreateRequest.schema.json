@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/v1/AssignmentCreateRequest.schema.json",
+  "title": "AssignmentCreateRequest",
+  "type": "object",
+  "properties": {
+    "title": {
+      "$ref": "Assignment.schema.json#/properties/title"
+    },
+    "description": {
+      "$ref": "Assignment.schema.json#/properties/description"
+    },
+    "deadline": {
+      "$ref": "Assignment.schema.json#/properties/deadline"
+    }
+  },
+  "required": [
+    "title",
+    "description",
+    "deadline"
+  ],
+  "additionalProperties": false
+}

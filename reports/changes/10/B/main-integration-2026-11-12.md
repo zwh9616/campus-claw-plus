@@ -37,3 +37,10 @@ Windows，Node24.22.1/npm10.5.0/Go1.27.3。本次仅改变进度、任务、文�
 05规约已批准合入，公共机器合同候选现已提交[#35](https://github.com/zwh9616/campus-claw-plus/pull/35)，由小陈审定；批准合入前不apply。九个操作/资源Schema/错误码/权限配额/摘要向量及000005仍仅在其独立候选范围，不从本补记启用。06资料阶段归档仍由小葛/小张接力。本次不修改生产配置/路由/SQL或启动其他暂停变更。
 
 小葛/gjj6666（AI辅助）2026-11-12终审补记：已独立复核同一main b4b13fd原始artifact及四份报告摘要、正式review与树一致性。元数据仅pending_ge_review→reviewed，批次8项/基础检查/strict10/10亲自复跑0；正文及共享表把“05机器合同未提交”更新为#35候选待小陈审定，不导入其合同或提前apply。旧本机缺Docker1、完整gate网络超时124与实际CI成功分别保留，B全量/C不提前完成。
+
+
+## 小陈同步main e617cc0（2026-11-12）
+
+本次在原#34分支先快进保留小葛510cf58全部修改，再合入已通过完整CI43202284398的main e617cc0；只手工合并共享表顶部及10行两处冲突，保留main全部05合同/测试/Task耗尽修复，不改业务运行代码或门禁。05公共合同#35已获真实批准并正常合入，1.3验收补记交[#36](https://github.com/zwh9616/campus-claw-plus/pull/36)由小张审查；后续10-B增量等05真实实现，不把合同冻结当服务已接入。
+
+本次同步后的Windows Node24.22.1/npm10.5.0/Go1.27.3实际执行npm run check/audit/secret-scan及diff检查均0，包含合同26项、前端28项、批次8项、Go及strict10/10；完整本机verify因缺Docker未重跑，最终head完整CI/小葛实际终审仍须重新核对，不沿用旧head绿灯或伪造自己的PR批准。见[命令及原件索引](main-integration/sync-e617-local-checks.json)。原四份未跟踪文件哈希不变，没有提交个人配置或凭据。

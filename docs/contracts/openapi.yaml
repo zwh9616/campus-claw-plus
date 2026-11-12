@@ -3584,6 +3584,3814 @@
           }
         }
       }
+    },
+    "/api/v1/assignments": {
+      "post": {
+        "operationId": "post_assignments",
+        "summary": "05候选：POST /api/v1/assignments",
+        "x-contract-status": "frozen",
+        "x-owner-change": "05",
+        "x-spec-change": "openspec/changes/2026-11-12-assignment-tasks",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Origin",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "若出现必须精确可信同源；不提供Cookie认证旁路。"
+          }
+        ],
+        "x-authorization": {
+          "source": "validated-server-session",
+          "roles": [
+            "teacher"
+          ],
+          "class_scope": "active-membership-and-resource-original-class",
+          "student_visibility": "not-applicable",
+          "teacher_visibility": "all-in-current-class-read-only-tasks",
+          "order": [
+            "authentication",
+            "action-role",
+            "resource-visibility",
+            "business-input"
+          ],
+          "cross_class": "404-identical-to-missing",
+          "other_student": "404-identical-to-missing",
+          "rejected_business_side_effects": false
+        },
+        "x-request-rules": {
+          "unknown_query": "reject-400",
+          "duplicate_parameters": "reject-400",
+          "request_body": "json-only"
+        },
+        "x-method-boundary": {
+          "status": 405,
+          "allow": "GET, POST",
+          "body": "empty"
+        },
+        "x-database-budget-ms": 5000,
+        "responses": {
+          "201": {
+            "description": "成功资源；冻结合同尚未接线。",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Assignment.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "id": "9007199254740993",
+                      "class_id": "2",
+                      "teacher_id": "3",
+                      "title": "极限与连续",
+                      "description": "保留原文\r\n说明𠮷📚",
+                      "deadline": "2026-11-13T08:00:00.000Z",
+                      "version": 1,
+                      "created_at": "2026-11-12T08:00:00.000Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "VALIDATION_ERROR",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "VALIDATION_ERROR"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "VALIDATION_ERROR": {
+                    "value": {
+                      "error": {
+                        "code": "VALIDATION_ERROR",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHENTICATED",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "UNAUTHENTICATED"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "UNAUTHENTICATED": {
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "FORBIDDEN",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "FORBIDDEN"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "FORBIDDEN": {
+                    "value": {
+                      "error": {
+                        "code": "FORBIDDEN",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "PAYLOAD_TOO_LARGE",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "PAYLOAD_TOO_LARGE"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "PAYLOAD_TOO_LARGE": {
+                    "value": {
+                      "error": {
+                        "code": "PAYLOAD_TOO_LARGE",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RATE_LIMITED",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            },
+            "x-error-codes": [
+              "RATE_LIMITED"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "RATE_LIMITED": {
+                    "value": {
+                      "error": {
+                        "code": "RATE_LIMITED",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "DEPENDENCY_UNAVAILABLE",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "DEPENDENCY_UNAVAILABLE"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "DEPENDENCY_UNAVAILABLE": {
+                    "value": {
+                      "error": {
+                        "code": "DEPENDENCY_UNAVAILABLE",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "UPSTREAM_TIMEOUT",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "UPSTREAM_TIMEOUT"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "UPSTREAM_TIMEOUT": {
+                    "value": {
+                      "error": {
+                        "code": "UPSTREAM_TIMEOUT",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "方法边界；沿用已有接口的空体及Allow，不是业务Error。",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              },
+              "Allow": {
+                "schema": {
+                  "const": "GET, POST"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./schemas/AssignmentCreateRequest.schema.json"
+              },
+              "examples": {
+                "contract": {
+                  "value": {
+                    "title": "极限与连续",
+                    "description": "保留原文\r\n说明𠮷📚",
+                    "deadline": "2026-11-13T08:00:00.000Z"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-body-limits": {
+          "bytes": 65536,
+          "declared_and_streamed": true,
+          "unknown_json_keys": "reject-400",
+          "duplicate_json_keys": "reject-400",
+          "unicode": "reject-ill-formed",
+          "text_normalization": "none"
+        },
+        "x-rate-limit": {
+          "bucket": "05-write",
+          "scope": "user_id",
+          "window_seconds": 60,
+          "quota": 12,
+          "switch_class_resets": false,
+          "committed_replays_count": false,
+          "idempotency_conflicts_count": false
+        },
+        "x-resource-chain": [
+          "assignment"
+        ],
+        "x-replay": "no-automatic-replay"
+      },
+      "get": {
+        "operationId": "get_assignments",
+        "summary": "05候选：GET /api/v1/assignments",
+        "x-contract-status": "frozen",
+        "x-owner-change": "05",
+        "x-spec-change": "openspec/changes/2026-11-12-assignment-tasks",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "$ref": "./schemas/MaterialListParameters.schema.json#/properties/page"
+            }
+          },
+          {
+            "in": "query",
+            "name": "page_size",
+            "required": false,
+            "schema": {
+              "$ref": "./schemas/MaterialListParameters.schema.json#/properties/page_size"
+            }
+          }
+        ],
+        "x-authorization": {
+          "source": "validated-server-session",
+          "roles": [
+            "teacher",
+            "student"
+          ],
+          "class_scope": "active-membership-and-resource-original-class",
+          "student_visibility": "all-in-current-class",
+          "teacher_visibility": "all-in-current-class-read-only-tasks",
+          "order": [
+            "authentication",
+            "action-role",
+            "resource-visibility",
+            "business-input"
+          ],
+          "cross_class": "404-identical-to-missing",
+          "other_student": "404-identical-to-missing",
+          "rejected_business_side_effects": false
+        },
+        "x-request-rules": {
+          "unknown_query": "reject-400",
+          "duplicate_parameters": "reject-400",
+          "request_body": "forbidden"
+        },
+        "x-method-boundary": {
+          "status": 405,
+          "allow": "GET, POST",
+          "body": "empty"
+        },
+        "x-database-budget-ms": 5000,
+        "responses": {
+          "200": {
+            "description": "成功资源；冻结合同尚未接线。",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/AssignmentPage.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "items": [
+                        {
+                          "id": "9007199254740993",
+                          "class_id": "2",
+                          "teacher_id": "3",
+                          "title": "极限与连续",
+                          "description": "保留原文\r\n说明𠮷📚",
+                          "deadline": "2026-11-13T08:00:00.000Z",
+                          "version": 1,
+                          "created_at": "2026-11-12T08:00:00.000Z"
+                        }
+                      ],
+                      "page": 1,
+                      "page_size": 20,
+                      "total": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "VALIDATION_ERROR",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "VALIDATION_ERROR"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "VALIDATION_ERROR": {
+                    "value": {
+                      "error": {
+                        "code": "VALIDATION_ERROR",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHENTICATED",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "UNAUTHENTICATED"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "UNAUTHENTICATED": {
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "DEPENDENCY_UNAVAILABLE",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "DEPENDENCY_UNAVAILABLE"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "DEPENDENCY_UNAVAILABLE": {
+                    "value": {
+                      "error": {
+                        "code": "DEPENDENCY_UNAVAILABLE",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "UPSTREAM_TIMEOUT",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "UPSTREAM_TIMEOUT"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "UPSTREAM_TIMEOUT": {
+                    "value": {
+                      "error": {
+                        "code": "UPSTREAM_TIMEOUT",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "方法边界；沿用已有接口的空体及Allow，不是业务Error。",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              },
+              "Allow": {
+                "schema": {
+                  "const": "GET, POST"
+                }
+              }
+            }
+          }
+        },
+        "x-resource-chain": [
+          "assignment"
+        ]
+      }
+    },
+    "/api/v1/assignments/{id}": {
+      "get": {
+        "operationId": "get_assignments_by_id",
+        "summary": "05候选：GET /api/v1/assignments/{id}",
+        "x-contract-status": "frozen",
+        "x-owner-change": "05",
+        "x-spec-change": "openspec/changes/2026-11-12-assignment-tasks",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "$ref": "./schemas/ID.schema.json"
+            }
+          }
+        ],
+        "x-authorization": {
+          "source": "validated-server-session",
+          "roles": [
+            "teacher",
+            "student"
+          ],
+          "class_scope": "active-membership-and-resource-original-class",
+          "student_visibility": "all-in-current-class",
+          "teacher_visibility": "all-in-current-class-read-only-tasks",
+          "order": [
+            "authentication",
+            "action-role",
+            "resource-visibility",
+            "business-input"
+          ],
+          "cross_class": "404-identical-to-missing",
+          "other_student": "404-identical-to-missing",
+          "rejected_business_side_effects": false
+        },
+        "x-request-rules": {
+          "unknown_query": "reject-400",
+          "duplicate_parameters": "reject-400",
+          "request_body": "forbidden"
+        },
+        "x-method-boundary": {
+          "status": 405,
+          "allow": "GET",
+          "body": "empty"
+        },
+        "x-database-budget-ms": 5000,
+        "responses": {
+          "200": {
+            "description": "成功资源；冻结合同尚未接线。",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Assignment.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "id": "9007199254740993",
+                      "class_id": "2",
+                      "teacher_id": "3",
+                      "title": "极限与连续",
+                      "description": "保留原文\r\n说明𠮷📚",
+                      "deadline": "2026-11-13T08:00:00.000Z",
+                      "version": 1,
+                      "created_at": "2026-11-12T08:00:00.000Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "VALIDATION_ERROR",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "VALIDATION_ERROR"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "VALIDATION_ERROR": {
+                    "value": {
+                      "error": {
+                        "code": "VALIDATION_ERROR",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHENTICATED",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "UNAUTHENTICATED"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "UNAUTHENTICATED": {
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT_FOUND",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "NOT_FOUND"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "NOT_FOUND": {
+                    "value": {
+                      "error": {
+                        "code": "NOT_FOUND",
+                        "message": "资源不存在",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "DEPENDENCY_UNAVAILABLE",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "DEPENDENCY_UNAVAILABLE"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "DEPENDENCY_UNAVAILABLE": {
+                    "value": {
+                      "error": {
+                        "code": "DEPENDENCY_UNAVAILABLE",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "UPSTREAM_TIMEOUT",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "UPSTREAM_TIMEOUT"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "UPSTREAM_TIMEOUT": {
+                    "value": {
+                      "error": {
+                        "code": "UPSTREAM_TIMEOUT",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "方法边界；沿用已有接口的空体及Allow，不是业务Error。",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              },
+              "Allow": {
+                "schema": {
+                  "const": "GET"
+                }
+              }
+            }
+          }
+        },
+        "x-resource-chain": [
+          "assignment"
+        ]
+      }
+    },
+    "/api/v1/assignments/{id}/submissions": {
+      "post": {
+        "operationId": "post_assignments_by_id_submissions",
+        "summary": "05候选：POST /api/v1/assignments/{id}/submissions",
+        "x-contract-status": "frozen",
+        "x-owner-change": "05",
+        "x-spec-change": "openspec/changes/2026-11-12-assignment-tasks",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "$ref": "./schemas/ID.schema.json"
+            }
+          },
+          {
+            "in": "header",
+            "name": "Origin",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "若出现必须精确可信同源；不提供Cookie认证旁路。"
+          },
+          {
+            "in": "header",
+            "name": "Idempotency-Key",
+            "required": true,
+            "schema": {
+              "$ref": "./schemas/SubmissionIdempotencyKey.schema.json"
+            }
+          }
+        ],
+        "x-authorization": {
+          "source": "validated-server-session",
+          "roles": [
+            "student"
+          ],
+          "class_scope": "active-membership-and-resource-original-class",
+          "student_visibility": "own-only",
+          "teacher_visibility": "all-in-current-class-read-only-tasks",
+          "order": [
+            "authentication",
+            "action-role",
+            "resource-visibility",
+            "business-input"
+          ],
+          "cross_class": "404-identical-to-missing",
+          "other_student": "404-identical-to-missing",
+          "rejected_business_side_effects": false
+        },
+        "x-request-rules": {
+          "unknown_query": "reject-400",
+          "duplicate_parameters": "reject-400",
+          "request_body": "json-only"
+        },
+        "x-method-boundary": {
+          "status": 405,
+          "allow": "GET, POST",
+          "body": "empty"
+        },
+        "x-database-budget-ms": 5000,
+        "responses": {
+          "202": {
+            "description": "已持久受理的原始202快照；当前任务状态必须另查。",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/SubmissionAccepted.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "submission_id": "9007199254740995",
+                      "task_id": "9007199254740996",
+                      "status": "pending"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "VALIDATION_ERROR",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "VALIDATION_ERROR"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "VALIDATION_ERROR": {
+                    "value": {
+                      "error": {
+                        "code": "VALIDATION_ERROR",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHENTICATED",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "UNAUTHENTICATED"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "UNAUTHENTICATED": {
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "FORBIDDEN",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "FORBIDDEN"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "FORBIDDEN": {
+                    "value": {
+                      "error": {
+                        "code": "FORBIDDEN",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT_FOUND",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "NOT_FOUND"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "NOT_FOUND": {
+                    "value": {
+                      "error": {
+                        "code": "NOT_FOUND",
+                        "message": "资源不存在",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "CONFLICT / IDEMPOTENCY_CONFLICT",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "CONFLICT",
+              "IDEMPOTENCY_CONFLICT"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "CONFLICT": {
+                    "value": {
+                      "error": {
+                        "code": "CONFLICT",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  },
+                  "IDEMPOTENCY_CONFLICT": {
+                    "value": {
+                      "error": {
+                        "code": "IDEMPOTENCY_CONFLICT",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "PAYLOAD_TOO_LARGE",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "PAYLOAD_TOO_LARGE"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "PAYLOAD_TOO_LARGE": {
+                    "value": {
+                      "error": {
+                        "code": "PAYLOAD_TOO_LARGE",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RATE_LIMITED",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            },
+            "x-error-codes": [
+              "RATE_LIMITED"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "RATE_LIMITED": {
+                    "value": {
+                      "error": {
+                        "code": "RATE_LIMITED",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "DEPENDENCY_UNAVAILABLE",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "DEPENDENCY_UNAVAILABLE"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "DEPENDENCY_UNAVAILABLE": {
+                    "value": {
+                      "error": {
+                        "code": "DEPENDENCY_UNAVAILABLE",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "UPSTREAM_TIMEOUT",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "UPSTREAM_TIMEOUT"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "UPSTREAM_TIMEOUT": {
+                    "value": {
+                      "error": {
+                        "code": "UPSTREAM_TIMEOUT",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "方法边界；沿用已有接口的空体及Allow，不是业务Error。",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              },
+              "Allow": {
+                "schema": {
+                  "const": "GET, POST"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./schemas/SubmissionCreateRequest.schema.json"
+              },
+              "examples": {
+                "contract": {
+                  "value": {
+                    "answer": "原答案\r\n𠮷📚 <>&",
+                    "assignment_version": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-body-limits": {
+          "bytes": 65536,
+          "declared_and_streamed": true,
+          "unknown_json_keys": "reject-400",
+          "duplicate_json_keys": "reject-400",
+          "unicode": "reject-ill-formed",
+          "text_normalization": "none"
+        },
+        "x-rate-limit": {
+          "bucket": "05-write",
+          "scope": "user_id",
+          "window_seconds": 60,
+          "quota": 12,
+          "switch_class_resets": false,
+          "committed_replays_count": false,
+          "idempotency_conflicts_count": false
+        },
+        "x-idempotency": {
+          "scope": [
+            "user_id",
+            "class_id",
+            "route",
+            "assignment_id",
+            "Idempotency-Key"
+          ],
+          "same_payload": 202,
+          "different_payload": 409,
+          "replay": "original-accepted-pending-snapshot",
+          "authorization_before_lookup": true,
+          "committed_only": true,
+          "before_new_conditions": [
+            "quota",
+            "assignment_version",
+            "deadline"
+          ],
+          "retention": "no-automatic-deletion",
+          "digest": "sha256-go-json-answer-then-assignment_version",
+          "atomic": [
+            "submission",
+            "task",
+            "outbox",
+            "accepted-snapshot"
+          ],
+          "new_deadline": "db_now < deadline"
+        },
+        "x-resource-chain": [
+          "assignment"
+        ]
+      },
+      "get": {
+        "operationId": "get_assignments_by_id_submissions",
+        "summary": "05候选：GET /api/v1/assignments/{id}/submissions",
+        "x-contract-status": "frozen",
+        "x-owner-change": "05",
+        "x-spec-change": "openspec/changes/2026-11-12-assignment-tasks",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "$ref": "./schemas/ID.schema.json"
+            }
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "$ref": "./schemas/MaterialListParameters.schema.json#/properties/page"
+            }
+          },
+          {
+            "in": "query",
+            "name": "page_size",
+            "required": false,
+            "schema": {
+              "$ref": "./schemas/MaterialListParameters.schema.json#/properties/page_size"
+            }
+          }
+        ],
+        "x-authorization": {
+          "source": "validated-server-session",
+          "roles": [
+            "teacher",
+            "student"
+          ],
+          "class_scope": "active-membership-and-resource-original-class",
+          "student_visibility": "own-only",
+          "teacher_visibility": "all-in-current-class-read-only-tasks",
+          "order": [
+            "authentication",
+            "action-role",
+            "resource-visibility",
+            "business-input"
+          ],
+          "cross_class": "404-identical-to-missing",
+          "other_student": "404-identical-to-missing",
+          "rejected_business_side_effects": false
+        },
+        "x-request-rules": {
+          "unknown_query": "reject-400",
+          "duplicate_parameters": "reject-400",
+          "request_body": "forbidden"
+        },
+        "x-method-boundary": {
+          "status": 405,
+          "allow": "GET, POST",
+          "body": "empty"
+        },
+        "x-database-budget-ms": 5000,
+        "responses": {
+          "200": {
+            "description": "成功资源；冻结合同尚未接线。",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/SubmissionPage.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "items": [
+                        {
+                          "id": "9007199254740995",
+                          "assignment_id": "9007199254740993",
+                          "assignment_version": 1,
+                          "student_id": "4",
+                          "answer": "原答案\r\n𠮷📚 <>&",
+                          "task_id": "9007199254740996",
+                          "created_at": "2026-11-12T08:10:00.000Z"
+                        }
+                      ],
+                      "page": 1,
+                      "page_size": 20,
+                      "total": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "VALIDATION_ERROR",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "VALIDATION_ERROR"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "VALIDATION_ERROR": {
+                    "value": {
+                      "error": {
+                        "code": "VALIDATION_ERROR",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHENTICATED",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "UNAUTHENTICATED"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "UNAUTHENTICATED": {
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT_FOUND",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "NOT_FOUND"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "NOT_FOUND": {
+                    "value": {
+                      "error": {
+                        "code": "NOT_FOUND",
+                        "message": "资源不存在",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "DEPENDENCY_UNAVAILABLE",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "DEPENDENCY_UNAVAILABLE"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "DEPENDENCY_UNAVAILABLE": {
+                    "value": {
+                      "error": {
+                        "code": "DEPENDENCY_UNAVAILABLE",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "UPSTREAM_TIMEOUT",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "UPSTREAM_TIMEOUT"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "UPSTREAM_TIMEOUT": {
+                    "value": {
+                      "error": {
+                        "code": "UPSTREAM_TIMEOUT",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "方法边界；沿用已有接口的空体及Allow，不是业务Error。",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              },
+              "Allow": {
+                "schema": {
+                  "const": "GET, POST"
+                }
+              }
+            }
+          }
+        },
+        "x-resource-chain": [
+          "assignment"
+        ]
+      }
+    },
+    "/api/v1/submissions/{id}": {
+      "get": {
+        "operationId": "get_submissions_by_id",
+        "summary": "05候选：GET /api/v1/submissions/{id}",
+        "x-contract-status": "frozen",
+        "x-owner-change": "05",
+        "x-spec-change": "openspec/changes/2026-11-12-assignment-tasks",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "$ref": "./schemas/ID.schema.json"
+            }
+          }
+        ],
+        "x-authorization": {
+          "source": "validated-server-session",
+          "roles": [
+            "teacher",
+            "student"
+          ],
+          "class_scope": "active-membership-and-resource-original-class",
+          "student_visibility": "own-only",
+          "teacher_visibility": "all-in-current-class-read-only-tasks",
+          "order": [
+            "authentication",
+            "action-role",
+            "resource-visibility",
+            "business-input"
+          ],
+          "cross_class": "404-identical-to-missing",
+          "other_student": "404-identical-to-missing",
+          "rejected_business_side_effects": false
+        },
+        "x-request-rules": {
+          "unknown_query": "reject-400",
+          "duplicate_parameters": "reject-400",
+          "request_body": "forbidden"
+        },
+        "x-method-boundary": {
+          "status": 405,
+          "allow": "GET",
+          "body": "empty"
+        },
+        "x-database-budget-ms": 5000,
+        "responses": {
+          "200": {
+            "description": "成功资源；冻结合同尚未接线。",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Submission.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "id": "9007199254740995",
+                      "assignment_id": "9007199254740993",
+                      "assignment_version": 1,
+                      "student_id": "4",
+                      "answer": "原答案\r\n𠮷📚 <>&",
+                      "task_id": "9007199254740996",
+                      "created_at": "2026-11-12T08:10:00.000Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "VALIDATION_ERROR",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "VALIDATION_ERROR"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "VALIDATION_ERROR": {
+                    "value": {
+                      "error": {
+                        "code": "VALIDATION_ERROR",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHENTICATED",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "UNAUTHENTICATED"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "UNAUTHENTICATED": {
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT_FOUND",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "NOT_FOUND"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "NOT_FOUND": {
+                    "value": {
+                      "error": {
+                        "code": "NOT_FOUND",
+                        "message": "资源不存在",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "DEPENDENCY_UNAVAILABLE",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "DEPENDENCY_UNAVAILABLE"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "DEPENDENCY_UNAVAILABLE": {
+                    "value": {
+                      "error": {
+                        "code": "DEPENDENCY_UNAVAILABLE",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "UPSTREAM_TIMEOUT",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "UPSTREAM_TIMEOUT"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "UPSTREAM_TIMEOUT": {
+                    "value": {
+                      "error": {
+                        "code": "UPSTREAM_TIMEOUT",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "方法边界；沿用已有接口的空体及Allow，不是业务Error。",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              },
+              "Allow": {
+                "schema": {
+                  "const": "GET"
+                }
+              }
+            }
+          }
+        },
+        "x-resource-chain": [
+          "submission",
+          "assignment"
+        ]
+      }
+    },
+    "/api/v1/tasks/{id}": {
+      "get": {
+        "operationId": "get_tasks_by_id",
+        "summary": "05候选：GET /api/v1/tasks/{id}",
+        "x-contract-status": "frozen",
+        "x-owner-change": "05",
+        "x-spec-change": "openspec/changes/2026-11-12-assignment-tasks",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "$ref": "./schemas/ID.schema.json"
+            }
+          }
+        ],
+        "x-authorization": {
+          "source": "validated-server-session",
+          "roles": [
+            "teacher",
+            "student"
+          ],
+          "class_scope": "active-membership-and-resource-original-class",
+          "student_visibility": "own-only",
+          "teacher_visibility": "all-in-current-class-read-only-tasks",
+          "order": [
+            "authentication",
+            "action-role",
+            "resource-visibility",
+            "business-input"
+          ],
+          "cross_class": "404-identical-to-missing",
+          "other_student": "404-identical-to-missing",
+          "rejected_business_side_effects": false
+        },
+        "x-request-rules": {
+          "unknown_query": "reject-400",
+          "duplicate_parameters": "reject-400",
+          "request_body": "forbidden"
+        },
+        "x-method-boundary": {
+          "status": 405,
+          "allow": "GET",
+          "body": "empty"
+        },
+        "x-database-budget-ms": 5000,
+        "responses": {
+          "200": {
+            "description": "成功资源；冻结合同尚未接线。",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Task.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "task_id": "9007199254740996",
+                      "submission_id": "9007199254740995",
+                      "status": "pending",
+                      "attempt": 0,
+                      "execution_epoch": 0,
+                      "version": 1,
+                      "cancel_requested": false,
+                      "created_at": "2026-11-12T08:10:00.000Z",
+                      "updated_at": "2026-11-12T08:10:00.000Z",
+                      "error": null
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "VALIDATION_ERROR",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "VALIDATION_ERROR"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "VALIDATION_ERROR": {
+                    "value": {
+                      "error": {
+                        "code": "VALIDATION_ERROR",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHENTICATED",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "UNAUTHENTICATED"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "UNAUTHENTICATED": {
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT_FOUND",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "NOT_FOUND"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "NOT_FOUND": {
+                    "value": {
+                      "error": {
+                        "code": "NOT_FOUND",
+                        "message": "资源不存在",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "DEPENDENCY_UNAVAILABLE",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "DEPENDENCY_UNAVAILABLE"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "DEPENDENCY_UNAVAILABLE": {
+                    "value": {
+                      "error": {
+                        "code": "DEPENDENCY_UNAVAILABLE",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "UPSTREAM_TIMEOUT",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "UPSTREAM_TIMEOUT"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "UPSTREAM_TIMEOUT": {
+                    "value": {
+                      "error": {
+                        "code": "UPSTREAM_TIMEOUT",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "方法边界；沿用已有接口的空体及Allow，不是业务Error。",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              },
+              "Allow": {
+                "schema": {
+                  "const": "GET"
+                }
+              }
+            }
+          }
+        },
+        "x-resource-chain": [
+          "task",
+          "submission",
+          "assignment"
+        ]
+      }
+    },
+    "/api/v1/tasks/{id}/retry": {
+      "post": {
+        "operationId": "post_tasks_by_id_retry",
+        "summary": "05候选：POST /api/v1/tasks/{id}/retry",
+        "x-contract-status": "frozen",
+        "x-owner-change": "05",
+        "x-spec-change": "openspec/changes/2026-11-12-assignment-tasks",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "$ref": "./schemas/ID.schema.json"
+            }
+          },
+          {
+            "in": "header",
+            "name": "Origin",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "若出现必须精确可信同源；不提供Cookie认证旁路。"
+          }
+        ],
+        "x-authorization": {
+          "source": "validated-server-session",
+          "roles": [
+            "student"
+          ],
+          "class_scope": "active-membership-and-resource-original-class",
+          "student_visibility": "own-only",
+          "teacher_visibility": "all-in-current-class-read-only-tasks",
+          "order": [
+            "authentication",
+            "action-role",
+            "resource-visibility",
+            "business-input"
+          ],
+          "cross_class": "404-identical-to-missing",
+          "other_student": "404-identical-to-missing",
+          "rejected_business_side_effects": false
+        },
+        "x-request-rules": {
+          "unknown_query": "reject-400",
+          "duplicate_parameters": "reject-400",
+          "request_body": "json-only"
+        },
+        "x-method-boundary": {
+          "status": 405,
+          "allow": "POST",
+          "body": "empty"
+        },
+        "x-database-budget-ms": 5000,
+        "responses": {
+          "200": {
+            "description": "成功资源；冻结合同尚未接线。",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Task.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "task_id": "9007199254740996",
+                      "submission_id": "9007199254740995",
+                      "status": "pending",
+                      "attempt": 1,
+                      "execution_epoch": 1,
+                      "version": 4,
+                      "cancel_requested": false,
+                      "created_at": "2026-11-12T08:10:00.000Z",
+                      "updated_at": "2026-11-12T08:10:00.000Z",
+                      "error": null
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "VALIDATION_ERROR",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "VALIDATION_ERROR"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "VALIDATION_ERROR": {
+                    "value": {
+                      "error": {
+                        "code": "VALIDATION_ERROR",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHENTICATED",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "UNAUTHENTICATED"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "UNAUTHENTICATED": {
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "FORBIDDEN",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "FORBIDDEN"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "FORBIDDEN": {
+                    "value": {
+                      "error": {
+                        "code": "FORBIDDEN",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT_FOUND",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "NOT_FOUND"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "NOT_FOUND": {
+                    "value": {
+                      "error": {
+                        "code": "NOT_FOUND",
+                        "message": "资源不存在",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "CONFLICT / RETRY_EXHAUSTED",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "CONFLICT",
+              "RETRY_EXHAUSTED"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "CONFLICT": {
+                    "value": {
+                      "error": {
+                        "code": "CONFLICT",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  },
+                  "RETRY_EXHAUSTED": {
+                    "value": {
+                      "error": {
+                        "code": "RETRY_EXHAUSTED",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "PAYLOAD_TOO_LARGE",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "PAYLOAD_TOO_LARGE"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "PAYLOAD_TOO_LARGE": {
+                    "value": {
+                      "error": {
+                        "code": "PAYLOAD_TOO_LARGE",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RATE_LIMITED",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            },
+            "x-error-codes": [
+              "RATE_LIMITED"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "RATE_LIMITED": {
+                    "value": {
+                      "error": {
+                        "code": "RATE_LIMITED",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "DEPENDENCY_UNAVAILABLE",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "DEPENDENCY_UNAVAILABLE"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "DEPENDENCY_UNAVAILABLE": {
+                    "value": {
+                      "error": {
+                        "code": "DEPENDENCY_UNAVAILABLE",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "UPSTREAM_TIMEOUT",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "UPSTREAM_TIMEOUT"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "UPSTREAM_TIMEOUT": {
+                    "value": {
+                      "error": {
+                        "code": "UPSTREAM_TIMEOUT",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "方法边界；沿用已有接口的空体及Allow，不是业务Error。",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              },
+              "Allow": {
+                "schema": {
+                  "const": "POST"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./schemas/TaskVersionRequest.schema.json"
+              },
+              "examples": {
+                "contract": {
+                  "value": {
+                    "version": 3
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-body-limits": {
+          "bytes": 65536,
+          "declared_and_streamed": true,
+          "unknown_json_keys": "reject-400",
+          "duplicate_json_keys": "reject-400",
+          "unicode": "reject-ill-formed",
+          "text_normalization": "none"
+        },
+        "x-rate-limit": {
+          "bucket": "05-write",
+          "scope": "user_id",
+          "window_seconds": 60,
+          "quota": 12,
+          "switch_class_resets": false,
+          "committed_replays_count": false,
+          "idempotency_conflicts_count": false
+        },
+        "x-task-action": {
+          "action": "retry",
+          "role": "submission-owner-student",
+          "requires": "failed-and-version-match-and-attempt<3",
+          "changes": "pending; clear-error/cancel/owner/lease; reopen-same-outbox",
+          "attempt_increment": false,
+          "epoch_increment": false,
+          "deadline_rechecked": false,
+          "version_before_state": true
+        },
+        "x-resource-chain": [
+          "task",
+          "submission",
+          "assignment"
+        ],
+        "x-replay": "no-automatic-replay"
+      }
+    },
+    "/api/v1/tasks/{id}/cancel": {
+      "post": {
+        "operationId": "post_tasks_by_id_cancel",
+        "summary": "05候选：POST /api/v1/tasks/{id}/cancel",
+        "x-contract-status": "frozen",
+        "x-owner-change": "05",
+        "x-spec-change": "openspec/changes/2026-11-12-assignment-tasks",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "$ref": "./schemas/ID.schema.json"
+            }
+          },
+          {
+            "in": "header",
+            "name": "Origin",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "若出现必须精确可信同源；不提供Cookie认证旁路。"
+          }
+        ],
+        "x-authorization": {
+          "source": "validated-server-session",
+          "roles": [
+            "student"
+          ],
+          "class_scope": "active-membership-and-resource-original-class",
+          "student_visibility": "own-only",
+          "teacher_visibility": "all-in-current-class-read-only-tasks",
+          "order": [
+            "authentication",
+            "action-role",
+            "resource-visibility",
+            "business-input"
+          ],
+          "cross_class": "404-identical-to-missing",
+          "other_student": "404-identical-to-missing",
+          "rejected_business_side_effects": false
+        },
+        "x-request-rules": {
+          "unknown_query": "reject-400",
+          "duplicate_parameters": "reject-400",
+          "request_body": "json-only"
+        },
+        "x-method-boundary": {
+          "status": 405,
+          "allow": "POST",
+          "body": "empty"
+        },
+        "x-database-budget-ms": 5000,
+        "responses": {
+          "200": {
+            "description": "成功资源；冻结合同尚未接线。",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Task.schema.json"
+                },
+                "examples": {
+                  "pending_cancelled": {
+                    "value": {
+                      "task_id": "9007199254740996",
+                      "submission_id": "9007199254740995",
+                      "status": "cancelled",
+                      "attempt": 0,
+                      "execution_epoch": 0,
+                      "version": 2,
+                      "cancel_requested": true,
+                      "created_at": "2026-11-12T08:10:00.000Z",
+                      "updated_at": "2026-11-12T08:10:00.000Z",
+                      "error": null
+                    }
+                  },
+                  "running_cancel_requested": {
+                    "value": {
+                      "task_id": "9007199254740996",
+                      "submission_id": "9007199254740995",
+                      "status": "running",
+                      "attempt": 1,
+                      "execution_epoch": 1,
+                      "version": 3,
+                      "cancel_requested": true,
+                      "created_at": "2026-11-12T08:10:00.000Z",
+                      "updated_at": "2026-11-12T08:10:00.000Z",
+                      "error": null
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "VALIDATION_ERROR",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "VALIDATION_ERROR"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "VALIDATION_ERROR": {
+                    "value": {
+                      "error": {
+                        "code": "VALIDATION_ERROR",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHENTICATED",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "UNAUTHENTICATED"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "UNAUTHENTICATED": {
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "FORBIDDEN",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "FORBIDDEN"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "FORBIDDEN": {
+                    "value": {
+                      "error": {
+                        "code": "FORBIDDEN",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT_FOUND",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "NOT_FOUND"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "NOT_FOUND": {
+                    "value": {
+                      "error": {
+                        "code": "NOT_FOUND",
+                        "message": "资源不存在",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "CONFLICT / TASK_TERMINAL",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "CONFLICT",
+              "TASK_TERMINAL"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "CONFLICT": {
+                    "value": {
+                      "error": {
+                        "code": "CONFLICT",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  },
+                  "TASK_TERMINAL": {
+                    "value": {
+                      "error": {
+                        "code": "TASK_TERMINAL",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "PAYLOAD_TOO_LARGE",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "PAYLOAD_TOO_LARGE"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "PAYLOAD_TOO_LARGE": {
+                    "value": {
+                      "error": {
+                        "code": "PAYLOAD_TOO_LARGE",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RATE_LIMITED",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            },
+            "x-error-codes": [
+              "RATE_LIMITED"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "RATE_LIMITED": {
+                    "value": {
+                      "error": {
+                        "code": "RATE_LIMITED",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "DEPENDENCY_UNAVAILABLE",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "DEPENDENCY_UNAVAILABLE"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "DEPENDENCY_UNAVAILABLE": {
+                    "value": {
+                      "error": {
+                        "code": "DEPENDENCY_UNAVAILABLE",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "UPSTREAM_TIMEOUT",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-codes": [
+              "UPSTREAM_TIMEOUT"
+            ],
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "UPSTREAM_TIMEOUT": {
+                    "value": {
+                      "error": {
+                        "code": "UPSTREAM_TIMEOUT",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "方法边界；沿用已有接口的空体及Allow，不是业务Error。",
+            "headers": {
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "const": "no-store"
+                }
+              },
+              "Allow": {
+                "schema": {
+                  "const": "POST"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "./schemas/TaskVersionRequest.schema.json"
+              },
+              "examples": {
+                "contract": {
+                  "value": {
+                    "version": 1
+                  }
+                },
+                "running": {
+                  "value": {
+                    "version": 2
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-body-limits": {
+          "bytes": 65536,
+          "declared_and_streamed": true,
+          "unknown_json_keys": "reject-400",
+          "duplicate_json_keys": "reject-400",
+          "unicode": "reject-ill-formed",
+          "text_normalization": "none"
+        },
+        "x-rate-limit": {
+          "bucket": "05-write",
+          "scope": "user_id",
+          "window_seconds": 60,
+          "quota": 12,
+          "switch_class_resets": false,
+          "committed_replays_count": false,
+          "idempotency_conflicts_count": false
+        },
+        "x-task-action": {
+          "action": "cancel",
+          "role": "submission-owner-student",
+          "terminal_before_version": true,
+          "pending": "cancelled-and-close-outbox",
+          "running": "mark-cancel-requested-only",
+          "already_marked_latest_version": "same-task-no-version-increment",
+          "success_after_cancel": "CAS-rejected",
+          "deadline_rechecked": false
+        },
+        "x-resource-chain": [
+          "task",
+          "submission",
+          "assignment"
+        ],
+        "x-replay": "no-automatic-replay"
+      }
     }
   },
   "components": {
@@ -3699,7 +7507,82 @@
       },
       "MaterialIdempotencyKey": {
         "$ref": "./schemas/MaterialIdempotencyKey.schema.json"
+      },
+      "Assignment": {
+        "$ref": "./schemas/Assignment.schema.json"
+      },
+      "Submission": {
+        "$ref": "./schemas/Submission.schema.json"
+      },
+      "AssignmentCreateRequest": {
+        "$ref": "./schemas/AssignmentCreateRequest.schema.json"
+      },
+      "SubmissionCreateRequest": {
+        "$ref": "./schemas/SubmissionCreateRequest.schema.json"
+      },
+      "SubmissionAccepted": {
+        "$ref": "./schemas/SubmissionAccepted.schema.json"
+      },
+      "TaskVersionRequest": {
+        "$ref": "./schemas/TaskVersionRequest.schema.json"
+      },
+      "AssignmentListParameters": {
+        "$ref": "./schemas/AssignmentListParameters.schema.json"
+      },
+      "SubmissionIdempotencyKey": {
+        "$ref": "./schemas/SubmissionIdempotencyKey.schema.json"
+      },
+      "AssignmentPage": {
+        "$ref": "./schemas/AssignmentPage.schema.json"
+      },
+      "SubmissionPage": {
+        "$ref": "./schemas/SubmissionPage.schema.json"
       }
     }
+  },
+  "x-assignment-task-contract": {
+    "production_executor": "unbound-pending-no-claim",
+    "production_mock_switch": false,
+    "max_claims": 3,
+    "initial_attempt": 0,
+    "initial_epoch": 0,
+    "lease_seconds": 60,
+    "heartbeat_seconds": 20,
+    "automatic_backoff_seconds": [
+      1,
+      2
+    ],
+    "claim_increments": [
+      "attempt",
+      "execution_epoch"
+    ],
+    "manual_retry_resets_attempt": false,
+    "worker_cas": [
+      "task_id",
+      "execution_epoch",
+      "worker_owner",
+      "running",
+      "lease_until > db_now"
+    ],
+    "success_requires_cancel_requested": false,
+    "terminal_transaction": [
+      "task",
+      "result-adapter",
+      "outbox"
+    ],
+    "network_inside_transaction": false,
+    "expired_cleanup_rechecks": [
+      "execution_epoch",
+      "version",
+      "lease-expired"
+    ],
+    "expired_cancel_requested": "cancelled-close-outbox",
+    "expired_third_claim": "failed-RETRY_EXHAUSTED-close-outbox",
+    "outbox_poll_ms": 1000,
+    "outbox_batch_max": 20,
+    "executors_max": 2,
+    "shutdown_drain_ms": 10000,
+    "public_worker_fields": false,
+    "failure_after_cancel": "confirm-cancelled-no-requeue-or-failed"
   }
 }
