@@ -1,0 +1,25 @@
+{
+  "executor": "zwh9616/小张 (AI辅助)",
+  "source_main": "b63dfdd2d118cef45d310910ea99156914cd669b",
+  "evidence_source_pr33_head": "39f10561984e49e9a1695812c2d1c96ae03e1333",
+  "requirements": 5,
+  "scenarios": 12,
+  "approved_requirements_exact": true,
+  "proposal_design_only_relative_links_changed": true,
+  "runtime_code_diff": [],
+  "registry_change_only_spec_link": true,
+  "local_links": 135,
+  "browser_source": "da8624cdb7793e64c4c3d29793b4c7a329adc2b8",
+  "browser_source_dirty": false,
+  "browser_cases_passed": 18,
+  "screenshots": 4,
+  "runtime_errors": [],
+  "pr_main_zip_sha256": {
+    "pr-final-runtime-scans.zip": "54cd5e9c6cbb22c237b1508964ccaca0906d8459bf8e511393e643fed108baeb",
+    "main-runtime-scans.zip": "219c9bc110c2034ac13b311e0189db9dc9c99e85ecb68829fa4e72abb3f5be81"
+  },
+  "final_local_links": 139,
+  "pr": 37,
+  "integrated_main": "86c9680f927fcc26df9dfc565f9e0bb0b584be07",
+  "final_integrated_local_links": 136
+}
