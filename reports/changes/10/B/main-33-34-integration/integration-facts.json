@@ -1,0 +1,201 @@
+{
+  "observer": "gjj6666 (AI assisted)",
+  "time_utc": "2026-11-12T12:40:51.726203+00:00",
+  "authorization": "User explicitly allowed PR33/34 normal protected merges and main verification; both had already been merged by zwh9616 when execution resumed; this observer did not merge again",
+  "main_protected": true,
+  "records": [
+    {
+      "pr": 33,
+      "head": "b6310659369ed760c18a68ac8c965b9eb4c6c6c9",
+      "approved_by": "gjj6666",
+      "approval": 5873502838,
+      "merged_by": "zwh9616",
+      "merge": "b6310659369ed760c18a68ac8c965b9eb4c6c6c9",
+      "tree": "4f3f6d660569da0d40b0b862bc0cb37f9bb2a57f",
+      "original_source_hashes_match": true,
+      "runtime_evidence_validated": true,
+      "run": 43210635125,
+      "url": "https://github.com/zwh9616/campus-claw-plus/actions/runs/43210635125",
+      "artifact": 13940668673,
+      "digest": "sha256:018408f99c7cd24ad02ec6dc70dc67a4c16549862f45b8b4cf8edeeb2670e669",
+      "source": {
+        "commit": "b6310659369ed760c18a68ac8c965b9eb4c6c6c9",
+        "dirty": false,
+        "fingerprint": "c93481cfaa7993beb06fdee7f85dae6c4c42c03c366e68e294427e54dd3360b9"
+      },
+      "gate": [
+        {
+          "name": "check",
+          "exit": 0,
+          "duration_ms": 53268
+        },
+        {
+          "name": "audit",
+          "exit": 0,
+          "duration_ms": 762
+        },
+        {
+          "name": "secret-scan",
+          "exit": 0,
+          "duration_ms": 1845
+        },
+        {
+          "name": "verify",
+          "exit": 0,
+          "duration_ms": 174863
+        }
+      ],
+      "images": [
+        {
+          "service": "mysql",
+          "image_id": "sha256:ab06de9972d1c06ea38c6923eede87ee09c1062db8c1d1dbf2fce1e8fedf9db7",
+          "HIGH": 0,
+          "CRITICAL": 0
+        },
+        {
+          "service": "admin",
+          "image_id": "sha256:1a20ee1347a1c4e2584b35dabb9ae5bf4ef0379d34551547bfc10c570e83ef91",
+          "HIGH": 0,
+          "CRITICAL": 0
+        },
+        {
+          "service": "backend",
+          "image_id": "sha256:ee63d15d65e71c2fe768abdc07b03107c96c8c1b677da9f9ca9cfc3415367d5c",
+          "HIGH": 0,
+          "CRITICAL": 0
+        },
+        {
+          "service": "frontend",
+          "image_id": "sha256:748d151eb1925fc36160375e6f8bed80947d6139421693baafce95b666b8b1a9",
+          "HIGH": 0,
+          "CRITICAL": 0
+        }
+      ],
+      "cleanup": [
+        {
+          "tag": "campus-mysql-audit-7655b1431aee:verification",
+          "exit_code": 0,
+          "ok": true
+        },
+        {
+          "tag": "campus-app-audit-c5b46d6bd548-backend:verification",
+          "exit_code": 0,
+          "ok": true
+        },
+        {
+          "tag": "campus-app-audit-c5b46d6bd548-admin:verification",
+          "exit_code": 0,
+          "ok": true
+        },
+        {
+          "tag": "campus-app-audit-c5b46d6bd548-frontend:verification",
+          "exit_code": 0,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "pr": 34,
+      "head": "86c9680f927fcc26df9dfc565f9e0bb0b584be07",
+      "approved_by": "zwh9616",
+      "approval": 5873900783,
+      "merged_by": "zwh9616",
+      "merge": "86c9680f927fcc26df9dfc565f9e0bb0b584be07",
+      "tree": "26391ad6c074951277ac4b4e97706e0860be51a4",
+      "original_source_hashes_match": true,
+      "runtime_evidence_validated": true,
+      "run": 43212246246,
+      "url": "https://github.com/zwh9616/campus-claw-plus/actions/runs/43212246246",
+      "artifact": 13942331767,
+      "digest": "sha256:f8e6573648e1ac30966ff5b0970960a959b28137a1f24613278d078c979ae70b",
+      "source": {
+        "commit": "86c9680f927fcc26df9dfc565f9e0bb0b584be07",
+        "dirty": false,
+        "fingerprint": "3886c82038dd39960ed460628bbe2b76aa6bed8f1eac8d784acd8dec7efa57fd"
+      },
+      "gate": [
+        {
+          "name": "check",
+          "exit": 0,
+          "duration_ms": 56349
+        },
+        {
+          "name": "audit",
+          "exit": 0,
+          "duration_ms": 914
+        },
+        {
+          "name": "secret-scan",
+          "exit": 0,
+          "duration_ms": 1754
+        },
+        {
+          "name": "verify",
+          "exit": 0,
+          "duration_ms": 159224
+        }
+      ],
+      "images": [
+        {
+          "service": "mysql",
+          "image_id": "sha256:015513e61ed376189a9818a0d7f35668c5b76356e908e67f3b2b573e35bc6830",
+          "HIGH": 0,
+          "CRITICAL": 0
+        },
+        {
+          "service": "admin",
+          "image_id": "sha256:d32614ff628e750c24181416ccf093ce523b74efa1b88091ba58541174fb39e3",
+          "HIGH": 0,
+          "CRITICAL": 0
+        },
+        {
+          "service": "backend",
+          "image_id": "sha256:a45b67d2a818f6eff9d2c247da33068155743e92a6a5bdf9f2a4d3885070eaed",
+          "HIGH": 0,
+          "CRITICAL": 0
+        },
+        {
+          "service": "frontend",
+          "image_id": "sha256:32bee3dc2f56319e4848082515dd614f9af829c6bc87bb4f5464d7bc767470e3",
+          "HIGH": 0,
+          "CRITICAL": 0
+        }
+      ],
+      "cleanup": [
+        {
+          "tag": "campus-mysql-audit-09d9d1e5f7ab:verification",
+          "exit_code": 0,
+          "ok": true
+        },
+        {
+          "tag": "campus-app-audit-6cf70a413038-backend:verification",
+          "exit_code": 0,
+          "ok": true
+        },
+        {
+          "tag": "campus-app-audit-6cf70a413038-admin:verification",
+          "exit_code": 0,
+          "ok": true
+        },
+        {
+          "tag": "campus-app-audit-6cf70a413038-frontend:verification",
+          "exit_code": 0,
+          "ok": true
+        }
+      ]
+    }
+  ],
+  "local": {
+    "source": "86c9680f927fcc26df9dfc565f9e0bb0b584be07",
+    "clean_before_checks": true,
+    "npm_ci": 0,
+    "setup": 0,
+    "check": 0,
+    "audit": 0,
+    "secret_scan": 0,
+    "full_local_docker_gate": "not rerun; main CI independently verified, previous Windows timeout124 retained",
+    "runtime_input_diff_to_b63dfdd": 0,
+    "node": "v24.19.0",
+    "npm": "11.17.0"
+  }
+}
