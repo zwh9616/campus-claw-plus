@@ -138,6 +138,12 @@ async function delayedOldToken401(operation) {
   let refreshes = 0, downloads = 0
   const token = () => 'synthetic-material-generation-' + refreshes
   const identity = () => ({ ...session(), access_token: token() })
+  // Match 01: refresh rotates the cookie, but previously issued, unexpired
+  // access credentials remain valid for the same session version.
+  const validAccess = authorization => {
+    const generation = Number(authorization.split('-').at(-1))
+    return generation >= 1 && generation <= refreshes
+  }
   const client = createAuthClient(async (path, init) => {
     if (path.endsWith('/auth/login')) return json(identity())
     if (path.endsWith('/auth/csrf')) return json(csrf)
@@ -152,14 +158,14 @@ async function delayedOldToken401(operation) {
       if (authorization.endsWith('-0')) return denied(401)
       firstRetry.resolve()
       await finishFirst.promise
-      return authorization === 'Bearer ' + token() ? json(page()) : denied(401)
+      return validAccess(authorization) ? json(page()) : denied(401)
     }
     if (path === '/api/v1/materials/' + material().id || path === '/api/v1/materials/' + material().id + '/download') {
       if (operation === 'download') ++downloads
       if (authorization.endsWith('-0')) { await delayed401.promise; return denied(401) }
       assert.equal(operation, 'detail', 'a download must never replay automatically')
       finishFirst.resolve()
-      return authorization === 'Bearer ' + token() ? json(detail()) : denied(401)
+      return validAccess(authorization) ? json(detail()) : denied(401)
     }
     assert.fail('Unexpected test request: ' + path)
   })

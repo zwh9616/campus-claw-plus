@@ -278,8 +278,8 @@ export function createAuthClient(fetcher: typeof fetch = (...args) => fetch(...a
     await serial(async () => {
       current(id)
       // A response sent with the old token can arrive after another request
-      // completed recovery. Reuse its verified credentials; rotating again
-      // would invalidate a fresh retry that is still in flight.
+      // completed recovery. Reuse its verified credentials instead of issuing
+      // another CSRF/refresh/me sequence for that same expired token.
       if (credentials && credentials.access_token !== active.access_token && sameIdentity(active.principal, credentials.principal)) return
       try {
         const first = await getCsrf(id)
