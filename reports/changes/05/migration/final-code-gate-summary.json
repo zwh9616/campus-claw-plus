@@ -1,0 +1,113 @@
+{
+  "executor": "zwh9616 / 小张 (AI辅助)",
+  "source": {
+    "commit": "314b3ba07b3228206f14a0e6193a4dc4cd32b49e",
+    "dirty": false,
+    "fingerprint": "6d113a5277653ec89ed7e000b47c123d5241e1616bab068c34bc0f1b9c2ab95f"
+  },
+  "gate": {
+    "time": "2026-11-12T11:25:39.629Z",
+    "node": "v25.2.1",
+    "exitCode": 0,
+    "results": [
+      {
+        "name": "check",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 36306
+      },
+      {
+        "name": "audit",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 12830
+      },
+      {
+        "name": "secret-scan",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 5757
+      },
+      {
+        "name": "verify",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 434711
+      }
+    ],
+    "notRun": []
+  },
+  "images": [
+    {
+      "service": "mysql",
+      "image_id": "sha256:d939e8009be34a18410ef86589d9bba0e56ea569e0ed6eb4164cfb12f6d0e2dc",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "admin",
+      "image_id": "sha256:01c1327007630a068e5859da70859e0c79b37dc1785f4e6dd4311d28170b115b",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "backend",
+      "image_id": "sha256:8b206100939863e8360d15bc82d565f4fc783d7faa9d78d1387958b050e441ca",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "frontend",
+      "image_id": "sha256:fc42d021a3a51fb86ee77069cc51fc89e733c092424e131c36d33fe31cd815f3",
+      "HIGH": 0,
+      "CRITICAL": 0
+    }
+  ],
+  "cleanup": [
+    {
+      "tag": "campus-mysql-audit-acc80480d78b:verification",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "tag": "campus-app-audit-d5da80108b68-backend:verification",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "tag": "campus-app-audit-d5da80108b68-admin:verification",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "tag": "campus-app-audit-d5da80108b68-frontend:verification",
+      "exit_code": 0,
+      "ok": true
+    }
+  ],
+  "evidence": [
+    {
+      "path": "output/mysql-image-verify/results.json",
+      "sha256": "a18eb16a0b1910abf0194f83e907be09881e4c9e1bf2ef0c827e1db0ed06f05d"
+    },
+    {
+      "path": "output/application-image-verify/results.json",
+      "sha256": "aa7f5f621504efa0532c619bf1b6824468cdc1967c7f6aae6b71480ac19d3402"
+    },
+    {
+      "path": "output/identity-wiring/results.json",
+      "sha256": "c1025a15ae35e3a8dc1affe4749b3e503a606db35f4ce7942c8a042a44a4cd18"
+    },
+    {
+      "path": "output/identity/results.json",
+      "sha256": "1b9453629aade03f89f0b840850884b3a5d41279e473004380f515d41b3234c4"
+    }
+  ],
+  "archive_sha256": "8c9e1d986b17016bc7fe058edc86954b5ef0ab4a3e862f49580a3dd820441d97",
+  "scope": "tasks2.1 only; other AT-SC remain unimplemented",
+  "pr": 38
+}

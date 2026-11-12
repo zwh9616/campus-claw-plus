@@ -33,4 +33,4 @@
 
 | 变更 / 负责人 | 候选号与计划文件 | 依赖与兼容 | 恢复与当前状态 |
 | --- | --- | --- | --- |
-| 05 / 小陈起草终审、小张审查实现 | `000005_assignment_tasks`；已追加上下行SQL，真实SHA-256见manifest/identity-phase；#35合同审定合入e617cc0 | 依赖干净000004，仅追加assignments/submissions/tasks/task_outbox/submission_idempotency五表；admin/server共用精确Target=5，旧SQL不改，九业务接口仍frozen | 五处DDL中断/结构及历史漂移阻断、显式前向修复、4/5实际制品和一致备份隔离恢复4正在自测，尚未通过/独立终审或部署；后续真实业务及worker另验。幂等原键VARBINARY避免尾空格/case折叠；复合FK绑定提交原班级/版本/学生及任务回执，不自动清理快照 |
+| 05 / 小陈起草终审、小张审查实现 | `000005_assignment_tasks`；已追加上下行SQL，真实SHA-256见manifest/identity-phase；#35合同审定合入e617cc0 | 依赖干净000004，仅追加assignments/submissions/tasks/task_outbox/submission_idempotency五表；admin/server共用精确Target=5，旧SQL不改，九业务接口仍frozen | 干净314b3ba本机原完整gate/四镜像实扫/同制品清理通过，五DDL/七类漂移与实际4/5制品/隔离恢复4通过；[#38](https://github.com/zwh9616/campus-claw-plus/pull/38)待小陈审查，尚未正常合入或部署；后续真实业务及worker另验。幂等原键VARBINARY避免尾空格/case折叠；复合FK绑定提交原班级/版本/学生及任务回执，不自动清理快照 |

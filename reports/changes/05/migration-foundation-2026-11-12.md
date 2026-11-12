@@ -31,3 +31,11 @@
 完成已提交最终代码的原完整gate（check/audit/secret-scan/verify）与四实际镜像/同轮同制品/清理，通过后交小陈审查本首批迁移PR。2.1尚未勾选；2.2—2.5（九操作、提交事务、幂等/outbox、worker租约/CAS/取消及全部21场景）和3.x仍待办。本批表/SQL夹具不是真实业务或AI/成绩完成，也不是任何持有人数据库已升级。
 
 提交前秘密扫描因重排manifest使既有000003公开down摘要进入stdin diff上下文而命中generic-api-key；已独立重算八个旧SQL字节并与main一致，原件见migration/precommit-scan-failure.json。恢复旧manifest原布局、只在末尾追加000005条目，未改变任何摘要/扫描规则/豁免/范围，恢复扫描按实际结果核对。
+
+## 最终干净源码与实际交接
+
+干净源码314b3ba07b3228206f14a0e6193a4dc4cd32b49e原完整npm run gate于2026-11-12T11:25:39.629Z完成，check/audit/secret-scan/verify四段全0，notRun为空；verify434711ms。新索引前缀及其他七类漂移、空库/4→5/五DDL/显式repair与实际4/5制品及一致备份恢复均在该最终源码真实通过；四实际镜像HIGH/CRITICAL全0，批次source dirty=false，扫描/运行完整ID相同、四标签清理0，原身份资料/可信HTTPS/故障恢复/30次严格414及原3→4恢复保留。扫描数据库真实更新成功，没有跳过审计、失败子项或新增豁免。
+
+[最终原始报告/完整日志](migration/final-code-gate-raw.zip) · [来源/门禁/镜像ID/清理与摘要汇总](migration/final-code-gate-summary.json)。后续仅补报告/任务/交接文档，运行输入不改；最终PR head自身CI仍须核对，不把314b3ba的本机结果说成后来head重复本机运行。
+
+已创建[PR #38](https://github.com/zwh9616/campus-claw-plus/pull/38)，来源codex/05-runtime-2026-11-12，交小陈/Kevcco审查迁移基础。2.1按上述真实源码自测勾选；3.x最终独立终审/集成/归档未完成，不能据本首批或表内SQL夹具宣称AT-SC-02..19运行通过。2.2—2.5的业务HTTP/授权/配额/原子提交/租约CAS与完整竞争测试在后续实施，九操作仍frozen。06资料归档[PR #37](https://github.com/zwh9616/campus-claw-plus/pull/37)另交小葛，不随本分支提前归档。
