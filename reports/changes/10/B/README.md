@@ -2,7 +2,7 @@
 
 2026-11-12用户明确授权推进10-B。小陈（Kevcco，AI辅助）实现/自测，小葛（gjj6666）逐批终审。本批从main `1fa47ee2c3d486ba4fcfb615ee73ea22de0b05c7`开始，仅核对已批准并集成的01/02/04；不重复实现业务，不把当时05/06未合入代码或planned服务加入部署。现已同步main da8624c及已合入06，详见[本次增量](main-sync-2026-11-12.md)；原CI仅证明其当时范围，新版本另验。
 
-已交[PR #32](https://github.com/zwh9616/campus-claw-plus/pull/32)，实际请求小葛/gjj6666审查。首实现head7d4373e完整CI43181709752通过，四门禁全0及真实批次摘要0；原始artifact已下载核对，见[CI事实](ci/facts.json)、[完整门禁](ci/gate-results.json)、[批次摘要](ci/batch-results.json)和[原件](ci/evidence.zip)。本提交仅补交接与真实结果，当前head CI另看PR，不将旧head成功代替新head；小葛终审及合入/main复验未做。
+已交[PR #32](https://github.com/zwh9616/campus-claw-plus/pull/32)，实际请求小葛/gjj6666审查。首实现head7d4373e完整CI43181709752通过，四门禁全0及真实批次摘要0；原始artifact已下载核对，见[CI事实](ci/facts.json)、[完整门禁](ci/gate-results.json)、[批次摘要](ci/batch-results.json)和[原件](ci/evidence.zip)。当前已保留小葛27247a6的[初审及直接修复](ge-review-2026-11-12.md)，并同步#31最新主干；最终head CI、完整终审及合入/main复验仍待核对，不以旧head成功代替。
 
 ## 服务登记与准入
 
@@ -39,3 +39,7 @@
 结构性Node测试用合成报告验证失败边界，与真实Docker执行分列；原历史成功只作来源，不能作为本批新SHA通过。检查记录见[本次自测](self-check-2026-11-12.md)。
 
 本批逐项通过并经小葛终审后可记第一批完成；10-B的全量4.1..4.4仍须等待其余受审服务逐批接齐，10-C和10整体归档继续待办。
+
+## 2026-11-12 小葛终审对齐
+
+以上保留小陈交接时的版本事实。#30现已合入main86f0ca3；本轮#32整合该主干，登记06受审资料前端来源并保留其全部检查，仍只有四服务。主干首次CI超长URI传输失败正在本PR修复/复验，不能把原CI成功说成当前通过；见[小葛终审](ge-review-2026-11-12.md)。10-B全量/C及06归档不提前完成。

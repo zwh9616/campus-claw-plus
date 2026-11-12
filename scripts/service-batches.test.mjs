@@ -29,6 +29,7 @@ test('DO-SC-11/13 current batch covers only real approved services/configuration
   assert.equal(batch.sources.length, 4)
   assert.ok(['pending_ge_review', 'reviewed'].includes(batch.review_status))
   assert.equal(batch.sources.find(s => s.service === 'backend').from.at(-1), 'scratch')
+  assert.ok(inputs().registry.services.find(s => s.name === 'frontend').changes.includes('06'))
 })
 
 test('DO-SC-11 unregistered services, wrong build target/network and inactive keys block check', () => {

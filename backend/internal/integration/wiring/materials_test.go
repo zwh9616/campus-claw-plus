@@ -98,13 +98,17 @@ func verifyMRWiring(t *testing.T, client *http.Client, access string) {
 		}
 	}
 	request("GET", "/api/v1/search?q="+url.QueryEscape(strings.Repeat("𠮷", 2001)), "", nil, 400)
-	transport := client.Transport.(*http.Transport)
-	connection, err := tls.DialWithDialer(&net.Dialer{Timeout: client.Timeout}, "tcp", "campus.test:443", transport.TLSClientConfig.Clone())
-	if err != nil {
-		t.Fatal("MF oversized request-line trusted TLS connection")
-	}
-	if err := requestLineLimit(connection, 7*time.Second); err != nil {
-		t.Fatalf("MF request-line bound: %v", err)
+	// Keep Ge's repeated real gateway checks while sharing the main helper
+	// covered by ordinary Go success/failure transport tests.
+	for range 10 {
+		transport := client.Transport.(*http.Transport)
+		connection, err := tls.DialWithDialer(&net.Dialer{Timeout: client.Timeout}, "tcp", "campus.test:443", transport.TLSClientConfig.Clone())
+		if err != nil {
+			t.Fatal("MF oversized request-line trusted TLS connection")
+		}
+		if err := requestLineLimit(connection, 7*time.Second); err != nil {
+			t.Fatalf("MF request-line bound: %v", err)
+		}
 	}
 	t.Log("MF-SC-02/12 valid 2000-codepoint queries pass; 2001 and request-line overflow remain rejected")
 	t.Log("MR-SC-01/08/09 production HTTPS upload, literal search, raw download and persistence passed")
