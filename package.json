@@ -20,7 +20,7 @@
     "verify": "node scripts/verify-image-audits.mjs && node scripts/verify-skeleton.mjs && node scripts/verify-identity.mjs",
     "prepare:scan-db": "node scripts/verify-image-audits.mjs --prepare-only",
     "secret-scan": "node scripts/check-secrets.mjs",
-    "check:contracts": "node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs scripts/contracts/identity-phase.test.mjs scripts/contracts/materials.test.mjs",
+    "check:contracts": "node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs scripts/contracts/identity-phase.test.mjs scripts/contracts/materials.test.mjs scripts/contracts/assignments.test.mjs",
     "check:gate": "node --test scripts/gate.test.mjs",
     "gate": "node scripts/gate.mjs",
     "check:frontend-auth": "node --experimental-strip-types --test frontend/tests/auth.test.mjs frontend/tests/reviewer-auth.test.mjs frontend/tests/materials.test.mjs",

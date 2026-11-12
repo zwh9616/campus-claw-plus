@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/v1/SubmissionIdempotencyKey.schema.json",
+  "title": "SubmissionIdempotencyKey",
+  "type": "string",
+  "minLength": 16,
+  "maxLength": 64,
+  "pattern": "^[\\x20-\\x7E]+(?![\\s\\S])"
+}

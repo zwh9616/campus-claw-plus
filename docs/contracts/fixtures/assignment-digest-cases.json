@@ -1,0 +1,37 @@
+[
+  {
+    "name": "plain",
+    "raw": "{\"answer\":\"答案\",\"assignment_version\":1}",
+    "equivalent_raw": "{\"assignment_version\":1,\"answer\":\"\\u7b54\\u6848\"}",
+    "canonical": "{\"answer\":\"答案\",\"assignment_version\":1}",
+    "sha256": "5adb5561e4e83e2375fb4a07f4fc0ab23a37018705c753c5d2c99bc7026aed5c"
+  },
+  {
+    "name": "quotes-controls",
+    "raw": "{\"answer\":\"a\\\"b\\\\c\\n\\t\\u0000\",\"assignment_version\":1}",
+    "equivalent_raw": "{\"assignment_version\":1,\"answer\":\"a\\\"b\\\\c\\n\\t\\u0000\"}",
+    "canonical": "{\"answer\":\"a\\\"b\\\\c\\n\\t\\u0000\",\"assignment_version\":1}",
+    "sha256": "0b8a367a22a775bd17116d7a625bba4d56a7660abaaaab5c446019fd28195a2e"
+  },
+  {
+    "name": "nonBMP-html",
+    "raw": "{\"answer\":\"𠮷📚\u003c\u003e\u0026\u2028\u2029\",\"assignment_version\":1}",
+    "equivalent_raw": "{\"assignment_version\":1,\"answer\":\"\\ud842\\udfb7\\ud83d\\udcda\u003c\u003e\u0026\\u2028\\u2029\"}",
+    "canonical": "{\"answer\":\"𠮷📚\\u003c\\u003e\\u0026\\u2028\\u2029\",\"assignment_version\":1}",
+    "sha256": "15653fab1fa41ab87d21120ce60e0e23a192122ae79c3d26d2011760db87a186"
+  },
+  {
+    "name": "original-whitespace",
+    "raw": "{\"answer\":\" \\r\\n答案 \\r\",\"assignment_version\":1}",
+    "equivalent_raw": "{\"assignment_version\":1,\"answer\":\" \\r\\n\\u7b54\\u6848 \\r\"}",
+    "canonical": "{\"answer\":\" \\r\\n答案 \\r\",\"assignment_version\":1}",
+    "sha256": "d253ccb99aa3280cdc77feff2253a69ccd2468dacf2a67d97dda38cc666bc9ec"
+  },
+  {
+    "name": "other-version",
+    "raw": "{\"answer\":\"答案\",\"assignment_version\":2}",
+    "equivalent_raw": "{\"assignment_version\":2,\"answer\":\"\\u7b54\\u6848\"}",
+    "canonical": "{\"answer\":\"答案\",\"assignment_version\":2}",
+    "sha256": "0c1236bf60089f54083d921d6c99b7bb923d75ab32ced34b6ba38dd502203a55"
+  }
+]

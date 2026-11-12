@@ -109,3 +109,16 @@ apply时才交真实上下行SQL、manifest摘要、逐DDL故障点和前后置�
 - 无首期清理保留幂等保证但会增长数据；上线长期使用前另审保留/容量/删除策略，不偷偷缩短00保证。
 - MySQL轮询有至多约1秒调度延迟，60秒接管可能重复外部计算；CAS只约束持久结果，不承诺模型调用恰好一次。
 - 000005为候选预留；如并行变更占号，协调后同提交更新方案/登记，绝不改已发布SQL。
+
+## D9 机器合同冻结候选（2026-11-12，待小陈审定）
+
+规约#31已由小张批准并合入main da8624c；本节落实D0/D8允许的公共合同冻结步骤，仍不表示业务apply获准。九个操作在本候选OpenAPI/端点登记为frozen，原13个current操作及精确目标4不变，机器合同须小陈审定并正常合入后才可实施。
+
+- 资源只使用单源Schema：Assignment/Submission、创建请求、SubmissionAccepted、TaskVersionRequest、两种具体Page及分页/提交幂等键。请求字段引用资源字段，分页复用MaterialListParameters的现有1/20默认、50页长和2147483647页码上限，避免复制类型。对象封闭且字段必需；JSON类型检查不能代替原始UTF-8/重复键/流式字节门禁。
+- Task字段名及D5状态机不改。按D5冻结两种安全任务内错误：EXECUTION_FAILED/“任务执行失败”、RETRY_EXHAUSTED/“重试次数已用尽”；failed才可有非空错误、耗尽错误须第三次claim，pending/failed/succeeded的取消标记为false，cancelled为true。版本/epoch/时间的示例关联另做语义检查，真实CAS仍待apply。
+- 创建作业的deadline在创建事务中必须大于DB now；相等或更早按字段验证400 VALIDATION_ERROR，已有作业的新提交逾期仍409 CONFLICT。时间和正文都不归一化，答案允许空白原值；64KiB按整个原始请求计算，与20000码点限制同时成立。
+- 405沿用当前身份/资料HTTP方法边界：空body、Allow明确列该路径的GET/POST，不新增METHOD_NOT_ALLOWED业务码；其余已列业务错误用Error，404除request_id外同构。写Origin若出现必须可信同源，Bearer为唯一认证方式。
+- 提交作用域含user_id/class_id/route/assignment_id/键。已授权的已提交同键重放及异载荷冲突先于新写配额/版本/截止；202始终原pending快照。05写桶独立于04，只有新写进入05配额；首期不自动删除幂等快照。
+- 摘要按D3固定字段顺序及Go encoding/json默认HTML转义，无尾换行。仓库保存5组由固定Go工具链实际生成的canonical UTF-8字节/SHA-256向量，含等价JSON键顺序/转义、中文、非BMP、引号、控制字符及原始换行/空白。JS示例校验器只处理向量中可精确表示的整数，不替代未来Go请求解析器或全范围数值验证。
+
+机器合同同时登记生产未绑定执行器、三次总claim、60秒租约/20秒心跳、完整owner/epoch/running/未到期CAS、取消优先、原子终态与outbox和事务外网络；这些是未来实现必须满足的声明，不是已运行的worker。当前无新增SQL/配置/服务/生产假执行器，000005仅候选方案。
