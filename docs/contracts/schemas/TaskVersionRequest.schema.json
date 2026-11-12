@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/v1/TaskVersionRequest.schema.json",
+  "title": "TaskVersionRequest",
+  "type": "object",
+  "properties": {
+    "version": {
+      "$ref": "Task.schema.json#/properties/version"
+    }
+  },
+  "required": [
+    "version"
+  ],
+  "additionalProperties": false
+}

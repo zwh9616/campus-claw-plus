@@ -1,0 +1,64 @@
+{
+  "source": "f012c8137b6d823803f07d72fe88fde3c9ccbeaa",
+  "base": "b4b13fde47bf39f2d478ff6a2721df23a04680d9",
+  "command": "npm run gate",
+  "gate": {
+    "time": "2026-11-12T10:09:42.641Z",
+    "node": "v25.2.1",
+    "exitCode": 0,
+    "results": [
+      {
+        "name": "check",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 36935
+      },
+      {
+        "name": "audit",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 13514
+      },
+      {
+        "name": "secret-scan",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 5649
+      },
+      {
+        "name": "verify",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 218853
+      }
+    ],
+    "notRun": []
+  },
+  "scans": {
+    "mysql.json": {
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    "backend.json": {
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    "admin.json": {
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    "frontend.json": {
+      "HIGH": 0,
+      "CRITICAL": 0
+    }
+  },
+  "batchExit": 0,
+  "cleanupOK": true,
+  "runtimeCurrentOperations": 13,
+  "frozenCandidateOperations": 9,
+  "businessImplementation": false
+}

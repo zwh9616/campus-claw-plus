@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/v1/SubmissionCreateRequest.schema.json",
+  "title": "SubmissionCreateRequest",
+  "type": "object",
+  "properties": {
+    "answer": {
+      "$ref": "Submission.schema.json#/properties/answer"
+    },
+    "assignment_version": {
+      "$ref": "Submission.schema.json#/properties/assignment_version"
+    }
+  },
+  "required": [
+    "answer",
+    "assignment_version"
+  ],
+  "additionalProperties": false
+}
