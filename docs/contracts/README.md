@@ -18,7 +18,7 @@
 ## 当前实现和规划的区别
 
 - **current**：原`GET /health`与六个身份操作，以及本04实现候选原子接线的六个资料操作，共13个。健康真实Ping，200/mysql=up、503/mysql=down。current表示本分支有运行装配，不等于部署、终审或主干集成通过，实际结果见共享表。
-- **frozen**：05机器合同已随#35由小陈审定并正常合入main e617cc0，完整描述九个作业/提交/任务操作，尚未接入运行服务；原实现人按已批准05任务进入2.x。04六个操作已按#25合同实施为current，冻结不等于已运行。
+- **frozen**：05九个作业/提交/任务操作已随#35获小陈审定、正常合入main e617cc0并通过主干完整CI，1.3公共冻结完成，可交小张apply；尚未接入运行服务。04六个操作已按#25合同实施为current，冻结不等于已运行。
 - **planned**：成绩、流式会话和审计等其余操作仍只有责任登记，不出现在OpenAPI paths中，也不能接线或生成假入口。Task、Turn、GradeResult、SSE、Audit等候选Schema不表示能力已可调用；向量/混合检索不在04首版合同中。
 - `Page.schema.json`仍是明确的`Page<Audit>`实例；04单独用`MaterialPage`引用`Material`，不改旧Page或使用裸object占位。
 
@@ -53,7 +53,7 @@ Node最低版本提升为22.19.0以符合锁定校验工具要求；CI原有Node
 
 六个资料操作只允许Bearer身份；教师写、学生只读本班ready，固定同构404、no-store、原文下载附件头、按user_id的12次/分钟配额和503/504边界见OpenAPI及设计。本实现增加独立materials领域、mysqlstore持久层及HTTP装配；真实授权/事务测试与合同测试分列，结果见共享表。原七个身份/健康操作、配置、旧Schema和旧SQL保持原义；000004新增SQL及真实摘要另登记。
 
-`npm run check:contracts`对同一批新增正反例经独立2020-12及OpenAPI解引用两条路径校验，再验证文本字节、分页计数、片段码点/出处等语义例子。附加属性、未授权的合同声明、已接线操作回退frozen、未知planned路由等反例必须非零失败。[迁移登记](migration-register.md)及tasks1.2/1.3已由小张核对，见[审定记录](../../reports/changes/04/zhang-contract-review-2026-11-11.md)。04实现已随#26合入main6634e51并完成主干真实复验，见[归档核对](../../reports/changes/04/archive-review-2026-11-11.md)。06/07A消费时仍须自身批准及实际依赖；06资料页面已按#27批准范围随#30接线，#31补严格414观测修复，main da8624c完整CI及真实浏览器复验通过，实际证据见共享表；05仍须机器合同冻结后才可apply。
+`npm run check:contracts`对同一批新增正反例经独立2020-12及OpenAPI解引用两条路径校验，再验证文本字节、分页计数、片段码点/出处等语义例子。附加属性、未授权的合同声明、已接线操作回退frozen、未知planned路由等反例必须非零失败。[迁移登记](migration-register.md)及tasks1.2/1.3已由小张核对，见[审定记录](../../reports/changes/04/zhang-contract-review-2026-11-11.md)。04实现已随#26合入main6634e51并完成主干真实复验，见[归档核对](../../reports/changes/04/archive-review-2026-11-11.md)。06/07A消费时仍须自身批准及实际依赖；06资料页面已按#27批准范围随#30接线，#31补严格414观测修复，main da8624c完整CI及真实浏览器复验通过，实际证据见共享表；05机器合同已随#35审定合入，1.3完成，原负责人可按2.x实现；当前业务仍未运行。
 
 SSE fixture的`{event,data}`只是测试表达：真实wire仍为`event:`与JSON `data:`两行加空行；`SSEMeta/Token/Done/Error`分别约束data。断网不承诺终结帧送达，后续07A必须实际验证持久化查询。Grade语义检查要求可信rubric上下文；模型自己给的max_score不能当权威。
 
@@ -69,8 +69,8 @@ SSE fixture的`{event,data}`只是测试表达：真实wire仍为`event:`与JSON
 
 见[00设计D0](../../openspec/changes/2026-11-04-business-contracts/design.md)：资料答疑、作业批改复核和错题订正。错题订正为待审流程说明，具体08/09接口仍planned；不以补文档冒充独立阅读或业务实现通过。
 
-## 05作业与持久任务机器合同候选
+## 05作业与持久任务机器合同冻结
 
-依据已审定合入#31的[05设计D1—D8及本PR新增D9](../../openspec/changes/2026-11-12-assignment-tasks/design.md)。D9随本次机器合同审定，不属于#31的历史批准范围。本分支提交九个frozen操作与10个新增Schema；Task只细化既有字段的安全错误和状态关联，不增加公开worker/租约字段，不改00 D5。分页复用既有公共参数，资源请求/响应通过本地$ref引用单一字段定义；原13个current操作、健康/配置/迁移目标4和既有SQL不变。
+依据已审定合入#31的[05设计D1—D8及#35新增D9](../../openspec/changes/2026-11-12-assignment-tasks/design.md)。D9已随#35获小陈对最终7fe5b5d实际批准5872964547，正常合入main e617cc0并通过完整CI43202284398；不属于#31的历史批准范围。九个frozen操作与10个新增Schema完成公共冻结；Task只细化既有字段的安全错误和状态关联，不增加公开worker/租约字段，不改00 D5。分页复用既有公共参数，资源请求/响应通过本地$ref引用单一字段定义；原13个current操作、健康/配置/迁移目标4和既有SQL不变。
 
-原`check:contracts`现增加05结构双路径、权限/错误/配额/授权后原202重放声明变异、任务CAS/取消声明、页面计数/排序与请求字节语义；Go独立生成的5组摘要向量作为跨语言固定原件。仅验证机器声明和合成示例，未执行真实05数据库授权、并发、worker、崩溃或取消事务；这些全部保留apply后的真实验收责任。候选待小陈审定，不将frozen当current，也不开放作业页面。[本次候选与验证](../../reports/changes/05/contracts-freeze-2026-11-12.md)
+原`check:contracts`现增加05结构双路径、权限/错误/配额/授权后原202重放声明变异、任务CAS/取消声明、页面计数/排序与请求字节语义；Go独立生成的5组摘要向量作为跨语言固定原件。仅验证机器声明和合成示例，未执行真实05数据库授权、并发、worker、崩溃或取消事务；这些全部保留apply后的真实验收责任。小张可按已批准规约开展2.x，完成后交小陈独立终审；不将frozen当current，也不开放作业页面。[候选原件](../../reports/changes/05/contracts-freeze-2026-11-12.md)与[审定及main验收](../../reports/changes/05/contracts-main-integration-2026-11-12.md)。
