@@ -170,6 +170,7 @@ export function validateAssignmentPageExample(page){
 }
 export function validateTaskExample(task){
   assert.ok(Number.isInteger(task.attempt)&&task.attempt>=0&&task.attempt<=3)
+  if(task.status==='pending')assert.ok(task.attempt<3,'Exhausted third claim cannot return to pending')
   assert.ok(Number.isInteger(task.execution_epoch)&&task.execution_epoch>=task.attempt)
   assert.ok(task.version>=task.attempt+(['failed','succeeded','cancelled'].includes(task.status)?2:1))
   assert.ok(task.updated_at>=task.created_at)

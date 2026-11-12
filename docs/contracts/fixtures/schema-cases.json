@@ -3765,5 +3765,49 @@
     "scenarios": [
       "AT-SC-04"
     ]
+  },
+  {
+    "name": "05 Task pending after second claim remains valid",
+    "schema": "Task",
+    "data": {
+      "task_id": "9007199254740996",
+      "submission_id": "9007199254740995",
+      "status": "pending",
+      "attempt": 2,
+      "execution_epoch": 2,
+      "version": 8,
+      "cancel_requested": false,
+      "created_at": "2026-11-12T08:10:00.000Z",
+      "updated_at": "2026-11-12T08:10:00.000Z",
+      "error": null
+    },
+    "valid": true,
+    "scenarios": [
+      "AT-SC-13",
+      "AT-SC-14",
+      "AT-SC-15"
+    ]
+  },
+  {
+    "name": "05 Task exhausted third claim cannot remain pending",
+    "schema": "Task",
+    "data": {
+      "task_id": "9007199254740996",
+      "submission_id": "9007199254740995",
+      "status": "pending",
+      "attempt": 3,
+      "execution_epoch": 3,
+      "version": 8,
+      "cancel_requested": false,
+      "created_at": "2026-11-12T08:10:00.000Z",
+      "updated_at": "2026-11-12T08:10:00.000Z",
+      "error": null
+    },
+    "valid": false,
+    "scenarios": [
+      "AT-SC-13",
+      "AT-SC-14",
+      "AT-SC-15"
+    ]
   }
 ]

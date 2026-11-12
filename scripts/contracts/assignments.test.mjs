@@ -152,3 +152,14 @@ test('AT-SC-09/13..18 Task snapshots preserve safe errors, counts, version and c
   {...base,updated_at:'2026-11-11T00:00:00.000Z'},
  ])assert.throws(()=>validateTaskExample(bad))
 })
+
+test('AT-SC-13/14/15 pending cannot requeue an exhausted third claim',()=>{
+ const base=fixtures.Task
+ for(const attempt of [0,1,2])validateTaskExample({...base,attempt,execution_epoch:attempt,version:8})
+ assert.throws(()=>validateTaskExample({...base,attempt:3,execution_epoch:3,version:8}),
+  'Only the first two claims can return to pending; retry must not revive attempt 3')
+ validateTaskExample({...base,status:'running',attempt:3,execution_epoch:3,version:8})
+ validateTaskExample({...base,status:'succeeded',attempt:3,execution_epoch:3,version:8})
+ validateTaskExample({...base,status:'failed',attempt:3,execution_epoch:3,version:8,error:{code:'RETRY_EXHAUSTED',message:'重试次数已用尽'}})
+ validateTaskExample({...base,status:'cancelled',attempt:3,execution_epoch:3,version:8,cancel_requested:true})
+})

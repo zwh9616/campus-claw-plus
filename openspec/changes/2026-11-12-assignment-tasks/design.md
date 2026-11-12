@@ -109,6 +109,7 @@ apply时才交真实上下行SQL、manifest摘要、逐DDL故障点和前后置�
 
 - 资源只使用单源Schema：Assignment/Submission、创建请求、SubmissionAccepted、TaskVersionRequest、两种具体Page及分页/提交幂等键。请求字段引用资源字段，分页复用MaterialListParameters的现有1/20默认、50页长和2147483647页码上限，避免复制类型。对象封闭且字段必需；JSON类型检查不能代替原始UTF-8/重复键/流式字节门禁。
 - Task字段名及D5状态机不改。按D5冻结两种安全任务内错误：EXECUTION_FAILED/“任务执行失败”、RETRY_EXHAUSTED/“重试次数已用尽”；failed才可有非空错误、耗尽错误须第三次claim，pending/failed/succeeded的取消标记为false，cancelled为true。版本/epoch/时间的示例关联另做语义检查，真实CAS仍待apply。
+- 小陈审查补齐D5已有的三次耗尽边界：pending仅允许attempt=0..2；第三次claim仍可处于running或相应终态，但不能通过自动回排或手动retry成为pending。单源Task Schema与语义例同步拒绝pending/attempt3，不增加执行次数或改变00 D5。
 - 创建作业的deadline在创建事务中必须大于DB now；相等或更早按字段验证400 VALIDATION_ERROR，已有作业的新提交逾期仍409 CONFLICT。时间和正文都不归一化，答案允许空白原值；64KiB按整个原始请求计算，与20000码点限制同时成立。
 - 405沿用当前身份/资料HTTP方法边界：空body、Allow明确列该路径的GET/POST，不新增METHOD_NOT_ALLOWED业务码；其余已列业务错误用Error，404除request_id外同构。写Origin若出现必须可信同源，Bearer为唯一认证方式。
 - 提交作用域含user_id/class_id/route/assignment_id/键。已授权的已提交同键重放及异载荷冲突先于新写配额/版本/截止；202始终原pending快照。05写桶独立于04，只有新写进入05配额；首期不自动删除幂等快照。

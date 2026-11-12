@@ -71,6 +71,6 @@ SSE fixture的`{event,data}`只是测试表达：真实wire仍为`event:`与JSON
 
 ## 05作业与持久任务机器合同候选
 
-依据已审定合入#31的[05设计D1—D9](../../openspec/changes/2026-11-12-assignment-tasks/design.md)。本分支提交九个frozen操作与10个新增Schema；Task只细化既有字段的安全错误和状态关联，不增加公开worker/租约字段，不改00 D5。分页复用既有公共参数，资源请求/响应通过本地$ref引用单一字段定义；原13个current操作、健康/配置/迁移目标4和既有SQL不变。
+依据已审定合入#31的[05设计D1—D8及本PR新增D9](../../openspec/changes/2026-11-12-assignment-tasks/design.md)。D9随本次机器合同审定，不属于#31的历史批准范围。本分支提交九个frozen操作与10个新增Schema；Task只细化既有字段的安全错误和状态关联，不增加公开worker/租约字段，不改00 D5。分页复用既有公共参数，资源请求/响应通过本地$ref引用单一字段定义；原13个current操作、健康/配置/迁移目标4和既有SQL不变。
 
 原`check:contracts`现增加05结构双路径、权限/错误/配额/授权后原202重放声明变异、任务CAS/取消声明、页面计数/排序与请求字节语义；Go独立生成的5组摘要向量作为跨语言固定原件。仅验证机器声明和合成示例，未执行真实05数据库授权、并发、worker、崩溃或取消事务；这些全部保留apply后的真实验收责任。候选待小陈审定，不将frozen当current，也不开放作业页面。[本次候选与验证](../../reports/changes/05/contracts-freeze-2026-11-12.md)
