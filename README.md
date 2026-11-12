@@ -27,7 +27,7 @@
 
 需要Docker、Node>=22.19及持有人提供的数据库/HTTPS可信证书和本机秘密文件。无默认证书或账号口令；不把测试临时CA安装到系统，不跳过TLS校验。准备细节见[身份部署步骤](deploy/identity/README.md)。
 
-1. 获取受审版本；已有目录先保留未提交修改，不能强制覆盖。当前04版本要求数据库版本4，已有版本3须先停止写流量并备份，再离线升级；旧程序拒绝数据库4，回退须隔离恢复升级前备份，见[迁移恢复](docs/identity-migrations.md)。
+1. 获取受审版本；已有目录先保留未提交修改，不能强制覆盖。本05迁移基础候选精确要求数据库版本5，已有版本4须先停止写流量并保存一致备份，再离线升级；旧程序拒绝数据库5、新程序拒绝4，回退须隔离恢复版本4备份，见[迁移恢复](docs/identity-migrations.md)。
 2. 在忽略的output/identity-local准备root-password、initialize.sql、数据库TLS材料、backend.env、admin.env和seed.json。应用DML账号与离线DDL账号分离；秘密不发群、不进Git/镜像/截图。
 3. 按部署步骤创建本项目独占internal代理网络，选择未占用静态地址。把根.env.example复制为本机.env（已有文件不要覆盖），填写HTTP_PORT、五个IDENTITY_*及HTTPS_CERT_FILE/HTTPS_KEY_FILE。MYSQL_*和AUTH_TRUSTED_ORIGIN由对应进程env文件提供；AUTH_TRUSTED_PROXY_CIDRS由Compose从代理IP派生为精确/32，不再在多个地方复制秘密。
 4. 按顺序构建、迁移、初始化、启动。以下均从仓库根执行，wrapper只校验键与文件，不打印配置值。
@@ -132,3 +132,5 @@ go run ./cmd/server
 资料路由：`/app/materials`、`/app/materials/upload`、`/app/materials/{id}`。仅可信教师身份可上传/重新处理，学生只读ready。上传结果不确定时手动点击“确认上传结果”，更换内容须确认新上传；刷新、离开或身份变化会清理内存，请先核对列表。
 
 `npm run check:frontend-auth`包含原认证与资料用例。mock页面：使用外部Playwright1.56.0，运行`node frontend/tests/materials-browser.mjs --playwright ABSOLUTE_PLAYWRIGHT_PATH --origin http://127.0.0.1:5197 --output output/material-browser`。Windows可信真实浏览器：`npm run verify:materials-browser -- --playwright ABSOLUTE_PLAYWRIGHT_PATH`，需已安装相应Firefox/Python与Docker；只在临时NSS配置导入测试CA，不改操作系统信任库。完整原门禁仍为`npm run gate`；浏览器证据单列，不用它代替完整门禁。
+
+05首批仅提供000005五表与精确目标5迁移基础，九个作业/提交/任务接口仍frozen，暂无业务接线/执行器/成绩或作业页面。真实自测及终审状态以共享表为准，不把SQL available当成任一持有人数据库已升级。

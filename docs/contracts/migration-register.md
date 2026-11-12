@@ -29,8 +29,8 @@
 
 01的identity-phase运行阶段、配置、健康和三条已发布迁移不变。04在同一实现候选中扩充既有迁移清单/检查，运行目标4；不让旧程序忽略更高版本，不将代码available当作任一数据库已升级。
 
-## 05规约已批准的候选预留（无SQL、未激活）
+## 05迁移基础实现候选（available不等于已部署）
 
 | 变更 / 负责人 | 候选号与计划文件 | 依赖与兼容 | 恢复与当前状态 |
 | --- | --- | --- | --- |
-| 05 / 小陈起草终审、小张审查实现 | `000005_assignment_tasks`；计划文件位于既有migrations/sql目录，实际文件/摘要尚未创建；小张已在#31确认候选号及方案，当前机器合同#35待小陈审定 | 依赖干净000004，仅追加作业/提交/任务/outbox/幂等五表与约束索引；批准apply时原子将admin/server精确目标切5，已发布SQL不改 | [方案D7](../../openspec/changes/2026-11-12-assignment-tasks/design.md)已获规约批准，真实SQL与升级恢复仍待apply；须真实逐DDL失败恢复、重跑及隔离恢复4备份并验证旧制品。当前机器登记/运行目标仍4，不能把预留当available或已部署 |
+| 05 / 小陈起草终审、小张审查实现 | `000005_assignment_tasks`；已追加上下行SQL，真实SHA-256见manifest/identity-phase；#35合同审定合入e617cc0 | 依赖干净000004，仅追加assignments/submissions/tasks/task_outbox/submission_idempotency五表；admin/server共用精确Target=5，旧SQL不改，九业务接口仍frozen | 五处DDL中断/结构及历史漂移阻断、显式前向修复、4/5实际制品和一致备份隔离恢复4正在自测，尚未通过/独立终审或部署；后续真实业务及worker另验。幂等原键VARBINARY避免尾空格/case折叠；复合FK绑定提交原班级/版本/学生及任务回执，不自动清理快照 |

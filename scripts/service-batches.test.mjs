@@ -40,6 +40,7 @@ test('DO-SC-11 unregistered services, wrong build target/network and inactive ke
     x => { x.registry.services[0].config_keys.push('MODEL_TOKEN') },
     x => { x.registry.services[0].required_dependencies.push('mcp') },
     x => { x.registry.services[0].changes = ['05'] },
+    x => { x.registry.services.find(s => s.name === 'admin').changes = ['01', '04'] },
     x => { x.registry.services.find(s => s.name === 'frontend').changes = ['01', '02'] },
     x => { x.registry.services.find(s => s.name === 'admin').config_keys = ['MYSQL_CA_FILE', 'IDENTITY_STATE_DIR'] },
   ]

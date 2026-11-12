@@ -1,0 +1,22 @@
+[
+ {
+  "RuleID": "generic-api-key",
+  "Description": "Detected a Generic API Key, potentially exposing access to various services and sensitive operations.",
+  "StartLine": 598,
+  "EndLine": 598,
+  "StartColumn": 6,
+  "EndColumn": 109,
+  "Match": "000003_identity_auth_audit.down.sql\": \"REDACTED\"",
+  "Secret": "REDACTED",
+  "File": "",
+  "SymlinkFile": "",
+  "Commit": "",
+  "Entropy": 3.822931,
+  "Author": "",
+  "Email": "",
+  "Date": "",
+  "Message": "",
+  "Tags": [],
+  "Fingerprint": ":generic-api-key:598"
+ }
+]

@@ -73,6 +73,20 @@
       ],
       "checksum": "6bad8d66dbfa671c3bc603467837580ff4336cd3417313b1556920e0299ae830",
       "down_checksum": "d73567bd3c5318c1cde9f0f677e865982eb738004236437bdbdf258d8791bdac"
+    },
+    {
+      "number": "000005",
+      "name": "assignment_tasks",
+      "owner": "05",
+      "status": "available",
+      "depends_on": [
+        "000001",
+        "000002",
+        "000003",
+        "000004"
+      ],
+      "checksum": "ad2f53dc0e9960b153fa9058c568e22d23150118d134dea5d293fcf1e7acd21c",
+      "down_checksum": "f0e9e62df01fcd6f3eddc9912dfa2fa21e22c2430e6146a4cc0b271fbf6f39eb"
     }
   ],
   "previous_phase": "skeleton"
