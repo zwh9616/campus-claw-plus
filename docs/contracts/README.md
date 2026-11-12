@@ -53,7 +53,7 @@ Node最低版本提升为22.19.0以符合锁定校验工具要求；CI原有Node
 
 六个资料操作只允许Bearer身份；教师写、学生只读本班ready，固定同构404、no-store、原文下载附件头、按user_id的12次/分钟配额和503/504边界见OpenAPI及设计。本实现增加独立materials领域、mysqlstore持久层及HTTP装配；真实授权/事务测试与合同测试分列，结果见共享表。原七个身份/健康操作、配置、旧Schema和旧SQL保持原义；000004新增SQL及真实摘要另登记。
 
-`npm run check:contracts`对同一批新增正反例经独立2020-12及OpenAPI解引用两条路径校验，再验证文本字节、分页计数、片段码点/出处等语义例子。附加属性、未授权的合同声明、已接线操作回退frozen、未知planned路由等反例必须非零失败。[迁移登记](migration-register.md)及tasks1.2/1.3已由小张核对，见[审定记录](../../reports/changes/04/zhang-contract-review-2026-11-11.md)。04实现已随#26合入main6634e51并完成主干真实复验，见[归档核对](../../reports/changes/04/archive-review-2026-11-11.md)。06/07A消费时仍须自身批准及实际依赖；06资料页面规约候选见#27，不代表页面已实现。
+`npm run check:contracts`对同一批新增正反例经独立2020-12及OpenAPI解引用两条路径校验，再验证文本字节、分页计数、片段码点/出处等语义例子。附加属性、未授权的合同声明、已接线操作回退frozen、未知planned路由等反例必须非零失败。[迁移登记](migration-register.md)及tasks1.2/1.3已由小张核对，见[审定记录](../../reports/changes/04/zhang-contract-review-2026-11-11.md)。04实现已随#26合入main6634e51并完成主干真实复验，见[归档核对](../../reports/changes/04/archive-review-2026-11-11.md)。06/07A消费时仍须自身批准及实际依赖；06资料页面已按#27批准范围随#30接线，#31补严格414观测修复，main da8624c完整CI及真实浏览器复验通过，实际证据见共享表；05机器合同已随#35审定合入，1.3完成，原负责人可按2.x实现；当前业务仍未运行。
 
 SSE fixture的`{event,data}`只是测试表达：真实wire仍为`event:`与JSON `data:`两行加空行；`SSEMeta/Token/Done/Error`分别约束data。断网不承诺终结帧送达，后续07A必须实际验证持久化查询。Grade语义检查要求可信rubric上下文；模型自己给的max_score不能当权威。
 

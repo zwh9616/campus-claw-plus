@@ -1,0 +1,131 @@
+{
+  "source": "da8624cdb7793e64c4c3d29793b4c7a329adc2b8",
+  "sourceDirty": false,
+  "time": "2026-11-12T08:53:01.011Z",
+  "origin": "https://campus.test:32776",
+  "mode": "real default HTTPS frontend/backend/MySQL; no mocked HTTP responses",
+  "trust": "disposable Firefox NSS profile; ordinary CA/SAN validation; no OS trust change or ignoreTLS options",
+  "cases": [
+    {
+      "label": "默认发布HTTPS入口在正常CA/SAN校验下可用",
+      "passed": true
+    },
+    {
+      "label": "浏览器拒绝错误SAN，没有跳过证书验证",
+      "passed": true
+    },
+    {
+      "label": "默认HTTPS合法2000非BMP码点成功，2001码点400，超过32KiB请求行仍414",
+      "passed": true
+    },
+    {
+      "label": "教师通过浏览器上传真实UTF-8原始字节并显示ready，正文作为文本转义",
+      "passed": true
+    },
+    {
+      "label": "隔离库受控failed状态由真实教师重新处理恢复ready",
+      "passed": true
+    },
+    {
+      "label": "同班学生1真实检索→出处与原文回查→原字节下载一致，无教师处理动作",
+      "passed": true
+    },
+    {
+      "label": "同班学生1刷新恢复真实Cookie会话",
+      "passed": true
+    },
+    {
+      "label": "学生1真实写接口403",
+      "passed": true
+    },
+    {
+      "label": "学生1直访上传页明确拒绝",
+      "passed": true
+    },
+    {
+      "label": "同班学生2真实检索→出处与原文回查→原字节下载一致，无教师处理动作",
+      "passed": true
+    },
+    {
+      "label": "同班学生2刷新恢复真实Cookie会话",
+      "passed": true
+    },
+    {
+      "label": "学生2真实写接口403",
+      "passed": true
+    },
+    {
+      "label": "学生2直访上传页明确拒绝",
+      "passed": true
+    },
+    {
+      "label": "外班student详情/下载与不存在同构404，无正文缓存",
+      "passed": true
+    },
+    {
+      "label": "外班teacher详情/下载与不存在同构404，无正文缓存",
+      "passed": true
+    },
+    {
+      "label": "真实双标签切班均回到新班列表并清除旧正文",
+      "passed": true
+    },
+    {
+      "label": "真实退出跨标签清理，切班/退出前旧Bearer返回401",
+      "passed": true
+    },
+    {
+      "label": "浏览器不持久保存访问凭据或资料查询",
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "real-teacher-detail.png",
+      "role": "teacher",
+      "url": "https://campus.test:32776/app/materials/1",
+      "width": 1440,
+      "height": 900,
+      "mock": false
+    },
+    {
+      "file": "real-teacher-failed.png",
+      "role": "teacher",
+      "url": "https://campus.test:32776/app/materials/1",
+      "width": 1440,
+      "height": 900,
+      "mock": false
+    },
+    {
+      "file": "real-student-detail-360.png",
+      "role": "student",
+      "url": "https://campus.test:32776/app/materials/1",
+      "width": 360,
+      "height": 800,
+      "mock": false
+    },
+    {
+      "file": "real-other-class-404.png",
+      "role": "student",
+      "url": "https://campus.test:32776/app/materials/1",
+      "width": 360,
+      "height": 800,
+      "mock": false
+    }
+  ],
+  "browser": "144.0.2",
+  "queryBoundary": {
+    "codepoints": 2000,
+    "status": 200,
+    "mode": "keyword",
+    "oversizedCodepoints": 400,
+    "oversizedRequestLine": 414
+  },
+  "download": {
+    "bytes": 89,
+    "algorithm": "sha256",
+    "digest": "100b228df889cb7e3c725d7630033df28c7e95de453e9578c3f4b67324ce0d78"
+  },
+  "result": "pass",
+  "profileRemoved": true
+}
