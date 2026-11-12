@@ -1,6 +1,8 @@
 # CampusClawPlus 工程约定
 本分支默认运行已接入01身份与MySQL阶段，实际合入/验收状态见共享表。第7课骨架为历史基线，历史主规约见[spec](openspec/specs/project-bootstrap/spec.md)，归档依据见[历史变更](openspec/changes/archive/2026-10-28-project-bootstrap/)。本轮执行[00规约](openspec/changes/2026-11-04-business-contracts/proposal.md)、[design](openspec/changes/2026-11-04-business-contracts/design.md)、[spec](openspec/changes/2026-11-04-business-contracts/specs/business-contracts/spec.md)及[tasks](openspec/changes/2026-11-04-business-contracts/tasks.md)；00只负责公共合同。当前01/02/04已验收，06真实资料页面已随#30合入，测试修复#31及主干完整CI43186361938通过；2026-11-12组长恢复05规约工作，其他暂停项未恢复。PB/SC保留历史含义，新需求使用BC及后续change自己的前缀。
 
+2026-11-12最新冻结事实：#35已获小陈对7fe5b5d真实批准5872964547，正常合入main e617cc0，主干完整CI43202284398通过；05任务1.3完成，原13 current/目标4与九个frozen合同分列，05业务实现仍待原负责人按2.x推进。#33/#34只补实际状态与证据，B全量/C和资料归档尚未完成。
+
 ## 每次开始工作
 - 必读 [安全规范](docs/standards/security.md)，按范围必须读取下表规则；这些文件是约束，不是可选参考。
 - 必读 [共享进度表](docs/project-status.md) 与 [协作规范](docs/standards/collaboration.md)，先确认本次变更、两位负责人、前置条件和下一步；不得按人固定前端/后端/AI职责。
