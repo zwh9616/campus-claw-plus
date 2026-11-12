@@ -1,6 +1,6 @@
 # 05机器合同冻结候选与验证
 
-执行人：zwh9616（小张，AI辅助），2026-11-12（Asia/Shanghai）。基线main da8624c，#31已获真实批准5871577319并正常合入，PR CI43185758473与main CI43186361938成功。G2/G3及01/04前置成立；本轮只做05公共机器合同，尚待小陈审定，不apply业务。
+执行人：zwh9616（小张，AI辅助），2026-11-12（Asia/Shanghai）。起始基线main da8624c，已整合最新main b4b13fd；#31已获真实批准5871577319并正常合入，PR CI43185758473与main CI43186361938成功。G2/G3及01/04前置成立；本轮只做05公共机器合同，尚待小陈审定，不apply业务。
 
 ## 范围与审定项
 
@@ -16,7 +16,7 @@
 
 受控将OpenAPI提交操作的authorization_before_lookup改为false，普通合同检查真实退出1，错误定位该声明；finally逐字节恢复后同入口退出0。原首次Task条件缺少显式integer类型的strictTypes失败保留，修复Schema后恢复，不放宽Ajv strict选项。原始日志将随验证归集。
 
-本提交代码与候选准备完成，完整check/audit/secret-scan/verify及四实际镜像扫描待本机执行；未运行不写通过。以下仍全部待apply/独立终审：真实05授权/限流、并发同键、deadline时钟屏障、事务回滚、租约/ABA/取消、崩溃恢复、000005真实SQL与逐DDL失败、4/5制品/备份恢复；本轮内存合同例子不替代它们。
+验证前快照：当时完整check/audit/secret-scan/verify及四实际镜像扫描尚待本机执行；最新两轮完整通过结果与原件见下文，未将此早期状态当最终结论。以下仍全部待apply/独立终审：真实05授权/限流、并发同键、deadline时钟屏障、事务回滚、租约/ABA/取消、崩溃恢复、000005真实SQL与逐DDL失败、4/5制品/备份恢复；本轮内存合同例子不替代它们。
 
 ## 交接
 
@@ -33,3 +33,5 @@
 验证期间#32由小葛真实批准510e882并正常合入main b4b13fd，主干CI43194409869成功；本提交逐行整合最新main，保留其全部服务批次/3秒探针/同轮同制品/30次严格414门禁及既有证据，05合同不取用未合入分支。92246e2原gate结果只对应旧基线；当前整合版须再跑完整gate，不以旧成功替代。#34集成补记另由小葛审，原#33也保持实际门禁，不代批准。
 
 最新整合源码f012c81：`npm run gate`已实际check/audit/secret-scan/verify四段全0、notRun为空；8项10-B批次反例、25组合同行为/声明检查、前端28项、Go/严格规约均保留。新verify薄包装同轮同制品及清理检查全0，四实际镜像HIGH/CRITICAL全0，原身份/资料/迁移/隔离恢复、30次真实414通过。[最新汇总](contracts/integrated-gate-summary.json) · [最新原始JSON](contracts/integrated-gate-raw-json.zip)。旧92246e2及原失败日志继续分列。之后仅补文档/原件，不改变frozen合同代码，最终PR head完整CI仍须另核。
+
+实际交接：已创建[PR #35](https://github.com/zwh9616/campus-claw-plus/pull/35)，分支codex/05-public-contracts-2026-11-12；交小陈/Kevcco审定D9与完整机器合同。当前未获其批准、未合入或apply，最终head自身CI按PR实绩核对。本次另同步000005文档候选已确认事实，机器manifest/精确目标仍4，无新SQL。
