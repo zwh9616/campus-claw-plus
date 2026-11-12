@@ -33,4 +33,4 @@
 
 | 变更 / 负责人 | 候选号与计划文件 | 依赖与兼容 | 恢复与当前状态 |
 | --- | --- | --- | --- |
-| 05 / 小陈起草终审、小张审查实现 | `000005_assignment_tasks`；计划文件位于既有migrations/sql目录，实际文件/摘要尚未创建；小张已在#31确认候选号及方案，当前机器合同#35待小陈审定 | 依赖干净000004，仅追加作业/提交/任务/outbox/幂等五表与约束索引；批准apply时原子将admin/server精确目标切5，已发布SQL不改 | [方案D7](../../openspec/changes/2026-11-12-assignment-tasks/design.md)已获规约批准，真实SQL与升级恢复仍待apply；须真实逐DDL失败恢复、重跑及隔离恢复4备份并验证旧制品。当前机器登记/运行目标仍4，不能把预留当available或已部署 |
+| 05 / 小陈起草终审、小张审查实现 | `000005_assignment_tasks`；计划文件位于既有migrations/sql目录，实际文件/摘要尚未创建；小张已在#31确认候选号及方案，机器合同#35已由小陈批准并合入e617cc0，真实SQL仍待apply | 依赖干净000004，仅追加作业/提交/任务/outbox/幂等五表与约束索引；批准apply时原子将admin/server精确目标切5，已发布SQL不改 | [方案D7](../../openspec/changes/2026-11-12-assignment-tasks/design.md)已获规约批准，真实SQL与升级恢复仍待apply；须真实逐DDL失败恢复、重跑及隔离恢复4备份并验证旧制品。当前机器登记/运行目标仍4，不能把预留当available或已部署 |

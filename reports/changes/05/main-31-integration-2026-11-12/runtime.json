@@ -1,0 +1,142 @@
+{
+  "time": "2026-11-12T08:53:21.631Z",
+  "scope": "default production Compose with disposable MySQL, trusted browser HTTPS and own test accounts",
+  "results": [
+    {
+      "label": "generate disposable wiring credentials/certificates",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "Disposable credentials and CA generated; values omitted\n"
+    },
+    {
+      "label": "dedicated internal proxy network",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "59b5959126b4f1ff73c9e3a9ef5671c3592edcd508727d90b40643977b509a27\n"
+    },
+    {
+      "label": "discover allocated proxy address",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "[{\"Subnet\":\"192.168.192.0/20\",\"Gateway\":\"192.168.192.1\"}]\n"
+    },
+    {
+      "label": "release automatically allocated proxy network",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "campus-material-browser-a569b2bf257f\n"
+    },
+    {
+      "label": "create explicit isolated proxy subnet",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "7db1cff0b85dfad4926cf2d170bf5c10bb1f8956de5a1f4bcc3d9b2c612f9eec\n"
+    },
+    {
+      "label": "validate explicit candidate compose",
+      "exit_code": 0,
+      "expected": 0,
+      "output": ""
+    },
+    {
+      "label": "SC-09 missing HTTP_PORT is rejected before startup",
+      "exit_code": 1,
+      "expected": "nonzero",
+      "output": "error while interpolating services.backend.environment.HTTP_PORT: required variable HTTP_PORT is missing a value: Fill HTTP_PORT in the root .env\nerror while interpolating services.frontend.environment.HTTP_PORT: required variable HTTP_PORT is missing a value: Fill HTTP_PORT in the root .env\n"
+    },
+    {
+      "label": "missing HTTPS key is rejected before startup",
+      "exit_code": 1,
+      "expected": "nonzero",
+      "output": "error while interpolating services.frontend.volumes.[].source: required variable HTTPS_KEY_FILE is missing a value: Provide HTTPS_KEY_FILE\n"
+    },
+    {
+      "label": "build actual default production artifacts",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "#1 [internal] load local bake definitions\n#1 reading from stdin 2.68kB 0.0s done\n#1 DONE 0.0s\n\n#2 [mysql internal] load build definition from Dockerfile\n#2 transferring dockerfile: 30B\n#2 transferring dockerfile: 1.37kB 0.0s done\n#2 DONE 0.1s\n\n#3 [backend internal] load build definition from Dockerfile\n#3 transferring dockerfile: 577B 0.0s done\n#3 DONE 0.1s\n\n#4 [frontend internal] load build definition from Dockerfile\n#4 transferring dockerfile: 747B 0.0s done\n#4 DONE 0.1s\n\n#5 [admin internal] load build definition from Dockerfile.identity\n#5 transferring dockerfile: 849B 0.0s done\n#5 DONE 0.1s\n\n#6 [mysql internal] load metadata for docker.io/library/mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902\n#6 DONE 0.0s\n\n#7 [admin internal] load metadata for docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb\n#7 DONE 0.0s\n\n#8 [mysql internal] load .dockerignore\n#8 transferring context: 2B done\n#8 DONE 0.0s\n\n#9 [backend internal] load .dockerignore\n#9 transferring context: 66B done\n#9 DONE 0.0s\n\n#10 [admin internal] load build context\n#10 DONE 0.0s\n\n#11 [mysql gosu 3/4] ADD --checksum=sha256:cd9719b775dbfedae53923c9b0dc792b66d42c51e0b36652ed6f747fbadc0164 https://codeload.github.com/tianon/gosu/tar.gz/refs/tags/1.19 /tmp/gosu.tar.gz\n#11 DONE 0.0s\n\n#12 [mysql stage-1 1/5] FROM docker.io/library/mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902\n#12 resolve docker.io/library/mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902 0.0s done\n#12 DONE 0.0s\n\n#13 [admin gosu 1/4] FROM docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb\n#13 resolve docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb\n#13 resolve docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb 0.0s done\n#13 DONE 0.0s\n\n#14 [mysql stage-1 3/5] COPY --from=gosu /out/gosu /usr/local/bin/gosu\n#14 CACHED\n\n#15 [mysql stage-1 4/5] COPY --from=gosu /src/LICENSE /usr/share/licenses/campus-gosu/LICENSE\n#15 CACHED\n\n#16 [mysql stage-1 2/5] RUN microdnf remove -y mysql-shell     && microdnf clean all     && rm -rf -- /usr/lib/mysqlsh     && ! command -v mysqlsh     && test ! -d /usr/lib/mysqlsh     && mysqld --version | grep '8.4.13'     && mysql --version\n#16 CACHED\n\n#17 [mysql gosu 2/4] WORKDIR /src\n#17 CACHED\n\n#18 [mysql gosu 3/4] ADD --checksum=sha256:cd9719b775dbfedae53923c9b0dc792b66d42c51e0b36652ed6f747fbadc0164 https://codeload.github.com/tianon/gosu/tar.gz/refs/tags/1.19 /tmp/gosu.tar.gz\n#18 CACHED\n\n#19 [mysql gosu 4/4] RUN tar -xzf /tmp/gosu.tar.gz --strip-components=1 -C /src     && GOTOOLCHAIN=local CGO_ENABLED=0 go build -trimpath -buildvcs=false -o /out/gosu .\n#19 CACHED\n\n#20 [mysql stage-1 5/5] RUN gosu --version     && test \"$(gosu mysql id -u)\" = 999     && test \"$(gosu mysql id -g)\" = 999\n#20 CACHED\n\n#21 [mysql] exporting to image\n#21 exporting layers 0.0s done\n#21 exporting manifest sha256:2745f3fca5b05159b24e863599d027eb207474e4bd4ba31026296d4fdd3e29e5 0.0s done\n#21 exporting config sha256:9e7bc685ce2d1639beaefe669c6f95fd79fc2728f937171bc53218ef5c91f19e 0.0s done\n#21 exporting attestation manifest sha256:46bcd1175284a58831a237233ff482b490a7533563e788810e61e423a491ada0 0.0s done\n#21 exporting manifest list sha256:c89ca577a567201ce304d93158dc17899c817fad40d9ff2357fe7267c5e4e88e 0.0s done\n#21 naming to docker.io/library/campus-material-browser-a569b2bf257f-mysql:latest done\n#21 unpacking to docker.io/library/campus-material-browser-a569b2bf257f-mysql:latest 0.0s done\n#21 DONE 0.2s\n\n#10 [backend internal] load build context\n#10 transferring context: 1.03MB 0.3s done\n#10 DONE 0.6s\n\n#22 [admin build 7/8] RUN --mount=type=cache,target=/root/.cache/go-build CGO_ENABLED=0 go build -trimpath -buildvcs=false -ldflags=\"-s -w -buildid=\" -o /out/identity-admin ./cmd/identity-admin\n#22 CACHED\n\n#23 [admin build 8/8] RUN --mount=type=cache,target=/root/.cache/go-build CGO_ENABLED=0 go build -trimpath -buildvcs=false -ldflags=\"-s -w -buildid=\" -o /out/wiring-preview ./internal/integration/wiringfixture\n#23 CACHED\n\n#24 [admin admin 1/1] COPY --from=build /out/identity-admin /identity-admin\n#24 CACHED\n\n#25 [backend build 7/7] RUN --mount=type=cache,target=/root/.cache/go-build CGO_ENABLED=0 go build -trimpath -buildvcs=false -ldflags=\"-s -w -buildid=\" -o /out/server ./cmd/server\n#25 CACHED\n\n#26 [backend build 5/7] COPY cmd ./cmd\n#26 CACHED\n\n#27 [backend build 6/7] COPY internal ./internal\n#27 CACHED\n\n#28 [backend build 3/7] COPY go.mod go.sum ./\n#28 CACHED\n\n#29 [backend build 4/7] COPY vendor ./vendor\n#29 CACHED\n\n#17 [backend gosu 2/4] WORKDIR /src\n#17 CACHED\n\n#30 [backend stage-1 1/1] COPY --from=build /out/server /server\n#30 CACHED\n\n#31 [admin] exporting to image\n#31 exporting layers done\n#31 exporting manifest sha256:59347edea2dbd05ff2b6792ce803b0d8313dc0054dea2ce0233bf90d5fe6380c 0.0s done\n#31 exporting config sha256:93e1cc6d08ffdf82bbdeffc79c99644ab5aed37cc53089dfc3d6a57d3a73b161 0.0s done\n#31 exporting attestation manifest sha256:85eb11745cc88e6e83003676ba6adbe3126016fb1c2ac71a1b06f027e10e1101 0.0s done\n#31 exporting manifest list sha256:99b0a8811b16e11df69ad156e1b768e124509893cca176fea394c73f7ebfa8d5 0.0s done\n#31 naming to docker.io/library/campus-material-browser-a569b2bf257f-admin:latest\n#31 naming to docker.io/library/campus-material-browser-a569b2bf257f-admin:latest done\n#31 unpacking to docker.io/library/campus-material-browser-a569b2bf257f-admin:latest 0.0s done\n#31 DONE 0.2s\n\n#32 [backend] exporting to image\n#32 exporting layers done\n#32 exporting manifest sha256:386e4f20ee4c6fccd2b9c3a437b74aafa32718f1bf2533e10e2cf84ce171b7dd 0.0s done\n#32 exporting config sha256:d6366723e28e23bb6b5ed7056a076767d66bd44245fc1ac822064e80fd0cce98 0.0s done\n#32 exporting attestation manifest sha256:ab4210ba9424631f2547aaa31b251004906bb01064cc8bcd66e3dcd5a7913721 0.0s done\n#32 exporting manifest list sha256:0b3ee019ce571c2815eb4527106383825ba47683d227cffcaa7850e0f9b5ff46 0.0s done\n#32 naming to docker.io/library/campus-material-browser-a569b2bf257f-backend:latest done\n#32 unpacking to docker.io/library/campus-material-browser-a569b2bf257f-backend:latest 0.0s done\n#32 DONE 0.2s\n\n#33 [mysql] resolving provenance for metadata file\n#33 DONE 0.0s\n\n#34 [backend] resolving provenance for metadata file\n#34 DONE 0.1s\n\n#35 [admin] resolving provenance for metadata file\n#35 DONE 0.0s\n\n#36 [frontend internal] load metadata for docker.io/library/nginx@sha256:583b7f2fce1cdb8da5ad5c39ebd3c33b98b87d493190e548bdee1fa8c619c311\n#36 DONE 1.4s\n\n#37 [frontend internal] load metadata for docker.io/library/node@sha256:fe4f6d74e20370acb04ad889077d14d0f64a9c8ea6a42bc60cddf1e844699914\n#37 DONE 2.6s\n\n#38 [frontend internal] load .dockerignore\n#38 transferring context: 78B done\n#38 DONE 0.0s\n\n#39 [frontend stage-1 1/4] FROM docker.io/library/nginx@sha256:583b7f2fce1cdb8da5ad5c39ebd3c33b98b87d493190e548bdee1fa8c619c311\n#39 resolve docker.io/library/nginx@sha256:583b7f2fce1cdb8da5ad5c39ebd3c33b98b87d493190e548bdee1fa8c619c311 0.0s done\n#39 DONE 0.0s\n\n#40 [frontend build 1/8] FROM docker.io/library/node@sha256:fe4f6d74e20370acb04ad889077d14d0f64a9c8ea6a42bc60cddf1e844699914\n#40 resolve docker.io/library/node@sha256:fe4f6d74e20370acb04ad889077d14d0f64a9c8ea6a42bc60cddf1e844699914 0.0s done\n#40 DONE 0.0s\n\n#41 [frontend internal] load build context\n#41 transferring context: 146.25kB 0.0s done\n#41 DONE 0.0s\n\n#42 [frontend build 3/8] COPY package.json package-lock.json ./\n#42 CACHED\n\n#43 [frontend stage-1 2/4] RUN apk add --no-cache --upgrade libxslt=1.1.43-r4\n#43 CACHED\n\n#44 [frontend build 7/8] COPY public ./public\n#44 CACHED\n\n#45 [frontend build 6/8] COPY src ./src\n#45 CACHED\n\n#46 [frontend build 8/8] RUN npm run build\n#46 CACHED\n\n#47 [frontend build 5/8] COPY index.html tsconfig.json vite.config.ts ./\n#47 CACHED\n\n#48 [frontend build 2/8] WORKDIR /src\n#48 CACHED\n\n#49 [frontend stage-1 3/4] COPY nginx.conf /etc/nginx/nginx.conf\n#49 CACHED\n\n#50 [frontend build 4/8] RUN --mount=type=cache,target=/root/.npm npm ci --ignore-scripts --prefer-offline --fetch-retries=5 --fetch-retry-mintimeout=1000 --fetch-retry-maxtimeout=10000 --fetch-timeout=60000\n#50 CACHED\n\n#51 [frontend stage-1 4/4] COPY --from=build /src/dist /usr/share/nginx/html\n#51 CACHED\n\n#52 [frontend] exporting to image\n#52 exporting layers done\n#52 exporting manifest sha256:f48c38c718cc14d7e8f97dc92f65384fc2305a506f55f8bc4705f9e876992da0 0.0s done\n#52 exporting config sha256:f36d0f957b73e1ca12a64b0a58945e6ebcdeac852f4be6fab641017ec0451ebe 0.0s done\n#52 exporting attestation manifest sha256:aa24956a71828ea60feb00d29732ca377d517de5f2a6380e75e1ac2770bae158 0.0s done\n#52 exporting manifest list sha256:38b988a4ca5a27cb73f7ae4f4a1aa370c8932903dfe2870c647dca044658524f 0.0s done\n#52 naming to docker.io/library/campus-material-browser-a569b2bf257f-frontend:latest done\n#52 unpacking to docker.io/library/campus-material-browser-a569b2bf257f-frontend:latest done\n#52 DONE 0.1s\n\n#53 [frontend] resolving provenance for metadata file\n#53 DONE 0.0s\n Image campus-material-browser-a569b2bf257f-backend Building \n Image campus-material-browser-a569b2bf257f-frontend Building \n Image campus-material-browser-a569b2bf257f-mysql Building \n Image campus-material-browser-a569b2bf257f-admin Building \n Image campus-material-browser-a569b2bf257f-mysql Built \n Image campus-material-browser-a569b2bf257f-admin Built \n Image campus-material-browser-a569b2bf257f-backend Built \n Image campus-material-browser-a569b2bf257f-frontend Built \n"
+    },
+    {
+      "label": "start isolated persistent MySQL",
+      "exit_code": 0,
+      "expected": 0,
+      "output": " Network campus-material-browser-a569b2bf257f_data Creating \n Volume campus-material-browser-a569b2bf257f_mysql-data Creating \n Network campus-material-browser-a569b2bf257f_data Creating \n Volume campus-material-browser-a569b2bf257f_mysql-data Creating \n Volume campus-material-browser-a569b2bf257f_mysql-data Created \n Volume campus-material-browser-a569b2bf257f_mysql-data Created \n Network campus-material-browser-a569b2bf257f_data Created \n Network campus-material-browser-a569b2bf257f_data Created \n Container campus-material-browser-a569b2bf257f-mysql-1 Creating \n Container campus-material-browser-a569b2bf257f-mysql-1 Created \n Container campus-material-browser-a569b2bf257f-mysql-1 Starting \n Container campus-material-browser-a569b2bf257f-mysql-1 Started \n Container campus-material-browser-a569b2bf257f-mysql-1 Waiting \n Container campus-material-browser-a569b2bf257f-mysql-1 Healthy \n"
+    },
+    {
+      "label": "migrate real isolated schema",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "identity administration completed\n Container campus-material-browser-a569b2bf257f-admin-run-18e3054c5fe6 Creating \n Container campus-material-browser-a569b2bf257f-admin-run-18e3054c5fe6 Created \n"
+    },
+    {
+      "label": "check real schema and SQL manifest",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "identity administration completed\n Container campus-material-browser-a569b2bf257f-admin-run-c38a2b583d91 Creating \n Container campus-material-browser-a569b2bf257f-admin-run-c38a2b583d91 Created \n"
+    },
+    {
+      "label": "initialize real two-class five-user accounts",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "identity administration completed\n Container campus-material-browser-a569b2bf257f-admin-run-2db4343236bb Creating \n Container campus-material-browser-a569b2bf257f-admin-run-2db4343236bb Created \n"
+    },
+    {
+      "label": "lookup real second class ID",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "=== RUN   TestMFRequestLineEarlyResponse\n=== RUN   TestMFRequestLineEarlyResponse/early_414\n=== RUN   TestMFRequestLineEarlyResponse/incorrect_success\n=== RUN   TestMFRequestLineEarlyResponse/transport_close_without_status\n=== RUN   TestMFRequestLineEarlyResponse/incomplete_headers\n--- PASS: TestMFRequestLineEarlyResponse (0.00s)\n    --- PASS: TestMFRequestLineEarlyResponse/early_414 (0.00s)\n    --- PASS: TestMFRequestLineEarlyResponse/incorrect_success (0.00s)\n    --- PASS: TestMFRequestLineEarlyResponse/transport_close_without_status (0.00s)\n    --- PASS: TestMFRequestLineEarlyResponse/incomplete_headers (0.00s)\n=== RUN   TestIDFWiring\n--- PASS: TestIDFWiring (0.03s)\nPASS\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/integration/wiring\t0.044s\n"
+    },
+    {
+      "label": "start default HTTPS frontend and API",
+      "exit_code": 0,
+      "expected": 0,
+      "output": " Container campus-material-browser-a569b2bf257f-backend-1 Creating \n Network campus-material-browser-a569b2bf257f_ingress Creating \n Network campus-material-browser-a569b2bf257f_ingress Creating \n Network campus-material-browser-a569b2bf257f_ingress Created \n Network campus-material-browser-a569b2bf257f_ingress Created \n Container campus-material-browser-a569b2bf257f-backend-1 Created \n Container campus-material-browser-a569b2bf257f-frontend-1 Creating \n Container campus-material-browser-a569b2bf257f-frontend-1 Created \n Container campus-material-browser-a569b2bf257f-backend-1 Starting \n Container campus-material-browser-a569b2bf257f-backend-1 Started \n Container campus-material-browser-a569b2bf257f-backend-1 Waiting \n Container campus-material-browser-a569b2bf257f-backend-1 Healthy \n Container campus-material-browser-a569b2bf257f-frontend-1 Starting \n Container campus-material-browser-a569b2bf257f-frontend-1 Started \n Container campus-material-browser-a569b2bf257f-backend-1 Waiting \n Container campus-material-browser-a569b2bf257f-frontend-1 Waiting \n Container campus-material-browser-a569b2bf257f-backend-1 Healthy \n Container campus-material-browser-a569b2bf257f-frontend-1 Healthy \n"
+    },
+    {
+      "label": "resolve own frontend",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "a8ace23942431df9afd1d3043808664605b9b05bc9e69413e7f109d918953087\n"
+    },
+    {
+      "label": "inspect actual published HTTPS port",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "{\"443/tcp\":[{\"HostIp\":\"127.0.0.1\",\"HostPort\":\"32776\"}]}\n"
+    },
+    {
+      "label": "align trusted origin to allocated host port",
+      "exit_code": 0,
+      "expected": 0,
+      "output": " Container campus-material-browser-a569b2bf257f-backend-1 Recreate \n Container campus-material-browser-a569b2bf257f-backend-1 Recreated \n Container campus-material-browser-a569b2bf257f-backend-1 Starting \n Container campus-material-browser-a569b2bf257f-backend-1 Started \n Container campus-material-browser-a569b2bf257f-backend-1 Waiting \n Container campus-material-browser-a569b2bf257f-backend-1 Healthy \n"
+    },
+    {
+      "label": "controlled failed state for own isolated material",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "1\n"
+    },
+    {
+      "label": "real native browser with trusted TLS and MySQL",
+      "exit_code": 0,
+      "result": "pass",
+      "cases": 18,
+      "browser": "144.0.2",
+      "profileRemoved": true
+    },
+    {
+      "label": "remove only own browser project and volume",
+      "exit_code": 0,
+      "expected": 0,
+      "output": " Container campus-material-browser-a569b2bf257f-frontend-1 Stopping \n Container campus-material-browser-a569b2bf257f-mysql-1 Stopping \n Container campus-material-browser-a569b2bf257f-frontend-1 Stopped \n Container campus-material-browser-a569b2bf257f-frontend-1 Removing \n Container campus-material-browser-a569b2bf257f-frontend-1 Removed \n Container campus-material-browser-a569b2bf257f-backend-1 Stopping \n Container campus-material-browser-a569b2bf257f-backend-1 Stopped \n Container campus-material-browser-a569b2bf257f-backend-1 Removing \n Container campus-material-browser-a569b2bf257f-backend-1 Removed \n Container campus-material-browser-a569b2bf257f-mysql-1 Stopped \n Container campus-material-browser-a569b2bf257f-mysql-1 Removing \n Container campus-material-browser-a569b2bf257f-mysql-1 Removed \n Volume campus-material-browser-a569b2bf257f_mysql-data Removing \n Network campus-material-browser-a569b2bf257f_ingress Removing \n Network campus-material-browser-a569b2bf257f_data Removing \n Volume campus-material-browser-a569b2bf257f_mysql-data Removed \n Network campus-material-browser-a569b2bf257f_data Removed \n Network campus-material-browser-a569b2bf257f_ingress Removed \n"
+    },
+    {
+      "label": "remove own proxy network",
+      "exit_code": 0,
+      "expected": 0,
+      "output": "campus-material-browser-a569b2bf257f\n"
+    }
+  ],
+  "errors": [],
+  "exit_code": 0
+}

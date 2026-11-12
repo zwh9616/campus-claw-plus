@@ -1,0 +1,82 @@
+{
+  "run": 43194409869,
+  "url": "https://github.com/zwh9616/campus-claw-plus/actions/runs/43194409869",
+  "head": "b4b13fde47bf39f2d478ff6a2721df23a04680d9",
+  "artifact": 13931299762,
+  "digest": "sha256:29596aba7789163b7980494244bb6391ac1e74173403e8652fda23582aa32a11",
+  "source": {
+    "commit": "b4b13fde47bf39f2d478ff6a2721df23a04680d9",
+    "dirty": false,
+    "fingerprint": "2082f39f902a17fea5ee5d81c2b56752b51dc8fa12d650a7e56a245d5234d129"
+  },
+  "gate": [
+    {
+      "name": "check",
+      "exit": 0,
+      "duration_ms": 42243
+    },
+    {
+      "name": "audit",
+      "exit": 0,
+      "duration_ms": 749
+    },
+    {
+      "name": "secret-scan",
+      "exit": 0,
+      "duration_ms": 1239
+    },
+    {
+      "name": "verify",
+      "exit": 0,
+      "duration_ms": 151759
+    }
+  ],
+  "images": [
+    {
+      "service": "mysql",
+      "image_id": "sha256:0a8db74b16481f60d03961bb72add26583317429c6ea929f5ef6203d102bb342",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "admin",
+      "image_id": "sha256:aaab356f8080623092db54e90680e80fbca996f7775c87cc8c8c80e6dd06c85c",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "backend",
+      "image_id": "sha256:3c5884baaad9465078ab196ff218d4c6bdb9fbcb750fd8dd863e01d809cc5ef1",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "frontend",
+      "image_id": "sha256:7c6580f22bc06e3081000c5e85b334e7db94a6eeae71bdff6855378aa11a1a13",
+      "HIGH": 0,
+      "CRITICAL": 0
+    }
+  ],
+  "cleanup": [
+    {
+      "tag": "campus-mysql-audit-afa613e9fe90:verification",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "tag": "campus-app-audit-85fea9944710-backend:verification",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "tag": "campus-app-audit-85fea9944710-admin:verification",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "tag": "campus-app-audit-85fea9944710-frontend:verification",
+      "exit_code": 0,
+      "ok": true
+    }
+  ]
+}
