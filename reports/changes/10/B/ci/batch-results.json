@@ -1,0 +1,131 @@
+{
+  "time": "2026-11-12T08:18:39.390Z",
+  "exit_code": 0,
+  "scope": "DO-SC-11..13 current identity/materials batch; no independent reviewer or full10B/C claim",
+  "source": {
+    "commit": "c4daafb70697bdd0e91da8c18a3aad5725da304c",
+    "dirty": false,
+    "fingerprint": "eeead951b3bdd0d99cea7fde73c5061ef45ef3a34d1ce5dcf9c4d5504ea6f175"
+  },
+  "inventory": {
+    "batch": "identity-materials",
+    "review_status": "pending_ge_review",
+    "sources": [
+      {
+        "service": "mysql",
+        "dockerfile": "deploy/identity/mysql/Dockerfile",
+        "dockerfile_sha256": "055eb6378eb40d305b7a28ea9d4a735bfd5e0137a806e330799965074e999c5a",
+        "target": null,
+        "from": [
+          "golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb",
+          "mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902"
+        ]
+      },
+      {
+        "service": "admin",
+        "dockerfile": "backend/Dockerfile.identity",
+        "dockerfile_sha256": "a78bf59efa36cd4ae91cefcbd1406a569b04f0930948604b4c547fdc993c2c82",
+        "target": "admin",
+        "from": [
+          "golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb",
+          "scratch",
+          "scratch"
+        ]
+      },
+      {
+        "service": "backend",
+        "dockerfile": "backend/Dockerfile",
+        "dockerfile_sha256": "d2acdc74c62d5b4ac69116513207e76091c8deab136ce234567577ff4c760fd2",
+        "target": null,
+        "from": [
+          "golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb",
+          "scratch"
+        ]
+      },
+      {
+        "service": "frontend",
+        "dockerfile": "frontend/Dockerfile",
+        "dockerfile_sha256": "1ab71112b10a18955e12a43fc72262192562633d163af9bbde5ee8a9d61fda79",
+        "target": null,
+        "from": [
+          "node@sha256:fe4f6d74e20370acb04ad889077d14d0f64a9c8ea6a42bc60cddf1e844699914",
+          "nginx@sha256:583b7f2fce1cdb8da5ad5c39ebd3c33b98b87d493190e548bdee1fa8c619c311"
+        ]
+      }
+    ],
+    "probe_timeout_ms": 3000,
+    "deployment_wait_ms": 120000
+  },
+  "stages": {
+    "exitCode": 0,
+    "results": [
+      {
+        "name": "scripts/verify-image-audits.mjs",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 64584
+      },
+      {
+        "name": "scripts/verify-skeleton.mjs",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 74752
+      },
+      {
+        "name": "scripts/verify-identity.mjs",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 27356
+      }
+    ],
+    "notRun": []
+  },
+  "images": [
+    {
+      "service": "mysql",
+      "image_id": "sha256:45acfd7a90db7062ea3b3d1ae0f965c798ffea08a8e7dd2149d60e8f356a487e",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "admin",
+      "image_id": "sha256:0aa98ba98008c97ceaf9d41d443e4d5028d4d3e28c054e2960919e1b0d4f3b8d",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "backend",
+      "image_id": "sha256:9ed05b3baf73ec1a6d646931fffd2407b7a748e426173a5839db01873b0ef93b",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "frontend",
+      "image_id": "sha256:e885d31c6a176acdeb7cb1d01886b00ef188e8a05e8fa510eb8699020970d5fb",
+      "HIGH": 0,
+      "CRITICAL": 0
+    }
+  ],
+  "evidence": [
+    {
+      "path": "output/mysql-image-verify/results.json",
+      "sha256": "79c6f1d8bd05b95e7655799fbd5194791ff21d58f84ec9f002590fc9864fc3d3"
+    },
+    {
+      "path": "output/application-image-verify/results.json",
+      "sha256": "8a37d11ffaeb12e99492879e9a7104304cdd1f3ed5549a4211a713def2587624"
+    },
+    {
+      "path": "output/identity-wiring/results.json",
+      "sha256": "b348566fefd55f5d8bd9f0072096da71cae1637421a8e1acb42aacdb42ec852a"
+    },
+    {
+      "path": "output/identity/results.json",
+      "sha256": "06cf53a8aebdc62d29e072b9cc736f62a7b5a05600a380f9483943d9cdff3901"
+    }
+  ],
+  "finished_at": "2026-11-12T08:21:26.342Z"
+}

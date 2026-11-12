@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
+	"time"
 )
 
 func TestProbeContract(t *testing.T) {
@@ -37,6 +38,36 @@ func TestProbeContract(t *testing.T) {
 			err := Check(context.Background(), server.URL)
 			if (err == nil) != test.valid {
 				t.Fatalf("valid=%v err=%v", test.valid, err)
+			}
+		})
+	}
+}
+
+// DO-SC-12: both header waits and slow bodies must fail inside the approved3s
+// total probe budget. The former3.5s client would accept these valid responses.
+func TestDOProbeRejectsSlowHeadersAndBody(t *testing.T) {
+	for _, bodyFirst := range []bool{false, true} {
+		t.Run(map[bool]string{false: "headers", true: "body"}[bodyFirst], func(t *testing.T) {
+			t.Parallel()
+			server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+				w.Header().Set("Content-Type", "application/json")
+				w.Header().Set("X-Request-ID", "0123456789abcdef0123456789abcdef")
+				if bodyFirst {
+					w.WriteHeader(http.StatusOK)
+					w.(http.Flusher).Flush()
+				}
+				timer := time.NewTimer(3200 * time.Millisecond)
+				defer timer.Stop()
+				select {
+				case <-r.Context().Done():
+					return
+				case <-timer.C:
+					_, _ = w.Write([]byte(`{"status":"ok","dependencies":{"mysql":"up"}}`))
+				}
+			}))
+			defer server.Close()
+			if err := Check(context.Background(), server.URL); err == nil {
+				t.Fatal("probe accepted a response outside its3s total budget")
 			}
 		})
 	}

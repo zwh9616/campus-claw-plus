@@ -7,6 +7,9 @@ import { parseEnv } from 'node:util'
 import { validateWiringInputs } from './identity-compose.mjs'
 import { hostRequest, verifyHostIngress } from './identity-host-ingress.mjs'
 import { verificationSubnets } from './verification-subnets.mjs'
+import { auditedImageServices, validateBatch, loadBatchInputs } from './service-batches.mjs'
+
+const useAuditedImages = process.argv.includes('--audited-images')
 
 const { goImage } = JSON.parse(readFileSync('scripts/toolchain.json', 'utf8'))
 const id = 'campus-wiring-' + randomBytes(6).toString('hex')
@@ -18,15 +21,18 @@ let validContainer
 let secrets = [], failed = false, configured = false, createdNetwork = false, env = {}
 const redact = text => secrets.reduce((out, s) => out.split(s).join('<redacted>'), text).replaceAll(directory, '<fixture-directory>')
 function run(label, args, { input, expected = 0, timeout = 300000, environment } = {}) {
+  const started = performance.now()
   const result = spawnSync('docker', args, { encoding: 'utf8', timeout, input, env: environment ?? process.env, maxBuffer: 8*1024*1024 })
-  evidence.push({ label, exit_code: result.status, expected, output: redact((result.stdout ?? '') + (result.stderr ?? '')) })
+  evidence.push({ label, exit_code: result.status, expected, duration_ms: Math.round(performance.now()-started), output: redact((result.stdout ?? '') + (result.stderr ?? '')) })
   if (expected === 'nonzero' ? result.status === 0 || result.status === null : result.status !== expected) throw new Error(`${label}: unexpected exit status; sanitized evidence saved`)
   console.log(`${label}: PASS (exit ${result.status})`)
   return result.stdout ?? ''
 }
 const goArgs = ['run', '--rm', '-e', 'GOTOOLCHAIN=local', '-v', 'campus-claw-plus-go-modules:/go/pkg/mod', '-v', 'campus-claw-plus-go-cache:/root/.cache/go-build', '--mount', `type=bind,source=${resolve('backend')},target=/src,readonly`, '-w', '/src']
 const composeArgs = ['compose', '--project-name', id, '--env-file', resolve(directory, 'compose.env'), '--file', 'compose.yaml', '--file', resolve(directory,'network-override.json')]
-const compose = (label, args, options = {}) => run(label, [...composeArgs, ...args], { ...options, environment: { ...process.env, ...env, ...options.overrides } })
+const compose = (label, args, options = {}) => run(label, [...composeArgs,
+  ...(useAuditedImages && args[0] === 'up' ? ['up', '--no-build', '--pull', 'never', ...args.slice(1)] : args)],
+  { ...options, environment: { ...process.env, ...env, ...options.overrides } })
 const client = (phase, label) => {
   run(label, [...goArgs, '--network', phase==='lookup'?id+'_data':id, '-e', `WIRING_EXPECT=${phase}`, '--mount', `type=bind,source=${directory},target=/fixtures`, goImage, 'go', 'test', '-count=1', '-tags=integration', '-timeout=60s', '-v', './internal/integration/wiring'])
   const proof = resolve(directory, 'credential-proof')
@@ -84,6 +90,13 @@ try {
 try {
   if (failed) throw new Error('Wiring preparation failed')
   compose('build pinned MySQL, offline admin and production applications', ['--profile', 'tools', 'build', 'mysql', 'admin', 'backend', 'frontend'])
+  if (useAuditedImages) {
+    const services = auditedImageServices(JSON.parse(readFileSync('output/mysql-image-verify/results.json')),
+      JSON.parse(readFileSync('output/application-image-verify/results.json')), validateBatch(loadBatchInputs()))
+    const path = resolve(directory, 'network-override.json')
+    writeFileSync(path, JSON.stringify({ ...JSON.parse(readFileSync(path)), services }))
+    evidence.push({ label: 'DO-SC-11 exact audited artifacts selected; rebuild/pull disabled for runtime', exit_code: 0, services })
+  }
   compose('start fresh persistent MySQL', ['up', '-d', '--wait', '--wait-timeout', '120', 'mysql'])
   compose('offline migrations', ['run', '--rm', '-T', 'admin', 'migrate'])
   compose('offline manifest/schema check', ['run', '--rm', '-T', 'admin', 'check'])
@@ -124,6 +137,23 @@ try {
   // categories on the new default artifact; no skeleton server or alternate health.
   const image = compose('resolve production backend image', ['images', '-q', 'backend']).trim()
   assert.match(image, /^(sha256:)?[a-f0-9]{12,64}$/)
+  const runtimeImages = []
+  for (const service of ['mysql', 'backend', 'frontend']) {
+    const container = compose('resolve own ' + service + ' for image validation', ['ps', '-q', service]).trim()
+    assert.match(container, /^[a-f0-9]{64}$/)
+    const imageId = run('DO-SC-13 record actual ' + service + ' image', ['inspect', '--format', '{{.Image}}', container]).trim()
+    assert.match(imageId, /^sha256:[a-f0-9]{64}$/)
+    runtimeImages.push({ service, image_id: imageId })
+    const config = run('DO-SC-13 inspect ' + service + ' image configuration', ['image', 'inspect', '--format', '{{json .Config}}', imageId])
+    const history = run('DO-SC-13 inspect ' + service + ' image history', ['history', '--no-trunc', '--format', '{{.CreatedBy}}', imageId])
+    if (secrets.some(secret => config.includes(secret) || history.includes(secret))) throw new Error('Runtime credential found in image metadata')
+  }
+  const assets = spawnSync('docker', [...composeArgs, 'exec', '-T', 'frontend', 'sh', '-c', 'find /usr/share/nginx/html -type f -exec cat {} +'],
+    { encoding: 'utf8', timeout: 15000, env: { ...process.env, ...env }, maxBuffer: 8 * 1024 * 1024 })
+  if (assets.status !== 0 || !assets.stdout?.length) throw new Error('Built frontend assets unavailable for private-value check')
+  if (secrets.some(secret => assets.stdout.includes(secret)) || /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/.test(assets.stdout)) throw new Error('Private value appeared in built frontend')
+  evidence.push({ label: 'DO-SC-13 actual runtime images and frontend exclude generated credentials', exit_code: 0,
+    images: runtimeImages, output: 'Image metadata/history and all served asset bytes checked; asset bytes omitted' })
   for (const [name, value] of [['missing', undefined], ['empty', ''], ['whitespace', '   '], ['letters', 'abc'], ['zero', '0'], ['negative', '-1'], ['aboveMaximum', '65536']]) {
     const args = ['run', '--rm', '--network', 'none']
     if(value !== undefined) args.push('-e', 'HTTP_PORT='+value)
@@ -158,6 +188,17 @@ try {
   if (secrets.some(secret => logs.includes(secret))) throw new Error('secret appeared in application log')
   compose('stop database only', ['stop', '--timeout', '15', 'mysql'])
   client('down', 'real database-down health 503 and login 503 without credentials')
+  const downProbeStarted = performance.now()
+  compose('DO-SC-12 production probe rejects real database outage', ['exec', '-T', 'backend', '/server', '--healthcheck'], { expected: 'nonzero', timeout: 5000 })
+  const downHealth = await hostRequest({ port: publishedPort, ca: readFileSync(resolve(directory, 'ca.pem')) })
+  assert.equal(downHealth.status, 503)
+  assert.deepEqual(JSON.parse(downHealth.body), { status: 'error', dependencies: { mysql: 'down' } })
+  assert.match(downHealth.headers['x-request-id'], /^[a-f0-9]{32}$/)
+  const staticPage = await hostRequest({ port: publishedPort, ca: readFileSync(resolve(directory, 'ca.pem')), path: '/' })
+  assert.equal(staticPage.status, 200)
+  assert.match(staticPage.body, /<html[\s>]/i)
+  evidence.push({ label: 'DO-SC-12 DB-down host503 and independent static homepage200', exit_code: 0,
+    duration_ms: Math.round(performance.now()-downProbeStarted), health_status: downHealth.status, static_status: staticPage.status })
   compose('restore database', ['up', '-d', '--wait', '--wait-timeout', '90', 'mysql'])
   client('persist', 'account and class persist after database restart')
   compose('remove candidate containers while retaining named data volume', [ 'down', '--timeout', '15'])

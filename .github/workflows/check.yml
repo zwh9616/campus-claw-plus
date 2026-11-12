@@ -44,4 +44,5 @@ jobs:
             output/identity/results.json
             output/identity-wiring/results.json
             output/verification/gate-results.json
+            output/service-batches/results.json
           if-no-files-found: ignore

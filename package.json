@@ -14,10 +14,10 @@
     "check:foundation": "node scripts/check-foundation.mjs",
     "check:backend": "node scripts/check-backend.mjs",
     "check:spec": "openspec validate --all --strict",
-    "check": "npm run check:foundation && npm run check:gate && npm run check:contracts && npm run check:identity-wiring && npm run check:frontend-auth && npm run typecheck && npm run build && npm run check:sample-isolation && npm run check:backend && npm run check:spec",
+    "check": "npm run check:foundation && npm run check:gate && npm run check:contracts && npm run check:service-batches && npm run check:identity-wiring && npm run check:frontend-auth && npm run typecheck && npm run build && npm run check:sample-isolation && npm run check:backend && npm run check:spec",
     "test": "npm run check:backend",
     "audit": "npm audit --audit-level=high && npm audit --prefix frontend --audit-level=high",
-    "verify": "node scripts/verify-image-audits.mjs && node scripts/verify-skeleton.mjs && node scripts/verify-identity.mjs",
+    "verify": "node scripts/verify-service-batches.mjs",
     "prepare:scan-db": "node scripts/verify-image-audits.mjs --prepare-only",
     "secret-scan": "node scripts/check-secrets.mjs",
     "check:contracts": "node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs scripts/contracts/identity-phase.test.mjs scripts/contracts/materials.test.mjs scripts/contracts/assignments.test.mjs",
@@ -28,7 +28,8 @@
     "verify:identity": "node scripts/verify-identity.mjs",
     "verify:identity-wiring": "node scripts/verify-identity-wiring.mjs",
     "verify:materials-browser": "node scripts/verify-materials-browser.mjs",
-    "check:identity-wiring": "node --test scripts/identity-wiring.test.mjs scripts/application-image-report.test.mjs"
+    "check:identity-wiring": "node --test scripts/identity-wiring.test.mjs scripts/application-image-report.test.mjs",
+    "check:service-batches": "node scripts/check-service-batches.mjs && node --test scripts/service-batches.test.mjs"
   },
   "devDependencies": {
     "@apidevtools/swagger-parser": "13.1.0",

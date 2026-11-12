@@ -14,6 +14,7 @@ mkdirSync(directory, { recursive: true })
 for (const name of ['results', 'backend', 'admin', 'frontend']) rmSync(resolve(parent, name + '.json'), { force: true })
 const { volume: cacheVolume, owned: ownsCache } = auditCache(id)
 const results = [], images = [], summaries = []
+const retainImages = process.argv.includes('--retain-images')
 let failed = false
 function run(label, args, timeout = 180000) {
   const child = spawnSync('docker', args, { encoding: 'utf8', timeout, maxBuffer: 8 * 1024 * 1024 })
@@ -59,7 +60,7 @@ try {
 } finally {
   for (const [label, args, absent] of [
     ['remove own scanner if timed out', ['rm', '-f', id + '-scanner'], 'No such container'],
-    ...images.map(image => ['remove own image tag', ['image', 'rm', image], 'No such image']),
+    ...(!retainImages || failed ? images.map(image => ['remove own image tag', ['image', 'rm', image], 'No such image']) : []),
     ...(ownsCache ? [['remove own scanner cache', ['volume', 'rm', cacheVolume], 'no such volume']] : []),
   ]) {
     const child = spawnSync('docker', args, { encoding: 'utf8', timeout: 30000 })
@@ -67,6 +68,7 @@ try {
     if (child.status !== 0 && !(child.stderr ?? '').includes(absent)) failed = true
   }
   rmSync(directory, { recursive: true, force: true })
-  writeFileSync(resolve(parent, 'results.json'), JSON.stringify({ time: new Date().toISOString(), scanner, results, summaries, exit_code: failed ? 1 : 0 }, null, 2) + '\n')
+  writeFileSync(resolve(parent, 'results.json'), JSON.stringify({ time: new Date().toISOString(), scanner, results, summaries,
+    retained_tags: retainImages && !failed ? images : [], exit_code: failed ? 1 : 0 }, null, 2) + '\n')
 }
 process.exitCode = failed ? 1 : 0

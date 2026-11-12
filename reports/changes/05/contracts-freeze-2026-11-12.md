@@ -29,3 +29,5 @@
 原`npm run gate`的check/audit/secret-scan/verify四段均退出0，notRun为空；四个实际镜像HIGH/CRITICAL全0，原身份/资料/可信HTTPS、停库/恢复、保留卷重建、迁移与隔离备份恢复保留通过。13个现有操作对象与main逐项一致；本轮没有backend/frontend/deploy/Compose/配置或SQL修改。[汇总](contracts/gate-summary.json) · [原始JSON ZIP](contracts/gate-raw-json.zip) · [初次Schema失败/授权红绿/完整门禁日志](contracts/contract-check-logs.zip)
 
 原提交前扫描命中的合成键已替换为有效低熵样例；全历史/暂存扫描及原完整gate中的扫描均通过，没有增豁免或缩小范围。后续仅补本次证据与排版，最终head的PR CI仍须独立核对。真实05业务、并发/任务/迁移测试仍未实施，机器合同1.3仍待小陈实际审定/合入。
+
+验证期间#32由小葛真实批准510e882并正常合入main b4b13fd，主干CI43194409869成功；本提交逐行整合最新main，保留其全部服务批次/3秒探针/同轮同制品/30次严格414门禁及既有证据，05合同不取用未合入分支。92246e2原gate结果只对应旧基线；当前整合版须再跑完整gate，不以旧成功替代。#34集成补记另由小葛审，原#33也保持实际门禁，不代批准。
