@@ -103,9 +103,9 @@ apply时才交真实上下行SQL、manifest摘要、逐DDL故障点和前后置�
 
 小张apply/自测并同提交同步共享表；交小陈在最终head独立复跑关键竞争与真实HTTPS权限/恢复，按远端保护正常合入，复验main后归档。真实模型、成绩、真实作业页面仍归后续变更，不能用本项受控执行器勾选它们。
 
-### D9 机器合同冻结候选（2026-11-12，待小陈审定）
+### D9 机器合同冻结（2026-11-12，#35已审定合入）
 
-规约#31已由小张批准并合入main da8624c；本节落实D0/D8允许的公共合同冻结步骤，仍不表示业务apply获准。九个操作在本候选OpenAPI/端点登记为frozen，原13个current操作及精确目标4不变，机器合同须小陈审定并正常合入后才可实施。
+规约#31已由小张批准并合入main da8624c；本节落实D0/D8允许的公共合同冻结步骤。小陈已对#35最终7fe5b5d实际批准5872964547，正常合入main e617cc0并通过完整CI43202284398，1.3完成，可交小张按2.x实施。九个操作在OpenAPI/端点登记为frozen，原13个current操作及精确目标4不变；真实05业务/迁移/worker尚未实现，不能因合同冻结提前改为current。[审定及main验收](../../../reports/changes/05/contracts-main-integration-2026-11-12.md)
 
 - 资源只使用单源Schema：Assignment/Submission、创建请求、SubmissionAccepted、TaskVersionRequest、两种具体Page及分页/提交幂等键。请求字段引用资源字段，分页复用MaterialListParameters的现有1/20默认、50页长和2147483647页码上限，避免复制类型。对象封闭且字段必需；JSON类型检查不能代替原始UTF-8/重复键/流式字节门禁。
 - Task字段名及D5状态机不改。按D5冻结两种安全任务内错误：EXECUTION_FAILED/“任务执行失败”、RETRY_EXHAUSTED/“重试次数已用尽”；failed才可有非空错误、耗尽错误须第三次claim，pending/failed/succeeded的取消标记为false，cancelled为true。版本/epoch/时间的示例关联另做语义检查，真实CAS仍待apply。

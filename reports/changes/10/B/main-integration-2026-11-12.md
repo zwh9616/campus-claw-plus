@@ -44,3 +44,10 @@ Windows，Node24.22.1/npm10.5.0/Go1.27.3。本次仅改变进度、任务、文�
 本次在原#34分支先快进保留小葛510cf58全部修改，再合入已通过完整CI43202284398的main e617cc0；只手工合并共享表顶部及10行两处冲突，保留main全部05合同/测试/Task耗尽修复，不改业务运行代码或门禁。05公共合同#35已获真实批准并正常合入，1.3验收补记交[#36](https://github.com/zwh9616/campus-claw-plus/pull/36)由小张审查；后续10-B增量等05真实实现，不把合同冻结当服务已接入。
 
 本次同步后的Windows Node24.22.1/npm10.5.0/Go1.27.3实际执行npm run check/audit/secret-scan及diff检查均0，包含合同26项、前端28项、批次8项、Go及strict10/10；完整本机verify因缺Docker未重跑，最终head完整CI/小葛实际终审仍须重新核对，不沿用旧head绿灯或伪造自己的PR批准。见[命令及原件索引](main-integration/sync-e617-local-checks.json)。原四份未跟踪文件哈希不变，没有提交个人配置或凭据。
+
+
+## 小陈同步main b63dfdd（2026-11-12）
+
+上轮eede651完整CI43204463920已成功，原始artifact13937201648重新核验通过，已交小葛；随后小张对#36最终486852f实际批准5873233078并正常合入main b63dfdd，形成新的共享表冲突。本次只在五处共享表冲突内保留main最新05验收/1.3与小张复核，保留本分支小葛复核及10-B首批验收行；不整文件选一侧，不改运行代码、合同、任务完成依据或他人历史失败。
+
+本次Windows Node24.22.1/npm10.5.0/Go1.27.3实际完整check/audit/diff均0（26合同、28前端、8批次、Go、strict10/10），见[命令与原件](main-integration/sync-b63-local-checks.json)。完整本机verify因缺Docker未重跑。记录时main b63dfdd完整CI43205383891尚在进行，不提前宣称通过；本提交最终head完整CI、当前main检查及小葛实际批准仍须按远端核对。

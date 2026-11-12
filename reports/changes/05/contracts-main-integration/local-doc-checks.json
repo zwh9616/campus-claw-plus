@@ -1,0 +1,40 @@
+{
+  "checked_at": "2026-11-12T10:47:01.822Z",
+  "source_base": "e617cc00f067cfee84aca0fd69687c385c9b2982",
+  "scope": "05 contract integration acceptance documentation; no runtime code/configuration changes",
+  "environment": {
+    "platform": "win32",
+    "node": "v24.22.1"
+  },
+  "checks": [
+    {
+      "command": "npm.cmd run check:foundation",
+      "exit_code": 0,
+      "signal": null,
+      "duration_ms": 479,
+      "output": "\n> campus-claw-plus@0.0.1 check:foundation\n> node scripts/check-foundation.mjs\n\nFoundation: rule/skill entry points exist, sample keys are empty, .env is ignored, Nginx runtime digest matches its register.\nThis check is separate from real authorization review and full-history secret scanning.\n"
+    },
+    {
+      "command": "npm.cmd run check:spec",
+      "exit_code": 0,
+      "signal": null,
+      "duration_ms": 1521,
+      "output": "\n> campus-claw-plus@0.0.1 check:spec\n> openspec validate --all --strict\n\n✓ change/2026-11-04-business-contracts\n✓ change/2026-11-05-delivery-observability\n✓ change/2026-11-05-reviewer-fix-workflow\n✓ change/2026-11-06-identity-public-contracts\n✓ change/2026-11-11-materials-frontend\n✓ change/2026-11-12-assignment-tasks\n✓ spec/frontend-foundation\n✓ spec/identity-foundation\n✓ spec/materials-retrieval\n✓ spec/project-bootstrap\nTotals: 10 passed, 0 failed (10 items)\n- Validating...\n"
+    },
+    {
+      "command": "npm.cmd run check:contracts",
+      "exit_code": 0,
+      "signal": null,
+      "duration_ms": 2594,
+      "output": "\n> campus-claw-plus@0.0.1 check:contracts\n> node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs scripts/contracts/identity-phase.test.mjs scripts/contracts/materials.test.mjs scripts/contracts/assignments.test.mjs\n\nContracts: 42 schemas; 215 positive/negative fixtures, 6 semantic inputs and 30 generated boundary cases agree in both paths; 155 operation examples; 13 current identity/health/material operations and 9 frozen assignment operations. Other planned operations absent.\n✔ AT-SC-01 nine frozen contracts cannot activate early or admit an unreviewed operation (30.3891ms)\n✔ AT-SC-02/03/08 actions, owner chain and original class precede all business conditions (20.1231ms)\n✔ AT-SC-04 input framing, exact parameters, independent quota and error responses stay closed (26.8772ms)\n✔ AT-SC-05..08 only committed authorized same-payload records replay the original 202 before new conditions (19.7301ms)\n✔ AT-SC-06 canonical payload bytes and digest match five independently generated Go vectors (3.8985ms)\n✔ AT-SC-04 request byte cap is distinct from codepoint cap; deadline equality fails (2.8869ms)\n✔ AT-SC-02/03 consistent pages sort created time before exact string ID tie-breaks (0.5096ms)\n✔ AT-SC-09..19 task mechanism declarations forbid fake production execution, stale CAS and cancellation revival (30.6038ms)\n✔ AT-SC-09/13..18 Task snapshots preserve safe errors, counts, version and cancellation flags (1.0814ms)\n✔ AT-SC-13/14/15 pending cannot requeue an exhausted third claim (0.2662ms)\n✔ ICF-SC-01/02 active identity health is unique and anonymous; no skeleton fallback (18.1195ms)\n✔ ICF-SC-03/04 activation preserves required, process-separated secret metadata (22.2963ms)\n✔ ICF-SC-05/06 available SQL rejects duplicates, forward dependencies and false deployment claims (11.7687ms)\n✔ MR-SC-01/02 six implemented contracts preserve activation and identity/class/role declarations (33.7089ms)\n✔ MR-SC-03/04/05/06 wire declarations reject unknown inputs, missing quotas, wrong replay and download headers (36.7888ms)\n✔ MR-SC-07/08/10 dependency failures must remain 503/504, not a successful empty search (6.6271ms)\n✔ MR-SC-04 Unicode examples enforce original UTF-8 bytes, normalized whitespace and title codepoints (7.6907ms)\n✔ MR-SC-01/03 material examples preserve original byte size, canonical detail and unique pagination (1.4862ms)\n✔ MR-SC-03/09 optional query defaults remain 1/20 and keyword/4 in sole-source schemas (0.6871ms)\n✔ MR-SC-09/10 citation examples bind codepoint range, exact quote, source/version, URL and literal query (1.1618ms)\n✔ BC-SC-06 accepts trusted rubric, rejects incorrect grading, stale and missing context (3.0076ms)\n✔ BC-SC-05 nonempty Citation codepoint range (0.2226ms)\n✔ BC-SC-08/14 terminal sequence, cancellation and disconnected persistence (0.7717ms)\n✔ BC-SC-10 MCP exception remains exact, disabled and subject to both future reviews (1.0986ms)\n✔ BC-SC-09 registered empty keys only; no weakening historical HTTP_PORT requirement (6.3015ms)\n✔ BC-SC-18 planned operations and anonymous auth bypass cannot enter OpenAPI (102.4283ms)\nℹ tests 26\nℹ suites 0\nℹ pass 26\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 345.505\n"
+    },
+    {
+      "command": "resolve relative Markdown link targets in the five changed documents",
+      "exit_code": 0,
+      "checked_links": 79
+    }
+  ],
+  "runtime_not_rerun_locally": "Docker command unavailable; actual PR and main complete CI with runtime evidence are recorded separately",
+  "original_four_untracked_files_unchanged": true,
+  "exit_code": 0
+}
