@@ -1,0 +1,21 @@
+✔ DO-SC-11/13 current batch covers only real approved services/configuration and pinned sources (17.0624ms)
+✔ DO-SC-11 unregistered services, wrong build target/network and inactive keys block check (28.8741ms)
+✔ DO-SC-12 exactly3s probes pass while4s/image drift and unpinned base fail (12.2412ms)
+✔ DO-SC-11/12 current real reports produce four immutable artifact IDs; fixtures are structural tests only (4.5389ms)
+✔ DO-SC-11/13 stale/missing/failed evidence, source mismatch and high vulnerabilities block (28.9861ms)
+✔ DO-SC-11/12 every real05 SQL/worker suite and recovery step is mandatory; zero exit without tests is insufficient (199.531ms)
+✔ DO-SC-12 each real HTTPS phase must prove05 pending persistence, without failed/skipped/nested substitute tests (31.5232ms)
+✔ DO-SC-12 backup success text and duplicate HTTPS phases cannot substitute for real complete evidence (4.1246ms)
+✔ DO-SC-03/11 npm verify retains the original three real programs and CI retains the new summary (0.4132ms)
+✔ DO-SC-11 exact audited IDs are selected with no pulls; incomplete/unsafe scans cannot start runtime (13.2983ms)
+✔ DO-SC-11 verification cleanup excludes old reports and unrelated image references (2.3576ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 450.0415
+
+exit=0

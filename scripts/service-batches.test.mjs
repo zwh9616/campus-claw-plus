@@ -1,7 +1,8 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
-import { loadBatchInputs, validateBatch, validateRuntimeEvidence, evidencePaths, runtimeSteps, auditedImageServices, retainedImageTags } from './service-batches.mjs'
+import { loadBatchInputs, validateBatch, validateRuntimeEvidence, evidencePaths, runtimeSteps, auditedImageServices, retainedImageTags,
+  assignmentTests, assignmentRecoverySteps, assignmentHTTPSPhases } from './service-batches.mjs'
 
 const inputs = () => loadBatchInputs()
 const valid = () => {
@@ -21,6 +22,18 @@ const valid = () => {
     images: ['mysql', 'backend', 'frontend'].map(service => ({ service, image_id: id })) })
   reports[evidencePaths[3]].results = ['real MySQL identity scenarios', 'real consistent v3 mysqldump',
     'actual old artifact rejection and restored identities'].map(label => ({ label, exit_code: 0 }))
+  // These reports only exercise the validator. Real05 output is still produced by the original Docker programs.
+  const passed = names => names.map(name => `--- PASS: ${name} (0.01s)`).join('\n')
+  reports[evidencePaths[3]].results[0].output = passed(assignmentTests)
+  reports[evidencePaths[3]].results.push(...assignmentRecoverySteps.map(label => ({ label, exit_code: 0,
+    output: label === assignmentRecoverySteps.at(-1) ? passed(['TestATBackupRestoreAndActualTargetMatrix']) : '' })))
+  for (const label of assignmentHTTPSPhases) {
+    const step = reports[evidencePaths[2]].results.find(s => s.label === label)
+    const result = { label, exit_code: 0, output: passed(['TestIDFWiring']) +
+      '\nAT-SC-01..08/21 default HTTPS authorization, durable 202 and genuine pending persistence passed' }
+    if (step) Object.assign(step, result)
+    else reports[evidencePaths[2]].results.push(result)
+  }
   return { inventory, reports }
 }
 
@@ -71,11 +84,73 @@ test('DO-SC-11/13 stale/missing/failed evidence, source mismatch and high vulner
     r => { r[evidencePaths[0]].source_dockerfile_sha256 = 'wrong' },
     r => { r[evidencePaths[1]].summaries[0].HIGH = 1 },
     r => { r[evidencePaths[1]].summaries[0].image_id = 'mutable:tag' },
-    r => { r[evidencePaths[2]].results.pop() },
-    r => { r[evidencePaths[2]].results.at(-1).images[0].image_id = 'sha256:' + 'b'.repeat(64) },
+    r => { r[evidencePaths[2]].results = r[evidencePaths[2]].results.filter(s => !s.images) },
+    r => { r[evidencePaths[2]].results.find(s => s.images).images[0].image_id = 'sha256:' + 'b'.repeat(64) },
     r => { r[evidencePaths[3]].results.pop() },
   ]
   for (const mutate of cases) { const { reports, inventory } = valid(); mutate(reports); assert.throws(() => validateRuntimeEvidence(reports, 1000, 3000, inventory)) }
+})
+
+test('DO-SC-11/12 every real05 SQL/worker suite and recovery step is mandatory; zero exit without tests is insufficient', () => {
+  for (const name of assignmentTests) {
+    for (const replacement of ['', `--- SKIP: ${name} (0.01s)`, `--- FAIL: ${name} (0.01s)`, `--- PASS: ${name}Extra (0.01s)`]) {
+      const { reports, inventory } = valid()
+      const step = reports[evidencePaths[3]].results[0]
+      step.output = step.output.replace(`--- PASS: ${name} (0.01s)`, replacement)
+      assert.throws(() => validateRuntimeEvidence(reports, 1000, 3000, inventory), name)
+    }
+  }
+  for (const label of assignmentRecoverySteps) {
+    for (const state of ['missing', 'failed', 'duplicate']) {
+      const { reports, inventory } = valid()
+      const results = reports[evidencePaths[3]].results
+      const step = results.find(s => s.label === label)
+      if (state === 'missing') results.splice(results.indexOf(step), 1)
+      else if (state === 'failed') step.exit_code = 1
+      else results.push(structuredClone(step))
+      assert.throws(() => validateRuntimeEvidence(reports, 1000, 3000, inventory), label)
+    }
+  }
+})
+
+test('DO-SC-12 each real HTTPS phase must prove05 pending persistence, without failed/skipped/nested substitute tests', () => {
+  for (const label of assignmentHTTPSPhases) {
+    for (const mutate of [
+      s => { s.exit_code = 1 },
+      s => { s.output = '' },
+      s => { s.output = s.output.replace('durable 202', 'fake success') },
+      s => { s.output = s.output.replace('--- PASS:', '    --- PASS:') },
+      s => { s.output += '\n    --- SKIP: TestIDFWiring/persistence (0.01s)' },
+    ]) {
+      const { reports, inventory } = valid()
+      mutate(reports[evidencePaths[2]].results.find(s => s.label === label))
+      assert.throws(() => validateRuntimeEvidence(reports, 1000, 3000, inventory), label)
+    }
+  }
+})
+
+test('DO-SC-12 backup success text and duplicate HTTPS phases cannot substitute for real complete evidence', () => {
+  for (const mutate of [
+    r => { r[evidencePaths[3]].results.find(s => s.label === assignmentRecoverySteps.at(-1)).output = 'command exited zero' },
+    r => { r[evidencePaths[2]].results.push(structuredClone(r[evidencePaths[2]].results.find(s => s.label === assignmentHTTPSPhases[0]))) },
+  ]) {
+    const { reports, inventory } = valid()
+    mutate(reports)
+    assert.throws(() => validateRuntimeEvidence(reports, 1000, 3000, inventory))
+  }
+})
+
+test('DO-SC-11/12 repeated required top-level PASS records cannot satisfy unique real05 execution evidence', () => {
+  for (const name of assignmentTests) {
+    const { reports, inventory } = valid()
+    reports[evidencePaths[3]].results[0].output += `\n--- PASS: ${name} (0.02s)`
+    assert.throws(() => validateRuntimeEvidence(reports, 1000, 3000, inventory), name)
+  }
+  for (const label of assignmentHTTPSPhases) {
+    const { reports, inventory } = valid()
+    reports[evidencePaths[2]].results.find(s => s.label === label).output += '\n--- PASS: TestIDFWiring (0.02s)'
+    assert.throws(() => validateRuntimeEvidence(reports, 1000, 3000, inventory), label)
+  }
 })
 
 test('DO-SC-03/11 npm verify retains the original three real programs and CI retains the new summary', () => {

@@ -1,0 +1,25 @@
+
+> campus-claw-plus@0.0.1 check:service-batches
+> node scripts/check-service-batches.mjs && node --test scripts/service-batches.test.mjs
+
+DO-SC-11/13: identity-materials-assignment-tasks, 4 registered services; pinned image sources and <=3s probes. Runtime and Ge review remain separate.
+✔ DO-SC-11/13 current batch covers only real approved services/configuration and pinned sources (19.059ms)
+✔ DO-SC-11 unregistered services, wrong build target/network and inactive keys block check (35.4509ms)
+✔ DO-SC-12 exactly3s probes pass while4s/image drift and unpinned base fail (15.3ms)
+✔ DO-SC-11/12 current real reports produce four immutable artifact IDs; fixtures are structural tests only (4.5514ms)
+✔ DO-SC-11/13 stale/missing/failed evidence, source mismatch and high vulnerabilities block (34.9018ms)
+✔ DO-SC-11/12 every real05 SQL/worker suite and recovery step is mandatory; zero exit without tests is insufficient (243.067ms)
+✔ DO-SC-12 each real HTTPS phase must prove05 pending persistence, without failed/skipped/nested substitute tests (39.6668ms)
+✔ DO-SC-12 backup success text and duplicate HTTPS phases cannot substitute for real complete evidence (6.4679ms)
+✔ DO-SC-11/12 repeated required top-level PASS records cannot satisfy unique real05 execution evidence (54.9056ms)
+✔ DO-SC-03/11 npm verify retains the original three real programs and CI retains the new summary (0.9348ms)
+✔ DO-SC-11 exact audited IDs are selected with no pulls; incomplete/unsafe scans cannot start runtime (15.8488ms)
+✔ DO-SC-11 verification cleanup excludes old reports and unrelated image references (2.6258ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 598.6804

@@ -1,0 +1,47 @@
+
+> campus-claw-plus@0.0.1 check:contracts
+> node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs scripts/contracts/identity-phase.test.mjs scripts/contracts/materials.test.mjs scripts/contracts/assignments.test.mjs scripts/contracts/documents.test.mjs
+
+Contracts: 49 schemas; 225 positive/negative fixtures, 6 semantic inputs and 43 generated boundary cases agree in both paths; 198 operation examples; 22 current identity/health/material/assignment operations and six frozen 04E document contracts. OCR/vector/hybrid runtime operations remain absent.
+✔ AT-SC-01 nine implemented business operations activate atomically with exact migration5 (52.9928ms)
+✔ AT-SC-02/03/08 actions, owner chain and original class precede all business conditions (47.7136ms)
+✔ AT-SC-04 input framing, exact parameters, independent quota and error responses stay closed (55.8637ms)
+✔ AT-SC-05..08 only committed authorized same-payload records replay the original 202 before new conditions (38.3729ms)
+✔ AT-SC-06 canonical payload bytes and digest match five independently generated Go vectors (6.0135ms)
+✔ AT-SC-04 request byte cap is distinct from codepoint cap; deadline equality fails (4.5193ms)
+✔ AT-SC-02/03 consistent pages sort created time before exact string ID tie-breaks (0.8024ms)
+✔ AT-SC-09..19 task mechanism declarations forbid fake production execution, stale CAS and cancellation revival (62.3147ms)
+✔ AT-SC-09/13..18 Task snapshots preserve safe errors, counts, version and cancellation flags (1.5837ms)
+✔ AT-SC-13/14/15 pending cannot requeue an exhausted third claim (0.3642ms)
+✔ DI-SC-01/25 six frozen candidates never activate PDF/OCR/vector runtime or change 22 current (32.6207ms)
+✔ DI-SC-02/11 authorization, private downloads and strict input declarations cannot weaken (63.8757ms)
+✔ DI-SC-02/06/14 upload and expanded parser resource declarations stay bounded (46.6602ms)
+✔ DI-SC-07/10 original 202, atomic job, shared quota and CAS retry declarations are exact (41.6887ms)
+✔ DI-SC-12 keyword only, snapshot and dependency errors cannot silently change (28.6462ms)
+✔ DI-SC-12 actual normalized q and page schemas reject type, bounds and default drift (25.9813ms)
+✔ DI-SC-02 binary envelope examples test byte/title limits; no real parsing claim (16.7391ms)
+✔ DI-SC-03/04/05 page/block boundaries and exact Unicode quote require persisted source (4.5933ms)
+✔ ICF-SC-01/02 active identity health is unique and anonymous; no skeleton fallback (36.756ms)
+✔ ICF-SC-03/04 activation preserves required, process-separated secret metadata (51.8107ms)
+✔ ICF-SC-05/06 available SQL rejects duplicates, forward dependencies and false deployment claims (31.0349ms)
+✔ MR-SC-01/02 six implemented contracts preserve activation and identity/class/role declarations (67.2554ms)
+✔ MR-SC-03/04/05/06 wire declarations reject unknown inputs, missing quotas, wrong replay and download headers (75.3219ms)
+✔ MR-SC-07/08/10 dependency failures must remain 503/504, not a successful empty search (12.9066ms)
+✔ MR-SC-04 Unicode examples enforce original UTF-8 bytes, normalized whitespace and title codepoints (11.7116ms)
+✔ MR-SC-01/03 material examples preserve original byte size, canonical detail and unique pagination (3.5475ms)
+✔ MR-SC-03/09 optional query defaults remain 1/20 and keyword/4 in sole-source schemas (0.7984ms)
+✔ MR-SC-09/10 citation examples bind codepoint range, exact quote, source/version, URL and literal query (1.5822ms)
+✔ BC-SC-06 accepts trusted rubric, rejects incorrect grading, stale and missing context (7.855ms)
+✔ BC-SC-05 nonempty Citation codepoint range (0.5763ms)
+✔ BC-SC-08/14 terminal sequence, cancellation and disconnected persistence (1.858ms)
+✔ BC-SC-10 MCP exception remains exact, disabled and subject to both future reviews (1.6254ms)
+✔ BC-SC-09 registered empty keys only; no weakening historical HTTP_PORT requirement (11.3292ms)
+✔ BC-SC-18 planned operations and anonymous auth bypass cannot enter OpenAPI (221.2708ms)
+ℹ tests 34
+ℹ suites 0
+ℹ pass 34
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 698.5932

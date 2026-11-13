@@ -12,7 +12,7 @@
 
 [完整CI43395128819](https://github.com/zwh9616/campus-claw-plus/actions/runs/43395128819)实际completed/success。artifact14022074226已下载，SHA-256 `5454fb0fbfa9dcff8523235da537f83760fd948777ad8dac87a1a46ab8969d71` 与GitHub digest及下载内容一致；[原ZIP](parser-core/final-ci-runtime.zip)、[原四镜像/真实恢复核对](parser-core/final-ci-verified.json)、[候选/质量核对](parser-core/final-ci-parser-verified.json)。
 
-原gate四段0/notRun空，verify270354ms；四生产镜像零HIGH/CRITICAL/同轮运行ID/四清理，实际MySQL场景、旧版迁移/备份隔离恢复和默认可信HTTPS拒绝/停机/重建通过。解析check与scan各8组，40清晰、25负例无缺项，195位置和45关键句100%，逐份CER=0；scan同一不可变镜像先实际测试后导出Trivy，Alpine/pypdf7.0.1识别/零HIGH CRITICAL、有效漏洞库、两资源清理通过。最长清晰单份1159ms。
+原gate四段0/notRun空，verify270354ms；四生产镜像零HIGH/CRITICAL/同轮运行ID/四清理，实际MySQL场景、旧版迁移/备份隔离恢复和默认可信HTTPS拒绝/停机/重建通过。解析check与scan各8组，40清晰、25负例无缺项，195位置和45关键句100%，逐份CER=0；scan同一不可变镜像先实际测试后导出Trivy，Alpine/pypdf7.0.1识别/零HIGH CRITICAL、有效漏洞库、两资源清理通过。两轮check/scan最长清晰单份分别1167/1159ms。
 
 ## 精确主干完整复验
 
@@ -27,3 +27,5 @@
 B OCR与C真实嵌入/索引继续按正式任务和量化阈值推进，不声称已经实现。A4.3和整个change归档保持未完成。共享表04E及关联06行、tasks与本记录同提交同步；本提交只改文档/原件，不改运行输入。严格规约、本地链接/合同和秘密扫描的本次实际结果随提交核对，完整CI以本PR实时状态为准，不预填它自己的批准或main结果。
 
 本收口本机实测：合同双路径/34组0、strict11/11、92个本地链接零缺失，最终CI与main附件逐字解包Gitleaks均0（分别约1.61MiB原文）。只改报告/任务/共享表；全历史/暂存扫描在提交前实际执行，失败阻断，不借此声称新阶段运行通过。
+
+小陈本轮复核：本报告最终PR/main两份ZIP分别与本人此前实际下载的43395128819/43396468475逐字节相同，所有门禁/镜像/测试/清理事实与本人真实批准及GitHub API一致；仅将最终CI最长耗时明确区分check1167ms和scan1159ms。原#47同步已获审#44的main47bcc6a，12项批次守卫和全部运行输入保留；#44的精确main复验及10-B第二批收口另见[本轮记录](../10/B/main44-integration-2026-11-13.md)。本提交最终head CI/实际批准/main复验继续按实时结果核对，不代填自身批准。

@@ -177,5 +177,5 @@ func verifyATWiring(t *testing.T, client *http.Client, teacher string, secrets *
 	if bytes.Contains(b, []byte(answer)) {
 		t.Fatal("AT task snapshot leaks answer")
 	}
-	t.Log("AT-SC-01..08/21 default HTTPS authorization, durable 202 and genuine pending persistence passed; worker not implemented")
+	t.Log("AT-SC-01..08/21 default HTTPS authorization, durable 202 and genuine pending persistence passed; production executor and result adapter unbound")
 }
