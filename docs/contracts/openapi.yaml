@@ -7392,6 +7392,2348 @@
         ],
         "x-replay": "no-automatic-replay"
       }
+    },
+    "/api/v1/documents": {
+      "post": {
+        "operationId": "document_post_documents",
+        "summary": "异步上传或重试PDF/Word资料",
+        "x-contract-status": "frozen",
+        "x-owner-change": "04E",
+        "x-spec-change": "openspec/changes/2026-11-13-materials-document-intelligence",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "x-budget-ms": 5000,
+        "x-authorization": {
+          "roles": [
+            "teacher"
+          ],
+          "class_scope": "server_session",
+          "student_visibility": "ready",
+          "cross_class": 404,
+          "order": [
+            "authentication",
+            "action",
+            "resource",
+            "business"
+          ],
+          "rejected_business_side_effects": false
+        },
+        "x-request-rules": {
+          "unknown_query": "reject",
+          "duplicate_parameters": "reject",
+          "unknown_body": "reject",
+          "get_body": "reject"
+        },
+        "parameters": [
+          {
+            "name": "Origin",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "x-if-present": "trusted_same_origin"
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "$ref": "./schemas/MaterialIdempotencyKey.schema.json"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "候选；只有实现、授权、真实验收及原子激活后才可调用。202仅持久受理，不代表解析或OCR已完成。",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                },
+                "description": "不缓存授权资料"
+              },
+              "Location": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^/api/v1/documents/[1-9][0-9]{0,18}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Document.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "id": "1",
+                      "title": "课程资料",
+                      "format": "pdf",
+                      "version": 1,
+                      "status": "queued",
+                      "size_bytes": 100,
+                      "attempts": 0,
+                      "page_count": null,
+                      "failure_reason": null,
+                      "created_at": "2026-11-13T00:00:00.000Z",
+                      "updated_at": "2026-11-13T00:00:00.000Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "VALIDATION_ERROR",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "VALIDATION_ERROR",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "VALIDATION_ERROR",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHENTICATED",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "UNAUTHENTICATED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "FORBIDDEN",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "FORBIDDEN",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "FORBIDDEN",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "CONFLICT",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "CONFLICT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "CONFLICT",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "PAYLOAD_TOO_LARGE",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "PAYLOAD_TOO_LARGE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "PAYLOAD_TOO_LARGE",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RATE_LIMITED",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "description": "距离下一Unix分钟窗口的剩余整数秒，向上取整且至少1。"
+              }
+            },
+            "x-error-code": "RATE_LIMITED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "RATE_LIMITED",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "DEPENDENCY_UNAVAILABLE",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "DEPENDENCY_UNAVAILABLE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "DEPENDENCY_UNAVAILABLE",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "UPSTREAM_TIMEOUT",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "UPSTREAM_TIMEOUT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "UPSTREAM_TIMEOUT",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-rate-limit": {
+          "scope": "user_id",
+          "limit": 12,
+          "window_seconds": 60,
+          "shared_with": [
+            "material_upload",
+            "material_retry",
+            "document_upload",
+            "document_retry"
+          ],
+          "replays_count": true,
+          "switch_class_resets": false
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "./schemas/DocumentUpload.schema.json"
+              }
+            }
+          }
+        },
+        "x-upload-limits": {
+          "file_bytes": 10485760,
+          "multipart_bytes": 10551296,
+          "formats": [
+            "pdf",
+            "docx"
+          ],
+          "extension_and_signature": true,
+          "declared_and_streamed": true,
+          "parts": [
+            "title",
+            "file"
+          ],
+          "unknown_parts": "reject"
+        },
+        "x-idempotency": {
+          "scope": [
+            "user_id",
+            "current_class_id",
+            "Idempotency-Key"
+          ],
+          "same_payload": 202,
+          "different_payload": 409,
+          "authorization_before_replay": true,
+          "replay": "original_202_snapshot",
+          "atomic": [
+            "document",
+            "original_bytes",
+            "parse_job",
+            "original_202"
+          ]
+        },
+        "x-parser-limits": {
+          "pdf_pages": 200,
+          "expanded_bytes": 33554432,
+          "docx_entries": 2000,
+          "docx_compression_ratio": 100,
+          "logical_blocks": 20000,
+          "output_utf8_bytes": 2097152,
+          "wall_clock_ms": 30000,
+          "memory_bytes": 536870912,
+          "concurrency": 1,
+          "external_fetch": false
+        }
+      },
+      "get": {
+        "operationId": "document_get_documents",
+        "summary": "本班PDF/Word资料列表",
+        "x-contract-status": "frozen",
+        "x-owner-change": "04E",
+        "x-spec-change": "openspec/changes/2026-11-13-materials-document-intelligence",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "x-budget-ms": 5000,
+        "x-authorization": {
+          "roles": [
+            "teacher",
+            "student"
+          ],
+          "class_scope": "server_session",
+          "student_visibility": "ready",
+          "cross_class": 404,
+          "order": [
+            "authentication",
+            "action",
+            "resource",
+            "business"
+          ],
+          "rejected_business_side_effects": false
+        },
+        "x-request-rules": {
+          "unknown_query": "reject",
+          "duplicate_parameters": "reject",
+          "unknown_body": "reject",
+          "get_body": "reject"
+        },
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "候选；只有实现、授权、真实验收及原子激活后才可调用。202仅持久受理，不代表解析或OCR已完成。",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                },
+                "description": "不缓存授权资料"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/DocumentPage.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "items": [
+                        {
+                          "id": "1",
+                          "title": "课程资料",
+                          "format": "pdf",
+                          "version": 1,
+                          "status": "ready",
+                          "size_bytes": 100,
+                          "attempts": 1,
+                          "page_count": 2,
+                          "failure_reason": null,
+                          "created_at": "2026-11-13T00:00:00.000Z",
+                          "updated_at": "2026-11-13T00:00:00.000Z"
+                        }
+                      ],
+                      "page": 1,
+                      "page_size": 20,
+                      "total": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "VALIDATION_ERROR",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "VALIDATION_ERROR",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "VALIDATION_ERROR",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHENTICATED",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "UNAUTHENTICATED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "FORBIDDEN",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "FORBIDDEN",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "FORBIDDEN",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "DEPENDENCY_UNAVAILABLE",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "DEPENDENCY_UNAVAILABLE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "DEPENDENCY_UNAVAILABLE",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "UPSTREAM_TIMEOUT",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "UPSTREAM_TIMEOUT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "UPSTREAM_TIMEOUT",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-pagination": {
+          "snapshot": "single_request_count_and_items",
+          "order": "id_desc",
+          "cross_request_snapshot": false
+        }
+      }
+    },
+    "/api/v1/documents/{id}": {
+      "get": {
+        "operationId": "document_get_documents_id",
+        "summary": "授权正文与页或逻辑块",
+        "x-contract-status": "frozen",
+        "x-owner-change": "04E",
+        "x-spec-change": "openspec/changes/2026-11-13-materials-document-intelligence",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "x-budget-ms": 5000,
+        "x-authorization": {
+          "roles": [
+            "teacher",
+            "student"
+          ],
+          "class_scope": "server_session",
+          "student_visibility": "ready",
+          "cross_class": 404,
+          "order": [
+            "authentication",
+            "action",
+            "resource",
+            "business"
+          ],
+          "rejected_business_side_effects": false
+        },
+        "x-request-rules": {
+          "unknown_query": "reject",
+          "duplicate_parameters": "reject",
+          "unknown_body": "reject",
+          "get_body": "reject"
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "./schemas/ID.schema.json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "候选；只有实现、授权、真实验收及原子激活后才可调用。202仅持久受理，不代表解析或OCR已完成。",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                },
+                "description": "不缓存授权资料"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/DocumentDetail.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "document": {
+                        "id": "1",
+                        "title": "课程资料",
+                        "format": "pdf",
+                        "version": 1,
+                        "status": "ready",
+                        "size_bytes": 100,
+                        "attempts": 1,
+                        "page_count": 2,
+                        "failure_reason": null,
+                        "created_at": "2026-11-13T00:00:00.000Z",
+                        "updated_at": "2026-11-13T00:00:00.000Z"
+                      },
+                      "body": "课程资料第一段。\n\n第二页：向量检索。",
+                      "locations": [
+                        {
+                          "kind": "pdf_page",
+                          "unit": 1,
+                          "char_start": 0,
+                          "char_end": 8
+                        },
+                        {
+                          "kind": "pdf_page",
+                          "unit": 2,
+                          "char_start": 10,
+                          "char_end": 19
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "VALIDATION_ERROR",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "VALIDATION_ERROR",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "VALIDATION_ERROR",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHENTICATED",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "UNAUTHENTICATED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "FORBIDDEN",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "FORBIDDEN",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "FORBIDDEN",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT_FOUND",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "NOT_FOUND",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "NOT_FOUND",
+                        "message": "资源不存在",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "DEPENDENCY_UNAVAILABLE",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "DEPENDENCY_UNAVAILABLE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "DEPENDENCY_UNAVAILABLE",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "UPSTREAM_TIMEOUT",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "UPSTREAM_TIMEOUT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "UPSTREAM_TIMEOUT",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/documents/{id}/download": {
+      "get": {
+        "operationId": "document_get_documents_id_download",
+        "summary": "下载受保护原始PDF或DOCX",
+        "x-contract-status": "frozen",
+        "x-owner-change": "04E",
+        "x-spec-change": "openspec/changes/2026-11-13-materials-document-intelligence",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "x-budget-ms": 5000,
+        "x-authorization": {
+          "roles": [
+            "teacher",
+            "student"
+          ],
+          "class_scope": "server_session",
+          "student_visibility": "ready",
+          "cross_class": 404,
+          "order": [
+            "authentication",
+            "action",
+            "resource",
+            "business"
+          ],
+          "rejected_business_side_effects": false
+        },
+        "x-request-rules": {
+          "unknown_query": "reject",
+          "duplicate_parameters": "reject",
+          "unknown_body": "reject",
+          "get_body": "reject"
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "./schemas/ID.schema.json"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "候选；只有实现、授权、真实验收及原子激活后才可调用。202仅持久受理，不代表解析或OCR已完成。",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                },
+                "description": "不缓存授权资料"
+              },
+              "Content-Disposition": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^attachment;"
+                }
+              },
+              "X-Content-Type-Options": {
+                "schema": {
+                  "type": "string",
+                  "const": "nosniff"
+                }
+              }
+            },
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "type": "string",
+                  "contentMediaType": "application/pdf"
+                }
+              },
+              "application/vnd.openxmlformats-officedocument.wordprocessingml.document": {
+                "schema": {
+                  "type": "string",
+                  "contentMediaType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "VALIDATION_ERROR",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "VALIDATION_ERROR",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "VALIDATION_ERROR",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHENTICATED",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "UNAUTHENTICATED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "FORBIDDEN",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "FORBIDDEN",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "FORBIDDEN",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT_FOUND",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "NOT_FOUND",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "NOT_FOUND",
+                        "message": "资源不存在",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "DEPENDENCY_UNAVAILABLE",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "DEPENDENCY_UNAVAILABLE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "DEPENDENCY_UNAVAILABLE",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "UPSTREAM_TIMEOUT",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "UPSTREAM_TIMEOUT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "UPSTREAM_TIMEOUT",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/documents/{id}/retry": {
+      "post": {
+        "operationId": "document_post_documents_id_retry",
+        "summary": "异步上传或重试PDF/Word资料",
+        "x-contract-status": "frozen",
+        "x-owner-change": "04E",
+        "x-spec-change": "openspec/changes/2026-11-13-materials-document-intelligence",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "x-budget-ms": 5000,
+        "x-authorization": {
+          "roles": [
+            "teacher"
+          ],
+          "class_scope": "server_session",
+          "student_visibility": "ready",
+          "cross_class": 404,
+          "order": [
+            "authentication",
+            "action",
+            "resource",
+            "business"
+          ],
+          "rejected_business_side_effects": false
+        },
+        "x-request-rules": {
+          "unknown_query": "reject",
+          "duplicate_parameters": "reject",
+          "unknown_body": "reject",
+          "get_body": "reject"
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "./schemas/ID.schema.json"
+            }
+          },
+          {
+            "name": "Origin",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "x-if-present": "trusted_same_origin"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "候选；只有实现、授权、真实验收及原子激活后才可调用。202仅持久受理，不代表解析或OCR已完成。",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                },
+                "description": "不缓存授权资料"
+              },
+              "Location": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^/api/v1/documents/[1-9][0-9]{0,18}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Document.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "id": "1",
+                      "title": "课程资料",
+                      "format": "pdf",
+                      "version": 1,
+                      "status": "queued",
+                      "size_bytes": 100,
+                      "attempts": 0,
+                      "page_count": null,
+                      "failure_reason": null,
+                      "created_at": "2026-11-13T00:00:00.000Z",
+                      "updated_at": "2026-11-13T00:00:00.000Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "VALIDATION_ERROR",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "VALIDATION_ERROR",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "VALIDATION_ERROR",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHENTICATED",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "UNAUTHENTICATED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "FORBIDDEN",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "FORBIDDEN",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "FORBIDDEN",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "NOT_FOUND",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "NOT_FOUND",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "NOT_FOUND",
+                        "message": "资源不存在",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "CONFLICT",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "CONFLICT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "CONFLICT",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RATE_LIMITED",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              },
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "description": "距离下一Unix分钟窗口的剩余整数秒，向上取整且至少1。"
+              }
+            },
+            "x-error-code": "RATE_LIMITED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "RATE_LIMITED",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "DEPENDENCY_UNAVAILABLE",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "DEPENDENCY_UNAVAILABLE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "DEPENDENCY_UNAVAILABLE",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "UPSTREAM_TIMEOUT",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "UPSTREAM_TIMEOUT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "UPSTREAM_TIMEOUT",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-rate-limit": {
+          "scope": "user_id",
+          "limit": 12,
+          "window_seconds": 60,
+          "shared_with": [
+            "material_upload",
+            "material_retry",
+            "document_upload",
+            "document_retry"
+          ],
+          "replays_count": true,
+          "switch_class_resets": false
+        },
+        "x-retry": {
+          "status": "failed",
+          "reasons": [
+            "parse_timeout",
+            "worker_interrupted",
+            "internal_failure"
+          ],
+          "attempts_less_than": 3,
+          "concurrent": "compare_and_swap_once",
+          "needs_ocr": 409
+        }
+      }
+    },
+    "/api/v1/document-search": {
+      "get": {
+        "operationId": "document_get_document_search",
+        "summary": "本班PDF/Word关键词搜索",
+        "x-contract-status": "frozen",
+        "x-owner-change": "04E",
+        "x-spec-change": "openspec/changes/2026-11-13-materials-document-intelligence",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "x-budget-ms": 5000,
+        "x-authorization": {
+          "roles": [
+            "teacher",
+            "student"
+          ],
+          "class_scope": "server_session",
+          "student_visibility": "ready",
+          "cross_class": 404,
+          "order": [
+            "authentication",
+            "action",
+            "resource",
+            "business"
+          ],
+          "rejected_business_side_effects": false
+        },
+        "x-request-rules": {
+          "unknown_query": "reject",
+          "duplicate_parameters": "reject",
+          "unknown_body": "reject",
+          "get_body": "reject"
+        },
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "./schemas/KeywordSearchParameters.schema.json#/properties/q"
+            },
+            "x-normalization": {
+              "trim": "Unicode_White_Space",
+              "min_codepoints": 1,
+              "max_codepoints": 2000,
+              "control_characters": "reject",
+              "before_schema": true
+            },
+            "description": "URL解码后先按Unicode White_Space TrimSpace，再按共享Schema校验规范化q；原值允许边界空白，去空白后须1..2000码点且无控制字符。"
+          },
+          {
+            "name": "mode",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "keyword"
+              ],
+              "default": "keyword"
+            }
+          },
+          {
+            "name": "top_k",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10,
+              "default": 4
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "候选；只有实现、授权、真实验收及原子激活后才可调用。202仅持久受理，不代表解析或OCR已完成。",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                },
+                "description": "不缓存授权资料"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/DocumentSearchResponse.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "mode": "keyword",
+                      "items": [
+                        {
+                          "document_id": "1",
+                          "chunk_id": "2",
+                          "document_version": 1,
+                          "title": "课程资料",
+                          "location": {
+                            "kind": "pdf_page",
+                            "unit": 2,
+                            "char_start": 10,
+                            "char_end": 19
+                          },
+                          "quote": "第二页：向量检索。",
+                          "url": "/api/v1/documents/1"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "VALIDATION_ERROR",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "VALIDATION_ERROR",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "VALIDATION_ERROR",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHENTICATED",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "UNAUTHENTICATED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "UNAUTHENTICATED",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "FORBIDDEN",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "FORBIDDEN",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "FORBIDDEN",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "DEPENDENCY_UNAVAILABLE",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "DEPENDENCY_UNAVAILABLE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "DEPENDENCY_UNAVAILABLE",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "UPSTREAM_TIMEOUT",
+            "headers": {
+              "X-Request-ID": {
+                "description": "服务端生成并与JSON日志关联",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "minLength": 32,
+                  "maxLength": 32
+                }
+              },
+              "Cache-Control": {
+                "description": "禁止缓存身份相关资料和错误",
+                "schema": {
+                  "const": "no-store"
+                }
+              }
+            },
+            "x-error-code": "UPSTREAM_TIMEOUT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./schemas/Error.schema.json"
+                },
+                "examples": {
+                  "contract": {
+                    "value": {
+                      "error": {
+                        "code": "UPSTREAM_TIMEOUT",
+                        "message": "请求未完成",
+                        "fields": [],
+                        "details": null
+                      },
+                      "request_id": "0123456789abcdef0123456789abcdef"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-citation": {
+          "authorization": "filter_before_search_and_recheck_persisted_source",
+          "location": "unicode_codepoint_half_open",
+          "source_version": "exact",
+          "quote": "exact_persisted_substring",
+          "cross_location_chunks": false,
+          "dependency_failure": "503_or_504_never_empty"
+        }
+      }
     }
   },
   "components": {
@@ -7537,6 +9879,27 @@
       },
       "SubmissionPage": {
         "$ref": "./schemas/SubmissionPage.schema.json"
+      },
+      "Document": {
+        "$ref": "./schemas/Document.schema.json"
+      },
+      "DocumentLocation": {
+        "$ref": "./schemas/DocumentLocation.schema.json"
+      },
+      "DocumentDetail": {
+        "$ref": "./schemas/DocumentDetail.schema.json"
+      },
+      "DocumentPage": {
+        "$ref": "./schemas/DocumentPage.schema.json"
+      },
+      "DocumentCitation": {
+        "$ref": "./schemas/DocumentCitation.schema.json"
+      },
+      "DocumentSearchResponse": {
+        "$ref": "./schemas/DocumentSearchResponse.schema.json"
+      },
+      "DocumentUpload": {
+        "$ref": "./schemas/DocumentUpload.schema.json"
       }
     }
   },

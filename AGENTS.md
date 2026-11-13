@@ -3,6 +3,8 @@
 
 2026-11-13实际状态：05迁移#38、HTTP#40和worker#41已分别由小陈终审并正常合入；实现验收main d06198d完整CI43362518043成功，22 current、精确目标5。生产不绑定批改执行器/结果适配器，任务真实pending；05主规约及完整归档已随#42获小张批准并正常合入main c0f24f3；精确main完整CI43368065979复验通过，原件已核验。06资料归档#37已合入并复验；10-B全量/C、AI、成绩和作业页面仍未验收。
 
+2026-11-13组长正式安排下一阶段[04E资料能力扩展](openspec/changes/2026-11-13-materials-document-intelligence/proposal.md)：小张统一负责规约/合同/实现/测试/收口，A优先PDF与.docx，B OCR、C语义/混合检索按[任务和量化验收](openspec/changes/2026-11-13-materials-document-intelligence/acceptance.md)依次推进。仅04E适用[统一负责人例外](docs/standards/collaboration.md)，不转派实施；远端真实批准、合同先合入再apply及G2/G3保留。本候选只新增六个frozen Document合同，原22 current/Target5/active配置/TXT运行保持；尚未交付PDF、OCR或语义功能，也不恢复07教学生成/08成绩。
+
 ## 每次开始工作
 - 必读 [安全规范](docs/standards/security.md)，按范围必须读取下表规则；这些文件是约束，不是可选参考。
 - 必读 [共享进度表](docs/project-status.md) 与 [协作规范](docs/standards/collaboration.md)，先确认本次变更、两位负责人、前置条件和下一步；不得按人固定前端/后端/AI职责。

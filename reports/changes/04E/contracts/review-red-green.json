@@ -1,0 +1,25 @@
+{
+  "actor": "zwh9616",
+  "review": "5887416108",
+  "cases": [
+    {
+      "scenario": "DI-SC-02",
+      "mutation": "restore JS trim regression",
+      "red_exit": 1
+    },
+    {
+      "scenario": "DI-SC-12",
+      "mutation": "q frozen schema boundary drift",
+      "red_exit": 1
+    },
+    {
+      "scenario": "DI-SC-12",
+      "mutation": "page frozen schema boundary drift",
+      "red_exit": 1
+    }
+  ],
+  "restored_exit": 0,
+  "restored_module_sha256": "df8fe5d337fee8d1f378ec7841180f6cfe28300a755c77a5fe8b7efcc85b16a5",
+  "scope": "contract and synthetic envelope probes; no PDF parsing claim",
+  "restored_contract_sha256": "462881d33b1e9cf33970a779af367cafc6fbc0218967b90ce115dc6085554611"
+}

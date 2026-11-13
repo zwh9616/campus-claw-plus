@@ -42,3 +42,7 @@
 05 2.2/2.3独立实施候选依赖迁移首批#38，实际装配九操作并原子同步22 current；#38未获小陈实际批准前不合入本批。生产无执行器而保持pending，2.4/2.5及真实模型/成绩/作业页面仍未完成；不将本批HTTP动作夹具当worker竞争验收。
 
 2026-11-13最新05交接：#38/#40/#41均由小陈终审后正常合入；main d06198d完整CI43362518043及真实MySQL/默认HTTPS提交、查询、持久重建与原01/04链路通过。九个接口已为current，生产无执行器而pending。[05主规约](../../openspec/specs/assignment-tasks/spec.md)与[完整归档/真实交接](../../reports/changes/05/archive-review-2026-11-13.md)已随#42获小张批准合入main c0f24f3；[精确主干复验](../../reports/changes/05/archive-main-2026-11-13.md)按实际结果记录；06作业页面可据真实接口准备自身规约/评审，07B/08及其他暂停项仍须各自明确恢复与批准，本次不自动apply。
+
+## 2026-11-13 04E正式恢复与统一负责人
+
+组长明确A优先PDF/Word，B OCR、C语义/混合检索，全部小张负责，覆盖04E历史暂缓但不恢复07教学生成/08成绩。依赖01/02/04/06既有验收及G2/G3；05只保留现有Task，不承载资料解析作业。A规约/六个frozen机器合同获真实批准、正常合入/集成复验后apply；A真实验收后进入B，B验收后进入C，各自先冻结模型/配置/迁移/接口再接线。[具体任务](../../openspec/changes/2026-11-13-materials-document-intelligence/tasks.md) · [验收标准](../../openspec/changes/2026-11-13-materials-document-intelligence/acceptance.md)。规约/实现/测试/收口两列均小张，按[本次角色例外](../standards/collaboration.md)执行；远端真实批准不豁免。

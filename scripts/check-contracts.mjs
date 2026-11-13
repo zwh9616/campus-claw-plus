@@ -10,6 +10,7 @@ import { validateOperationBoundary, validateConfigSample, validateOutboundCandid
 import { validateIdentityPhase } from './contracts/identity-phase.mjs'
 import { assignmentBoundaryFixtures } from './contracts/assignments.mjs'
 import { materialBoundaryFixtures } from './contracts/materials.mjs'
+import { documentBoundaryFixtures } from './contracts/documents.mjs'
 
 const root = resolve('docs/contracts')
 const json = path => JSON.parse(readFileSync(resolve(root, path), 'utf8'))
@@ -92,7 +93,7 @@ const semanticFixtures = [
     name: `semantic SSE ${event}`, schema: 'SSE', data: { event, data }, valid: true,
   })),
 ]
-const boundaryFixtures = [...materialBoundaryFixtures(), ...assignmentBoundaryFixtures()]
+const boundaryFixtures = [...materialBoundaryFixtures(), ...assignmentBoundaryFixtures(), ...documentBoundaryFixtures()]
 for (const fixture of [...fixtures, ...semanticFixtures, ...boundaryFixtures]) {
   const a = standalone.getSchema(`https://campusclaw.invalid/contracts/v1/${fixture.schema}.schema.json`)
   const b = validators.get(fixture.schema)
@@ -116,7 +117,7 @@ function checkExamples(value) {
   for (const child of Object.values(value)) checkExamples(child)
 }
 checkExamples(parsed.paths)
-console.log(`Contracts: ${sources.length} schemas; ${fixtures.length} positive/negative fixtures, ${semanticFixtures.length} semantic inputs and ${boundaryFixtures.length} generated boundary cases agree in both paths; ${exampleCount} operation examples; 22 current identity/health/material/assignment operations. Other planned operations absent.`)
+console.log(`Contracts: ${sources.length} schemas; ${fixtures.length} positive/negative fixtures, ${semanticFixtures.length} semantic inputs and ${boundaryFixtures.length} generated boundary cases agree in both paths; ${exampleCount} operation examples; 22 current identity/health/material/assignment operations and six frozen 04E document contracts. OCR/vector/hybrid runtime operations remain absent.`)
 
 // The backend-only Docker toolchain embeds test goldens. The root fixture stays
 // authoritative, and changing either copy alone must block the normal gate.
