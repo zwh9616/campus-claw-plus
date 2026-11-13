@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "batch": "identity-materials-assignment-schema",
+  "batch": "identity-materials-assignment-tasks",
   "review_status": "pending_ge_review",
   "probe_timeout_ms": 3000,
   "deployment_wait_ms": 120000,
@@ -8,7 +8,7 @@
     { "id": "01", "spec": "openspec/specs/identity-foundation/spec.md", "integrated_commit": "c2c34a298c9f53840c861bdf7c6181486a6150c2", "pull_request": 14 },
     { "id": "02", "spec": "openspec/specs/frontend-foundation/spec.md", "integrated_commit": "3ef79f40e184f75ab4b8d1435c9ea57af56014f5", "pull_request": 15 },
     { "id": "04", "spec": "openspec/specs/materials-retrieval/spec.md", "integrated_commit": "6634e5128a59c4ac9d6e4443e67bb39ee43cc09c", "pull_request": 26 },
-    { "id": "05", "spec": "openspec/changes/archive/2026-11-12-assignment-tasks/specs/assignment-tasks/spec.md", "integrated_commit": "e617cc00f067cfee84aca0fd69687c385c9b2982", "pull_request": 35 },
+    { "id": "05", "spec": "openspec/specs/assignment-tasks/spec.md", "integrated_commit": "d06198de7cbff56b4304b3483aeec32ad9a3e085", "pull_request": 41 },
     { "id": "06", "spec": "openspec/specs/materials-frontend/spec.md", "integrated_commit": "86f0ca3c3832962b0946434f1d99cc7377693840", "pull_request": 30 }
   ],
   "services": [
@@ -19,7 +19,7 @@
       "config_keys": ["IDENTITY_STATE_DIR"],
       "required_dependencies": [], "optional_dependencies": [],
       "probe": ["CMD", "mysqladmin", "ping", "--protocol=tcp", "--host=127.0.0.1", "--silent"],
-      "unavailable": "MySQL unavailable: backend health503; identity/material database actions fail under their frozen budgets"
+      "unavailable": "MySQL unavailable: backend health503; identity/material/assignment database actions fail under their approved budgets"
     },
     {
       "name": "admin", "changes": ["01", "04", "05"],
@@ -50,8 +50,8 @@
   ],
   "pending": [
     { "change": "03", "capability": "MCP service", "reason": "Own spec and exact03/07C outbound activation not approved" },
-    { "change": "05", "capability": "Durable task worker", "reason": "Only reviewed migration5 is implemented in this candidate; nine HTTP operations stay frozen and durable worker is not implemented" },
+    { "change": "05", "capability": "Production task executor and result adapter", "reason": "Nine HTTP operations and durable worker mechanism are accepted; production adapters are unbound, no tasks are claimed and tasks stay genuinely pending; real AI/results require their own approved changes" },
     { "change": "07A", "capability": "Model adapter", "reason": "Own spec, model configuration and real validation not ready" },
-    { "change": "08", "capability": "Grades", "reason": "05 and real07B/result contract not ready" }
+    { "change": "08", "capability": "Grades", "reason": "05 is accepted, but real07B and the approved production result contract are not ready" }
   ]
 }

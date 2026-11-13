@@ -33,6 +33,8 @@
 
 ## 当前命令
 
+2026-11-13，05已验收归档后小陈推进10-B第二批05运行覆盖，原四服务与配置/健康保持；机器索引更新真实05来源，批次摘要要求真实SQL/worker/4→5隔离恢复和三阶段HTTPS持久pending证据。小葛最终审查仍待实际完成，生产执行器/结果适配器未绑定；本批结果与限制见[第二批记录](reports/changes/10/B/assignment-batch-2026-11-13.md)，不放行B全量/C。
+
 2026-11-12推进10-B第一批：核对已合入01/02/04/06实际四服务，已同步main da8624c并保留06全部资料回归，索引deploy/service-batches.json；小陈实现/自测，小葛逐批终审。check新增服务登记/3秒探针漂移断言，verify仍顺序执行原镜像扫描、默认Compose和真实MySQL程序并核对同轮同镜像摘要；不能把合成报告或旧CI当本批通过，B全量/C及planned服务保持待验。详见[本批记录](reports/changes/10/B/README.md)。
 
 根目录 npm ci；npm run setup 安装前端；npm run check 跑基础/类型/构建/Go测试/严格规约；npm run audit 检查npm；npm run verify 运行本机容器集成验收。

@@ -1,0 +1,8 @@
+{
+  "scenario": "DO-SC-11/12 current05 evidence must be present",
+  "mutation": "Temporarily remove required real05 suite output validation",
+  "red_exit": 1,
+  "restored_exit": 0,
+  "source_restored_sha256": "7eb61032c23bad3522d50fd574b70f25f4040f685bdf7f1585e26476927b0096",
+  "kind": "Real validator guard mutation; report fixtures are structural tests, not new Docker evidence"
+}
