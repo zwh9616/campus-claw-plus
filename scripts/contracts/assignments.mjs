@@ -67,7 +67,7 @@ export function validateAssignmentOperationProfiles(api) {
     assert.ok(op,`Missing 05 contract: ${method} ${path}`)
     assert.equal(op['x-contract-status'],'current','05 implementation and operation stage must activate atomically')
     assert.equal(op['x-owner-change'],'05')
-    assert.equal(op['x-spec-change'],'openspec/changes/2026-11-12-assignment-tasks')
+    assert.equal(op['x-spec-change'],'openspec/changes/archive/2026-11-12-assignment-tasks')
     assert.deepEqual(op.security,[{BearerAuth:[]}])
     const write=method==='POST',submit=status===202
     assert.deepEqual(op['x-resource-chain'],path.includes('/tasks/')?['task','submission','assignment']:path.startsWith('/api/v1/submissions/')?['submission','assignment']:['assignment'])

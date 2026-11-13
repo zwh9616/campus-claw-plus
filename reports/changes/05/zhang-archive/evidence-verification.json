@@ -1,0 +1,699 @@
+{
+  "baseline": "d06198de7cbff56b4304b3483aeec32ad9a3e085",
+  "reviewed_original_head": "cc8c665870d74b2116994e3f649690986039879a",
+  "requirements": 8,
+  "scenarios": 21,
+  "requirement_body_sha256": "f0789f4cdc47fc4516f52cdc387f6dfdead75dc005d2fb76a08c8c3848652a0b",
+  "contract_and_batch_metadata_only": true,
+  "runtime_sql_schema_fixture_config_images_locks_unchanged": true,
+  "historical_archives_lesson07_unchanged": true,
+  "evidence": [
+    {
+      "label": "http-main",
+      "zip_sha256": "b06e918f422fffdc0db73947840b3188acced8e13895bd1231f66d45c23c0d4a",
+      "source": {
+        "commit": "f7eb856952793c23ec139ad233c60386b1b394b6",
+        "dirty": false,
+        "fingerprint": "c25a001fdfe90be2f8c000a28d34ca54dadc914c499e23141a1257c9d9076935"
+      },
+      "gate": {
+        "time": "2026-11-12T15:47:37.463Z",
+        "node": "v22.23.4",
+        "exitCode": 0,
+        "results": [
+          {
+            "name": "check",
+            "exitCode": 0,
+            "reason": "passed",
+            "signal": null,
+            "durationMs": 59563
+          },
+          {
+            "name": "audit",
+            "exitCode": 0,
+            "reason": "passed",
+            "signal": null,
+            "durationMs": 857
+          },
+          {
+            "name": "secret-scan",
+            "exitCode": 0,
+            "reason": "passed",
+            "signal": null,
+            "durationMs": 1976
+          },
+          {
+            "name": "verify",
+            "exitCode": 0,
+            "reason": "passed",
+            "signal": null,
+            "durationMs": 185667
+          }
+        ],
+        "notRun": []
+      },
+      "images": [
+        {
+          "service": "mysql",
+          "image_id": "sha256:324bb6bb1e9d43da1583e0338cf8e3c3ffd1f2e6a4bfaa6476d11f0949a75685",
+          "HIGH": 0,
+          "CRITICAL": 0
+        },
+        {
+          "service": "admin",
+          "image_id": "sha256:7be5b3d9b2ef9e9adcdc7b86e21ad70712f9c9408f1297df0e182a708ebe1dd7",
+          "HIGH": 0,
+          "CRITICAL": 0
+        },
+        {
+          "service": "backend",
+          "image_id": "sha256:f9e5787dbc20ae68cb7b7ab2b1c5ec253b41e4f9d1d47470269666dc05e11d66",
+          "HIGH": 0,
+          "CRITICAL": 0
+        },
+        {
+          "service": "frontend",
+          "image_id": "sha256:6ae263d32405301e2beb393171a737d25d3884a3be6b876d7bde2b938c20c891",
+          "HIGH": 0,
+          "CRITICAL": 0
+        }
+      ],
+      "source_report_hashes": [
+        {
+          "path": "output/mysql-image-verify/results.json",
+          "sha256": "612c2be02b4a1b4ad85dd3269b5a3781d17f8c94d4469df18b1086b9a3499b15"
+        },
+        {
+          "path": "output/application-image-verify/results.json",
+          "sha256": "83a2d9754da821c71ce2925b976dcf1e995366738cc50a3cfd0d91eb610635e3"
+        },
+        {
+          "path": "output/identity-wiring/results.json",
+          "sha256": "5d45f2b516de8106b01961d7eaba1ad9f4554fbd96d372c2777bbf4475f63d33"
+        },
+        {
+          "path": "output/identity/results.json",
+          "sha256": "1f1304b5b1eb68ed66fcca494f94a12a6c26914d24be4a55867e539cd21ce2b5"
+        }
+      ],
+      "cleanup": [
+        {
+          "tag": "campus-mysql-audit-6c7e46fabebf:verification",
+          "exit_code": 0,
+          "ok": true
+        },
+        {
+          "tag": "campus-app-audit-0f4bccf05ea3-backend:verification",
+          "exit_code": 0,
+          "ok": true
+        },
+        {
+          "tag": "campus-app-audit-0f4bccf05ea3-admin:verification",
+          "exit_code": 0,
+          "ok": true
+        },
+        {
+          "tag": "campus-app-audit-0f4bccf05ea3-frontend:verification",
+          "exit_code": 0,
+          "ok": true
+        }
+      ],
+      "real_mysql_top_level_groups": [
+        "TestATBackupRestoreAndActualTargetMatrix",
+        "TestATBusinessWritePointRollbackAndControlledDeadline",
+        "TestATCommitAcknowledgementAndRealCommittedReplay",
+        "TestATConsistentPageSnapshotsAndExactIDs",
+        "TestATEmptyDownOnly",
+        "TestATMigrationDriftHistoryAndBinaryScopes",
+        "TestATMigrationEachDDLAndForwardRepair",
+        "TestATMigrationEmptyAndUpgrade",
+        "TestATMigrationRejectsForeignDatabase",
+        "TestATMutationStatesAndRollback",
+        "TestATRealHTTPAuthorizationInputsAndIdempotency"
+      ],
+      "https_persistence_phases": [
+        "SC-01/02/03 real same-origin HTTPS, unique health, TLS rejection, login and revoked access",
+        "account and class persist after database restart",
+        "same account and original password after full container recreation"
+      ],
+      "no_skipped_mysql_tests": true
+    },
+    {
+      "label": "worker-final-pr",
+      "zip_sha256": "9ab8656c47cca57eb6e8c9fe120ee2809c361fe170552d5f59d166022a2cdeaa",
+      "source": {
+        "commit": "ce1146e345e951cd285c1fa38480a1fd25a7d615",
+        "dirty": false,
+        "fingerprint": "4559f8a99a1b828b204e877d61a2e36baee1daa3f642a3bd4856aa9f7d12bd02"
+      },
+      "gate": {
+        "time": "2026-11-12T15:52:43.791Z",
+        "node": "v22.23.4",
+        "exitCode": 0,
+        "results": [
+          {
+            "name": "check",
+            "exitCode": 0,
+            "reason": "passed",
+            "signal": null,
+            "durationMs": 44358
+          },
+          {
+            "name": "audit",
+            "exitCode": 0,
+            "reason": "passed",
+            "signal": null,
+            "durationMs": 682
+          },
+          {
+            "name": "secret-scan",
+            "exitCode": 0,
+            "reason": "passed",
+            "signal": null,
+            "durationMs": 1326
+          },
+          {
+            "name": "verify",
+            "exitCode": 0,
+            "reason": "passed",
+            "signal": null,
+            "durationMs": 175969
+          }
+        ],
+        "notRun": []
+      },
+      "images": [
+        {
+          "service": "mysql",
+          "image_id": "sha256:500fd0be6a8b50680fadacbda4c7b0da47889319021b4b8bff3e21a4609f5562",
+          "HIGH": 0,
+          "CRITICAL": 0
+        },
+        {
+          "service": "admin",
+          "image_id": "sha256:ed2016206d92b8bdd94927ee28dc2b1ebd4953fb4635080ed653337075c437d5",
+          "HIGH": 0,
+          "CRITICAL": 0
+        },
+        {
+          "service": "backend",
+          "image_id": "sha256:1e309e1b37b088dc7186466cbe5450a48e83659c2928700635a2d5078c7be448",
+          "HIGH": 0,
+          "CRITICAL": 0
+        },
+        {
+          "service": "frontend",
+          "image_id": "sha256:b235016f39c91cec7abed33da3bf34aa51036e2666501e6c99f2355f015392a6",
+          "HIGH": 0,
+          "CRITICAL": 0
+        }
+      ],
+      "source_report_hashes": [
+        {
+          "path": "output/mysql-image-verify/results.json",
+          "sha256": "675ea84e1bfdc4c41eac700beaa8bdd29791675957c3bde1ad9b486af3571658"
+        },
+        {
+          "path": "output/application-image-verify/results.json",
+          "sha256": "5abe9b239449622868b229f9865d630d61320798d17d9b4756577fd6f355df59"
+        },
+        {
+          "path": "output/identity-wiring/results.json",
+          "sha256": "0850e5c91cdaf8c08dca6999b9768e190f6c5d8cbf3aefdb72232dacbc701a6d"
+        },
+        {
+          "path": "output/identity/results.json",
+          "sha256": "9d35482308186a781d274cbe60bf49b76614ff8b055660381e6441f2237a3cdb"
+        }
+      ],
+      "cleanup": [
+        {
+          "tag": "campus-mysql-audit-7615b2f3b751:verification",
+          "exit_code": 0,
+          "ok": true
+        },
+        {
+          "tag": "campus-app-audit-90c193182b7f-backend:verification",
+          "exit_code": 0,
+          "ok": true
+        },
+        {
+          "tag": "campus-app-audit-90c193182b7f-admin:verification",
+          "exit_code": 0,
+          "ok": true
+        },
+        {
+          "tag": "campus-app-audit-90c193182b7f-frontend:verification",
+          "exit_code": 0,
+          "ok": true
+        }
+      ],
+      "real_mysql_top_level_groups": [
+        "TestATActualWorkerSIGTERM",
+        "TestATBackupRestoreAndActualTargetMatrix",
+        "TestATBusinessWritePointRollbackAndControlledDeadline",
+        "TestATCommitAcknowledgementAndRealCommittedReplay",
+        "TestATConsistentPageSnapshotsAndExactIDs",
+        "TestATEmptyDownOnly",
+        "TestATMigrationDriftHistoryAndBinaryScopes",
+        "TestATMigrationEachDDLAndForwardRepair",
+        "TestATMigrationEmptyAndUpgrade",
+        "TestATMigrationRejectsForeignDatabase",
+        "TestATMutationStatesAndRollback",
+        "TestATRealHTTPAuthorizationInputsAndIdempotency",
+        "TestATRealWorkerBatchConcurrencyAndUnbound",
+        "TestATWorkerBackoffThirdExpiryAndRecoveryCAS",
+        "TestATWorkerCancellationSerializations",
+        "TestATWorkerCrashBeforeAndAfterClaim",
+        "TestATWorkerCrashHelper",
+        "TestATWorkerLeaseExpiryTakeoverAndABA",
+        "TestATWorkerRecoveryRetryAndAdapterRollback",
+        "TestATWorkerTerminalAndClaimRollback"
+      ],
+      "https_persistence_phases": [
+        "SC-01/02/03 real same-origin HTTPS, unique health, TLS rejection, login and revoked access",
+        "account and class persist after database restart",
+        "same account and original password after full container recreation"
+      ],
+      "no_skipped_mysql_tests": true
+    },
+    {
+      "label": "worker-main",
+      "zip_sha256": "77fbd1916ffc87246c78bc0222e9f774d459009d648262b4c8e1a37568215d99",
+      "source": {
+        "commit": "d06198de7cbff56b4304b3483aeec32ad9a3e085",
+        "dirty": false,
+        "fingerprint": "4559f8a99a1b828b204e877d61a2e36baee1daa3f642a3bd4856aa9f7d12bd02"
+      },
+      "gate": {
+        "time": "2026-11-13T04:02:57.323Z",
+        "node": "v22.23.4",
+        "exitCode": 0,
+        "results": [
+          {
+            "name": "check",
+            "exitCode": 0,
+            "reason": "passed",
+            "signal": null,
+            "durationMs": 39423
+          },
+          {
+            "name": "audit",
+            "exitCode": 0,
+            "reason": "passed",
+            "signal": null,
+            "durationMs": 660
+          },
+          {
+            "name": "secret-scan",
+            "exitCode": 0,
+            "reason": "passed",
+            "signal": null,
+            "durationMs": 1251
+          },
+          {
+            "name": "verify",
+            "exitCode": 0,
+            "reason": "passed",
+            "signal": null,
+            "durationMs": 168924
+          }
+        ],
+        "notRun": []
+      },
+      "images": [
+        {
+          "service": "mysql",
+          "image_id": "sha256:1c3cd9f1e4348cc536985c5f75a9a782e4119480470d2dfb289217d321e207a3",
+          "HIGH": 0,
+          "CRITICAL": 0
+        },
+        {
+          "service": "admin",
+          "image_id": "sha256:38f6ef38497034b8a4a9615173964a7ccdf70d043e8cd7997f4ef8e2db82496b",
+          "HIGH": 0,
+          "CRITICAL": 0
+        },
+        {
+          "service": "backend",
+          "image_id": "sha256:512f2fc87030d60d5dc3894640ab6e6eb8d7e5c7c6299ed6b70e9cc1594e0ab4",
+          "HIGH": 0,
+          "CRITICAL": 0
+        },
+        {
+          "service": "frontend",
+          "image_id": "sha256:510909d32596a0356486ea185950b1cb108dea36f1f8d43c1221422f31295b07",
+          "HIGH": 0,
+          "CRITICAL": 0
+        }
+      ],
+      "source_report_hashes": [
+        {
+          "path": "output/mysql-image-verify/results.json",
+          "sha256": "a626b7eb50f164fb5eceb5163ba4f7dfa1cfe5a0082562b398541a88154df956"
+        },
+        {
+          "path": "output/application-image-verify/results.json",
+          "sha256": "812436fefcf9078f449704da3bcb517a122cbd1bb01c2d7910a76ba9a8dd9855"
+        },
+        {
+          "path": "output/identity-wiring/results.json",
+          "sha256": "12faac5be4cfcd0c991ca70221be329f9fdff035de5438c6873c3f05a984bbee"
+        },
+        {
+          "path": "output/identity/results.json",
+          "sha256": "8d8ff94d6bc6398deac0f7ee1fbe1064091dcd112b036ccc4a71ad490c36b9d1"
+        }
+      ],
+      "cleanup": [
+        {
+          "tag": "campus-mysql-audit-e5c8c41c3aa2:verification",
+          "exit_code": 0,
+          "ok": true
+        },
+        {
+          "tag": "campus-app-audit-3e109edf5a4d-backend:verification",
+          "exit_code": 0,
+          "ok": true
+        },
+        {
+          "tag": "campus-app-audit-3e109edf5a4d-admin:verification",
+          "exit_code": 0,
+          "ok": true
+        },
+        {
+          "tag": "campus-app-audit-3e109edf5a4d-frontend:verification",
+          "exit_code": 0,
+          "ok": true
+        }
+      ],
+      "real_mysql_top_level_groups": [
+        "TestATActualWorkerSIGTERM",
+        "TestATBackupRestoreAndActualTargetMatrix",
+        "TestATBusinessWritePointRollbackAndControlledDeadline",
+        "TestATCommitAcknowledgementAndRealCommittedReplay",
+        "TestATConsistentPageSnapshotsAndExactIDs",
+        "TestATEmptyDownOnly",
+        "TestATMigrationDriftHistoryAndBinaryScopes",
+        "TestATMigrationEachDDLAndForwardRepair",
+        "TestATMigrationEmptyAndUpgrade",
+        "TestATMigrationRejectsForeignDatabase",
+        "TestATMutationStatesAndRollback",
+        "TestATRealHTTPAuthorizationInputsAndIdempotency",
+        "TestATRealWorkerBatchConcurrencyAndUnbound",
+        "TestATWorkerBackoffThirdExpiryAndRecoveryCAS",
+        "TestATWorkerCancellationSerializations",
+        "TestATWorkerCrashBeforeAndAfterClaim",
+        "TestATWorkerCrashHelper",
+        "TestATWorkerLeaseExpiryTakeoverAndABA",
+        "TestATWorkerRecoveryRetryAndAdapterRollback",
+        "TestATWorkerTerminalAndClaimRollback"
+      ],
+      "https_persistence_phases": [
+        "SC-01/02/03 real same-origin HTTPS, unique health, TLS rejection, login and revoked access",
+        "account and class persist after database restart",
+        "same account and original password after full container recreation"
+      ],
+      "no_skipped_mysql_tests": true
+    },
+    {
+      "label": "pr42-original",
+      "zip_sha256": "fbeb907a92891b568d8c6ca490ec9e9ae39f30c2588c8ce199adcb6c4a07ee68",
+      "source": {
+        "commit": "b3df5bf68f7a33f80f557d0f595b4c94c04ee0b0",
+        "dirty": false,
+        "fingerprint": "863b165af1ff6113e0b04c0f3bf1beb6673b575da8a0c5bb4dc15140d57b2cab"
+      },
+      "gate": {
+        "time": "2026-11-13T04:17:22.756Z",
+        "node": "v22.23.4",
+        "exitCode": 0,
+        "results": [
+          {
+            "name": "check",
+            "exitCode": 0,
+            "reason": "passed",
+            "signal": null,
+            "durationMs": 48379
+          },
+          {
+            "name": "audit",
+            "exitCode": 0,
+            "reason": "passed",
+            "signal": null,
+            "durationMs": 781
+          },
+          {
+            "name": "secret-scan",
+            "exitCode": 0,
+            "reason": "passed",
+            "signal": null,
+            "durationMs": 1565
+          },
+          {
+            "name": "verify",
+            "exitCode": 0,
+            "reason": "passed",
+            "signal": null,
+            "durationMs": 185504
+          }
+        ],
+        "notRun": []
+      },
+      "images": [
+        {
+          "service": "mysql",
+          "image_id": "sha256:73dc5f231a20323ef5b38c7f8934745dfee9a68df4847a12eb9b2a5d5f0b5fab",
+          "HIGH": 0,
+          "CRITICAL": 0
+        },
+        {
+          "service": "admin",
+          "image_id": "sha256:4f3ab0fceae076240e3d3ad42549829ee9744d32d45cd0af0891eba67b1754b9",
+          "HIGH": 0,
+          "CRITICAL": 0
+        },
+        {
+          "service": "backend",
+          "image_id": "sha256:fdf7cc2e2dca43ba527273b219fbf82f3008a2f163bb8e987c57fa1454f00ae0",
+          "HIGH": 0,
+          "CRITICAL": 0
+        },
+        {
+          "service": "frontend",
+          "image_id": "sha256:c88febfcfdf864e0d05e75dbc5bb0068683b9f5c7cd01cd014fc424028bbdcbe",
+          "HIGH": 0,
+          "CRITICAL": 0
+        }
+      ],
+      "source_report_hashes": [
+        {
+          "path": "output/mysql-image-verify/results.json",
+          "sha256": "473efce28ed3003766a0d4838abf35cb6bd3be2fda177c95acbe52768edd63a0"
+        },
+        {
+          "path": "output/application-image-verify/results.json",
+          "sha256": "7f832147a7aaa3e427fc1a2be2162a22901e0a109790ffe138ac4f0f3bce6b33"
+        },
+        {
+          "path": "output/identity-wiring/results.json",
+          "sha256": "175a507bb782a753693c6c84cc98fbd127173f9c29741624287ef0cb19b50d76"
+        },
+        {
+          "path": "output/identity/results.json",
+          "sha256": "adf4e49b193d758a88fb90804b76224403a318ddef25c9bee774485d07fcf6d5"
+        }
+      ],
+      "cleanup": [
+        {
+          "tag": "campus-mysql-audit-ae064a9fd71a:verification",
+          "exit_code": 0,
+          "ok": true
+        },
+        {
+          "tag": "campus-app-audit-d66bab2d8f41-backend:verification",
+          "exit_code": 0,
+          "ok": true
+        },
+        {
+          "tag": "campus-app-audit-d66bab2d8f41-admin:verification",
+          "exit_code": 0,
+          "ok": true
+        },
+        {
+          "tag": "campus-app-audit-d66bab2d8f41-frontend:verification",
+          "exit_code": 0,
+          "ok": true
+        }
+      ],
+      "real_mysql_top_level_groups": [
+        "TestATActualWorkerSIGTERM",
+        "TestATBackupRestoreAndActualTargetMatrix",
+        "TestATBusinessWritePointRollbackAndControlledDeadline",
+        "TestATCommitAcknowledgementAndRealCommittedReplay",
+        "TestATConsistentPageSnapshotsAndExactIDs",
+        "TestATEmptyDownOnly",
+        "TestATMigrationDriftHistoryAndBinaryScopes",
+        "TestATMigrationEachDDLAndForwardRepair",
+        "TestATMigrationEmptyAndUpgrade",
+        "TestATMigrationRejectsForeignDatabase",
+        "TestATMutationStatesAndRollback",
+        "TestATRealHTTPAuthorizationInputsAndIdempotency",
+        "TestATRealWorkerBatchConcurrencyAndUnbound",
+        "TestATWorkerBackoffThirdExpiryAndRecoveryCAS",
+        "TestATWorkerCancellationSerializations",
+        "TestATWorkerCrashBeforeAndAfterClaim",
+        "TestATWorkerCrashHelper",
+        "TestATWorkerLeaseExpiryTakeoverAndABA",
+        "TestATWorkerRecoveryRetryAndAdapterRollback",
+        "TestATWorkerTerminalAndClaimRollback"
+      ],
+      "https_persistence_phases": [
+        "SC-01/02/03 real same-origin HTTPS, unique health, TLS rejection, login and revoked access",
+        "account and class persist after database restart",
+        "same account and original password after full container recreation"
+      ],
+      "no_skipped_mysql_tests": true
+    },
+    {
+      "label": "main-local-restored",
+      "zip_sha256": "f34eab3dc01612ea809a72f930922ab314fad220314128fe619cce4be1a416a0",
+      "source": {
+        "commit": "d06198de7cbff56b4304b3483aeec32ad9a3e085",
+        "dirty": false,
+        "fingerprint": "4559f8a99a1b828b204e877d61a2e36baee1daa3f642a3bd4856aa9f7d12bd02"
+      },
+      "gate": {
+        "time": "2026-11-13T04:29:26.081Z",
+        "node": "v25.2.1",
+        "exitCode": 0,
+        "results": [
+          {
+            "name": "check",
+            "exitCode": 0,
+            "reason": "passed",
+            "signal": null,
+            "durationMs": 49469
+          },
+          {
+            "name": "audit",
+            "exitCode": 0,
+            "reason": "passed",
+            "signal": null,
+            "durationMs": 10551
+          },
+          {
+            "name": "secret-scan",
+            "exitCode": 0,
+            "reason": "passed",
+            "signal": null,
+            "durationMs": 21495
+          },
+          {
+            "name": "verify",
+            "exitCode": 0,
+            "reason": "passed",
+            "signal": null,
+            "durationMs": 378109
+          }
+        ],
+        "notRun": []
+      },
+      "images": [
+        {
+          "service": "mysql",
+          "image_id": "sha256:fb74dcd9b4b62bb72c39d01f4159abead9357e057ba286bc40c1d69004e29c58",
+          "HIGH": 0,
+          "CRITICAL": 0
+        },
+        {
+          "service": "admin",
+          "image_id": "sha256:c7610922b61b8a7928313d934b9ff56f17150bc63a933dac4b452fbd99fecf70",
+          "HIGH": 0,
+          "CRITICAL": 0
+        },
+        {
+          "service": "backend",
+          "image_id": "sha256:2599991e3e1d170e35374ccc781e8883a529fff5d8658094780fb5cc270ab624",
+          "HIGH": 0,
+          "CRITICAL": 0
+        },
+        {
+          "service": "frontend",
+          "image_id": "sha256:c8f4acaca4a0120d375f4024ead39e1471d91a11bf261c0a650ff5d0fd1d7a7a",
+          "HIGH": 0,
+          "CRITICAL": 0
+        }
+      ],
+      "source_report_hashes": [
+        {
+          "path": "output/mysql-image-verify/results.json",
+          "sha256": "ab487b368ceab378991b33125185276cd54e3a9809295312b7f7ff03ed9a2b73"
+        },
+        {
+          "path": "output/application-image-verify/results.json",
+          "sha256": "7c6c0153f56d836e0a86dba1348c334f2bba5f5fff2b28600aba9100ee913fb8"
+        },
+        {
+          "path": "output/identity-wiring/results.json",
+          "sha256": "c77c71f51828922b88380953d0b3ee006feb27f17112d12768cbfa5805735a83"
+        },
+        {
+          "path": "output/identity/results.json",
+          "sha256": "efd6b7ff077964d085157c4b898e4d02c88398fa1fef25d07a63ca5269be2911"
+        }
+      ],
+      "cleanup": [
+        {
+          "tag": "campus-mysql-audit-b2d93c42a131:verification",
+          "exit_code": 0,
+          "ok": true
+        },
+        {
+          "tag": "campus-app-audit-dd87b7420ac4-backend:verification",
+          "exit_code": 0,
+          "ok": true
+        },
+        {
+          "tag": "campus-app-audit-dd87b7420ac4-admin:verification",
+          "exit_code": 0,
+          "ok": true
+        },
+        {
+          "tag": "campus-app-audit-dd87b7420ac4-frontend:verification",
+          "exit_code": 0,
+          "ok": true
+        }
+      ],
+      "real_mysql_top_level_groups": [
+        "TestATActualWorkerSIGTERM",
+        "TestATBackupRestoreAndActualTargetMatrix",
+        "TestATBusinessWritePointRollbackAndControlledDeadline",
+        "TestATCommitAcknowledgementAndRealCommittedReplay",
+        "TestATConsistentPageSnapshotsAndExactIDs",
+        "TestATEmptyDownOnly",
+        "TestATMigrationDriftHistoryAndBinaryScopes",
+        "TestATMigrationEachDDLAndForwardRepair",
+        "TestATMigrationEmptyAndUpgrade",
+        "TestATMigrationRejectsForeignDatabase",
+        "TestATMutationStatesAndRollback",
+        "TestATRealHTTPAuthorizationInputsAndIdempotency",
+        "TestATRealWorkerBatchConcurrencyAndUnbound",
+        "TestATWorkerBackoffThirdExpiryAndRecoveryCAS",
+        "TestATWorkerCancellationSerializations",
+        "TestATWorkerCrashBeforeAndAfterClaim",
+        "TestATWorkerCrashHelper",
+        "TestATWorkerLeaseExpiryTakeoverAndABA",
+        "TestATWorkerRecoveryRetryAndAdapterRollback",
+        "TestATWorkerTerminalAndClaimRollback"
+      ],
+      "https_persistence_phases": [
+        "SC-01/02/03 real same-origin HTTPS, unique health, TLS rejection, login and revoked access",
+        "account and class persist after database restart",
+        "same account and original password after full container recreation"
+      ],
+      "no_skipped_mysql_tests": true
+    }
+  ],
+  "initial_docker_failure_zip_sha256": "45573d93558edd1ec649ff7ad097d9e8990e30d290bf0985a405acbd6e3b3d67"
+}

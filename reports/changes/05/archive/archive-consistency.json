@@ -1,0 +1,32 @@
+{
+  "baseline": "d06198de7cbff56b4304b3483aeec32ad9a3e085",
+  "requirements": 8,
+  "scenarios": 21,
+  "requirement_body_sha256": "42b2f5bf6883719271c8fdb2eaa3de999d31787fd8969c0f878ba4122411e3c7",
+  "unchanged_runtime_sql_schema_fixtures_config_images_and_locks": true,
+  "contract_and_batch_metadata_relocated_only": true,
+  "contract_assertion_relocated_only": true,
+  "other_archives_and_lesson07_unchanged": true,
+  "local_links_checked": 260,
+  "unchecked_candidate_tasks": 0,
+  "artifacts": [
+    {
+      "name": "http-main",
+      "run": 43250820540,
+      "artifact": 13959481587,
+      "zip_sha256": "b06e918f422fffdc0db73947840b3188acced8e13895bd1231f66d45c23c0d4a"
+    },
+    {
+      "name": "worker-final-pr",
+      "run": 43251835049,
+      "artifact": 13960950640,
+      "zip_sha256": "9ab8656c47cca57eb6e8c9fe120ee2809c361fe170552d5f59d166022a2cdeaa"
+    },
+    {
+      "name": "worker-main",
+      "run": 43362518043,
+      "artifact": 14008414768,
+      "zip_sha256": "77fbd1916ffc87246c78bc0222e9f774d459009d648262b4c8e1a37568215d99"
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "run_id": 43250820540,
+  "run_url": "https://github.com/zwh9616/campus-claw-plus/actions/runs/43250820540",
+  "event": "push",
+  "head_sha": "f7eb856952793c23ec139ad233c60386b1b394b6",
+  "status": "completed",
+  "conclusion": "success",
+  "artifact_id": 13959481587,
+  "artifact_name": "runtime-image-scans-f7eb856952793c23ec139ad233c60386b1b394b6",
+  "artifact_digest": "sha256:b06e918f422fffdc0db73947840b3188acced8e13895bd1231f66d45c23c0d4a",
+  "actor": "Kevcco",
+  "artifact_digest_verified": true,
+  "source": {
+    "commit": "f7eb856952793c23ec139ad233c60386b1b394b6",
+    "dirty": false,
+    "fingerprint": "c25a001fdfe90be2f8c000a28d34ca54dadc914c499e23141a1257c9d9076935"
+  },
+  "gate": {
+    "exit_code": 0,
+    "results": [
+      {
+        "name": "check",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 59563
+      },
+      {
+        "name": "audit",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 857
+      },
+      {
+        "name": "secret-scan",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 1976
+      },
+      {
+        "name": "verify",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 185667
+      }
+    ],
+    "notRun": []
+  },
+  "runtime_stages": [
+    {
+      "name": "scripts/verify-image-audits.mjs",
+      "exitCode": 0,
+      "reason": "passed",
+      "signal": null,
+      "durationMs": 63873
+    },
+    {
+      "name": "scripts/verify-skeleton.mjs",
+      "exitCode": 0,
+      "reason": "passed",
+      "signal": null,
+      "durationMs": 73631
+    },
+    {
+      "name": "scripts/verify-identity.mjs",
+      "exitCode": 0,
+      "reason": "passed",
+      "signal": null,
+      "durationMs": 47478
+    }
+  ],
+  "images": [
+    {
+      "service": "mysql",
+      "image_id": "sha256:324bb6bb1e9d43da1583e0338cf8e3c3ffd1f2e6a4bfaa6476d11f0949a75685",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "admin",
+      "image_id": "sha256:7be5b3d9b2ef9e9adcdc7b86e21ad70712f9c9408f1297df0e182a708ebe1dd7",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "backend",
+      "image_id": "sha256:f9e5787dbc20ae68cb7b7ab2b1c5ec253b41e4f9d1d47470269666dc05e11d66",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "frontend",
+      "image_id": "sha256:6ae263d32405301e2beb393171a737d25d3884a3be6b876d7bde2b938c20c891",
+      "HIGH": 0,
+      "CRITICAL": 0
+    }
+  ],
+  "cleanup_count": 4,
+  "source_report_hashes": [
+    {
+      "path": "output/mysql-image-verify/results.json",
+      "sha256": "612c2be02b4a1b4ad85dd3269b5a3781d17f8c94d4469df18b1086b9a3499b15"
+    },
+    {
+      "path": "output/application-image-verify/results.json",
+      "sha256": "83a2d9754da821c71ce2925b976dcf1e995366738cc50a3cfd0d91eb610635e3"
+    },
+    {
+      "path": "output/identity-wiring/results.json",
+      "sha256": "5d45f2b516de8106b01961d7eaba1ad9f4554fbd96d372c2777bbf4475f63d33"
+    },
+    {
+      "path": "output/identity/results.json",
+      "sha256": "1f1304b5b1eb68ed66fcca494f94a12a6c26914d24be4a55867e539cd21ce2b5"
+    }
+  ],
+  "real_gateway_checks": [
+    {
+      "label": "SC-01/02/03 real same-origin HTTPS, unique health, TLS rejection, login and revoked access",
+      "exit_code": 0,
+      "completed_scenario": "MF-SC-02/12",
+      "request_line_iterations_in_verified_source": 10
+    },
+    {
+      "label": "account and class persist after database restart",
+      "exit_code": 0,
+      "completed_scenario": "MF-SC-02/12",
+      "request_line_iterations_in_verified_source": 10
+    },
+    {
+      "label": "same account and original password after full container recreation",
+      "exit_code": 0,
+      "completed_scenario": "MF-SC-02/12",
+      "request_line_iterations_in_verified_source": 10
+    }
+  ],
+  "scope": "小陈下载核验的GitHub CI原件；不冒称本轮本机Docker运行",
+  "real_mysql_top_level_groups": [
+    "TestATRealHTTPAuthorizationInputsAndIdempotency",
+    "TestATBusinessWritePointRollbackAndControlledDeadline",
+    "TestATMutationStatesAndRollback",
+    "TestATConsistentPageSnapshotsAndExactIDs",
+    "TestATCommitAcknowledgementAndRealCommittedReplay",
+    "TestATMigrationRejectsForeignDatabase"
+  ],
+  "https_persistence_phases": 3,
+  "no_skipped_mysql_tests": true
+}

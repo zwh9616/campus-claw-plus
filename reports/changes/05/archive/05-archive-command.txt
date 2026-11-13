@@ -1,0 +1,10 @@
+Task status: ✓ Complete
+
+Specs to update:
+  assignment-tasks: create
+⚠️  Warning: assignment-tasks - carried Purpose is under 50 characters; openspec validate --strict reports it as too brief.
+Applying changes to openspec/specs/assignment-tasks/spec.md:
+  + 8 added
+Totals: + 8, ~ 0, - 0, → 0
+Specs updated successfully.
+Change '2026-11-12-assignment-tasks' archived as '2026-11-12-assignment-tasks'.

@@ -1,6 +1,6 @@
 ## Context
 
-基线main `1fa47ee2c3d486ba4fcfb615ee73ea22de0b05c7`：01/02/04已验收归档，G2/G3已成立，数据库精确目标4；06真实资料页面在独立PR #30，本变更不取用其未合入代码。05尚无既存change，本次首次起草。公共依据为[00设计D2/D3/D5/D8/D9](../2026-11-04-business-contracts/design.md)、[身份主规约](../../specs/identity-foundation/spec.md)及[依赖表](../../../docs/contracts/change-dependencies.md)。
+基线main `1fa47ee2c3d486ba4fcfb615ee73ea22de0b05c7`：01/02/04已验收归档，G2/G3已成立，数据库精确目标4；06真实资料页面在独立PR #30，本变更不取用其未合入代码。05尚无既存change，本次首次起草。公共依据为[00设计D2/D3/D5/D8/D9](../../2026-11-04-business-contracts/design.md)、[身份主规约](../../../specs/identity-foundation/spec.md)及[依赖表](../../../../docs/contracts/change-dependencies.md)。
 
 ## Goals / Non-Goals
 
@@ -23,7 +23,7 @@
 | Assignment | `id, class_id, teacher_id, title, description, deadline, version, created_at`；title为1..200码点且非全空白，description为1..20000码点且非全空白，deadline严格为UTC毫秒格式且创建事务中大于数据库当前时间，version首期恒为1 |
 | Submission | `id, assignment_id, assignment_version, student_id, answer, task_id, created_at`；answer为1..20000码点（允许空白原值），assignment_version为正整数；创建后不可修改 |
 | SubmissionAccepted | `submission_id, task_id, status:"pending"`；202的持久化业务快照，不因任务后来完成而改为其他status |
-| Task | 完整沿用现有[Task候选Schema](../../../docs/contracts/schemas/Task.schema.json)：task_id/submission_id/status/attempt/execution_epoch/version/cancel_requested/created_at/updated_at/error；不公开worker/租约/内部异常 |
+| Task | 完整沿用现有[Task候选Schema](../../../../docs/contracts/schemas/Task.schema.json)：task_id/submission_id/status/attempt/execution_epoch/version/cancel_requested/created_at/updated_at/error；不公开worker/租约/内部异常 |
 
 列表为`{items,page,page_size,total}`，page默认1、page_size默认20/最大50，按created_at DESC、id DESC稳定排序；过滤与计数使用同一授权集合/一致性快照。未知查询键、重复键、非正整数、越界值400，不退化为全量查询。无记录为200空列表，详情不存在按D2处理。
 
@@ -105,7 +105,7 @@ apply时才交真实上下行SQL、manifest摘要、逐DDL故障点和前后置�
 
 ### D9 机器合同冻结（2026-11-12，#35已审定合入）
 
-规约#31已由小张批准并合入main da8624c；本节落实D0/D8允许的公共合同冻结步骤。小陈已对#35最终7fe5b5d实际批准5872964547，正常合入main e617cc0并通过完整CI43202284398，1.3完成，可交小张按2.x实施。九个操作在OpenAPI/端点登记为frozen，原13个current操作及精确目标4不变；真实05业务/迁移/worker尚未实现，不能因合同冻结提前改为current。[审定及main验收](../../../reports/changes/05/contracts-main-integration-2026-11-12.md)
+规约#31已由小张批准并合入main da8624c；本节落实D0/D8允许的公共合同冻结步骤。小陈已对#35最终7fe5b5d实际批准5872964547，正常合入main e617cc0并通过完整CI43202284398，1.3完成，可交小张按2.x实施。九个操作在OpenAPI/端点登记为frozen，原13个current操作及精确目标4不变；真实05业务/迁移/worker尚未实现，不能因合同冻结提前改为current。[审定及main验收](../../../../reports/changes/05/contracts-main-integration-2026-11-12.md)
 
 - 资源只使用单源Schema：Assignment/Submission、创建请求、SubmissionAccepted、TaskVersionRequest、两种具体Page及分页/提交幂等键。请求字段引用资源字段，分页复用MaterialListParameters的现有1/20默认、50页长和2147483647页码上限，避免复制类型。对象封闭且字段必需；JSON类型检查不能代替原始UTF-8/重复键/流式字节门禁。
 - Task字段名及D5状态机不改。按D5冻结两种安全任务内错误：EXECUTION_FAILED/“任务执行失败”、RETRY_EXHAUSTED/“重试次数已用尽”；failed才可有非空错误、耗尽错误须第三次claim，pending/failed/succeeded的取消标记为false，cancelled为true。版本/epoch/时间的示例关联另做语义检查，真实CAS仍待apply。
