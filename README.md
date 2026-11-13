@@ -4,6 +4,8 @@
 
 2026-11-13实际状态：05迁移#38、HTTP#40和worker#41已分别由小陈终审并正常合入；实现验收main d06198d完整CI43362518043成功，22 current、精确目标5。生产不绑定批改执行器/结果适配器，任务真实pending；05主规约及完整归档已随#42获小张批准并正常合入main c0f24f3；精确main完整CI43368065979复验通过，原件已核验。06资料归档#37已合入并复验；10-B全量/C、AI、成绩和作业页面仍未验收。
 
+2026-11-13下一阶段已正式安排[04E资料能力扩展](openspec/changes/2026-11-13-materials-document-intelligence/proposal.md)，全部由小张负责。先实现文本PDF/.docx的真实上传、解析、出处与页面；OCR和语义/混合检索有[明确任务](openspec/changes/2026-11-13-materials-document-intelligence/tasks.md)及[量化验收](openspec/changes/2026-11-13-materials-document-intelligence/acceptance.md)。本候选提交A规约与六个frozen合同，尚未部署或启用新操作；运行仍22 current、Target5、仅原TXT资料功能。PDF不等于OCR，持久受理不等于解析完成；后续教学生成/成绩仍按独立前置推进。
+
 ## 当前运行范围
 
 - GET /health匿名，逐请求真实Ping MySQL，3秒预算；200为status=ok/mysql=up，失败503为status=error/mysql=down，均有服务端X-Request-ID。

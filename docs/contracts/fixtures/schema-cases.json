@@ -3809,5 +3809,252 @@
       "AT-SC-14",
       "AT-SC-15"
     ]
+  },
+  {
+    "name": "DI-SC-01/05 Document candidate",
+    "schema": "Document",
+    "data": {
+      "id": "1",
+      "title": "课程资料",
+      "format": "pdf",
+      "version": 1,
+      "status": "ready",
+      "size_bytes": 100,
+      "attempts": 1,
+      "page_count": 2,
+      "failure_reason": null,
+      "created_at": "2026-11-13T00:00:00.000Z",
+      "updated_at": "2026-11-13T00:00:00.000Z"
+    },
+    "valid": true
+  },
+  {
+    "name": "DI-SC-02 Document rejects injected class",
+    "schema": "Document",
+    "data": {
+      "id": "1",
+      "title": "课程资料",
+      "format": "pdf",
+      "version": 1,
+      "status": "ready",
+      "size_bytes": 100,
+      "attempts": 1,
+      "page_count": 2,
+      "failure_reason": null,
+      "created_at": "2026-11-13T00:00:00.000Z",
+      "updated_at": "2026-11-13T00:00:00.000Z",
+      "class_id": "9"
+    },
+    "valid": false
+  },
+  {
+    "name": "DI-SC-01/05 DocumentDetail candidate",
+    "schema": "DocumentDetail",
+    "data": {
+      "document": {
+        "id": "1",
+        "title": "课程资料",
+        "format": "pdf",
+        "version": 1,
+        "status": "ready",
+        "size_bytes": 100,
+        "attempts": 1,
+        "page_count": 2,
+        "failure_reason": null,
+        "created_at": "2026-11-13T00:00:00.000Z",
+        "updated_at": "2026-11-13T00:00:00.000Z"
+      },
+      "body": "课程资料第一段。\n\n第二页：向量检索。",
+      "locations": [
+        {
+          "kind": "pdf_page",
+          "unit": 1,
+          "char_start": 0,
+          "char_end": 8
+        },
+        {
+          "kind": "pdf_page",
+          "unit": 2,
+          "char_start": 10,
+          "char_end": 19
+        }
+      ]
+    },
+    "valid": true
+  },
+  {
+    "name": "DI-SC-02 DocumentDetail rejects injected class",
+    "schema": "DocumentDetail",
+    "data": {
+      "document": {
+        "id": "1",
+        "title": "课程资料",
+        "format": "pdf",
+        "version": 1,
+        "status": "ready",
+        "size_bytes": 100,
+        "attempts": 1,
+        "page_count": 2,
+        "failure_reason": null,
+        "created_at": "2026-11-13T00:00:00.000Z",
+        "updated_at": "2026-11-13T00:00:00.000Z"
+      },
+      "body": "课程资料第一段。\n\n第二页：向量检索。",
+      "locations": [
+        {
+          "kind": "pdf_page",
+          "unit": 1,
+          "char_start": 0,
+          "char_end": 8
+        },
+        {
+          "kind": "pdf_page",
+          "unit": 2,
+          "char_start": 10,
+          "char_end": 19
+        }
+      ],
+      "class_id": "9"
+    },
+    "valid": false
+  },
+  {
+    "name": "DI-SC-01/05 DocumentCitation candidate",
+    "schema": "DocumentCitation",
+    "data": {
+      "document_id": "1",
+      "chunk_id": "2",
+      "document_version": 1,
+      "title": "课程资料",
+      "location": {
+        "kind": "pdf_page",
+        "unit": 2,
+        "char_start": 10,
+        "char_end": 19
+      },
+      "quote": "第二页：向量检索。",
+      "url": "/api/v1/documents/1"
+    },
+    "valid": true
+  },
+  {
+    "name": "DI-SC-02 DocumentCitation rejects injected class",
+    "schema": "DocumentCitation",
+    "data": {
+      "document_id": "1",
+      "chunk_id": "2",
+      "document_version": 1,
+      "title": "课程资料",
+      "location": {
+        "kind": "pdf_page",
+        "unit": 2,
+        "char_start": 10,
+        "char_end": 19
+      },
+      "quote": "第二页：向量检索。",
+      "url": "/api/v1/documents/1",
+      "class_id": "9"
+    },
+    "valid": false
+  },
+  {
+    "name": "DI-SC-01/05 DocumentPage candidate",
+    "schema": "DocumentPage",
+    "data": {
+      "items": [
+        {
+          "id": "1",
+          "title": "课程资料",
+          "format": "pdf",
+          "version": 1,
+          "status": "ready",
+          "size_bytes": 100,
+          "attempts": 1,
+          "page_count": 2,
+          "failure_reason": null,
+          "created_at": "2026-11-13T00:00:00.000Z",
+          "updated_at": "2026-11-13T00:00:00.000Z"
+        }
+      ],
+      "page": 1,
+      "page_size": 20,
+      "total": 1
+    },
+    "valid": true
+  },
+  {
+    "name": "DI-SC-02 DocumentPage rejects injected class",
+    "schema": "DocumentPage",
+    "data": {
+      "items": [
+        {
+          "id": "1",
+          "title": "课程资料",
+          "format": "pdf",
+          "version": 1,
+          "status": "ready",
+          "size_bytes": 100,
+          "attempts": 1,
+          "page_count": 2,
+          "failure_reason": null,
+          "created_at": "2026-11-13T00:00:00.000Z",
+          "updated_at": "2026-11-13T00:00:00.000Z"
+        }
+      ],
+      "page": 1,
+      "page_size": 20,
+      "total": 1,
+      "class_id": "9"
+    },
+    "valid": false
+  },
+  {
+    "name": "DI-SC-01/05 DocumentSearchResponse candidate",
+    "schema": "DocumentSearchResponse",
+    "data": {
+      "mode": "keyword",
+      "items": [
+        {
+          "document_id": "1",
+          "chunk_id": "2",
+          "document_version": 1,
+          "title": "课程资料",
+          "location": {
+            "kind": "pdf_page",
+            "unit": 2,
+            "char_start": 10,
+            "char_end": 19
+          },
+          "quote": "第二页：向量检索。",
+          "url": "/api/v1/documents/1"
+        }
+      ]
+    },
+    "valid": true
+  },
+  {
+    "name": "DI-SC-02 DocumentSearchResponse rejects injected class",
+    "schema": "DocumentSearchResponse",
+    "data": {
+      "mode": "keyword",
+      "items": [
+        {
+          "document_id": "1",
+          "chunk_id": "2",
+          "document_version": 1,
+          "title": "课程资料",
+          "location": {
+            "kind": "pdf_page",
+            "unit": 2,
+            "char_start": 10,
+            "char_end": 19
+          },
+          "quote": "第二页：向量检索。",
+          "url": "/api/v1/documents/1"
+        }
+      ],
+      "class_id": "9"
+    },
+    "valid": false
   }
 ]

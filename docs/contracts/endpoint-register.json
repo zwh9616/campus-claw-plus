@@ -147,6 +147,48 @@
       "status": "current",
       "owner": "05",
       "introduced_by": "openspec/changes/archive/2026-11-12-assignment-tasks"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/documents",
+      "status": "frozen",
+      "owner": "04E",
+      "introduced_by": "openspec/changes/2026-11-13-materials-document-intelligence"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/documents",
+      "status": "frozen",
+      "owner": "04E",
+      "introduced_by": "openspec/changes/2026-11-13-materials-document-intelligence"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/documents/{id}",
+      "status": "frozen",
+      "owner": "04E",
+      "introduced_by": "openspec/changes/2026-11-13-materials-document-intelligence"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/documents/{id}/download",
+      "status": "frozen",
+      "owner": "04E",
+      "introduced_by": "openspec/changes/2026-11-13-materials-document-intelligence"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/documents/{id}/retry",
+      "status": "frozen",
+      "owner": "04E",
+      "introduced_by": "openspec/changes/2026-11-13-materials-document-intelligence"
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/document-search",
+      "status": "frozen",
+      "owner": "04E",
+      "introduced_by": "openspec/changes/2026-11-13-materials-document-intelligence"
     }
   ],
   "planned": [

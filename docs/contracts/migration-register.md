@@ -34,3 +34,7 @@
 | 变更 / 负责人 | 候选号与计划文件 | 依赖与兼容 | 恢复与当前状态 |
 | --- | --- | --- | --- |
 | 05 / 小陈起草终审、小张审查实现 | `000005_assignment_tasks`；已追加上下行SQL，真实SHA-256见manifest/identity-phase；#35合同审定合入e617cc0 | 依赖干净000004，仅追加assignments/submissions/tasks/task_outbox/submission_idempotency五表；admin/server共用精确Target=5，旧SQL不改；后续#40已启用九业务操作为current | #38经小陈独立真实复测、修复跨库FK漏拒并批准后正常合入fc5c235，精确主干CI43239351413成功；后续#40/#41也已获审合入，main d06198d完整CI43362518043通过。五DDL/结构漂移、实际4/5制品及隔离恢复4证据见[归档核对](../../reports/changes/05/archive-review-2026-11-13.md)。未升级持有人库或做其生产回退。幂等原键VARBINARY避免尾空格/case折叠；复合FK绑定提交原班级/版本/学生及任务回执，不自动清理快照 |
+
+## 04E候选号预留（未发布、未激活）
+
+小张负责的[04E](../../openspec/changes/2026-11-13-materials-document-intelligence/design.md)预留000006用于独立Document原件、页/逻辑块、解析作业及幂等；本候选无上下行SQL、无摘要、未加入manifest/identity-phase，当前Target5不变。A1.3须先冻结精确DDL、配额/恢复及dirty/结构反例，届时server/admin原子升级6。旧000001..000005和既有库不改；真实持有人升级/隔离恢复5不能由预留推定通过。

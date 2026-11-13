@@ -1,0 +1,12 @@
+{
+  "base": "7f0f32f60e9edf805f4ae548896e330ec8d6e5c3",
+  "requirements": 8,
+  "scenarios": 25,
+  "current_operations": 22,
+  "frozen_document_operations": 6,
+  "new_schemas": 7,
+  "local_links_checked": 226,
+  "old_runtime_contract_values_and_archives_unchanged": true,
+  "active_config_unchanged": true,
+  "quality_metrics_status": "targets only; PDF/OCR/semantic runtime not implemented"
+}

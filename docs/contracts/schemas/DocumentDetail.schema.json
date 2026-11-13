@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/v1/DocumentDetail.schema.json",
+  "title": "DocumentDetail",
+  "type": "object",
+  "properties": {
+    "document": {
+      "$ref": "Document.schema.json"
+    },
+    "body": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2097152
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "locations": {
+      "type": "array",
+      "maxItems": 20000,
+      "items": {
+        "$ref": "DocumentLocation.schema.json"
+      }
+    }
+  },
+  "required": [
+    "document",
+    "body",
+    "locations"
+  ],
+  "additionalProperties": false
+}

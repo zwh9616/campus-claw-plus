@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/v1/DocumentUpload.schema.json",
+  "title": "DocumentUpload",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "传输原值；Trim后1..200码点且无控制字符，实际HTTP边界验证。"
+    },
+    "file": {
+      "type": "string",
+      "minLength": 1,
+      "contentMediaType": "application/octet-stream",
+      "description": "multipart二进制原字节，不是JSON/base64；仅PDF/DOCX。实际流式1..10485760字节与签名、解压安全由运行验证，字符串例子不能证明PDF解析。"
+    }
+  },
+  "required": [
+    "title",
+    "file"
+  ],
+  "additionalProperties": false
+}

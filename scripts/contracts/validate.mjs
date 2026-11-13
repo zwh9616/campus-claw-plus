@@ -2,6 +2,7 @@ import assert from 'node:assert/strict'
 import { existsSync } from 'node:fs'
 import { assignmentOperations, validateAssignmentOperationProfiles } from './assignments.mjs'
 import { materialOperations, validateMaterialOperationProfiles } from './materials.mjs'
+import { documentOperations, documentChange, validateDocumentOperationProfiles } from './documents.mjs'
 
 // BC-SC-09: configuration values are never accepted by this registry check.
 export function validateConfigSample(text, register, exists = existsSync) {
@@ -59,22 +60,27 @@ export function validateOperationBoundary(api, register) {
       seen.push(key)
       const material = materialOperations.some(([m,p]) => `${m} ${p}` === key)
       const assignment = assignmentOperations.some(([m,p]) => `${m} ${p}` === key)
-      assert.equal(operation['x-contract-status'], 'current', `Wrong operation stage: ${key}`)
-      assert.equal(operation['x-owner-change'], assignment ? '05' : material ? '04' : key === 'GET /health' ? 'bootstrap' : '01')
+      const document = documentOperations.some(([m,p]) => `${m} ${p}` === key)
+      assert.equal(operation['x-contract-status'], document ? 'frozen' : 'current', `Wrong operation stage: ${key}`)
+      assert.equal(operation['x-owner-change'], document ? '04E' : assignment ? '05' : material ? '04' : key === 'GET /health' ? 'bootstrap' : '01')
       const entry = register.operations.find(x => `${x.method} ${x.path}` === key)
       assert.ok(entry, `Unregistered operation: ${key}`)
       assert.equal(entry.status, operation['x-contract-status'])
       assert.equal(entry.owner, operation['x-owner-change'])
       if (assignment) assert.equal(entry.introduced_by, operation['x-spec-change'])
+      if (document) assert.equal(entry.introduced_by, documentChange)
     }
   }
-  const allowed = [...expectedOperations, ...materialOperations.map(([m,p]) => `${m} ${p}`), ...assignmentOperations.map(([m,p]) => `${m} ${p}`)].sort()
+  const allowed = [...expectedOperations, ...materialOperations.map(([m,p]) => `${m} ${p}`), ...assignmentOperations.map(([m,p]) => `${m} ${p}`), ...documentOperations.map(([m,p]) => `${m} ${p}`)].sort()
   assert.deepEqual(seen.sort(), allowed, 'Planned/missing operation in OpenAPI')
   assert.deepEqual(register.operations.map(x => `${x.method} ${x.path}`).sort(), allowed)
   assert.equal(register.planned.some(x => x.owner === '04'), false)
   assert.equal(register.planned.some(x => x.owner === '05'), false)
   validateAssignmentOperationProfiles(api)
   validateMaterialOperationProfiles(api)
+  assert.equal(register.operations.filter(x => x.status === 'current').length, 22, 'DI-SC-01 current boundary unchanged')
+  assert.equal(register.operations.filter(x => x.status === 'frozen').length, 6, 'DI-SC-01 only six document contracts may freeze')
+  validateDocumentOperationProfiles(api)
   const security = (path, method = 'post') => api.paths[path][method].security
   assert.deepEqual(security('/health', 'get'), [])
   assert.deepEqual(security('/api/v1/auth/login'), [])

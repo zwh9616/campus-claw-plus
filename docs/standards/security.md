@@ -52,3 +52,7 @@ config-register.json中仅登记http://mcp:8090/mcp，enabled=false。须03/07C�
 九个05操作已随#40与实际运行装配、登记及检查原子切为current，连同六个身份、六个资料和健康共22个current操作；提供真实授权、同事务submission/task/outbox/原202快照及重试/取消HTTP规则。生产无执行器，始终真实pending；无新配置/服务/假批改开关，不代表持有人数据库已升级。原健康/TLS/账号权限保持；真实本机、CI及搭档终审见共享进度表。
 
 05已验收的worker机制提供持久调度/60秒租约/20秒心跳/完整owner-epoch-running-未到期条件、三次总上限及原子结果适配器。生产仍不绑定执行器/结果适配器，不claim且真实pending，无新HTTP/配置/服务/SQL；测试执行器及回执表仅在测试二进制/隔离库。完整21场景、真实验证、最终gate及独立终审以共享表和reports/changes/05/archive-review-2026-11-13.md为准，不视为AI/成绩/页面交付。
+
+## 04E资料扩展候选边界
+
+组长2026-11-13恢复04E并统一小张负责，按[DI设计D0—D9](../../openspec/changes/2026-11-13-materials-document-intelligence/design.md)执行。六个frozen合同不授权运行；原22 current、健康及active配置保持。A要求有界PDF/DOCX、隔离无外网解析、ZIP/XML拒绝实体/外链、原件与出处逐资源授权；B OCR/C真实嵌入仅正式列任务，模型出站/数据去向/配置及预算另冻结，不开放通用URL、宏或公网附件。

@@ -52,3 +52,7 @@ JSON日志正式验收对象为Go应用输出，HTTP完成日志使用duration_m
 九个05操作已随#40与实际运行装配、登记及检查原子切为current，连同六个身份、六个资料和健康共22个current操作；提供真实授权、同事务submission/task/outbox/原202快照及重试/取消HTTP规则。生产无执行器，始终真实pending；无新配置/服务/假批改开关，不代表持有人数据库已升级。原健康/TLS/账号权限保持；真实本机、CI及搭档终审见共享进度表。
 
 05已验收的worker机制提供持久调度/60秒租约/20秒心跳/完整owner-epoch-running-未到期条件、三次总上限及原子结果适配器。生产仍不绑定执行器/结果适配器，不claim且真实pending，无新HTTP/配置/服务/SQL；测试执行器及回执表仅在测试二进制/隔离库。完整21场景、真实验证、最终gate及独立终审以共享表和reports/changes/05/archive-review-2026-11-13.md为准，不视为AI/成绩/页面交付。
+
+## 04E新解析服务仍为候选
+
+[04E D4/D5](../../openspec/changes/2026-11-13-materials-document-intelligence/design.md)计划引入私有解析服务和候选迁移6；本次不改Compose、镜像、active配置、探针或Target5。A实现前锁定精确依赖/轮子与基础镜像摘要、无外网/无数据库秘密/只读/CPU内存进程时限和健康失败规则，同提交激活配置及真实五镜像实扫/运行清理。OCR、嵌入和向量存储在各阶段独立冻结，旧TXT/ready读取及MySQL健康不得被解析依赖拖垮。

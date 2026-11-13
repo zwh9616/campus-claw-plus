@@ -194,6 +194,11 @@
       "owner": "07A",
       "purpose": "模型连接与密钥",
       "names_frozen": false
+    },
+    {
+      "owner": "04E",
+      "purpose": "A私有解析RPC地址/认证、预算及B OCR/C嵌入配置；精确键和缺失/超时规则在各阶段实施前冻结，不是active",
+      "names_frozen": false
     }
   ],
   "outbound_exceptions": [

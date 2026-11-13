@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/v1/DocumentLocation.schema.json",
+  "title": "DocumentLocation",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "type": "string",
+      "enum": [
+        "pdf_page",
+        "docx_paragraph",
+        "docx_table_cell"
+      ]
+    },
+    "unit": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 20000
+    },
+    "char_start": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 2097151
+    },
+    "char_end": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 2097152
+    }
+  },
+  "required": [
+    "kind",
+    "unit",
+    "char_start",
+    "char_end"
+  ],
+  "additionalProperties": false
+}

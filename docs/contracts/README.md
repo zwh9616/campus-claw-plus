@@ -24,6 +24,12 @@
 
 认证传输采用`Authorization: Bearer ...`、`X-CSRF-Token`与`Origin`，刷新Cookie传输名选为`campus_refresh`（00落地的具体命名，需本实现PR审查；01若调整须同步合同）。Cookie属性/期限遵循D3/D9；logout无成功body。auth/me只开放各操作声明的错误集合；通用Error还容纳后续已约定错误码，但不凭其存在开新路由。HTTP层拒绝未知/重复键及64KiB上限属于01运行检查，普通JSON Schema无法检测解析后已丢失的重复键。
 
+## 04E下一阶段：六个冻结资料文件合同
+
+2026-11-13组长要求PDF/Word优先，OCR和语义检索正式列任务，全部小张负责。本候选依据[04E设计D0—D9](../../openspec/changes/2026-11-13-materials-document-intelligence/design.md)新增Document/Location/Citation等七个单源Schema、六个frozen操作和双路径/语义反例。原22个current、Material/Citation和TXT/keyword、Target5及active配置保持；frozen仍不可调用，公共合同获审合入后才apply。A的DOCX为.docx，不含旧.doc/docm；扫描PDF进入needs_ocr，不假ready。OCR及vector/hybrid留在本变更B/C明确任务和验收，当前不新增运行接口或模型出站。
+
+独立Document资源保留原二进制和页/逻辑块位置；候选迁移000006尚无运行SQL。解析RPC配置只登记planned，具体键和超时在实施前冻结，空样例不新增planned键。`documents.test.mjs`明确只验合同/合成包络与引用语义，不能证明真实PDF解析质量、OCR或向量能力；运行责任见[验收表](../../openspec/changes/2026-11-13-materials-document-intelligence/acceptance.md)。
+
 ## 本机与CI使用同一入口
 
 ```text
