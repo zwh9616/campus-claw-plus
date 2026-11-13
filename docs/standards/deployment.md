@@ -56,3 +56,5 @@ JSON日志正式验收对象为Go应用输出，HTTP完成日志使用duration_m
 ## 04E新解析服务仍为候选
 
 [04E D4/D5](../../openspec/changes/2026-11-13-materials-document-intelligence/design.md)计划引入私有解析服务和候选迁移6；本次不改Compose、镜像、active配置、探针或Target5。A实现前锁定精确依赖/轮子与基础镜像摘要、无外网/无数据库秘密/只读/CPU内存进程时限和健康失败规则，同提交激活配置及真实五镜像实扫/运行清理。OCR、嵌入和向量存储在各阶段独立冻结，旧TXT/ready读取及MySQL健康不得被解析依赖拖垮。
+
+04E首组件补记：#45获审合入并经main复验后，新增document-parser离线候选镜像，不加入默认Compose或服务批次。check实际应用network=none/read-only/nonroot/cap_drop/no-new-privileges/512MiB无swap/1CPU/32PIDs/64MiB tmpfs，内部子进程384MiB/30秒并回收进程组；verify保留原四镜像和运行验收，结束后另外扫描此候选的实际不可变镜像与pypdf包并清理自身资源。该候选扫描与未来五生产镜像/真实RPC健康/持久恢复验收分列，不能据此启用active配置或Target6。见[组件边界及命令](../../document-parser/README.md)。

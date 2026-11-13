@@ -14,7 +14,7 @@
     "check:foundation": "node scripts/check-foundation.mjs",
     "check:backend": "node scripts/check-backend.mjs",
     "check:spec": "openspec validate --all --strict",
-    "check": "npm run check:foundation && npm run check:gate && npm run check:contracts && npm run check:service-batches && npm run check:identity-wiring && npm run check:frontend-auth && npm run typecheck && npm run build && npm run check:sample-isolation && npm run check:backend && npm run check:spec",
+    "check": "npm run check:foundation && npm run check:gate && npm run check:contracts && npm run check:service-batches && npm run check:identity-wiring && npm run check:frontend-auth && npm run typecheck && npm run build && npm run check:sample-isolation && npm run check:backend && npm run check:spec && npm run check:document-parser",
     "test": "npm run check:backend",
     "audit": "npm audit --audit-level=high && npm audit --prefix frontend --audit-level=high",
     "verify": "node scripts/verify-service-batches.mjs",
@@ -29,7 +29,8 @@
     "verify:identity-wiring": "node scripts/verify-identity-wiring.mjs",
     "verify:materials-browser": "node scripts/verify-materials-browser.mjs",
     "check:identity-wiring": "node --test scripts/identity-wiring.test.mjs scripts/application-image-report.test.mjs",
-    "check:service-batches": "node scripts/check-service-batches.mjs && node --test scripts/service-batches.test.mjs"
+    "check:service-batches": "node scripts/check-service-batches.mjs && node --test scripts/service-batches.test.mjs",
+    "check:document-parser": "node scripts/check-document-parser.mjs"
   },
   "devDependencies": {
     "@apidevtools/swagger-parser": "13.1.0",

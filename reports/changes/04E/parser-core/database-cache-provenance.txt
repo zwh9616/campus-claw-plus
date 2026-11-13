@@ -1,0 +1,3 @@
+15982ae74263f22790b348c89b181c9edfd21d70b08b2364aedcf0f7ef8fab29  /source/db/trivy.db
+15982ae74263f22790b348c89b181c9edfd21d70b08b2364aedcf0f7ef8fab29  /target/db/trivy.db
+{"Version":2,"NextUpdate":"2026-11-14T00:58:46.183129905Z","UpdatedAt":"2026-11-13T00:58:46.183130125Z","DownloadedAt":"2026-11-13T07:03:18.354396599Z"}

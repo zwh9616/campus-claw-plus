@@ -1,0 +1,4 @@
+Document parser build pinned candidate: exit 0
+Document parser record immutable image: exit 0
+Document parser actual bounded acceptance: exit 1
+actual bounded acceptance failed; see output/document-parser/check/results.json

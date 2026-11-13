@@ -1,0 +1,53 @@
+{
+  "time": "2026-11-13T08:05:04.523Z",
+  "run_id": "campus-di-b983b5e11bb4",
+  "scope": "04E offline parser candidate; current production batch remains four images",
+  "source": {
+    "commit": "25484d542278bd5bf65d2ae02688c0de833e8ccc",
+    "dirty": true,
+    "fingerprint": "13d2e537815ba29b87cd5124864a897ed5336dba621d2df0373db71108a9628c"
+  },
+  "exit_code": 1,
+  "image_id": "sha256:eb3633955bafec03d08e9244f3dd3799be2157557c71356673fbbfd1f42e86e3",
+  "image_export_sha256": "9c74691d0a54fccc04cde5c09ad775964de3bdc8a66d30ee47d276cb51e85c9c",
+  "error": "Trivy candidate HIGH/CRITICAL failed; see output/document-parser/scan/results.json",
+  "cleanup": [
+    {
+      "resource": "campus-di-b983b5e11bb4-run",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "resource": "campus-di-b983b5e11bb4:check",
+      "exit_code": 0,
+      "ok": true
+    }
+  ],
+  "finished_at": "2026-11-13T08:08:10.177Z",
+  "results": [
+    {
+      "label": "build pinned candidate",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "#0 building with \"desktop-linux\" instance using docker driver\n\n#1 [internal] load build definition from Dockerfile\n#1 transferring dockerfile: 617B done\n#1 DONE 0.0s\n\n#2 [internal] load metadata for docker.io/library/python@sha256:3fe1a0b6c2d6b2ebb572906cdabeca75aeb558c0c17db5ffefbcf8094871c32b\n#2 DONE 0.0s\n\n#3 [internal] load .dockerignore\n#3 transferring context: 104B done\n#3 DONE 0.0s\n\n#4 [internal] load build context\n#4 transferring context: 123B done\n#4 DONE 0.0s\n\n#5 [dependencies 1/4] FROM docker.io/library/python@sha256:3fe1a0b6c2d6b2ebb572906cdabeca75aeb558c0c17db5ffefbcf8094871c32b\n#5 resolve docker.io/library/python@sha256:3fe1a0b6c2d6b2ebb572906cdabeca75aeb558c0c17db5ffefbcf8094871c32b 0.0s done\n#5 DONE 0.0s\n\n#6 [dependencies 3/4] COPY requirements.lock .\n#6 CACHED\n\n#7 [dependencies 2/4] WORKDIR /build\n#7 CACHED\n\n#8 [stage-1 3/4] COPY --from=dependencies /packages /usr/local/lib/python3.14/site-packages\n#8 CACHED\n\n#9 [dependencies 4/4] RUN python -m pip install --no-cache-dir --require-hashes --no-deps --target=/packages -r requirements.lock\n#9 CACHED\n\n#10 [stage-1 2/4] WORKDIR /app\n#10 CACHED\n\n#11 [stage-1 4/4] COPY core.py runner.py worker.py /app/\n#11 CACHED\n\n#12 exporting to image\n#12 exporting layers done\n#12 exporting manifest sha256:c81319241275098515e288b7d04f36b9ffd753b5340606065996e8f8f04fe12a done\n#12 exporting config sha256:f5fb4bc95286d44c95b315a7081897b73d44de30e70661a0695a5f25468b42c5 done\n#12 exporting attestation manifest sha256:1b9b0b1e8678c8fb65f339ca0fddfe7fef8ea6fa0b54cd8758769ce4712fda97\n#12 exporting attestation manifest sha256:1b9b0b1e8678c8fb65f339ca0fddfe7fef8ea6fa0b54cd8758769ce4712fda97 0.0s done\n#12 exporting manifest list sha256:eb3633955bafec03d08e9244f3dd3799be2157557c71356673fbbfd1f42e86e3 0.0s done\n#12 naming to docker.io/library/campus-di-b983b5e11bb4:check done\n#12 unpacking to docker.io/library/campus-di-b983b5e11bb4:check done\n#12 DONE 0.1s\n\nView build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/jpzkd8q68xupbo0qy4ihg7gun\n"
+    },
+    {
+      "label": "record immutable image",
+      "exit_code": 0,
+      "stdout": "sha256:eb3633955bafec03d08e9244f3dd3799be2157557c71356673fbbfd1f42e86e3\n",
+      "stderr": ""
+    },
+    {
+      "label": "export candidate without scanner socket",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "label": "Trivy candidate HIGH/CRITICAL",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "2026-11-13T08:05:08Z\tINFO\t[vulndb] Need to update DB\n2026-11-13T08:05:08Z\tINFO\t[vulndb] Downloading vulnerability DB...\n2026-11-13T08:05:08Z\tINFO\t[vulndb] Downloading artifact...\trepo=\"ghcr.io/aquasecurity/trivy-db:2\"\n2026-11-13T08:08:09Z\tWARN\tProvide a higher timeout value, see https://trivy.dev/docs/v0.76/guide/references/troubleshooting#timeout\n2026-11-13T08:08:09Z\tFATAL\tFatal error\trun error: init error: DB error: failed to download vulnerability DB: OCI artifact error: failed to download vulnerability DB: failed to download artifact from ghcr.io/aquasecurity/trivy-db:2: oci download error: copy error: context deadline exceeded\n"
+    }
+  ]
+}
