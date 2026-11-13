@@ -1,0 +1,57 @@
+{
+  "baseline": "c0f24f338b59640bd8acdf00c3c48f7106e9b2f1",
+  "changed_files": 12,
+  "local_markdown_links": 157,
+  "runtime_contract_sql_config_images_locks_and_archives_unchanged": true,
+  "full_tracked_file_fingerprint": "1a1cd3611ba716e6d7c7f8453e67a95cf27c33e51c9574615205d9bdc98397fb",
+  "evidence": [
+    {
+      "run": 43367423693,
+      "digest": "sha256:369d0d3a42305f9d1d44d05d97dc711e2f7b8321dc0ce9293e83184f4b4af031",
+      "gate": [
+        {
+          "name": "check",
+          "exitCode": 0
+        },
+        {
+          "name": "audit",
+          "exitCode": 0
+        },
+        {
+          "name": "secret-scan",
+          "exitCode": 0
+        },
+        {
+          "name": "verify",
+          "exitCode": 0
+        }
+      ],
+      "mysql_groups": 20,
+      "https_phases": 3
+    },
+    {
+      "run": 43368065979,
+      "digest": "sha256:1622c06c9b69d9d6b92630a18bb1b02e51eeff2012330c691441425c51806aef",
+      "gate": [
+        {
+          "name": "check",
+          "exitCode": 0
+        },
+        {
+          "name": "audit",
+          "exitCode": 0
+        },
+        {
+          "name": "secret-scan",
+          "exitCode": 0
+        },
+        {
+          "name": "verify",
+          "exitCode": 0
+        }
+      ],
+      "mysql_groups": 20,
+      "https_phases": 3
+    }
+  ]
+}
