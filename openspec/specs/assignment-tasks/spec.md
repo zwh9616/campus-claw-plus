@@ -1,7 +1,7 @@
 # assignment-tasks Specification
 
 ## Purpose
-为已接入01身份与MySQL的CampusClawPlus提供受班级授权的作业、私有提交、同事务幂等202及可恢复持久任务，约束租约、单调epoch、三次总上限、取消竞争和终态原子性。八项需求与二十一场景继承00公共合同；D1—D9见[05归档设计](../../changes/archive/2026-11-12-assignment-tasks/design.md)。实现已随#38/#40/#41合入main并完成真实集成复验，证据与下游交接见[归档核对](../../../reports/changes/05/archive-review-2026-11-13.md)；本归档候选仍待小张核对及合入。生产不绑定执行器或结果适配器，真实pending；模型、成绩及作业页面按各自后续变更验收。
+为已接入01身份与MySQL的CampusClawPlus提供受班级授权的作业、私有提交、同事务幂等202及可恢复持久任务，约束租约、单调epoch、三次总上限、取消竞争和终态原子性。八项需求与二十一场景继承00公共合同；D1—D9见[05归档设计](../../changes/archive/2026-11-12-assignment-tasks/design.md)。实现已随#38/#40/#41合入main并完成真实集成复验，证据与下游交接见[归档核对](../../../reports/changes/05/archive-review-2026-11-13.md)。生产不绑定执行器或结果适配器，真实pending；模型、成绩及作业页面按各自后续变更验收。
 
 ## Requirements
 
