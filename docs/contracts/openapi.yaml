@@ -3591,7 +3591,7 @@
         "summary": "05候选：POST /api/v1/assignments",
         "x-contract-status": "current",
         "x-owner-change": "05",
-        "x-spec-change": "openspec/changes/2026-11-12-assignment-tasks",
+        "x-spec-change": "openspec/changes/archive/2026-11-12-assignment-tasks",
         "security": [
           {
             "BearerAuth": []
@@ -4040,7 +4040,7 @@
         "summary": "05候选：GET /api/v1/assignments",
         "x-contract-status": "current",
         "x-owner-change": "05",
-        "x-spec-change": "openspec/changes/2026-11-12-assignment-tasks",
+        "x-spec-change": "openspec/changes/archive/2026-11-12-assignment-tasks",
         "security": [
           {
             "BearerAuth": []
@@ -4340,7 +4340,7 @@
         "summary": "05候选：GET /api/v1/assignments/{id}",
         "x-contract-status": "current",
         "x-owner-change": "05",
-        "x-spec-change": "openspec/changes/2026-11-12-assignment-tasks",
+        "x-spec-change": "openspec/changes/archive/2026-11-12-assignment-tasks",
         "security": [
           {
             "BearerAuth": []
@@ -4666,7 +4666,7 @@
         "summary": "05候选：POST /api/v1/assignments/{id}/submissions",
         "x-contract-status": "current",
         "x-owner-change": "05",
-        "x-spec-change": "openspec/changes/2026-11-12-assignment-tasks",
+        "x-spec-change": "openspec/changes/archive/2026-11-12-assignment-tasks",
         "security": [
           {
             "BearerAuth": []
@@ -5246,7 +5246,7 @@
         "summary": "05候选：GET /api/v1/assignments/{id}/submissions",
         "x-contract-status": "current",
         "x-owner-change": "05",
-        "x-spec-change": "openspec/changes/2026-11-12-assignment-tasks",
+        "x-spec-change": "openspec/changes/archive/2026-11-12-assignment-tasks",
         "security": [
           {
             "BearerAuth": []
@@ -5594,7 +5594,7 @@
         "summary": "05候选：GET /api/v1/submissions/{id}",
         "x-contract-status": "current",
         "x-owner-change": "05",
-        "x-spec-change": "openspec/changes/2026-11-12-assignment-tasks",
+        "x-spec-change": "openspec/changes/archive/2026-11-12-assignment-tasks",
         "security": [
           {
             "BearerAuth": []
@@ -5920,7 +5920,7 @@
         "summary": "05候选：GET /api/v1/tasks/{id}",
         "x-contract-status": "current",
         "x-owner-change": "05",
-        "x-spec-change": "openspec/changes/2026-11-12-assignment-tasks",
+        "x-spec-change": "openspec/changes/archive/2026-11-12-assignment-tasks",
         "security": [
           {
             "BearerAuth": []
@@ -6250,7 +6250,7 @@
         "summary": "05候选：POST /api/v1/tasks/{id}/retry",
         "x-contract-status": "current",
         "x-owner-change": "05",
-        "x-spec-change": "openspec/changes/2026-11-12-assignment-tasks",
+        "x-spec-change": "openspec/changes/archive/2026-11-12-assignment-tasks",
         "security": [
           {
             "BearerAuth": []
@@ -6815,7 +6815,7 @@
         "summary": "05候选：POST /api/v1/tasks/{id}/cancel",
         "x-contract-status": "current",
         "x-owner-change": "05",
-        "x-spec-change": "openspec/changes/2026-11-12-assignment-tasks",
+        "x-spec-change": "openspec/changes/archive/2026-11-12-assignment-tasks",
         "security": [
           {
             "BearerAuth": []

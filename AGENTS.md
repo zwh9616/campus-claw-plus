@@ -1,7 +1,7 @@
 # CampusClawPlus 工程约定
 本分支默认运行已接入01身份与MySQL阶段，实际合入/验收状态见共享表。第7课骨架为历史基线，历史主规约见[spec](openspec/specs/project-bootstrap/spec.md)，归档依据见[历史变更](openspec/changes/archive/2026-10-28-project-bootstrap/)。本轮执行[00规约](openspec/changes/2026-11-04-business-contracts/proposal.md)、[design](openspec/changes/2026-11-04-business-contracts/design.md)、[spec](openspec/changes/2026-11-04-business-contracts/specs/business-contracts/spec.md)及[tasks](openspec/changes/2026-11-04-business-contracts/tasks.md)；00只负责公共合同。当前01/02/04已验收，06真实资料页面已随#30合入，测试修复#31及主干完整CI43186361938通过；2026-11-12组长恢复05规约工作，其他暂停项未恢复。PB/SC保留历史含义，新需求使用BC及后续change自己的前缀。
 
-2026-11-12最新冻结事实：#35已获小陈对7fe5b5d真实批准5872964547，正常合入main e617cc0，主干完整CI43202284398通过；05任务1.3完成，原13 current/目标4与九个frozen合同分列，05业务实现仍待原负责人按2.x推进。#33/#34只补实际状态与证据，B全量/C仍未完成；资料归档#37已获小葛批准合入main3c45f31并通过完整CI43224927460。
+2026-11-13实际状态：05迁移#38、HTTP#40和worker#41已分别由小陈终审并正常合入；最新main d06198d完整CI43362518043成功，22 current、精确目标5。生产不绑定批改执行器/结果适配器，任务真实pending；主规约与05归档候选在本分支，待小张核对后正常合入。06资料归档#37已合入并复验；10-B全量/C、AI、成绩和作业页面仍未验收。
 
 ## 每次开始工作
 - 必读 [安全规范](docs/standards/security.md)，按范围必须读取下表规则；这些文件是约束，不是可选参考。
@@ -25,11 +25,11 @@
 
 01已合入[身份主规约](openspec/specs/identity-foundation/spec.md)及[01归档](openspec/changes/archive/2026-11-04-identity-foundation/)。02主规约与历史设计见[前端主规约](openspec/specs/frontend-foundation/spec.md)及[02归档](openspec/changes/archive/2026-11-05-frontend-foundation/)，#21已合入main并复验。04规约#23、机器合同#25及实现#26已正常合入main6634e51；小张最终head批准及主干完整CI42987148688成功。[资料主规约](openspec/specs/materials-retrieval/spec.md)及[04归档](openspec/changes/archive/2026-11-10-materials-retrieval/)已随#28合入main78af20b，主干完整CI43002888185复验通过。其余教学实现仍须各自批准与依赖；06已批准资料规约见#27。主干状态见共享表。
 
-当前已装配六个`current`资料操作（共13个current操作），新增000004三张资料表及真实SQL摘要，04历史目标4；本05首批候选server/admin改为共享精确目标5。资料以可信会话当前班级授权，学生只读ready；原始字节保留、索引事务及幂等、5秒业务预算/503与504、12次/分钟按用户配额和同快照出处回查遵循04。配置/服务/原健康及01旧SQL不变；本06候选前端已按批准规约消费资料操作，独立终审及合入见共享表。详见[合同入口](docs/contracts/README.md)、[迁移方案](openspec/changes/archive/2026-11-10-materials-retrieval/migration-plan.md)和[运行交接](docs/materials-runtime.md)。04实现终审与main集成已通过；04归档#28已正常合入，持有人长期部署与生产回退不由CI推定。
+当前已装配六个身份、六个资料、九个作业/提交/任务操作及健康（共22个current操作）；000005追加五表，server/admin共享精确目标5，04历史目标4保留原义。资料以可信会话当前班级授权，学生只读ready；原始字节保留、索引事务及幂等、5秒业务预算/503与504、12次/分钟按用户配额和同快照出处回查遵循04。配置/服务/原健康及01旧SQL不变；本06候选前端已按批准规约消费资料操作，独立终审及合入见共享表。详见[合同入口](docs/contracts/README.md)、[迁移方案](openspec/changes/archive/2026-11-10-materials-retrieval/migration-plan.md)和[运行交接](docs/materials-runtime.md)。04实现终审与main集成已通过；04归档#28已正常合入，持有人长期部署与生产回退不由CI推定。
 
 2026-11-12，06资料阶段规约#27经小葛批准合入复验、代表样板#29经小张确认、真实实现#30经小张终审合入，严格414测试修复#31后main da8624c完整门禁及真实HTTPS双班五人18项复验通过。小张据小葛清单准备[资料前端主规约](openspec/specs/materials-frontend/spec.md)及[原change归档候选](openspec/changes/archive/2026-11-11-materials-frontend/)，实际归档合入状态见共享表；未获审合入不记主干已归档。小张写规约/确认样板/终审，小葛审规约/apply；资料阶段依赖02/04，作业页面仍另等05真实接口，未恢复AI/成绩等暂停项。
 
-2026-11-12组长明确启动[05作业与持久任务规约](openspec/changes/2026-11-12-assignment-tasks/proposal.md)，小陈起草/终审、小张审规约/apply。规约已获小张对ef3553f批准、随#31合入main da8624c并通过主干完整CI；公共机器合同#35已获小陈批准、合入e617cc0并完整复验，交接#36已合入；G2/G3已有证据不替代05各阶段终审。首批#38已获小陈对22860fd实际批准并合入main fc5c235、完整主干CI43239351413通过；本独立2.2/2.3候选实际装配九操作并原子同步22 current，实现逐资源授权与原子幂等202，干净fdac13f完整本机gate/代码CI43230410080通过，尚待终审。000005及Target=5保持，后续独立#41的2.4/2.5实现及全部21场景自测已完成，干净0857354完整本机gate/代码CI43239277911通过，3.x仍待小陈独立终审/合入/main复验；生产未接真实执行器时不允许假批改成功。此决定只恢复05，06作业页面、07/08等仍按各自批准和依赖推进。
+2026-11-12组长启动[05作业与持久任务规约](openspec/changes/archive/2026-11-12-assignment-tasks/proposal.md)，小陈起草/终审、小张审规约/apply。规约#31及公共冻结#35已获审合入。#38迁移基础、#40 HTTP/原子幂等202及#41持久worker均已由小陈实际批准、正常合入；最新main d06198d完整CI43362518043成功。独立Docker复测、关键幂等/到期权威条件红1→恢复绿0和精确主干原件见[05归档核对](reports/changes/05/archive-review-2026-11-13.md)。本分支同步[主规约](openspec/specs/assignment-tasks/spec.md)和[归档候选](openspec/changes/archive/2026-11-12-assignment-tasks/)，待小张核对后合入。生产无执行器/结果适配器时不claim，真实pending；没有AI/成绩/作业页面，持有人库未升级。06作业页面、07/08仍按各自批准与依赖推进，不因本次归档自动恢复。
 
 ## 当前命令
 

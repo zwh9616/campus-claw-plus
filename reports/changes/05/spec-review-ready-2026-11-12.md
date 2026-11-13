@@ -6,7 +6,7 @@
 
 - 基线main `1fa47ee2c3d486ba4fcfb615ee73ea22de0b05c7`，本提交分支`codex/05-assignment-tasks-spec`。开工fetch核对无既存05变更，保留四份用户未跟踪文本。
 - G2/G3和01依赖已有共享表证据；06真实资料页面#30尚待审查，不是05依赖，本分支不合入其代码。
-- [候选规约](../../../openspec/changes/2026-11-12-assignment-tasks/proposal.md)：8项AT需求、21个AT-SC场景、九个候选操作、五表000005候选；机器登记/运行目标仍为4，13个current操作不变。
+- [候选规约](../../../openspec/changes/archive/2026-11-12-assignment-tasks/proposal.md)：8项AT需求、21个AT-SC场景、九个候选操作、五表000005候选；机器登记/运行目标仍为4，13个current操作不变。
 - 00 D5的授权后重放、原202快照、三次claim/epoch/60秒租约、旧worker拒绝及取消优先保持原义。特别明确终态取消先于旧version判断、取消后失败不能退避复活。
 - 首提交`e5806a95ad5cf49fe1e479c9094ebab88ab11363`已推送，创建[PR #31](https://github.com/zwh9616/campus-claw-plus/pull/31)，已通过GitHub实际请求小张/zwh9616审查；本提交仅补交接链接，未代批准或合并。最终完整CI看PR当前head检查，不沿用旧SHA成功。
 

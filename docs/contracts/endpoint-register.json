@@ -90,63 +90,63 @@
       "path": "/api/v1/assignments",
       "status": "current",
       "owner": "05",
-      "introduced_by": "openspec/changes/2026-11-12-assignment-tasks"
+      "introduced_by": "openspec/changes/archive/2026-11-12-assignment-tasks"
     },
     {
       "method": "GET",
       "path": "/api/v1/assignments",
       "status": "current",
       "owner": "05",
-      "introduced_by": "openspec/changes/2026-11-12-assignment-tasks"
+      "introduced_by": "openspec/changes/archive/2026-11-12-assignment-tasks"
     },
     {
       "method": "GET",
       "path": "/api/v1/assignments/{id}",
       "status": "current",
       "owner": "05",
-      "introduced_by": "openspec/changes/2026-11-12-assignment-tasks"
+      "introduced_by": "openspec/changes/archive/2026-11-12-assignment-tasks"
     },
     {
       "method": "POST",
       "path": "/api/v1/assignments/{id}/submissions",
       "status": "current",
       "owner": "05",
-      "introduced_by": "openspec/changes/2026-11-12-assignment-tasks"
+      "introduced_by": "openspec/changes/archive/2026-11-12-assignment-tasks"
     },
     {
       "method": "GET",
       "path": "/api/v1/assignments/{id}/submissions",
       "status": "current",
       "owner": "05",
-      "introduced_by": "openspec/changes/2026-11-12-assignment-tasks"
+      "introduced_by": "openspec/changes/archive/2026-11-12-assignment-tasks"
     },
     {
       "method": "GET",
       "path": "/api/v1/submissions/{id}",
       "status": "current",
       "owner": "05",
-      "introduced_by": "openspec/changes/2026-11-12-assignment-tasks"
+      "introduced_by": "openspec/changes/archive/2026-11-12-assignment-tasks"
     },
     {
       "method": "GET",
       "path": "/api/v1/tasks/{id}",
       "status": "current",
       "owner": "05",
-      "introduced_by": "openspec/changes/2026-11-12-assignment-tasks"
+      "introduced_by": "openspec/changes/archive/2026-11-12-assignment-tasks"
     },
     {
       "method": "POST",
       "path": "/api/v1/tasks/{id}/retry",
       "status": "current",
       "owner": "05",
-      "introduced_by": "openspec/changes/2026-11-12-assignment-tasks"
+      "introduced_by": "openspec/changes/archive/2026-11-12-assignment-tasks"
     },
     {
       "method": "POST",
       "path": "/api/v1/tasks/{id}/cancel",
       "status": "current",
       "owner": "05",
-      "introduced_by": "openspec/changes/2026-11-12-assignment-tasks"
+      "introduced_by": "openspec/changes/archive/2026-11-12-assignment-tasks"
     }
   ],
   "planned": [

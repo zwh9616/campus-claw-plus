@@ -17,8 +17,8 @@
 
 ## 当前实现和规划的区别
 
-- **current**：原`GET /health`与六个身份操作，以及本04实现候选原子接线的六个资料操作，共13个。健康真实Ping，200/mysql=up、503/mysql=down。current表示本分支有运行装配，不等于部署、终审或主干集成通过，实际结果见共享表。
-- **frozen**：05九个作业/提交/任务操作已随#35获小陈审定、正常合入main e617cc0并通过主干完整CI，1.3公共冻结完成，可交小张apply；原冻结时未接入服务；本2.2/2.3实施候选将九操作与实现原子切为current，共22 current，尚待本批真实门禁/小陈终审及依赖#38合入。04六操作已为current，冻结历史不等于已运行。
+- **current**：GET /health、六个身份、六个资料和九个05作业/提交/任务操作，共22个。#38/#40/#41已由小陈终审并正常合入，main d06198d完整CI43362518043通过。健康保持真实MySQL Ping；任务生产不绑定执行器而pending，current不等于持有人已部署。
+- **frozen**：#35曾冻结九个05操作，#40已在实现/登记/检查同提交中转为current；历史冻结记录保留原义。其余能力不得因存在Schema或归档而提前接线。
 - **planned**：成绩、流式会话和审计等其余操作仍只有责任登记，不出现在OpenAPI paths中，也不能接线或生成假入口。Task、Turn、GradeResult、SSE、Audit等候选Schema不表示能力已可调用；向量/混合检索不在04首版合同中。
 - `Page.schema.json`仍是明确的`Page<Audit>`实例；04单独用`MaterialPage`引用`Material`，不改旧Page或使用裸object占位。
 
@@ -71,10 +71,12 @@ SSE fixture的`{event,data}`只是测试表达：真实wire仍为`event:`与JSON
 
 ## 05作业与持久任务机器合同冻结
 
-依据已审定合入#31的[05设计D1—D8及#35新增D9](../../openspec/changes/2026-11-12-assignment-tasks/design.md)。D9已随#35获小陈对最终7fe5b5d实际批准5872964547，正常合入main e617cc0并通过完整CI43202284398；不属于#31的历史批准范围。九个frozen操作与10个新增Schema完成公共冻结；Task只细化既有字段的安全错误和状态关联，不增加公开worker/租约字段，不改00 D5。分页复用既有公共参数，资源请求/响应通过本地$ref引用单一字段定义；该次公共冻结时原13 current、健康/配置/精确目标4和既有SQL未改；本次迁移实施候选的目标5见下文。
+依据已审定合入#31的[05设计D1—D8及#35新增D9](../../openspec/changes/archive/2026-11-12-assignment-tasks/design.md)。D9已随#35获小陈对最终7fe5b5d实际批准5872964547，正常合入main e617cc0并通过完整CI43202284398；不属于#31的历史批准范围。九个frozen操作与10个新增Schema完成公共冻结；Task只细化既有字段的安全错误和状态关联，不增加公开worker/租约字段，不改00 D5。分页复用既有公共参数，资源请求/响应通过本地$ref引用单一字段定义；该次公共冻结时原13 current、健康/配置/精确目标4和既有SQL未改；本次迁移实施候选的目标5见下文。
 
 原`check:contracts`现增加05结构双路径、权限/错误/配额/授权后原202重放声明变异、任务CAS/取消声明、页面计数/排序与请求字节语义；Go独立生成的5组摘要向量作为跨语言固定原件。仅验证机器声明和合成示例，未执行真实05数据库授权、并发、worker、崩溃或取消事务；这些全部保留apply后的真实验收责任。小张可按已批准规约开展2.x，完成后交小陈独立终审；不将frozen当current，也不开放作业页面。[候选原件](../../reports/changes/05/contracts-freeze-2026-11-12.md)与[审定及main验收](../../reports/changes/05/contracts-main-integration-2026-11-12.md)。
 
 05首批#38仅追加000005及admin/server共享精确Target=5，保持13 current/9 frozen；后续本2.2/2.3独立候选实际装配九个已冻结HTTP操作并同步为22 current，实现原子提交与持久幂等。worker仍未实现，生产未绑定执行器时受理真实pending；本批终审和#38依赖以共享表为准。available只表示嵌入SQL及真实摘要已存在，实际迁移/恢复/终审结果见共享表与迁移登记。已有4部署须按停写、备份、离线迁移流程升级，不能直接启动新程序。
 
 05后续2.4独立候选实现上述既定调度/CAS规则及事务结果适配器边界，22 current与所有公共字段/SQL/配置保持。生产执行器和结果适配器均未绑定，真实pending；测试回执表/注入执行器不是生产成绩。真实验证及最终独立审查见共享表与[worker报告](../../reports/changes/05/worker-2026-11-12.md)。
+
+2026-11-13实际集成：上述“候选/待实现”段落保留各批交接语义；#38/#40/#41已完成小陈独立终审、正常合入及精确main完整验收，22 current、Target=5。受控worker测试不等于模型/成绩，生产未绑定执行器不claim。[主规约](../../openspec/specs/assignment-tasks/spec.md)、[主干原件与下游交接](../../reports/changes/05/archive-review-2026-11-13.md)及[共享表](../project-status.md)为当前入口。
