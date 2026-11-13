@@ -3,6 +3,7 @@ import { AccountSample, LoginSample } from '../components/IdentitySamples'
 import type { SampleState } from '../components/IdentitySamples'
 import { MaterialSample } from './MaterialSamples'
 import type { MaterialState } from './MaterialSamples'
+import { DocumentSample } from './DocumentSamples'
 import '../sample-theme.css'
 
 if (import.meta.env.MODE !== 'samples' || import.meta.env.PROD) throw new Error('Samples are test-only')
@@ -13,4 +14,5 @@ if (!root) throw new Error('Missing sample root')
 const page = params.get('page')
 const materials = page === 'materials' || page === 'material-detail'
 const materialState: MaterialState = params.get('state') === 'empty' ? 'empty' : state
-createRoot(root).render(<><aside className="sample-banner">样板审查 · 隔离合成数据 · 未连接真实认证或资料服务</aside>{materials ? <MaterialSample state={materialState} role={params.get('role') === 'student' ? 'student' : 'teacher'} detail={page === 'material-detail'} long={params.get('long') === '1'} recordId={params.get('material')} /> : page === 'account' ? <AccountSample state={state} long={params.get('long') === '1'} /> : <LoginSample state={state} />}</>)
+const documents = page === 'documents' || page === 'document-detail' || page === 'document-upload'
+createRoot(root).render(<><aside className="sample-banner">样板审查 · 隔离合成数据 · 未连接真实认证或资料服务</aside>{documents ? <DocumentSample page={page} state={materialState} role={params.get('role') === 'student' ? 'student' : 'teacher'} long={params.get('long') === '1'} recordId={params.get('document')} unit={params.get('unit')} /> : materials ? <MaterialSample state={materialState} role={params.get('role') === 'student' ? 'student' : 'teacher'} detail={page === 'material-detail'} long={params.get('long') === '1'} recordId={params.get('material')} /> : page === 'account' ? <AccountSample state={state} long={params.get('long') === '1'} /> : <LoginSample state={state} />}</>)
