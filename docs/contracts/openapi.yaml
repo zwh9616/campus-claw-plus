@@ -9432,15 +9432,16 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
-              "minLength": 1
+              "$ref": "./schemas/KeywordSearchParameters.schema.json#/properties/q"
             },
             "x-normalization": {
               "trim": "Unicode_White_Space",
               "min_codepoints": 1,
               "max_codepoints": 2000,
-              "control_characters": "reject"
-            }
+              "control_characters": "reject",
+              "before_schema": true
+            },
+            "description": "URL解码后先按Unicode White_Space TrimSpace，再按共享Schema校验规范化q；原值允许边界空白，去空白后须1..2000码点且无控制字符。"
           },
           {
             "name": "mode",

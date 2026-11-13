@@ -31,10 +31,22 @@ test('DI-SC-07/10 original 202, atomic job, shared quota and CAS retry declarati
 test('DI-SC-12 keyword only, snapshot and dependency errors cannot silently change',()=>{
  for(const mutate of [a=>search(a).parameters.find(p=>p.name==='mode').schema.enum.push('hybrid'),a=>search(a).parameters.find(p=>p.name==='top_k').schema.maximum=100,a=>search(a)['x-citation'].authorization='vector_payload',a=>search(a)['x-citation'].cross_location_chunks=true,a=>delete search(a).responses['503'],a=>search(a).responses['504']['x-error-code']='VALIDATION_ERROR',a=>a.paths['/api/v1/documents'].get['x-pagination'].snapshot='separate_queries',a=>a.paths['/api/v1/documents'].get.parameters.find(p=>p.name==='page_size').schema.maximum=100])rejects(mutate)
 })
+test('DI-SC-12 actual normalized q and page schemas reject type, bounds and default drift',()=>{
+ for(const mutate of [
+  a=>search(a).parameters.find(p=>p.name==='q').schema.maxLength=2001,
+  a=>search(a).parameters.find(p=>p.name==='q').schema={type:'string',minLength:1,maxLength:2001},
+  a=>search(a).parameters.find(p=>p.name==='q').schema={type:'number'},
+  a=>search(a).parameters.find(p=>p.name==='q')['x-normalization'].before_schema=false,
+  a=>a.paths['/api/v1/documents'].get.parameters.find(p=>p.name==='page').schema.minimum=0,
+  a=>a.paths['/api/v1/documents'].get.parameters.find(p=>p.name==='page').schema.default=0,
+  a=>a.paths['/api/v1/documents'].get.parameters.find(p=>p.name==='page').schema.type='string',
+ ])rejects(mutate)
+})
 test('DI-SC-02 binary envelope examples test byte/title limits; no real parsing claim',()=>{
  const pdf=Buffer.from('%PDF-1.7 synthetic envelope, not a real parser fixture')
  const value={title:'课程资料',filename:'lecture.pdf',file:pdf,multipart_bytes:pdf.length+100}
  validateDocumentUploadExample(value)
+ validateDocumentUploadExample({...value,title:'\u0085课程资料\u0085'})
  validateDocumentUploadExample({title:'题'.repeat(200),filename:'LECTURE.PDF',file:Buffer.concat([Buffer.from('%PDF-'),Buffer.alloc(10485755)]),multipart_bytes:10551296})
  validateDocumentUploadExample({title:'word',filename:'x.docx',file:Buffer.from([80,75,3,4,0]),multipart_bytes:105})
  for(const mutate of [x=>x.title='',x=>x.title='题'.repeat(201),x=>x.title='\uFEFF'+'题'.repeat(200),x=>x.title='x\u0000',x=>x.title='\ud800',x=>x.file=Buffer.alloc(0),x=>x.file=Buffer.alloc(10485761),x=>x.multipart_bytes=10551297,x=>x.multipart_bytes=x.file.length-1,x=>x.filename='x.doc',x=>x.filename='x.docx',x=>x.file=Buffer.from('fake pdf')]){const x={...value};mutate(x);assert.throws(()=>validateDocumentUploadExample(x))}

@@ -57,11 +57,13 @@ export function validateDocumentOperationProfiles(api){
   if(path.endsWith('/retry'))assert.deepEqual(op['x-retry'],{status:'failed',reasons:['parse_timeout','worker_interrupted','internal_failure'],attempts_less_than:3,concurrent:'compare_and_swap_once',needs_ocr:409})
   if(path==='/api/v1/document-search'){
    assert.deepEqual(op.parameters.find(p=>p.name==='mode').schema,{type:'string',enum:['keyword'],default:'keyword'})
-   assert.deepEqual(op.parameters.find(p=>p.name==='q')['x-normalization'],{trim:'Unicode_White_Space',min_codepoints:1,max_codepoints:2000,control_characters:'reject'})
+   assert.deepEqual(op.parameters.find(p=>p.name==='q').schema,{$ref:'./schemas/KeywordSearchParameters.schema.json#/properties/q'})
+   assert.deepEqual(op.parameters.find(p=>p.name==='q')['x-normalization'],{trim:'Unicode_White_Space',min_codepoints:1,max_codepoints:2000,control_characters:'reject',before_schema:true})
    assert.deepEqual(op.parameters.find(p=>p.name==='top_k').schema,{type:'integer',minimum:1,maximum:10,default:4})
    assert.deepEqual(op['x-citation'],{authorization:'filter_before_search_and_recheck_persisted_source',location:'unicode_codepoint_half_open',source_version:'exact',quote:'exact_persisted_substring',cross_location_chunks:false,dependency_failure:'503_or_504_never_empty'})
   }
   if(method==='GET'&&path==='/api/v1/documents'){
+   assert.deepEqual(op.parameters.find(p=>p.name==='page').schema,{type:'integer',minimum:1,default:1})
    assert.deepEqual(op.parameters.find(p=>p.name==='page_size').schema,{type:'integer',minimum:1,maximum:50,default:20})
    assert.deepEqual(op['x-pagination'],{snapshot:'single_request_count_and_items',order:'id_desc',cross_request_snapshot:false})
   }

@@ -25,7 +25,7 @@
 | POST /api/v1/documents/{id}/retry | 202 Document | 无query/body，失败可重试原因且累计attempts<3；400/401/403/404/409/429/503/504 |
 | GET /api/v1/document-search | 200 DocumentSearchResponse | q Trim后1..2000码点，mode只keyword，top_k默认4最大10；400/401/403/503/504 |
 
-所有未知/重复输入400，ID为1..9223372036854775807十进制字符串；空/负/溢出拒绝。HTTP数据库预算仍5秒，健康每请求真实MySQL Ping/3秒/原载荷；解析不放进HTTP事务或这个5秒预算。读取失败503/504，禁止降为200空结果。写配额与原04上传/重试按同一用户共享12次/Unix分钟，切班或幂等重放不重置；429有Retry-After。00既有Error错误码集合不增加；解析失败是Document.failure_reason，不把已接受202追改成400。
+q的Schema复用KeywordSearchParameters.properties.q：原值URL解码后先Unicode White_Space TrimSpace，再校验规范化q的字符串/1..2000码点/无控制字符；原值边界空白不计规范化长度。page必须整数、minimum=1、default=1，合同守卫精确断言这两个实际参数Schema，不能只检查x说明。所有未知/重复输入400，ID为1..9223372036854775807十进制字符串；空/负/溢出拒绝。HTTP数据库预算仍5秒，健康每请求真实MySQL Ping/3秒/原载荷；解析不放进HTTP事务或这个5秒预算。读取失败503/504，禁止降为200空结果。写配额与原04上传/重试按同一用户共享12次/Unix分钟，切班或幂等重放不重置；429有Retry-After。00既有Error错误码集合不增加；解析失败是Document.failure_reason，不把已接受202追改成400。
 
 ### D2 A阶段输入、状态与幂等
 

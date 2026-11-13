@@ -32,3 +32,11 @@ A1.2前置研究已实际核对pypdf官方wheel、校验值、许可及OSV公开
 本补证同时明确混合扫描PDF不部分假ready、DOCX逻辑块上限和只在A/B/C全部完成后整体归档。补证包含规约/进度/证据及新合同Unicode White_Space语义反例，已复跑完整check退出0、strict11/11、33组通过；不改变frozen/current边界或运行代码；最终补证head完整CI及远端实际批准、正常合入/main复验仍需分别核对。
 
 首次PR的CI测试合并树与head均d918e8a2e1800dab0732acd84efdf441f6333f67，已独立git核对。最终补证明确CER/Recall/MRR分母、原页bbox坐标与每题1..5个相关chunk，避免验收口径歧义。新上传例子使用Unicode White_Space Trim而不是会额外剥离BOM的JS trim，新增BOM+200码点边界反例，原合同与Timestamp不放宽。[本次完整check原件](contracts/final-check.txt)。
+
+## 整合外部审查与两项P2修复（DI-SC-02/12）
+
+实际接收小陈CHANGES_REQUESTED5887416108和fbeeb05审查证据，未覆盖或强推；[小陈原报告](chen-contract-review-2026-11-13.md)及探针完整保留，旧e02cbd6状态不冒充最终批准。小张在原PR修复：标题按Unicode White_Space Trim，U+0085包围标题合法、U+FEFF加200码点越界；q复用旧KeywordSearchParameters.properties.q并明确Trim-before-schema，page整数/minimum1/default1加入精确Schema守卫，禁止附加q.maxLength漂移或替换类型。原22 current操作/旧Schema不改。
+
+独立临时恢复JS trim退化、添加q.maxLength=2001及page.minimum=0，三次真实红1；finally逐字节恢复后绿0，[红绿明细](contracts/review-red-green.json)。随后原完整npm run check/audit均0、strict11/11，合同现为34组（原26+新8），无skip；[修复命令原件ZIP](contracts/review-fixes.zip)保留全部输出。当前新公共合同仍frozen，不apply；最终head CI及小陈实际复审批准/main集成待核，未自行消除CHANGES_REQUESTED或代填批准。
+
+本次暂存秘密扫描对公开文件摘要的restored_openapi_sha256字段误报generic-api-key；已独立重算当前OpenAPI字节SHA一致，仅将字段改为restored_contract_sha256保留同一摘要，不加ignore或删除断言。原失败输出保留，恢复扫描按实际结果记录。
