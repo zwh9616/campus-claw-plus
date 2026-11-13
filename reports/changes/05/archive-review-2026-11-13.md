@@ -56,3 +56,5 @@
 本机 Windows，Node24.22.1/npm10.5.0/Go1.27.3；根 `npm ci`、`npm run setup`、完整 `npm run check`（含Go vet/test、合同、构建及strict10/10）、`npm run audit` 全部退出0，根和前端审计均0漏洞。全历史193提交与暂存秘密扫描退出0，三个CI ZIP解包原件分别扫描也均0；未新增豁免。8项需求/21场景原文、路径、合同元数据、运行输入及旧归档一致性检查通过，260个本地链接有效。[一致性核对](archive/archive-consistency.json) · [check原件](archive/05-archive-check.txt) · [audit原件](archive/05-archive-audit.txt) · [原件秘密扫描](archive/05-archive-raw-secrets.txt) · [历史/暂存扫描](archive/05-archive-secret-scan.txt)。完整容器回归已由上述精确main CI真实执行，verify168924ms；本轮没有在缺Docker的本机重复运行容器测试，归档自身PR的完整CI仍须按最终head另核。
 
 原四份本地未跟踪文本保留，未纳入Git。没有生成或提交真实凭据、配置、私钥或学生答案。本轮没有重新申请SSH授权；上次两条临时授权及临时密钥已清除。
+
+归档候选已提交为[PR #42](https://github.com/zwh9616/campus-claw-plus/pull/42)，并通过GitHub实际请求小张/zwh9616审查。请求不等于批准；本次交接补记仅改报告及共享表，运行输入与已验收main保持。本PR最终head完整CI、小张实际批准、正常合入及归档main复验另核，未代批准或提前合并。
