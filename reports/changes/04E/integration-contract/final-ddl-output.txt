@@ -1,0 +1,44 @@
+
+> campus-claw-plus@0.0.1 check:document-storage-contract
+> node scripts/check-document-storage-contract.mjs
+
+Document DDL actual database version: passed
+Document DDL fresh isolated schema only: passed
+Document DDL published table baseline 000001_identity_users_classes.up.sql: passed
+Document DDL published table baseline 000002_identity_sessions.up.sql: passed
+Document DDL published table baseline 000003_identity_auth_audit.up.sql: passed
+Document DDL published table baseline 000004_materials_retrieval.up.sql: passed
+Document DDL published table baseline 000005_assignment_tasks.up.sql: passed
+Document DDL inspect isolated table count: passed
+Document DDL exact five candidate DDL: passed
+Document DDL inspect isolated table count: passed
+Document DDL inspect six candidate FK constraints: passed
+Document DDL inspect eleven enforced candidate CHECK constraints: passed
+Document DDL synthetic identity keys only: passed
+Document DDL queued documents for two distinct classes: passed
+Document DDL Unicode codepoint body and valid ready state: passed
+Document DDL non-BMP page positions and chunk: passed
+Document DDL actual MySQL counts emoji as one codepoint: passed
+Document DDL ready PDF cannot omit page count: expected reject
+Document DDL ready cannot omit body: expected reject
+Document DDL fourth parse attempt: expected reject
+Document DDL original byte count mismatch: expected reject
+Document DDL Word cannot use PDF page count: expected reject
+Document DDL location cross-class composite FK: expected reject
+Document DDL location cross-version composite FK: expected reject
+Document DDL PDF logical unit exceeds page bound: expected reject
+Document DDL empty source range: expected reject
+Document DDL chunk cross-class FK: expected reject
+Document DDL chunk Unicode range mismatch: expected reject
+Document DDL valid leased owner epoch: passed
+Document DDL leased owner cannot be null: expected reject
+Document DDL leased epoch cannot be zero: expected reject
+Document DDL binary idempotency key case remains distinct: passed
+Document DDL same scoped key cannot duplicate: expected reject
+Document DDL snapshot cannot bind another creator: expected reject
+Document DDL closed original response must be JSON: expected reject
+Document DDL same-length wrong quote requires application recheck (rolled back): passed
+Document DDL original quote survived rollback: passed
+Document DDL remove only synthetic candidate rows: passed
+Document DDL candidate reverse DDL only after all five are empty: passed
+Document DDL inspect isolated table count: passed

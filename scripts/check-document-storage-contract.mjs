@@ -13,13 +13,17 @@ const directory = resolve('output/document-storage-contract')
 mkdirSync(directory, { recursive: true })
 const envfile = resolve(directory, runId + '.env')
 const password = randomBytes(32).toString('base64url')
-writeFileSync(envfile, 'MYSQL_ROOT_PASSWORD=' + password + '\n', { mode: 0o600 })
 const sha = bytes => createHash('sha256').update(bytes).digest('hex')
 const git = args => spawnSync('git', args, { encoding: 'utf8' }).stdout.trim()
 const contract = JSON.parse(readFileSync('docs/contracts/document-integration.json'))
 const candidate = 'docs/contracts/document-parser/migration/'
 const sources = Object.fromEntries(Object.keys(contract.migration.files).map(n => [n, sha(readFileSync(candidate + n))]))
 assert.deepEqual(sources, contract.migration.files)
+const targetSource = readFileSync('backend/internal/migrations/target.go')
+assert.equal(sha(targetSource), contract.baseline.protected_files['backend/internal/migrations/target.go'])
+const runtimeTarget = Number(targetSource.toString('utf8').match(/\bconst\s+Target\s*=\s*(\d+)/)?.[1])
+assert.equal(runtimeTarget, 5)
+assert.equal(runtimeTarget, contract.migration.current_target)
 const results = []
 const report = { run_id: runId, time: new Date().toISOString(), exit_code: 1,
   source: { commit: git(['rev-parse', 'HEAD']), dirty: git(['status', '--porcelain']) !== '' },
@@ -51,6 +55,9 @@ function sql(label, text, { reject = false, code, database = 'di_contract_probe'
 }
 const insertDocument = (id, classId = 1, creator = 1, extra = '') => `INSERT INTO documents(id,class_id,created_by,title,format,version,status,original_bytes,original_digest,size_bytes,attempts,created_at,updated_at${extra ? ',body,page_count' : ''}) VALUES(${id},${classId},${creator},'课程','pdf',1,'${extra ? 'ready' : 'queued'}','abc',UNHEX(SHA2('abc',256)),3,${extra ? 1 : 0},UTC_TIMESTAMP(3),UTC_TIMESTAMP(3)${extra ? ',' + extra : ''});`
 try {
+  // No credential file exists until every candidate/baseline preflight passed.
+  // Creation and all later failures are covered by this finally cleanup.
+  writeFileSync(envfile, 'MYSQL_ROOT_PASSWORD=' + password + '\n', { mode: 0o600 })
   command('build pinned reviewed MySQL candidate-probe image', ['build', '-t', image, 'deploy/identity/mysql'])
   report.image_id = command('record exact probe image', ['image', 'inspect', '--format', '{{.Id}}', image])
   command('start only isolated temporary MySQL', ['run', '-d', '--name', container, '--network', 'none',
@@ -115,7 +122,7 @@ try {
   assert.equal(count(), 14)
   report.exit_code = 0
   report.assertions = { old_tables: 14, added_tables: 5, foreign_keys: 6, enforced_checks: 11,
-    codepoint_offsets: true, binary_keys: true, application_quote_recheck_still_required: true, runtime_target_still: 5 }
+    codepoint_offsets: true, binary_keys: true, application_quote_recheck_still_required: true, runtime_target_still: runtimeTarget }
 } catch (error) {
   report.error = error.message.replaceAll(password, '<redacted>')
   console.error(report.error)

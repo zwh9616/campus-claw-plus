@@ -1,0 +1,12 @@
+{
+  "scenario": "DI-SC-14/15 no temporary credentials before candidate verification",
+  "red_exit_code": 1,
+  "observed_residual_files": 1,
+  "red_probe_sha256": "bcb0824ad209e9e4adb6c2cd01c40ad80875fadd1276488e4091904af82a4b78",
+  "test_directory_removed": true,
+  "docker_or_git_not_available_to_child": true,
+  "green_exit_code": 0,
+  "green_probe_sha256": "93fdee08228be2e33b5667e7e56a5ecaf040c31aa3315fbfd08b8e6893121b4c",
+  "green_test_sha256": "ad84c10383c4056130ad2ce64510b30d1331e3c3155fbf39f5220aaea91dc532",
+  "remaining_test_directories": 0
+}

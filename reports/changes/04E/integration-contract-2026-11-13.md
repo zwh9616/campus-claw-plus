@@ -35,3 +35,13 @@ SQL探针现保存实际MySQL版本与实际错误码：16个确定性拒绝逐�
 提交前最终核对：39组合同行为及私有双路径、原完整check/12批次/strict11/11、audit两树均0；后续补强严格JSON/未授权参数和实际错误码记录的定向检查再过。257本地链接无缺失，候选SQL暂存blob与登记SHA一致，七个受保护运行文件逐字等于已合入基线，十份已发布SQL摘要重算全匹配。
 
 秘密扫描最初命中两条已发布auth_audit SQL的公开SHA-256，已独立重算确认；只将候选中的文件名/摘要改为分字段记录，十条值全部保留，不加ignore/豁免/删规则。初始失败及十文件交叉核对原件保留，随后全历史209提交/暂存扫描0。终端尾空白仅在可读副本规范化，原始字节ZIP完整保留。此为未提交工作树证据；最终代码提交的干净完整gate/CI及实际批准另核。
+
+## 首提交干净门禁及CI；预检清理补强
+
+首提交983796926a828ca48f12f3f1d70e30045d116aab本机工作树干净，原完整gate四段0（verify333550ms）；[本机原运行/解析证据](integration-contract/first-local-runtime.zip)、[四镜像与恢复核对](integration-contract/first-local-verified.json)、[解析候选核对](integration-contract/first-local-parser-verified.json)，ZIP SHA-256 `7ef3612cdcf4b8488a1ef808617497325e2497cd091be2961f79dea407c54a0a`。本机ZIP只收原运行/解析15文件；首轮SQL原件使用下述完整CI16文件，后续本机定向探针另存，不将不同运行SQL摘要拼装成同轮。
+
+首轮CI43419543529实际completed/success，artifact14034220547已实际下载，ZIP SHA-256 `c20744245a9b2cdbdae44af8c222c2a742d246b0175837563bd008c3c5ba0fa1` 与GitHub digest一致。合并预演ed6b1e8与原head9837969树一致（实际fetch核对）。[原件](integration-contract/first-ci-runtime.zip)、[基线核对](integration-contract/first-ci-verified.json)、[解析核对](integration-contract/first-ci-parser-verified.json)、[SQL候选/当前12批次独立核对](integration-contract/first-ci-integration-verified.json)。四段0/verify220526ms、18个05组/五恢复/三HTTPS及精确四镜像/解析候选零HIGH和CRITICAL/清理、40解析/25负例/195位置/45关键句、候选SQL五表/六FK/十一CHECK/16个实际错误码拒绝和清理全部通过。
+
+自检另发现测试工具预检失败时会先写临时凭据再抛出。已用真实CLI+最小候选fixture在隔离目录、对子进程禁用Docker/git的回归中复现遗留1文件，测试finally已清理，未读取或公开凭据值；[红输出](integration-contract/preflight-cleanup-red.txt)。修为所有预检通过后才在受finally保护范围内创建文件，并实际读取/核对当前Go Target5，不硬填运行目标。新增独立回归[绿输出](integration-contract/preflight-cleanup-green.txt)/[源码指纹与红绿](integration-contract/preflight-cleanup-red-green.json)，临时测试目录零遗留，40组合同行为与真实SQL正负例再跑0。该补强只改测试工具/测试/报告，不改候选协议、SQL或运行服务。
+
+#48因该补强临时转草稿阻止旧head直接合并，修复完成后再交实际审查。最终head新的干净完整gate/CI、远端真实批准及main复验另核，不用首轮成功冒充新head通过。所有04E实施仍小张，原首次失败/受控红完整保留，A全链路及B/C未完成。

@@ -1,0 +1,21 @@
+{
+  "label": "integration-first-ci",
+  "zip_sha256": "c20744245a9b2cdbdae44af8c222c2a742d246b0175837563bd008c3c5ba0fa1",
+  "source": {
+    "commit": "ed6b1e8ca424f7ea15ec140fcb502646b87c9ecd",
+    "dirty": false,
+    "fingerprint": "e843393efbcf027d4a2c8363daf09c1777c5e2495f66fd2e5eb316c9e8bfdc2e"
+  },
+  "production_images": 4,
+  "offline_candidate_images": 1,
+  "candidate_image": "sha256:d83e017063eb0a4d793a3ac4202220d69a0fe90eed3511e8bfbe10261efd2f0b",
+  "tests_image_is_exported_and_scanned_image": true,
+  "clear_documents": 40,
+  "negative_classes": 25,
+  "locations": 195,
+  "critical_phrases": 45,
+  "max_cer": 0,
+  "max_document_ms": 870,
+  "all_cleanup_passed": true,
+  "scope": "offline parsing and original runtime regression; no RPC/SQL/HTTP/UI/OCR/semantic delivery claim"
+}

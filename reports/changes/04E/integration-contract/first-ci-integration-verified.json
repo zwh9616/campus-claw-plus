@@ -1,0 +1,24 @@
+{
+  "label": "integration-first-ci",
+  "zip_sha256": "c20744245a9b2cdbdae44af8c222c2a742d246b0175837563bd008c3c5ba0fa1",
+  "source": {
+    "commit": "ed6b1e8ca424f7ea15ec140fcb502646b87c9ecd",
+    "dirty": false,
+    "fingerprint": "e843393efbcf027d4a2c8363daf09c1777c5e2495f66fd2e5eb316c9e8bfdc2e"
+  },
+  "candidate_sql": {
+    "000006_documents.down.sql": "bcd282b537db970249565148410f67a18737d5350055df20dd6efd51c8db5756",
+    "000006_documents.up.sql": "ae898e2c8166ac8e201102e6077ad5cf71a89259fb16553d3f5a1a0380e022ef"
+  },
+  "mysql": "8.4.13",
+  "tables": 5,
+  "foreign_keys": 6,
+  "enforced_checks": 11,
+  "actual_error_rejections": 16,
+  "unicode_measurements": [
+    8,
+    21
+  ],
+  "all_candidate_cleanup": true,
+  "scope": "exact candidate DDL plus original runtime/parser regression; no migration6/RPC/backup implementation claim"
+}
