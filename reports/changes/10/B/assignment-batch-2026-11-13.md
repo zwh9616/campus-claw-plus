@@ -12,10 +12,16 @@
 | DO-SC-12 | 三阶段默认HTTPS均要求TestIDFWiring顶层PASS和05真实持久202/pending断言完成；只身份成功不能替代 |
 | DO-SC-03、11..13 | npm verify保留原镜像扫描、默认Compose/HTTPS、真实MySQL三程序及失败传播；本批没有合成运行报告 |
 
-已对真实摘要守卫作可恢复破坏：临时移除必需05组输出检查，Node测试实际退出1；finally逐字恢复后退出0。报告fixture只验证摘要拒绝规则，不冒称新增Docker/模型运行。完整本机gate及本批CI结果待实际记录。尚未创建PR，分支codex/10-b-assignment-batch；小葛终审和正常合入/main复验待办。B全量/C、AI/成绩/作业页面和持有人升级/长期部署均未交付。
+已对真实摘要守卫作可恢复破坏：临时移除必需05组输出检查，Node测试实际退出1；finally逐字恢复后退出0。报告fixture只验证摘要拒绝规则，不冒称新增Docker/模型运行。完整本机gate及本批CI结果待实际记录。以下为创建PR前快照，分支codex/10-b-assignment-batch；最新交接见文末；小葛终审和正常合入/main复验待办。B全量/C、AI/成绩/作业页面和持有人升级/长期部署均未交付。
 
 ## 本机真实结果
 
 Windows，Node24.22.1/npm10.5.0/Go1.27.3；`npm ci`、`npm run setup`均0。完整`npm run gate`的check/audit/secret-scan均0，check含批次11项和strict10/10、npm根/前端零漏洞、历史201提交及暂存秘密扫描0；verify在准备Trivy数据库时因docker命令不存在ENOENT/-4058退出1，原镜像扫描/默认Compose/MySQL未运行，不记通过。[原gate](assignment-batch/gate.txt) · [gate明细](assignment-batch/local-gate-results.json) · [批次失败](assignment-batch/local-batch-results.json) · [安装](assignment-batch/install.txt) · [setup](assignment-batch/setup.txt)。
 
 受控红绿为真实摘要守卫破坏，测试报告fixture只用于拒绝规则验证：[红1](assignment-batch/red.txt) · [逐字恢复绿0](assignment-batch/green.txt) · [摘要](assignment-batch/redgreen.json)。另用实际已下载的旧主干43371464541四源原件验证新摘要规则兼容，18个实际05组/三阶段HTTPS及备份均满足；仅兼容核对，不冒称本批真实运行：[边界记录](assignment-batch/historical-report-compatibility.json)。本批CI完整真实容器、自身最终head结果与小葛终审仍待实际执行。
+
+## 实现提交CI与正式交接
+
+已创建[PR #44](https://github.com/zwh9616/campus-claw-plus/pull/44)，实际请求小葛/gjj6666终审。实现head5797173e27dadfd0156e30f969f801a70e0aa985完整[CI43377614636](https://github.com/zwh9616/campus-claw-plus/actions/runs/43377614636) completed/success，四段gate均0/notRun空，verify189294ms，原三程序均0。本轮artifact14014774438实际下载，ZIP SHA-256为579bbd35433cebeac53fba0c213921474d56e9ba785dcd67fea744a1a36f0726，与GitHub摘要一致。四源报告摘要、四个实际镜像HIGH/CRITICAL0且实扫/运行ID一致、四清理0、18个必需真实05顶层组/实际4与5制品隔离恢复、三阶段默认HTTPS真实202/pending持久化及原身份/资料/严格414均通过；新日志明确生产执行器/结果适配器未绑定。[本轮原始ZIP](assignment-batch/implementation-ci.zip) · [完整核验](assignment-batch/implementation-ci-verified.json) · [05批次核验](assignment-batch/implementation-assignment-verified.json) · [原件秘密扫描0](assignment-batch/ci-raw-secrets.txt) · [历史/暂存扫描0](assignment-batch/history-staged-secrets.txt)。
+
+本提交仅保存上述实现head证据、记录实际PR/审查请求和共享表，运行输入与5797173保持；自己的最终head完整CI仍须另通过。小葛实际终审/正常合入/main复验尚未完成，review_status保持pending_ge_review，不代填批准。本机verify缺Docker1如实保留，CI真实通过不改写该失败；B全量/C与生产AI/成绩/页面/长期部署继续待验。
