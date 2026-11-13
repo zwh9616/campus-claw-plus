@@ -1,0 +1,20 @@
+[
+  {
+    "label": "q maximum changed from 2000 to 2001",
+    "result": "accepted"
+  },
+  {
+    "label": "page minimum changed from 1 to 0",
+    "result": "accepted"
+  },
+  {
+    "case": "Unicode White_Space U+0085 around valid title",
+    "expected": "accepted",
+    "result": "rejected"
+  },
+  {
+    "case": "U+FEFF followed by 200 code points",
+    "expected": "rejected",
+    "result": "accepted"
+  }
+]
