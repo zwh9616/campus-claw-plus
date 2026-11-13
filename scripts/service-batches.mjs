@@ -22,12 +22,12 @@ export const assignmentRecoverySteps = ['AT-SC-20 build actual accepted schema4 
   'AT-SC-20 restore into independent v4 database', 'AT-SC-20 actual schema4/5 artifacts and restored identity/material bytes']
 export const assignmentHTTPSPhases = ['SC-01/02/03 real same-origin HTTPS, unique health, TLS rejection, login and revoked access',
   'account and class persist after database restart', 'same account and original password after full container recreation']
-const passedGoTest = (output, name) => new RegExp(`^--- PASS: ${name} \\(\\d+(?:\\.\\d+)?s\\)$`, 'm').test(output)
+const passedGoTest = (output, name) => (output.match(new RegExp(`^--- PASS: ${name} \\(\\d+(?:\\.\\d+)?s\\)$`, 'gm')) ?? []).length === 1
 function successfulGoOutput(step, names) {
   assert.equal(step.exit_code, 0, 'Required real05 command failed')
   assert.equal(typeof step.output, 'string', 'Real05 test output missing')
   assert.ok(!/^\s*--- (?:SKIP|FAIL):/m.test(step.output), 'Skipped/failed real05 suite cannot pass the batch')
-  for (const name of names) assert.ok(passedGoTest(step.output, name), `Real05 test did not pass: ${name}`)
+  for (const name of names) assert.ok(passedGoTest(step.output, name), `Exactly one successful top-level real05 test required: ${name}`)
 }
 export const sha256 = bytes => createHash('sha256').update(bytes).digest('hex')
 const seconds = value => {

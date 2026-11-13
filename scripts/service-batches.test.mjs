@@ -140,6 +140,19 @@ test('DO-SC-12 backup success text and duplicate HTTPS phases cannot substitute 
   }
 })
 
+test('DO-SC-11/12 repeated required top-level PASS records cannot satisfy unique real05 execution evidence', () => {
+  for (const name of assignmentTests) {
+    const { reports, inventory } = valid()
+    reports[evidencePaths[3]].results[0].output += `\n--- PASS: ${name} (0.02s)`
+    assert.throws(() => validateRuntimeEvidence(reports, 1000, 3000, inventory), name)
+  }
+  for (const label of assignmentHTTPSPhases) {
+    const { reports, inventory } = valid()
+    reports[evidencePaths[2]].results.find(s => s.label === label).output += '\n--- PASS: TestIDFWiring (0.02s)'
+    assert.throws(() => validateRuntimeEvidence(reports, 1000, 3000, inventory), label)
+  }
+})
+
 test('DO-SC-03/11 npm verify retains the original three real programs and CI retains the new summary', () => {
   assert.deepEqual(runtimeSteps, ['scripts/verify-image-audits.mjs', 'scripts/verify-skeleton.mjs', 'scripts/verify-identity.mjs'])
   const pkg = JSON.parse(readFileSync('package.json', 'utf8'))
