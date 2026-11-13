@@ -22,3 +22,9 @@
 本补记已提交为[PR #43](https://github.com/zwh9616/campus-claw-plus/pull/43)，同提交更新共享表05行、顶部及README/AGENTS/合同交接当前状态，不倒改历史归档。本补记本机foundation/strict10/10通过，148个变动Markdown本地链接及运行/合同输入与历史归档未变检查通过，全历史195提交/暂存及main原件解包秘密扫描0，无新增豁免；[本次扫描](archive-main/closeout-secrets.txt)与[原件扫描](archive-main/main42-raw-secrets.txt)保留实际输出。本补记的最终head检查及正常合入仍以GitHub事实为准；小张只记录自己的收口判断，不把#42的旧review说成本补记的新head批准。
 
 05交付范围为真实作业、私有提交、同事务原202及持久任务基础。生产没有执行器/结果适配器，不claim，任务真实pending；没有AI、成绩或作业页面，持有人库未升级。06可据九个current接口准备自己的作业页面规约并交小葛审查，未获批前不apply；07B/08及其他暂停项不自动恢复。
+
+## #43远端强制审查门禁
+
+07d46aa完整CI43369163941实际成功，已下载artifact14011692345并验证ZIP SHA-256为7f6ac2bd2fc401c8c0d989c36f24657ba5853c5ee417c95f0ee70eb26ea7e3a5，四段0、notRun空、verify186677ms、四报告摘要/四镜像零高危严重/四清理和真实MySQL/HTTPS恢复通过。独立从最终head全部Git blob重算全跟踪文件指纹331f841cfe5f832b805e09b34dc73902c1f9324de19161185c353b0c3750f998匹配；此指纹包含文档与证据，不是仅运行输入指纹。CI测试合并875166b与head整树309131cf106669113392887a4999bfd7165103e8一致。
+
+小张以自己的账号记录[实际收口评论](https://github.com/zwh9616/campus-claw-plus/pull/43#issuecomment-6844701834)，按expected_head_sha正常合并被GitHub返回405拒绝：At least 1 approving review is required by reviewers with write access. 此为远端保护条件，不能由本地“审查者直接修复”安排豁免；未使用管理员绕过、未自审或伪造批准。已通过GitHub实际请求小陈/Kevcco审查#43。本提交只同步真实交接，最终head CI与小陈实际批准齐备后再正常合入；#42本身已获审合入及main完整验收，不回写成未归档。
