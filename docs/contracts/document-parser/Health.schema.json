@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/internal/v1/Health.schema.json",
+  "title": "PrivateParserHealth",
+  "type": "object",
+  "properties": {
+    "status": {
+      "const": "ok"
+    }
+  },
+  "required": [
+    "status"
+  ],
+  "additionalProperties": false
+}

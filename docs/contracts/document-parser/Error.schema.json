@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/internal/v1/Error.schema.json",
+  "title": "PrivateParserError",
+  "type": "object",
+  "properties": {
+    "error": {
+      "type": "string",
+      "enum": [
+        "invalid_request",
+        "unauthenticated",
+        "not_found",
+        "method_not_allowed",
+        "busy"
+      ]
+    }
+  },
+  "required": [
+    "error"
+  ],
+  "additionalProperties": false
+}

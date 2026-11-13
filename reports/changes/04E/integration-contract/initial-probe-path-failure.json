@@ -1,0 +1,35 @@
+{
+  "run_id": "campus-di-ddl-df2ed8eae6b8",
+  "time": "2026-11-13T11:10:36.460Z",
+  "exit_code": 1,
+  "source": {
+    "commit": "9263d21de054909856a9b4b3b7d17d54c90addb9",
+    "dirty": true
+  },
+  "candidate_sql": {
+    "000006_documents.down.sql": "bcd282b537db970249565148410f67a18737d5350055df20dd6efd51c8db5756",
+    "000006_documents.up.sql": "ae898e2c8166ac8e201102e6077ad5cf71a89259fb16553d3f5a1a0380e022ef"
+  },
+  "scope": "isolated candidate SQL syntax/constraints only; no Target6/dirty/repair/backup/RPC/runtime activation claim",
+  "error": "build pinned reviewed MySQL candidate-probe image failed: #0 building with \"desktop-linux\" instance using docker driver\n\n#1 [internal] load build definition from Dockerfile.mysql\n#1 transferring dockerfile: 2B 0.0s done\n#1 DONE 0.0s\nERROR: failed to build: failed to solve: failed to read dockerfile: open Dockerfile.mysql: no such file or directory\n\nView build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/alrcvtdafnxvjubnrohacq3qk\n",
+  "cleanup": [
+    {
+      "resource": "campus-di-ddl-df2ed8eae6b8-mysql",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "resource": "campus-di-ddl-df2ed8eae6b8:probe",
+      "exit_code": 1,
+      "ok": true
+    }
+  ],
+  "secret_file_removed": true,
+  "finished_at": "2026-11-13T11:10:39.856Z",
+  "results": [
+    {
+      "label": "build pinned reviewed MySQL candidate-probe image",
+      "exit_code": 1
+    }
+  ]
+}

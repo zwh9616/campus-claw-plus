@@ -6,6 +6,8 @@
 2026-11-13组长正式安排下一阶段[04E资料能力扩展](openspec/changes/2026-11-13-materials-document-intelligence/proposal.md)：小张统一负责规约/合同/实现/测试/收口，A优先PDF与.docx，B OCR、C语义/混合检索按[任务和量化验收](openspec/changes/2026-11-13-materials-document-intelligence/acceptance.md)依次推进。仅04E适用[统一负责人例外](docs/standards/collaboration.md)，不转派实施；远端真实批准、合同先合入再apply及G2/G3保留。本候选只新增六个frozen Document合同，原22 current/Target5/active配置/TXT运行保持；尚未交付PDF、OCR或语义功能，也不恢复07教学生成/08成绩。
 
 ## 每次开始工作
+
+04E A1后半候选补记：小张按[integration-contract](openspec/changes/2026-11-13-materials-document-intelligence/integration-contract.md)提交私有RPC/两个frozen键/准确候选000006及恢复规则，获审合入前不接线。内部OpenAPI与公开六Document操作分开，候选SQL只在docs合同目录，不进backend embed/manifest，当前Target5/active空样例/22 current不变。新独占MySQL探针只证明候选DDL约束，不声称实际迁移/dirty/修复/备份恢复或RPC已实现。
 - 必读 [安全规范](docs/standards/security.md)，按范围必须读取下表规则；这些文件是约束，不是可选参考。
 - 必读 [共享进度表](docs/project-status.md) 与 [协作规范](docs/standards/collaboration.md)，先确认本次变更、两位负责人、前置条件和下一步；不得按人固定前端/后端/AI职责。
 - 业务合同与门禁必读[合同入口](docs/contracts/README.md)和[依赖表](docs/contracts/change-dependencies.md)。G1只允许00 apply；G2（00终审、main合入、集成复验）后下游才能apply；业务实现合并还需G3（10前置门禁）。不能把本分支当G2已成立。

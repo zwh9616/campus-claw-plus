@@ -1,0 +1,18 @@
+Document DDL actual database version: passed
+Document DDL fresh isolated schema only: passed
+Document DDL published table baseline 000001_identity_users_classes.up.sql: passed
+Document DDL published table baseline 000002_identity_sessions.up.sql: passed
+Document DDL published table baseline 000003_identity_auth_audit.up.sql: passed
+Document DDL published table baseline 000004_materials_retrieval.up.sql: passed
+Document DDL published table baseline 000005_assignment_tasks.up.sql: passed
+Document DDL inspect isolated table count: passed
+Document DDL exact five candidate DDL: passed
+Document DDL inspect isolated table count: passed
+Document DDL inspect six candidate FK constraints: passed
+Document DDL inspect eleven enforced candidate CHECK constraints: passed
+Document DDL synthetic identity keys only: passed
+Document DDL queued documents for two distinct classes: passed
+Document DDL Unicode codepoint body and valid ready state: passed
+Document DDL non-BMP page positions and chunk: passed
+Document DDL actual MySQL counts emoji as one codepoint: passed
+ready PDF cannot omit page count must reject

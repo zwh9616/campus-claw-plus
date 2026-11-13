@@ -14,13 +14,13 @@
     "check:foundation": "node scripts/check-foundation.mjs",
     "check:backend": "node scripts/check-backend.mjs",
     "check:spec": "openspec validate --all --strict",
-    "check": "npm run check:foundation && npm run check:gate && npm run check:contracts && npm run check:service-batches && npm run check:identity-wiring && npm run check:frontend-auth && npm run typecheck && npm run build && npm run check:sample-isolation && npm run check:backend && npm run check:spec && npm run check:document-parser",
+    "check": "npm run check:foundation && npm run check:gate && npm run check:contracts && npm run check:service-batches && npm run check:identity-wiring && npm run check:frontend-auth && npm run typecheck && npm run build && npm run check:sample-isolation && npm run check:backend && npm run check:spec && npm run check:document-parser && npm run check:document-storage-contract",
     "test": "npm run check:backend",
     "audit": "npm audit --audit-level=high && npm audit --prefix frontend --audit-level=high",
     "verify": "node scripts/verify-service-batches.mjs",
     "prepare:scan-db": "node scripts/verify-image-audits.mjs --prepare-only",
     "secret-scan": "node scripts/check-secrets.mjs",
-    "check:contracts": "node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs scripts/contracts/identity-phase.test.mjs scripts/contracts/materials.test.mjs scripts/contracts/assignments.test.mjs scripts/contracts/documents.test.mjs",
+    "check:contracts": "node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs scripts/contracts/identity-phase.test.mjs scripts/contracts/materials.test.mjs scripts/contracts/assignments.test.mjs scripts/contracts/documents.test.mjs scripts/contracts/document-integration.test.mjs",
     "check:gate": "node --test scripts/gate.test.mjs",
     "gate": "node scripts/gate.mjs",
     "check:frontend-auth": "node --experimental-strip-types --test frontend/tests/auth.test.mjs frontend/tests/reviewer-auth.test.mjs frontend/tests/materials.test.mjs",
@@ -30,7 +30,8 @@
     "verify:materials-browser": "node scripts/verify-materials-browser.mjs",
     "check:identity-wiring": "node --test scripts/identity-wiring.test.mjs scripts/application-image-report.test.mjs",
     "check:service-batches": "node scripts/check-service-batches.mjs && node --test scripts/service-batches.test.mjs",
-    "check:document-parser": "node scripts/check-document-parser.mjs"
+    "check:document-parser": "node scripts/check-document-parser.mjs",
+    "check:document-storage-contract": "node scripts/check-document-storage-contract.mjs"
   },
   "devDependencies": {
     "@apidevtools/swagger-parser": "13.1.0",

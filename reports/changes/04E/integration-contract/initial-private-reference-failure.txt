@@ -1,0 +1,45 @@
+
+> campus-claw-plus@0.0.1 check:contracts
+> node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs scripts/contracts/identity-phase.test.mjs scripts/contracts/materials.test.mjs scripts/contracts/assignments.test.mjs scripts/contracts/documents.test.mjs scripts/contracts/document-integration.test.mjs
+
+Contracts: 49 schemas; 225 positive/negative fixtures, 6 semantic inputs and 43 generated boundary cases agree in both paths; 198 operation examples; 22 current identity/health/material/assignment operations and six frozen 04E document contracts. OCR/vector/hybrid runtime operations remain absent.
+file:///C:/Users/lenovo/Desktop/SoftwareDevelopment/group_project/output/04-parser-integration-contracts-2026-11-13/node_modules/@apidevtools/json-schema-ref-parser/dist/lib/parse.js:93
+            throw new ResolverError(cause, file.url, { cause: err.error });
+                  ^
+
+ResolverError: DI-SC-14 reference outside explicit local Schema allowlist
+    at readFile (file:///C:/Users/lenovo/Desktop/SoftwareDevelopment/group_project/output/04-parser-integration-contracts-2026-11-13/node_modules/@apidevtools/json-schema-ref-parser/dist/lib/parse.js:93:19)
+    at async parse (file:///C:/Users/lenovo/Desktop/SoftwareDevelopment/group_project/output/04-parser-integration-contracts-2026-11-13/node_modules/@apidevtools/json-schema-ref-parser/dist/lib/parse.js:39:26)
+    at async SwaggerParser.parse (file:///C:/Users/lenovo/Desktop/SoftwareDevelopment/group_project/output/04-parser-integration-contracts-2026-11-13/node_modules/@apidevtools/json-schema-ref-parser/dist/lib/index.js:82:28)
+    at async SwaggerParser.parse (C:\Users\lenovo\Desktop\SoftwareDevelopment\group_project\output\04-parser-integration-contracts-2026-11-13\node_modules\@apidevtools\swagger-parser\lib\index.js:42:20)
+    at async SwaggerParser.resolve (file:///C:/Users/lenovo/Desktop/SoftwareDevelopment/group_project/output/04-parser-integration-contracts-2026-11-13/node_modules/@apidevtools/json-schema-ref-parser/dist/lib/index.js:118:13)
+    at async SwaggerParser.dereference (file:///C:/Users/lenovo/Desktop/SoftwareDevelopment/group_project/output/04-parser-integration-contracts-2026-11-13/node_modules/@apidevtools/json-schema-ref-parser/dist/lib/index.js:166:13)
+    at async SwaggerParser.validate (C:\Users\lenovo\Desktop\SoftwareDevelopment\group_project\output\04-parser-integration-contracts-2026-11-13\node_modules\@apidevtools\swagger-parser\lib\index.js:109:7)
+    at async validateDocumentIntegration (file:///C:/Users/lenovo/Desktop/SoftwareDevelopment/group_project/output/04-parser-integration-contracts-2026-11-13/scripts/contracts/document-integration.mjs:179:18)
+    at async file:///C:/Users/lenovo/Desktop/SoftwareDevelopment/group_project/output/04-parser-integration-contracts-2026-11-13/scripts/check-contracts.mjs:128:1 {
+  source: 'c:/Users/lenovo/Desktop/SoftwareDevelopment/group_project/output/04-parser-integration-contracts-2026-11-13/docs/contracts/document-parser/openapi.json',
+  path: null,
+  code: 'ERESOLVER',
+  toJSON: [Function: bound toJSON],
+  ioErrorCode: 'ERR_ASSERTION',
+  [cause]: AssertionError [ERR_ASSERTION]: DI-SC-14 reference outside explicit local Schema allowlist
+      at Object.read (file:///C:/Users/lenovo/Desktop/SoftwareDevelopment/group_project/output/04-parser-integration-contracts-2026-11-13/scripts/contracts/document-integration.mjs:152:14)
+      at getResult (file:///C:/Users/lenovo/Desktop/SoftwareDevelopment/group_project/output/04-parser-integration-contracts-2026-11-13/node_modules/@apidevtools/json-schema-ref-parser/dist/lib/util/plugins.js:116:22)
+      at runNextPlugin (file:///C:/Users/lenovo/Desktop/SoftwareDevelopment/group_project/output/04-parser-integration-contracts-2026-11-13/node_modules/@apidevtools/json-schema-ref-parser/dist/lib/util/plugins.js:69:32)
+      at file:///C:/Users/lenovo/Desktop/SoftwareDevelopment/group_project/output/04-parser-integration-contracts-2026-11-13/node_modules/@apidevtools/json-schema-ref-parser/dist/lib/util/plugins.js:45:9
+      at new Promise (<anonymous>)
+      at run (file:///C:/Users/lenovo/Desktop/SoftwareDevelopment/group_project/output/04-parser-integration-contracts-2026-11-13/node_modules/@apidevtools/json-schema-ref-parser/dist/lib/util/plugins.js:44:12)
+      at readFile (file:///C:/Users/lenovo/Desktop/SoftwareDevelopment/group_project/output/04-parser-integration-contracts-2026-11-13/node_modules/@apidevtools/json-schema-ref-parser/dist/lib/parse.js:75:28)
+      at parse (file:///C:/Users/lenovo/Desktop/SoftwareDevelopment/group_project/output/04-parser-integration-contracts-2026-11-13/node_modules/@apidevtools/json-schema-ref-parser/dist/lib/parse.js:39:32)
+      at SwaggerParser.parse (file:///C:/Users/lenovo/Desktop/SoftwareDevelopment/group_project/output/04-parser-integration-contracts-2026-11-13/node_modules/@apidevtools/json-schema-ref-parser/dist/lib/index.js:80:27)
+      at SwaggerParser.parse (C:\Users\lenovo\Desktop\SoftwareDevelopment\group_project\output\04-parser-integration-contracts-2026-11-13\node_modules\@apidevtools\swagger-parser\lib\index.js:42:32) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+}
+
+Node.js v25.2.1

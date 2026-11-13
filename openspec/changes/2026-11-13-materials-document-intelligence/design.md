@@ -55,6 +55,8 @@ D4实施顺序补记（2026-11-13）：#45已按远端实际批准正常合入�
 
 ### D5 持久作业、迁移与恢复
 
+A1后半精确冻结候选见[integration-contract](integration-contract.md)、[机器配置/预算/迁移合同](../../../docs/contracts/document-integration.json)及独立私有OpenAPI。仅冻结DOCUMENT_PARSER_URL/TOKEN和两个内部操作，不加入公开OpenAPI/current或空样例；当前解析CLI及22 current/Target5不改。候选五表SQL位于docs合同目录而非backend embed，原SQL/manifest/服务清单保持。只有本候选实际获审合入后，后续实施才可按准确合同接线，不能把合同检查或隔离SQL探针称为真实迁移6/持久RPC验收。
+
 预留候选000006（不等于已发布SQL或Target6）：documents、document_locations/chunks、document_parse_jobs及document_idempotency的准确DDL、摘要、结构漂移及隔离恢复5方案，另在A实现前核对。不能修改000001..000005或现有表语义；server/admin届时同提交精确切6。持有人升级须停写/一致备份、离线迁移；失败前向修复，保留新库，在隔离环境恢复5备份验证旧制品。空down仅测试，不用于生产回退。
 
 解析作业独立于05批改Task，不让05开始claim生产任务。轮询1秒、并发1，claim生成owner与递增epoch，lease60秒，20秒heartbeat；写入须完整校验owner/epoch/processing/未过期租约。进程在原件写入、claim及解析结果提交前后真实kill/restart，旧owner不得发布；原子提交正文/locations/chunks/ready，失败回滚。累计尝试最多3次；崩溃后可接管，最终耗尽failed。retry仅允许failed且原因parse_timeout/worker_interrupted/internal_failure、attempts<3，并发只生效一次；ready/needs_ocr/终态不合法重试409。身份切班/退出后旧凭证仍拒绝，日志不写字节/正文/文件名/路径/令牌。

@@ -13,7 +13,14 @@ export function validateIdentityPhase(api, config, phase, exists = existsSync) {
  const wiring=['IDENTITY_STATE_DIR','IDENTITY_PROXY_NETWORK','IDENTITY_PROXY_IP','IDENTITY_HTTPS_HOST','IDENTITY_HTTPS_PORT']
  assert.deepEqual(phase.config_keys,[...identity,...wiring])
  assert.deepEqual(config.active.map(x=>x.name),['HTTP_PORT',...identity,...wiring])
- assert.deepEqual(config.frozen,[])
+ // DI-SC-01/14: only the two reviewed 04E candidates may freeze; active keys,
+ // identity health and migration target remain exact and unchanged below.
+ assert.deepEqual(config.frozen.map(e=>e.name),['DOCUMENT_PARSER_URL','DOCUMENT_PARSER_TOKEN'])
+ for(const e of config.frozen){
+  assert.equal(e.owner,'04E');assert.equal(e.status,'frozen');assert.equal(e.required,true)
+  assert.equal(e.introduced_by,'openspec/changes/2026-11-13-materials-document-intelligence')
+  assert.equal(e.secret,e.name==='DOCUMENT_PARSER_TOKEN')
+ }
  assert.equal(config.planned.some(x=>x.owner==='01'),false)
  for(const e of config.active.slice(1)){
   assert.equal(e.owner,'01');assert.equal(e.required,true)

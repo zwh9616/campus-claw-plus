@@ -1,0 +1,17 @@
+{
+  "candidate_ddl": {
+    "000006_documents.down.sql": "bcd282b537db970249565148410f67a18737d5350055df20dd6efd51c8db5756",
+    "000006_documents.up.sql": "ae898e2c8166ac8e201102e6077ad5cf71a89259fb16553d3f5a1a0380e022ef"
+  },
+  "mysql_version": "8.4.13",
+  "expected_mysql_rejections": 16,
+  "all_actual_error_codes_match": true,
+  "unicode_measurements": [
+    8,
+    21
+  ],
+  "all_probe_cleanup": true,
+  "local_links": 257,
+  "missing_links": [],
+  "scope": "dirty worktree; final clean head gate/remote approval pending"
+}

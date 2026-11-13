@@ -11,6 +11,7 @@ import { validateIdentityPhase } from './contracts/identity-phase.mjs'
 import { assignmentBoundaryFixtures } from './contracts/assignments.mjs'
 import { materialBoundaryFixtures } from './contracts/materials.mjs'
 import { documentBoundaryFixtures } from './contracts/documents.mjs'
+import { validateDocumentIntegration } from './contracts/document-integration.mjs'
 
 const root = resolve('docs/contracts')
 const json = path => JSON.parse(readFileSync(resolve(root, path), 'utf8'))
@@ -123,3 +124,5 @@ console.log(`Contracts: ${sources.length} schemas; ${fixtures.length} positive/n
 // authoritative, and changing either copy alone must block the normal gate.
 assert.deepEqual(readFileSync('backend/internal/assignments/testdata/assignment-digest-cases.json'),
   readFileSync('docs/contracts/fixtures/assignment-digest-cases.json'), 'AT-SC-06 backend golden copy must match the frozen single source')
+
+await validateDocumentIntegration()
