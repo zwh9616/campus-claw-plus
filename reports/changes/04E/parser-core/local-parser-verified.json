@@ -1,0 +1,21 @@
+{
+  "label": "local-parser-clean",
+  "zip_sha256": "05d1391b20fd5ad75d7e3120f34c5b58714b3cddf44df8c354314740ecd79c7d",
+  "source": {
+    "commit": "36f1d1ed3c46ceab1690f5b1d1e799e1c684dd05",
+    "dirty": false,
+    "fingerprint": "cec18e2bd018c6bdfc1bd87e612f07e3dd01011ed0d8fc014b30878d6adcaf3f"
+  },
+  "production_images": 4,
+  "offline_candidate_images": 1,
+  "candidate_image": "sha256:b34e6e6757b1b7226b57e0333613fd6c8c3d7f181e06e232c96d691274e98255",
+  "tests_image_is_exported_and_scanned_image": true,
+  "clear_documents": 40,
+  "negative_classes": 25,
+  "locations": 195,
+  "critical_phrases": 45,
+  "max_cer": 0,
+  "max_document_ms": 942,
+  "all_cleanup_passed": true,
+  "scope": "offline parsing and original runtime regression; no RPC/SQL/HTTP/UI/OCR/semantic delivery claim"
+}

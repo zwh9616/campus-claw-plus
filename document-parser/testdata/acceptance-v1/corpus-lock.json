@@ -1,0 +1,8 @@
+{
+  "version": "di-acceptance-v1",
+  "frozen_before_parser_implementation": true,
+  "sha256": {
+    "manifest.json": "7bd794768b1c593b4df3ceaac5110a42fd2aba29f333a36a3dec090a79d46e2c",
+    "negative-cases.json": "802c981d3e0327f4dc76285f12497068aaf147348ea52b0a312b18d4518dfba3"
+  }
+}

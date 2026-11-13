@@ -139,3 +139,5 @@ go run ./cmd/server
 05首批#38仅提供000005五表与精确目标5迁移基础；本独立2.2/2.3候选实际接线九个已批准操作并同步22 current，提供作业与原子幂等提交。未绑定生产执行器，受理持久保持pending；worker、成绩和作业页面未完成。真实自测及终审状态以共享表为准，不把SQL available当成任一持有人数据库已升级。
 06资料阶段已通过#30/#31主干复验，本PR仅同步[资料前端主规约](openspec/specs/materials-frontend/spec.md)与[原change归档候选](openspec/changes/archive/2026-11-11-materials-frontend/)。归档合入按实际PR记录为准，资料现有运行代码保持已验收main，作业页面另等05。
 2026-11-12运行批次更新：#32最终510e882获小葛实际批准，用户明确授权后正常合入main b4b13fd，主干完整CI43194409869通过，10-B第一批B1.3完成；[实际原件](reports/changes/10/B/main-32-integration-2026-11-12.md)。B全量/C及其他未就绪服务仍按原准入待验；06资料归档候选见[清单](reports/changes/06/archive-candidate-2026-11-12.md)。
+
+2026-11-13下一阶段04E全部由小张负责，A优先PDF/Word，B OCR和C向量/混合检索已正式列出[任务](openspec/changes/2026-11-13-materials-document-intelligence/tasks.md)与[验收阈值](openspec/changes/2026-11-13-materials-document-intelligence/acceptance.md)。首批合同#45已获实际批准合入main25484d5并复验通过。本组件开始[离线解析核心](document-parser/README.md)：`npm run check:document-parser`实际测试固定40份文件/25类负例并接入原check，verify保留原完整集成后另扫候选解析镜像。当前仍22 current/Target5/四个默认生产镜像；PDF/Word上传HTTP、持久作业和真实页面、OCR/语义检索均未启用，阶段状态见[共享表](docs/project-status.md)。

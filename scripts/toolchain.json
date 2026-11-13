@@ -6,5 +6,9 @@
   "nodeImage": "node@sha256:fe4f6d74e20370acb04ad889077d14d0f64a9c8ea6a42bc60cddf1e844699914",
   "nginxImage": "nginx@sha256:583b7f2fce1cdb8da5ad5c39ebd3c33b98b87d493190e548bdee1fa8c619c311",
   "nginxVersion": "1.30.6",
-  "secretScannerVersion": "8.30.1"
+  "secretScannerVersion": "8.30.1",
+  "documentPythonImage": "python@sha256:5862d971d1f0ae26b258cefa4e893556b1d3aba81bd2ff30888704ad378bab67",
+  "documentPythonVersion": "3.14.10",
+  "documentPypdfVersion": "7.0.1",
+  "documentPypdfWheelSha256": "6131b764b046282357037309e7ef2a1b7679d4a5c53eed3db2bfbf7c673ddc2b"
 }

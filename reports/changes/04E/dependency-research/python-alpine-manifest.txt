@@ -1,0 +1,172 @@
+Name:      docker.io/library/python:3.14-alpine
+MediaType: application/vnd.oci.image.index.v1+json
+Digest:    sha256:5862d971d1f0ae26b258cefa4e893556b1d3aba81bd2ff30888704ad378bab67
+
+Manifests:
+  Name:        docker.io/library/python:3.14-alpine@sha256:76c65fc8c52c4d375e958298d9f66198b8fb6b06416c0e5500bf710c19cbaa77
+  MediaType:   application/vnd.oci.image.manifest.v1+json
+  Platform:    linux/amd64
+  Annotations:
+    org.opencontainers.image.url:             https://hub.docker.com/_/python
+    org.opencontainers.image.version:         3.14.10-alpine3.24
+    com.docker.official-images.bashbrew.arch: amd64
+    org.opencontainers.image.base.digest:     sha256:0f49f331d9212aff11b932863be4eb01cdf962969aa86dab7d1ee21ac6f5f52b
+    org.opencontainers.image.base.name:       alpine:3.24
+    org.opencontainers.image.created:         2026-11-05T19:25:24Z
+    org.opencontainers.image.revision:        01dcc3d31fcd879f9af36e097bd96328a457f4bd
+    org.opencontainers.image.source:          https://github.com/docker-library/python.git#01dcc3d31fcd879f9af36e097bd96328a457f4bd:3.14/alpine3.24
+
+  Name:        docker.io/library/python:3.14-alpine@sha256:eb0e9277600ad8d7af13df890c28fa8dd37da3f9770bfd474df494e81bac9c7e
+  MediaType:   application/vnd.oci.image.manifest.v1+json
+  Platform:    unknown/unknown
+  Annotations:
+    com.docker.official-images.bashbrew.arch: amd64
+    vnd.docker.reference.digest:              sha256:76c65fc8c52c4d375e958298d9f66198b8fb6b06416c0e5500bf710c19cbaa77
+    vnd.docker.reference.type:                attestation-manifest
+
+  Name:        docker.io/library/python:3.14-alpine@sha256:3e2746a947c69b870a5bda04c854e37d3f07308ec6a7b7132764b8fc677a217c
+  MediaType:   application/vnd.oci.image.manifest.v1+json
+  Platform:    linux/arm/v6
+  Annotations:
+    org.opencontainers.image.created:         2026-11-05T18:53:17Z
+    org.opencontainers.image.revision:        01dcc3d31fcd879f9af36e097bd96328a457f4bd
+    org.opencontainers.image.source:          https://github.com/docker-library/python.git#01dcc3d31fcd879f9af36e097bd96328a457f4bd:3.14/alpine3.24
+    org.opencontainers.image.url:             https://hub.docker.com/_/python
+    org.opencontainers.image.version:         3.14.10-alpine3.24
+    com.docker.official-images.bashbrew.arch: arm32v6
+    org.opencontainers.image.base.digest:     sha256:24744e247e00c323a54ca655da31f3ac39761bab0247939599b711d7f7a4b0e3
+    org.opencontainers.image.base.name:       alpine:3.24
+
+  Name:        docker.io/library/python:3.14-alpine@sha256:93567a4d14c318ce1cf241b28b4fd02c8e7cb439420837ce103d366f8bd41872
+  MediaType:   application/vnd.oci.image.manifest.v1+json
+  Platform:    unknown/unknown
+  Annotations:
+    com.docker.official-images.bashbrew.arch: arm32v6
+    vnd.docker.reference.digest:              sha256:3e2746a947c69b870a5bda04c854e37d3f07308ec6a7b7132764b8fc677a217c
+    vnd.docker.reference.type:                attestation-manifest
+
+  Name:        docker.io/library/python:3.14-alpine@sha256:b41bb042e034795c6692ddc60b7306b453ab4181c577707c6690e1de78f7a015
+  MediaType:   application/vnd.oci.image.manifest.v1+json
+  Platform:    linux/arm/v7
+  Annotations:
+    org.opencontainers.image.base.name:       alpine:3.24
+    org.opencontainers.image.created:         2026-11-05T18:53:58Z
+    org.opencontainers.image.revision:        01dcc3d31fcd879f9af36e097bd96328a457f4bd
+    org.opencontainers.image.source:          https://github.com/docker-library/python.git#01dcc3d31fcd879f9af36e097bd96328a457f4bd:3.14/alpine3.24
+    org.opencontainers.image.url:             https://hub.docker.com/_/python
+    org.opencontainers.image.version:         3.14.10-alpine3.24
+    com.docker.official-images.bashbrew.arch: arm32v7
+    org.opencontainers.image.base.digest:     sha256:d8d3f7634d0afcb22c20139248d0255a89cf7807c2e96a7c7ff0ab0217ef557b
+
+  Name:        docker.io/library/python:3.14-alpine@sha256:f8c8c3987444dbec29080f2e02bd75c1c3be76d46b5ae4aaf32a77fc07dff91c
+  MediaType:   application/vnd.oci.image.manifest.v1+json
+  Platform:    unknown/unknown
+  Annotations:
+    com.docker.official-images.bashbrew.arch: arm32v7
+    vnd.docker.reference.digest:              sha256:b41bb042e034795c6692ddc60b7306b453ab4181c577707c6690e1de78f7a015
+    vnd.docker.reference.type:                attestation-manifest
+
+  Name:        docker.io/library/python:3.14-alpine@sha256:f0b25c48745f2cedc4e06b32b410ef83835ee0248e8cfcbfe0dcdbce8542dc03
+  MediaType:   application/vnd.oci.image.manifest.v1+json
+  Platform:    linux/arm64/v8
+  Annotations:
+    org.opencontainers.image.url:             https://hub.docker.com/_/python
+    org.opencontainers.image.version:         3.14.10-alpine3.24
+    com.docker.official-images.bashbrew.arch: arm64v8
+    org.opencontainers.image.base.digest:     sha256:1829893486be257df5049ab3b7fc95afbd0fc09d89803cbc580bda1ba5386b29
+    org.opencontainers.image.base.name:       alpine:3.24
+    org.opencontainers.image.created:         2026-11-05T19:21:47Z
+    org.opencontainers.image.revision:        01dcc3d31fcd879f9af36e097bd96328a457f4bd
+    org.opencontainers.image.source:          https://github.com/docker-library/python.git#01dcc3d31fcd879f9af36e097bd96328a457f4bd:3.14/alpine3.24
+
+  Name:        docker.io/library/python:3.14-alpine@sha256:10d3ead73559e9be1337b606e9b49ff147d76264deab3954ef415c7eb1d2566e
+  MediaType:   application/vnd.oci.image.manifest.v1+json
+  Platform:    unknown/unknown
+  Annotations:
+    vnd.docker.reference.digest:              sha256:f0b25c48745f2cedc4e06b32b410ef83835ee0248e8cfcbfe0dcdbce8542dc03
+    vnd.docker.reference.type:                attestation-manifest
+    com.docker.official-images.bashbrew.arch: arm64v8
+
+  Name:        docker.io/library/python:3.14-alpine@sha256:6ba6d05a84087c62ca89711931ddbb1601e247037431e97af2db3d3d5f393406
+  MediaType:   application/vnd.oci.image.manifest.v1+json
+  Platform:    linux/386
+  Annotations:
+    org.opencontainers.image.base.name:       alpine:3.24
+    org.opencontainers.image.created:         2026-11-05T18:32:46Z
+    org.opencontainers.image.revision:        01dcc3d31fcd879f9af36e097bd96328a457f4bd
+    org.opencontainers.image.source:          https://github.com/docker-library/python.git#01dcc3d31fcd879f9af36e097bd96328a457f4bd:3.14/alpine3.24
+    org.opencontainers.image.url:             https://hub.docker.com/_/python
+    org.opencontainers.image.version:         3.14.10-alpine3.24
+    com.docker.official-images.bashbrew.arch: i386
+    org.opencontainers.image.base.digest:     sha256:55d68c85222dd92297b0f8885354739d89f0dc17fc2f903c49dc1d9c129c3d6a
+
+  Name:        docker.io/library/python:3.14-alpine@sha256:468c10fd046f99b2f9924e31966d1a16c17059bb1aa1f7e47f41d701b96fa97d
+  MediaType:   application/vnd.oci.image.manifest.v1+json
+  Platform:    unknown/unknown
+  Annotations:
+    com.docker.official-images.bashbrew.arch: i386
+    vnd.docker.reference.digest:              sha256:6ba6d05a84087c62ca89711931ddbb1601e247037431e97af2db3d3d5f393406
+    vnd.docker.reference.type:                attestation-manifest
+
+  Name:        docker.io/library/python:3.14-alpine@sha256:1d3ee070738c449986fe081a1b09644201d2593940e3021f7e50b82b2874d1d1
+  MediaType:   application/vnd.oci.image.manifest.v1+json
+  Platform:    linux/ppc64le
+  Annotations:
+    org.opencontainers.image.base.name:       alpine:3.24
+    org.opencontainers.image.created:         2026-11-06T03:21:30Z
+    org.opencontainers.image.revision:        01dcc3d31fcd879f9af36e097bd96328a457f4bd
+    org.opencontainers.image.source:          https://github.com/docker-library/python.git#01dcc3d31fcd879f9af36e097bd96328a457f4bd:3.14/alpine3.24
+    org.opencontainers.image.url:             https://hub.docker.com/_/python
+    org.opencontainers.image.version:         3.14.10-alpine3.24
+    com.docker.official-images.bashbrew.arch: ppc64le
+    org.opencontainers.image.base.digest:     sha256:7ed963991a76f3bec91d6d651756adc85b4f15d6c3465c2abb1a5ff8f6660a92
+
+  Name:        docker.io/library/python:3.14-alpine@sha256:a11e249cc908811e75cbf2ae1589165793e99e6296723ef7665504b997a2148b
+  MediaType:   application/vnd.oci.image.manifest.v1+json
+  Platform:    unknown/unknown
+  Annotations:
+    com.docker.official-images.bashbrew.arch: ppc64le
+    vnd.docker.reference.digest:              sha256:1d3ee070738c449986fe081a1b09644201d2593940e3021f7e50b82b2874d1d1
+    vnd.docker.reference.type:                attestation-manifest
+
+  Name:        docker.io/library/python:3.14-alpine@sha256:d28db919dcc8b7e818dac9ce9612ef900da401515d4160c9bd517f2a9e3a712e
+  MediaType:   application/vnd.oci.image.manifest.v1+json
+  Platform:    linux/riscv64
+  Annotations:
+    org.opencontainers.image.base.digest:     sha256:73e451a4baad87e552641066294eb699c9bcbf1f5cd21bd7c00b66182092386e
+    org.opencontainers.image.base.name:       alpine:3.24
+    org.opencontainers.image.created:         2026-11-12T01:36:53Z
+    org.opencontainers.image.revision:        01dcc3d31fcd879f9af36e097bd96328a457f4bd
+    org.opencontainers.image.source:          https://github.com/docker-library/python.git#01dcc3d31fcd879f9af36e097bd96328a457f4bd:3.14/alpine3.24
+    org.opencontainers.image.url:             https://hub.docker.com/_/python
+    org.opencontainers.image.version:         3.14.10-alpine3.24
+    com.docker.official-images.bashbrew.arch: riscv64
+
+  Name:        docker.io/library/python:3.14-alpine@sha256:d6032cc26066f4ce09dee1f64df44f916af99dd1418ae852f8884414bf003268
+  MediaType:   application/vnd.oci.image.manifest.v1+json
+  Platform:    unknown/unknown
+  Annotations:
+    com.docker.official-images.bashbrew.arch: riscv64
+    vnd.docker.reference.digest:              sha256:d28db919dcc8b7e818dac9ce9612ef900da401515d4160c9bd517f2a9e3a712e
+    vnd.docker.reference.type:                attestation-manifest
+
+  Name:        docker.io/library/python:3.14-alpine@sha256:ec2cafad48057bd78fc976d99c5061b6dbb03c644e7e835247973338db684c45
+  MediaType:   application/vnd.oci.image.manifest.v1+json
+  Platform:    linux/s390x
+  Annotations:
+    org.opencontainers.image.source:          https://github.com/docker-library/python.git#01dcc3d31fcd879f9af36e097bd96328a457f4bd:3.14/alpine3.24
+    org.opencontainers.image.url:             https://hub.docker.com/_/python
+    org.opencontainers.image.version:         3.14.10-alpine3.24
+    com.docker.official-images.bashbrew.arch: s390x
+    org.opencontainers.image.base.digest:     sha256:5731f4bc195f1efc2807ea6a33a2d2bc0f5abbf5bfb799269129f67560209c22
+    org.opencontainers.image.base.name:       alpine:3.24
+    org.opencontainers.image.created:         2026-11-05T20:51:24Z
+    org.opencontainers.image.revision:        01dcc3d31fcd879f9af36e097bd96328a457f4bd
+
+  Name:        docker.io/library/python:3.14-alpine@sha256:46ec522cbbcdeea1d3559dff680b2600e3de2d632683b5b308a50699d07d1eaf
+  MediaType:   application/vnd.oci.image.manifest.v1+json
+  Platform:    unknown/unknown
+  Annotations:
+    com.docker.official-images.bashbrew.arch: s390x
+    vnd.docker.reference.digest:              sha256:ec2cafad48057bd78fc976d99c5061b6dbb03c644e7e835247973338db684c45
+    vnd.docker.reference.type:                attestation-manifest

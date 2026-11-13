@@ -1,0 +1,6 @@
+*
+!Dockerfile
+!requirements.lock
+!core.py
+!runner.py
+!worker.py
