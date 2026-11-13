@@ -1,0 +1,77 @@
+{
+  "head": "c1594f398931b7fefd1c9c71923dc8541f74ea78",
+  "probes": [
+    {
+      "name": "U+0085 at both ends",
+      "expected": true,
+      "accepted": true,
+      "pass": true
+    },
+    {
+      "name": "U+FEFF plus 200 codepoints",
+      "expected": false,
+      "accepted": false,
+      "pass": true
+    },
+    {
+      "name": "200 non-BMP codepoints",
+      "expected": true,
+      "accepted": true,
+      "pass": true
+    },
+    {
+      "name": "201 non-BMP codepoints",
+      "expected": false,
+      "accepted": false,
+      "pass": true
+    },
+    {
+      "name": "unpaired surrogate",
+      "expected": false,
+      "accepted": false,
+      "pass": true
+    },
+    {
+      "name": "internal control",
+      "expected": false,
+      "accepted": false,
+      "pass": true
+    },
+    {
+      "name": "all White_Space",
+      "expected": false,
+      "accepted": false,
+      "pass": true
+    },
+    {
+      "name": "q widened",
+      "expected_block": true,
+      "blocked": true,
+      "pass": true
+    },
+    {
+      "name": "q removes schema constraint",
+      "expected_block": true,
+      "blocked": true,
+      "pass": true
+    },
+    {
+      "name": "page minimum zero",
+      "expected_block": true,
+      "blocked": true,
+      "pass": true
+    },
+    {
+      "name": "page default zero",
+      "expected_block": true,
+      "blocked": true,
+      "pass": true
+    },
+    {
+      "name": "page number instead of integer",
+      "expected_block": true,
+      "blocked": true,
+      "pass": true
+    }
+  ]
+}

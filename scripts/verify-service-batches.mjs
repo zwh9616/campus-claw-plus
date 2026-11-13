@@ -15,7 +15,7 @@ const controller = new AbortController()
 const cancel = () => controller.abort()
 process.on('SIGINT', cancel)
 process.on('SIGTERM', cancel)
-let output = { time: new Date(started).toISOString(), exit_code: 1, scope: 'DO-SC-11..13 current identity/materials batch; no independent reviewer or full10B/C claim' }
+let output = { time: new Date(started).toISOString(), exit_code: 1, scope: 'DO-SC-11..13 current identity/materials/assignment-tasks batch; production executor unbound; no independent reviewer or full10B/C claim' }
 try {
   const before = source()
   output.source = before

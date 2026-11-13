@@ -1,0 +1,34 @@
+{
+  "time": "2026-11-13T08:41:36.172Z",
+  "run_id": "campus-di-a78ccce5e5d1",
+  "scope": "04E offline parser candidate; current production batch remains four images",
+  "source": {
+    "commit": "36f1d1ed3c46ceab1690f5b1d1e799e1c684dd05",
+    "dirty": true,
+    "fingerprint": "b22bea507e0f3ae014dacc9cf365eb4228a6332825a8841113e575b3fa16a0de"
+  },
+  "exit_code": 1,
+  "error": "build pinned candidate failed; see output/document-parser/check/results.json",
+  "cleanup": [
+    {
+      "resource": "campus-di-a78ccce5e5d1-run",
+      "exit_code": null,
+      "ok": false
+    },
+    {
+      "resource": "campus-di-a78ccce5e5d1:check",
+      "exit_code": null,
+      "ok": false
+    }
+  ],
+  "finished_at": "2026-11-13T08:41:36.180Z",
+  "results": [
+    {
+      "label": "build pinned candidate",
+      "exit_code": null,
+      "error": "spawnSync docker ENOENT",
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

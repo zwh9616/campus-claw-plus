@@ -1,0 +1,142 @@
+{
+  "reviewer": "gjj6666 (AI assisted)",
+  "source": {
+    "commit": "44ef6eab807d10a9c3d2a138c3567ac830742905",
+    "dirty": false,
+    "fingerprint": "4b2244575e61588e8da55faba03fffcd44c3b92bb434cf161cf438b68c962845"
+  },
+  "gate": {
+    "time": "2026-11-13T09:29:13.039Z",
+    "node": "v24.19.0",
+    "exitCode": 0,
+    "results": [
+      {
+        "name": "check",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 73455
+      },
+      {
+        "name": "audit",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 3736
+      },
+      {
+        "name": "secret-scan",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 1907
+      },
+      {
+        "name": "verify",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 269661
+      }
+    ],
+    "notRun": []
+  },
+  "runtime_validator_recomputed": true,
+  "four_raw_hashes_verified": true,
+  "images": [
+    {
+      "service": "mysql",
+      "image_id": "sha256:34033ab9d8ff1570ddb48aba5458920b08a603b4eb498261292b99144e406cff",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "admin",
+      "image_id": "sha256:f94d96ce4c623304cb544259a416d3f4819ae849efa8ee463aeb9ceb59b62876",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "backend",
+      "image_id": "sha256:c8a295e2360c12667310ca63ecdfca713c8881200c08898469bbeecc75ef5672",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "frontend",
+      "image_id": "sha256:6bd704461159aece95110ac167ef992e3b39ed998269b912005ddccf27536b4f",
+      "HIGH": 0,
+      "CRITICAL": 0
+    }
+  ],
+  "cleanup": [
+    {
+      "tag": "campus-mysql-audit-1eec550019b4:verification",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "tag": "campus-app-audit-a114a3843988-backend:verification",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "tag": "campus-app-audit-a114a3843988-admin:verification",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "tag": "campus-app-audit-a114a3843988-frontend:verification",
+      "exit_code": 0,
+      "ok": true
+    }
+  ],
+  "offline_candidate": {
+    "source": {
+      "commit": "44ef6eab807d10a9c3d2a138c3567ac830742905",
+      "dirty": false,
+      "fingerprint": "b22bea507e0f3ae014dacc9cf365eb4228a6332825a8841113e575b3fa16a0de"
+    },
+    "image_id": "sha256:76df6d58b1eb1b882aeb4f94347cf25914451f0fd724839e8dad91c0b1d7fef4",
+    "tests": {
+      "groups": 8,
+      "clear_documents": 40,
+      "negative_classes": 25,
+      "max_cer": 0,
+      "max_document_ms": 794,
+      "raw_sha256": "ed24b8f25f32ce52042ac388f7fb1c2afa91fac8de17eee942f5bac116d6043c"
+    },
+    "findings": {
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    "cleanup": [
+      {
+        "resource": "campus-di-c31eb1483bc2-run",
+        "exit_code": 0,
+        "ok": true
+      },
+      {
+        "resource": "campus-di-c31eb1483bc2:check",
+        "exit_code": 0,
+        "ok": true
+      }
+    ]
+  },
+  "scenarios": {
+    "sql_worker_groups": 18,
+    "recovery_steps": 5,
+    "https_pending_phases": 3
+  },
+  "duplicate_guard_regression": {
+    "before_fix_exit": 1,
+    "after_fix_exit": 0,
+    "batch_tests": 12
+  },
+  "first_full_gate": {
+    "exit": 1,
+    "cause": "Docker Hub authorization timeout for pinned Python base; required later stages not run",
+    "subsequent_recovery": "Per-command existing localhost proxy, immutable digest unchanged; full clean gate rerun passed"
+  },
+  "raw_zip_sha256": "da5ba98159c545aea034de746883dc9fb068194471ae7dd5432e08b70edd7d71"
+}

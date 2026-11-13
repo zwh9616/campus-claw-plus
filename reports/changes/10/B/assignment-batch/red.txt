@@ -1,0 +1,41 @@
+✔ DO-SC-11/13 current batch covers only real approved services/configuration and pinned sources (16.1003ms)
+✔ DO-SC-11 unregistered services, wrong build target/network and inactive keys block check (28.6446ms)
+✔ DO-SC-12 exactly3s probes pass while4s/image drift and unpinned base fail (13.8465ms)
+✔ DO-SC-11/12 current real reports produce four immutable artifact IDs; fixtures are structural tests only (4.284ms)
+✔ DO-SC-11/13 stale/missing/failed evidence, source mismatch and high vulnerabilities block (28.2459ms)
+✖ DO-SC-11/12 every real05 SQL/worker suite and recovery step is mandatory; zero exit without tests is insufficient (2.5197ms)
+✔ DO-SC-12 each real HTTPS phase must prove05 pending persistence, without failed/skipped/nested substitute tests (35.2261ms)
+✔ DO-SC-12 backup success text and duplicate HTTPS phases cannot substitute for real complete evidence (5.0963ms)
+✔ DO-SC-03/11 npm verify retains the original three real programs and CI retains the new summary (0.4338ms)
+✔ DO-SC-11 exact audited IDs are selected with no pulls; incomplete/unsafe scans cannot start runtime (13.8283ms)
+✔ DO-SC-11 verification cleanup excludes old reports and unrelated image references (3.2995ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 10
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 266.32
+
+✖ failing tests:
+
+test at scripts\service-batches.test.mjs:94:1
+✖ DO-SC-11/12 every real05 SQL/worker suite and recovery step is mandatory; zero exit without tests is insufficient (2.5197ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception: TestATRealHTTPAuthorizationInputsAndIdempotency
+      at TestContext.<anonymous> (file:///D:/long/2/grade5/Internet-Software/group_project/scripts/service-batches.test.mjs:100:14)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+exit=1

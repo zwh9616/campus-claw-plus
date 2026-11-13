@@ -1,0 +1,45 @@
+{
+  "images": [
+    {
+      "service": "mysql",
+      "image_id": "sha256:5f1e241c89e57a60f10b5a542d677155e504d8d114e952ad17e7594b295f657f",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "admin",
+      "image_id": "sha256:e23a96f6c0c191865bb92894beb8ca9167a613b8b4c1c6694bcf7477283a19d7",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "backend",
+      "image_id": "sha256:92c34c1a0f1f1fd55fbc44ee8b8b4fc8f90dcb4fd5bab784445944bb2d5067c3",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "frontend",
+      "image_id": "sha256:c1255e1ba559af7c8fda536370d03efe175b13548607d4b2da76bcf4ac76225c",
+      "HIGH": 0,
+      "CRITICAL": 0
+    }
+  ],
+  "real_reports_validated": true,
+  "sql_worker_groups": 18,
+  "recovery_steps": 5,
+  "https_phases": 3,
+  "independent_negative_probes": 4,
+  "isolated_real_guard_red": 1,
+  "restored_green": 0,
+  "original_source_unchanged": true,
+  "run": 43398104704,
+  "head": "63c5008849484c9d85769c9143cc5533b1571773",
+  "tested_source": "ce8cf6130e67c6f66df06ad8844c2e90cba1ebad",
+  "tree": "89a6766efee2a5ca0d9d5b50c4e1f93a08062635",
+  "artifact": 14024890406,
+  "github_zip_digest_verified": true,
+  "four_raw_report_hashes_verified": true,
+  "offline_parser_check_and_scan_verified": true,
+  "scope": "Read actual CI evidence; local guard copy red/green is a structural check, not a new Docker runtime"
+}

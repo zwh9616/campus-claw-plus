@@ -7,6 +7,28 @@ import { parse } from 'yaml'
 export const runtimeSteps = ['scripts/verify-image-audits.mjs', 'scripts/verify-skeleton.mjs', 'scripts/verify-identity.mjs']
 export const evidencePaths = ['output/mysql-image-verify/results.json', 'output/application-image-verify/results.json',
   'output/identity-wiring/results.json', 'output/identity/results.json']
+// DO-SC-11/12: require the real approved05 suites in this run, not only an old identity success label.
+export const assignmentTests = ['TestATRealHTTPAuthorizationInputsAndIdempotency',
+  'TestATBusinessWritePointRollbackAndControlledDeadline', 'TestATMutationStatesAndRollback',
+  'TestATConsistentPageSnapshotsAndExactIDs', 'TestATCommitAcknowledgementAndRealCommittedReplay',
+  'TestATWorkerLeaseExpiryTakeoverAndABA', 'TestATWorkerCancellationSerializations',
+  'TestATWorkerRecoveryRetryAndAdapterRollback', 'TestATRealWorkerBatchConcurrencyAndUnbound',
+  'TestATActualWorkerSIGTERM', 'TestATWorkerBackoffThirdExpiryAndRecoveryCAS',
+  'TestATWorkerTerminalAndClaimRollback', 'TestATWorkerCrashBeforeAndAfterClaim',
+  'TestATMigrationEmptyAndUpgrade', 'TestATMigrationEachDDLAndForwardRepair',
+  'TestATMigrationDriftHistoryAndBinaryScopes', 'TestATEmptyDownOnly', 'TestATMigrationRejectsForeignDatabase']
+export const assignmentRecoverySteps = ['AT-SC-20 build actual accepted schema4 artifacts',
+  'AT-SC-20 prepare real pre-upgrade4 backup', 'AT-SC-20 real consistent v4 mysqldump',
+  'AT-SC-20 restore into independent v4 database', 'AT-SC-20 actual schema4/5 artifacts and restored identity/material bytes']
+export const assignmentHTTPSPhases = ['SC-01/02/03 real same-origin HTTPS, unique health, TLS rejection, login and revoked access',
+  'account and class persist after database restart', 'same account and original password after full container recreation']
+const passedGoTest = (output, name) => (output.match(new RegExp(`^--- PASS: ${name} \\(\\d+(?:\\.\\d+)?s\\)$`, 'gm')) ?? []).length === 1
+function successfulGoOutput(step, names) {
+  assert.equal(step.exit_code, 0, 'Required real05 command failed')
+  assert.equal(typeof step.output, 'string', 'Real05 test output missing')
+  assert.ok(!/^\s*--- (?:SKIP|FAIL):/m.test(step.output), 'Skipped/failed real05 suite cannot pass the batch')
+  for (const name of names) assert.ok(passedGoTest(step.output, name), `Exactly one successful top-level real05 test required: ${name}`)
+}
 export const sha256 = bytes => createHash('sha256').update(bytes).digest('hex')
 const seconds = value => {
   assert.match(value ?? '', /^\d+(?:\.\d+)?(?:ms|s)$/, 'Probe timeout must be explicit')
@@ -73,7 +95,7 @@ export function validateBatch({ registry, compose, config, dockerfiles }) {
   const declared = new Map(registry.services.map(s => [s.name, s]))
   assert.deepEqual([...declared.get('frontend').changes].sort(), ['01', '02', '06'], 'Frontend must include the integrated materials pages')
   for (const name of ['mysql', 'backend', 'admin']) {
-    assert.deepEqual([...declared.get(name).changes].sort(), ['01', '04', '05'], 'Each database consumer must cover identity/materials and the reviewed assignment migration')
+    assert.deepEqual([...declared.get(name).changes].sort(), ['01', '04', '05'], 'Each database consumer must cover identity/materials and accepted assignment/tasks')
   }
   const owner = { backend: 'backend', migration: 'admin', initializer: 'admin', nginx: 'frontend' }
   for (const key of config.active) for (const consumer of key.consumers ?? []) {
@@ -160,6 +182,22 @@ export function validateRuntimeEvidence(reports, started, finished, inventory) {
   }
   for (const label of ['real MySQL identity scenarios', 'real consistent v3 mysqldump', 'actual old artifact rejection and restored identities']) {
     assert.ok(reports[evidencePaths[3]].results.some(s => s.label === label && s.exit_code === 0), 'Required real database scenario missing')
+  }
+  const database = reports[evidencePaths[3]].results
+  const required = (steps, label) => {
+    const matches = steps.filter(s => s.label === label)
+    assert.equal(matches.length, 1, `Exactly one real05 scenario required: ${label}`)
+    assert.equal(matches[0].exit_code, 0, `Real05 scenario failed: ${label}`)
+    return matches[0]
+  }
+  successfulGoOutput(required(database, 'real MySQL identity scenarios'), assignmentTests)
+  for (const label of assignmentRecoverySteps) required(database, label)
+  successfulGoOutput(required(database, assignmentRecoverySteps.at(-1)), ['TestATBackupRestoreAndActualTargetMatrix'])
+  for (const label of assignmentHTTPSPhases) {
+    const step = required(wire.results, label)
+    successfulGoOutput(step, ['TestIDFWiring'])
+    assert.ok(step.output.includes('AT-SC-01..08/21 default HTTPS authorization, durable 202 and genuine pending persistence passed'),
+      'Default HTTPS must verify actual05 durable acceptance and pending persistence in every phase')
   }
   return images.map(({ service, image_id, HIGH, CRITICAL }) => ({ service, image_id, HIGH, CRITICAL }))
 }

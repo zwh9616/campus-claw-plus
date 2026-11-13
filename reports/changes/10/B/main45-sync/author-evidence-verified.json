@@ -1,0 +1,74 @@
+{
+  "actor": "Kevcco",
+  "author_source": {
+    "commit": "e02cbd6a7b7db25b2bff85037f22497412862503",
+    "dirty": false,
+    "fingerprint": "0f5c01edb0ecbc2fdfdf70df5af9efa125fd95672e2ee64bd44662e508dad9b3"
+  },
+  "zip_sha256": "a95da0685409ecf1f1dd5ff7d56cb9825945ceee83e582060445654585026cb6",
+  "gate_results": [
+    {
+      "name": "check",
+      "exitCode": 0,
+      "reason": "passed",
+      "signal": null,
+      "durationMs": 37506
+    },
+    {
+      "name": "audit",
+      "exitCode": 0,
+      "reason": "passed",
+      "signal": null,
+      "durationMs": 8717
+    },
+    {
+      "name": "secret-scan",
+      "exitCode": 0,
+      "reason": "passed",
+      "signal": null,
+      "durationMs": 7983
+    },
+    {
+      "name": "verify",
+      "exitCode": 0,
+      "reason": "passed",
+      "signal": null,
+      "durationMs": 369157
+    }
+  ],
+  "source_hashes_verified": true,
+  "images": [
+    {
+      "service": "mysql",
+      "image_id": "sha256:8a32705d4e8c44798d33b82593e9d8e2dc410e4b3cc85d845b8a8d5106c8d47b",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "admin",
+      "image_id": "sha256:49838c0f99fcb50e4e8aba0cab2ffd41fdcd885383c4b65d45e8d1b26caf60f2",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "backend",
+      "image_id": "sha256:91864929aedf58f699f6d14287a77b03027285bce7f8c1a14cf19c7fb0b97ffb",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "frontend",
+      "image_id": "sha256:f3110fc20d2d89b9c05c8e901d3e45d91097dbab3bd5285dadad1f910c84f96b",
+      "HIGH": 0,
+      "CRITICAL": 0
+    }
+  ],
+  "cleanup": 4,
+  "actual_author_red_exit": [
+    1,
+    1,
+    1
+  ],
+  "restored": 0,
+  "author_crlf_matches_current_git_lf": true
+}

@@ -1,0 +1,78 @@
+{
+  "time": "2026-11-13T06:13:58.934Z",
+  "exit_code": 1,
+  "scope": "DO-SC-11..13 current identity/materials/assignment-tasks batch; production executor unbound; no independent reviewer or full10B/C claim",
+  "source": {
+    "commit": "7f0f32f60e9edf805f4ae548896e330ec8d6e5c3",
+    "dirty": true,
+    "fingerprint": "c0249a3883fa3e71b5a782fb697e90b38918869c7bf07691b7c70c2707ec2465"
+  },
+  "inventory": {
+    "batch": "identity-materials-assignment-tasks",
+    "review_status": "pending_ge_review",
+    "sources": [
+      {
+        "service": "mysql",
+        "dockerfile": "deploy/identity/mysql/Dockerfile",
+        "dockerfile_sha256": "055eb6378eb40d305b7a28ea9d4a735bfd5e0137a806e330799965074e999c5a",
+        "target": null,
+        "from": [
+          "golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb",
+          "mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902"
+        ]
+      },
+      {
+        "service": "admin",
+        "dockerfile": "backend/Dockerfile.identity",
+        "dockerfile_sha256": "a78bf59efa36cd4ae91cefcbd1406a569b04f0930948604b4c547fdc993c2c82",
+        "target": "admin",
+        "from": [
+          "golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb",
+          "scratch",
+          "scratch"
+        ]
+      },
+      {
+        "service": "backend",
+        "dockerfile": "backend/Dockerfile",
+        "dockerfile_sha256": "d2acdc74c62d5b4ac69116513207e76091c8deab136ce234567577ff4c760fd2",
+        "target": null,
+        "from": [
+          "golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb",
+          "scratch"
+        ]
+      },
+      {
+        "service": "frontend",
+        "dockerfile": "frontend/Dockerfile",
+        "dockerfile_sha256": "1ab71112b10a18955e12a43fc72262192562633d163af9bbde5ee8a9d61fda79",
+        "target": null,
+        "from": [
+          "node@sha256:fe4f6d74e20370acb04ad889077d14d0f64a9c8ea6a42bc60cddf1e844699914",
+          "nginx@sha256:583b7f2fce1cdb8da5ad5c39ebd3c33b98b87d493190e548bdee1fa8c619c311"
+        ]
+      }
+    ],
+    "probe_timeout_ms": 3000,
+    "deployment_wait_ms": 120000
+  },
+  "stages": {
+    "exitCode": 1,
+    "results": [
+      {
+        "name": "scripts/verify-image-audits.mjs",
+        "exitCode": 1,
+        "reason": "failed",
+        "signal": null,
+        "durationMs": 67
+      }
+    ],
+    "notRun": [
+      "scripts/verify-skeleton.mjs",
+      "scripts/verify-identity.mjs"
+    ]
+  },
+  "error": "Original runtime verification failed; later stages were not run",
+  "cleanup": [],
+  "finished_at": "2026-11-13T06:14:06.013Z"
+}
