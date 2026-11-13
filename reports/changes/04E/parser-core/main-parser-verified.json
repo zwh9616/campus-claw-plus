@@ -1,0 +1,21 @@
+{
+  "label": "main-parser",
+  "zip_sha256": "7f0696ff11fb334f6b96f1d1c04bf44a2fb66374a90f564d05c59c4a97eb4bb1",
+  "source": {
+    "commit": "8f8636db88e799b22f916eae6ee35c19aee0b8ad",
+    "dirty": false,
+    "fingerprint": "3233cd50c483fa53e60ac64fdf72443cb069d5366d1be00a091bb819521c9034"
+  },
+  "production_images": 4,
+  "offline_candidate_images": 1,
+  "candidate_image": "sha256:654e2ea6e8a0e49837b14a803ab91f9c47f918d653fc0297b67f2eb78af81cd2",
+  "tests_image_is_exported_and_scanned_image": true,
+  "clear_documents": 40,
+  "negative_classes": 25,
+  "locations": 195,
+  "critical_phrases": 45,
+  "max_cer": 0,
+  "max_document_ms": 1169,
+  "all_cleanup_passed": true,
+  "scope": "offline parsing and original runtime regression; no RPC/SQL/HTTP/UI/OCR/semantic delivery claim"
+}
