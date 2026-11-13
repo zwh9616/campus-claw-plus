@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/v1/DocumentCitation.schema.json",
+  "title": "DocumentCitation",
+  "type": "object",
+  "properties": {
+    "document_id": {
+      "$ref": "ID.schema.json"
+    },
+    "chunk_id": {
+      "$ref": "ID.schema.json"
+    },
+    "document_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "^(?!\\p{White_Space})(?![\\s\\S]*\\p{White_Space}$)[^\\p{Cc}]+$"
+    },
+    "location": {
+      "$ref": "DocumentLocation.schema.json"
+    },
+    "quote": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "url": {
+      "type": "string",
+      "pattern": "^/api/v1/documents/[1-9][0-9]{0,18}$",
+      "maxLength": 64
+    }
+  },
+  "required": [
+    "document_id",
+    "chunk_id",
+    "document_version",
+    "title",
+    "location",
+    "quote",
+    "url"
+  ],
+  "additionalProperties": false
+}

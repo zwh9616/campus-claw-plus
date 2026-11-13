@@ -1,0 +1,192 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/v1/Document.schema.json",
+  "title": "Document",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "ID.schema.json"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "^(?!\\p{White_Space})(?![\\s\\S]*\\p{White_Space}$)[^\\p{Cc}]+$"
+    },
+    "format": {
+      "type": "string",
+      "enum": [
+        "pdf",
+        "docx"
+      ]
+    },
+    "version": {
+      "type": "integer",
+      "const": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "queued",
+        "processing",
+        "ready",
+        "needs_ocr",
+        "failed"
+      ]
+    },
+    "size_bytes": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10485760
+    },
+    "attempts": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 3
+    },
+    "page_count": {
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 200
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "failure_reason": {
+      "anyOf": [
+        {
+          "type": "string",
+          "enum": [
+            "corrupt",
+            "encrypted",
+            "unsupported_content",
+            "resource_limit",
+            "parse_timeout",
+            "worker_interrupted",
+            "internal_failure"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "created_at": {
+      "$ref": "Timestamp.schema.json"
+    },
+    "updated_at": {
+      "$ref": "Timestamp.schema.json"
+    }
+  },
+  "required": [
+    "id",
+    "title",
+    "format",
+    "version",
+    "status",
+    "size_bytes",
+    "attempts",
+    "page_count",
+    "failure_reason",
+    "created_at",
+    "updated_at"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "failed"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "failure_reason": {
+            "type": "string"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "failure_reason": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "queued"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "attempts": {
+            "maximum": 2,
+            "type": "integer"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "attempts": {
+            "minimum": 1,
+            "type": "integer"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "format": {
+            "const": "docx"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "page_count": {
+            "type": "null"
+          },
+          "status": {
+            "not": {
+              "const": "needs_ocr"
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "format": {
+            "const": "pdf"
+          },
+          "status": {
+            "enum": [
+              "ready",
+              "needs_ocr"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "page_count": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  ]
+}

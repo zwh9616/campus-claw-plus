@@ -46,3 +46,7 @@
 九个05操作已随#40与实际运行装配、登记及检查原子切为current，连同六个身份、六个资料和健康共22个current操作；提供真实授权、同事务submission/task/outbox/原202快照及重试/取消HTTP规则。生产无执行器，始终真实pending；无新配置/服务/假批改开关，不代表持有人数据库已升级。原健康/TLS/账号权限保持；真实本机、CI及搭档终审见共享进度表。
 
 05已验收的worker机制提供持久调度/60秒租约/20秒心跳/完整owner-epoch-running-未到期条件、三次总上限及原子结果适配器。生产仍不绑定执行器/结果适配器，不claim且真实pending，无新HTTP/配置/服务/SQL；测试执行器及回执表仅在测试二进制/隔离库。完整21场景、真实验证、最终gate及独立终审以共享表和reports/changes/05/archive-review-2026-11-13.md为准，不视为AI/成绩/页面交付。
+
+## 04E冻结合同与后续实现
+
+[04E](../../openspec/changes/2026-11-13-materials-document-intelligence/design.md)候选新增六个frozen Document操作，与旧Material/Citation和05 Task分开。仅合同获审合入后apply，当前22 current/Target5/原5秒DB与3秒健康预算不变。PDF/DOCX解析走有界异步隔离作业，不在HTTP/DB事务内执行；202不表示解析成功。DOCX逻辑块不伪造页码，返回出处必须回查同版本持久正文；资源预算、状态、重放、lease/CAS及失败/恢复按D1—D5验收。

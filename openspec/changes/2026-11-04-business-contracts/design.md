@@ -147,3 +147,7 @@ AuthSession={access_token:string(1..8192),token_type:"Bearer",expires_in:900,pri
 ## Migration Plan
 
 小张在00实现PR逐项修订：AGENTS骨架范围→阶段合同；backend规范→业务外层和路由登记；security→空值新增键/唯一MCP例外；testing→新BC前缀和reports；deployment→分阶段依赖与探针；product→仅02以后授权页面；两campus技能→当前变更ID而非强制PB/SC、证据reports/changes/<编号>/；foundation→按批准配置键登记检查空值而不是永久仅HTTP_PORT=。保持npm check/audit/verify入口，不删除任何原断言，依照阶段新增等价检查；make双入口由10增量落地。旧docs/lesson-07和archive只读保留，不套用其一次性免评审例外。00落地前现行规则仍有效；00落地后业务需各自批准，不能以本设计绕过现有门禁。失败回退同一组规则/合同/检查文件，不改运行数据。
+
+## 2026-11-13 D4/D8增补：04E资料能力扩展
+
+组长明确将PDF/Word、OCR和语义检索列为下一阶段，统一由小张负责，角色范围例外登记在docs/standards/collaboration.md。现有D4文本Material/Citation和keyword保持；[04E设计](../2026-11-13-materials-document-intelligence/design.md)首批独立Document/Location/Citation六个frozen操作，A为文本PDF/.docx，B扫描OCR、C向量/混合检索有明确任务/验收。原22 current/Target5/active配置与G2/G3不变；新合同须实际获批、正常合入及复验后apply，远端至少一位批准规则不豁免，不恢复07教学生成或08成绩。
