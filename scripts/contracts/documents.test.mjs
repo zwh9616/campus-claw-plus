@@ -37,7 +37,7 @@ test('DI-SC-02 binary envelope examples test byte/title limits; no real parsing 
  validateDocumentUploadExample(value)
  validateDocumentUploadExample({title:'题'.repeat(200),filename:'LECTURE.PDF',file:Buffer.concat([Buffer.from('%PDF-'),Buffer.alloc(10485755)]),multipart_bytes:10551296})
  validateDocumentUploadExample({title:'word',filename:'x.docx',file:Buffer.from([80,75,3,4,0]),multipart_bytes:105})
- for(const mutate of [x=>x.title='',x=>x.title='题'.repeat(201),x=>x.title='x\u0000',x=>x.title='\ud800',x=>x.file=Buffer.alloc(0),x=>x.file=Buffer.alloc(10485761),x=>x.multipart_bytes=10551297,x=>x.multipart_bytes=x.file.length-1,x=>x.filename='x.doc',x=>x.filename='x.docx',x=>x.file=Buffer.from('fake pdf')]){const x={...value};mutate(x);assert.throws(()=>validateDocumentUploadExample(x))}
+ for(const mutate of [x=>x.title='',x=>x.title='题'.repeat(201),x=>x.title='\uFEFF'+'题'.repeat(200),x=>x.title='x\u0000',x=>x.title='\ud800',x=>x.file=Buffer.alloc(0),x=>x.file=Buffer.alloc(10485761),x=>x.multipart_bytes=10551297,x=>x.multipart_bytes=x.file.length-1,x=>x.filename='x.doc',x=>x.filename='x.docx',x=>x.file=Buffer.from('fake pdf')]){const x={...value};mutate(x);assert.throws(()=>validateDocumentUploadExample(x))}
 })
 test('DI-SC-03/04/05 page/block boundaries and exact Unicode quote require persisted source',()=>{
  validateDocumentDetailExample(fixture.detail);validateDocumentDetailExample(fixture.pending);validateDocumentCitationExample(fixture.citation,fixture.detail)

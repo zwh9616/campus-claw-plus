@@ -130,7 +130,7 @@ C SHALL 冻结语料、真实模型/维度/版本、索引、查询出站与预�
 
 ### Requirement: DI-08 实际证据与分阶段收口
 
-小张 SHALL 为每阶段保留Requirement/Scenario映射、原始结果、真实失败与恢复、对应版本和未完成项；MUST 经远端门禁正常合入并复验main后才归档。
+小张 SHALL 为每阶段保留Requirement/Scenario映射、原始结果、真实失败与恢复、对应版本和未完成项；MUST 经远端门禁正常合入并复验main后才记阶段完成；A/B/C全部完成并同步主规约后才整体归档。
 
 #### Scenario: DI-SC-25 冻结与运行结果分列
 - **WHEN** 仅合同/样板测试通过或阶段PR仍缺实际批准/集成验收

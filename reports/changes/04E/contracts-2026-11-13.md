@@ -19,4 +19,16 @@
 
 未实现PDF/DOCX解析、隔离服务、迁移6或真实资料页面；B OCR、C真实embedding/索引尚未接线。合成字节包络/JSON例子不能证明真实解析或模型效果。A1.1的冻结语料、A1.2依赖/镜像/RPC/配置和A1.3精确迁移是紧接的实施前任务。
 
-本次拟提交分支codex/04-document-intelligence-2026-11-13，PR尚未创建。新公共合同须实际获审正常合入及集成复验后才apply；GitHub至少一位有写权限账号批准的强制保护保留，需要批准时不把小张实施责任转派。当前current运行仍是既有资料TXT/keyword及05真实pending，无新增AI批改或成绩。每个后续提交同提交更新共享表04E及相关06交接。
+本次已提交[首批PR #45](https://github.com/zwh9616/campus-claw-plus/pull/45)，分支codex/04-document-intelligence-2026-11-13。新公共合同须实际获审正常合入及集成复验后才apply；GitHub至少一位有写权限账号批准的强制保护保留，需要批准时不把小张实施责任转派。当前current运行仍是既有资料TXT/keyword及05真实pending，无新增AI批改或成绩。每个后续提交同提交更新共享表04E及相关06交接。
+
+## 首批代码与本机完整门禁实际结果
+
+干净e02cbd6a7b7db25b2bff85037f22497412862503上原npm run gate全部0，check/audit/secret-scan/verify分别37506/8717/7983/369157ms，notRun空；[本机完整原件ZIP](contracts/local-clean-runtime.zip) SHA-256 a95da0685409ecf1f1dd5ff7d56cb9825945ceee83e582060445654585026cb6，[本机逐项核验](contracts/local-clean-verified.json)。四份源报告摘要、四份真实Trivy原文零HIGH/CRITICAL、同轮扫描/实际运行ID及四清理0，真实MySQL无跳过、三阶段HTTPS/身份/资料/作业原202与恢复通过。
+
+代码[CI43382720058](https://github.com/zwh9616/campus-claw-plus/actions/runs/43382720058)实际completed/success，head e02cbd6，测试合并677531388e5219f5e1ebd2c5a73f78c9abf005ee；实际下载artifact14017960101，[原始ZIP](contracts/initial-ci-runtime.zip) SHA-256 ea5f61b5a72be1ac53018e290eea00b7c05d8934addd71eb04fad617b0fe4d06与GitHub相同。[独立核验](contracts/initial-ci-verified.json)确认四段0/notRun空、verify179306ms，四源摘要/四镜像原始扫描/运行ID/清理及真实MySQL/HTTPS持久恢复均通过，解包秘密扫描0。source.fingerprint是每轮工作树全部跟踪文件的实际字节指纹；本机与Linux CI可能因换行不同而不同，分别记录，不误称仅运行输入指纹或伪造跨机器相同。
+
+A1.2前置研究已实际核对pypdf官方wheel、校验值、许可及OSV公开库查询，原始[元数据](dependency-research/pypdf-candidate.json)/[许可](dependency-research/pypdf-LICENSE.txt)/[OSV](dependency-research/pypdf-osv-raw.json)保存；未安装、未运行解析、未进入镜像，也不把“无公开记录”写成生产镜像无漏洞。Python镜像/RPC/配置与资源实测仍待完成。
+
+本补证同时明确混合扫描PDF不部分假ready、DOCX逻辑块上限和只在A/B/C全部完成后整体归档。补证包含规约/进度/证据及新合同Unicode White_Space语义反例，已复跑完整check退出0、strict11/11、33组通过；不改变frozen/current边界或运行代码；最终补证head完整CI及远端实际批准、正常合入/main复验仍需分别核对。
+
+首次PR的CI测试合并树与head均d918e8a2e1800dab0732acd84efdf441f6333f67，已独立git核对。最终补证明确CER/Recall/MRR分母、原页bbox坐标与每题1..5个相关chunk，避免验收口径歧义。新上传例子使用Unicode White_Space Trim而不是会额外剥离BOM的JS trim，新增BOM+200码点边界反例，原合同与Timestamp不放宽。[本次完整check原件](contracts/final-check.txt)。

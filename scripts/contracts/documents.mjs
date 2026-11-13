@@ -11,6 +11,7 @@ export const documentOperations=[
 ]
 const ref=name=>({$ref:`./schemas/${name}.schema.json`})
 const points=value=>[...value]
+const trim=value=>value.replace(/^\p{White_Space}+|\p{White_Space}+$/gu,'')
 export function validateDocumentOperationProfiles(api){
  for(const [method,path,success,errors,schema] of documentOperations){
   const op=api.paths[path]?.[method.toLowerCase()];assert.ok(op)
@@ -69,7 +70,7 @@ export function validateDocumentOperationProfiles(api){
 
 // Contract examples only; these do not parse a real PDF or DOCX.
 export function validateDocumentUploadExample({title,filename,file,multipart_bytes}){
- assert.equal(typeof title,'string');assert.ok(title.isWellFormed()&&points(title.trim()).length>=1&&points(title.trim()).length<=200&&!/\p{Cc}/u.test(title.trim()))
+ assert.equal(typeof title,'string');assert.ok(title.isWellFormed()&&points(trim(title)).length>=1&&points(trim(title)).length<=200&&!/\p{Cc}/u.test(trim(title)))
  assert.ok(Buffer.isBuffer(file)&&file.length>=1&&file.length<=10485760)
  assert.ok(Number.isSafeInteger(multipart_bytes)&&multipart_bytes>=file.length&&multipart_bytes<=10551296)
  assert.equal(typeof filename,'string');const extension=filename.toLowerCase().split('.').pop()
@@ -79,14 +80,14 @@ export function validateDocumentUploadExample({title,filename,file,multipart_byt
 export function validateDocumentDetailExample(detail){
  const {document:doc,body,locations}=detail
  if(doc.status!=='ready'){assert.equal(body,null);assert.deepEqual(locations,[]);return}
- assert.equal(typeof body,'string');assert.ok(body.trim().length>0&&Buffer.byteLength(body,'utf8')<=2097152)
+ assert.equal(typeof body,'string');assert.ok(trim(body).length>0&&Buffer.byteLength(body,'utf8')<=2097152)
  assert.ok(!body.includes('\r')&&!/\p{Cc}/u.test(body.replace(/[\t\n]/g,'')))
  const cp=points(body);assert.ok(locations.length>0&&locations.length<=20000)
  let end=0,unit=0
  for(const l of locations){
   assert.ok(l.char_start>=end&&l.char_end>l.char_start&&l.char_end<=cp.length&&l.unit>unit)
   assert.equal(cp.slice(end,l.char_start).join(''),unit===0?'':'\n\n')
-  assert.ok(cp.slice(l.char_start,l.char_end).join('').trim().length>0)
+  assert.ok(trim(cp.slice(l.char_start,l.char_end).join('')).length>0)
   assert.ok(doc.format==='pdf'?l.kind==='pdf_page'&&l.unit<=doc.page_count:['docx_paragraph','docx_table_cell'].includes(l.kind))
   end=l.char_end;unit=l.unit
  }
