@@ -1,0 +1,65 @@
+{
+  "run_id": 43407716365,
+  "run_url": "https://github.com/zwh9616/campus-claw-plus/actions/runs/43407716365",
+  "event": "push",
+  "head_sha": "47bcc6a4a7b8fcfc3b12faf91e6fffd68f4241bd",
+  "status": "completed",
+  "conclusion": "success",
+  "artifact_id": 14027609815,
+  "artifact_name": "runtime-image-scans-47bcc6a4a7b8fcfc3b12faf91e6fffd68f4241bd",
+  "artifact_digest": "sha256:16408e0ce21a33238941694fc38032758e842821394b97e239349f615164e178",
+  "actor": "Kevcco",
+  "zip_sha256": "16408e0ce21a33238941694fc38032758e842821394b97e239349f615164e178",
+  "verified_against_head": "47bcc6a4a7b8fcfc3b12faf91e6fffd68f4241bd",
+  "parser_fingerprint": "b22bea507e0f3ae014dacc9cf365eb4228a6332825a8841113e575b3fa16a0de",
+  "records": [
+    {
+      "mode": "check",
+      "source": {
+        "commit": "47bcc6a4a7b8fcfc3b12faf91e6fffd68f4241bd",
+        "dirty": false,
+        "fingerprint": "b22bea507e0f3ae014dacc9cf365eb4228a6332825a8841113e575b3fa16a0de"
+      },
+      "image_id": "sha256:37ed6c73db3c9073a359ee83656257667aef55a3f5bec82bfa670edc3d9a137b",
+      "tests_sha256": "3ba91c48d411d7f1d9dead29258d4cb815c4d1c51a7aafe25d20491dd9a1d0e2",
+      "documents": 40,
+      "locations": 195,
+      "critical_phrases": 45,
+      "negatives": 25,
+      "groups": 8,
+      "max_cer": 0,
+      "max_document_ms": 1269,
+      "cleanup": 2
+    },
+    {
+      "mode": "scan",
+      "source": {
+        "commit": "47bcc6a4a7b8fcfc3b12faf91e6fffd68f4241bd",
+        "dirty": false,
+        "fingerprint": "b22bea507e0f3ae014dacc9cf365eb4228a6332825a8841113e575b3fa16a0de"
+      },
+      "image_id": "sha256:37ed6c73db3c9073a359ee83656257667aef55a3f5bec82bfa670edc3d9a137b",
+      "tests_sha256": "a2a2ae53c32a7b96197a0b700aed47b68f1f7d344ebe087149b71746888e37cd",
+      "documents": 40,
+      "locations": 195,
+      "critical_phrases": 45,
+      "negatives": 25,
+      "groups": 8,
+      "max_cer": 0,
+      "max_document_ms": 1290,
+      "cleanup": 2,
+      "raw_sha256": "8589dc85c5967ebebbc2d6c3533fe8b3e891e845a6566fb3a453436dd3469453",
+      "findings": {
+        "HIGH": 0,
+        "CRITICAL": 0
+      },
+      "database": {
+        "Version": 2,
+        "NextUpdate": "2026-11-14T07:00:07.938173677Z",
+        "UpdatedAt": "2026-11-13T07:00:07.938173847Z",
+        "DownloadedAt": "2026-11-13T10:17:45.950540483Z"
+      }
+    }
+  ],
+  "exit_code": 0
+}

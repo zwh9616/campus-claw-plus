@@ -57,3 +57,7 @@ Alpine候选已实际扫描OS和pypdf7.0.1，零HIGH/CRITICAL，摘要/导出SHA
 终端输出/第三方许可证仅规范化行尾空白以通过diff检查，所有原始字节保留在[原始归档](parser-core/original-terminal-and-license.zip)，OFL法律正文未改；没有添加白名单或放宽断言。首次手工构建留下的本作业旧tag已精确删除，见[清理原文](parser-core/initial-tag-cleanup.txt)，不影响其他服务。
 
 本提交只补上述原件、tasks及共享表：A2.1/A2.2勾离线内核实现，A1.2 RPC/配置、A1.3准确DDL及A2.3后持久/HTTP/UI和A4全链路仍未完成。已实际请求Kevcco审核#46以满足远端保护，不转移小张职责；尚无真实批准，最终补证head的CI与main复验待核，不能据首轮成功直接合并或声称A交付。
+
+## 最终真实批准与主干收口
+
+此前待核均为当时快照。最终b476e3e已获小陈/Kevcco实际APPROVED5888365484并正常合入main8f8636d，精确main CI43396468475及原件核验全部通过。完整事实、最终CI/main ZIP与边界见[主干收口记录](parser-core-main-2026-11-13.md)；当前只完成离线组件，A1.2后半/准确DDL/持久HTTP/UI与OCR/语义继续待办。
