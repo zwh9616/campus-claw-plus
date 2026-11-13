@@ -418,6 +418,9 @@ func (s *Store) ChangeTask(ctx context.Context, p identity.Principal, id, action
 		return
 	}
 	e = s.assignmentTx(ctx, p, true, func(ctx context.Context, tx *sql.Tx) error {
+		if err := s.assignmentHook(ctx, "before-task-action-lock", 0); err != nil {
+			return err
+		}
 		t, err := visibleTask(ctx, tx, p, id, true)
 		if err != nil {
 			return err

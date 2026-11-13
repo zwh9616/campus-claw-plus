@@ -4,6 +4,7 @@ import (
 	"context"
 	"database/sql"
 	"errors"
+	"github.com/zwh9616/campus-claw-plus/backend/internal/assignments"
 	"github.com/zwh9616/campus-claw-plus/backend/internal/identity"
 	"time"
 )
@@ -16,6 +17,10 @@ type Store struct {
 	// fault boundaries exist only for integration-test assembly.
 	AssignmentHook  func(stage string, step int) error
 	AssignmentClock func(context.Context, *sql.Tx) (time.Time, error)
+	// A successful execution requires an explicitly bound transaction adapter.
+	// Production has no executor or adapter; integration tests use an isolated
+	// receipt table. Future 08 writes its own result in this same transaction.
+	AssignmentReceipt func(context.Context, *sql.Tx, assignments.Receipt) error
 }
 type transaction struct {
 	tx  *sql.Tx

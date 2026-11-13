@@ -76,3 +76,5 @@ SSE fixture的`{event,data}`只是测试表达：真实wire仍为`event:`与JSON
 原`check:contracts`现增加05结构双路径、权限/错误/配额/授权后原202重放声明变异、任务CAS/取消声明、页面计数/排序与请求字节语义；Go独立生成的5组摘要向量作为跨语言固定原件。仅验证机器声明和合成示例，未执行真实05数据库授权、并发、worker、崩溃或取消事务；这些全部保留apply后的真实验收责任。小张可按已批准规约开展2.x，完成后交小陈独立终审；不将frozen当current，也不开放作业页面。[候选原件](../../reports/changes/05/contracts-freeze-2026-11-12.md)与[审定及main验收](../../reports/changes/05/contracts-main-integration-2026-11-12.md)。
 
 05首批#38仅追加000005及admin/server共享精确Target=5，保持13 current/9 frozen；后续本2.2/2.3独立候选实际装配九个已冻结HTTP操作并同步为22 current，实现原子提交与持久幂等。worker仍未实现，生产未绑定执行器时受理真实pending；本批终审和#38依赖以共享表为准。available只表示嵌入SQL及真实摘要已存在，实际迁移/恢复/终审结果见共享表与迁移登记。已有4部署须按停写、备份、离线迁移流程升级，不能直接启动新程序。
+
+05后续2.4独立候选实现上述既定调度/CAS规则及事务结果适配器边界，22 current与所有公共字段/SQL/配置保持。生产执行器和结果适配器均未绑定，真实pending；测试回执表/注入执行器不是生产成绩。真实验证及最终独立审查见共享表与[worker报告](../../reports/changes/05/worker-2026-11-12.md)。
