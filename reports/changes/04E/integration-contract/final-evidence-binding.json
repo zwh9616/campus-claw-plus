@@ -1,0 +1,14 @@
+{
+  "tested_code_head": "ed1c18f453b6b8832803d29a5bcfc085b2fcec21",
+  "ci_run": 43422233713,
+  "ci_artifact": 14033704010,
+  "ci_merge_commit": "058e2722c3d8fd3a6d4f4727c38de56251eaf083",
+  "ci_tree": "7ee298ee745b71f198a54accbd21054c1d81c296",
+  "head_tree": "7ee298ee745b71f198a54accbd21054c1d81c296",
+  "ci_zip_sha256": "831790e98dab50398c102e61a0d3d9833637213770777afb3eb18aaeebd7e03a",
+  "local_zip_sha256": "d22f19d8f65f2af552a86dfae400eb82688df646c6367423e4ca87aaf16d065e",
+  "both_have_original_files": 16,
+  "full_tracked_file_fingerprints_are_platform_specific": true,
+  "remote_review_state": "no reviews as checked 2026-11-13T12:14Z; not approved or merged",
+  "scope": "candidate contracts and regression evidence only; no runtime parser RPC, migration6, durable queue, UI, OCR or semantic completion claim"
+}

@@ -45,3 +45,15 @@ SQL探针现保存实际MySQL版本与实际错误码：16个确定性拒绝逐�
 自检另发现测试工具预检失败时会先写临时凭据再抛出。已用真实CLI+最小候选fixture在隔离目录、对子进程禁用Docker/git的回归中复现遗留1文件，测试finally已清理，未读取或公开凭据值；[红输出](integration-contract/preflight-cleanup-red.txt)。修为所有预检通过后才在受finally保护范围内创建文件，并实际读取/核对当前Go Target5，不硬填运行目标。新增独立回归[绿输出](integration-contract/preflight-cleanup-green.txt)/[源码指纹与红绿](integration-contract/preflight-cleanup-red-green.json)，临时测试目录零遗留，40组合同行为与真实SQL正负例再跑0。该补强只改测试工具/测试/报告，不改候选协议、SQL或运行服务。
 
 #48因该补强临时转草稿阻止旧head直接合并，修复完成后再交实际审查。最终head新的干净完整gate/CI、远端真实批准及main复验另核，不用首轮成功冒充新head通过。所有04E实施仍小张，原首次失败/受控红完整保留，A全链路及B/C未完成。
+
+## 修复代码最终门禁与交接
+
+修复代码 `ed1c18f453b6b8832803d29a5bcfc085b2fcec21` 工作树干净，原完整gate四段0、notRun为空（check124624ms/audit9534ms/secret-scan8237ms/verify371299ms）。[本机完整16文件原件](integration-contract/final-local-runtime.zip) SHA-256 `d22f19d8f65f2af552a86dfae400eb82688df646c6367423e4ca87aaf16d065e`，[运行核对](integration-contract/final-local-verified.json)、[解析核对](integration-contract/final-local-parser-verified.json)、[SQL及当前批次核对](integration-contract/final-local-integration-verified.json)。在任何后续定向探针前封存，SQL/解析/运行报告均属于此轮，不混拼旧报告。
+
+最终代码[CI43422233713](https://github.com/zwh9616/campus-claw-plus/actions/runs/43422233713)实际completed/success，artifact14033704010已实际下载；[CI完整16文件原件](integration-contract/final-ci-runtime.zip) SHA-256 `831790e98dab50398c102e61a0d3d9833637213770777afb3eb18aaeebd7e03a` 与GitHub digest相等。[运行核对](integration-contract/final-ci-verified.json)、[解析核对](integration-contract/final-ci-parser-verified.json)、[SQL及当前批次核对](integration-contract/final-ci-integration-verified.json)、[Git树/原件绑定](integration-contract/final-evidence-binding.json)。预演058e272与代码head树均为7ee298ee745b71f198a54accbd21054c1d81c296；两平台逐文件原始字节指纹各保留自身值，不把换行不同的全跟踪指纹说成跨机器相同。
+
+两轮均四段0，CI verify212401ms；40合同组、40清晰文档/195位置/45关键句CER0及25负例、四生产镜像+离线候选零HIGH/CRITICAL、真实SQL五表/六FK/十一CHECK/16实际错误码拒绝/8码点21字节、18组05/五恢复/三HTTPS/12批次及全部自身清理均独立核验通过。失败与红绿原件保留，不新增豁免。
+
+本次只补已执行结果和共享表/tasks，不改变代码/合同/SQL/运行输入。[PR #48](https://github.com/zwh9616/campus-claw-plus/pull/48)已恢复ready并请求小陈/Kevcco审查；截至本次API核对无review，未批准未合并。此补证提交自身CI另核，真实审核与main复验不预填；候选获审合入前不接线。下一步小张实施私有解析服务与准确迁移6/恢复探针，再推进持久队列、六个HTTP与页面；OCR/语义明确任务仍待后续，不提前算交付。
+
+本次纯补证另测foundation0、strict11/11、99本地链接无缺失、diff检查0，本机/CI两份解包原件秘密扫描均0；源码/脚本/合同/SQL/配置/镜像与已测ed1c18f逐字不变。不为纯记录变更重做本机容器运行，最终补证head仍由自身完整CI验证。
