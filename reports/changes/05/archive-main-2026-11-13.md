@@ -19,6 +19,6 @@
 
 ## 共享状态及边界
 
-本补记同提交更新共享表05行、顶部及README/AGENTS/合同交接当前状态，不倒改历史归档。本补记本机foundation/strict10/10通过，148个变动Markdown本地链接及运行/合同输入与历史归档未变检查通过，全历史195提交/暂存及main原件解包秘密扫描0，无新增豁免；[本次扫描](archive-main/closeout-secrets.txt)与[原件扫描](archive-main/main42-raw-secrets.txt)保留实际输出。本补记的最终head检查及正常合入仍以GitHub事实为准；小张只记录自己的收口判断，不把#42的旧review说成本补记的新head批准。
+本补记已提交为[PR #43](https://github.com/zwh9616/campus-claw-plus/pull/43)，同提交更新共享表05行、顶部及README/AGENTS/合同交接当前状态，不倒改历史归档。本补记本机foundation/strict10/10通过，148个变动Markdown本地链接及运行/合同输入与历史归档未变检查通过，全历史195提交/暂存及main原件解包秘密扫描0，无新增豁免；[本次扫描](archive-main/closeout-secrets.txt)与[原件扫描](archive-main/main42-raw-secrets.txt)保留实际输出。本补记的最终head检查及正常合入仍以GitHub事实为准；小张只记录自己的收口判断，不把#42的旧review说成本补记的新head批准。
 
 05交付范围为真实作业、私有提交、同事务原202及持久任务基础。生产没有执行器/结果适配器，不claim，任务真实pending；没有AI、成绩或作业页面，持有人库未升级。06可据九个current接口准备自己的作业页面规约并交小葛审查，未获批前不apply；07B/08及其他暂停项不自动恢复。
