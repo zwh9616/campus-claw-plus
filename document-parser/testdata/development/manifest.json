@@ -1,0 +1,5 @@
+{
+  "origin": "self-authored blank encrypted development fixture; pypdf6.10.0 cryptography46.0.3; empty user password, fixture-owner owner password, no real data",
+  "sha256": "4065e66b1757a1d2d908ef64fdfd01775816f7574805b700e323dff12b88324f",
+  "expected": "failed/encrypted; never requires optional crypto in production"
+}

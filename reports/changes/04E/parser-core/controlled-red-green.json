@@ -1,0 +1,11 @@
+{
+  "scenario": "DI-SC-06: a real 201-page PDF must fail resource_limit",
+  "mutation": "MAX_PAGES 200 -> 201",
+  "original_source_sha256": "04a017b23534cf4aabf45c552c86154286d929e084fce9ec0aacdc12b9a2f237",
+  "red_exit_code": 1,
+  "restored_source_sha256": "04a017b23534cf4aabf45c552c86154286d929e084fce9ec0aacdc12b9a2f237",
+  "green_exit_code": 0,
+  "green_command": "npm run check",
+  "green_core_sha256": "20b21f7f5e56bc73bc9630b33ef64c4614d60a650e54e60918cf047e67034267",
+  "after_restore_change": "AES handling, used-image/Form detection and ZIP/XML structural validation; restored page limit unchanged"
+}

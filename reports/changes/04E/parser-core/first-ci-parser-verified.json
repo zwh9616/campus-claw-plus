@@ -1,0 +1,21 @@
+{
+  "label": "first-parser-ci",
+  "zip_sha256": "4360200cc9c0c26f8924b87ba565aeeb083bc9609e6fc3f2c3289ec5300fe6bd",
+  "source": {
+    "commit": "9776bb1ed17f706f5a40114d2ddef0de4005bc2a",
+    "dirty": false,
+    "fingerprint": "23fd3725511c6ae30fbafb74f1f4f5163dc4adf3cd437ce96c4776bc2029f646"
+  },
+  "production_images": 4,
+  "offline_candidate_images": 1,
+  "candidate_image": "sha256:6028b68f10b583fff739640940a9934e3da923f363fc230c419def5361e1d160",
+  "tests_image_is_exported_and_scanned_image": true,
+  "clear_documents": 40,
+  "negative_classes": 25,
+  "locations": 195,
+  "critical_phrases": 45,
+  "max_cer": 0,
+  "max_document_ms": 1068,
+  "all_cleanup_passed": true,
+  "scope": "offline parsing and original runtime regression; no RPC/SQL/HTTP/UI/OCR/semantic delivery claim"
+}

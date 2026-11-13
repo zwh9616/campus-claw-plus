@@ -1,0 +1,302 @@
+{
+  "scope": "Independent direct core only; no Docker/runner/process-isolation claim",
+  "python": "3.12.7",
+  "acceptance": [
+    {
+      "file": "clear-01.pdf",
+      "cer": 0.0,
+      "locations": 1,
+      "ms": 31.0
+    },
+    {
+      "file": "clear-02.pdf",
+      "cer": 0.0,
+      "locations": 1,
+      "ms": 0.0
+    },
+    {
+      "file": "clear-03.pdf",
+      "cer": 0.0,
+      "locations": 1,
+      "ms": 15.0
+    },
+    {
+      "file": "clear-04.pdf",
+      "cer": 0.0,
+      "locations": 2,
+      "ms": 0.0
+    },
+    {
+      "file": "clear-05.pdf",
+      "cer": 0.0,
+      "locations": 1,
+      "ms": 0.0
+    },
+    {
+      "file": "clear-06.pdf",
+      "cer": 0.0,
+      "locations": 1,
+      "ms": 0.0
+    },
+    {
+      "file": "clear-07.pdf",
+      "cer": 0.0,
+      "locations": 1,
+      "ms": 0.0
+    },
+    {
+      "file": "clear-08.pdf",
+      "cer": 0.0,
+      "locations": 2,
+      "ms": 16.0
+    },
+    {
+      "file": "clear-09.pdf",
+      "cer": 0.0,
+      "locations": 1,
+      "ms": 0.0
+    },
+    {
+      "file": "clear-10.pdf",
+      "cer": 0.0,
+      "locations": 1,
+      "ms": 0.0
+    },
+    {
+      "file": "clear-11.pdf",
+      "cer": 0.0,
+      "locations": 1,
+      "ms": 0.0
+    },
+    {
+      "file": "clear-12.pdf",
+      "cer": 0.0,
+      "locations": 2,
+      "ms": 0.0
+    },
+    {
+      "file": "clear-13.pdf",
+      "cer": 0.0,
+      "locations": 1,
+      "ms": 16.0
+    },
+    {
+      "file": "clear-14.pdf",
+      "cer": 0.0,
+      "locations": 1,
+      "ms": 0.0
+    },
+    {
+      "file": "clear-15.pdf",
+      "cer": 0.0,
+      "locations": 1,
+      "ms": 0.0
+    },
+    {
+      "file": "clear-16.pdf",
+      "cer": 0.0,
+      "locations": 2,
+      "ms": 0.0
+    },
+    {
+      "file": "clear-17.pdf",
+      "cer": 0.0,
+      "locations": 1,
+      "ms": 0.0
+    },
+    {
+      "file": "clear-18.pdf",
+      "cer": 0.0,
+      "locations": 1,
+      "ms": 0.0
+    },
+    {
+      "file": "clear-19.pdf",
+      "cer": 0.0,
+      "locations": 1,
+      "ms": 15.0
+    },
+    {
+      "file": "clear-20.pdf",
+      "cer": 0.0,
+      "locations": 2,
+      "ms": 0.0
+    },
+    {
+      "file": "clear-01.docx",
+      "cer": 0.0,
+      "locations": 3,
+      "ms": 0.0
+    },
+    {
+      "file": "clear-02.docx",
+      "cer": 0.0,
+      "locations": 3,
+      "ms": 0.0
+    },
+    {
+      "file": "clear-03.docx",
+      "cer": 0.0,
+      "locations": 4,
+      "ms": 0.0
+    },
+    {
+      "file": "clear-04.docx",
+      "cer": 0.0,
+      "locations": 3,
+      "ms": 0.0
+    },
+    {
+      "file": "clear-05.docx",
+      "cer": 0.0,
+      "locations": 8,
+      "ms": 0.0
+    },
+    {
+      "file": "clear-06.docx",
+      "cer": 0.0,
+      "locations": 4,
+      "ms": 0.0
+    },
+    {
+      "file": "clear-07.docx",
+      "cer": 0.0,
+      "locations": 4,
+      "ms": 0.0
+    },
+    {
+      "file": "clear-08.docx",
+      "cer": 0.0,
+      "locations": 3,
+      "ms": 0.0
+    },
+    {
+      "file": "clear-09.docx",
+      "cer": 0.0,
+      "locations": 4,
+      "ms": 0.0
+    },
+    {
+      "file": "clear-10.docx",
+      "cer": 0.0,
+      "locations": 8,
+      "ms": 0.0
+    },
+    {
+      "file": "clear-11.docx",
+      "cer": 0.0,
+      "locations": 4,
+      "ms": 0.0
+    },
+    {
+      "file": "clear-12.docx",
+      "cer": 0.0,
+      "locations": 4,
+      "ms": 0.0
+    },
+    {
+      "file": "clear-13.docx",
+      "cer": 0.0,
+      "locations": 3,
+      "ms": 0.0
+    },
+    {
+      "file": "clear-14.docx",
+      "cer": 0.0,
+      "locations": 3,
+      "ms": 16.0
+    },
+    {
+      "file": "clear-15.docx",
+      "cer": 0.0,
+      "locations": 9,
+      "ms": 0.0
+    },
+    {
+      "file": "clear-16.docx",
+      "cer": 0.0,
+      "locations": 3,
+      "ms": 0.0
+    },
+    {
+      "file": "clear-17.docx",
+      "cer": 0.0,
+      "locations": 83,
+      "ms": 0.0
+    },
+    {
+      "file": "clear-18.docx",
+      "cer": 0.0,
+      "locations": 4,
+      "ms": 0.0
+    },
+    {
+      "file": "clear-19.docx",
+      "cer": 0.0,
+      "locations": 5,
+      "ms": 0.0
+    },
+    {
+      "file": "clear-20.docx",
+      "cer": 0.0,
+      "locations": 8,
+      "ms": 0.0
+    }
+  ],
+  "probes": [
+    {
+      "name": "empty",
+      "status": "failed",
+      "reason": "corrupt"
+    },
+    {
+      "name": "over-input",
+      "status": "failed",
+      "reason": "resource_limit"
+    },
+    {
+      "name": "zip-traversal",
+      "status": "failed",
+      "reason": "corrupt"
+    },
+    {
+      "name": "external-link",
+      "status": "failed",
+      "reason": "unsupported_content"
+    },
+    {
+      "name": "DTD-utf-8",
+      "status": "failed",
+      "reason": "unsupported_content"
+    },
+    {
+      "name": "DTD-utf-16",
+      "status": "failed",
+      "reason": "unsupported_content"
+    },
+    {
+      "name": "unsupported-drawing",
+      "status": "failed",
+      "reason": "unsupported_content"
+    },
+    {
+      "name": "unicode-location",
+      "status": "ready",
+      "reason": null
+    },
+    {
+      "name": "all-blank",
+      "status": "failed",
+      "reason": "unsupported_content"
+    },
+    {
+      "name": "real-encryption",
+      "status": "failed",
+      "reason": "encrypted"
+    }
+  ],
+  "documents": 40,
+  "locations": 195,
+  "max_cer": 0.0,
+  "exit_code": 0
+}

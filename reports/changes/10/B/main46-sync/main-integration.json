@@ -1,0 +1,26 @@
+{
+  "observer": "小陈 / Kevcco (AI辅助)",
+  "checked_at": "2026-11-13T09:00:20.070Z",
+  "pr": 46,
+  "head": "b476e3e0a8bb557b97f958c38ed2f832343260f2",
+  "approval": {
+    "id": 5888365484,
+    "user": "Kevcco",
+    "head": "b476e3e0a8bb557b97f958c38ed2f832343260f2",
+    "url": "https://github.com/zwh9616/campus-claw-plus/pull/46#pullrequestreview-5888365484"
+  },
+  "merge": "8f8636db88e799b22f916eae6ee35c19aee0b8ad",
+  "merged_by": "Kevcco",
+  "merged_at": "2026-11-13T08:51:05Z",
+  "approved_and_main_tree": "525c2cc42accb027d399efd2a5a671c31fc3b58e",
+  "current_main": "8f8636db88e799b22f916eae6ee35c19aee0b8ad",
+  "main_protected": true,
+  "ci": {
+    "id": 43396468475,
+    "head": "8f8636db88e799b22f916eae6ee35c19aee0b8ad",
+    "event": "push",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/zwh9616/campus-claw-plus/actions/runs/43396468475"
+  }
+}

@@ -1,0 +1,12 @@
+
+> campus-claw-plus@0.0.1 prepare:scan-db
+> node scripts/verify-image-audits.mjs --prepare-only
+
+prepare Trivy vulnerability database
+2026-11-13T08:08:35Z	INFO	[vulndb] Need to update DB
+2026-11-13T08:08:35Z	INFO	[vulndb] Downloading vulnerability DB...
+2026-11-13T08:08:35Z	INFO	[vulndb] Downloading artifact...	repo="public.ecr.aws/aquasecurity/trivy-db:2"
+2026-11-13T08:13:55Z	INFO	Received signal, attempting graceful shutdown...
+2026-11-13T08:13:55Z	INFO	Press Ctrl+C again to force exit
+2026-11-13T08:13:56Z	FATAL	Fatal error	run error: init error: DB error: failed to download vulnerability DB: OCI artifact error: failed to download vulnerability DB: failed to download artifact from public.ecr.aws/aquasecurity/trivy-db:2: oci download error: copy error: context canceled
+prepare Trivy vulnerability database: failed, exit=1

@@ -1,0 +1,1645 @@
+{
+  "version": "di-acceptance-v1",
+  "frozen_before_parser_implementation": true,
+  "created_by": "zwh9616",
+  "date": "2026-11-13",
+  "score_normalization": "NFC, collapse Unicode White_Space to one ASCII space, trim; preserve case/punctuation",
+  "quality_status": "gold inputs only; no parser pass or CER measurement claim",
+  "cases": [
+    {
+      "id": "clear-01",
+      "file": "clear-01.pdf",
+      "format": "pdf",
+      "sha256": "43b6e6dac361eb97f26a3b6286558e1e530a8772bcbb99b6569804280f46e03f",
+      "bytes": 15493,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "pdf_page",
+          "unit": 1,
+          "text": "DI-A-PDF-01 / PAGE 1\n第1讲：课程资料、授权与出处。\nLesson 1: preserve the original source.\n验收关键句01-1：跨班资料不可访问。\n"
+        }
+      ],
+      "coverage": [
+        "embedded-fonts",
+        "CJK-English",
+        "single-page",
+        "paragraphs"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-02",
+      "file": "clear-02.pdf",
+      "format": "pdf",
+      "sha256": "e49ec684fd8dade8f884adc91d58c0dffb857a824cc3f0ffa98fc6d4601209b0",
+      "bytes": 15493,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "pdf_page",
+          "unit": 1,
+          "text": "DI-A-PDF-02 / PAGE 1\n第2讲：课程资料、授权与出处。\nLesson 2: preserve the original source.\n验收关键句02-1：跨班资料不可访问。\n"
+        }
+      ],
+      "coverage": [
+        "embedded-fonts",
+        "CJK-English",
+        "single-page",
+        "paragraphs"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-03",
+      "file": "clear-03.pdf",
+      "format": "pdf",
+      "sha256": "5165b5bf9e67da7de88c76562dac64dc64c001b5f8a7998ed03102bb20f1b131",
+      "bytes": 16751,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "pdf_page",
+          "unit": 1,
+          "text": "DI-A-PDF-03 / PAGE 1\n第3讲：课程资料、授权与出处。\nLesson 3: preserve the original source.\n验收关键句03-1：跨班资料不可访问。\n标点与数字：2026，1.25，50%，α + β = γ。\n"
+        }
+      ],
+      "coverage": [
+        "embedded-fonts",
+        "CJK-English",
+        "single-page",
+        "paragraphs"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-04",
+      "file": "clear-04.pdf",
+      "format": "pdf",
+      "sha256": "937e8f5a6b471adbd7172d0dd2ea4f2b88688672200098cc1a08bf26530f9652",
+      "bytes": 16107,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "pdf_page",
+          "unit": 1,
+          "text": "DI-A-PDF-04 / PAGE 1\n第4讲：课程资料、授权与出处。\nLesson 4: preserve the original source.\n验收关键句04-1：跨班资料不可访问。\n"
+        },
+        {
+          "kind": "pdf_page",
+          "unit": 2,
+          "text": "DI-A-PDF-04 / PAGE 2\n第4讲：课程资料、授权与出处。\nLesson 4: preserve the original source.\n验收关键句04-2：跨班资料不可访问。\n"
+        }
+      ],
+      "coverage": [
+        "embedded-fonts",
+        "CJK-English",
+        "multi-page",
+        "paragraphs"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-05",
+      "file": "clear-05.pdf",
+      "format": "pdf",
+      "sha256": "094a001e73600d49162da5915075447c85744ca948d21d8968d747798d07bba9",
+      "bytes": 17404,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "pdf_page",
+          "unit": 1,
+          "text": "DI-A-PDF-05 / PAGE 1\n第5讲：课程资料、授权与出处。\nLesson 5: preserve the original source.\n验收关键句05-1：跨班资料不可访问。\n课程\n周次\n状态\n课程A\n第1周\n已完成\n课程B\n第2周\n进行中\n"
+        }
+      ],
+      "coverage": [
+        "embedded-fonts",
+        "CJK-English",
+        "single-page",
+        "text-table"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-06",
+      "file": "clear-06.pdf",
+      "format": "pdf",
+      "sha256": "e17f18ef2184f599577616546a9f3e670fefb28376ba7998e3db4bed2b410245",
+      "bytes": 16751,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "pdf_page",
+          "unit": 1,
+          "text": "DI-A-PDF-06 / PAGE 1\n第6讲：课程资料、授权与出处。\nLesson 6: preserve the original source.\n验收关键句06-1：跨班资料不可访问。\n标点与数字：2026，1.25，50%，α + β = γ。\n"
+        }
+      ],
+      "coverage": [
+        "embedded-fonts",
+        "CJK-English",
+        "single-page",
+        "paragraphs"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-07",
+      "file": "clear-07.pdf",
+      "format": "pdf",
+      "sha256": "1f664af10bec06480d325f38e9eaa7889f4ebba1826e3cb2a63f87895b29a8bc",
+      "bytes": 20729,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "pdf_page",
+          "unit": 1,
+          "text": "DI-A-PDF-07 / PAGE 1\n第7讲：课程资料、授权与出处。\nLesson 7: preserve the original source.\n验收关键句07-1：跨班资料不可访问。\n长句用于检查自动换行：本班学生可以阅读已经完成处理的资\n料，并逐字核对原文出处。本班学生可以阅读已经完成处理的\n资料，并逐字核对原文出处。本班学生可以阅读已经完成处理\n的资料，并逐字核对原文出处。\n"
+        }
+      ],
+      "coverage": [
+        "embedded-fonts",
+        "CJK-English",
+        "single-page",
+        "paragraphs"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-08",
+      "file": "clear-08.pdf",
+      "format": "pdf",
+      "sha256": "cca05b4c089d479556540abbb0eb73043fce04481eb21f2d46b3dec7e6cb3f88",
+      "bytes": 16107,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "pdf_page",
+          "unit": 1,
+          "text": "DI-A-PDF-08 / PAGE 1\n第8讲：课程资料、授权与出处。\nLesson 8: preserve the original source.\n验收关键句08-1：跨班资料不可访问。\n"
+        },
+        {
+          "kind": "pdf_page",
+          "unit": 2,
+          "text": "DI-A-PDF-08 / PAGE 2\n第8讲：课程资料、授权与出处。\nLesson 8: preserve the original source.\n验收关键句08-2：跨班资料不可访问。\n"
+        }
+      ],
+      "coverage": [
+        "embedded-fonts",
+        "CJK-English",
+        "multi-page",
+        "paragraphs"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-09",
+      "file": "clear-09.pdf",
+      "format": "pdf",
+      "sha256": "d645863517e6b72cca8b99d8060e019b08e194bc960b03092b7a41f7d387cb10",
+      "bytes": 16752,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "pdf_page",
+          "unit": 1,
+          "text": "DI-A-PDF-09 / PAGE 1\n第9讲：课程资料、授权与出处。\nLesson 9: preserve the original source.\n验收关键句09-1：跨班资料不可访问。\n标点与数字：2026，1.25，50%，α + β = γ。\n"
+        }
+      ],
+      "coverage": [
+        "embedded-fonts",
+        "CJK-English",
+        "single-page",
+        "paragraphs"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-10",
+      "file": "clear-10.pdf",
+      "format": "pdf",
+      "sha256": "46f75375f4743480a7b5c11f9d05dbc890220a346b060ef5928d1e1281c0a8c6",
+      "bytes": 17405,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "pdf_page",
+          "unit": 1,
+          "text": "DI-A-PDF-10 / PAGE 1\n第10讲：课程资料、授权与出处。\nLesson 10: preserve the original source.\n验收关键句10-1：跨班资料不可访问。\n课程\n周次\n状态\n课程A\n第1周\n已完成\n课程B\n第2周\n进行中\n"
+        }
+      ],
+      "coverage": [
+        "embedded-fonts",
+        "CJK-English",
+        "single-page",
+        "text-table"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-11",
+      "file": "clear-11.pdf",
+      "format": "pdf",
+      "sha256": "214e6070dfc86e77e87f492e320414e0a87487eee3a47aee66d62427894531cb",
+      "bytes": 15493,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "pdf_page",
+          "unit": 1,
+          "text": "DI-A-PDF-11 / PAGE 1\n第11讲：课程资料、授权与出处。\nLesson 11: preserve the original source.\n验收关键句11-1：跨班资料不可访问。\n"
+        }
+      ],
+      "coverage": [
+        "embedded-fonts",
+        "CJK-English",
+        "single-page",
+        "paragraphs"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-12",
+      "file": "clear-12.pdf",
+      "format": "pdf",
+      "sha256": "3875da25137efdc44840a4112395a33e55b040c2e81cfaa44d888d5200d20db5",
+      "bytes": 17420,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "pdf_page",
+          "unit": 1,
+          "text": "DI-A-PDF-12 / PAGE 1\n第12讲：课程资料、授权与出处。\nLesson 12: preserve the original source.\n验收关键句12-1：跨班资料不可访问。\n标点与数字：2026，1.25，50%，α + β = γ。\n"
+        },
+        {
+          "kind": "pdf_page",
+          "unit": 2,
+          "text": "DI-A-PDF-12 / PAGE 2\n第12讲：课程资料、授权与出处。\nLesson 12: preserve the original source.\n验收关键句12-2：跨班资料不可访问。\n标点与数字：2026，1.25，50%，α + β = γ。\n"
+        }
+      ],
+      "coverage": [
+        "embedded-fonts",
+        "CJK-English",
+        "multi-page",
+        "paragraphs"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-13",
+      "file": "clear-13.pdf",
+      "format": "pdf",
+      "sha256": "a85e71580398162e501c9f1b090ba55c5dd5b56874b191f59643bde4e6856609",
+      "bytes": 15493,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "pdf_page",
+          "unit": 1,
+          "text": "DI-A-PDF-13 / PAGE 1\n第13讲：课程资料、授权与出处。\nLesson 13: preserve the original source.\n验收关键句13-1：跨班资料不可访问。\n"
+        }
+      ],
+      "coverage": [
+        "embedded-fonts",
+        "CJK-English",
+        "single-page",
+        "paragraphs"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-14",
+      "file": "clear-14.pdf",
+      "format": "pdf",
+      "sha256": "574d4964c295e9214497b7d05d49db10815b1f8de632b611e954e4297868ec94",
+      "bytes": 20731,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "pdf_page",
+          "unit": 1,
+          "text": "DI-A-PDF-14 / PAGE 1\n第14讲：课程资料、授权与出处。\nLesson 14: preserve the original source.\n验收关键句14-1：跨班资料不可访问。\n长句用于检查自动换行：本班学生可以阅读已经完成处理的资\n料，并逐字核对原文出处。本班学生可以阅读已经完成处理的\n资料，并逐字核对原文出处。本班学生可以阅读已经完成处理\n的资料，并逐字核对原文出处。\n"
+        }
+      ],
+      "coverage": [
+        "embedded-fonts",
+        "CJK-English",
+        "single-page",
+        "paragraphs"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-15",
+      "file": "clear-15.pdf",
+      "format": "pdf",
+      "sha256": "7589ae70e296acf38ddd39279f58c9621a0dde728921e9f220180db50c07b604",
+      "bytes": 18715,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "pdf_page",
+          "unit": 1,
+          "text": "DI-A-PDF-15 / PAGE 1\n第15讲：课程资料、授权与出处。\nLesson 15: preserve the original source.\n验收关键句15-1：跨班资料不可访问。\n标点与数字：2026，1.25，50%，α + β = γ。\n课程\n周次\n状态\n课程A\n第1周\n已完成\n课程B\n第2周\n进行中\n"
+        }
+      ],
+      "coverage": [
+        "embedded-fonts",
+        "CJK-English",
+        "single-page",
+        "text-table"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-16",
+      "file": "clear-16.pdf",
+      "format": "pdf",
+      "sha256": "8f357f92a092b3994d0387f5a65c7efd90449c01e2699322a836816db75a4912",
+      "bytes": 16107,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "pdf_page",
+          "unit": 1,
+          "text": "DI-A-PDF-16 / PAGE 1\n第16讲：课程资料、授权与出处。\nLesson 16: preserve the original source.\n验收关键句16-1：跨班资料不可访问。\n"
+        },
+        {
+          "kind": "pdf_page",
+          "unit": 2,
+          "text": "DI-A-PDF-16 / PAGE 2\n第16讲：课程资料、授权与出处。\nLesson 16: preserve the original source.\n验收关键句16-2：跨班资料不可访问。\n"
+        }
+      ],
+      "coverage": [
+        "embedded-fonts",
+        "CJK-English",
+        "multi-page",
+        "paragraphs"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-17",
+      "file": "clear-17.pdf",
+      "format": "pdf",
+      "sha256": "40bb0f2912e426402d4e7d3453aae93ed71e9fa144d6aeebaa22de76e6b42e0b",
+      "bytes": 15492,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "pdf_page",
+          "unit": 1,
+          "text": "DI-A-PDF-17 / PAGE 1\n第17讲：课程资料、授权与出处。\nLesson 17: preserve the original source.\n验收关键句17-1：跨班资料不可访问。\n"
+        }
+      ],
+      "coverage": [
+        "embedded-fonts",
+        "CJK-English",
+        "single-page",
+        "paragraphs"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-18",
+      "file": "clear-18.pdf",
+      "format": "pdf",
+      "sha256": "6eaff21e251cc356b615d4ce214c505936958d492193716e6885a11243fac88f",
+      "bytes": 16754,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "pdf_page",
+          "unit": 1,
+          "text": "DI-A-PDF-18 / PAGE 1\n第18讲：课程资料、授权与出处。\nLesson 18: preserve the original source.\n验收关键句18-1：跨班资料不可访问。\n标点与数字：2026，1.25，50%，α + β = γ。\n"
+        }
+      ],
+      "coverage": [
+        "embedded-fonts",
+        "CJK-English",
+        "single-page",
+        "paragraphs"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-19",
+      "file": "clear-19.pdf",
+      "format": "pdf",
+      "sha256": "ad865e8967338c8cbed9134bf0219be98ae0d2fbcb0dcaeffbba88284134e750",
+      "bytes": 15494,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "pdf_page",
+          "unit": 1,
+          "text": "DI-A-PDF-19 / PAGE 1\n第19讲：课程资料、授权与出处。\nLesson 19: preserve the original source.\n验收关键句19-1：跨班资料不可访问。\n"
+        }
+      ],
+      "coverage": [
+        "embedded-fonts",
+        "CJK-English",
+        "single-page",
+        "paragraphs"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-20",
+      "file": "clear-20.pdf",
+      "format": "pdf",
+      "sha256": "b8fc06a0fcefa6b5ed2b286e3a383d3ef6854f3d521a35732fd81508aa115ea6",
+      "bytes": 18204,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "pdf_page",
+          "unit": 1,
+          "text": "DI-A-PDF-20 / PAGE 1\n第20讲：课程资料、授权与出处。\nLesson 20: preserve the original source.\n验收关键句20-1：跨班资料不可访问。\n课程\n周次\n状态\n课程A\n第1周\n已完成\n课程B\n第2周\n进行中\n"
+        },
+        {
+          "kind": "pdf_page",
+          "unit": 2,
+          "text": "DI-A-PDF-20 / PAGE 2\n第20讲：课程资料、授权与出处。\nLesson 20: preserve the original source.\n验收关键句20-2：跨班资料不可访问。\n课程\n周次\n状态\n课程A\n第1周\n已完成\n课程B\n第2周\n进行中\n"
+        }
+      ],
+      "coverage": [
+        "embedded-fonts",
+        "CJK-English",
+        "multi-page",
+        "text-table"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-01",
+      "file": "clear-01.docx",
+      "format": "docx",
+      "sha256": "f6ff549a43005e05041f712527d299a456699918b0c39d7268114df438a374ae",
+      "bytes": 1019,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "docx_paragraph",
+          "unit": 1,
+          "text": "DI-A-DOCX-01"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 2,
+          "text": "第1讲：课程资料与班级授权。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 3,
+          "text": "验收关键句01：跨班资料不可访问。"
+        }
+      ],
+      "coverage": [
+        "paragraphs",
+        "plain-text",
+        "logical-blocks-no-page-claim"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-02",
+      "file": "clear-02.docx",
+      "format": "docx",
+      "sha256": "f0b9d331668bf3d5cac6716e9bd24d9ca1f5e75dd6513903410325f1f7300538",
+      "bytes": 1035,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "docx_paragraph",
+          "unit": 1,
+          "text": "DI-A-DOCX-02"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 2,
+          "text": "Lesson 2: Read the source before drawing a conclusion."
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 3,
+          "text": "验收关键句02：跨班资料不可访问。"
+        }
+      ],
+      "coverage": [
+        "paragraphs",
+        "plain-text",
+        "logical-blocks-no-page-claim"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-03",
+      "file": "clear-03.docx",
+      "format": "docx",
+      "sha256": "bc2f93a625f79984a526bd1f2b1e18ae55ca42512128bf828ca47074b764ce18",
+      "bytes": 1087,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "docx_paragraph",
+          "unit": 1,
+          "text": "DI-A-DOCX-03"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 2,
+          "text": "中文与English混合，编号3，保留原文出处。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 3,
+          "text": "Unicode边界：😀、é、é、α、β、x²。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 4,
+          "text": "验收关键句03：跨班资料不可访问。"
+        }
+      ],
+      "coverage": [
+        "paragraphs",
+        "plain-text",
+        "logical-blocks-no-page-claim"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-04",
+      "file": "clear-04.docx",
+      "format": "docx",
+      "sha256": "9bf1fb0a8ef4d99fa4695fabfe9078b142d2dac60e0e90cc5702aaa5f68102b1",
+      "bytes": 1050,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "docx_paragraph",
+          "unit": 1,
+          "text": "DI-A-DOCX-04"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 3,
+          "text": "术语对照：资料 source；班级 class；出处 citation。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 4,
+          "text": "验收关键句04：跨班资料不可访问。"
+        }
+      ],
+      "coverage": [
+        "paragraphs",
+        "plain-text",
+        "logical-blocks-no-page-claim"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-05",
+      "file": "clear-05.docx",
+      "format": "docx",
+      "sha256": "952a194b575e36c11b2268cfbcb47795c7591eb9f03843cf61b674ba1bde55ce",
+      "bytes": 1110,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "docx_paragraph",
+          "unit": 1,
+          "text": "DI-A-DOCX-05"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 2,
+          "text": "第5讲：课程资料与班级授权。"
+        },
+        {
+          "kind": "docx_table_cell",
+          "unit": 3,
+          "text": "单元格1-1：本班资料5。"
+        },
+        {
+          "kind": "docx_table_cell",
+          "unit": 4,
+          "text": "单元格中的第二段。"
+        },
+        {
+          "kind": "docx_table_cell",
+          "unit": 5,
+          "text": "单元格1-2：本班资料5。"
+        },
+        {
+          "kind": "docx_table_cell",
+          "unit": 6,
+          "text": "单元格2-1：本班资料5。"
+        },
+        {
+          "kind": "docx_table_cell",
+          "unit": 7,
+          "text": "单元格2-2：本班资料5。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 8,
+          "text": "验收关键句05：跨班资料不可访问。"
+        }
+      ],
+      "coverage": [
+        "paragraphs",
+        "table-multiple-paragraphs",
+        "logical-blocks-no-page-claim"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-06",
+      "file": "clear-06.docx",
+      "format": "docx",
+      "sha256": "899dba4fa43ff82244063717109165c45dccbd3d803440cd5a6fdbf8cac2076a",
+      "bytes": 1085,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "docx_paragraph",
+          "unit": 1,
+          "text": "DI-A-DOCX-06"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 2,
+          "text": "Lesson 6: Read the source before drawing a conclusion."
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 3,
+          "text": "第一项\t第二项\n下一行保留换行。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 4,
+          "text": "验收关键句06：跨班资料不可访问。"
+        }
+      ],
+      "coverage": [
+        "paragraphs",
+        "plain-text",
+        "logical-blocks-no-page-claim"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-07",
+      "file": "clear-07.docx",
+      "format": "docx",
+      "sha256": "31385b4db4a873b2c994c984cb589f06376ea8c4b9a1ab24f383d4f489765f34",
+      "bytes": 1087,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "docx_paragraph",
+          "unit": 1,
+          "text": "DI-A-DOCX-07"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 2,
+          "text": "中文与English混合，编号7，保留原文出处。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 3,
+          "text": "Unicode边界：😀、é、é、α、β、x²。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 4,
+          "text": "验收关键句07：跨班资料不可访问。"
+        }
+      ],
+      "coverage": [
+        "paragraphs",
+        "plain-text",
+        "logical-blocks-no-page-claim"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-08",
+      "file": "clear-08.docx",
+      "format": "docx",
+      "sha256": "924b0aedd95e28d9f957979a8a50f5b173d973a753740d660c7e870089de4aae",
+      "bytes": 1049,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "docx_paragraph",
+          "unit": 1,
+          "text": "DI-A-DOCX-08"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 3,
+          "text": "术语对照：资料 source；班级 class；出处 citation。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 4,
+          "text": "验收关键句08：跨班资料不可访问。"
+        }
+      ],
+      "coverage": [
+        "paragraphs",
+        "plain-text",
+        "logical-blocks-no-page-claim"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-09",
+      "file": "clear-09.docx",
+      "format": "docx",
+      "sha256": "3beb3efdcc215d589c8b5787bb46f7aa46c78a5006cfe7769e6c4efd25c9b784",
+      "bytes": 1067,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "docx_paragraph",
+          "unit": 1,
+          "text": "DI-A-DOCX-09"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 2,
+          "text": "第9讲：课程资料与班级授权。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 3,
+          "text": "第一项\t第二项\n下一行保留换行。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 4,
+          "text": "验收关键句09：跨班资料不可访问。"
+        }
+      ],
+      "coverage": [
+        "paragraphs",
+        "plain-text",
+        "logical-blocks-no-page-claim"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-10",
+      "file": "clear-10.docx",
+      "format": "docx",
+      "sha256": "4c15a2f6c4c456118a3d875a74977432e4eb21bfa6a6cb20e3e069e97fdc1dba",
+      "bytes": 1119,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "docx_paragraph",
+          "unit": 1,
+          "text": "DI-A-DOCX-10"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 2,
+          "text": "Lesson 10: Read the source before drawing a conclusion."
+        },
+        {
+          "kind": "docx_table_cell",
+          "unit": 3,
+          "text": "单元格1-1：本班资料10。"
+        },
+        {
+          "kind": "docx_table_cell",
+          "unit": 4,
+          "text": "单元格中的第二段。"
+        },
+        {
+          "kind": "docx_table_cell",
+          "unit": 5,
+          "text": "单元格1-2：本班资料10。"
+        },
+        {
+          "kind": "docx_table_cell",
+          "unit": 6,
+          "text": "单元格2-1：本班资料10。"
+        },
+        {
+          "kind": "docx_table_cell",
+          "unit": 7,
+          "text": "单元格2-2：本班资料10。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 8,
+          "text": "验收关键句10：跨班资料不可访问。"
+        }
+      ],
+      "coverage": [
+        "paragraphs",
+        "table-multiple-paragraphs",
+        "logical-blocks-no-page-claim"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-11",
+      "file": "clear-11.docx",
+      "format": "docx",
+      "sha256": "27c56f93c8ee495dbe062b35206a9a07c2337f40bf1a3b730c31513eec78ce33",
+      "bytes": 1087,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "docx_paragraph",
+          "unit": 1,
+          "text": "DI-A-DOCX-11"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 2,
+          "text": "中文与English混合，编号11，保留原文出处。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 3,
+          "text": "Unicode边界：😀、é、é、α、β、x²。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 4,
+          "text": "验收关键句11：跨班资料不可访问。"
+        }
+      ],
+      "coverage": [
+        "paragraphs",
+        "plain-text",
+        "logical-blocks-no-page-claim"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-12",
+      "file": "clear-12.docx",
+      "format": "docx",
+      "sha256": "94c8d968e190e1af04e81bba9e631912e4fc01d3747761da87f711fc2f1d4c59",
+      "bytes": 1097,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "docx_paragraph",
+          "unit": 1,
+          "text": "DI-A-DOCX-12"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 3,
+          "text": "术语对照：资料 source；班级 class；出处 citation。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 4,
+          "text": "第一项\t第二项\n下一行保留换行。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 5,
+          "text": "验收关键句12：跨班资料不可访问。"
+        }
+      ],
+      "coverage": [
+        "paragraphs",
+        "plain-text",
+        "logical-blocks-no-page-claim"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-13",
+      "file": "clear-13.docx",
+      "format": "docx",
+      "sha256": "6e168015892548d3763217ce4e4d5f837e7173453267cfa619aef379906c27f6",
+      "bytes": 1020,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "docx_paragraph",
+          "unit": 1,
+          "text": "DI-A-DOCX-13"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 2,
+          "text": "第13讲：课程资料与班级授权。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 3,
+          "text": "验收关键句13：跨班资料不可访问。"
+        }
+      ],
+      "coverage": [
+        "paragraphs",
+        "plain-text",
+        "logical-blocks-no-page-claim"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-14",
+      "file": "clear-14.docx",
+      "format": "docx",
+      "sha256": "19da85a2619395674f29e47f2d145a4261a05674aeb5e495840b1d4f33614300",
+      "bytes": 1037,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "docx_paragraph",
+          "unit": 1,
+          "text": "DI-A-DOCX-14"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 2,
+          "text": "Lesson 14: Read the source before drawing a conclusion."
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 3,
+          "text": "验收关键句14：跨班资料不可访问。"
+        }
+      ],
+      "coverage": [
+        "paragraphs",
+        "plain-text",
+        "logical-blocks-no-page-claim"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-15",
+      "file": "clear-15.docx",
+      "format": "docx",
+      "sha256": "d3ab805a094af2d6cb5ea395f7db853e5d0bf58487c83131427833fbad1cf7be",
+      "bytes": 1173,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "docx_paragraph",
+          "unit": 1,
+          "text": "DI-A-DOCX-15"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 2,
+          "text": "中文与English混合，编号15，保留原文出处。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 3,
+          "text": "Unicode边界：😀、é、é、α、β、x²。"
+        },
+        {
+          "kind": "docx_table_cell",
+          "unit": 4,
+          "text": "单元格1-1：本班资料15。"
+        },
+        {
+          "kind": "docx_table_cell",
+          "unit": 5,
+          "text": "单元格中的第二段。"
+        },
+        {
+          "kind": "docx_table_cell",
+          "unit": 6,
+          "text": "单元格1-2：本班资料15。"
+        },
+        {
+          "kind": "docx_table_cell",
+          "unit": 7,
+          "text": "单元格2-1：本班资料15。"
+        },
+        {
+          "kind": "docx_table_cell",
+          "unit": 8,
+          "text": "单元格2-2：本班资料15。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 9,
+          "text": "验收关键句15：跨班资料不可访问。"
+        }
+      ],
+      "coverage": [
+        "paragraphs",
+        "table-multiple-paragraphs",
+        "logical-blocks-no-page-claim"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-16",
+      "file": "clear-16.docx",
+      "format": "docx",
+      "sha256": "f03b8ba1c540197306396fbc26be2b2862381b2335f8c8b45ed889eb182633ba",
+      "bytes": 1050,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "docx_paragraph",
+          "unit": 1,
+          "text": "DI-A-DOCX-16"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 3,
+          "text": "术语对照：资料 source；班级 class；出处 citation。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 4,
+          "text": "验收关键句16：跨班资料不可访问。"
+        }
+      ],
+      "coverage": [
+        "paragraphs",
+        "plain-text",
+        "logical-blocks-no-page-claim"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-17",
+      "file": "clear-17.docx",
+      "format": "docx",
+      "sha256": "3af424ff55f409fe0d55cfb9ac574a6d9b5aab121d0fc88658de690b049cdbc2",
+      "bytes": 2088,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "docx_paragraph",
+          "unit": 1,
+          "text": "DI-A-DOCX-17"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 2,
+          "text": "第17讲：课程资料与班级授权。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 3,
+          "text": "条目001：检索结果必须核对出处，标识5feceb66ffc8。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 4,
+          "text": "条目002：检索结果必须核对出处，标识6b86b273ff34。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 5,
+          "text": "条目003：检索结果必须核对出处，标识d4735e3a265e。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 6,
+          "text": "条目004：检索结果必须核对出处，标识4e07408562be。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 7,
+          "text": "条目005：检索结果必须核对出处，标识4b227777d4dd。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 8,
+          "text": "条目006：检索结果必须核对出处，标识ef2d127de37b。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 9,
+          "text": "条目007：检索结果必须核对出处，标识e7f6c011776e。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 10,
+          "text": "条目008：检索结果必须核对出处，标识7902699be42c。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 11,
+          "text": "条目009：检索结果必须核对出处，标识2c624232cdd2。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 12,
+          "text": "条目010：检索结果必须核对出处，标识19581e27de7c。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 13,
+          "text": "条目011：检索结果必须核对出处，标识4a44dc153642。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 14,
+          "text": "条目012：检索结果必须核对出处，标识4fc82b26aecb。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 15,
+          "text": "条目013：检索结果必须核对出处，标识6b51d431df5d。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 16,
+          "text": "条目014：检索结果必须核对出处，标识3fdba35f04dc。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 17,
+          "text": "条目015：检索结果必须核对出处，标识8527a891e224。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 18,
+          "text": "条目016：检索结果必须核对出处，标识e629fa6598d7。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 19,
+          "text": "条目017：检索结果必须核对出处，标识b17ef6d19c7a。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 20,
+          "text": "条目018：检索结果必须核对出处，标识4523540f1504。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 21,
+          "text": "条目019：检索结果必须核对出处，标识4ec9599fc203。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 22,
+          "text": "条目020：检索结果必须核对出处，标识9400f1b21cb5。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 23,
+          "text": "条目021：检索结果必须核对出处，标识f5ca38f748a1。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 24,
+          "text": "条目022：检索结果必须核对出处，标识6f4b6612125f。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 25,
+          "text": "条目023：检索结果必须核对出处，标识785f3ec7eb32。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 26,
+          "text": "条目024：检索结果必须核对出处，标识535fa30d7e25。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 27,
+          "text": "条目025：检索结果必须核对出处，标识c2356069e9d1。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 28,
+          "text": "条目026：检索结果必须核对出处，标识b7a56873cd77。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 29,
+          "text": "条目027：检索结果必须核对出处，标识5f9c4ab08cac。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 30,
+          "text": "条目028：检索结果必须核对出处，标识670671cd9740。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 31,
+          "text": "条目029：检索结果必须核对出处，标识59e19706d51d。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 32,
+          "text": "条目030：检索结果必须核对出处，标识35135aaa6cc2。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 33,
+          "text": "条目031：检索结果必须核对出处，标识624b60c58c9d。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 34,
+          "text": "条目032：检索结果必须核对出处，标识eb1e33e8a81b。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 35,
+          "text": "条目033：检索结果必须核对出处，标识e29c9c180c62。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 36,
+          "text": "条目034：检索结果必须核对出处，标识c6f3ac57944a。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 37,
+          "text": "条目035：检索结果必须核对出处，标识86e501496586。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 38,
+          "text": "条目036：检索结果必须核对出处，标识9f14025af006。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 39,
+          "text": "条目037：检索结果必须核对出处，标识76a50887d8f1。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 40,
+          "text": "条目038：检索结果必须核对出处，标识7a61b53701be。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 41,
+          "text": "条目039：检索结果必须核对出处，标识aea92132c4cb。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 42,
+          "text": "条目040：检索结果必须核对出处，标识0b918943df09。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 43,
+          "text": "条目041：检索结果必须核对出处，标识d59eced1ded0。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 44,
+          "text": "条目042：检索结果必须核对出处，标识3d914f9348c9。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 45,
+          "text": "条目043：检索结果必须核对出处，标识73475cb40a56。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 46,
+          "text": "条目044：检索结果必须核对出处，标识44cb730c4204。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 47,
+          "text": "条目045：检索结果必须核对出处，标识71ee45a3c0db。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 48,
+          "text": "条目046：检索结果必须核对出处，标识811786ad1ae7。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 49,
+          "text": "条目047：检索结果必须核对出处，标识25fc0e7096fc。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 50,
+          "text": "条目048：检索结果必须核对出处，标识31489056e091。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 51,
+          "text": "条目049：检索结果必须核对出处，标识98010bd9270f。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 52,
+          "text": "条目050：检索结果必须核对出处，标识0e17daca5f3e。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 53,
+          "text": "条目051：检索结果必须核对出处，标识1a6562590ef1。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 54,
+          "text": "条目052：检索结果必须核对出处，标识031b4af5197e。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 55,
+          "text": "条目053：检索结果必须核对出处，标识41cfc0d1f2d1。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 56,
+          "text": "条目054：检索结果必须核对出处，标识2858dcd1057d。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 57,
+          "text": "条目055：检索结果必须核对出处，标识2fca346db656。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 58,
+          "text": "条目056：检索结果必须核对出处，标识02d20bbd7e39。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 59,
+          "text": "条目057：检索结果必须核对出处，标识7688b6ef5255。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 60,
+          "text": "条目058：检索结果必须核对出处，标识c837649cce43。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 61,
+          "text": "条目059：检索结果必须核对出处，标识6208ef0f7750。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 62,
+          "text": "条目060：检索结果必须核对出处，标识3e1e967e9b79。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 63,
+          "text": "条目061：检索结果必须核对出处，标识39fa9ec190ee。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 64,
+          "text": "条目062：检索结果必须核对出处，标识d029fa3a95e1。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 65,
+          "text": "条目063：检索结果必须核对出处，标识81b8a03f97e8。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 66,
+          "text": "条目064：检索结果必须核对出处，标识da4ea2a5506f。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 67,
+          "text": "条目065：检索结果必须核对出处，标识a68b412c4282。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 68,
+          "text": "条目066：检索结果必须核对出处，标识108c995b953c。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 69,
+          "text": "条目067：检索结果必须核对出处，标识3ada92f28b4c。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 70,
+          "text": "条目068：检索结果必须核对出处，标识49d180ecf561。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 71,
+          "text": "条目069：检索结果必须核对出处，标识a21855da08cb。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 72,
+          "text": "条目070：检索结果必须核对出处，标识c75cb66ae28d。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 73,
+          "text": "条目071：检索结果必须核对出处，标识ff5a1ae012af。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 74,
+          "text": "条目072：检索结果必须核对出处，标识7f2253d7e228。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 75,
+          "text": "条目073：检索结果必须核对出处，标识872261620421。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 76,
+          "text": "条目074：检索结果必须核对出处，标识96061e92f58e。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 77,
+          "text": "条目075：检索结果必须核对出处，标识eb624dbe56eb。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 78,
+          "text": "条目076：检索结果必须核对出处，标识f369cb89fc62。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 79,
+          "text": "条目077：检索结果必须核对出处，标识f74efabef12e。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 80,
+          "text": "条目078：检索结果必须核对出处，标识a88a7902cb4e。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 81,
+          "text": "条目079：检索结果必须核对出处，标识349c41201b62。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 82,
+          "text": "条目080：检索结果必须核对出处，标识98a3ab7c340e。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 83,
+          "text": "验收关键句17：跨班资料不可访问。"
+        }
+      ],
+      "coverage": [
+        "paragraphs",
+        "plain-text",
+        "logical-blocks-no-page-claim"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-18",
+      "file": "clear-18.docx",
+      "format": "docx",
+      "sha256": "f491948a8e7ffadc304bada67867ef1b2ac62b65d66cfef124aaff4ac26eb780",
+      "bytes": 1086,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "docx_paragraph",
+          "unit": 1,
+          "text": "DI-A-DOCX-18"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 2,
+          "text": "Lesson 18: Read the source before drawing a conclusion."
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 3,
+          "text": "第一项\t第二项\n下一行保留换行。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 4,
+          "text": "验收关键句18：跨班资料不可访问。"
+        }
+      ],
+      "coverage": [
+        "paragraphs",
+        "plain-text",
+        "logical-blocks-no-page-claim"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-19",
+      "file": "clear-19.docx",
+      "format": "docx",
+      "sha256": "c4869cb491e345b28d2d567e6bdcebdcf660fde3ea8411b054fa636a26f6d110",
+      "bytes": 3035,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "docx_paragraph",
+          "unit": 1,
+          "text": "DI-A-DOCX-19"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 2,
+          "text": "中文与English混合，编号19，保留原文出处。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 3,
+          "text": "Unicode边界：😀、é、é、α、β、x²。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 4,
+          "text": "术语000-5feceb66 术语001-6b86b273 术语002-d4735e3a 术语003-4e074085 术语004-4b227777 术语005-ef2d127d 术语006-e7f6c011 术语007-7902699b 术语008-2c624232 术语009-19581e27 术语010-4a44dc15 术语011-4fc82b26 术语012-6b51d431 术语013-3fdba35f 术语014-8527a891 术语015-e629fa65 术语016-b17ef6d1 术语017-4523540f 术语018-4ec9599f 术语019-9400f1b2 术语020-f5ca38f7 术语021-6f4b6612 术语022-785f3ec7 术语023-535fa30d 术语024-c2356069 术语025-b7a56873 术语026-5f9c4ab0 术语027-670671cd 术语028-59e19706 术语029-35135aaa 术语030-624b60c5 术语031-eb1e33e8 术语032-e29c9c18 术语033-c6f3ac57 术语034-86e50149 术语035-9f14025a 术语036-76a50887 术语037-7a61b537 术语038-aea92132 术语039-0b918943 术语040-d59eced1 术语041-3d914f93 术语042-73475cb4 术语043-44cb730c 术语044-71ee45a3 术语045-811786ad 术语046-25fc0e70 术语047-31489056 术语048-98010bd9 术语049-0e17daca 术语050-1a656259 术语051-031b4af5 术语052-41cfc0d1 术语053-2858dcd1 术语054-2fca346d 术语055-02d20bbd 术语056-7688b6ef 术语057-c837649c 术语058-6208ef0f 术语059-3e1e967e 术语060-39fa9ec1 术语061-d029fa3a 术语062-81b8a03f 术语063-da4ea2a5 术语064-a68b412c 术语065-108c995b 术语066-3ada92f2 术语067-49d180ec 术语068-a21855da 术语069-c75cb66a 术语070-ff5a1ae0 术语071-7f2253d7 术语072-87226162 术语073-96061e92 术语074-eb624dbe 术语075-f369cb89 术语076-f74efabe 术语077-a88a7902 术语078-349c4120 术语079-98a3ab7c 术语080-48449a14 术语081-5316ca1c 术语082-a46e3763 术语083-bbb965ab 术语084-44c8031c 术语085-b4944c6f 术语086-434c9b5a 术语087-bdd2d3af 术语088-8b940be7 术语089-cd70bea0 术语090-69f59c27 术语091-1da51b8d 术语092-82416496 术语093-6e400187 术语094-e3d6c4d4 术语095-ad48ff99 术语096-7b1a278f 术语097-d6d824ab 术语098-29db0c67 术语099-8c1f1046 术语100-ad573668 术语101-16dc368a 术语102-37834f2f 术语103-454f63ac 术语104-5ef6fdf3 术语105-1253e937 术语106-482d9673 术语107-3346f2bb 术语108-9537f32e 术语109-0fd42b3f 术语110-9bdb2af6 术语111-f6e0a1e2 术语112-b1556dea 术语113-6c658ee8 术语114-9f1f9dce 术语115-28dae7c8 术语116-e5b861a6 术语117-2ac878b0 术语118-85daaf6f 术语119-3038bfb5 术语120-2abaca49 术语121-89aa1e58 术语122-1be00341 术语123-a665a459 术语124-6affdae3 术语125-0f8ef337 术语126-65a69990 术语127-922c7954 术语128-2747b7c7 术语129-6566230e 术语130-38d66d96 术语131-eeca91fd 术语132-dbb1ded6 术语133-d2f48367 术语134-5d389f5e 术语135-13671077 术语136-36ebe205 术语137-d80eae6e 术语138-d6a40317 术语139-8d27ba37 术语140-dbae772d 术语141-2c7d5490 术语142-d4ee9f58 术语143-d6f0c71e 术语144-5ec1a0c9 术语145-be47addb 术语146-0a5b046d 术语147-1d28c120 术语148-ec2e990b 术语149-05ada863 术语150-9ae2bdd7 术语151-8e612bd1 术语152-043066da 术语153-620c9c33 术语154-1d0ebea5 术语155-210e3b16 术语156-0fecf924 术语157-c75de23d 术语158-7ed8f0f3 术语159-ff2ccb6b 术语160-a512db27 术语161-bb668ca9 术语162-79d6eaa2 术语163-3d3286f7 术语164-3f9807cb 术语165-bc52dd63 术语166-e0f05da9 术语167-73d3f1ba 术语168-80c3cd40 术语169-f57e5cb1 术语170-734d0759 术语171-284de502 术语172-68519a9e 术语173-4a8596a7 术语174-41e521ad 术语175-dac53c17 术语176-cba28b89 术语177-8cd25102 术语178-01d54579 术语179-3068430d 术语180-7b697596 术语181-580811fa 术语182-bfa76346 术语183-b8aed072 术语184-52f11620 术语185-61a229ba 术语186-2811745d 术语187-38b2d03f 术语188-d6061bbe 术语189-7045d16a 术语190-2397346b 术语191-70260742 术语192-eb3be230 术语193-684fe39f 术语194-7559ca4a 术语195-1dfacb2e 术语196-b4bbe448 术语197-8bcbb4c1 术语198-a4e00d7e 术语199-5a39cadd 术语200-27badc98 术语201-43974ed7 术语202-c17edaae 术语203-4621c1d5 术语204-fc56dbc6 术语205-f8809aff 术语206-5cf4e26b 术语207-968076be 术语208-8df66f64 术语209-83f814f7 术语210-d29d5370 术语211-093434a3 术语212-fa2b7af0 术语213-d48ff4b2 术语214-802b906a 术语215-d86580a5 术语216-0f4121d0 术语217-16badfc6 术语218-5966abd0 术语219-314f04b3 术语220-36790ecd 术语221-67e9c3ac 术语222-9b871512 术语223-56f4da26 术语224-84a5092e 术语225-0e652381 术语226-8f1f64db 术语227-dfe62e83 术语228-9d693eee 术语229-08490295 术语230-a0eaec5a 术语231-138d9e80 术语232-835d5e83 术语233-c0509a48 术语234-114bd151 术语235-0a2d643b 术语236-9a049b03 术语237-f0bc318f 术语238-8ae4c23b 术语239-79bf0868"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 5,
+          "text": "验收关键句19：跨班资料不可访问。"
+        }
+      ],
+      "coverage": [
+        "paragraphs",
+        "plain-text",
+        "logical-blocks-no-page-claim"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    },
+    {
+      "id": "clear-20",
+      "file": "clear-20.docx",
+      "format": "docx",
+      "sha256": "a32050f3cbc5cefaf6505c122bbd86712ea0bf9c95831163ae93835ec4aa80da",
+      "bytes": 1131,
+      "expected_status": "ready",
+      "gold": [
+        {
+          "kind": "docx_paragraph",
+          "unit": 1,
+          "text": "DI-A-DOCX-20"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 3,
+          "text": "术语对照：资料 source；班级 class；出处 citation。"
+        },
+        {
+          "kind": "docx_table_cell",
+          "unit": 4,
+          "text": "单元格1-1：本班资料20。"
+        },
+        {
+          "kind": "docx_table_cell",
+          "unit": 5,
+          "text": "单元格中的第二段。"
+        },
+        {
+          "kind": "docx_table_cell",
+          "unit": 6,
+          "text": "单元格1-2：本班资料20。"
+        },
+        {
+          "kind": "docx_table_cell",
+          "unit": 7,
+          "text": "单元格2-1：本班资料20。"
+        },
+        {
+          "kind": "docx_table_cell",
+          "unit": 8,
+          "text": "单元格2-2：本班资料20。"
+        },
+        {
+          "kind": "docx_paragraph",
+          "unit": 9,
+          "text": "验收关键句20：跨班资料不可访问。"
+        }
+      ],
+      "coverage": [
+        "paragraphs",
+        "table-multiple-paragraphs",
+        "logical-blocks-no-page-claim"
+      ],
+      "origin": "self-authored CampusClawPlus DI acceptance fixture; no real learner data"
+    }
+  ]
+}

@@ -30,6 +30,20 @@ try {
   const reports = Object.fromEntries(evidencePaths.map(path => [path, JSON.parse(bytes[path])]))
   output.images = validateRuntimeEvidence(reports, started, Date.now(), inventory)
   output.evidence = evidencePaths.map(path => ({ path, sha256: sha256(bytes[path]) }))
+  // DI-SC-14: retain all original current-service validation and then scan the
+  // offline parser candidate separately. It is not a fifth current service.
+  const candidate = spawnSync(process.execPath, ['scripts/check-document-parser.mjs', '--scan'],
+    { stdio: 'inherit', timeout: 390000 })
+  if (candidate.status !== 0) throw new Error('Offline parser candidate scan failed after current-service validation')
+  const candidatePath = 'output/document-parser/scan/results.json'
+  const candidateBytes = readFileSync(candidatePath)
+  const candidateReport = JSON.parse(candidateBytes)
+  if (candidateReport.exit_code !== 0 || candidateReport.source.commit !== before.commit ||
+      Date.parse(candidateReport.time) < started || candidateReport.cleanup.some(c => !c.ok) ||
+      candidateReport.tests?.clear_documents !== 40 || candidateReport.tests?.negative_classes !== 25) {
+    throw new Error('Offline candidate evidence is not successful and current to this verification')
+  }
+  output.offline_candidate = { path: candidatePath, sha256: sha256(candidateBytes), image_id: candidateReport.image_id }
   output.exit_code = 0
   console.log('DO-SC-11..13: current-batch real images, default HTTPS, database failure/recovery and isolation evidence passed; Ge review pending.')
 } catch (error) {

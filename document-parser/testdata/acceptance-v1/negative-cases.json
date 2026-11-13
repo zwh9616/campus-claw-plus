@@ -1,0 +1,32 @@
+{
+  "version": "di-negative-v1",
+  "frozen_before_parser_implementation": true,
+  "origin": "self-authored recipes, generated in memory by tests; no personal data",
+  "cases": [
+    {"id":"empty","expected":"failed","reason":"corrupt"},
+    {"id":"input-over-limit","expected":"failed","reason":"resource_limit"},
+    {"id":"wrong-signature","expected":"failed","reason":"corrupt"},
+    {"id":"truncated-pdf","expected":"failed","reason":"corrupt"},
+    {"id":"encrypted-pdf","expected":"failed","reason":"encrypted"},
+    {"id":"scan-only-pdf","expected":"needs_ocr","reason":null},
+    {"id":"mixed-text-scan-pdf","expected":"needs_ocr","reason":null},
+    {"id":"blank-pdf","expected":"failed","reason":"unsupported_content"},
+    {"id":"pdf-page-over-limit","expected":"failed","reason":"resource_limit"},
+    {"id":"pdf-content-over-limit","expected":"failed","reason":"resource_limit"},
+    {"id":"output-over-limit","expected":"failed","reason":"resource_limit"},
+    {"id":"zip-traversal","expected":"failed","reason":"corrupt"},
+    {"id":"zip-duplicate","expected":"failed","reason":"corrupt"},
+    {"id":"zip-entry-over-limit","expected":"failed","reason":"resource_limit"},
+    {"id":"zip-ratio-bomb","expected":"failed","reason":"resource_limit"},
+    {"id":"zip-expanded-over-limit","expected":"failed","reason":"resource_limit"},
+    {"id":"zip-encrypted","expected":"failed","reason":"encrypted"},
+    {"id":"xml-dtd-entity","expected":"failed","reason":"unsupported_content"},
+    {"id":"external-relationship","expected":"failed","reason":"unsupported_content"},
+    {"id":"macro-word","expected":"failed","reason":"unsupported_content"},
+    {"id":"legacy-word","expected":"failed","reason":"corrupt"},
+    {"id":"docx-block-over-limit","expected":"failed","reason":"resource_limit"},
+    {"id":"child-timeout","expected":"failed","reason":"parse_timeout"},
+    {"id":"child-memory-limit","expected":"failed","reason":"resource_limit"},
+    {"id":"child-interrupted","expected":"failed","reason":"worker_interrupted"}
+  ]
+}

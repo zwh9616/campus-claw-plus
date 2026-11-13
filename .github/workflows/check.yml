@@ -45,4 +45,9 @@ jobs:
             output/identity-wiring/results.json
             output/verification/gate-results.json
             output/service-batches/results.json
+            output/document-parser/check/results.json
+            output/document-parser/check/tests.json
+            output/document-parser/scan/results.json
+            output/document-parser/scan/tests.json
+            output/document-parser/scan/parser.json
           if-no-files-found: ignore
