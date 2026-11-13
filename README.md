@@ -2,7 +2,7 @@
 
 本分支已将MySQL、离线迁移/初始化、身份HTTP服务和同源HTTPS接入默认Compose。身份及真实资料页面已在main合入，提供资料列表、检索、上传、原文及下载；小张已完成独立复验，合入及最终主干复验见[共享进度表](docs/project-status.md)和PR #30实际记录为准。
 
-2026-11-13实际状态：05迁移#38、HTTP#40和worker#41已分别由小陈终审并正常合入；最新main d06198d完整CI43362518043成功，22 current、精确目标5。生产不绑定批改执行器/结果适配器，任务真实pending；主规约与05归档候选在本分支，待小张核对后正常合入。06资料归档#37已合入并复验；10-B全量/C、AI、成绩和作业页面仍未验收。
+2026-11-13实际状态：05迁移#38、HTTP#40和worker#41已分别由小陈终审并正常合入；实现验收main d06198d完整CI43362518043成功，22 current、精确目标5。生产不绑定批改执行器/结果适配器，任务真实pending；05主规约及完整归档已随#42获小张批准并正常合入main c0f24f3；精确main完整CI43368065979复验通过，原件已核验。06资料归档#37已合入并复验；10-B全量/C、AI、成绩和作业页面仍未验收。
 
 ## 当前运行范围
 
@@ -22,7 +22,7 @@
 - [前端视觉规约](docs/standards/frontend-visual.md)：北大红#94070A、暖白、简约布局，参考Canvas/Moodle信息组织；小张已确认#15代表样板，真实页面已由小葛实现，最终联合验收由小张收口。
 - [协作规范](docs/standards/collaboration.md)：按变更两人接力；每组可提交修改必须同提交更新共享表。
 - [06资料阶段原change](openspec/changes/archive/2026-11-11-materials-frontend/proposal.md)已随#27获小葛批准，样板#29经小张确认，真实实现#30和严格414修复#31已合入复验。五项MF需求/十二场景完整同步[主规约](openspec/specs/materials-frontend/spec.md)，本候选仅做资料阶段归档与索引，最终head批准/合入仍待实际门禁；作业页面另等05。[归档核对](reports/changes/06/archive-review-2026-11-12.md)。
-- 05规约#31、公共冻结#35、迁移#38、HTTP#40和worker#41均已审定合入；最新main d06198d完整CI43362518043通过。九个05操作与持久幂等/租约机制可用，生产无执行器而pending；已有4部署先停写、备份、离线升级5。小陈已准备[主规约](openspec/specs/assignment-tasks/spec.md)、[归档候选](openspec/changes/archive/2026-11-12-assignment-tasks/)及[主干证据/下游交接](reports/changes/05/archive-review-2026-11-13.md)，待小张审查归档，不提前称main已归档。
+- 05规约#31、公共冻结#35、迁移#38、HTTP#40和worker#41均已审定合入；实现验收main d06198d完整CI43362518043通过。九个05操作与持久幂等/租约机制可用，生产无执行器而pending；已有4部署先停写、备份、离线升级5。小陈已准备[主规约](openspec/specs/assignment-tasks/spec.md)、[完整归档](openspec/changes/archive/2026-11-12-assignment-tasks/)及[主干证据/下游交接](reports/changes/05/archive-review-2026-11-13.md)，#42已获小张实际批准并正常合入main c0f24f3，精确主干复验见[实际收口](reports/changes/05/archive-main-2026-11-13.md)。
 
 ## 从零启动身份服务
 

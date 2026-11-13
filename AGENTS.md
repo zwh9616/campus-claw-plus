@@ -1,7 +1,7 @@
 # CampusClawPlus 工程约定
 本分支默认运行已接入01身份与MySQL阶段，实际合入/验收状态见共享表。第7课骨架为历史基线，历史主规约见[spec](openspec/specs/project-bootstrap/spec.md)，归档依据见[历史变更](openspec/changes/archive/2026-10-28-project-bootstrap/)。本轮执行[00规约](openspec/changes/2026-11-04-business-contracts/proposal.md)、[design](openspec/changes/2026-11-04-business-contracts/design.md)、[spec](openspec/changes/2026-11-04-business-contracts/specs/business-contracts/spec.md)及[tasks](openspec/changes/2026-11-04-business-contracts/tasks.md)；00只负责公共合同。当前01/02/04已验收，06真实资料页面已随#30合入，测试修复#31及主干完整CI43186361938通过；2026-11-12组长恢复05规约工作，其他暂停项未恢复。PB/SC保留历史含义，新需求使用BC及后续change自己的前缀。
 
-2026-11-13实际状态：05迁移#38、HTTP#40和worker#41已分别由小陈终审并正常合入；最新main d06198d完整CI43362518043成功，22 current、精确目标5。生产不绑定批改执行器/结果适配器，任务真实pending；主规约与05归档候选在本分支，待小张核对后正常合入。06资料归档#37已合入并复验；10-B全量/C、AI、成绩和作业页面仍未验收。
+2026-11-13实际状态：05迁移#38、HTTP#40和worker#41已分别由小陈终审并正常合入；实现验收main d06198d完整CI43362518043成功，22 current、精确目标5。生产不绑定批改执行器/结果适配器，任务真实pending；05主规约及完整归档已随#42获小张批准并正常合入main c0f24f3；精确main完整CI43368065979复验通过，原件已核验。06资料归档#37已合入并复验；10-B全量/C、AI、成绩和作业页面仍未验收。
 
 ## 每次开始工作
 - 必读 [安全规范](docs/standards/security.md)，按范围必须读取下表规则；这些文件是约束，不是可选参考。
@@ -29,7 +29,7 @@
 
 2026-11-12，06资料阶段规约#27经小葛批准合入复验、代表样板#29经小张确认、真实实现#30经小张终审合入，严格414测试修复#31后main da8624c完整门禁及真实HTTPS双班五人18项复验通过。小张据小葛清单准备[资料前端主规约](openspec/specs/materials-frontend/spec.md)及[原change归档候选](openspec/changes/archive/2026-11-11-materials-frontend/)，实际归档合入状态见共享表；未获审合入不记主干已归档。小张写规约/确认样板/终审，小葛审规约/apply；资料阶段依赖02/04，作业页面仍另等05真实接口，未恢复AI/成绩等暂停项。
 
-2026-11-12组长启动[05作业与持久任务规约](openspec/changes/archive/2026-11-12-assignment-tasks/proposal.md)，小陈起草/终审、小张审规约/apply。规约#31及公共冻结#35已获审合入。#38迁移基础、#40 HTTP/原子幂等202及#41持久worker均已由小陈实际批准、正常合入；最新main d06198d完整CI43362518043成功。独立Docker复测、关键幂等/到期权威条件红1→恢复绿0和精确主干原件见[05归档核对](reports/changes/05/archive-review-2026-11-13.md)。本分支同步[主规约](openspec/specs/assignment-tasks/spec.md)和[归档候选](openspec/changes/archive/2026-11-12-assignment-tasks/)，待小张核对后合入。生产无执行器/结果适配器时不claim，真实pending；没有AI/成绩/作业页面，持有人库未升级。06作业页面、07/08仍按各自批准与依赖推进，不因本次归档自动恢复。
+2026-11-12组长启动[05作业与持久任务规约](openspec/changes/archive/2026-11-12-assignment-tasks/proposal.md)，小陈起草/终审、小张审规约/apply。规约#31及公共冻结#35已获审合入。#38迁移基础、#40 HTTP/原子幂等202及#41持久worker均已由小陈实际批准、正常合入；实现验收main d06198d完整CI43362518043成功。独立Docker复测、关键幂等/到期权威条件红1→恢复绿0和精确主干原件见[05归档核对](reports/changes/05/archive-review-2026-11-13.md)。本分支同步[主规约](openspec/specs/assignment-tasks/spec.md)和[完整归档](openspec/changes/archive/2026-11-12-assignment-tasks/)，已随#42获小张批准后正常合入main c0f24f3；实际复验见[收口记录](reports/changes/05/archive-main-2026-11-13.md)。生产无执行器/结果适配器时不claim，真实pending；没有AI/成绩/作业页面，持有人库未升级。06作业页面、07/08仍按各自批准与依赖推进，不因本次归档自动恢复。
 
 ## 当前命令
 
