@@ -47,3 +47,13 @@ Alpine候选已实际扫描OS和pypdf7.0.1，零HIGH/CRITICAL，摘要/导出SHA
 下一步在干净提交执行原完整gate并创建组件PR，最终head CI与远端真实批准后才正常合并，整个A与B/C仍未验收。本提交共享表对应行同步这些实际结果；不用它自身SHA预填自身证明。
 
 最终提交前另补实测：只把实际绘制的图像/嵌套Form当扫描页，空白页未使用的共享图片资源不误判；AES空密码、ZIP原始NUL名与OPC根节点校验已补强。新完整check再跑退出0，40份CER=0/195位置/45关键句/25负例及新增开发边界均过，最大清晰单份959ms，原件已替换为最后一次实测；页数限制保持200。候选最终镜像扫描及干净提交完整gate仍待下面补证。
+
+## 干净代码提交完整门禁与首轮CI（补证提交）
+
+代码提交36f1d1ed3c46ceab1690f5b1d1e799e1c684dd05工作树干净，原`npm run gate`四段全部0、notRun为空，verify335519ms；原四生产镜像与独立离线候选均零HIGH/CRITICAL，真实HTTPS/数据库停机/全部重建/旧版迁移恢复和同轮绑定、四生产镜像清理及两个候选资源清理均通过。候选单一不可变ID先通过40份/25负例，再导出实际镜像实扫；正文CER=0、195位置/45关键句100%，最长清晰942ms。ZIP SHA-256 `05d1391b20fd5ad75d7e3120f34c5b58714b3cddf44df8c354314740ecd79c7d`，[完整本机原件](parser-core/local-clean-runtime.zip)、[原四镜像独立核对](parser-core/local-clean-verified.json)、[候选及语料核对](parser-core/local-parser-verified.json)。Docker主机实报20CPU/8182206464字节，候选自身固定1CPU/512MiB；这不是A4要求的整个4CPU/8GiB固定部署全链路性能验收。
+
+首轮[CI43393658201](https://github.com/zwh9616/campus-claw-plus/actions/runs/43393658201)完整成功，实际artifact14022236968已下载，ZIP SHA-256 `4360200cc9c0c26f8924b87ba565aeeb083bc9609e6fc3f2c3289ec5300fe6bd`。CI checkout为实际PR合并预演9776bb1ed17f706f5a40114d2ddef0de4005bc2a，head为36f1d1e，两个树已实际获取并核对；原四段0/verify267906ms、四生产镜像+离线候选零HIGH/CRITICAL、40/25完整、195位置/45关键句、清理及真实SQL/HTTPS恢复全部通过，最长清晰1068ms。见[CI原件](parser-core/first-ci-runtime.zip)、[基线核对](parser-core/first-ci-verified.json)、[解析候选核对](parser-core/first-ci-parser-verified.json)。CI/Windows全tracked字节指纹分别如实记录，不混称相同。
+
+终端输出/第三方许可证仅规范化行尾空白以通过diff检查，所有原始字节保留在[原始归档](parser-core/original-terminal-and-license.zip)，OFL法律正文未改；没有添加白名单或放宽断言。首次手工构建留下的本作业旧tag已精确删除，见[清理原文](parser-core/initial-tag-cleanup.txt)，不影响其他服务。
+
+本提交只补上述原件、tasks及共享表：A2.1/A2.2勾离线内核实现，A1.2 RPC/配置、A1.3准确DDL及A2.3后持久/HTTP/UI和A4全链路仍未完成。已实际请求Kevcco审核#46以满足远端保护，不转移小张职责；尚无真实批准，最终补证head的CI与main复验待核，不能据首轮成功直接合并或声称A交付。
