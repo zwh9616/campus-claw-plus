@@ -34,3 +34,14 @@
 ## 同轮团队跟进
 
 小张亲自审查#50最终6422f29：仅80个文档/证据文件，212个本地链接存在，运行输入逐字继承main97f25b9；下载当前CI43575968453/artifact14106610497，ZIP摘要c5c3ad21793c9c5945e568204fc06e03f1a696dcf976d89426cda3f8b658f5e5与GitHub一致。独立核验四段0、原05/恢复/HTTPS/四镜像与候选、两轮HTTP7组各40实际文件和SQL16实际拒绝/清理，解包秘密扫描0；最终head与CI预演树286cd9b相同，无未解决thread。本人实际APPROVED5904277600后绑定head正常合入main `c1ac4213580df1fcc03520b8dddcfbece2a3344d`。该main精确CI待结果；不是本机重新跑#50 Docker。本轮后续会合并该文档主干，保留双方台账事实。
+
+
+## 干净版本完整验收与交审
+
+精确干净 `de2c408a7d3723368499349b3eac622e8a5490ba` 原完整gate重跑四段0，verify359907ms。初次因我把漏洞库准备与原verify并行而触发trivy-db互斥锁，verify1、前三段0；[失败原件](document-queue/initial-gate-lock-failure.json)及日志保留。等待准备正常完成、锁自行释放后顺序重跑，没有删除锁、改预算或绕过检查。[本机17文件原ZIP](document-queue/local-gate.zip) SHA-256 `b2223fa2a23d4001f0890641bae3135b24a3a24cffd8260a1210a11e04ff0445`，[独立核验](document-queue/local-proof.json)完整四段、10组实际MySQL/原SQL16拒绝及日志摘要/源文件摘要/清理通过；原18组05、五恢复、三HTTPS、四生产镜像与候选零HIGH/CRITICAL、原解析核心40/25/195/45及私有HTTP7x40均核验。解包原件秘密扫描0。
+
+[首轮完整CI43593896442](https://github.com/zwh9616/campus-claw-plus/actions/runs/43593896442)实际completed/success，artifact14113039332下载后的[原ZIP](document-queue/first-ci.zip) SHA-256 `024004cb6f70952ffbc0d4fcb9403c3d80cc24b67fbe616204501c5bf2dd71e5` 与GitHub一致。预演 `1e71bbaed7833a05e34bdf652239e102e70fd113` 和精确head整树均 `556d9921ef28a7b08baa7773226fcaca66990c86`。本人[独立核验](document-queue/first-ci-proof.json)四段0/verify290222ms、10组真实MySQL原日志及源文件SHA与本机逐字相同、原全部回归/私有HTTP/扫描和清理通过；解包秘密扫描0。没有将测试解析回调算作真实PDF→队列全链路。
+
+#50精确main c1ac421的[完整CI43593495925](https://github.com/zwh9616/campus-claw-plus/actions/runs/43593495925)也已success；下载artifact14113482804，[原ZIP](document-queue/main50-ci.zip) SHA-256 `deb1bf85dfdcdbe235fe9a3623b3fb9ce6b826ff2e5f92d12b9b2fa8fd69c78b` 与GitHub一致，原全部回归与HTTP两轮7x40/195和SQL16拒绝/清理/解包秘密扫描均实际核验，见[主干事实](document-queue/main50-verified.json)。
+
+本批已交[PR #53](https://github.com/zwh9616/campus-claw-plus/pull/53)。本提交仅补原件、共享表和任务，代码/脚本/候选SQL逐字保持；本提交自身CI/真实其他账号批准仍须实时核对，未预填合并。全部04E仍小张负责；Target6迁移/中断/恢复、生产激活和授权HTTP/页面仍按原退出条件实施，A2.3/A2.4整体不勾。
