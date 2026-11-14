@@ -1,0 +1,13 @@
+{
+  "head": "6422f29273810de9779677cf31d8be9650e5fe99",
+  "ci": 43575968453,
+  "zip_sha256": "c5c3ad21793c9c5945e568204fc06e03f1a696dcf976d89426cda3f8b658f5e5",
+  "changed_files": 80,
+  "only_docs_evidence": true,
+  "links": 212,
+  "private_http_groups": 7,
+  "actual_documents_each_run": 40,
+  "candidate_sql_actual_rejections": 16,
+  "no_unresolved_threads": true,
+  "scope": "\u5c0f\u5f20 independently reviewed actual documents and downloaded current CI artifact; no claim of fresh local Docker rerun of PR50"
+}

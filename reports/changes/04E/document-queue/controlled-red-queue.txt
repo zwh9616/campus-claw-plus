@@ -1,0 +1,27 @@
+-test.shuffle 1794657803373373677
+=== RUN   TestMySQLWorkerSingleFlightAndCancellation
+--- PASS: TestMySQLWorkerSingleFlightAndCancellation (0.17s)
+=== RUN   TestMySQLConcurrentAcceptance
+    mysql_test.go:165: same key changed payload
+--- FAIL: TestMySQLConcurrentAcceptance (0.04s)
+=== RUN   TestMySQLAcceptanceRollbackAndMixedPayload
+    mysql_test.go:227: mixed-key serialization 20 0
+--- FAIL: TestMySQLAcceptanceRollbackAndMixedPayload (0.02s)
+=== RUN   TestMySQLLongChunksAndRetry
+--- PASS: TestMySQLLongChunksAndRetry (0.06s)
+=== RUN   TestMySQLLeaseExpiryDuringPublication
+--- PASS: TestMySQLLeaseExpiryDuringPublication (0.37s)
+=== RUN   TestMySQLClaimAndRetryRollback
+--- PASS: TestMySQLClaimAndRetryRollback (0.03s)
+=== RUN   TestMySQLProcessCrashRecovery
+--- PASS: TestMySQLProcessCrashRecovery (0.01s)
+=== RUN   TestMySQLAtomicPublicationAndSource
+--- PASS: TestMySQLAtomicPublicationAndSource (0.02s)
+=== RUN   TestMySQLLeaseCASAndExhaustion
+--- PASS: TestMySQLLeaseCASAndExhaustion (0.03s)
+=== RUN   TestResultBoundaries
+--- PASS: TestResultBoundaries (0.00s)
+FAIL
+FAIL	github.com/zwh9616/campus-claw-plus/backend/internal/documentqueue	0.762s
+FAIL
+

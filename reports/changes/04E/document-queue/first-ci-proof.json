@@ -1,0 +1,78 @@
+{
+  "label": "first-ci",
+  "zip_sha256": "024004cb6f70952ffbc0d4fcb9403c3d80cc24b67fbe616204501c5bf2dd71e5",
+  "source": {
+    "commit": "1e71bbaed7833a05e34bdf652239e102e70fd113",
+    "dirty": false,
+    "fingerprint": "35d03e0939e86ff9cb79a9e1729632d06dca63a63f3d2b17a1fd475d41b3ad34"
+  },
+  "gate": {
+    "time": "2026-11-14T12:23:54.809Z",
+    "node": "v22.23.4",
+    "exitCode": 0,
+    "results": [
+      {
+        "name": "check",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 207619
+      },
+      {
+        "name": "audit",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 722
+      },
+      {
+        "name": "secret-scan",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 2037
+      },
+      {
+        "name": "verify",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 290222
+      }
+    ],
+    "notRun": []
+  },
+  "queue_groups": [
+    "TestMySQLWorkerSingleFlightAndCancellation",
+    "TestMySQLAtomicPublicationAndSource",
+    "TestMySQLLongChunksAndRetry",
+    "TestMySQLLeaseExpiryDuringPublication",
+    "TestMySQLProcessCrashRecovery",
+    "TestMySQLStorageDeadline",
+    "TestMySQLLeaseCASAndExhaustion",
+    "TestMySQLAcceptanceRollbackAndMixedPayload",
+    "TestMySQLConcurrentAcceptance",
+    "TestMySQLClaimAndRetryRollback"
+  ],
+  "queue_raw_sha256": "260571ea3ebce49b859314c0771655aa69f43624c3c9c7c84541e1be1db0329f",
+  "candidate_sql_rejections": 16,
+  "queue_cleanup": [
+    {
+      "resource": "campus-di-ddl-ca91c4c7a2bc-mysql",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "resource": "campus-di-ddl-ca91c4c7a2bc:probe",
+      "exit_code": 0,
+      "ok": true
+    }
+  ],
+  "queue_source_files": {
+    "mysql_test.go": "0ba9253ce5c152f321b05c440646d15197add4d9b0c517ca094751ac0f21b456",
+    "result_test.go": "8e163dccfd43edcfac61df5c23921da70cae7887c3701625358e217f87d80663",
+    "store.go": "263478076f3281fbb45066c4fe93a36614212a988fefa59d33e625cad8335995",
+    "worker.go": "627c2377ba53e79010ffcf38dfd213da34c11d7b3c572756e3ad0e5f0f157160"
+  },
+  "scope": "exact original gate + real candidate-schema queue tests; no production migration6/activation or actual PDF-to-queue HTTP claim"
+}

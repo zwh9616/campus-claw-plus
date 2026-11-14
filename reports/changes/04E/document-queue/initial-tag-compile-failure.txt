@@ -1,0 +1,6 @@
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/documentqueue	0.007s
+FAIL	github.com/zwh9616/campus-claw-plus/backend/internal/documentqueue [build failed]
+FAIL
+# github.com/zwh9616/campus-claw-plus/backend/internal/documentqueue [github.com/zwh9616/campus-claw-plus/backend/internal/documentqueue.test]
+internal/documentqueue/store.go:106:6: exec already declared through import of package exec ("os/exec")
+	internal/documentqueue/mysql_test.go:14:2: other declaration of exec

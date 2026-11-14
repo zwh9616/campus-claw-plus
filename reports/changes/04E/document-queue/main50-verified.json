@@ -1,0 +1,14 @@
+{
+  "main": "c1ac4213580df1fcc03520b8dddcfbece2a3344d",
+  "head50": "6422f29273810de9779677cf31d8be9650e5fe99",
+  "approval": 5904277600,
+  "ci": 43593495925,
+  "artifact": 14113482804,
+  "zip_sha256": "deb1bf85dfdcdbe235fe9a3623b3fb9ce6b826ff2e5f92d12b9b2fa8fd69c78b",
+  "private_http_groups": 7,
+  "documents_per_run": 40,
+  "locations_per_run": 195,
+  "actual_sql_rejections": 16,
+  "cleanup": true,
+  "scope": "actual downloaded precise main50 artifact; original runtime verified separately, no local Docker repeat claim"
+}

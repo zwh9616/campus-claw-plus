@@ -1,0 +1,307 @@
+{
+  "run_id": "campus-di-ddl-34dc3c63e954",
+  "time": "2026-11-14T12:03:06.615Z",
+  "exit_code": 1,
+  "source": {
+    "commit": "97f25b9d4624cd811020b564423704239f7a5e0a",
+    "dirty": true
+  },
+  "candidate_sql": {
+    "000006_documents.down.sql": "bcd282b537db970249565148410f67a18737d5350055df20dd6efd51c8db5756",
+    "000006_documents.up.sql": "ae898e2c8166ac8e201102e6077ad5cf71a89259fb16553d3f5a1a0380e022ef"
+  },
+  "scope": "isolated candidate SQL constraints and actual Go document queue; no Target6/dirty/repair/backup/RPC/runtime activation claim",
+  "image_id": "sha256:71ef196b28449ab5a1b4e8b08c8c5db7e0a0b7648eb072650c8f798396ec4795",
+  "mysql_version": "8.4.13",
+  "unicode_body_counts": [
+    8,
+    21
+  ],
+  "document_queue": {
+    "exit_code": 1,
+    "source_files": {
+      "mysql_test.go": "66f0711537ec49bf76a6917ec036797b188e6c5e2e801fbc65d98d14ed858c80",
+      "result_test.go": "8e163dccfd43edcfac61df5c23921da70cae7887c3701625358e217f87d80663",
+      "store.go": "9ec44ac1eecfef53be177449a958e2954e51e435531aaab71d44ea4c84d0f022",
+      "worker.go": "627c2377ba53e79010ffcf38dfd213da34c11d7b3c572756e3ad0e5f0f157160"
+    },
+    "log_sha256": "c0d193386ef9fa41edfd8fedf1ba96c4b479a9de5147ef8159d5030801191523"
+  },
+  "error": "actual queue tests failed; original output retained in queue-test.log\n\n1 !== 0\n",
+  "cleanup": [
+    {
+      "resource": "campus-di-ddl-34dc3c63e954-mysql",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "resource": "campus-di-ddl-34dc3c63e954:probe",
+      "exit_code": 0,
+      "ok": true
+    }
+  ],
+  "secret_file_removed": true,
+  "finished_at": "2026-11-14T12:03:24.731Z",
+  "results": [
+    {
+      "label": "build pinned reviewed MySQL candidate-probe image",
+      "exit_code": 0
+    },
+    {
+      "label": "record exact probe image",
+      "exit_code": 0
+    },
+    {
+      "label": "start only isolated temporary MySQL",
+      "exit_code": 0
+    },
+    {
+      "label": "actual database version",
+      "exit_code": 0,
+      "expected_rejection": false,
+      "actual_error_code": null
+    },
+    {
+      "label": "fresh isolated schema only",
+      "exit_code": 0,
+      "expected_rejection": false,
+      "actual_error_code": null
+    },
+    {
+      "label": "published table baseline 000001_identity_users_classes.up.sql",
+      "exit_code": 0,
+      "expected_rejection": false,
+      "actual_error_code": null
+    },
+    {
+      "label": "published table baseline 000002_identity_sessions.up.sql",
+      "exit_code": 0,
+      "expected_rejection": false,
+      "actual_error_code": null
+    },
+    {
+      "label": "published table baseline 000003_identity_auth_audit.up.sql",
+      "exit_code": 0,
+      "expected_rejection": false,
+      "actual_error_code": null
+    },
+    {
+      "label": "published table baseline 000004_materials_retrieval.up.sql",
+      "exit_code": 0,
+      "expected_rejection": false,
+      "actual_error_code": null
+    },
+    {
+      "label": "published table baseline 000005_assignment_tasks.up.sql",
+      "exit_code": 0,
+      "expected_rejection": false,
+      "actual_error_code": null
+    },
+    {
+      "label": "inspect isolated table count",
+      "exit_code": 0,
+      "expected_rejection": false,
+      "actual_error_code": null
+    },
+    {
+      "label": "exact five candidate DDL",
+      "exit_code": 0,
+      "expected_rejection": false,
+      "actual_error_code": null
+    },
+    {
+      "label": "inspect isolated table count",
+      "exit_code": 0,
+      "expected_rejection": false,
+      "actual_error_code": null
+    },
+    {
+      "label": "inspect six candidate FK constraints",
+      "exit_code": 0,
+      "expected_rejection": false,
+      "actual_error_code": null
+    },
+    {
+      "label": "inspect eleven enforced candidate CHECK constraints",
+      "exit_code": 0,
+      "expected_rejection": false,
+      "actual_error_code": null
+    },
+    {
+      "label": "synthetic identity keys only",
+      "exit_code": 0,
+      "expected_rejection": false,
+      "actual_error_code": null
+    },
+    {
+      "label": "queued documents for two distinct classes",
+      "exit_code": 0,
+      "expected_rejection": false,
+      "actual_error_code": null
+    },
+    {
+      "label": "Unicode codepoint body and valid ready state",
+      "exit_code": 0,
+      "expected_rejection": false,
+      "actual_error_code": null
+    },
+    {
+      "label": "non-BMP page positions and chunk",
+      "exit_code": 0,
+      "expected_rejection": false,
+      "actual_error_code": null
+    },
+    {
+      "label": "actual MySQL counts emoji as one codepoint",
+      "exit_code": 0,
+      "expected_rejection": false,
+      "actual_error_code": null
+    },
+    {
+      "label": "ready PDF cannot omit page count",
+      "exit_code": 1,
+      "expected_rejection": true,
+      "error_code": 3819,
+      "actual_error_code": 3819
+    },
+    {
+      "label": "ready cannot omit body",
+      "exit_code": 1,
+      "expected_rejection": true,
+      "error_code": 3819,
+      "actual_error_code": 3819
+    },
+    {
+      "label": "fourth parse attempt",
+      "exit_code": 1,
+      "expected_rejection": true,
+      "error_code": 3819,
+      "actual_error_code": 3819
+    },
+    {
+      "label": "original byte count mismatch",
+      "exit_code": 1,
+      "expected_rejection": true,
+      "error_code": 3819,
+      "actual_error_code": 3819
+    },
+    {
+      "label": "Word cannot use PDF page count",
+      "exit_code": 1,
+      "expected_rejection": true,
+      "error_code": 3819,
+      "actual_error_code": 3819
+    },
+    {
+      "label": "location cross-class composite FK",
+      "exit_code": 1,
+      "expected_rejection": true,
+      "error_code": 1452,
+      "actual_error_code": 1452
+    },
+    {
+      "label": "location cross-version composite FK",
+      "exit_code": 1,
+      "expected_rejection": true,
+      "error_code": 1452,
+      "actual_error_code": 1452
+    },
+    {
+      "label": "PDF logical unit exceeds page bound",
+      "exit_code": 1,
+      "expected_rejection": true,
+      "error_code": 3819,
+      "actual_error_code": 3819
+    },
+    {
+      "label": "empty source range",
+      "exit_code": 1,
+      "expected_rejection": true,
+      "error_code": 3819,
+      "actual_error_code": 3819
+    },
+    {
+      "label": "chunk cross-class FK",
+      "exit_code": 1,
+      "expected_rejection": true,
+      "error_code": 1452,
+      "actual_error_code": 1452
+    },
+    {
+      "label": "chunk Unicode range mismatch",
+      "exit_code": 1,
+      "expected_rejection": true,
+      "error_code": 3819,
+      "actual_error_code": 3819
+    },
+    {
+      "label": "valid leased owner epoch",
+      "exit_code": 0,
+      "expected_rejection": false,
+      "actual_error_code": null
+    },
+    {
+      "label": "leased owner cannot be null",
+      "exit_code": 1,
+      "expected_rejection": true,
+      "error_code": 3819,
+      "actual_error_code": 3819
+    },
+    {
+      "label": "leased epoch cannot be zero",
+      "exit_code": 1,
+      "expected_rejection": true,
+      "error_code": 3819,
+      "actual_error_code": 3819
+    },
+    {
+      "label": "binary idempotency key case remains distinct",
+      "exit_code": 0,
+      "expected_rejection": false,
+      "actual_error_code": null
+    },
+    {
+      "label": "same scoped key cannot duplicate",
+      "exit_code": 1,
+      "expected_rejection": true,
+      "error_code": 1062,
+      "actual_error_code": 1062
+    },
+    {
+      "label": "snapshot cannot bind another creator",
+      "exit_code": 1,
+      "expected_rejection": true,
+      "error_code": 1452,
+      "actual_error_code": 1452
+    },
+    {
+      "label": "closed original response must be JSON",
+      "exit_code": 1,
+      "expected_rejection": true,
+      "error_code": 3819,
+      "actual_error_code": 3819
+    },
+    {
+      "label": "same-length wrong quote requires application recheck (rolled back)",
+      "exit_code": 0,
+      "expected_rejection": false,
+      "actual_error_code": null
+    },
+    {
+      "label": "original quote survived rollback",
+      "exit_code": 0,
+      "expected_rejection": false,
+      "actual_error_code": null
+    },
+    {
+      "label": "remove only synthetic candidate rows",
+      "exit_code": 0,
+      "expected_rejection": false,
+      "actual_error_code": null
+    },
+    {
+      "label": "actual Go durable document queue on isolated MySQL",
+      "exit_code": 1
+    }
+  ]
+}

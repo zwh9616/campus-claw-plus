@@ -1,0 +1,7 @@
+{
+  "scope": "DI-SC-07 actual MySQL conflicting-payload guard red/restore green",
+  "source_sha256": "263478076f3281fbb45066c4fe93a36614212a988fefa59d33e625cad8335995",
+  "red_exit": 1,
+  "green_exit": 0,
+  "restored_sha256": "263478076f3281fbb45066c4fe93a36614212a988fefa59d33e625cad8335995"
+}
