@@ -67,7 +67,11 @@ export function validateIntegrationProfile(contract, register, read = p => readF
   assert.equal(migration.number, 6); assert.equal(migration.current_target, 6)
   assert.equal(migration.status, 'available_embedded'); assert.equal(migration.ddl_steps, 5)
   assert.deepEqual(Object.keys(migration.runtime_files).sort(), runtimeFiles.sort(), 'Exact migration-only runtime allowlist')
-  for (const [path, digest] of Object.entries(migration.runtime_files)) assert.equal(sha(read(path)), digest, 'Migration runtime drift: ' + path)
+  for (const [path, digest] of Object.entries(migration.runtime_files)) {
+    const bytes = read(path)
+    assert.ok(!bytes.includes(13), 'Migration runtime inputs must use repository LF bytes: ' + path)
+    assert.equal(sha(bytes), digest, 'Migration runtime drift: ' + path)
+  }
   assert.match(read('backend/internal/migrations/target.go').toString('utf8'), /\bconst Target = 6\b/)
   assert.equal(migration.restore_target, 5); assert.equal(migration.down, 'empty_disposable_test_database_only')
   assert.deepEqual(migration.tables, ['documents', 'document_locations', 'document_chunks', 'document_parse_jobs', 'document_idempotency'])

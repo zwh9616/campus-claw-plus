@@ -71,6 +71,16 @@ test('DI-SC-15 exact6 runtime metadata cannot weaken old SQL, entry-point target
   assert.ok(!reads.includes('.env'), 'Unknown migration runtime path rejected before read')
 })
 
+test('DI-SC-15 migration runtime SHA binds portable LF bytes even when CRLF is rehashed locally', () => {
+  for (const path of Object.keys(contract().migration.runtime_files)) {
+    const original = readFileSync(path)
+    assert.ok(!original.includes(13))
+    const crlf = Buffer.from(original.toString('utf8').replaceAll('\n', '\r\n'))
+    const c = contract(); c.migration.runtime_files[path] = createHash('sha256').update(crlf).digest('hex')
+    assert.throws(() => validateIntegrationProfile(c, register(), name => name === path ? crlf : readFileSync(name)))
+  }
+})
+
 test('DI-SC-14 contract references cannot fetch URLs or escape local Schema files', async () => {
   for (const path of ['.env', '../.env']) {
     const candidate = contract(); delete candidate.baseline.protected_files['.env.example']; candidate.baseline.protected_files[path] = '0'.repeat(64)
