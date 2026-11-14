@@ -1,0 +1,20 @@
+{
+  "source": {
+    "commit": "9aa2f8622fa7ad2e36566cdb9cb1b07457cdf9c7",
+    "dirty": false,
+    "fingerprint": "e816af3d0660dac99a483707815ac4ebc69d1f149577b1f7b7db0d216f69ea05"
+  },
+  "local_manual_verify_exit": 0,
+  "local_native_gate_exit": 1,
+  "reason": "npm registry TLS interruption at audit; two native attempts retained, not relabeled as a passing native gate",
+  "pinned_node_container_audit_exit": 0,
+  "secret_scan_exit": 0,
+  "ci_run": 43572312029,
+  "ci_artifact": 14104389798,
+  "ci_gate_exit": 0,
+  "ci_zip_sha256": "81648eed21afb0da0d0fe1522bc76dead99c82e4001782dd5a526272fe8c216b",
+  "local_14_file_zip_sha256": "0bcd14abd5f1fe2c56205cb4051d7d0ca51ff344c2bfb01d42feba756475456b",
+  "private_http_groups": 7,
+  "real_files_each": 40,
+  "scope": "private component, not default service/config/Target6/queue activation"
+}

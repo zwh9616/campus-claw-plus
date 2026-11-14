@@ -10,6 +10,6 @@ RUN rm -rf /usr/local/lib/python3.14/ensurepip \
     /usr/local/lib/python3.14/site-packages/pip \
     /usr/local/lib/python3.14/site-packages/pip-*.dist-info /usr/local/bin/pip*
 COPY --from=dependencies /packages /usr/local/lib/python3.14/site-packages
-COPY core.py runner.py worker.py /app/
+COPY core.py runner.py worker.py server.py /app/
 USER 65532:65532
 ENTRYPOINT ["python", "-B", "-I", "/app/runner.py"]

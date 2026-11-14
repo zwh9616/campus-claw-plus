@@ -1,0 +1,273 @@
+{
+  "time": "2026-11-14T07:36:15.034Z",
+  "run_id": "campus-di-84ee2722b9be",
+  "scope": "04E offline parser candidate; current production batch remains four images",
+  "source": {
+    "commit": "670ac0c9ae587359bdba2c0d107be54b3ca1f0a9",
+    "dirty": true,
+    "fingerprint": "54106ebb894301b5086fb830862044487b2209b590b37fdcd2936e878f92d0ee"
+  },
+  "exit_code": 0,
+  "image_id": "sha256:efc289925411cd0acd390fa20dba6e7e326b8c1cf8ca9ecb81d221e278cdcb6a",
+  "tests": {
+    "groups": 8,
+    "clear_documents": 40,
+    "negative_classes": 25,
+    "max_cer": 0,
+    "max_document_ms": 918,
+    "raw_sha256": "d856c7a4cfa81485b1231046743436d76d0246c59fc8601ca7fd4bc40f4d1333"
+  },
+  "isolation": {
+    "uid": 65532,
+    "read_only_root": true,
+    "external_connect_denied": true,
+    "tmp_sources_after_tests": 0
+  },
+  "private_http": {
+    "scope": "private adapter component only; no default Compose, DB or queue activation",
+    "documents": [
+      {
+        "file": "clear-01.pdf",
+        "status": 200,
+        "locations": 1
+      },
+      {
+        "file": "clear-02.pdf",
+        "status": 200,
+        "locations": 1
+      },
+      {
+        "file": "clear-03.pdf",
+        "status": 200,
+        "locations": 1
+      },
+      {
+        "file": "clear-04.pdf",
+        "status": 200,
+        "locations": 2
+      },
+      {
+        "file": "clear-05.pdf",
+        "status": 200,
+        "locations": 1
+      },
+      {
+        "file": "clear-06.pdf",
+        "status": 200,
+        "locations": 1
+      },
+      {
+        "file": "clear-07.pdf",
+        "status": 200,
+        "locations": 1
+      },
+      {
+        "file": "clear-08.pdf",
+        "status": 200,
+        "locations": 2
+      },
+      {
+        "file": "clear-09.pdf",
+        "status": 200,
+        "locations": 1
+      },
+      {
+        "file": "clear-10.pdf",
+        "status": 200,
+        "locations": 1
+      },
+      {
+        "file": "clear-11.pdf",
+        "status": 200,
+        "locations": 1
+      },
+      {
+        "file": "clear-12.pdf",
+        "status": 200,
+        "locations": 2
+      },
+      {
+        "file": "clear-13.pdf",
+        "status": 200,
+        "locations": 1
+      },
+      {
+        "file": "clear-14.pdf",
+        "status": 200,
+        "locations": 1
+      },
+      {
+        "file": "clear-15.pdf",
+        "status": 200,
+        "locations": 1
+      },
+      {
+        "file": "clear-16.pdf",
+        "status": 200,
+        "locations": 2
+      },
+      {
+        "file": "clear-17.pdf",
+        "status": 200,
+        "locations": 1
+      },
+      {
+        "file": "clear-18.pdf",
+        "status": 200,
+        "locations": 1
+      },
+      {
+        "file": "clear-19.pdf",
+        "status": 200,
+        "locations": 1
+      },
+      {
+        "file": "clear-20.pdf",
+        "status": 200,
+        "locations": 2
+      },
+      {
+        "file": "clear-01.docx",
+        "status": 200,
+        "locations": 3
+      },
+      {
+        "file": "clear-02.docx",
+        "status": 200,
+        "locations": 3
+      },
+      {
+        "file": "clear-03.docx",
+        "status": 200,
+        "locations": 4
+      },
+      {
+        "file": "clear-04.docx",
+        "status": 200,
+        "locations": 3
+      },
+      {
+        "file": "clear-05.docx",
+        "status": 200,
+        "locations": 8
+      },
+      {
+        "file": "clear-06.docx",
+        "status": 200,
+        "locations": 4
+      },
+      {
+        "file": "clear-07.docx",
+        "status": 200,
+        "locations": 4
+      },
+      {
+        "file": "clear-08.docx",
+        "status": 200,
+        "locations": 3
+      },
+      {
+        "file": "clear-09.docx",
+        "status": 200,
+        "locations": 4
+      },
+      {
+        "file": "clear-10.docx",
+        "status": 200,
+        "locations": 8
+      },
+      {
+        "file": "clear-11.docx",
+        "status": 200,
+        "locations": 4
+      },
+      {
+        "file": "clear-12.docx",
+        "status": 200,
+        "locations": 4
+      },
+      {
+        "file": "clear-13.docx",
+        "status": 200,
+        "locations": 3
+      },
+      {
+        "file": "clear-14.docx",
+        "status": 200,
+        "locations": 3
+      },
+      {
+        "file": "clear-15.docx",
+        "status": 200,
+        "locations": 9
+      },
+      {
+        "file": "clear-16.docx",
+        "status": 200,
+        "locations": 3
+      },
+      {
+        "file": "clear-17.docx",
+        "status": 200,
+        "locations": 83
+      },
+      {
+        "file": "clear-18.docx",
+        "status": 200,
+        "locations": 4
+      },
+      {
+        "file": "clear-19.docx",
+        "status": 200,
+        "locations": 5
+      },
+      {
+        "file": "clear-20.docx",
+        "status": 200,
+        "locations": 8
+      }
+    ],
+    "groups": 7,
+    "safe_logs": true,
+    "exit_code": 0
+  },
+  "cleanup": [
+    {
+      "resource": "campus-di-84ee2722b9be-run",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "resource": "campus-di-84ee2722b9be:check",
+      "exit_code": 0,
+      "ok": true
+    }
+  ],
+  "finished_at": "2026-11-14T07:37:49.521Z",
+  "results": [
+    {
+      "label": "build pinned candidate",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "#0 building with \"desktop-linux\" instance using docker driver\n\n#1 [internal] load build definition from Dockerfile\n#1 transferring dockerfile: 806B done\n#1 DONE 0.0s\n\n#2 [internal] load metadata for docker.io/library/python@sha256:5862d971d1f0ae26b258cefa4e893556b1d3aba81bd2ff30888704ad378bab67\n#2 DONE 0.0s\n\n#3 [internal] load .dockerignore\n#3 transferring context: 115B done\n#3 DONE 0.0s\n\n#4 [internal] load build context\n#4 transferring context: 8.36kB done\n#4 DONE 0.0s\n\n#5 [dependencies 1/4] FROM docker.io/library/python@sha256:5862d971d1f0ae26b258cefa4e893556b1d3aba81bd2ff30888704ad378bab67\n#5 resolve docker.io/library/python@sha256:5862d971d1f0ae26b258cefa4e893556b1d3aba81bd2ff30888704ad378bab67 0.0s done\n#5 DONE 0.0s\n\n#6 [stage-1 3/5] RUN rm -rf /usr/local/lib/python3.14/ensurepip     /usr/local/lib/python3.14/site-packages/pip     /usr/local/lib/python3.14/site-packages/pip-*.dist-info /usr/local/bin/pip*\n#6 CACHED\n\n#7 [dependencies 4/4] RUN python -m pip install --no-cache-dir --require-hashes --no-deps --target=/packages -r requirements.lock\n#7 CACHED\n\n#8 [dependencies 2/4] WORKDIR /build\n#8 CACHED\n\n#9 [dependencies 3/4] COPY requirements.lock .\n#9 CACHED\n\n#10 [stage-1 2/5] WORKDIR /app\n#10 CACHED\n\n#11 [stage-1 4/5] COPY --from=dependencies /packages /usr/local/lib/python3.14/site-packages\n#11 CACHED\n\n#12 [stage-1 5/5] COPY core.py runner.py worker.py server.py /app/\n#12 DONE 0.0s\n\n#13 exporting to image\n#13 exporting layers\n#13 exporting layers 0.0s done\n#13 exporting manifest sha256:7adbbb646a06c40aee67655dbff43606d8f7d240e5eae7560d59cf01e8e19aea done\n#13 exporting config sha256:0c35d59f5af39213b0a0e53b541546c6c00406d3c02c54795dc2dac6ee41fb77 done\n#13 exporting attestation manifest sha256:a67a11d8b627dbb212dfaf4dad87b2274a0227df42bea0ad0598636d54d13891 0.0s done\n#13 exporting manifest list sha256:efc289925411cd0acd390fa20dba6e7e326b8c1cf8ca9ecb81d221e278cdcb6a done\n#13 naming to docker.io/library/campus-di-84ee2722b9be:check done\n#13 unpacking to docker.io/library/campus-di-84ee2722b9be:check 0.1s done\n#13 DONE 0.2s\n\nView build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/ny9l7bfeum542d65slzla4sms\n"
+    },
+    {
+      "label": "record immutable image",
+      "exit_code": 0,
+      "stdout": "sha256:efc289925411cd0acd390fa20dba6e7e326b8c1cf8ca9ecb81d221e278cdcb6a\n",
+      "stderr": ""
+    },
+    {
+      "label": "actual bounded acceptance",
+      "exit_code": 0,
+      "stdout": "{\"acceptance\": [{\"file\": \"clear-01.pdf\", \"cer\": 0.0, \"gold_codepoints\": 96, \"locations\": 1, \"critical_phrases\": 1, \"ms\": 909}, {\"file\": \"clear-02.pdf\", \"cer\": 0.0, \"gold_codepoints\": 96, \"locations\": 1, \"critical_phrases\": 1, \"ms\": 900}, {\"file\": \"clear-03.pdf\", \"cer\": 0.0, \"gold_codepoints\": 127, \"locations\": 1, \"critical_phrases\": 1, \"ms\": 827}, {\"file\": \"clear-04.pdf\", \"cer\": 0.0, \"gold_codepoints\": 193, \"locations\": 2, \"critical_phrases\": 2, \"ms\": 888}, {\"file\": \"clear-05.pdf\", \"cer\": 0.0, \"gold_codepoints\": 129, \"locations\": 1, \"critical_phrases\": 1, \"ms\": 887}, {\"file\": \"clear-06.pdf\", \"cer\": 0.0, \"gold_codepoints\": 127, \"locations\": 1, \"critical_phrases\": 1, \"ms\": 882}, {\"file\": \"clear-07.pdf\", \"cer\": 0.0, \"gold_codepoints\": 195, \"locations\": 1, \"critical_phrases\": 1, \"ms\": 894}, {\"file\": \"clear-08.pdf\", \"cer\": 0.0, \"gold_codepoints\": 193, \"locations\": 2, \"critical_phrases\": 2, \"ms\": 918}, {\"file\": \"clear-09.pdf\", \"cer\": 0.0, \"gold_codepoints\": 127, \"locations\": 1, \"critical_phrases\": 1, \"ms\": 863}, {\"file\": \"clear-10.pdf\", \"cer\": 0.0, \"gold_codepoints\": 131, \"locations\": 1, \"critical_phrases\": 1, \"ms\": 840}, {\"file\": \"clear-11.pdf\", \"cer\": 0.0, \"gold_codepoints\": 98, \"locations\": 1, \"critical_phrases\": 1, \"ms\": 767}, {\"file\": \"clear-12.pdf\", \"cer\": 0.0, \"gold_codepoints\": 259, \"locations\": 2, \"critical_phrases\": 2, \"ms\": 820}, {\"file\": \"clear-13.pdf\", \"cer\": 0.0, \"gold_codepoints\": 98, \"locations\": 1, \"critical_phrases\": 1, \"ms\": 841}, {\"file\": \"clear-14.pdf\", \"cer\": 0.0, \"gold_codepoints\": 197, \"locations\": 1, \"critical_phrases\": 1, \"ms\": 775}, {\"file\": \"clear-15.pdf\", \"cer\": 0.0, \"gold_codepoints\": 162, \"locations\": 1, \"critical_phrases\": 1, \"ms\": 749}, {\"file\": \"clear-16.pdf\", \"cer\": 0.0, \"gold_codepoints\": 197, \"locations\": 2, \"critical_phrases\": 2, \"ms\": 734}, {\"file\": \"clear-17.pdf\", \"cer\": 0.0, \"gold_codepoints\": 98, \"locations\": 1, \"critical_phrases\": 1, \"ms\": 802}, {\"file\": \"clear-18.pdf\", \"cer\": 0.0, \"gold_codepoints\": 129, \"locations\": 1, \"critical_phrases\": 1, \"ms\": 755}, {\"file\": \"clear-19.pdf\", \"cer\": 0.0, \"gold_codepoints\": 98, \"locations\": 1, \"critical_phrases\": 1, \"ms\": 829}, {\"file\": \"clear-20.pdf\", \"cer\": 0.0, \"gold_codepoints\": 263, \"locations\": 2, \"critical_phrases\": 2, \"ms\": 753}, {\"file\": \"clear-01.docx\", \"cer\": 0.0, \"gold_codepoints\": 45, \"locations\": 3, \"critical_phrases\": 1, \"ms\": 703}, {\"file\": \"clear-02.docx\", \"cer\": 0.0, \"gold_codepoints\": 85, \"locations\": 3, \"critical_phrases\": 1, \"ms\": 719}, {\"file\": \"clear-03.docx\", \"cer\": 0.0, \"gold_codepoints\": 79, \"locations\": 4, \"critical_phrases\": 1, \"ms\": 739}, {\"file\": \"clear-04.docx\", \"cer\": 0.0, \"gold_codepoints\": 67, \"locations\": 3, \"critical_phrases\": 1, \"ms\": 733}, {\"file\": \"clear-05.docx\", \"cer\": 0.0, \"gold_codepoints\": 111, \"locations\": 8, \"critical_phrases\": 1, \"ms\": 727}, {\"file\": \"clear-06.docx\", \"cer\": 0.0, \"gold_codepoints\": 102, \"locations\": 4, \"critical_phrases\": 1, \"ms\": 724}, {\"file\": \"clear-07.docx\", \"cer\": 0.0, \"gold_codepoints\": 79, \"locations\": 4, \"critical_phrases\": 1, \"ms\": 728}, {\"file\": \"clear-08.docx\", \"cer\": 0.0, \"gold_codepoints\": 67, \"locations\": 3, \"critical_phrases\": 1, \"ms\": 720}, {\"file\": \"clear-09.docx\", \"cer\": 0.0, \"gold_codepoints\": 62, \"locations\": 4, \"critical_phrases\": 1, \"ms\": 702}, {\"file\": \"clear-10.docx\", \"cer\": 0.0, \"gold_codepoints\": 156, \"locations\": 8, \"critical_phrases\": 1, \"ms\": 740}, {\"file\": \"clear-11.docx\", \"cer\": 0.0, \"gold_codepoints\": 80, \"locations\": 4, \"critical_phrases\": 1, \"ms\": 737}, {\"file\": \"clear-12.docx\", \"cer\": 0.0, \"gold_codepoints\": 84, \"locations\": 4, \"critical_phrases\": 1, \"ms\": 709}, {\"file\": \"clear-13.docx\", \"cer\": 0.0, \"gold_codepoints\": 46, \"locations\": 3, \"critical_phrases\": 1, \"ms\": 751}, {\"file\": \"clear-14.docx\", \"cer\": 0.0, \"gold_codepoints\": 86, \"locations\": 3, \"critical_phrases\": 1, \"ms\": 723}, {\"file\": \"clear-15.docx\", \"cer\": 0.0, \"gold_codepoints\": 150, \"locations\": 9, \"critical_phrases\": 1, \"ms\": 698}, {\"file\": \"clear-16.docx\", \"cer\": 0.0, \"gold_codepoints\": 67, \"locations\": 3, \"critical_phrases\": 1, \"ms\": 720}, {\"file\": \"clear-17.docx\", \"cer\": 0.0, \"gold_codepoints\": 2686, \"locations\": 83, \"critical_phrases\": 1, \"ms\": 740}, {\"file\": \"clear-18.docx\", \"cer\": 0.0, \"gold_codepoints\": 103, \"locations\": 4, \"critical_phrases\": 1, \"ms\": 722}, {\"file\": \"clear-19.docx\", \"cer\": 0.0, \"gold_codepoints\": 3680, \"locations\": 5, \"critical_phrases\": 1, \"ms\": 729}, {\"file\": \"clear-20.docx\", \"cer\": 0.0, \"gold_codepoints\": 137, \"locations\": 8, \"critical_phrases\": 1, \"ms\": 733}], \"negative\": [{\"id\": \"empty\", \"status\": \"failed\", \"reason\": \"corrupt\", \"ms\": 290}, {\"id\": \"wrong-signature\", \"status\": \"failed\", \"reason\": \"corrupt\", \"ms\": 726}, {\"id\": \"truncated-pdf\", \"status\": \"failed\", \"reason\": \"corrupt\", \"ms\": 741}, {\"id\": \"encrypted-pdf\", \"status\": \"failed\", \"reason\": \"encrypted\", \"ms\": 780}, {\"id\": \"scan-only-pdf\", \"status\": \"needs_ocr\", \"reason\": null, \"ms\": 823}, {\"id\": \"mixed-text-scan-pdf\", \"status\": \"needs_ocr\", \"reason\": null, \"ms\": 807}, {\"id\": \"blank-pdf\", \"status\": \"failed\", \"reason\": \"unsupported_content\", \"ms\": 779}, {\"id\": \"pdf-page-over-limit\", \"status\": \"failed\", \"reason\": \"resource_limit\", \"ms\": 774}, {\"id\": \"pdf-content-over-limit\", \"status\": \"failed\", \"reason\": \"resource_limit\", \"ms\": 784}, {\"id\": \"input-over-limit\", \"status\": \"failed\", \"reason\": \"resource_limit\", \"ms\": 291}, {\"id\": \"zip-traversal\", \"status\": \"failed\", \"reason\": \"corrupt\", \"ms\": 722}, {\"id\": \"zip-entry-over-limit\", \"status\": \"failed\", \"reason\": \"resource_limit\", \"ms\": 722}, {\"id\": \"zip-ratio-bomb\", \"status\": \"failed\", \"reason\": \"resource_limit\", \"ms\": 757}, {\"id\": \"zip-encrypted\", \"status\": \"failed\", \"reason\": \"encrypted\", \"ms\": 726}, {\"id\": \"macro-word\", \"status\": \"failed\", \"reason\": \"unsupported_content\", \"ms\": 740}, {\"id\": \"legacy-word\", \"status\": \"failed\", \"reason\": \"corrupt\", \"ms\": 748}, {\"id\": \"zip-duplicate\", \"status\": \"failed\", \"reason\": \"corrupt\", \"ms\": 916}, {\"id\": \"zip-expanded-over-limit\", \"status\": \"failed\", \"reason\": \"resource_limit\", \"ms\": 846}, {\"id\": \"xml-dtd-entity\", \"status\": \"failed\", \"reason\": \"unsupported_content\", \"ms\": 822}, {\"id\": \"external-relationship\", \"status\": \"failed\", \"reason\": \"unsupported_content\", \"ms\": 830}, {\"id\": \"output-over-limit\", \"status\": \"failed\", \"reason\": \"resource_limit\", \"ms\": 1180}, {\"id\": \"docx-block-over-limit\", \"status\": \"failed\", \"reason\": \"resource_limit\", \"ms\": 814}, {\"id\": \"child-timeout\", \"status\": \"failed\", \"reason\": \"parse_timeout\", \"ms\": null}, {\"id\": \"child-memory-limit\", \"status\": \"failed\", \"reason\": \"resource_limit\", \"ms\": null}, {\"id\": \"child-interrupted\", \"status\": \"failed\", \"reason\": \"worker_interrupted\", \"ms\": null}], \"boundaries\": [{\"input_bytes\": 10485759, \"status\": \"ready\"}, {\"input_bytes\": 10485760, \"status\": \"ready\"}, {\"pdf_pages\": 200, \"status\": \"ready\"}, {\"docx_units\": 19999, \"status\": \"ready\"}, {\"docx_units\": 20000, \"status\": \"ready\"}], \"scope\": \"offline parser core only\", \"isolation\": {\"uid\": 65532, \"read_only_root\": true, \"external_connect_denied\": true, \"tmp_sources_after_tests\": 0}, \"unexecuted_negative\": [], \"groups\": 8, \"exit_code\": 0, \"peak_test_process_rss_kib\": 105292}\n",
+      "stderr": "test_01_frozen_acceptance_quality_and_locations (__main__.ParserTests.test_01_frozen_acceptance_quality_and_locations) ... ok\ntest_02_pdf_failures_and_scan_states (__main__.ParserTests.test_02_pdf_failures_and_scan_states) ... ok\ntest_03_input_and_page_boundaries (__main__.ParserTests.test_03_input_and_page_boundaries) ... ok\ntest_04_zip_security (__main__.ParserTests.test_04_zip_security) ... ok\ntest_05_xml_security (__main__.ParserTests.test_05_xml_security) ... ok\ntest_06_docx_body_and_block_limits (__main__.ParserTests.test_06_docx_body_and_block_limits) ... ok\ntest_07_runner_real_child_resource_failures (__main__.ParserTests.test_07_runner_real_child_resource_failures) ... ok\ntest_08_container_isolation (__main__.ParserTests.test_08_container_isolation) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 58.715s\n\nOK\n"
+    },
+    {
+      "label": "private HTTP adapter real corpus and boundary tests",
+      "exit_code": 0,
+      "stdout": "{\"scope\": \"private adapter component only; no default Compose, DB or queue activation\", \"documents\": [{\"file\": \"clear-01.pdf\", \"status\": 200, \"locations\": 1}, {\"file\": \"clear-02.pdf\", \"status\": 200, \"locations\": 1}, {\"file\": \"clear-03.pdf\", \"status\": 200, \"locations\": 1}, {\"file\": \"clear-04.pdf\", \"status\": 200, \"locations\": 2}, {\"file\": \"clear-05.pdf\", \"status\": 200, \"locations\": 1}, {\"file\": \"clear-06.pdf\", \"status\": 200, \"locations\": 1}, {\"file\": \"clear-07.pdf\", \"status\": 200, \"locations\": 1}, {\"file\": \"clear-08.pdf\", \"status\": 200, \"locations\": 2}, {\"file\": \"clear-09.pdf\", \"status\": 200, \"locations\": 1}, {\"file\": \"clear-10.pdf\", \"status\": 200, \"locations\": 1}, {\"file\": \"clear-11.pdf\", \"status\": 200, \"locations\": 1}, {\"file\": \"clear-12.pdf\", \"status\": 200, \"locations\": 2}, {\"file\": \"clear-13.pdf\", \"status\": 200, \"locations\": 1}, {\"file\": \"clear-14.pdf\", \"status\": 200, \"locations\": 1}, {\"file\": \"clear-15.pdf\", \"status\": 200, \"locations\": 1}, {\"file\": \"clear-16.pdf\", \"status\": 200, \"locations\": 2}, {\"file\": \"clear-17.pdf\", \"status\": 200, \"locations\": 1}, {\"file\": \"clear-18.pdf\", \"status\": 200, \"locations\": 1}, {\"file\": \"clear-19.pdf\", \"status\": 200, \"locations\": 1}, {\"file\": \"clear-20.pdf\", \"status\": 200, \"locations\": 2}, {\"file\": \"clear-01.docx\", \"status\": 200, \"locations\": 3}, {\"file\": \"clear-02.docx\", \"status\": 200, \"locations\": 3}, {\"file\": \"clear-03.docx\", \"status\": 200, \"locations\": 4}, {\"file\": \"clear-04.docx\", \"status\": 200, \"locations\": 3}, {\"file\": \"clear-05.docx\", \"status\": 200, \"locations\": 8}, {\"file\": \"clear-06.docx\", \"status\": 200, \"locations\": 4}, {\"file\": \"clear-07.docx\", \"status\": 200, \"locations\": 4}, {\"file\": \"clear-08.docx\", \"status\": 200, \"locations\": 3}, {\"file\": \"clear-09.docx\", \"status\": 200, \"locations\": 4}, {\"file\": \"clear-10.docx\", \"status\": 200, \"locations\": 8}, {\"file\": \"clear-11.docx\", \"status\": 200, \"locations\": 4}, {\"file\": \"clear-12.docx\", \"status\": 200, \"locations\": 4}, {\"file\": \"clear-13.docx\", \"status\": 200, \"locations\": 3}, {\"file\": \"clear-14.docx\", \"status\": 200, \"locations\": 3}, {\"file\": \"clear-15.docx\", \"status\": 200, \"locations\": 9}, {\"file\": \"clear-16.docx\", \"status\": 200, \"locations\": 3}, {\"file\": \"clear-17.docx\", \"status\": 200, \"locations\": 83}, {\"file\": \"clear-18.docx\", \"status\": 200, \"locations\": 4}, {\"file\": \"clear-19.docx\", \"status\": 200, \"locations\": 5}, {\"file\": \"clear-20.docx\", \"status\": 200, \"locations\": 8}], \"groups\": 7, \"safe_logs\": true, \"exit_code\": 0}\n",
+      "stderr": "test_absolute_read_budgets_and_extra_body (__main__.RpcTests.test_absolute_read_budgets_and_extra_body) ... ok\ntest_busy_is_immediate_health_stays_live (__main__.RpcTests.test_busy_is_immediate_health_stays_live) ... ok\ntest_failure_mapping_over_http (__main__.RpcTests.test_failure_mapping_over_http) ... ok\ntest_header_and_body_framing (__main__.RpcTests.test_header_and_body_framing) ... ok\ntest_health_and_auth_before_body (__main__.RpcTests.test_health_and_auth_before_body) ... ok\ntest_real_corpus_over_http (__main__.RpcTests.test_real_corpus_over_http) ... ok\ntest_token_startup_validation (__main__.RpcTests.test_token_startup_validation) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 31.136s\n\nOK\n"
+    }
+  ]
+}
