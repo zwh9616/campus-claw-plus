@@ -1,0 +1,1 @@
+{"scope": "Reviewer live local HTTP protocol only; explicit child doubles; no local extraction, container, SQL or sandbox claim", "groups": 5, "safe_logs": true, "requests": 18, "exit_code": 0}

@@ -1,0 +1,10 @@
+test_child_mapping_oversized_output_and_cleanup_with_explicit_doubles (__main__.ReviewerProtocol.test_child_mapping_oversized_output_and_cleanup_with_explicit_doubles) ... ok
+test_malformed_headers_lengths_and_controlled_paths (__main__.ReviewerProtocol.test_malformed_headers_lengths_and_controlled_paths) ... ok
+test_read_deadlines_are_live_and_release_parse_lock (__main__.ReviewerProtocol.test_read_deadlines_are_live_and_release_parse_lock) ... ok
+test_saturated_parser_retains_immediate_health_and_busy (__main__.ReviewerProtocol.test_saturated_parser_retains_immediate_health_and_busy) ... ok
+test_unauthenticated_large_body_does_not_call_child (__main__.ReviewerProtocol.test_unauthenticated_large_body_does_not_call_child) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 10.655s
+
+OK

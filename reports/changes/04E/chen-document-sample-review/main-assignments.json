@@ -1,0 +1,78 @@
+{
+  "run": 43567519679,
+  "head": "670ac0c9ae587359bdba2c0d107be54b3ca1f0a9",
+  "source": {
+    "commit": "670ac0c9ae587359bdba2c0d107be54b3ca1f0a9",
+    "dirty": false,
+    "fingerprint": "8a76577ed24e01822bcf70c973e662f39058ce59448657037877b870d6357dfa"
+  },
+  "zip_digest": "sha256:3d9f0f00c0bea46c5fc726f92b4328650a6422042d67d4fdfe80df02a728ec15",
+  "artifact_id": 14102359005,
+  "batch": "identity-materials-assignment-tasks",
+  "gate": {
+    "exit_code": 0,
+    "results": [
+      {
+        "name": "check",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 178344
+      },
+      {
+        "name": "audit",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 790
+      },
+      {
+        "name": "secret-scan",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 1962
+      },
+      {
+        "name": "verify",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 258361
+      }
+    ],
+    "notRun": []
+  },
+  "assignment_real_suite_count": 18,
+  "assignment_recovery_steps": 5,
+  "https_persistence_phases": 3,
+  "images": [
+    {
+      "service": "mysql",
+      "image_id": "sha256:ef4eaffa8db812e612082b2c77d5195dfab66164905c60f80dfea4825aa893e8",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "admin",
+      "image_id": "sha256:591f7a6ac1740fcd2c4a2adfedcc93112968c1defeb41057ecdfd6ebfd204b33",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "backend",
+      "image_id": "sha256:c7758f1f64a8e235d3c83e0e4e5ed9f13c9e7b48201219793e31ca8fc8b432ee",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "frontend",
+      "image_id": "sha256:be7bd866fee7a1789f11d36f61a6a7b28a70016d95db6fd21bb7c4c0d6c0518a",
+      "HIGH": 0,
+      "CRITICAL": 0
+    }
+  ],
+  "cleanup_count": 4,
+  "production_executor_unbound": true,
+  "scope": "Self CI real Docker evidence; local Docker was unavailable; Ge independent review not implied"
+}
