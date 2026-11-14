@@ -1,0 +1,54 @@
+
+> campus-claw-plus@0.0.1 check:contracts
+> node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs scripts/contracts/identity-phase.test.mjs scripts/contracts/materials.test.mjs scripts/contracts/assignments.test.mjs scripts/contracts/documents.test.mjs scripts/contracts/document-integration.test.mjs
+
+Contracts: 49 schemas; 225 positive/negative fixtures, 6 semantic inputs and 43 generated boundary cases agree in both paths; 198 operation examples; 22 current identity/health/material/assignment operations and six frozen 04E document contracts. OCR/vector/hybrid runtime operations remain absent.
+DI-SC-02..06/14/15: 31 private dual-path cases, frozen RPC/config/candidate five-DDL; no runtime activation.
+✔ AT-SC-01 nine implemented business operations activate atomically with exact migration5 (30.7138ms)
+✔ AT-SC-02/03/08 actions, owner chain and original class precede all business conditions (24.895ms)
+✔ AT-SC-04 input framing, exact parameters, independent quota and error responses stay closed (35.4018ms)
+✔ AT-SC-05..08 only committed authorized same-payload records replay the original 202 before new conditions (29.0045ms)
+✔ AT-SC-06 canonical payload bytes and digest match five independently generated Go vectors (5.5736ms)
+✔ AT-SC-04 request byte cap is distinct from codepoint cap; deadline equality fails (3.2242ms)
+✔ AT-SC-02/03 consistent pages sort created time before exact string ID tie-breaks (0.5974ms)
+✔ AT-SC-09..19 task mechanism declarations forbid fake production execution, stale CAS and cancellation revival (50.8423ms)
+✔ AT-SC-09/13..18 Task snapshots preserve safe errors, counts, version and cancellation flags (1.1947ms)
+✔ AT-SC-13/14/15 pending cannot requeue an exhausted third claim (0.3103ms)
+DI-SC-02..06/14/15: 31 private dual-path cases, frozen RPC/config/candidate five-DDL; no runtime activation.
+✔ DI-SC-14 canonical exact internal URL and random token examples; no runtime config reads (2.747ms)
+✔ DI-SC-01/14 replay before dependency preflight, bounded RPC and no activation cannot drift (38.7623ms)
+✔ DI-SC-15 candidate exact DDL/hash and composite owner/location FKs remain guarded (58.1919ms)
+✔ DI-SC-02..06/14 private Schema/OpenAPI dual paths and semantic failures (343.6433ms)
+✔ DI-SC-14 contract references cannot fetch URLs or escape local Schema files (14.404ms)
+✔ DI-SC-01/25 six frozen candidates never activate PDF/OCR/vector runtime or change 22 current (19.785ms)
+✔ DI-SC-02/11 authorization, private downloads and strict input declarations cannot weaken (43.6534ms)
+✔ DI-SC-02/06/14 upload and expanded parser resource declarations stay bounded (31.7062ms)
+✔ DI-SC-07/10 original 202, atomic job, shared quota and CAS retry declarations are exact (28.0319ms)
+✔ DI-SC-12 keyword only, snapshot and dependency errors cannot silently change (19.5237ms)
+✔ DI-SC-12 actual normalized q and page schemas reject type, bounds and default drift (15.6943ms)
+✔ DI-SC-02 binary envelope examples test byte/title limits; no real parsing claim (10.421ms)
+✔ DI-SC-03/04/05 page/block boundaries and exact Unicode quote require persisted source (2.4477ms)
+✔ ICF-SC-01/02 active identity health is unique and anonymous; no skeleton fallback (61.4269ms)
+✔ ICF-SC-03/04 activation preserves required, process-separated secret metadata (50.6654ms)
+✔ ICF-SC-05/06 available SQL rejects duplicates, forward dependencies and false deployment claims (33.2845ms)
+✔ MR-SC-01/02 six implemented contracts preserve activation and identity/class/role declarations (36.6986ms)
+✔ MR-SC-03/04/05/06 wire declarations reject unknown inputs, missing quotas, wrong replay and download headers (46.5283ms)
+✔ MR-SC-07/08/10 dependency failures must remain 503/504, not a successful empty search (10.794ms)
+✔ MR-SC-04 Unicode examples enforce original UTF-8 bytes, normalized whitespace and title codepoints (8.1345ms)
+✔ MR-SC-01/03 material examples preserve original byte size, canonical detail and unique pagination (1.7975ms)
+✔ MR-SC-03/09 optional query defaults remain 1/20 and keyword/4 in sole-source schemas (1.1154ms)
+✔ MR-SC-09/10 citation examples bind codepoint range, exact quote, source/version, URL and literal query (1.7023ms)
+✔ BC-SC-06 accepts trusted rubric, rejects incorrect grading, stale and missing context (3.0431ms)
+✔ BC-SC-05 nonempty Citation codepoint range (0.2156ms)
+✔ BC-SC-08/14 terminal sequence, cancellation and disconnected persistence (0.813ms)
+✔ BC-SC-10 MCP exception remains exact, disabled and subject to both future reviews (1.1688ms)
+✔ BC-SC-09 registered empty keys only; no weakening historical HTTP_PORT requirement (42.2997ms)
+✔ BC-SC-18 planned operations and anonymous auth bypass cannot enter OpenAPI (144.6654ms)
+ℹ tests 39
+ℹ suites 0
+ℹ pass 39
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1138.9738

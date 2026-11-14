@@ -1,0 +1,573 @@
+{
+  "openapi": "3.1.0",
+  "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
+  "info": {
+    "title": "CampusClawPlus private document parser (frozen, not deployed)",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://document-parser:8091"
+    }
+  ],
+  "security": [
+    {
+      "ParserBearer": []
+    }
+  ],
+  "paths": {
+    "/health": {
+      "get": {
+        "operationId": "privateParserHealth",
+        "x-contract-status": "frozen",
+        "responses": {
+          "200": {
+            "description": "Frozen private response; no-store; never log source content",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "./Health.schema.json"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Frozen private response; no-store; never log source content",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "./Error.schema.json"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "error": {
+                          "const": "invalid_request"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Frozen private response; no-store; never log source content",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "./Error.schema.json"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "error": {
+                          "const": "unauthenticated"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Frozen private response; no-store; never log source content",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "./Error.schema.json"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "error": {
+                          "const": "not_found"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Frozen private response; no-store; never log source content",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "./Error.schema.json"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "error": {
+                          "const": "method_not_allowed"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/parse": {
+      "post": {
+        "operationId": "privateParseDocument",
+        "x-contract-status": "frozen",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/pdf": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            },
+            "application/vnd.openxmlformats-officedocument.wordprocessingml.document": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Frozen private response; no-store; never log source content",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "./ParseResult.schema.json"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "enum": [
+                            "ready",
+                            "needs_ocr"
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Frozen private response; no-store; never log source content",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "./Error.schema.json"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "error": {
+                          "const": "invalid_request"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Frozen private response; no-store; never log source content",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "./Error.schema.json"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "error": {
+                          "const": "unauthenticated"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Frozen private response; no-store; never log source content",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "./Error.schema.json"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "error": {
+                          "const": "not_found"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Frozen private response; no-store; never log source content",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "./Error.schema.json"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "error": {
+                          "const": "method_not_allowed"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Frozen private response; no-store; never log source content",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "./ParseResult.schema.json"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "enum": [
+                            "failed"
+                          ]
+                        },
+                        "failure_reason": {
+                          "enum": [
+                            "corrupt",
+                            "encrypted",
+                            "unsupported_content",
+                            "resource_limit"
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Frozen private response; no-store; never log source content",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "allOf": [
+                        {
+                          "$ref": "./ParseResult.schema.json"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "status": {
+                              "enum": [
+                                "failed"
+                              ]
+                            },
+                            "failure_reason": {
+                              "enum": [
+                                "worker_interrupted",
+                                "internal_failure"
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "error": {
+                          "const": "busy"
+                        }
+                      },
+                      "required": [
+                        "error"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Frozen private response; no-store; never log source content",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{32}$"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "./ParseResult.schema.json"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "enum": [
+                            "failed"
+                          ]
+                        },
+                        "failure_reason": {
+                          "enum": [
+                            "parse_timeout"
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ParserBearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "canonical base64url encoding of 32 random bytes"
+      }
+    },
+    "schemas": {
+      "ParseResult": {
+        "$ref": "./ParseResult.schema.json"
+      },
+      "Error": {
+        "$ref": "./Error.schema.json"
+      },
+      "Health": {
+        "$ref": "./Health.schema.json"
+      }
+    }
+  }
+}

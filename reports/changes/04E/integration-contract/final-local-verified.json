@@ -1,0 +1,140 @@
+{
+  "label": "final-local",
+  "zip_sha256": "d22f19d8f65f2af552a86dfae400eb82688df646c6367423e4ca87aaf16d065e",
+  "source": {
+    "commit": "ed1c18f453b6b8832803d29a5bcfc085b2fcec21",
+    "dirty": false,
+    "fingerprint": "e225ce54ad2a3691f3f859c6b3123e21493bfa09a2f55ba4f203cb7d434c3f60"
+  },
+  "gate": {
+    "time": "2026-11-13T12:15:55.384Z",
+    "node": "v25.2.1",
+    "exitCode": 0,
+    "results": [
+      {
+        "name": "check",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 124624
+      },
+      {
+        "name": "audit",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 9534
+      },
+      {
+        "name": "secret-scan",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 8237
+      },
+      {
+        "name": "verify",
+        "exitCode": 0,
+        "reason": "passed",
+        "signal": null,
+        "durationMs": 371299
+      }
+    ],
+    "notRun": []
+  },
+  "images": [
+    {
+      "service": "mysql",
+      "image_id": "sha256:2b09ba5648a20232fb16df9e6888fba6af1ea63281144df68528a7cc139fb435",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "admin",
+      "image_id": "sha256:7b9cbb81bb9586ffcd1474c3fcd4c9c231d4fd9e74a1d163f412a67838960849",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "backend",
+      "image_id": "sha256:5c37159348e047b135d5255e6a2fa3aecf358b6b9237eed3d347e35eaf971956",
+      "HIGH": 0,
+      "CRITICAL": 0
+    },
+    {
+      "service": "frontend",
+      "image_id": "sha256:0bd4df09ca9b5bcbd3025d59243cc9bd4e25587613c24c55fc1267be3ed0bf1b",
+      "HIGH": 0,
+      "CRITICAL": 0
+    }
+  ],
+  "source_reports": [
+    {
+      "path": "output/mysql-image-verify/results.json",
+      "sha256": "6e9ee7168ddb39310de86b83b3a183f46426ba175f5de34546fedb2880350b48"
+    },
+    {
+      "path": "output/application-image-verify/results.json",
+      "sha256": "f0b1607011e6db12f653be8adec8bf8baa8b6de4bae32fafa13f65344e0ec852"
+    },
+    {
+      "path": "output/identity-wiring/results.json",
+      "sha256": "1d32221732541cebc046e1c5afc180ee27f3c49bfc42a462e941604eccc58d78"
+    },
+    {
+      "path": "output/identity/results.json",
+      "sha256": "c6cff990983a8fbff8915a47f8fdffef816c698c386bcc26f02b317eaf48da2a"
+    }
+  ],
+  "cleanup": [
+    {
+      "tag": "campus-mysql-audit-d053c8338807:verification",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "tag": "campus-app-audit-5bbe4f9542ac-backend:verification",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "tag": "campus-app-audit-5bbe4f9542ac-admin:verification",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "tag": "campus-app-audit-5bbe4f9542ac-frontend:verification",
+      "exit_code": 0,
+      "ok": true
+    }
+  ],
+  "real_mysql_groups": [
+    "TestATActualWorkerSIGTERM",
+    "TestATBackupRestoreAndActualTargetMatrix",
+    "TestATBusinessWritePointRollbackAndControlledDeadline",
+    "TestATCommitAcknowledgementAndRealCommittedReplay",
+    "TestATConsistentPageSnapshotsAndExactIDs",
+    "TestATEmptyDownOnly",
+    "TestATMigrationDriftHistoryAndBinaryScopes",
+    "TestATMigrationEachDDLAndForwardRepair",
+    "TestATMigrationEmptyAndUpgrade",
+    "TestATMigrationRejectsForeignDatabase",
+    "TestATMutationStatesAndRollback",
+    "TestATRealHTTPAuthorizationInputsAndIdempotency",
+    "TestATRealWorkerBatchConcurrencyAndUnbound",
+    "TestATWorkerBackoffThirdExpiryAndRecoveryCAS",
+    "TestATWorkerCancellationSerializations",
+    "TestATWorkerCrashBeforeAndAfterClaim",
+    "TestATWorkerCrashHelper",
+    "TestATWorkerLeaseExpiryTakeoverAndABA",
+    "TestATWorkerRecoveryRetryAndAdapterRollback",
+    "TestATWorkerTerminalAndClaimRollback"
+  ],
+  "no_skipped_mysql_tests": true,
+  "https_persistence_phases": [
+    "SC-01/02/03 real same-origin HTTPS, unique health, TLS rejection, login and revoked access",
+    "account and class persist after database restart",
+    "same account and original password after full container recreation"
+  ],
+  "scope": "existing runtime regression; no PDF/OCR/semantic implementation claim"
+}

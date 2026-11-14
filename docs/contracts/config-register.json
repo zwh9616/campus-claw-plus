@@ -197,7 +197,7 @@
     },
     {
       "owner": "04E",
-      "purpose": "A私有解析RPC地址/认证、预算及B OCR/C嵌入配置；精确键和缺失/超时规则在各阶段实施前冻结，不是active",
+      "purpose": "B OCR/C嵌入配置，精确键在各阶段冻结；A解析URL/认证已单列frozen但未激活",
       "names_frozen": false
     }
   ],
@@ -217,5 +217,39 @@
       "removal": "不再使用受控MCP服务时移除"
     }
   ],
-  "frozen": []
+  "frozen": [
+    {
+      "name": "DOCUMENT_PARSER_URL",
+      "owner": "04E",
+      "required": true,
+      "secret": false,
+      "consumers": [
+        "backend",
+        "compose"
+      ],
+      "introduced_by": "openspec/changes/2026-11-13-materials-document-intelligence",
+      "status": "frozen",
+      "validation": "精确http://document-parser:8091；无userinfo/path/query/fragment/redirect/环境代理",
+      "missing_behavior": "激活后缺失/空白/非法启动非零，日志不回显值；当前不读取",
+      "timeout": "RPC总35秒，连接1秒、响应头32秒；上传前健康预检500ms",
+      "activation_requires": "本合同获真实审查合入及接线实现同提交激活；不写入当前空样例"
+    },
+    {
+      "name": "DOCUMENT_PARSER_TOKEN",
+      "owner": "04E",
+      "required": true,
+      "secret": true,
+      "consumers": [
+        "backend",
+        "document-parser",
+        "compose"
+      ],
+      "introduced_by": "openspec/changes/2026-11-13-materials-document-intelligence",
+      "status": "frozen",
+      "validation": "32随机字节canonical无填充base64url，恰好43ASCII字符，首尾空白也拒绝",
+      "missing_behavior": "激活后缺失/空白/非法启动非零，日志不回显值；当前不读取",
+      "timeout": "仅认证恒定时间比较，无网络操作",
+      "activation_requires": "本合同获真实审查合入及接线实现同提交激活；不写入当前空样例"
+    }
+  ]
 }

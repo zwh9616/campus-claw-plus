@@ -1,0 +1,89 @@
+
+> campus-claw-plus@0.0.1 check:contracts
+> node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs scripts/contracts/identity-phase.test.mjs scripts/contracts/materials.test.mjs scripts/contracts/assignments.test.mjs scripts/contracts/documents.test.mjs scripts/contracts/document-integration.test.mjs
+
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
++ [
++   {
++     activation_requires: '本合同获真实审查合入及接线实现同提交激活；不写入当前空样例',
++     consumers: [
++       'backend',
++       'compose'
++     ],
++     introduced_by: 'openspec/changes/2026-11-13-materials-document-intelligence',
++     missing_behavior: '激活后缺失/空白/非法启动非零，日志不回显值；当前不读取',
++     name: 'DOCUMENT_PARSER_URL',
++     owner: '04E',
++     required: true,
++     secret: false,
++     status: 'frozen',
++     timeout: 'RPC总35秒，连接1秒、响应头32秒；上传前健康预检500ms',
++     validation: '精确http://document-parser:8091；无userinfo/path/query/fragment/redirect/环境代理'
++   },
++   {
++     activation_requires: '本合同获真实审查合入及接线实现同提交激活；不写入当前空样例',
++     consumers: [
++       'backend',
++       'document-parser',
++       'compose'
++     ],
++     introduced_by: 'openspec/changes/2026-11-13-materials-document-intelligence',
++     missing_behavior: '激活后缺失/空白/非法启动非零，日志不回显值；当前不读取',
++     name: 'DOCUMENT_PARSER_TOKEN',
++     owner: '04E',
++     required: true,
++     secret: true,
++     status: 'frozen',
++     timeout: '仅认证恒定时间比较，无网络操作',
++     validation: '32随机字节canonical无填充base64url，恰好43ASCII字符，首尾空白也拒绝'
++   }
++ ]
+- []
+
+    at validateIdentityPhase (file:///C:/Users/lenovo/Desktop/SoftwareDevelopment/group_project/output/04-parser-integration-contracts-2026-11-13/scripts/contracts/identity-phase.mjs:16:9)
+    at file:///C:/Users/lenovo/Desktop/SoftwareDevelopment/group_project/output/04-parser-integration-contracts-2026-11-13/scripts/check-contracts.mjs:24:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:413:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:654:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: [
+    {
+      name: 'DOCUMENT_PARSER_URL',
+      owner: '04E',
+      required: true,
+      secret: false,
+      consumers: [ 'backend', 'compose' ],
+      introduced_by: 'openspec/changes/2026-11-13-materials-document-intelligence',
+      status: 'frozen',
+      validation: '精确http://document-parser:8091；无userinfo/path/query/fragment/redirect/环境代理',
+      missing_behavior: '激活后缺失/空白/非法启动非零，日志不回显值；当前不读取',
+      timeout: 'RPC总35秒，连接1秒、响应头32秒；上传前健康预检500ms',
+      activation_requires: '本合同获真实审查合入及接线实现同提交激活；不写入当前空样例'
+    },
+    {
+      name: 'DOCUMENT_PARSER_TOKEN',
+      owner: '04E',
+      required: true,
+      secret: true,
+      consumers: [ 'backend', 'document-parser', 'compose' ],
+      introduced_by: 'openspec/changes/2026-11-13-materials-document-intelligence',
+      status: 'frozen',
+      validation: '32随机字节canonical无填充base64url，恰好43ASCII字符，首尾空白也拒绝',
+      missing_behavior: '激活后缺失/空白/非法启动非零，日志不回显值；当前不读取',
+      timeout: '仅认证恒定时间比较，无网络操作',
+      activation_requires: '本合同获真实审查合入及接线实现同提交激活；不写入当前空样例'
+    }
+  ],
+  expected: [],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v25.2.1

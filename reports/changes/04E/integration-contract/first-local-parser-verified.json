@@ -1,0 +1,21 @@
+{
+  "label": "integration-first-local",
+  "zip_sha256": "7ef3612cdcf4b8488a1ef808617497325e2497cd091be2961f79dea407c54a0a",
+  "source": {
+    "commit": "983796926a828ca48f12f3f1d70e30045d116aab",
+    "dirty": false,
+    "fingerprint": "e843393efbcf027d4a2c8363daf09c1777c5e2495f66fd2e5eb316c9e8bfdc2e"
+  },
+  "production_images": 4,
+  "offline_candidate_images": 1,
+  "candidate_image": "sha256:b3499061f0c1d701dbb22455b0b8220ac9b88cda3a0967a118f55ddbbfc916e8",
+  "tests_image_is_exported_and_scanned_image": true,
+  "clear_documents": 40,
+  "negative_classes": 25,
+  "locations": 195,
+  "critical_phrases": 45,
+  "max_cer": 0,
+  "max_document_ms": 948,
+  "all_cleanup_passed": true,
+  "scope": "offline parsing and original runtime regression; no RPC/SQL/HTTP/UI/OCR/semantic delivery claim"
+}

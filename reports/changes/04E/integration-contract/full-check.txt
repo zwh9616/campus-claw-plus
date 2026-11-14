@@ -1,0 +1,291 @@
+
+> campus-claw-plus@0.0.1 check
+> npm run check:foundation && npm run check:gate && npm run check:contracts && npm run check:service-batches && npm run check:identity-wiring && npm run check:frontend-auth && npm run typecheck && npm run build && npm run check:sample-isolation && npm run check:backend && npm run check:spec && npm run check:document-parser && npm run check:document-storage-contract
+
+
+> campus-claw-plus@0.0.1 check:foundation
+> node scripts/check-foundation.mjs
+
+Foundation: rule/skill entry points exist, sample keys are empty, .env is ignored, Nginx runtime digest matches its register.
+This check is separate from real authorization review and full-history secret scanning.
+
+> campus-claw-plus@0.0.1 check:gate
+> node --test scripts/gate.test.mjs
+
+✔ DO-SC-03 serial success executes all stages in order (346.8025ms)
+✔ DO-SC-04 check failure preserves exit code and prevents subsequent execution (85.9081ms)
+✔ DO-SC-04 audit failure preserves exit code and prevents subsequent execution (174.1777ms)
+✔ DO-SC-04 secret-scan failure preserves exit code and prevents subsequent execution (235.0594ms)
+✔ DO-SC-04 verify failure preserves exit code and prevents subsequent execution (325.5749ms)
+✔ DO-SC-05 missing executable is failure, not a skipped pass (21.6332ms)
+✔ DO-SC-05 signalled child cannot pass (92.2794ms)
+✔ DO-SC-05 timeout terminates stage and fails closed (513.8348ms)
+✔ DO-SC-05 cancellation before and during a stage prevents later commands (356.7602ms)
+✔ DO-SC-05 concurrent calls in one checkout fail without stealing its lock (6.3459ms)
+✔ DO-SC-05 different runs isolate images and atomically assigned ports; keep contract/probes (1.564ms)
+✔ DO-SC-03/06 Make remains a thin npm wrapper, stable CI delegates complete gate (1.37ms)
+✔ DO-SC-05 Make installation failure stops setup; -j does not run targets concurrently (21.4485ms)
+ℹ GNU Make unavailable: real Make execution unverified here; use npm gate. CI and Docker test environment must execute this case.
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2305.1557
+
+> campus-claw-plus@0.0.1 check:contracts
+> node scripts/check-contracts.mjs && node --test scripts/contracts/validate.test.mjs scripts/contracts/identity-phase.test.mjs scripts/contracts/materials.test.mjs scripts/contracts/assignments.test.mjs scripts/contracts/documents.test.mjs scripts/contracts/document-integration.test.mjs
+
+Contracts: 49 schemas; 225 positive/negative fixtures, 6 semantic inputs and 43 generated boundary cases agree in both paths; 198 operation examples; 22 current identity/health/material/assignment operations and six frozen 04E document contracts. OCR/vector/hybrid runtime operations remain absent.
+DI-SC-02..06/14/15: 30 private dual-path cases, frozen RPC/config/candidate five-DDL; no runtime activation.
+✔ AT-SC-01 nine implemented business operations activate atomically with exact migration5 (30.6951ms)
+✔ AT-SC-02/03/08 actions, owner chain and original class precede all business conditions (27.9838ms)
+✔ AT-SC-04 input framing, exact parameters, independent quota and error responses stay closed (37.7686ms)
+✔ AT-SC-05..08 only committed authorized same-payload records replay the original 202 before new conditions (26.687ms)
+✔ AT-SC-06 canonical payload bytes and digest match five independently generated Go vectors (3.9344ms)
+✔ AT-SC-04 request byte cap is distinct from codepoint cap; deadline equality fails (2.7337ms)
+✔ AT-SC-02/03 consistent pages sort created time before exact string ID tie-breaks (0.6145ms)
+✔ AT-SC-09..19 task mechanism declarations forbid fake production execution, stale CAS and cancellation revival (50.2645ms)
+✔ AT-SC-09/13..18 Task snapshots preserve safe errors, counts, version and cancellation flags (1.1536ms)
+✔ AT-SC-13/14/15 pending cannot requeue an exhausted third claim (0.3013ms)
+DI-SC-02..06/14/15: 30 private dual-path cases, frozen RPC/config/candidate five-DDL; no runtime activation.
+✔ DI-SC-14 canonical exact internal URL and random token examples; no runtime config reads (3.2793ms)
+✔ DI-SC-01/14 replay before dependency preflight, bounded RPC and no activation cannot drift (43.7763ms)
+✔ DI-SC-15 candidate exact DDL/hash and composite owner/location FKs remain guarded (54.718ms)
+✔ DI-SC-02..06/14 private Schema/OpenAPI dual paths and semantic failures (371.8491ms)
+✔ DI-SC-14 contract references cannot fetch URLs or escape local Schema files (13.1218ms)
+✔ DI-SC-01/25 six frozen candidates never activate PDF/OCR/vector runtime or change 22 current (21.1693ms)
+✔ DI-SC-02/11 authorization, private downloads and strict input declarations cannot weaken (37.7516ms)
+✔ DI-SC-02/06/14 upload and expanded parser resource declarations stay bounded (31.8598ms)
+✔ DI-SC-07/10 original 202, atomic job, shared quota and CAS retry declarations are exact (33.7923ms)
+✔ DI-SC-12 keyword only, snapshot and dependency errors cannot silently change (19.6118ms)
+✔ DI-SC-12 actual normalized q and page schemas reject type, bounds and default drift (19.938ms)
+✔ DI-SC-02 binary envelope examples test byte/title limits; no real parsing claim (11.8453ms)
+✔ DI-SC-03/04/05 page/block boundaries and exact Unicode quote require persisted source (2.5889ms)
+✔ ICF-SC-01/02 active identity health is unique and anonymous; no skeleton fallback (41.8711ms)
+✔ ICF-SC-03/04 activation preserves required, process-separated secret metadata (45.5361ms)
+✔ ICF-SC-05/06 available SQL rejects duplicates, forward dependencies and false deployment claims (30.7838ms)
+✔ MR-SC-01/02 six implemented contracts preserve activation and identity/class/role declarations (40.216ms)
+✔ MR-SC-03/04/05/06 wire declarations reject unknown inputs, missing quotas, wrong replay and download headers (50.4697ms)
+✔ MR-SC-07/08/10 dependency failures must remain 503/504, not a successful empty search (9.7338ms)
+✔ MR-SC-04 Unicode examples enforce original UTF-8 bytes, normalized whitespace and title codepoints (7.0678ms)
+✔ MR-SC-01/03 material examples preserve original byte size, canonical detail and unique pagination (1.3138ms)
+✔ MR-SC-03/09 optional query defaults remain 1/20 and keyword/4 in sole-source schemas (0.9307ms)
+✔ MR-SC-09/10 citation examples bind codepoint range, exact quote, source/version, URL and literal query (1.1678ms)
+✔ BC-SC-06 accepts trusted rubric, rejects incorrect grading, stale and missing context (3.0011ms)
+✔ BC-SC-05 nonempty Citation codepoint range (0.2387ms)
+✔ BC-SC-08/14 terminal sequence, cancellation and disconnected persistence (0.7892ms)
+✔ BC-SC-10 MCP exception remains exact, disabled and subject to both future reviews (1.1635ms)
+✔ BC-SC-09 registered empty keys only; no weakening historical HTTP_PORT requirement (34.0624ms)
+✔ BC-SC-18 planned operations and anonymous auth bypass cannot enter OpenAPI (140.9871ms)
+ℹ tests 39
+ℹ suites 0
+ℹ pass 39
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1134.6888
+
+> campus-claw-plus@0.0.1 check:service-batches
+> node scripts/check-service-batches.mjs && node --test scripts/service-batches.test.mjs
+
+DO-SC-11/13: identity-materials-assignment-tasks, 4 registered services; pinned image sources and <=3s probes. Runtime and Ge review remain separate.
+✔ DO-SC-11/13 current batch covers only real approved services/configuration and pinned sources (19.984ms)
+✔ DO-SC-11 unregistered services, wrong build target/network and inactive keys block check (48.9953ms)
+✔ DO-SC-12 exactly3s probes pass while4s/image drift and unpinned base fail (24.5628ms)
+✔ DO-SC-11/12 current real reports produce four immutable artifact IDs; fixtures are structural tests only (7.3336ms)
+✔ DO-SC-11/13 stale/missing/failed evidence, source mismatch and high vulnerabilities block (53.0309ms)
+✔ DO-SC-11/12 every real05 SQL/worker suite and recovery step is mandatory; zero exit without tests is insufficient (421.5864ms)
+✔ DO-SC-12 each real HTTPS phase must prove05 pending persistence, without failed/skipped/nested substitute tests (89.408ms)
+✔ DO-SC-12 backup success text and duplicate HTTPS phases cannot substitute for real complete evidence (9.517ms)
+✔ DO-SC-11/12 repeated required top-level PASS records cannot satisfy unique real05 execution evidence (87.8576ms)
+✔ DO-SC-03/11 npm verify retains the original three real programs and CI retains the new summary (0.9172ms)
+✔ DO-SC-11 exact audited IDs are selected with no pulls; incomplete/unsafe scans cannot start runtime (29.9747ms)
+✔ DO-SC-11 verification cleanup excludes old reports and unrelated image references (5.1629ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1093.5759
+
+> campus-claw-plus@0.0.1 check:identity-wiring
+> node --test scripts/identity-wiring.test.mjs scripts/application-image-report.test.mjs
+
+✔ IDF-SC-17 complete application coverage accepts a clean actual runtime report (1.334ms)
+✔ IDF-SC-17 a vulnerability or absent binary coverage cannot become a scan pass (1.3523ms)
+✔ IDF-SC-18 required input, hostname and exact proxy boundaries (17.4586ms)
+✔ IDF-SC-17/18 isolated wiring keeps secrets, ports and current phase separated (16.6189ms)
+✔ IDF-SC-18 verification reserves distinct data/ingress subnets without consuming exhausted default pools (0.6225ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 374.2566
+
+> campus-claw-plus@0.0.1 check:frontend-auth
+> node --experimental-strip-types --test frontend/tests/auth.test.mjs frontend/tests/reviewer-auth.test.mjs frontend/tests/materials.test.mjs
+
+✔ FEF-SC-03 login bounds, unchanged input, duplicate clicks and private credentials (22.2059ms)
+✔ FEF-SC-03/09 uniform 401, Retry-After and malformed CSRF are fail closed (3.2633ms)
+✔ FEF-SC-04/05 recover order, one refresh and one replay, no logout after contention (1.9082ms)
+✔ FEF-SC-06 switch role and int64 boundaries, retain original class only after verification (1.5896ms)
+✔ FEF-SC-07 late old class response is discarded and writes are serialized (0.9491ms)
+✔ FEF-SC-07/08 uncertain writes never replay; 204 and 401 clear identity (3.15ms)
+✔ FEF-SC-09 malformed response cannot install identity or leak the response body (0.2519ms)
+✔ MF-SC-01/02/07 invalid routes/IDs/queries fail before network, ID stays a string (24.0533ms)
+✔ MF-SC-02 fixed pagination/keyword request and no exposed credentials (2.4469ms)
+✔ MF-SC-06/09 malformed material/page/citation/body are rejected (1.5472ms)
+✔ MF-SC-03 upload validates Go whitespace/UTF-8/control/byte/codepoint boundaries and preserves file (2.9632ms)
+✔ MF-SC-03/04 multipart boundary/browser bytes and duplicate write/manual same-key confirmation (2.0484ms)
+✔ MF-SC-07/09 GET 401 recovers one time then replays, second 401 clears identity (3.1626ms)
+✔ MF-SC-07/09 recovery into a different class never replays material request (0.8814ms)
+✔ MF-SC-09 upload/download 401 recover credentials but never automatically replay (1.2771ms)
+✔ MF-SC-08 context reset discards a response even when fetch ignores cancellation (0.5823ms)
+✔ MF-SC-08 external notification aborts immediately during material 401 recovery (4.2716ms)
+✔ MF-SC-07 student writes fail locally; 403 rechecks identity (1.0922ms)
+✔ MF-SC-09 404/409/413/429/503/504 give safe errors, Retry-After survives (3.3484ms)
+✔ MF-SC-09 deadline is 10000ms and bounds a fetch which ignores AbortSignal (19.9411ms)
+✔ MF-SC-06 download returns original bytes with no URL token (1.3145ms)
+✔ MF-SC-04/08 same-identity background refresh keeps the material form context authenticated (0.6459ms)
+✔ MF-SC-08/09 delayed old-token 401 reuses recovered credentials while another read is in flight (1.3154ms)
+✔ MF-SC-08/09 delayed download 401 does not refresh again or replay the download (1.0197ms)
+✔ FEF-SC-07/08 reviewer: late successful identity cannot resurrect a logged-out session (22.134ms)
+✔ FEF-SC-04/08 reviewer: revoked access and refresh hide identity without retrying or logging out another session (2.7031ms)
+✔ FEF-SC-07 reviewer: another tab changing context invalidates an already pending old identity response (1.4391ms)
+✔ FEF-SC-05/08 reviewer: logout obtains CSRF for the current shared cookie after another tab refreshes (0.6526ms)
+ℹ tests 28
+ℹ suites 0
+ℹ pass 28
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 369.6436
+
+> campus-claw-plus@0.0.1 typecheck
+> npm run typecheck --prefix frontend
+
+
+> @campus-claw-plus/frontend@0.0.1 typecheck
+> tsc --noEmit
+
+
+> campus-claw-plus@0.0.1 build
+> npm run build --prefix frontend
+
+
+> @campus-claw-plus/frontend@0.0.1 build
+> tsc --noEmit && vite build
+
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 22 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.61 kB │ gzip:  0.40 kB
+dist/assets/index-D60TFm6Q.css    9.09 kB │ gzip:  2.20 kB
+dist/assets/index-DExckl1j.js   180.90 kB │ gzip: 58.34 kB
+
+✓ built in 161ms
+
+> campus-claw-plus@0.0.1 check:sample-isolation
+> node scripts/check-sample-isolation.mjs
+
+FEF-SC-13: production excludes samples; normal dev rejects test entry; explicit samples mode serves it.
+
+> campus-claw-plus@0.0.1 check:backend
+> node scripts/check-backend.mjs
+
+?   	github.com/zwh9616/campus-claw-plus/backend/cmd/identity-admin	[no test files]
+?   	github.com/zwh9616/campus-claw-plus/backend/cmd/server	[no test files]
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/assignments	0.008s
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/config	0.007s
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/httpserver	0.023s
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/identity	0.116s
+?   	github.com/zwh9616/campus-claw-plus/backend/internal/identityapp	[no test files]
+?   	github.com/zwh9616/campus-claw-plus/backend/internal/integration/fixture	[no test files]
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/integration/wiring	0.016s
+?   	github.com/zwh9616/campus-claw-plus/backend/internal/integration/wiringfixture	[no test files]
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/materials	0.013s
+?   	github.com/zwh9616/campus-claw-plus/backend/internal/migrations	[no test files]
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/mysqlstore	0.014s
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/observability	0.013s
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/probe	3.021s
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/strictjson	0.013s
+
+> campus-claw-plus@0.0.1 check:spec
+> openspec validate --all --strict
+
+- Validating...
+✓ change/2026-11-04-business-contracts
+✓ change/2026-11-05-delivery-observability
+✓ change/2026-11-05-reviewer-fix-workflow
+✓ change/2026-11-06-identity-public-contracts
+✓ change/2026-11-13-materials-document-intelligence
+✓ spec/assignment-tasks
+✓ spec/frontend-foundation
+✓ spec/identity-foundation
+✓ spec/materials-frontend
+✓ spec/materials-retrieval
+✓ spec/project-bootstrap
+Totals: 11 passed, 0 failed (11 items)
+
+> campus-claw-plus@0.0.1 check:document-parser
+> node scripts/check-document-parser.mjs
+
+Document parser build pinned candidate: exit 0
+Document parser record immutable image: exit 0
+Document parser actual bounded acceptance: exit 0
+
+> campus-claw-plus@0.0.1 check:document-storage-contract
+> node scripts/check-document-storage-contract.mjs
+
+Document DDL actual database version: passed
+Document DDL fresh isolated schema only: passed
+Document DDL published table baseline 000001_identity_users_classes.up.sql: passed
+Document DDL published table baseline 000002_identity_sessions.up.sql: passed
+Document DDL published table baseline 000003_identity_auth_audit.up.sql: passed
+Document DDL published table baseline 000004_materials_retrieval.up.sql: passed
+Document DDL published table baseline 000005_assignment_tasks.up.sql: passed
+Document DDL inspect isolated table count: passed
+Document DDL exact five candidate DDL: passed
+Document DDL inspect isolated table count: passed
+Document DDL inspect six candidate FK constraints: passed
+Document DDL inspect eleven enforced candidate CHECK constraints: passed
+Document DDL synthetic identity keys only: passed
+Document DDL queued documents for two distinct classes: passed
+Document DDL Unicode codepoint body and valid ready state: passed
+Document DDL non-BMP page positions and chunk: passed
+Document DDL actual MySQL counts emoji as one codepoint: passed
+Document DDL ready PDF cannot omit page count: expected reject
+Document DDL ready cannot omit body: expected reject
+Document DDL fourth parse attempt: expected reject
+Document DDL original byte count mismatch: expected reject
+Document DDL Word cannot use PDF page count: expected reject
+Document DDL location cross-class composite FK: expected reject
+Document DDL location cross-version composite FK: expected reject
+Document DDL PDF logical unit exceeds page bound: expected reject
+Document DDL empty source range: expected reject
+Document DDL chunk cross-class FK: expected reject
+Document DDL chunk Unicode range mismatch: expected reject
+Document DDL valid leased owner epoch: passed
+Document DDL leased owner cannot be null: expected reject
+Document DDL leased epoch cannot be zero: expected reject
+Document DDL binary idempotency key case remains distinct: passed
+Document DDL same scoped key cannot duplicate: expected reject
+Document DDL snapshot cannot bind another creator: expected reject
+Document DDL closed original response must be JSON: expected reject
+Document DDL same-length wrong quote requires application recheck (rolled back): passed
+Document DDL original quote survived rollback: passed
+Document DDL remove only synthetic candidate rows: passed
+Document DDL candidate reverse DDL only after all five are empty: passed
+Document DDL inspect isolated table count: passed
