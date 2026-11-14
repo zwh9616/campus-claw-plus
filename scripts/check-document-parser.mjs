@@ -16,7 +16,8 @@ mkdirSync(directory, { recursive: true })
 const sha = value => createHash('sha256').update(value).digest('hex')
 const git = args => spawnSync('git', args, { encoding: 'utf8' }).stdout.trim()
 const inputs = ['core.py', 'worker.py', 'runner.py', 'server.py', 'test_rpc.py', 'requirements.lock', 'Dockerfile', '.dockerignore']
-const fingerprint = () => sha(inputs.map(p => p + ':' + sha(readFileSync('document-parser/' + p))).join('\n'))
+const clientInputs = ['backend/internal/documentparser/client.go', 'backend/internal/documentparser/client_test.go', 'scripts/check-document-parser-client.mjs']
+const fingerprint = () => sha([...inputs.map(p => 'document-parser/' + p), ...clientInputs].map(p => p + ':' + sha(readFileSync(p))).join('\n'))
 const source = { commit: git(['rev-parse', 'HEAD']), dirty: git(['status', '--porcelain']) !== '', fingerprint: fingerprint() }
 const toolchain = JSON.parse(readFileSync('scripts/toolchain.json'))
 assert.ok(readFileSync('document-parser/Dockerfile', 'utf8').split('\n').filter(l => l.startsWith('FROM '))
@@ -74,6 +75,12 @@ try {
     assert.equal(rpc.safe_logs, true)
     assert.equal(rpc.documents.length, 40)
     report.private_http = rpc
+    const client = spawnSync(process.execPath, ['scripts/check-document-parser-client.mjs', '--image', imageId],
+      { encoding: 'utf8', timeout: 240000, maxBuffer: 16 * 1024 * 1024 })
+    assert.equal(client.status, 0, 'Real Go/private HTTP interoperability failed: ' + (client.stdout ?? '') + (client.stderr ?? ''))
+    report.private_client = JSON.parse(client.stdout)
+    assert.equal(report.private_client.actual.documents.length, 40)
+    assert.equal(report.private_client.secret_file_removed, true)
   }
   if (scan) {
     const workspace = realpathSync('.')

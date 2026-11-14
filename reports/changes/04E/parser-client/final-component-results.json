@@ -1,0 +1,613 @@
+{
+  "time": "2026-11-14T08:46:50.520Z",
+  "run_id": "campus-di-d36980d7f15f",
+  "scope": "04E offline parser and private HTTP component; current production batch remains four images",
+  "source": {
+    "commit": "97f25b9d4624cd811020b564423704239f7a5e0a",
+    "dirty": true,
+    "fingerprint": "bc2b01b41d969c589bea2ea7926b934052ec4519f0d8fcd97685f6a1a3804a3d"
+  },
+  "exit_code": 0,
+  "image_id": "sha256:c0792bb48f1eeefe84841c59b15710e515adcd5a0f27e47b6fd528cd82f5dc3e",
+  "tests": {
+    "groups": 8,
+    "clear_documents": 40,
+    "negative_classes": 25,
+    "max_cer": 0,
+    "max_document_ms": 1215,
+    "raw_sha256": "80ec96c32d5e39b860600ab8746e17b531fbafcb94bbd8aa097c3f68201e7446"
+  },
+  "isolation": {
+    "uid": 65532,
+    "read_only_root": true,
+    "external_connect_denied": true,
+    "tmp_sources_after_tests": 0
+  },
+  "private_http": {
+    "scope": "private adapter component only; no default Compose, DB or queue activation",
+    "documents": [
+      {
+        "file": "clear-01.pdf",
+        "status": 200,
+        "locations": 1
+      },
+      {
+        "file": "clear-02.pdf",
+        "status": 200,
+        "locations": 1
+      },
+      {
+        "file": "clear-03.pdf",
+        "status": 200,
+        "locations": 1
+      },
+      {
+        "file": "clear-04.pdf",
+        "status": 200,
+        "locations": 2
+      },
+      {
+        "file": "clear-05.pdf",
+        "status": 200,
+        "locations": 1
+      },
+      {
+        "file": "clear-06.pdf",
+        "status": 200,
+        "locations": 1
+      },
+      {
+        "file": "clear-07.pdf",
+        "status": 200,
+        "locations": 1
+      },
+      {
+        "file": "clear-08.pdf",
+        "status": 200,
+        "locations": 2
+      },
+      {
+        "file": "clear-09.pdf",
+        "status": 200,
+        "locations": 1
+      },
+      {
+        "file": "clear-10.pdf",
+        "status": 200,
+        "locations": 1
+      },
+      {
+        "file": "clear-11.pdf",
+        "status": 200,
+        "locations": 1
+      },
+      {
+        "file": "clear-12.pdf",
+        "status": 200,
+        "locations": 2
+      },
+      {
+        "file": "clear-13.pdf",
+        "status": 200,
+        "locations": 1
+      },
+      {
+        "file": "clear-14.pdf",
+        "status": 200,
+        "locations": 1
+      },
+      {
+        "file": "clear-15.pdf",
+        "status": 200,
+        "locations": 1
+      },
+      {
+        "file": "clear-16.pdf",
+        "status": 200,
+        "locations": 2
+      },
+      {
+        "file": "clear-17.pdf",
+        "status": 200,
+        "locations": 1
+      },
+      {
+        "file": "clear-18.pdf",
+        "status": 200,
+        "locations": 1
+      },
+      {
+        "file": "clear-19.pdf",
+        "status": 200,
+        "locations": 1
+      },
+      {
+        "file": "clear-20.pdf",
+        "status": 200,
+        "locations": 2
+      },
+      {
+        "file": "clear-01.docx",
+        "status": 200,
+        "locations": 3
+      },
+      {
+        "file": "clear-02.docx",
+        "status": 200,
+        "locations": 3
+      },
+      {
+        "file": "clear-03.docx",
+        "status": 200,
+        "locations": 4
+      },
+      {
+        "file": "clear-04.docx",
+        "status": 200,
+        "locations": 3
+      },
+      {
+        "file": "clear-05.docx",
+        "status": 200,
+        "locations": 8
+      },
+      {
+        "file": "clear-06.docx",
+        "status": 200,
+        "locations": 4
+      },
+      {
+        "file": "clear-07.docx",
+        "status": 200,
+        "locations": 4
+      },
+      {
+        "file": "clear-08.docx",
+        "status": 200,
+        "locations": 3
+      },
+      {
+        "file": "clear-09.docx",
+        "status": 200,
+        "locations": 4
+      },
+      {
+        "file": "clear-10.docx",
+        "status": 200,
+        "locations": 8
+      },
+      {
+        "file": "clear-11.docx",
+        "status": 200,
+        "locations": 4
+      },
+      {
+        "file": "clear-12.docx",
+        "status": 200,
+        "locations": 4
+      },
+      {
+        "file": "clear-13.docx",
+        "status": 200,
+        "locations": 3
+      },
+      {
+        "file": "clear-14.docx",
+        "status": 200,
+        "locations": 3
+      },
+      {
+        "file": "clear-15.docx",
+        "status": 200,
+        "locations": 9
+      },
+      {
+        "file": "clear-16.docx",
+        "status": 200,
+        "locations": 3
+      },
+      {
+        "file": "clear-17.docx",
+        "status": 200,
+        "locations": 83
+      },
+      {
+        "file": "clear-18.docx",
+        "status": 200,
+        "locations": 4
+      },
+      {
+        "file": "clear-19.docx",
+        "status": 200,
+        "locations": 5
+      },
+      {
+        "file": "clear-20.docx",
+        "status": 200,
+        "locations": 8
+      }
+    ],
+    "groups": 7,
+    "safe_logs": true,
+    "exit_code": 0
+  },
+  "private_client": {
+    "time": "2026-11-14T08:48:22.407Z",
+    "image_id": "sha256:c0792bb48f1eeefe84841c59b15710e515adcd5a0f27e47b6fd528cd82f5dc3e",
+    "scope": "real client/server component interoperability only; default service/config, SQL migration and queue remain inactive",
+    "exit_code": 0,
+    "actual": {
+      "documents": [
+        {
+          "file": "clear-01.pdf",
+          "format": "pdf",
+          "locations": 1,
+          "status": "ready"
+        },
+        {
+          "file": "clear-02.pdf",
+          "format": "pdf",
+          "locations": 1,
+          "status": "ready"
+        },
+        {
+          "file": "clear-03.pdf",
+          "format": "pdf",
+          "locations": 1,
+          "status": "ready"
+        },
+        {
+          "file": "clear-04.pdf",
+          "format": "pdf",
+          "locations": 2,
+          "status": "ready"
+        },
+        {
+          "file": "clear-05.pdf",
+          "format": "pdf",
+          "locations": 1,
+          "status": "ready"
+        },
+        {
+          "file": "clear-06.pdf",
+          "format": "pdf",
+          "locations": 1,
+          "status": "ready"
+        },
+        {
+          "file": "clear-07.pdf",
+          "format": "pdf",
+          "locations": 1,
+          "status": "ready"
+        },
+        {
+          "file": "clear-08.pdf",
+          "format": "pdf",
+          "locations": 2,
+          "status": "ready"
+        },
+        {
+          "file": "clear-09.pdf",
+          "format": "pdf",
+          "locations": 1,
+          "status": "ready"
+        },
+        {
+          "file": "clear-10.pdf",
+          "format": "pdf",
+          "locations": 1,
+          "status": "ready"
+        },
+        {
+          "file": "clear-11.pdf",
+          "format": "pdf",
+          "locations": 1,
+          "status": "ready"
+        },
+        {
+          "file": "clear-12.pdf",
+          "format": "pdf",
+          "locations": 2,
+          "status": "ready"
+        },
+        {
+          "file": "clear-13.pdf",
+          "format": "pdf",
+          "locations": 1,
+          "status": "ready"
+        },
+        {
+          "file": "clear-14.pdf",
+          "format": "pdf",
+          "locations": 1,
+          "status": "ready"
+        },
+        {
+          "file": "clear-15.pdf",
+          "format": "pdf",
+          "locations": 1,
+          "status": "ready"
+        },
+        {
+          "file": "clear-16.pdf",
+          "format": "pdf",
+          "locations": 2,
+          "status": "ready"
+        },
+        {
+          "file": "clear-17.pdf",
+          "format": "pdf",
+          "locations": 1,
+          "status": "ready"
+        },
+        {
+          "file": "clear-18.pdf",
+          "format": "pdf",
+          "locations": 1,
+          "status": "ready"
+        },
+        {
+          "file": "clear-19.pdf",
+          "format": "pdf",
+          "locations": 1,
+          "status": "ready"
+        },
+        {
+          "file": "clear-20.pdf",
+          "format": "pdf",
+          "locations": 2,
+          "status": "ready"
+        },
+        {
+          "file": "clear-01.docx",
+          "format": "docx",
+          "locations": 3,
+          "status": "ready"
+        },
+        {
+          "file": "clear-02.docx",
+          "format": "docx",
+          "locations": 3,
+          "status": "ready"
+        },
+        {
+          "file": "clear-03.docx",
+          "format": "docx",
+          "locations": 4,
+          "status": "ready"
+        },
+        {
+          "file": "clear-04.docx",
+          "format": "docx",
+          "locations": 3,
+          "status": "ready"
+        },
+        {
+          "file": "clear-05.docx",
+          "format": "docx",
+          "locations": 8,
+          "status": "ready"
+        },
+        {
+          "file": "clear-06.docx",
+          "format": "docx",
+          "locations": 4,
+          "status": "ready"
+        },
+        {
+          "file": "clear-07.docx",
+          "format": "docx",
+          "locations": 4,
+          "status": "ready"
+        },
+        {
+          "file": "clear-08.docx",
+          "format": "docx",
+          "locations": 3,
+          "status": "ready"
+        },
+        {
+          "file": "clear-09.docx",
+          "format": "docx",
+          "locations": 4,
+          "status": "ready"
+        },
+        {
+          "file": "clear-10.docx",
+          "format": "docx",
+          "locations": 8,
+          "status": "ready"
+        },
+        {
+          "file": "clear-11.docx",
+          "format": "docx",
+          "locations": 4,
+          "status": "ready"
+        },
+        {
+          "file": "clear-12.docx",
+          "format": "docx",
+          "locations": 4,
+          "status": "ready"
+        },
+        {
+          "file": "clear-13.docx",
+          "format": "docx",
+          "locations": 3,
+          "status": "ready"
+        },
+        {
+          "file": "clear-14.docx",
+          "format": "docx",
+          "locations": 3,
+          "status": "ready"
+        },
+        {
+          "file": "clear-15.docx",
+          "format": "docx",
+          "locations": 9,
+          "status": "ready"
+        },
+        {
+          "file": "clear-16.docx",
+          "format": "docx",
+          "locations": 3,
+          "status": "ready"
+        },
+        {
+          "file": "clear-17.docx",
+          "format": "docx",
+          "locations": 83,
+          "status": "ready"
+        },
+        {
+          "file": "clear-18.docx",
+          "format": "docx",
+          "locations": 4,
+          "status": "ready"
+        },
+        {
+          "file": "clear-19.docx",
+          "format": "docx",
+          "locations": 5,
+          "status": "ready"
+        },
+        {
+          "file": "clear-20.docx",
+          "format": "docx",
+          "locations": 8,
+          "status": "ready"
+        }
+      ],
+      "locations": 195,
+      "wrong_auth_rejected": true
+    },
+    "outage": {
+      "health": false,
+      "reason": "worker_interrupted",
+      "unavailable": true
+    },
+    "network_internal": true,
+    "no_host_ports": true,
+    "safe_logs": true,
+    "probe_sha256": "be016339e52bbec9eb16f9c1b8066c3a7d6c8f1443b3ce4ed9c00db3a747dafd",
+    "cleanup": [
+      {
+        "kind": "probe",
+        "ok": true,
+        "already_removed": true
+      },
+      {
+        "kind": "server",
+        "ok": true,
+        "already_removed": true
+      },
+      {
+        "kind": "build",
+        "ok": true,
+        "already_removed": true
+      },
+      {
+        "kind": "network",
+        "ok": true
+      }
+    ],
+    "secret_file_removed": true,
+    "finished_at": "2026-11-14T08:48:45.366Z",
+    "results": [
+      {
+        "label": "compile actual Go client probe",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "label": "create exclusive internal parser network",
+        "exit_code": 0,
+        "stdout": "a2a555b2571a8678f4ac64b628af27616e6e61f668e585679af79fb3b2a0ca01\n",
+        "stderr": ""
+      },
+      {
+        "label": "start actual private server",
+        "exit_code": 0,
+        "stdout": "4ab4e872f346c1bf8fb173160d730b32e416f43901c2de1c1d9641f241fb6dd1\n",
+        "stderr": ""
+      },
+      {
+        "label": "inspect actual internal isolation",
+        "exit_code": 0,
+        "stdout": "true\n",
+        "stderr": ""
+      },
+      {
+        "label": "inspect no published parser port",
+        "exit_code": 0,
+        "stdout": "{}\n",
+        "stderr": ""
+      },
+      {
+        "label": "40 real Go HTTP Python extractions",
+        "exit_code": 0,
+        "stdout": "{\"documents\":[{\"file\":\"clear-01.pdf\",\"format\":\"pdf\",\"locations\":1,\"status\":\"ready\"},{\"file\":\"clear-02.pdf\",\"format\":\"pdf\",\"locations\":1,\"status\":\"ready\"},{\"file\":\"clear-03.pdf\",\"format\":\"pdf\",\"locations\":1,\"status\":\"ready\"},{\"file\":\"clear-04.pdf\",\"format\":\"pdf\",\"locations\":2,\"status\":\"ready\"},{\"file\":\"clear-05.pdf\",\"format\":\"pdf\",\"locations\":1,\"status\":\"ready\"},{\"file\":\"clear-06.pdf\",\"format\":\"pdf\",\"locations\":1,\"status\":\"ready\"},{\"file\":\"clear-07.pdf\",\"format\":\"pdf\",\"locations\":1,\"status\":\"ready\"},{\"file\":\"clear-08.pdf\",\"format\":\"pdf\",\"locations\":2,\"status\":\"ready\"},{\"file\":\"clear-09.pdf\",\"format\":\"pdf\",\"locations\":1,\"status\":\"ready\"},{\"file\":\"clear-10.pdf\",\"format\":\"pdf\",\"locations\":1,\"status\":\"ready\"},{\"file\":\"clear-11.pdf\",\"format\":\"pdf\",\"locations\":1,\"status\":\"ready\"},{\"file\":\"clear-12.pdf\",\"format\":\"pdf\",\"locations\":2,\"status\":\"ready\"},{\"file\":\"clear-13.pdf\",\"format\":\"pdf\",\"locations\":1,\"status\":\"ready\"},{\"file\":\"clear-14.pdf\",\"format\":\"pdf\",\"locations\":1,\"status\":\"ready\"},{\"file\":\"clear-15.pdf\",\"format\":\"pdf\",\"locations\":1,\"status\":\"ready\"},{\"file\":\"clear-16.pdf\",\"format\":\"pdf\",\"locations\":2,\"status\":\"ready\"},{\"file\":\"clear-17.pdf\",\"format\":\"pdf\",\"locations\":1,\"status\":\"ready\"},{\"file\":\"clear-18.pdf\",\"format\":\"pdf\",\"locations\":1,\"status\":\"ready\"},{\"file\":\"clear-19.pdf\",\"format\":\"pdf\",\"locations\":1,\"status\":\"ready\"},{\"file\":\"clear-20.pdf\",\"format\":\"pdf\",\"locations\":2,\"status\":\"ready\"},{\"file\":\"clear-01.docx\",\"format\":\"docx\",\"locations\":3,\"status\":\"ready\"},{\"file\":\"clear-02.docx\",\"format\":\"docx\",\"locations\":3,\"status\":\"ready\"},{\"file\":\"clear-03.docx\",\"format\":\"docx\",\"locations\":4,\"status\":\"ready\"},{\"file\":\"clear-04.docx\",\"format\":\"docx\",\"locations\":3,\"status\":\"ready\"},{\"file\":\"clear-05.docx\",\"format\":\"docx\",\"locations\":8,\"status\":\"ready\"},{\"file\":\"clear-06.docx\",\"format\":\"docx\",\"locations\":4,\"status\":\"ready\"},{\"file\":\"clear-07.docx\",\"format\":\"docx\",\"locations\":4,\"status\":\"ready\"},{\"file\":\"clear-08.docx\",\"format\":\"docx\",\"locations\":3,\"status\":\"ready\"},{\"file\":\"clear-09.docx\",\"format\":\"docx\",\"locations\":4,\"status\":\"ready\"},{\"file\":\"clear-10.docx\",\"format\":\"docx\",\"locations\":8,\"status\":\"ready\"},{\"file\":\"clear-11.docx\",\"format\":\"docx\",\"locations\":4,\"status\":\"ready\"},{\"file\":\"clear-12.docx\",\"format\":\"docx\",\"locations\":4,\"status\":\"ready\"},{\"file\":\"clear-13.docx\",\"format\":\"docx\",\"locations\":3,\"status\":\"ready\"},{\"file\":\"clear-14.docx\",\"format\":\"docx\",\"locations\":3,\"status\":\"ready\"},{\"file\":\"clear-15.docx\",\"format\":\"docx\",\"locations\":9,\"status\":\"ready\"},{\"file\":\"clear-16.docx\",\"format\":\"docx\",\"locations\":3,\"status\":\"ready\"},{\"file\":\"clear-17.docx\",\"format\":\"docx\",\"locations\":83,\"status\":\"ready\"},{\"file\":\"clear-18.docx\",\"format\":\"docx\",\"locations\":4,\"status\":\"ready\"},{\"file\":\"clear-19.docx\",\"format\":\"docx\",\"locations\":5,\"status\":\"ready\"},{\"file\":\"clear-20.docx\",\"format\":\"docx\",\"locations\":8,\"status\":\"ready\"}],\"locations\":195,\"wrong_auth_rejected\":true}\n",
+        "stderr": ""
+      },
+      {
+        "label": "read controlled private logs",
+        "exit_code": 0,
+        "stdout": "{\"request_id\": \"a216ae5cd038450289a064cd2ed5dcb9\", \"path\": \"/health\", \"status\": 200, \"duration_ms\": 1}\n{\"request_id\": \"9de96b50d84049df9770ca06d300ba86\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 539}\n{\"request_id\": \"d69fbcc12df94e20bcdff4cd9c82b561\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 464}\n{\"request_id\": \"6ff2f0a6b568480dbd558da3690a2de1\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 457}\n{\"request_id\": \"e55095a859ea43cf888c8bfcc2cfdace\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 455}\n{\"request_id\": \"609c4500396940b9b70ba8b18a691d14\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 499}\n{\"request_id\": \"0367f9f624944e9caa51da872debe549\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 453}\n{\"request_id\": \"4c9a2bf78afe4ba79e9d9b9bd25b973e\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 483}\n{\"request_id\": \"a77421ed75f24cdd9362a3093a71f4b1\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 476}\n{\"request_id\": \"0c9b634a007d4f3d81bf9bdd49c72f9c\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 472}\n{\"request_id\": \"dba9a42d322c4042a9509e1e1d7cee65\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 440}\n{\"request_id\": \"aa33444adc73403ab5200971f7116a70\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 478}\n{\"request_id\": \"310f5acd3d52497eb1f30bfe1ae0edce\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 445}\n{\"request_id\": \"863b1745ebaf4440a0f4f5675fea668a\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 444}\n{\"request_id\": \"10c245061cd14c4da47e28d2b8e3a865\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 453}\n{\"request_id\": \"bb29781f559043d9b4dab7dd3a985b55\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 451}\n{\"request_id\": \"d5342a23446d437cb5322175c05dee72\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 466}\n{\"request_id\": \"16c7ee2f2c954472b010421ec302178f\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 450}\n{\"request_id\": \"560bdc0925aa4b548776d8901ab97782\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 491}\n{\"request_id\": \"cf76cbbfedb649089d228009f54dec55\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 459}\n{\"request_id\": \"19b347d1e86c4f8db51d7c45d8e8fa9c\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 489}\n{\"request_id\": \"7404c205b7734dfbaae64eab41f7e25e\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 415}\n{\"request_id\": \"b60c8721633c49c2b9511bc7b57b4dbb\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 428}\n{\"request_id\": \"7b29ce34695f44a898b1b0445d5c6af1\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 409}\n{\"request_id\": \"1caceb4d3ff14f58825232afb3d846d7\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 400}\n{\"request_id\": \"62862ad700cf4a629d1e7195bd94c793\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 427}\n{\"request_id\": \"d5c577bbf80348fc8e70d05c91837bf7\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 407}\n{\"request_id\": \"212460a992654445a3da0552dfe117c7\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 429}\n{\"request_id\": \"42842f9661414cedb7fa555a4640867e\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 421}\n{\"request_id\": \"1e1e5c68a40e42e1a5051e947c277e4d\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 471}\n{\"request_id\": \"0acac1fc747142f28effe4bee4d4ed65\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 441}\n{\"request_id\": \"95f4e08603c34215b3c5f5c240d8dd18\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 437}\n{\"request_id\": \"d26d612a3e73428bbe2a38af56776db9\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 415}\n{\"request_id\": \"9ed59ebf09de478a8541fd8c01e60695\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 420}\n{\"request_id\": \"a813300d0ec74168838bfc03db7db4a0\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 442}\n{\"request_id\": \"77a5718ecf2e4e5f8bf6c050de9e320a\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 426}\n{\"request_id\": \"7f9ad95bde324a468f909bca3c7f8dcb\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 461}\n{\"request_id\": \"1d912f8ab393415fab13baa2022dd059\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 431}\n{\"request_id\": \"025d60d1d1dd4b0b9d83e284825ecdb8\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 423}\n{\"request_id\": \"9da532119a604486a99d27e969cc91b2\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 415}\n{\"request_id\": \"c170277afa9a45558f1962436f4503fe\", \"path\": \"/v1/parse\", \"status\": 200, \"duration_ms\": 430}\n{\"request_id\": \"31be8b7f3df94778bde123df7be8bdef\", \"path\": \"/health\", \"status\": 401, \"duration_ms\": 0}\n{\"request_id\": \"53bf9d24a7cd4d3e9facfb1848b0f717\", \"path\": \"/v1/parse\", \"status\": 401, \"duration_ms\": 1}\n",
+        "stderr": ""
+      },
+      {
+        "label": "stop only owned parser",
+        "exit_code": 0,
+        "stdout": "campus-parser-client-0a16c8446ba3-server\n",
+        "stderr": ""
+      },
+      {
+        "label": "actual parser disappearance",
+        "exit_code": 0,
+        "stdout": "{\"health\":false,\"reason\":\"worker_interrupted\",\"unavailable\":true}\n",
+        "stderr": ""
+      }
+    ]
+  },
+  "cleanup": [
+    {
+      "resource": "campus-di-d36980d7f15f-run",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "resource": "campus-di-d36980d7f15f:check",
+      "exit_code": 0,
+      "ok": true
+    }
+  ],
+  "finished_at": "2026-11-14T08:48:45.671Z",
+  "results": [
+    {
+      "label": "build pinned candidate",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "#0 building with \"desktop-linux\" instance using docker driver\n\n#1 [internal] load build definition from Dockerfile\n#1 transferring dockerfile: 806B done\n#1 DONE 0.0s\n\n#2 [internal] load metadata for docker.io/library/python@sha256:5862d971d1f0ae26b258cefa4e893556b1d3aba81bd2ff30888704ad378bab67\n#2 DONE 0.0s\n\n#3 [internal] load .dockerignore\n#3 transferring context: 115B done\n#3 DONE 0.0s\n\n#4 [internal] load build context\n#4 transferring context: 152B done\n#4 DONE 0.0s\n\n#5 [dependencies 1/4] FROM docker.io/library/python@sha256:5862d971d1f0ae26b258cefa4e893556b1d3aba81bd2ff30888704ad378bab67\n#5 resolve docker.io/library/python@sha256:5862d971d1f0ae26b258cefa4e893556b1d3aba81bd2ff30888704ad378bab67 0.0s done\n#5 DONE 0.0s\n\n#6 [dependencies 3/4] COPY requirements.lock .\n#6 CACHED\n\n#7 [stage-1 3/5] RUN rm -rf /usr/local/lib/python3.14/ensurepip     /usr/local/lib/python3.14/site-packages/pip     /usr/local/lib/python3.14/site-packages/pip-*.dist-info /usr/local/bin/pip*\n#7 CACHED\n\n#8 [dependencies 4/4] RUN python -m pip install --no-cache-dir --require-hashes --no-deps --target=/packages -r requirements.lock\n#8 CACHED\n\n#9 [dependencies 2/4] WORKDIR /build\n#9 CACHED\n\n#10 [stage-1 2/5] WORKDIR /app\n#10 CACHED\n\n#11 [stage-1 4/5] COPY --from=dependencies /packages /usr/local/lib/python3.14/site-packages\n#11 CACHED\n\n#12 [stage-1 5/5] COPY core.py runner.py worker.py server.py /app/\n#12 CACHED\n\n#13 exporting to image\n#13 exporting layers done\n#13 exporting manifest sha256:7adbbb646a06c40aee67655dbff43606d8f7d240e5eae7560d59cf01e8e19aea done\n#13 exporting config sha256:0c35d59f5af39213b0a0e53b541546c6c00406d3c02c54795dc2dac6ee41fb77 done\n#13 exporting attestation manifest sha256:bc4b9a03b9f17b9fb993be055545874d3c11bd44f64f68a2da33e3b0ca31f4bf 0.0s done\n#13 exporting manifest list sha256:c0792bb48f1eeefe84841c59b15710e515adcd5a0f27e47b6fd528cd82f5dc3e\n#13 exporting manifest list sha256:c0792bb48f1eeefe84841c59b15710e515adcd5a0f27e47b6fd528cd82f5dc3e done\n#13 naming to docker.io/library/campus-di-d36980d7f15f:check done\n#13 unpacking to docker.io/library/campus-di-d36980d7f15f:check 0.1s done\n#13 DONE 0.1s\n\nView build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/64wjf8sm0x7vnfuzk8ezzd1g7\n"
+    },
+    {
+      "label": "record immutable image",
+      "exit_code": 0,
+      "stdout": "sha256:c0792bb48f1eeefe84841c59b15710e515adcd5a0f27e47b6fd528cd82f5dc3e\n",
+      "stderr": ""
+    },
+    {
+      "label": "actual bounded acceptance",
+      "exit_code": 0,
+      "stdout": "{\"acceptance\": [{\"file\": \"clear-01.pdf\", \"cer\": 0.0, \"gold_codepoints\": 96, \"locations\": 1, \"critical_phrases\": 1, \"ms\": 947}, {\"file\": \"clear-02.pdf\", \"cer\": 0.0, \"gold_codepoints\": 96, \"locations\": 1, \"critical_phrases\": 1, \"ms\": 882}, {\"file\": \"clear-03.pdf\", \"cer\": 0.0, \"gold_codepoints\": 127, \"locations\": 1, \"critical_phrases\": 1, \"ms\": 760}, {\"file\": \"clear-04.pdf\", \"cer\": 0.0, \"gold_codepoints\": 193, \"locations\": 2, \"critical_phrases\": 2, \"ms\": 802}, {\"file\": \"clear-05.pdf\", \"cer\": 0.0, \"gold_codepoints\": 129, \"locations\": 1, \"critical_phrases\": 1, \"ms\": 758}, {\"file\": \"clear-06.pdf\", \"cer\": 0.0, \"gold_codepoints\": 127, \"locations\": 1, \"critical_phrases\": 1, \"ms\": 816}, {\"file\": \"clear-07.pdf\", \"cer\": 0.0, \"gold_codepoints\": 195, \"locations\": 1, \"critical_phrases\": 1, \"ms\": 799}, {\"file\": \"clear-08.pdf\", \"cer\": 0.0, \"gold_codepoints\": 193, \"locations\": 2, \"critical_phrases\": 2, \"ms\": 821}, {\"file\": \"clear-09.pdf\", \"cer\": 0.0, \"gold_codepoints\": 127, \"locations\": 1, \"critical_phrases\": 1, \"ms\": 841}, {\"file\": \"clear-10.pdf\", \"cer\": 0.0, \"gold_codepoints\": 131, \"locations\": 1, \"critical_phrases\": 1, \"ms\": 815}, {\"file\": \"clear-11.pdf\", \"cer\": 0.0, \"gold_codepoints\": 98, \"locations\": 1, \"critical_phrases\": 1, \"ms\": 804}, {\"file\": \"clear-12.pdf\", \"cer\": 0.0, \"gold_codepoints\": 259, \"locations\": 2, \"critical_phrases\": 2, \"ms\": 861}, {\"file\": \"clear-13.pdf\", \"cer\": 0.0, \"gold_codepoints\": 98, \"locations\": 1, \"critical_phrases\": 1, \"ms\": 809}, {\"file\": \"clear-14.pdf\", \"cer\": 0.0, \"gold_codepoints\": 197, \"locations\": 1, \"critical_phrases\": 1, \"ms\": 832}, {\"file\": \"clear-15.pdf\", \"cer\": 0.0, \"gold_codepoints\": 162, \"locations\": 1, \"critical_phrases\": 1, \"ms\": 812}, {\"file\": \"clear-16.pdf\", \"cer\": 0.0, \"gold_codepoints\": 197, \"locations\": 2, \"critical_phrases\": 2, \"ms\": 777}, {\"file\": \"clear-17.pdf\", \"cer\": 0.0, \"gold_codepoints\": 98, \"locations\": 1, \"critical_phrases\": 1, \"ms\": 818}, {\"file\": \"clear-18.pdf\", \"cer\": 0.0, \"gold_codepoints\": 129, \"locations\": 1, \"critical_phrases\": 1, \"ms\": 849}, {\"file\": \"clear-19.pdf\", \"cer\": 0.0, \"gold_codepoints\": 98, \"locations\": 1, \"critical_phrases\": 1, \"ms\": 811}, {\"file\": \"clear-20.pdf\", \"cer\": 0.0, \"gold_codepoints\": 263, \"locations\": 2, \"critical_phrases\": 2, \"ms\": 823}, {\"file\": \"clear-01.docx\", \"cer\": 0.0, \"gold_codepoints\": 45, \"locations\": 3, \"critical_phrases\": 1, \"ms\": 797}, {\"file\": \"clear-02.docx\", \"cer\": 0.0, \"gold_codepoints\": 85, \"locations\": 3, \"critical_phrases\": 1, \"ms\": 783}, {\"file\": \"clear-03.docx\", \"cer\": 0.0, \"gold_codepoints\": 79, \"locations\": 4, \"critical_phrases\": 1, \"ms\": 1010}, {\"file\": \"clear-04.docx\", \"cer\": 0.0, \"gold_codepoints\": 67, \"locations\": 3, \"critical_phrases\": 1, \"ms\": 1215}, {\"file\": \"clear-05.docx\", \"cer\": 0.0, \"gold_codepoints\": 111, \"locations\": 8, \"critical_phrases\": 1, \"ms\": 1103}, {\"file\": \"clear-06.docx\", \"cer\": 0.0, \"gold_codepoints\": 102, \"locations\": 4, \"critical_phrases\": 1, \"ms\": 1145}, {\"file\": \"clear-07.docx\", \"cer\": 0.0, \"gold_codepoints\": 79, \"locations\": 4, \"critical_phrases\": 1, \"ms\": 804}, {\"file\": \"clear-08.docx\", \"cer\": 0.0, \"gold_codepoints\": 67, \"locations\": 3, \"critical_phrases\": 1, \"ms\": 802}, {\"file\": \"clear-09.docx\", \"cer\": 0.0, \"gold_codepoints\": 62, \"locations\": 4, \"critical_phrases\": 1, \"ms\": 756}, {\"file\": \"clear-10.docx\", \"cer\": 0.0, \"gold_codepoints\": 156, \"locations\": 8, \"critical_phrases\": 1, \"ms\": 732}, {\"file\": \"clear-11.docx\", \"cer\": 0.0, \"gold_codepoints\": 80, \"locations\": 4, \"critical_phrases\": 1, \"ms\": 739}, {\"file\": \"clear-12.docx\", \"cer\": 0.0, \"gold_codepoints\": 84, \"locations\": 4, \"critical_phrases\": 1, \"ms\": 701}, {\"file\": \"clear-13.docx\", \"cer\": 0.0, \"gold_codepoints\": 46, \"locations\": 3, \"critical_phrases\": 1, \"ms\": 721}, {\"file\": \"clear-14.docx\", \"cer\": 0.0, \"gold_codepoints\": 86, \"locations\": 3, \"critical_phrases\": 1, \"ms\": 690}, {\"file\": \"clear-15.docx\", \"cer\": 0.0, \"gold_codepoints\": 150, \"locations\": 9, \"critical_phrases\": 1, \"ms\": 687}, {\"file\": \"clear-16.docx\", \"cer\": 0.0, \"gold_codepoints\": 67, \"locations\": 3, \"critical_phrases\": 1, \"ms\": 769}, {\"file\": \"clear-17.docx\", \"cer\": 0.0, \"gold_codepoints\": 2686, \"locations\": 83, \"critical_phrases\": 1, \"ms\": 729}, {\"file\": \"clear-18.docx\", \"cer\": 0.0, \"gold_codepoints\": 103, \"locations\": 4, \"critical_phrases\": 1, \"ms\": 754}, {\"file\": \"clear-19.docx\", \"cer\": 0.0, \"gold_codepoints\": 3680, \"locations\": 5, \"critical_phrases\": 1, \"ms\": 741}, {\"file\": \"clear-20.docx\", \"cer\": 0.0, \"gold_codepoints\": 137, \"locations\": 8, \"critical_phrases\": 1, \"ms\": 695}], \"negative\": [{\"id\": \"empty\", \"status\": \"failed\", \"reason\": \"corrupt\", \"ms\": 276}, {\"id\": \"wrong-signature\", \"status\": \"failed\", \"reason\": \"corrupt\", \"ms\": 709}, {\"id\": \"truncated-pdf\", \"status\": \"failed\", \"reason\": \"corrupt\", \"ms\": 806}, {\"id\": \"encrypted-pdf\", \"status\": \"failed\", \"reason\": \"encrypted\", \"ms\": 786}, {\"id\": \"scan-only-pdf\", \"status\": \"needs_ocr\", \"reason\": null, \"ms\": 750}, {\"id\": \"mixed-text-scan-pdf\", \"status\": \"needs_ocr\", \"reason\": null, \"ms\": 734}, {\"id\": \"blank-pdf\", \"status\": \"failed\", \"reason\": \"unsupported_content\", \"ms\": 720}, {\"id\": \"pdf-page-over-limit\", \"status\": \"failed\", \"reason\": \"resource_limit\", \"ms\": 744}, {\"id\": \"pdf-content-over-limit\", \"status\": \"failed\", \"reason\": \"resource_limit\", \"ms\": 772}, {\"id\": \"input-over-limit\", \"status\": \"failed\", \"reason\": \"resource_limit\", \"ms\": 335}, {\"id\": \"zip-traversal\", \"status\": \"failed\", \"reason\": \"corrupt\", \"ms\": 784}, {\"id\": \"zip-entry-over-limit\", \"status\": \"failed\", \"reason\": \"resource_limit\", \"ms\": 721}, {\"id\": \"zip-ratio-bomb\", \"status\": \"failed\", \"reason\": \"resource_limit\", \"ms\": 761}, {\"id\": \"zip-encrypted\", \"status\": \"failed\", \"reason\": \"encrypted\", \"ms\": 691}, {\"id\": \"macro-word\", \"status\": \"failed\", \"reason\": \"unsupported_content\", \"ms\": 741}, {\"id\": \"legacy-word\", \"status\": \"failed\", \"reason\": \"corrupt\", \"ms\": 763}, {\"id\": \"zip-duplicate\", \"status\": \"failed\", \"reason\": \"corrupt\", \"ms\": 700}, {\"id\": \"zip-expanded-over-limit\", \"status\": \"failed\", \"reason\": \"resource_limit\", \"ms\": 721}, {\"id\": \"xml-dtd-entity\", \"status\": \"failed\", \"reason\": \"unsupported_content\", \"ms\": 695}, {\"id\": \"external-relationship\", \"status\": \"failed\", \"reason\": \"unsupported_content\", \"ms\": 685}, {\"id\": \"output-over-limit\", \"status\": \"failed\", \"reason\": \"resource_limit\", \"ms\": 1040}, {\"id\": \"docx-block-over-limit\", \"status\": \"failed\", \"reason\": \"resource_limit\", \"ms\": 803}, {\"id\": \"child-timeout\", \"status\": \"failed\", \"reason\": \"parse_timeout\", \"ms\": null}, {\"id\": \"child-memory-limit\", \"status\": \"failed\", \"reason\": \"resource_limit\", \"ms\": null}, {\"id\": \"child-interrupted\", \"status\": \"failed\", \"reason\": \"worker_interrupted\", \"ms\": null}], \"boundaries\": [{\"input_bytes\": 10485759, \"status\": \"ready\"}, {\"input_bytes\": 10485760, \"status\": \"ready\"}, {\"pdf_pages\": 200, \"status\": \"ready\"}, {\"docx_units\": 19999, \"status\": \"ready\"}, {\"docx_units\": 20000, \"status\": \"ready\"}], \"scope\": \"offline parser core only\", \"isolation\": {\"uid\": 65532, \"read_only_root\": true, \"external_connect_denied\": true, \"tmp_sources_after_tests\": 0}, \"unexecuted_negative\": [], \"groups\": 8, \"exit_code\": 0, \"peak_test_process_rss_kib\": 100688}\n",
+      "stderr": "test_01_frozen_acceptance_quality_and_locations (__main__.ParserTests.test_01_frozen_acceptance_quality_and_locations) ... ok\ntest_02_pdf_failures_and_scan_states (__main__.ParserTests.test_02_pdf_failures_and_scan_states) ... ok\ntest_03_input_and_page_boundaries (__main__.ParserTests.test_03_input_and_page_boundaries) ... ok\ntest_04_zip_security (__main__.ParserTests.test_04_zip_security) ... ok\ntest_05_xml_security (__main__.ParserTests.test_05_xml_security) ... ok\ntest_06_docx_body_and_block_limits (__main__.ParserTests.test_06_docx_body_and_block_limits) ... ok\ntest_07_runner_real_child_resource_failures (__main__.ParserTests.test_07_runner_real_child_resource_failures) ... ok\ntest_08_container_isolation (__main__.ParserTests.test_08_container_isolation) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 58.883s\n\nOK\n"
+    },
+    {
+      "label": "private HTTP adapter real corpus and boundary tests",
+      "exit_code": 0,
+      "stdout": "{\"scope\": \"private adapter component only; no default Compose, DB or queue activation\", \"documents\": [{\"file\": \"clear-01.pdf\", \"status\": 200, \"locations\": 1}, {\"file\": \"clear-02.pdf\", \"status\": 200, \"locations\": 1}, {\"file\": \"clear-03.pdf\", \"status\": 200, \"locations\": 1}, {\"file\": \"clear-04.pdf\", \"status\": 200, \"locations\": 2}, {\"file\": \"clear-05.pdf\", \"status\": 200, \"locations\": 1}, {\"file\": \"clear-06.pdf\", \"status\": 200, \"locations\": 1}, {\"file\": \"clear-07.pdf\", \"status\": 200, \"locations\": 1}, {\"file\": \"clear-08.pdf\", \"status\": 200, \"locations\": 2}, {\"file\": \"clear-09.pdf\", \"status\": 200, \"locations\": 1}, {\"file\": \"clear-10.pdf\", \"status\": 200, \"locations\": 1}, {\"file\": \"clear-11.pdf\", \"status\": 200, \"locations\": 1}, {\"file\": \"clear-12.pdf\", \"status\": 200, \"locations\": 2}, {\"file\": \"clear-13.pdf\", \"status\": 200, \"locations\": 1}, {\"file\": \"clear-14.pdf\", \"status\": 200, \"locations\": 1}, {\"file\": \"clear-15.pdf\", \"status\": 200, \"locations\": 1}, {\"file\": \"clear-16.pdf\", \"status\": 200, \"locations\": 2}, {\"file\": \"clear-17.pdf\", \"status\": 200, \"locations\": 1}, {\"file\": \"clear-18.pdf\", \"status\": 200, \"locations\": 1}, {\"file\": \"clear-19.pdf\", \"status\": 200, \"locations\": 1}, {\"file\": \"clear-20.pdf\", \"status\": 200, \"locations\": 2}, {\"file\": \"clear-01.docx\", \"status\": 200, \"locations\": 3}, {\"file\": \"clear-02.docx\", \"status\": 200, \"locations\": 3}, {\"file\": \"clear-03.docx\", \"status\": 200, \"locations\": 4}, {\"file\": \"clear-04.docx\", \"status\": 200, \"locations\": 3}, {\"file\": \"clear-05.docx\", \"status\": 200, \"locations\": 8}, {\"file\": \"clear-06.docx\", \"status\": 200, \"locations\": 4}, {\"file\": \"clear-07.docx\", \"status\": 200, \"locations\": 4}, {\"file\": \"clear-08.docx\", \"status\": 200, \"locations\": 3}, {\"file\": \"clear-09.docx\", \"status\": 200, \"locations\": 4}, {\"file\": \"clear-10.docx\", \"status\": 200, \"locations\": 8}, {\"file\": \"clear-11.docx\", \"status\": 200, \"locations\": 4}, {\"file\": \"clear-12.docx\", \"status\": 200, \"locations\": 4}, {\"file\": \"clear-13.docx\", \"status\": 200, \"locations\": 3}, {\"file\": \"clear-14.docx\", \"status\": 200, \"locations\": 3}, {\"file\": \"clear-15.docx\", \"status\": 200, \"locations\": 9}, {\"file\": \"clear-16.docx\", \"status\": 200, \"locations\": 3}, {\"file\": \"clear-17.docx\", \"status\": 200, \"locations\": 83}, {\"file\": \"clear-18.docx\", \"status\": 200, \"locations\": 4}, {\"file\": \"clear-19.docx\", \"status\": 200, \"locations\": 5}, {\"file\": \"clear-20.docx\", \"status\": 200, \"locations\": 8}], \"groups\": 7, \"safe_logs\": true, \"exit_code\": 0}\n",
+      "stderr": "test_absolute_read_budgets_and_extra_body (__main__.RpcTests.test_absolute_read_budgets_and_extra_body) ... ok\ntest_busy_is_immediate_health_stays_live (__main__.RpcTests.test_busy_is_immediate_health_stays_live) ... ok\ntest_failure_mapping_over_http (__main__.RpcTests.test_failure_mapping_over_http) ... ok\ntest_header_and_body_framing (__main__.RpcTests.test_header_and_body_framing) ... ok\ntest_health_and_auth_before_body (__main__.RpcTests.test_health_and_auth_before_body) ... ok\ntest_real_corpus_over_http (__main__.RpcTests.test_real_corpus_over_http) ... ok\ntest_token_startup_validation (__main__.RpcTests.test_token_startup_validation) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 29.004s\n\nOK\n"
+    }
+  ]
+}
