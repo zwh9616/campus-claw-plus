@@ -1,0 +1,102 @@
+{
+  "observer": "小陈 / Kevcco (AI辅助)",
+  "run": 43557491212,
+  "head": "39018c1b8d2555cfebe8fd75fb4a761558edad68",
+  "source": {
+    "commit": "39018c1b8d2555cfebe8fd75fb4a761558edad68",
+    "dirty": false
+  },
+  "artifact_id": 14098594703,
+  "artifact_digest": "sha256:9a047ad7d0bfaa592fc19ecbb09830184e6f08ef4ad90d2d524e01cd15a943e9",
+  "sql_sha256": {
+    "000006_documents.down.sql": "bcd282b537db970249565148410f67a18737d5350055df20dd6efd51c8db5756",
+    "000006_documents.up.sql": "ae898e2c8166ac8e201102e6077ad5cf71a89259fb16553d3f5a1a0380e022ef"
+  },
+  "mysql_version": "8.4.13",
+  "assertions": {
+    "old_tables": 14,
+    "added_tables": 5,
+    "foreign_keys": 6,
+    "enforced_checks": 11,
+    "codepoint_offsets": true,
+    "binary_keys": true,
+    "application_quote_recheck_still_required": true,
+    "runtime_target_still": 5
+  },
+  "negative_count": 16,
+  "actual_rejections": [
+    [
+      "ready PDF cannot omit page count",
+      3819
+    ],
+    [
+      "ready cannot omit body",
+      3819
+    ],
+    [
+      "fourth parse attempt",
+      3819
+    ],
+    [
+      "original byte count mismatch",
+      3819
+    ],
+    [
+      "Word cannot use PDF page count",
+      3819
+    ],
+    [
+      "location cross-class composite FK",
+      1452
+    ],
+    [
+      "location cross-version composite FK",
+      1452
+    ],
+    [
+      "PDF logical unit exceeds page bound",
+      3819
+    ],
+    [
+      "empty source range",
+      3819
+    ],
+    [
+      "chunk cross-class FK",
+      1452
+    ],
+    [
+      "chunk Unicode range mismatch",
+      3819
+    ],
+    [
+      "leased owner cannot be null",
+      3819
+    ],
+    [
+      "leased epoch cannot be zero",
+      3819
+    ],
+    [
+      "same scoped key cannot duplicate",
+      1062
+    ],
+    [
+      "snapshot cannot bind another creator",
+      1452
+    ],
+    [
+      "closed original response must be JSON",
+      3819
+    ]
+  ],
+  "unicode_body_counts": [
+    8,
+    21
+  ],
+  "quote_check_application_only": true,
+  "cleanup_count": 2,
+  "secret_file_removed": true,
+  "scope": "Independently verified downloaded CI evidence; not a local Docker rerun or Target6 runtime acceptance",
+  "exit_code": 0
+}

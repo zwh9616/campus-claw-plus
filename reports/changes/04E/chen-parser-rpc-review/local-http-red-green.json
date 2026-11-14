@@ -1,0 +1,7 @@
+{
+  "scope": "Local reviewer protocol test; in-memory auth mutation only; no Docker or real extraction claim",
+  "red_exit": 1,
+  "green_exit": 0,
+  "tracked_source_unchanged": true,
+  "source_sha256": "f3cc9572c9266066f4004ea1300aee66c70cfca8863e0fcec9300f8679ccc5c6"
+}

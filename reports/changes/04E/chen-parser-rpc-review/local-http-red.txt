@@ -1,0 +1,21 @@
+test_unauthenticated_large_body_does_not_call_child (__main__.ReviewerProtocol.test_unauthenticated_large_body_does_not_call_child) ... FAIL
+
+======================================================================
+FAIL: test_unauthenticated_large_body_does_not_call_child (__main__.ReviewerProtocol.test_unauthenticated_large_body_does_not_call_child)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\long\2\grade5\Internet-Software\group_project\output\review-51\probe_http.py", line 68, in test_unauthenticated_large_body_does_not_call_child
+    self.assertEqual(self.send(b'POST /v1/parse HTTP/1.1\r\nHost: document-parser\r\nContent-Length: 10485760\r\n\r\n', close=False),
+AssertionError: Tuples differ: (400, {'error': 'invalid_request'}) != (401, {'error': 'unauthenticated'})
+
+First differing element 0:
+400
+401
+
+- (400, {'error': 'invalid_request'})
++ (401, {'error': 'unauthenticated'})
+
+----------------------------------------------------------------------
+Ran 1 test in 0.510s
+
+FAILED (failures=1)
