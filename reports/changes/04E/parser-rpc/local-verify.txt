@@ -1,0 +1,124 @@
+
+> campus-claw-plus@0.0.1 verify
+> node scripts/verify-service-batches.mjs
+
+Batch verify: scripts/verify-image-audits.mjs
+prepare Trivy vulnerability database
+verify-mysql-image.mjs
+build fixed MySQL 8.4.13 runtime: exit 0
+record immutable built artifact: exit 0
+MySQL version, mysqlsh removal, real gosu UID/GID drop: exit 0
+export artifact for scanner without Docker socket: exit 0
+Trivy HIGH/CRITICAL audit of fixed artifact: exit 0
+record actual vulnerability database metadata: exit 0
+MySQL image audit: HIGH=0 CRITICAL=0; gosu Go1.27.3; no ignore flags
+verify-application-images.mjs
+build production backend: exit 0
+record immutable backend artifact: exit 0
+export backend without scanner Docker socket: exit 0
+Trivy HIGH/CRITICAL backend: exit 0
+build production admin: exit 0
+record immutable admin artifact: exit 0
+export admin without scanner Docker socket: exit 0
+Trivy HIGH/CRITICAL admin: exit 0
+build production frontend: exit 0
+record immutable frontend artifact: exit 0
+export frontend without scanner Docker socket: exit 0
+Trivy HIGH/CRITICAL frontend: exit 0
+record actual vulnerability database: exit 0
+prepare Trivy vulnerability database: passed, exit=0
+verify-mysql-image.mjs: passed, exit=0
+verify-application-images.mjs: passed, exit=0
+Batch verify: scripts/verify-skeleton.mjs
+generate disposable wiring credentials/certificates: PASS (exit 0)
+dedicated internal proxy network: PASS (exit 0)
+discover allocated proxy address: PASS (exit 0)
+release automatically allocated proxy network: PASS (exit 0)
+create explicit isolated proxy subnet: PASS (exit 0)
+validate explicit candidate compose: PASS (exit 0)
+SC-09 missing HTTP_PORT is rejected before startup: PASS (exit 1)
+missing HTTPS key is rejected before startup: PASS (exit 1)
+build pinned MySQL, offline admin and production applications: PASS (exit 0)
+start fresh persistent MySQL: PASS (exit 0)
+offline migrations: PASS (exit 0)
+offline manifest/schema check: PASS (exit 0)
+database CA file missing is rejected: PASS (exit 2)
+valid but wrong database trust certificate is rejected: PASS (exit 1)
+offline initialize via stdin: PASS (exit 0)
+repeat initialize does not replace existing password: PASS (exit 0)
+trusted fixture class lookup on database-only network: PASS (exit 0)
+start isolated Go and HTTPS frontend: PASS (exit 0)
+resolve only this project HTTPS frontend: PASS (exit 0)
+inspect only published HTTPS binding: PASS (exit 0)
+Actual host published HTTPS and CA/SAN rejection: PASS
+resolve production backend image: PASS (exit 0)
+resolve own mysql for image validation: PASS (exit 0)
+DO-SC-13 record actual mysql image: PASS (exit 0)
+DO-SC-13 inspect mysql image configuration: PASS (exit 0)
+DO-SC-13 inspect mysql image history: PASS (exit 0)
+resolve own backend for image validation: PASS (exit 0)
+DO-SC-13 record actual backend image: PASS (exit 0)
+DO-SC-13 inspect backend image configuration: PASS (exit 0)
+DO-SC-13 inspect backend image history: PASS (exit 0)
+resolve own frontend for image validation: PASS (exit 0)
+DO-SC-13 record actual frontend image: PASS (exit 0)
+DO-SC-13 inspect frontend image configuration: PASS (exit 0)
+DO-SC-13 inspect frontend image history: PASS (exit 0)
+SC-04/05 production process missing: PASS (exit 2)
+SC-04/05 production process empty: PASS (exit 2)
+SC-04/05 production process whitespace: PASS (exit 2)
+SC-04/05 production process letters: PASS (exit 2)
+SC-04/05 production process zero: PASS (exit 2)
+SC-04/05 production process negative: PASS (exit 2)
+SC-04/05 production process aboveMaximum: PASS (exit 2)
+SC-07 occupied port rejects second real server: PASS (exit 1)
+SC-06 start real server with trimmed valid port: PASS (exit 0)
+SC-06 inspect own trimmed-port instance: PASS (exit 0)
+SC-06 inspect own trimmed-port instance: PASS (exit 0)
+SC-06 inspect own trimmed-port instance: PASS (exit 0)
+SC-06 inspect own trimmed-port instance: PASS (exit 0)
+SC-06 inspect own trimmed-port instance: PASS (exit 0)
+SC-06 inspect own trimmed-port instance: PASS (exit 0)
+SC-06 inspect own trimmed-port instance: PASS (exit 0)
+SC-06 inspect own trimmed-port instance: PASS (exit 0)
+SC-06 inspect own trimmed-port instance: PASS (exit 0)
+SC-06 active strict probe succeeds: PASS (exit 0)
+remove only trimmed-port test instance: PASS (exit 0)
+SC-01/02/03 real same-origin HTTPS, unique health, TLS rejection, login and revoked access: PASS (exit 0)
+capture sanitized Go request logs: PASS (exit 0)
+stop database only: PASS (exit 0)
+real database-down health 503 and login 503 without credentials: PASS (exit 0)
+DO-SC-12 production probe rejects real database outage: PASS (exit 1)
+restore database: PASS (exit 0)
+account and class persist after database restart: PASS (exit 0)
+remove candidate containers while retaining named data volume: PASS (exit 0)
+SC-10 stopped production HTTP and HTTPS are unreachable: PASS (exit 0)
+recreate MySQL on retained volume: PASS (exit 0)
+recreated database migration state unchanged: PASS (exit 0)
+recreate isolated HTTPS path: PASS (exit 0)
+resolve recreated HTTPS frontend: PASS (exit 0)
+inspect recreated host binding: PASS (exit 0)
+same account and original password after full container recreation: PASS (exit 0)
+check combined logs contain no generated passwords: PASS (exit 0)
+remove only this disposable project and test data volume: PASS (exit 0)
+remove dedicated proxy network: PASS (exit 0)
+Batch verify: scripts/verify-identity.mjs
+build reviewed MySQL runtime without mysqlsh and with current Go gosu: PASS
+test fixtures: PASS
+build actual accepted pre-04 artifacts: PASS
+AT-SC-20 build actual accepted schema4 artifacts: PASS
+isolated network: PASS
+isolated MySQL: PASS
+real MySQL identity scenarios: PASS
+prepare real pre-upgrade v3 backup: PASS
+actual old artifact rejection and restored identities: PASS
+AT-SC-20 prepare real pre-upgrade4 backup: PASS
+AT-SC-20 actual schema4/5 artifacts and restored identity/material bytes: PASS
+Document parser build pinned candidate: exit 0
+Document parser record immutable image: exit 0
+Document parser actual bounded acceptance: exit 0
+Document parser private HTTP adapter real corpus and boundary tests: exit 0
+Document parser export candidate without scanner socket: exit 0
+Document parser Trivy candidate HIGH/CRITICAL: exit 0
+Document parser record actual vulnerability database: exit 0
+DO-SC-11..13: current-batch real images, default HTTPS, database failure/recovery and isolation evidence passed; Ge review pending.
