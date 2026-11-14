@@ -200,7 +200,7 @@ try {
   assert.ok(parsedLogs.some(row=>row.message==='server started' && row.request_id===null))
   assert.ok(!logs.includes('untrusted-client-value') && !logs.includes('verification-private'))
   if (secrets.some(secret => logs.includes(secret))) throw new Error('secret appeared in application log')
-  await verifyDocumentRuntime({ id, directory, compose, run, client, goArgs, goImage, evidence })
+  const verifyWorkerAfterDatabaseRecovery = await verifyDocumentRuntime({ id, directory, compose, run, client, goArgs, goImage, evidence })
   compose('stop database only', ['stop', '--timeout', '15', 'mysql'])
   client('down', 'real database-down health 503 and login 503 without credentials')
   const downProbeStarted = performance.now()
@@ -216,6 +216,7 @@ try {
     duration_ms: Math.round(performance.now()-downProbeStarted), health_status: downHealth.status, static_status: staticPage.status })
   compose('restore database', ['up', '-d', '--wait', '--wait-timeout', '90', 'mysql'])
   client('persist', 'account and class persist after database restart')
+  verifyWorkerAfterDatabaseRecovery()
   compose('remove candidate containers while retaining named data volume', [ 'down', '--timeout', '15'])
   client('stopped', 'SC-10 stopped production HTTP and HTTPS are unreachable')
   await assert.rejects(hostRequest({ port: publishedPort, ca: readFileSync(resolve(directory, 'ca.pem')) }),

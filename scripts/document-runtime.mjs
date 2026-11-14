@@ -74,8 +74,15 @@ export async function verifyDocumentRuntime({ id, directory, compose, run, clien
   compose('DI parser temporary request files reclaimed',['exec','-T','document-parser','python','-B','-I','-c',
     'import glob;assert not glob.glob("/tmp/di-rpc-*")'])
   const proof=JSON.parse(readFileSync(path,'utf8'))
-  evidence.push({label:'DI-SC-03..07/10/14 actual default worker persisted corpus and recovery',exit_code:0,
+  const summary={label:'DI-SC-03..07/10/14 actual default worker persisted corpus and recovery',exit_code:0,
     scope:'trusted internal fixture insertion; six public Document HTTP operations remain frozen',
     parser_image:parserImage,backend_image:backendImage,forced_test_lease_expiry:true,actual_worker_sigkill:true,
-    proof:Object.fromEntries(Object.entries(proof).filter(([k])=>!k.endsWith('_accepted')))})
+    proof:Object.fromEntries(Object.entries(proof).filter(([k])=>!k.endsWith('_accepted')))}
+  evidence.push(summary)
+  // Called after the original real MySQL stop/restore regression. A successful
+  // old health response cannot stand in for a worker that actually resumed.
+  return () => {
+    stage('database-verify')
+    summary.proof=Object.fromEntries(Object.entries(JSON.parse(readFileSync(path,'utf8'))).filter(([k])=>!k.endsWith('_accepted')))
+  }
 }

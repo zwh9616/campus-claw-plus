@@ -197,6 +197,10 @@ func TestDocumentProductionWorker(t *testing.T) {
 		return locations, chunks
 	}
 	switch stage {
+	case "database-verify":
+		a := enqueue(upload(0, "runtime_database_document"))
+		l, c := validate(0, a, 1)
+		state[stage] = map[string]any{"attempts": 1, "locations": l, "chunks": c, "original_202_replay": true}
 	case "corpus":
 		locations, chunks := 0, 0
 		for i := range manifest.Cases {
