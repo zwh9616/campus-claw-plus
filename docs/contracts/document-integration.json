@@ -91,8 +91,8 @@
   },
   "migration": {
     "number": 6,
-    "current_target": 5,
-    "status": "frozen_not_embedded",
+    "current_target": 6,
+    "status": "available_embedded",
     "files": {
       "000006_documents.down.sql": "bcd282b537db970249565148410f67a18737d5350055df20dd6efd51c8db5756",
       "000006_documents.up.sql": "ae898e2c8166ac8e201102e6077ad5cf71a89259fb16553d3f5a1a0380e022ef"
@@ -148,7 +148,12 @@
         "name": "000005_assignment_tasks.down.sql",
         "sha256": "f0e9e62df01fcd6f3eddc9912dfa2fa21e22c2430e6146a4cc0b271fbf6f39eb"
       }
-    ]
+    ],
+    "runtime_files": {
+      "backend/internal/migrations/target.go": "02058e6fc3b068bcba5ca9b2077c237a5262df24bbd131ea3bc7ab0d735d364b",
+      "backend/internal/migrations/manifest.json": "5d88572a78c7060130aa6077b8aceaf71305404a5b09086bb28fb5fa6877b87b",
+      "docs/contracts/identity-phase.json": "f03096a9f1397051f6d0f4bcc257cb8f81a82622797dd62d873eab4d395f2ca1"
+    }
   },
   "baseline": {
     "active_config_digest": "c48156ca79be7b9ccdd5cba656c76d8cd57316cdd000182d6116836ed3d27be6",

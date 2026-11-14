@@ -1,0 +1,130 @@
+{
+  "time": "2026-11-14T13:21:07.854Z",
+  "mysqlImage": "campus-idf-77e1ef680142-mysql:verification",
+  "results": [
+    {
+      "label": "build reviewed MySQL runtime without mysqlsh and with current Go gosu",
+      "exit_code": 0,
+      "output": "#0 building with \"desktop-linux\" instance using docker driver\n\n#1 [internal] load build definition from Dockerfile\n#1 transferring dockerfile: 1.37kB done\n#1 DONE 0.0s\n\n#2 [internal] load metadata for docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb\n#2 DONE 0.0s\n\n#3 [internal] load metadata for docker.io/library/mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902\n#3 DONE 0.0s\n\n#4 [internal] load .dockerignore\n#4 transferring context: 2B done\n#4 DONE 0.0s\n\n#5 [gosu 3/4] ADD --checksum=sha256:cd9719b775dbfedae53923c9b0dc792b66d42c51e0b36652ed6f747fbadc0164 https://codeload.github.com/tianon/gosu/tar.gz/refs/tags/1.19 /tmp/gosu.tar.gz\n#5 DONE 0.0s\n\n#6 [gosu 1/4] FROM docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb\n#6 resolve docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb 0.0s done\n#6 DONE 0.0s\n\n#7 [stage-1 1/5] FROM docker.io/library/mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902\n#7 resolve docker.io/library/mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902 0.0s done\n#7 DONE 0.0s\n\n#8 [stage-1 2/5] RUN microdnf remove -y mysql-shell     && microdnf clean all     && rm -rf -- /usr/lib/mysqlsh     && ! command -v mysqlsh     && test ! -d /usr/lib/mysqlsh     && mysqld --version | grep '8.4.13'     && mysql --version\n#8 CACHED\n\n#9 [gosu 3/4] ADD --checksum=sha256:cd9719b775dbfedae53923c9b0dc792b66d42c51e0b36652ed6f747fbadc0164 https://codeload.github.com/tianon/gosu/tar.gz/refs/tags/1.19 /tmp/gosu.tar.gz\n#9 CACHED\n\n#10 [stage-1 3/5] COPY --from=gosu /out/gosu /usr/local/bin/gosu\n#10 CACHED\n\n#11 [stage-1 4/5] COPY --from=gosu /src/LICENSE /usr/share/licenses/campus-gosu/LICENSE\n#11 CACHED\n\n#12 [gosu 2/4] WORKDIR /src\n#12 CACHED\n\n#13 [gosu 4/4] RUN tar -xzf /tmp/gosu.tar.gz --strip-components=1 -C /src     && GOTOOLCHAIN=local CGO_ENABLED=0 go build -trimpath -buildvcs=false -o /out/gosu .\n#13 CACHED\n\n#14 [stage-1 5/5] RUN gosu --version     && test \"$(gosu mysql id -u)\" = 999     && test \"$(gosu mysql id -g)\" = 999\n#14 CACHED\n\n#15 exporting to image\n#15 exporting layers done\n#15 exporting manifest sha256:02649e1627390ac4d3390f1830c1cb2fca68ca03e8ea48e3d069c640c11356a9 done\n#15 exporting config sha256:470eb9e79c456b909db1436386bdf25100ef10d5b2fc6c9f1341cc0a7709d857 done\n#15 exporting attestation manifest sha256:84a5fbd26270fdcf74baa487393d9ea8ce6da1420ef994697bdc2360edcd4d22 0.0s done\n#15 exporting manifest list sha256:4ffdbc87e2def6aedd8bfbb66c5a5e4ef33f2b5a5142ce529e9076801aa0f342 done\n#15 naming to docker.io/library/campus-idf-77e1ef680142-mysql:verification done\n#15 unpacking to docker.io/library/campus-idf-77e1ef680142-mysql:verification 0.0s done\n#15 DONE 0.1s\n\nView build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/bhamvwxuvaep63lmg62xxwq66\n"
+    },
+    {
+      "label": "test fixtures",
+      "exit_code": 0,
+      "output": "Disposable credentials and CA generated; values omitted\n"
+    },
+    {
+      "label": "build actual accepted pre-04 artifacts",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "label": "AT-SC-20 build actual accepted schema4 artifacts",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "label": "DI-SC-15 build actual accepted schema5 artifacts",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "label": "isolated network",
+      "exit_code": 0,
+      "output": "e134fea611824dd8e0d85e0c1bbce9e82c28cd5b8766627f5637e5dc0b671b66\n"
+    },
+    {
+      "label": "isolated MySQL",
+      "exit_code": 0,
+      "output": "70b3a0b19f00fe7cfff4c656e3ffbd507a9bd925b1afaac333db5be81d785f20\n"
+    },
+    {
+      "label": "real MySQL identity scenarios",
+      "exit_code": 0,
+      "output": "=== RUN   TestIDFAssemblyHealthAndConfiguration\n--- PASS: TestIDFAssemblyHealthAndConfiguration (6.16s)\n=== RUN   TestATRealHTTPAuthorizationInputsAndIdempotency\n=== RUN   TestATRealHTTPAuthorizationInputsAndIdempotency/AT-SC02-empty-create-and-method-boundary\n=== RUN   TestATRealHTTPAuthorizationInputsAndIdempotency/AT-SC03-resource-chain-and-own-only-pages\n=== RUN   TestATRealHTTPAuthorizationInputsAndIdempotency/AT-SC04-wire-codepoint-and-version-boundaries\n=== RUN   TestATRealHTTPAuthorizationInputsAndIdempotency/AT-SC06-concurrent-same-key-and-canonical-json\n=== RUN   TestATRealHTTPAuthorizationInputsAndIdempotency/AT-SC07-replay-before-time-quota-and-task-state\n=== RUN   TestATRealHTTPAuthorizationInputsAndIdempotency/AT-SC04-separate-quota-and-teacher-class-switch\n=== RUN   TestATRealHTTPAuthorizationInputsAndIdempotency/AT-SC08-session-revocation-before-replay\n=== NAME  TestATRealHTTPAuthorizationInputsAndIdempotency\n    assignment_business_test.go:396: AT-SC-02..08 actual MySQL/HTTPS authorization, inputs, concurrent atomic snapshots, deadline/quota precedence and session revocation passed\n--- PASS: TestATRealHTTPAuthorizationInputsAndIdempotency (1.56s)\n    --- PASS: TestATRealHTTPAuthorizationInputsAndIdempotency/AT-SC02-empty-create-and-method-boundary (0.02s)\n    --- PASS: TestATRealHTTPAuthorizationInputsAndIdempotency/AT-SC03-resource-chain-and-own-only-pages (0.11s)\n    --- PASS: TestATRealHTTPAuthorizationInputsAndIdempotency/AT-SC04-wire-codepoint-and-version-boundaries (0.07s)\n    --- PASS: TestATRealHTTPAuthorizationInputsAndIdempotency/AT-SC06-concurrent-same-key-and-canonical-json (0.11s)\n    --- PASS: TestATRealHTTPAuthorizationInputsAndIdempotency/AT-SC07-replay-before-time-quota-and-task-state (0.05s)\n    --- PASS: TestATRealHTTPAuthorizationInputsAndIdempotency/AT-SC04-separate-quota-and-teacher-class-switch (0.12s)\n    --- PASS: TestATRealHTTPAuthorizationInputsAndIdempotency/AT-SC08-session-revocation-before-replay (0.01s)\n=== RUN   TestATBusinessWritePointRollbackAndControlledDeadline\n--- PASS: TestATBusinessWritePointRollbackAndControlledDeadline (1.27s)\n=== RUN   TestATMutationStatesAndRollback\n--- PASS: TestATMutationStatesAndRollback (1.25s)\n=== RUN   TestATConsistentPageSnapshotsAndExactIDs\n--- PASS: TestATConsistentPageSnapshotsAndExactIDs (1.14s)\n=== RUN   TestATCommitAcknowledgementAndRealCommittedReplay\n--- PASS: TestATCommitAcknowledgementAndRealCommittedReplay (1.07s)\n=== RUN   TestATWorkerCancellationSerializations\n=== RUN   TestATWorkerCancellationSerializations/pending_cancel_commits_before_claim\n=== RUN   TestATWorkerCancellationSerializations/claim_commits_before_cancel\n=== RUN   TestATWorkerCancellationSerializations/success_commits_before_cancel\n=== RUN   TestATWorkerCancellationSerializations/stale_cancellation_cleanup_observation\n--- PASS: TestATWorkerCancellationSerializations (1.20s)\n    --- PASS: TestATWorkerCancellationSerializations/pending_cancel_commits_before_claim (0.02s)\n    --- PASS: TestATWorkerCancellationSerializations/claim_commits_before_cancel (0.03s)\n    --- PASS: TestATWorkerCancellationSerializations/success_commits_before_cancel (0.02s)\n    --- PASS: TestATWorkerCancellationSerializations/stale_cancellation_cleanup_observation (0.03s)\n=== RUN   TestATWorkerRecoveryRetryAndAdapterRollback\n--- PASS: TestATWorkerRecoveryRetryAndAdapterRollback (1.36s)\n=== RUN   TestATRealWorkerBatchConcurrencyAndUnbound\n--- PASS: TestATRealWorkerBatchConcurrencyAndUnbound (1.32s)\n=== RUN   TestATActualWorkerSIGTERM\n--- PASS: TestATActualWorkerSIGTERM (1.06s)\n=== RUN   TestATWorkerLeaseExpiryTakeoverAndABA\n--- PASS: TestATWorkerLeaseExpiryTakeoverAndABA (1.25s)\n=== RUN   TestATWorkerBackoffThirdExpiryAndRecoveryCAS\n--- PASS: TestATWorkerBackoffThirdExpiryAndRecoveryCAS (1.27s)\n=== RUN   TestATWorkerTerminalAndClaimRollback\n--- PASS: TestATWorkerTerminalAndClaimRollback (1.34s)\n=== RUN   TestATWorkerCrashHelper\n--- PASS: TestATWorkerCrashHelper (0.00s)\n=== RUN   TestATWorkerCrashBeforeAndAfterClaim\n--- PASS: TestATWorkerCrashBeforeAndAfterClaim (1.10s)\n=== RUN   TestATMigrationEmptyAndUpgrade\n=== RUN   TestATMigrationEmptyAndUpgrade/20\n=== RUN   TestATMigrationEmptyAndUpgrade/21\n--- PASS: TestATMigrationEmptyAndUpgrade (1.85s)\n    --- PASS: TestATMigrationEmptyAndUpgrade/20 (0.82s)\n    --- PASS: TestATMigrationEmptyAndUpgrade/21 (1.03s)\n=== RUN   TestATMigrationEachDDLAndForwardRepair\n=== RUN   TestATMigrationEachDDLAndForwardRepair/1\n=== RUN   TestATMigrationEachDDLAndForwardRepair/2\n=== RUN   TestATMigrationEachDDLAndForwardRepair/3\n=== RUN   TestATMigrationEachDDLAndForwardRepair/4\n=== RUN   TestATMigrationEachDDLAndForwardRepair/5\n--- PASS: TestATMigrationEachDDLAndForwardRepair (6.67s)\n    --- PASS: TestATMigrationEachDDLAndForwardRepair/1 (1.24s)\n    --- PASS: TestATMigrationEachDDLAndForwardRepair/2 (1.38s)\n    --- PASS: TestATMigrationEachDDLAndForwardRepair/3 (1.40s)\n    --- PASS: TestATMigrationEachDDLAndForwardRepair/4 (1.34s)\n    --- PASS: TestATMigrationEachDDLAndForwardRepair/5 (1.31s)\n=== RUN   TestATMigrationDriftHistoryAndBinaryScopes\n    assignments_migration_test.go:176: AT controlled drift index 0\n    assignments_migration_test.go:176: AT controlled drift index 1\n    assignments_migration_test.go:176: AT controlled drift index 2\n    assignments_migration_test.go:176: AT controlled drift index 3\n    assignments_migration_test.go:176: AT controlled drift index 4\n    assignments_migration_test.go:176: AT controlled drift index 5\n    assignments_migration_test.go:176: AT controlled drift index 6\n--- PASS: TestATMigrationDriftHistoryAndBinaryScopes (2.62s)\n=== RUN   TestATEmptyDownOnly\n--- PASS: TestATEmptyDownOnly (0.74s)\n=== RUN   TestATMigrationRejectsForeignDatabase\n    assignments_schema_test.go:53: AT-SC-20/21 foreign-database Check/Repair rejected; dirty retained; restored local FK accepted\n--- PASS: TestATMigrationRejectsForeignDatabase (1.24s)\n=== RUN   TestDIMigration6FreshUpgradeAndHistory\n=== RUN   TestDIMigration6FreshUpgradeAndHistory/0\n=== RUN   TestDIMigration6FreshUpgradeAndHistory/5\n--- PASS: TestDIMigration6FreshUpgradeAndHistory (3.15s)\n    --- PASS: TestDIMigration6FreshUpgradeAndHistory/0 (1.43s)\n    --- PASS: TestDIMigration6FreshUpgradeAndHistory/5 (1.73s)\n=== RUN   TestDIFiveDDLInterruptionAndForwardRepair\n=== RUN   TestDIFiveDDLInterruptionAndForwardRepair/1\n=== RUN   TestDIFiveDDLInterruptionAndForwardRepair/2\n=== RUN   TestDIFiveDDLInterruptionAndForwardRepair/3\n=== RUN   TestDIFiveDDLInterruptionAndForwardRepair/4\n=== RUN   TestDIFiveDDLInterruptionAndForwardRepair/5\n--- PASS: TestDIFiveDDLInterruptionAndForwardRepair (7.84s)\n    --- PASS: TestDIFiveDDLInterruptionAndForwardRepair/1 (1.52s)\n    --- PASS: TestDIFiveDDLInterruptionAndForwardRepair/2 (1.64s)\n    --- PASS: TestDIFiveDDLInterruptionAndForwardRepair/3 (1.70s)\n    --- PASS: TestDIFiveDDLInterruptionAndForwardRepair/4 (1.45s)\n    --- PASS: TestDIFiveDDLInterruptionAndForwardRepair/5 (1.52s)\n=== RUN   TestDIExactStructureDrift\n=== RUN   TestDIExactStructureDrift/column\n=== RUN   TestDIExactStructureDrift/default\n=== RUN   TestDIExactStructureDrift/collation\n=== RUN   TestDIExactStructureDrift/index-order\n=== RUN   TestDIExactStructureDrift/index-prefix\n=== RUN   TestDIExactStructureDrift/check-expression\n=== RUN   TestDIExactStructureDrift/check-enforcement\n=== RUN   TestDIExactStructureDrift/engine\n=== RUN   TestDIExactStructureDrift/binary-key\n=== RUN   TestDIExactStructureDrift/lease-predicate\n--- PASS: TestDIExactStructureDrift (5.23s)\n    --- PASS: TestDIExactStructureDrift/column (0.29s)\n    --- PASS: TestDIExactStructureDrift/default (0.19s)\n    --- PASS: TestDIExactStructureDrift/collation (0.31s)\n    --- PASS: TestDIExactStructureDrift/index-order (0.21s)\n    --- PASS: TestDIExactStructureDrift/index-prefix (0.22s)\n    --- PASS: TestDIExactStructureDrift/check-expression (0.27s)\n    --- PASS: TestDIExactStructureDrift/check-enforcement (0.24s)\n    --- PASS: TestDIExactStructureDrift/engine (0.24s)\n    --- PASS: TestDIExactStructureDrift/binary-key (0.26s)\n    --- PASS: TestDIExactStructureDrift/lease-predicate (0.60s)\n=== RUN   TestDIEmptyDisposableDownOnly\n--- PASS: TestDIEmptyDisposableDownOnly (1.42s)\n=== RUN   TestIDFFailureAndRaceBoundaries\n=== RUN   TestIDFFailureAndRaceBoundaries/SC05-refresh-versus-switch\n=== RUN   TestIDFFailureAndRaceBoundaries/SC12-commit-failure-distinction\n=== RUN   TestIDFFailureAndRaceBoundaries/SC12-commit-failure-distinction/rollback\n=== RUN   TestIDFFailureAndRaceBoundaries/SC12-commit-failure-distinction/commit-ack-lost\n=== RUN   TestIDFFailureAndRaceBoundaries/SC08-membership-disable-revocation\n=== RUN   TestIDFFailureAndRaceBoundaries/SC18-common-five-second-budget\n    failures_test.go:175: locked database bounded duration 5.019s\n=== RUN   TestIDFFailureAndRaceBoundaries/SC18-CA-target-and-DML-role\n=== RUN   TestIDFFailureAndRaceBoundaries/SC18-unavailable-and-recovery\n--- PASS: TestIDFFailureAndRaceBoundaries (5.90s)\n    --- PASS: TestIDFFailureAndRaceBoundaries/SC05-refresh-versus-switch (0.06s)\n    --- PASS: TestIDFFailureAndRaceBoundaries/SC12-commit-failure-distinction (0.18s)\n        --- PASS: TestIDFFailureAndRaceBoundaries/SC12-commit-failure-distinction/rollback (0.08s)\n        --- PASS: TestIDFFailureAndRaceBoundaries/SC12-commit-failure-distinction/commit-ack-lost (0.10s)\n    --- PASS: TestIDFFailureAndRaceBoundaries/SC08-membership-disable-revocation (0.08s)\n    --- PASS: TestIDFFailureAndRaceBoundaries/SC18-common-five-second-budget (5.05s)\n    --- PASS: TestIDFFailureAndRaceBoundaries/SC18-CA-target-and-DML-role (0.00s)\n    --- PASS: TestIDFFailureAndRaceBoundaries/SC18-unavailable-and-recovery (0.06s)\n=== RUN   TestIDFRealMigrationsAndSessions\n    identity_test.go:86: MySQL version 8.4.13\n=== RUN   TestIDFRealMigrationsAndSessions/SC14-15-repeat-concurrent-and-rollback\n=== RUN   TestIDFRealMigrationsAndSessions/SC01-02-five-identities\n=== RUN   TestIDFRealMigrationsAndSessions/SC04-05-concurrent-refresh\n=== RUN   TestIDFRealMigrationsAndSessions/SC06-07-12-switch-logout-expiry\n=== RUN   TestIDFRealMigrationsAndSessions/SC08-revocation\n=== RUN   TestIDFRealMigrationsAndSessions/SC09-11-20-real-principal-authorization\n=== RUN   TestIDFRealMigrationsAndSessions/SC03-13-17-HTTP-HTTPS-order-and-logs\n--- PASS: TestIDFRealMigrationsAndSessions (1.13s)\n    --- PASS: TestIDFRealMigrationsAndSessions/SC14-15-repeat-concurrent-and-rollback (0.19s)\n    --- PASS: TestIDFRealMigrationsAndSessions/SC01-02-five-identities (0.20s)\n    --- PASS: TestIDFRealMigrationsAndSessions/SC04-05-concurrent-refresh (0.04s)\n    --- PASS: TestIDFRealMigrationsAndSessions/SC06-07-12-switch-logout-expiry (0.09s)\n    --- PASS: TestIDFRealMigrationsAndSessions/SC08-revocation (0.11s)\n    --- PASS: TestIDFRealMigrationsAndSessions/SC09-11-20-real-principal-authorization (0.07s)\n    --- PASS: TestIDFRealMigrationsAndSessions/SC03-13-17-HTTP-HTTPS-order-and-logs (0.06s)\n=== RUN   TestIDFPartialDDLRecovery\n=== RUN   TestIDFPartialDDLRecovery/SC16-v1-step1\n=== RUN   TestIDFPartialDDLRecovery/SC16-v1-step2\n=== RUN   TestIDFPartialDDLRecovery/SC16-v1-step3\n=== RUN   TestIDFPartialDDLRecovery/SC16-v2-step1\n=== RUN   TestIDFPartialDDLRecovery/SC16-v2-step2\n=== RUN   TestIDFPartialDDLRecovery/SC16-v3-step1\n--- PASS: TestIDFPartialDDLRecovery (2.26s)\n    --- PASS: TestIDFPartialDDLRecovery/SC16-v1-step1 (0.31s)\n    --- PASS: TestIDFPartialDDLRecovery/SC16-v1-step2 (0.28s)\n    --- PASS: TestIDFPartialDDLRecovery/SC16-v1-step3 (0.29s)\n    --- PASS: TestIDFPartialDDLRecovery/SC16-v2-step1 (0.47s)\n    --- PASS: TestIDFPartialDDLRecovery/SC16-v2-step2 (0.43s)\n    --- PASS: TestIDFPartialDDLRecovery/SC16-v3-step1 (0.49s)\n=== RUN   TestMRCommitFailureDistinguishesUnavailableAndTimeout\n=== RUN   TestMRCommitFailureDistinguishesUnavailableAndTimeout/unavailable\n=== RUN   TestMRCommitFailureDistinguishesUnavailableAndTimeout/timeout\n--- PASS: TestMRCommitFailureDistinguishesUnavailableAndTimeout (0.56s)\n    --- PASS: TestMRCommitFailureDistinguishesUnavailableAndTimeout/unavailable (0.02s)\n    --- PASS: TestMRCommitFailureDistinguishesUnavailableAndTimeout/timeout (0.01s)\n=== RUN   TestMRRealUploadSearchAuthorizationAndRecovery\n--- PASS: TestMRRealUploadSearchAuthorizationAndRecovery (1.55s)\n=== RUN   TestMRPendingCommitExit\n--- PASS: TestMRPendingCommitExit (0.00s)\n=== RUN   TestMRMigrationEveryDDLAndDrift\n=== RUN   TestMRMigrationEveryDDLAndDrift/1\n=== RUN   TestMRMigrationEveryDDLAndDrift/2\n=== RUN   TestMRMigrationEveryDDLAndDrift/3\n--- PASS: TestMRMigrationEveryDDLAndDrift (2.76s)\n    --- PASS: TestMRMigrationEveryDDLAndDrift/1 (0.90s)\n    --- PASS: TestMRMigrationEveryDDLAndDrift/2 (0.88s)\n    --- PASS: TestMRMigrationEveryDDLAndDrift/3 (0.98s)\n=== RUN   TestMREmptyDownOnly\n--- PASS: TestMREmptyDownOnly (0.49s)\n=== RUN   TestIDFMigrationMetadataAndEmptyDown\n--- PASS: TestIDFMigrationMetadataAndEmptyDown (2.22s)\n=== RUN   TestIDFReviewerIndependentAuthorizationAndRevocation\n    reviewer_test.go:135: IDF-SC-09/10/11/13/20: own allowed; teacher/other student/cross-class/unknown denied; all rows unchanged\n    reviewer_test.go:159: IDF-SC-06/17: logout 204; old access/refresh 401; other session 200; database revocation and HTTP/audit request ID agree\n    reviewer_test.go:179: IDF-SC-08: remaining user session revoked; old access/refresh 401; unrelated user 200; denial rows unchanged; logs omit credentials\n--- PASS: TestIDFReviewerIndependentAuthorizationAndRevocation (0.64s)\nPASS\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/integration\t70.636s\n"
+    },
+    {
+      "label": "prepare real pre-upgrade v3 backup",
+      "exit_code": 0,
+      "output": "=== RUN   TestMRBackupRestoreAndOldArtifact\n--- PASS: TestMRBackupRestoreAndOldArtifact (0.41s)\nPASS\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/integration\t0.418s\n"
+    },
+    {
+      "label": "real consistent v3 mysqldump",
+      "exit_code": 0,
+      "output": "Dump and client credentials omitted"
+    },
+    {
+      "label": "restore into independent v3 database",
+      "exit_code": 0,
+      "output": "Restore data omitted"
+    },
+    {
+      "label": "actual old artifact rejection and restored identities",
+      "exit_code": 0,
+      "output": "=== RUN   TestMRBackupRestoreAndOldArtifact\n    materials_backup_test.go:126: MR-SC-08 real v3 dump/isolated restore, five identities and actual pre-04 artifact rejection passed; source v4 preserved\n--- PASS: TestMRBackupRestoreAndOldArtifact (0.83s)\nPASS\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/integration\t0.833s\n"
+    },
+    {
+      "label": "AT-SC-20 prepare real pre-upgrade4 backup",
+      "exit_code": 0,
+      "output": "=== RUN   TestATBackupRestoreAndActualTargetMatrix\n--- PASS: TestATBackupRestoreAndActualTargetMatrix (0.57s)\nPASS\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/integration\t0.584s\n"
+    },
+    {
+      "label": "AT-SC-20 real consistent v4 mysqldump",
+      "exit_code": 0,
+      "output": "Dump and client credentials omitted"
+    },
+    {
+      "label": "AT-SC-20 restore into independent v4 database",
+      "exit_code": 0,
+      "output": "Restore data omitted"
+    },
+    {
+      "label": "AT-SC-20 actual schema4/5 artifacts and restored identity/material bytes",
+      "exit_code": 0,
+      "output": "=== RUN   TestATBackupRestoreAndActualTargetMatrix\n    assignments_backup_test.go:154: AT-SC-20 real v4 dump/isolated restore, five identities/original material and actual4/5 artifact matrix passed; upgraded5 preserved\n--- PASS: TestATBackupRestoreAndActualTargetMatrix (1.61s)\nPASS\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/integration\t1.628s\n"
+    },
+    {
+      "label": "DI-SC-15 prepare5 data and stop actual accepted5 writer",
+      "exit_code": 0,
+      "output": "=== RUN   TestDIBackupRestoreAndActualFiveSixMatrix\n--- PASS: TestDIBackupRestoreAndActualFiveSixMatrix (1.29s)\nPASS\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/integration\t1.305s\n"
+    },
+    {
+      "label": "DI-SC-15 actual stopped5 consistent mysqldump",
+      "exit_code": 0,
+      "output": "Dump bytes, saved session and credentials omitted",
+      "backup_utc": "2026-11-14T13:20:59.105Z",
+      "accepted5_commit": "c1ac4213580df1fcc03520b8dddcfbece2a3344d",
+      "dump_bytes": 21497,
+      "dump_sha256": "7892d3e58ca5b1a74fa719ad87e21fe52d6d6375a77fb676539e6fb821773ee0"
+    },
+    {
+      "label": "DI-SC-15 actual migration6 interruption preserves dirty source",
+      "exit_code": 0,
+      "output": "=== RUN   TestDIBackupRestoreAndActualFiveSixMatrix\n--- PASS: TestDIBackupRestoreAndActualFiveSixMatrix (0.25s)\nPASS\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/integration\t0.258s\n"
+    },
+    {
+      "label": "DI-SC-15 restore5 into separate database after failed6",
+      "exit_code": 0,
+      "output": "Restore bytes omitted"
+    },
+    {
+      "label": "DI-SC-15 actual5/6 recovery saved session TXT pending replay and forward repair",
+      "exit_code": 1,
+      "output": "=== RUN   TestDIBackupRestoreAndActualFiveSixMatrix\n    documents_backup_test.go:212: actual restored HTTP status 404 200\n--- FAIL: TestDIBackupRestoreAndActualFiveSixMatrix (0.68s)\nFAIL\nFAIL\tgithub.com/zwh9616/campus-claw-plus/backend/internal/integration\t0.693s\nFAIL\n"
+    },
+    {
+      "label": "remove test container and its anonymous volume",
+      "exit_code": 0,
+      "output": "campus-idf-77e1ef680142\n"
+    },
+    {
+      "label": "remove test network",
+      "exit_code": 0,
+      "output": "campus-idf-77e1ef680142\n"
+    },
+    {
+      "label": "remove only own MySQL image tag",
+      "exit_code": 0,
+      "output": "Untagged: campus-idf-77e1ef680142-mysql:verification\nDeleted: sha256:4ffdbc87e2def6aedd8bfbb66c5a5e4ef33f2b5a5142ce529e9076801aa0f342\n"
+    }
+  ]
+}

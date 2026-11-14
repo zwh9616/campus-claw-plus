@@ -1,0 +1,23 @@
+[
+  {
+    "path": "backend/internal/migrations/target.go",
+    "before_local_sha256": "7b359942540868a97797d3352050f5aac21199fec77100acaea0c8e7d72bb689",
+    "before_crlf_lines": 4,
+    "canonical_git_sha256": "02058e6fc3b068bcba5ca9b2077c237a5262df24bbd131ea3bc7ab0d735d364b",
+    "git_bytes_equal": true
+  },
+  {
+    "path": "backend/internal/migrations/manifest.json",
+    "before_local_sha256": "5d88572a78c7060130aa6077b8aceaf71305404a5b09086bb28fb5fa6877b87b",
+    "before_crlf_lines": 0,
+    "canonical_git_sha256": "5d88572a78c7060130aa6077b8aceaf71305404a5b09086bb28fb5fa6877b87b",
+    "git_bytes_equal": true
+  },
+  {
+    "path": "docs/contracts/identity-phase.json",
+    "before_local_sha256": "d7adf9e7102b1eee9fafc1ca4e247a9e9f5ca53704c07616c67f023ca8059fee",
+    "before_crlf_lines": 108,
+    "canonical_git_sha256": "f03096a9f1397051f6d0f4bcc257cb8f81a82622797dd62d873eab4d395f2ca1",
+    "git_bytes_equal": true
+  }
+]

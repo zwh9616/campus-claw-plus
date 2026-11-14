@@ -1,0 +1,11 @@
+✔ DI-SC-15 exact real migration groups and every stopped5/interrupted6/restored5 phase required (5.5012ms)
+✔ DI-SC-15 missing/nested/duplicate PASS, skips and omitted DDL interruption block verification (1.119ms)
+✔ DI-SC-15 binary/dump identity, real RTO and separate database data boundary cannot be omitted (6.0432ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 205.1284

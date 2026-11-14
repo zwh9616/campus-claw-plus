@@ -52,3 +52,7 @@
 [04E](../../openspec/changes/2026-11-13-materials-document-intelligence/design.md)候选新增六个frozen Document操作，与旧Material/Citation和05 Task分开。仅合同获审合入后apply，当前22 current/Target5/原5秒DB与3秒健康预算不变。PDF/DOCX解析走有界异步隔离作业，不在HTTP/DB事务内执行；202不表示解析成功。DOCX逻辑块不伪造页码，返回出处必须回查同版本持久正文；资源预算、状态、重放、lease/CAS及失败/恢复按D1—D5验收。
 
 本批准确私有RPC/配置/五表DDL候选见[integration-contract](../../openspec/changes/2026-11-13-materials-document-intelligence/integration-contract.md)。当前不装配；未来RPC35秒独立于公共HTTP/DB5秒，预检500ms只用于新上传且在DB事务前，已提交快照先授权重放。私有完成状态200只允许ready/needs_ocr，确定性解析失败422、超时504、中断/内部失败503，与公开Error合同分开。完整结果/原文/位置/当前owner-epoch-processing-未到期租约须在发布事务内检查，SQL CHECK不能代替逐字回查或跨行原子性。Target6/精确结构与repair/down门禁只在获审后的实施提交引入。
+
+## 04E迁移6实施候选（本轮待审）
+
+依据已批准#48的I3，本候选逐字追加000006，server/admin共享精确Target6，000001..000005字节不改。available只表示嵌入代码，持有人库未升级；仍须停写/一致备份、离线migrate，dirty/摘要/完整结构漂移阻断，仅显式前向repair6。五新增表全部空且明确可丢弃集成库才允许测试down；方法仅integration构建存在，无生产CLI或force/down入口。当前22 current、13 active与两frozen键、四默认生产服务和MySQL健康保持，解析服务未生产装配。实际五DDL/备份恢复与完整门禁结果见共享表，未验不记通过。

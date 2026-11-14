@@ -4,8 +4,8 @@ import { randomBytes, createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, readdirSync, unlinkSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 
-// DI-SC-07/09/15: candidate DDL contract probe only. No runtime migration6,
-// server/admin/repair6 or holder database is used or claimed by this program.
+// DI-SC-07/09/15: reviewed DDL constraints only. Real embedded migration6,
+// interruption/repair/backup tests run separately in verify-identity.mjs.
 const runId = 'campus-di-ddl-' + randomBytes(6).toString('hex')
 const image = runId + ':probe'
 const container = runId + '-mysql'
@@ -20,14 +20,14 @@ const candidate = 'docs/contracts/document-parser/migration/'
 const sources = Object.fromEntries(Object.keys(contract.migration.files).map(n => [n, sha(readFileSync(candidate + n))]))
 assert.deepEqual(sources, contract.migration.files)
 const targetSource = readFileSync('backend/internal/migrations/target.go')
-assert.equal(sha(targetSource), contract.baseline.protected_files['backend/internal/migrations/target.go'])
+assert.equal(sha(targetSource), contract.migration.runtime_files['backend/internal/migrations/target.go'])
 const runtimeTarget = Number(targetSource.toString('utf8').match(/\bconst\s+Target\s*=\s*(\d+)/)?.[1])
-assert.equal(runtimeTarget, 5)
+assert.equal(runtimeTarget, 6)
 assert.equal(runtimeTarget, contract.migration.current_target)
 const results = []
 const report = { run_id: runId, time: new Date().toISOString(), exit_code: 1,
   source: { commit: git(['rev-parse', 'HEAD']), dirty: git(['status', '--porcelain']) !== '' },
-  candidate_sql: sources, scope: 'isolated candidate SQL syntax/constraints only; no Target6/dirty/repair/backup/RPC/runtime activation claim' }
+  candidate_sql: sources, scope: 'isolated reviewed SQL constraints with runtime Target6 registered; actual migration/repair/backup evidence is separate identity suite; no holder database or RPC activation' }
 
 function docker(args, input, timeout = 30000) {
   return spawnSync('docker', args, { input, encoding: 'utf8', timeout, maxBuffer: 4 * 1024 * 1024,
@@ -74,7 +74,7 @@ try {
   report.mysql_version = sql('actual database version', 'SELECT VERSION();', { database: null })
   assert.match(report.mysql_version, /^8\.4\.13(?:[-.]|$)/)
   sql('fresh isolated schema only', 'CREATE DATABASE di_contract_probe CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_bin;', { database: null })
-  const old = readdirSync('backend/internal/migrations/sql').filter(n => n.endsWith('.up.sql')).sort()
+  const old = readdirSync('backend/internal/migrations/sql').filter(n => n.endsWith('.up.sql') && !n.startsWith('000006')).sort()
   assert.equal(old.length, 5)
   for (const name of old) sql('published table baseline ' + name, readFileSync('backend/internal/migrations/sql/' + name, 'utf8'))
   const count = () => Number(sql('inspect isolated table count', "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema='di_contract_probe';"))

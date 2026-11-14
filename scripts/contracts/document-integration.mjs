@@ -59,18 +59,36 @@ export function validateIntegrationProfile(contract, register, read = p => readF
   assert.deepEqual(Object.keys(contract.baseline.protected_files).sort(), ['.env.example', 'compose.yaml',
     'docs/contracts/identity-phase.json', 'docs/contracts/endpoint-register.json', 'deploy/service-batches.json',
     'backend/internal/migrations/target.go', 'backend/internal/migrations/manifest.json'].sort(), 'Protected file paths must be an exact local allowlist')
-  for (const [path, digest] of Object.entries(contract.baseline.protected_files)) assert.equal(sha(read(path)), digest, 'Activation/protected baseline changed: ' + path)
+  const runtimeFiles = ['backend/internal/migrations/target.go', 'backend/internal/migrations/manifest.json', 'docs/contracts/identity-phase.json']
+  for (const [path, digest] of Object.entries(contract.baseline.protected_files)) {
+    if (!runtimeFiles.includes(path)) assert.equal(sha(read(path)), digest, 'Activation/protected baseline changed: ' + path)
+  }
   const migration = contract.migration
-  assert.equal(migration.number, 6); assert.equal(migration.current_target, 5)
-  assert.equal(migration.status, 'frozen_not_embedded'); assert.equal(migration.ddl_steps, 5)
+  assert.equal(migration.number, 6); assert.equal(migration.current_target, 6)
+  assert.equal(migration.status, 'available_embedded'); assert.equal(migration.ddl_steps, 5)
+  assert.deepEqual(Object.keys(migration.runtime_files).sort(), runtimeFiles.sort(), 'Exact migration-only runtime allowlist')
+  for (const [path, digest] of Object.entries(migration.runtime_files)) {
+    const bytes = read(path)
+    assert.ok(!bytes.includes(13), 'Migration runtime inputs must use repository LF bytes: ' + path)
+    assert.equal(sha(bytes), digest, 'Migration runtime drift: ' + path)
+  }
+  assert.match(read('backend/internal/migrations/target.go').toString('utf8'), /\bconst Target = 6\b/)
   assert.equal(migration.restore_target, 5); assert.equal(migration.down, 'empty_disposable_test_database_only')
   assert.deepEqual(migration.tables, ['documents', 'document_locations', 'document_chunks', 'document_parse_jobs', 'document_idempotency'])
   assert.deepEqual(Object.keys(migration.files).sort(), ['000006_documents.down.sql', '000006_documents.up.sql'])
-  for (const [name, digest] of Object.entries(migration.files)) assert.equal(sha(read(`${directory}/migration/${name}`)), digest, 'Candidate SQL drift')
-  assert.ok(names.every(n => !n.startsWith('000006')), 'Frozen candidate must not become an embedded migration')
+  for (const [name, digest] of Object.entries(migration.files)) {
+    assert.equal(sha(read(`${directory}/migration/${name}`)), digest, 'Reviewed SQL drift')
+    assert.equal(sha(read(`backend/internal/migrations/sql/${name}`)), digest, 'Embedded SQL must be byte-identical to reviewed SQL')
+  }
   assert.equal(migration.published_files.length, 10)
   for (const entry of migration.published_files) assert.deepEqual(Object.keys(entry).sort(), ['name', 'sha256'])
-  assert.deepEqual(json('backend/internal/migrations/manifest.json'), Object.fromEntries(migration.published_files.map(e => [e.name, e.sha256])))
+  const expectedManifest = { ...Object.fromEntries(migration.published_files.map(e => [e.name, e.sha256])), ...migration.files }
+  assert.deepEqual(JSON.parse(read('backend/internal/migrations/manifest.json')), expectedManifest)
+  assert.deepEqual([...names].sort(), Object.keys(expectedManifest).sort(), 'Exact twelve embedded SQL files')
+  const phase = JSON.parse(read('docs/contracts/identity-phase.json'))
+  assert.equal(phase.migrations.length, 6)
+  assert.deepEqual(phase.migrations[5], { number: '000006', name: 'documents', owner: '04E', status: 'available',
+    depends_on: ['000001','000002','000003','000004','000005'], checksum: migration.files['000006_documents.up.sql'], down_checksum: migration.files['000006_documents.down.sql'] })
   for (const { name, sha256: digest } of migration.published_files) assert.equal(sha(read(`backend/internal/migrations/sql/${name}`)), digest, 'Published SQL changed')
   const up = read(`${directory}/migration/000006_documents.up.sql`).toString('utf8')
   const down = read(`${directory}/migration/000006_documents.down.sql`).toString('utf8')
@@ -225,5 +243,5 @@ export async function validateDocumentIntegration() {
     const check = new Ajv2020({ strict: true, strictRequired: false }).compile(stripIds(parsed.paths['/health'].get.responses[status].content['application/json'].schema))
     for (const value of ['invalid_request', 'unauthenticated', 'not_found', 'method_not_allowed', 'busy']) assert.equal(check({ error: value }), value === error)
   }
-  console.log(`DI-SC-02..06/14/15: ${fixtures.length} private dual-path cases, frozen RPC/config/candidate five-DDL; no runtime activation.`)
+  console.log(`DI-SC-02..06/14/15: ${fixtures.length} private dual-path cases; frozen RPC/config, exact embedded migration6; no parser runtime activation.`)
 }

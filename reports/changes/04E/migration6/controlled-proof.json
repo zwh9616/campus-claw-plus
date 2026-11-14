@@ -1,0 +1,7 @@
+{
+  "scope": "DI-SC-15 actual MySQL Check/Repair drift guard degradation; focused DI suite, not whole gate",
+  "before_sha256": "3358d2b2405124a983e7b42411f1b923ddc7610e8f2ed58667dcb11f1e440ac4",
+  "red_exit": 1,
+  "green_exit": 0,
+  "restored_sha256": "3358d2b2405124a983e7b42411f1b923ddc7610e8f2ed58667dcb11f1e440ac4"
+}

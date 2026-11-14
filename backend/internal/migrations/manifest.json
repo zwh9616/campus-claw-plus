@@ -11,4 +11,7 @@
   ,
   "000005_assignment_tasks.up.sql": "ad2f53dc0e9960b153fa9058c568e22d23150118d134dea5d293fcf1e7acd21c",
   "000005_assignment_tasks.down.sql": "f0e9e62df01fcd6f3eddc9912dfa2fa21e22c2430e6146a4cc0b271fbf6f39eb"
+  ,
+  "000006_documents.down.sql": "bcd282b537db970249565148410f67a18737d5350055df20dd6efd51c8db5756",
+  "000006_documents.up.sql": "ae898e2c8166ac8e201102e6077ad5cf71a89259fb16553d3f5a1a0380e022ef"
 }
