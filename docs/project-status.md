@@ -4,7 +4,7 @@
 
 ## 下一阶段：04E资料能力扩展，小张统一负责
 
-2026-11-14小张推进Go私有解析客户端：#51最终97d4f08获小陈实际APPROVED5903073379，正常合入main97f25b9，精确main CI43575033114成功。小张从该main建立codex/04-parser-client-2026-11-14，已实现固定origin/禁代理重定向/严格JSON与码点出处校验、500ms预检及RPC预算；首轮Go→Python独占internal网络真实40文件/195出处、错误令牌拒绝、实际服务消失与凭据/自身网络清理通过，Go vet及7组真实HTTP/语义测试通过。新服务/两配置键仍未生产激活，Target5/22 current保持；原完整check0（含全包Go/40合同/strict11/11/真实互通/SQL探针）、锁定Node镜像原audit两树0；原verify/制品实扫/最终CI待执行，不提前勾迁移6/恢复或持久队列。[客户端记录](../reports/changes/04E/parser-client-2026-11-14.md)。
+2026-11-14小张推进Go私有解析客户端：#51最终97d4f08获小陈实际APPROVED5903073379，正常合入main97f25b9，精确main CI43575033114成功。小张从该main建立codex/04-parser-client-2026-11-14，已实现固定origin/禁代理重定向/严格JSON与码点出处校验、500ms预检及RPC预算；首轮Go→Python独占internal网络真实40文件/195出处、错误令牌拒绝、实际服务消失与凭据/自身网络清理通过，Go vet及7组真实HTTP/语义测试通过。新服务/两配置键仍未生产激活，Target5/22 current保持；原完整check0（含全包Go/40合同/strict11/11/真实互通/SQL探针）、锁定Node镜像原audit两树0；干净d9665ed原verify/制品实扫0，完整CI43577952040四段0、原ZIP/真实40文件与195位置/断连/清理独立核验通过，已交[PR #52](https://github.com/zwh9616/campus-claw-plus/pull/52)，补证自身CI及实际批准另核，不提前勾迁移6/恢复或持久队列。[客户端记录](../reports/changes/04E/parser-client-2026-11-14.md)。
 
 2026-11-14小张推进真实解析适配器：#49最终4acd495已获小陈实际APPROVED5902350597并合入main670ac0c，精确main CI43567519679成功，无未解决review thread。本轮从该main建立codex/04-parser-rpc-2026-11-14，实施私有HTTP组件与真实套接字/40份语料测试；默认Compose、两个frozen键、Target5和22 current未变，新的私有服务尚未激活。首次测试抓到额外请求体被误当损坏PDF（422而非400），修复后组件重跑0（原内核8组/40清晰/25负例、私有HTTP7组/40实际文件/真实5秒头体预算），鉴权受控红1→原实现绿0，原生gate因audit网络失败1留证，锁定Node容器同命令audit0/本机verify0；CI43572312029四段0及原件已核验，已交[PR #51](https://github.com/zwh9616/campus-claw-plus/pull/51)，补证自身CI/实际批准另核；迁移6/恢复、持久队列/六HTTP与真实页面仍待实施。全部04E仍小张负责。[本轮记录](../reports/changes/04E/parser-rpc-2026-11-14.md)。
 

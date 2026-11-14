@@ -15,3 +15,11 @@
 这仍不是生产装配：默认backend未导入客户端、两个键仍frozen/空样例不新增、当前Target5/22 current/四生产服务保持。配置/私有网络原子激活、五生产镜像及探针、迁移6/中断/备份恢复、持久原件/幂等202/租约队列和公开Document/UI仍待实施。完整check、原verify/实扫/清理、秘密扫描和最终CI按实际结果补证，未完成不勾父任务。
 
 提交前原完整npm run check退出0（含原40合同/Go全包vet/test/类型构建/strict11/11/内核/HTTP组件/真实客户端互通和SQL候选探针）；[输出](parser-client/full-check.txt)/[最终组件报告](parser-client/final-component-results.json)。当前check/scan指纹已包含Go客户端、测试与互通脚本；清理核对专属label，真实40文件/195位置、错误鉴权及实际服务消失、日志安全与凭据/自身资源清理全部通过。锁定Node镜像中原npm run audit两树0，[输出](parser-client/container-audit.txt)。原完整verify/实扫、最终head/CI及真实成员批准仍待执行，不提前声明生产装配、迁移或队列完成。
+
+## 干净提交与原件收口
+
+代码d9665ed3bbed92a9d05e246ccfdc1e9deb1e74bc已交[PR #52](https://github.com/zwh9616/campus-claw-plus/pull/52)，本机干净原npm run verify退出0，原四生产镜像/HTTPS/数据库重建与隔离恢复及新增组件实扫/互通/实际断连/清理通过。[本机12文件原件](parser-client/local-verify.zip) SHA29a9e344aee0fd04a90e32b5c962db5ef3e44f3ee77a8c997f979a19e780b605/[范围证明](parser-client/local-verify-proof.json)；该包仅含本轮verify与scan，提交前check/audit单独记录，不伪造一次完整原生gate。
+
+[完整CI43577952040](https://github.com/zwh9616/campus-claw-plus/actions/runs/43577952040)实际success，artifact14106773051已实际下载；[16文件原件](parser-client/first-ci-runtime.zip) SHAa83f1855e392f9a7b28a7ab9f6d2be1a6d76077ac0e83b5d49dd3f19a4cc545d等于GitHub digest。[原运行核对](parser-client/first-ci-runtime-verified.json)/[内核核对](parser-client/first-ci-core-verified.json)/[新增真实客户端核对](parser-client/first-ci-client-verified.json)：四段0/verify246290ms、check与scan各40真实Go/Python文件/195位置/错误鉴权/实际服务消失及标签核对/秘密清理通过，原7组HTTP/8组内核/25负例/45关键句、四生产镜像+候选零HIGH/CRITICAL、18组05/五恢复/三HTTPS/SQL候选16拒绝与全部清理通过，原件解包秘密扫描0。两平台完整原始字节指纹各自保存，不把不同换行/证据元数据误称跨机器相同。
+
+本补证只修改共享表/tasks与报告，不改代码或受审合同；自身最新CI与真实批准另核。#52交小陈实际审查，未收到批准、未合并。新配置/网络生产激活、迁移6/五DDL中断/repair/旧制品拒绝/备份恢复以及独立解析持久队列仍待后续实际实施和验收，不勾这些父任务。

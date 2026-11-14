@@ -1,0 +1,12 @@
+{
+  "code_head": "d9665ed3bbed92a9d05e246ccfdc1e9deb1e74bc",
+  "ci_run": 43577952040,
+  "ci_artifact": 14106773051,
+  "ci_merge": "7e5c12f3abe4c8deec3bad273a1bb33b4bf7062a",
+  "ci_zip_sha256": "a83f1855e392f9a7b28a7ab9f6d2be1a6d76077ac0e83b5d49dd3f19a4cc545d",
+  "check_and_scan_real_documents_each": 40,
+  "locations_each": 195,
+  "actual_outage_and_wrong_auth": true,
+  "all_owned_cleanup_and_secret_removal": true,
+  "scope": "Go client and private HTTP interoperability, not config/Compose activation or SQL-backed upload/queue"
+}
