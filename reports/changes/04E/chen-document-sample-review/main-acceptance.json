@@ -1,0 +1,27 @@
+{
+  "reviewer": "小陈 / Kevcco (AI辅助)",
+  "checked_at": "2026-11-14T06:49:31.705Z",
+  "pr": 49,
+  "head": "4acd495b40ef44e7affe023fe9921f2fdd532c49",
+  "approval": {
+    "id": 5902350597,
+    "user": "Kevcco",
+    "head": "4acd495b40ef44e7affe023fe9921f2fdd532c49",
+    "url": "https://github.com/zwh9616/campus-claw-plus/pull/49#pullrequestreview-5902350597"
+  },
+  "merge": "670ac0c9ae587359bdba2c0d107be54b3ca1f0a9",
+  "main_protected": true,
+  "tree": "3b8515bcafe661c0666f290976d1b139dcb26431",
+  "ci": {
+    "id": 43567519679,
+    "url": "https://github.com/zwh9616/campus-claw-plus/actions/runs/43567519679",
+    "head": "670ac0c9ae587359bdba2c0d107be54b3ca1f0a9",
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "artifact": {
+    "id": 14102359005,
+    "digest": "sha256:3d9f0f00c0bea46c5fc726f92b4328650a6422042d67d4fdfe80df02a728ec15"
+  },
+  "scope": "Isolated samples merged; user direction, real Document UI and whole A/B/C not approved"
+}

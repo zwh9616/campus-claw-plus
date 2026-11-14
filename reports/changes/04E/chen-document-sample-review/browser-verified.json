@@ -1,0 +1,18 @@
+{
+  "reviewer": "小陈 / Kevcco (AI辅助)",
+  "head": "4acd495b40ef44e7affe023fe9921f2fdd532c49",
+  "source": "9317b81de7c08d44d60956cda50c21048d5e1756",
+  "source_inputs": 9,
+  "current_inputs_identical": true,
+  "zip_sha256": "221a3416c0eb44775fc43faa2d6c5c250a4033a5529f3b1730066a6bf92c90ac",
+  "pngs": 92,
+  "visual_cases": 78,
+  "native_action_cases": 6,
+  "interaction_groups": 9,
+  "api_requests": 0,
+  "page_errors": 0,
+  "actual_red": 1,
+  "restored_green": 0,
+  "scope": "Downloaded author browser evidence independently verified; own CUA spot checks separately recorded, no real auth/upload/parser or user direction approval implied",
+  "exit_code": 0
+}
