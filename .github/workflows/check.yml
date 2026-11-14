@@ -41,6 +41,7 @@ jobs:
             output/application-image-verify/backend.json
             output/application-image-verify/admin.json
             output/application-image-verify/frontend.json
+            output/application-image-verify/document-parser.json
             output/identity/results.json
             output/identity-wiring/results.json
             output/verification/gate-results.json

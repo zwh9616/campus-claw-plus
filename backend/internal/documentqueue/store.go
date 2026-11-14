@@ -1,5 +1,5 @@
 // Package documentqueue persists DI-03 jobs independently of assignment Tasks.
-// It is not wired into the production server. Callers must supply identities
+// The default private worker consumes these jobs. Callers must supply identities
 // from an authorized server session; these methods are not an HTTP boundary.
 package documentqueue
 

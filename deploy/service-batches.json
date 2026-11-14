@@ -1,57 +1,244 @@
 {
   "version": 1,
-  "batch": "identity-materials-assignment-tasks",
-  "review_status": "reviewed",
+  "batch": "identity-materials-assignment-tasks-private-document-worker",
+  "review_status": "pending_ge_review",
   "probe_timeout_ms": 3000,
   "deployment_wait_ms": 120000,
   "changes": [
-    { "id": "01", "spec": "openspec/specs/identity-foundation/spec.md", "integrated_commit": "c2c34a298c9f53840c861bdf7c6181486a6150c2", "pull_request": 14 },
-    { "id": "02", "spec": "openspec/specs/frontend-foundation/spec.md", "integrated_commit": "3ef79f40e184f75ab4b8d1435c9ea57af56014f5", "pull_request": 15 },
-    { "id": "04", "spec": "openspec/specs/materials-retrieval/spec.md", "integrated_commit": "6634e5128a59c4ac9d6e4443e67bb39ee43cc09c", "pull_request": 26 },
-    { "id": "05", "spec": "openspec/specs/assignment-tasks/spec.md", "integrated_commit": "d06198de7cbff56b4304b3483aeec32ad9a3e085", "pull_request": 41 },
-    { "id": "06", "spec": "openspec/specs/materials-frontend/spec.md", "integrated_commit": "86f0ca3c3832962b0946434f1d99cc7377693840", "pull_request": 30 }
+    {
+      "id": "01",
+      "spec": "openspec/specs/identity-foundation/spec.md",
+      "integrated_commit": "c2c34a298c9f53840c861bdf7c6181486a6150c2",
+      "pull_request": 14
+    },
+    {
+      "id": "02",
+      "spec": "openspec/specs/frontend-foundation/spec.md",
+      "integrated_commit": "3ef79f40e184f75ab4b8d1435c9ea57af56014f5",
+      "pull_request": 15
+    },
+    {
+      "id": "04",
+      "spec": "openspec/specs/materials-retrieval/spec.md",
+      "integrated_commit": "6634e5128a59c4ac9d6e4443e67bb39ee43cc09c",
+      "pull_request": 26
+    },
+    {
+      "id": "05",
+      "spec": "openspec/specs/assignment-tasks/spec.md",
+      "integrated_commit": "d06198de7cbff56b4304b3483aeec32ad9a3e085",
+      "pull_request": 41
+    },
+    {
+      "id": "06",
+      "spec": "openspec/specs/materials-frontend/spec.md",
+      "integrated_commit": "86f0ca3c3832962b0946434f1d99cc7377693840",
+      "pull_request": 30
+    },
+    {
+      "id": "04E",
+      "spec": "openspec/changes/2026-11-13-materials-document-intelligence/specs/materials-document-intelligence/spec.md",
+      "integrated_commit": "39018c1b8d2555cfebe8fd75fb4a761558edad68",
+      "pull_request": 48
+    }
   ],
   "services": [
     {
-      "name": "mysql", "changes": ["01", "04", "05"],
-      "build": { "context": "deploy/identity/mysql", "dockerfile": "deploy/identity/mysql/Dockerfile", "target": null },
-      "networks": ["data"], "profile": null,
-      "config_keys": ["IDENTITY_STATE_DIR"],
-      "required_dependencies": [], "optional_dependencies": [],
-      "probe": ["CMD", "mysqladmin", "ping", "--protocol=tcp", "--host=127.0.0.1", "--silent"],
+      "name": "mysql",
+      "changes": [
+        "01",
+        "04",
+        "05",
+        "04E"
+      ],
+      "build": {
+        "context": "deploy/identity/mysql",
+        "dockerfile": "deploy/identity/mysql/Dockerfile",
+        "target": null
+      },
+      "networks": [
+        "data"
+      ],
+      "profile": null,
+      "config_keys": [
+        "IDENTITY_STATE_DIR"
+      ],
+      "required_dependencies": [],
+      "optional_dependencies": [],
+      "probe": [
+        "CMD",
+        "mysqladmin",
+        "ping",
+        "--protocol=tcp",
+        "--host=127.0.0.1",
+        "--silent"
+      ],
       "unavailable": "MySQL unavailable: backend health503; identity/material/assignment database actions fail under their approved budgets"
     },
     {
-      "name": "admin", "changes": ["01", "04", "05"],
-      "build": { "context": "backend", "dockerfile": "backend/Dockerfile.identity", "target": "admin" },
-      "networks": ["data"], "profile": "tools",
-      "config_keys": ["MYSQL_MIGRATION_DSN", "MYSQL_CA_FILE", "IDENTITY_STATE_DIR"],
-      "required_dependencies": ["mysql"], "optional_dependencies": [], "probe": null,
+      "name": "admin",
+      "changes": [
+        "01",
+        "04",
+        "05",
+        "04E"
+      ],
+      "build": {
+        "context": "backend",
+        "dockerfile": "backend/Dockerfile.identity",
+        "target": "admin"
+      },
+      "networks": [
+        "data"
+      ],
+      "profile": "tools",
+      "config_keys": [
+        "MYSQL_MIGRATION_DSN",
+        "MYSQL_CA_FILE",
+        "IDENTITY_STATE_DIR"
+      ],
+      "required_dependencies": [
+        "mysql"
+      ],
+      "optional_dependencies": [],
+      "probe": null,
       "unavailable": "Offline migrate/check/initialize fail nonzero; not a long-running service or health dependency"
     },
     {
-      "name": "backend", "changes": ["01", "04", "05"],
-      "build": { "context": "backend", "dockerfile": "backend/Dockerfile", "target": null },
-      "networks": ["data", "proxy"], "profile": null,
-      "config_keys": ["HTTP_PORT", "MYSQL_DSN", "MYSQL_CA_FILE", "AUTH_TRUSTED_ORIGIN", "AUTH_TRUSTED_PROXY_CIDRS", "IDENTITY_STATE_DIR", "IDENTITY_PROXY_NETWORK", "IDENTITY_PROXY_IP"],
-      "required_dependencies": ["mysql"], "optional_dependencies": [],
-      "probe": ["CMD", "/server", "--healthcheck"],
+      "name": "backend",
+      "changes": [
+        "01",
+        "04",
+        "05",
+        "04E"
+      ],
+      "build": {
+        "context": "backend",
+        "dockerfile": "backend/Dockerfile",
+        "target": null
+      },
+      "networks": [
+        "data",
+        "proxy",
+        "document_parse"
+      ],
+      "profile": null,
+      "config_keys": [
+        "HTTP_PORT",
+        "MYSQL_DSN",
+        "MYSQL_CA_FILE",
+        "AUTH_TRUSTED_ORIGIN",
+        "AUTH_TRUSTED_PROXY_CIDRS",
+        "IDENTITY_STATE_DIR",
+        "IDENTITY_PROXY_NETWORK",
+        "IDENTITY_PROXY_IP",
+        "DOCUMENT_PARSER_URL",
+        "DOCUMENT_PARSER_TOKEN"
+      ],
+      "required_dependencies": [
+        "mysql"
+      ],
+      "optional_dependencies": [
+        "document-parser"
+      ],
+      "probe": [
+        "CMD",
+        "/server",
+        "--healthcheck"
+      ],
       "unavailable": "GET /health remains exact 200/mysql=up or503/mysql=down; no skeleton fallback, no new readiness URL"
     },
     {
-      "name": "frontend", "changes": ["01", "02", "06"],
-      "build": { "context": "frontend", "dockerfile": "frontend/Dockerfile", "target": null },
-      "networks": ["ingress", "proxy"], "profile": null,
-      "config_keys": ["HTTP_PORT", "HTTPS_CERT_FILE", "HTTPS_KEY_FILE", "IDENTITY_PROXY_NETWORK", "IDENTITY_PROXY_IP", "IDENTITY_HTTPS_HOST", "IDENTITY_HTTPS_PORT"],
-      "required_dependencies": ["backend"], "optional_dependencies": [],
-      "probe": ["CMD", "nginx", "-t"],
+      "name": "frontend",
+      "changes": [
+        "01",
+        "02",
+        "06"
+      ],
+      "build": {
+        "context": "frontend",
+        "dockerfile": "frontend/Dockerfile",
+        "target": null
+      },
+      "networks": [
+        "ingress",
+        "proxy"
+      ],
+      "profile": null,
+      "config_keys": [
+        "HTTP_PORT",
+        "HTTPS_CERT_FILE",
+        "HTTPS_KEY_FILE",
+        "IDENTITY_PROXY_NETWORK",
+        "IDENTITY_PROXY_IP",
+        "IDENTITY_HTTPS_HOST",
+        "IDENTITY_HTTPS_PORT"
+      ],
+      "required_dependencies": [
+        "backend"
+      ],
+      "optional_dependencies": [],
+      "probe": [
+        "CMD",
+        "nginx",
+        "-t"
+      ],
       "unavailable": "nginx -t validates config only; real host TLS/API tested separately; static homepage remains available during DB outage"
+    },
+    {
+      "name": "document-parser",
+      "changes": [
+        "04E"
+      ],
+      "build": {
+        "context": "document-parser",
+        "dockerfile": "document-parser/Dockerfile",
+        "target": null
+      },
+      "networks": [
+        "document_parse"
+      ],
+      "profile": null,
+      "config_keys": [
+        "DOCUMENT_PARSER_TOKEN"
+      ],
+      "required_dependencies": [],
+      "optional_dependencies": [],
+      "probe": [
+        "CMD",
+        "python",
+        "-B",
+        "-I",
+        "/app/health.py"
+      ],
+      "unavailable": "Private parser outage fails document jobs safely; identity, old TXT/ready reads and public MySQL health remain independent"
     }
   ],
   "pending": [
-    { "change": "03", "capability": "MCP service", "reason": "Own spec and exact03/07C outbound activation not approved" },
-    { "change": "05", "capability": "Production task executor and result adapter", "reason": "Nine HTTP operations and durable worker mechanism are accepted; production adapters are unbound, no tasks are claimed and tasks stay genuinely pending; real AI/results require their own approved changes" },
-    { "change": "07A", "capability": "Model adapter", "reason": "Own spec, model configuration and real validation not ready" },
-    { "change": "08", "capability": "Grades", "reason": "05 is accepted, but real07B and the approved production result contract are not ready" }
+    {
+      "change": "03",
+      "capability": "MCP service",
+      "reason": "Own spec and exact03/07C outbound activation not approved"
+    },
+    {
+      "change": "05",
+      "capability": "Production task executor and result adapter",
+      "reason": "Nine HTTP operations and durable worker mechanism are accepted; production adapters are unbound, no tasks are claimed and tasks stay genuinely pending; real AI/results require their own approved changes"
+    },
+    {
+      "change": "07A",
+      "capability": "Model adapter",
+      "reason": "Own spec, model configuration and real validation not ready"
+    },
+    {
+      "change": "08",
+      "capability": "Grades",
+      "reason": "05 is accepted, but real07B and the approved production result contract are not ready"
+    },
+    {
+      "change": "04E",
+      "capability": "Public Document HTTP/UI and whole A/B/C acceptance",
+      "reason": "Private worker activation is a dependent candidate; actual52/53/54 approvals, public upload/read/search authorization, UI and remaining A tests are separate gates"
+    }
   ]
 }

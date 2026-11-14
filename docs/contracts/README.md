@@ -88,3 +88,5 @@ SSE fixture的`{event,data}`只是测试表达：真实wire仍为`event:`与JSON
 05后续2.4独立候选实现上述既定调度/CAS规则及事务结果适配器边界，22 current与所有公共字段/SQL/配置保持。生产执行器和结果适配器均未绑定，真实pending；测试回执表/注入执行器不是生产成绩。真实验证及最终独立审查见共享表与[worker报告](../../reports/changes/05/worker-2026-11-12.md)。
 
 2026-11-13实际集成：上述“候选/待实现”段落保留各批交接语义；#38/#40/#41已完成小陈独立终审、正常合入及精确main完整验收，22 current、Target=5。受控worker测试不等于模型/成绩，生产未绑定执行器不claim。[主规约](../../openspec/specs/assignment-tasks/spec.md)、[主干原件与下游交接](../../reports/changes/05/archive-review-2026-11-13.md)及[共享表](../project-status.md)为当前入口。
+
+04E私有接线候选原子激活两个既审配置键和准确internal网络出站，Target6及五生产镜像；六公开Document操作仍frozen，current仍22，MCP仍禁用。旧13键和身份健康合同保持，实际批准/验证与#52/#53/#54依赖见[共享表](../project-status.md)及[本批报告](../../reports/changes/04E/document-runtime-2026-11-14.md)。

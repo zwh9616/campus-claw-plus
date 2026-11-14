@@ -32,7 +32,7 @@ func run()error{
 `
 writeFileSync(resolve(helper, 'main.go'), probeCode)
 const results = []
-let report = { time: new Date().toISOString(), image_id: image, scope: 'real client/server component interoperability only; default service/config, SQL migration and queue remain inactive', exit_code: 1 }
+let report = { time: new Date().toISOString(), image_id: image, scope: 'standalone real client/server interoperability probe; default service, persistence and public HTTP acceptance are validated separately', exit_code: 1 }
 let credential = ''
 function run(label, args, timeout = 180000) {
   const child = spawnSync('docker', args, { encoding: 'utf8', timeout, maxBuffer: 16 * 1024 * 1024 })

@@ -1,0 +1,512 @@
+{
+  "time": "2026-11-14T15:05:20.465Z",
+  "scope": "default production Compose and real cmd/server with disposable test credentials/CA; no native browser or operator deployment claim",
+  "results": [
+    {
+      "label": "generate disposable wiring credentials/certificates",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 1207,
+      "output": "Disposable credentials and CA generated; values omitted\n"
+    },
+    {
+      "label": "dedicated internal proxy network",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 162,
+      "output": "c3f4e02d25e9faf58393286035c0e50e3da6f4c7d98e1fa0005f61783b453d10\n"
+    },
+    {
+      "label": "discover allocated proxy address",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 111,
+      "output": "[{\"Subnet\":\"192.168.192.0/20\",\"Gateway\":\"192.168.192.1\"}]\n"
+    },
+    {
+      "label": "release automatically allocated proxy network",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 279,
+      "output": "campus-wiring-6b77d12e3b91\n"
+    },
+    {
+      "label": "create explicit isolated proxy subnet",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 131,
+      "output": "16313491c9030293c7099d6ad99b2ac1bd05c7000f12d4168d03c3a6d86e42f0\n"
+    },
+    {
+      "label": "validate explicit candidate compose",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 249,
+      "output": ""
+    },
+    {
+      "label": "SC-09 missing HTTP_PORT is rejected before startup",
+      "exit_code": 1,
+      "expected": "nonzero",
+      "duration_ms": 225,
+      "output": "error while interpolating services.backend.environment.HTTP_PORT: required variable HTTP_PORT is missing a value: Fill HTTP_PORT in the root .env\nerror while interpolating services.frontend.environment.HTTP_PORT: required variable HTTP_PORT is missing a value: Fill HTTP_PORT in the root .env\n"
+    },
+    {
+      "label": "missing HTTPS key is rejected before startup",
+      "exit_code": 1,
+      "expected": "nonzero",
+      "duration_ms": 228,
+      "output": "error while interpolating services.frontend.volumes.[].source: required variable HTTPS_KEY_FILE is missing a value: Provide HTTPS_KEY_FILE\n"
+    },
+    {
+      "label": "DI-SC-14 missing DOCUMENT_PARSER_URL rejects Compose",
+      "exit_code": 1,
+      "expected": "nonzero",
+      "duration_ms": 219,
+      "output": "error while interpolating services.backend.environment.DOCUMENT_PARSER_URL: required variable DOCUMENT_PARSER_URL is missing a value: Provide DOCUMENT_PARSER_URL\n"
+    },
+    {
+      "label": "DI-SC-14 missing DOCUMENT_PARSER_TOKEN rejects Compose",
+      "exit_code": 1,
+      "expected": "nonzero",
+      "duration_ms": 212,
+      "output": "error while interpolating services.backend.environment.DOCUMENT_PARSER_TOKEN: required variable DOCUMENT_PARSER_TOKEN is missing a value: Provide DOCUMENT_PARSER_TOKEN\nerror while interpolating services.document-parser.environment.DOCUMENT_PARSER_TOKEN: required variable DOCUMENT_PARSER_TOKEN is missing a value: Provide DOCUMENT_PARSER_TOKEN\n"
+    },
+    {
+      "label": "build pinned MySQL, offline admin and production applications",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 27509,
+      "output": "#1 [internal] load local bake definitions\n#1 reading from stdin 3.34kB 0.0s done\n#1 DONE 0.0s\n\n#2 [mysql internal] load build definition from Dockerfile\n#2 transferring dockerfile: 1.37kB done\n#2 DONE 0.1s\n\n#3 [admin internal] load build definition from Dockerfile.identity\n#3 transferring dockerfile: 849B done\n#3 DONE 0.1s\n\n#4 [frontend internal] load build definition from Dockerfile\n#4 transferring dockerfile: 747B done\n#4 DONE 0.1s\n\n#5 [admin internal] load metadata for docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb\n#5 ...\n\n#6 [document-parser internal] load build definition from Dockerfile\n#6 transferring dockerfile: 816B done\n#6 DONE 0.1s\n\n#7 [backend internal] load build definition from Dockerfile\n#7 transferring dockerfile: 577B done\n#7 DONE 0.1s\n\n#5 [backend internal] load metadata for docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb\n#5 ...\n\n#8 [document-parser internal] load metadata for docker.io/library/python@sha256:5862d971d1f0ae26b258cefa4e893556b1d3aba81bd2ff30888704ad378bab67\n#8 DONE 0.7s\n\n#9 [frontend internal] load metadata for docker.io/library/nginx@sha256:583b7f2fce1cdb8da5ad5c39ebd3c33b98b87d493190e548bdee1fa8c619c311\n#9 DONE 0.7s\n\n#10 [document-parser internal] load .dockerignore\n#10 transferring context: 126B done\n#10 DONE 0.0s\n\n#11 [document-parser internal] load build context\n#11 transferring context: 181B done\n#11 DONE 0.0s\n\n#12 [document-parser dependencies 1/4] FROM docker.io/library/python@sha256:5862d971d1f0ae26b258cefa4e893556b1d3aba81bd2ff30888704ad378bab67\n#12 resolve docker.io/library/python@sha256:5862d971d1f0ae26b258cefa4e893556b1d3aba81bd2ff30888704ad378bab67 0.0s done\n#12 DONE 0.0s\n\n#13 [document-parser dependencies 2/4] WORKDIR /build\n#13 CACHED\n\n#14 [document-parser stage-1 4/5] COPY --from=dependencies /packages /usr/local/lib/python3.14/site-packages\n#14 CACHED\n\n#15 [document-parser stage-1 2/5] WORKDIR /app\n#15 CACHED\n\n#16 [document-parser dependencies 3/4] COPY requirements.lock .\n#16 CACHED\n\n#17 [document-parser dependencies 4/4] RUN python -m pip install --no-cache-dir --require-hashes --no-deps --target=/packages -r requirements.lock\n#17 CACHED\n\n#18 [document-parser stage-1 3/5] RUN rm -rf /usr/local/lib/python3.14/ensurepip     /usr/local/lib/python3.14/site-packages/pip     /usr/local/lib/python3.14/site-packages/pip-*.dist-info /usr/local/bin/pip*\n#18 CACHED\n\n#19 [document-parser stage-1 5/5] COPY core.py runner.py worker.py server.py health.py /app/\n#19 CACHED\n\n#20 [document-parser] exporting to image\n#20 exporting layers done\n#20 exporting manifest sha256:94ec88c9fe6476788374f9a6ed5254c3a00c90d55505c838dff7e99398fce3f1 0.0s done\n#20 exporting config sha256:ce47d2efdcf7bf2db466197b02d06161dc9fadd68b08cffdfbbd569eb3761574 0.0s done\n#20 exporting attestation manifest sha256:da496882bd9dc435dd2b7ee5d68db802871a21b8332296ed687bf83da7890e4b 0.0s done\n#20 exporting manifest list sha256:53544639a0b5af7237d68258a9a3a849d0c914c2ff6ac9ffec9f2ebbf43a73a6\n#20 exporting manifest list sha256:53544639a0b5af7237d68258a9a3a849d0c914c2ff6ac9ffec9f2ebbf43a73a6 0.0s done\n#20 naming to docker.io/library/campus-wiring-6b77d12e3b91-document-parser:latest done\n#20 unpacking to docker.io/library/campus-wiring-6b77d12e3b91-document-parser:latest 0.1s done\n#20 DONE 0.3s\n\n#21 [frontend internal] load metadata for docker.io/library/node@sha256:fe4f6d74e20370acb04ad889077d14d0f64a9c8ea6a42bc60cddf1e844699914\n#21 DONE 1.1s\n\n#22 [frontend internal] load .dockerignore\n#22 transferring context: 78B 0.0s done\n#22 DONE 0.1s\n\n#23 [mysql internal] load metadata for docker.io/library/mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902\n#23 ...\n\n#24 [frontend internal] load build context\n#24 DONE 0.0s\n\n#25 [frontend build 1/8] FROM docker.io/library/node@sha256:fe4f6d74e20370acb04ad889077d14d0f64a9c8ea6a42bc60cddf1e844699914\n#25 resolve docker.io/library/node@sha256:fe4f6d74e20370acb04ad889077d14d0f64a9c8ea6a42bc60cddf1e844699914 0.1s done\n#25 DONE 0.1s\n\n#26 [frontend stage-1 1/4] FROM docker.io/library/nginx@sha256:583b7f2fce1cdb8da5ad5c39ebd3c33b98b87d493190e548bdee1fa8c619c311\n#26 resolve docker.io/library/nginx@sha256:583b7f2fce1cdb8da5ad5c39ebd3c33b98b87d493190e548bdee1fa8c619c311 0.1s done\n#26 DONE 0.1s\n\n#27 [document-parser] resolving provenance for metadata file\n#27 DONE 0.0s\n\n#24 [frontend internal] load build context\n#24 transferring context: 166.32kB 0.1s done\n#24 DONE 0.1s\n\n#28 [frontend build 3/8] COPY package.json package-lock.json ./\n#28 CACHED\n\n#29 [frontend build 5/8] COPY index.html tsconfig.json vite.config.ts ./\n#29 CACHED\n\n#30 [frontend stage-1 3/4] COPY nginx.conf /etc/nginx/nginx.conf\n#30 CACHED\n\n#31 [frontend build 4/8] RUN --mount=type=cache,target=/root/.npm npm ci --ignore-scripts --prefer-offline --fetch-retries=5 --fetch-retry-mintimeout=1000 --fetch-retry-maxtimeout=10000 --fetch-timeout=60000\n#31 CACHED\n\n#32 [frontend build 6/8] COPY src ./src\n#32 CACHED\n\n#33 [frontend build 8/8] RUN npm run build\n#33 CACHED\n\n#34 [frontend stage-1 2/4] RUN apk add --no-cache --upgrade libxslt=1.1.43-r4\n#34 CACHED\n\n#35 [frontend build 2/8] WORKDIR /src\n#35 CACHED\n\n#36 [frontend build 7/8] COPY public ./public\n#36 CACHED\n\n#37 [frontend stage-1 4/4] COPY --from=build /src/dist /usr/share/nginx/html\n#37 CACHED\n\n#38 [frontend] exporting to image\n#38 exporting layers done\n#38 exporting manifest sha256:f6e7d57954143f0af15a188b1b88a276f031230584d65d202f543e86c045b3e2 0.0s done\n#38 exporting config sha256:e6c154c516016c3b7de06b8ff7a77d6af7ecb29c141d5a185e2060b5e035ebe9 0.0s done\n#38 exporting attestation manifest sha256:0e42195448da731edf1cbc48c5dbd3580e2f1e2945137651b0ec1ad835acfcc6 0.0s done\n#38 exporting manifest list sha256:72ee0d2e18c57115d68b6071ad10dd17a3fd8366b9940ef3b1de4480d176e687 0.0s done\n#38 naming to docker.io/library/campus-wiring-6b77d12e3b91-frontend:latest done\n#38 unpacking to docker.io/library/campus-wiring-6b77d12e3b91-frontend:latest 0.0s done\n#38 DONE 0.2s\n\n#5 [mysql internal] load metadata for docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb\n#5 DONE 1.9s\n\n#39 [backend internal] load .dockerignore\n#39 transferring context: 66B 0.0s done\n#39 DONE 0.0s\n\n#40 [frontend] resolving provenance for metadata file\n#40 DONE 0.0s\n\n#41 [backend internal] load build context\n#41 DONE 0.0s\n\n#42 [backend build 1/7] FROM docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb\n#42 resolve docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb 0.0s done\n#42 resolve docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb 0.0s done\n#42 DONE 0.0s\n\n#41 [admin internal] load build context\n#41 transferring context: 1.32MB 0.2s done\n#41 DONE 0.3s\n\n#42 [backend build 1/7] FROM docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb\n#42 DONE 0.1s\n\n#43 [backend build 2/7] WORKDIR /src\n#43 DONE 0.1s\n\n#44 [admin build 3/7] COPY go.mod go.sum ./\n#44 DONE 0.1s\n\n#45 [admin build 4/7] COPY vendor ./vendor\n#45 DONE 0.1s\n\n#46 [admin build 5/7] COPY cmd ./cmd\n#46 DONE 0.1s\n\n#47 [admin build 6/7] COPY internal ./internal\n#47 DONE 0.1s\n\n#48 [backend build 7/7] RUN --mount=type=cache,target=/root/.cache/go-build CGO_ENABLED=0 go build -trimpath -buildvcs=false -ldflags=\"-s -w -buildid=\" -o /out/server ./cmd/server\n#48 DONE 2.0s\n\n#49 [admin build 7/8] RUN --mount=type=cache,target=/root/.cache/go-build CGO_ENABLED=0 go build -trimpath -buildvcs=false -ldflags=\"-s -w -buildid=\" -o /out/identity-admin ./cmd/identity-admin\n#49 DONE 2.0s\n\n#50 [backend stage-1 1/1] COPY --from=build /out/server /server\n#50 DONE 0.1s\n\n#51 [backend] exporting to image\n#51 exporting layers 0.5s done\n#51 exporting manifest sha256:78109da87d98514ed2b73bf345878c1035246d21730d0420ecb133f6dec05ecd 0.0s done\n#51 exporting config sha256:1f51ad3cf172d50406126c7b2fd0da9cfc64ab1eec3850b80e6efb071c601b53 0.0s done\n#51 exporting attestation manifest sha256:dda4c6219f70a3802f8fe26fad31d61918ffd43375639e3210691c1f40b1e8fa 0.0s done\n#51 exporting manifest list sha256:46d65ff2fbbb85dc8ec731410e9ef19da068b8a7603a459de1c947d580061cf5\n#51 ...\n\n#52 [admin build 8/8] RUN --mount=type=cache,target=/root/.cache/go-build CGO_ENABLED=0 go build -trimpath -buildvcs=false -ldflags=\"-s -w -buildid=\" -o /out/wiring-preview ./internal/integration/wiringfixture\n#52 DONE 0.8s\n\n#51 [backend] exporting to image\n#51 exporting manifest list sha256:46d65ff2fbbb85dc8ec731410e9ef19da068b8a7603a459de1c947d580061cf5 0.0s done\n#51 naming to docker.io/library/campus-wiring-6b77d12e3b91-backend:latest done\n#51 unpacking to docker.io/library/campus-wiring-6b77d12e3b91-backend:latest\n#51 unpacking to docker.io/library/campus-wiring-6b77d12e3b91-backend:latest 0.1s done\n#51 DONE 0.8s\n\n#53 [admin admin 1/1] COPY --from=build /out/identity-admin /identity-admin\n#53 CACHED\n\n#54 [admin] exporting to image\n#54 exporting layers done\n#54 exporting manifest sha256:06c6c8334e88074d5dc671a6185dcd78a7513c5a1522658819760ce7e03f8e6a 0.0s done\n#54 exporting config sha256:1134376082276e5a2b62474fddf7d8ed3be9cb7fd04473387fbbf02b6c8f8dc9 0.0s done\n#54 exporting attestation manifest sha256:bda0086017a6a35fd7d9b2720d32c1bc72dfb72a3697073727f0a6f75e62ad30 0.1s done\n#54 exporting manifest list sha256:0d53a6eb20df3e74007c3405381d6c15490139bb3577db0b6774fffaa911b162\n#54 exporting manifest list sha256:0d53a6eb20df3e74007c3405381d6c15490139bb3577db0b6774fffaa911b162 0.0s done\n#54 naming to docker.io/library/campus-wiring-6b77d12e3b91-admin:latest done\n#54 unpacking to docker.io/library/campus-wiring-6b77d12e3b91-admin:latest 0.0s done\n#54 DONE 0.3s\n\n#23 [mysql internal] load metadata for docker.io/library/mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902\n#23 ...\n\n#55 [backend] resolving provenance for metadata file\n#55 DONE 0.1s\n\n#23 [mysql internal] load metadata for docker.io/library/mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902\n#23 ...\n\n#56 [admin] resolving provenance for metadata file\n#56 DONE 0.0s\n\n#23 [mysql internal] load metadata for docker.io/library/mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902\n#23 DONE 13.7s\n\n#57 [mysql internal] load .dockerignore\n#57 transferring context: 2B done\n#57 DONE 0.0s\n\n#42 [mysql gosu 1/4] FROM docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb\n#42 resolve docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb 0.1s done\n#42 DONE 0.2s\n\n#43 [mysql gosu 2/4] WORKDIR /src\n#43 CACHED\n\n#58 [mysql stage-1 1/5] FROM docker.io/library/mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902\n#58 resolve docker.io/library/mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902 0.1s done\n#58 DONE 0.2s\n\n#59 [mysql gosu 3/4] ADD --checksum=sha256:cd9719b775dbfedae53923c9b0dc792b66d42c51e0b36652ed6f747fbadc0164 https://codeload.github.com/tianon/gosu/tar.gz/refs/tags/1.19 /tmp/gosu.tar.gz\n#59 DONE 1.6s\n\n#60 [mysql stage-1 2/5] RUN microdnf remove -y mysql-shell     && microdnf clean all     && rm -rf -- /usr/lib/mysqlsh     && ! command -v mysqlsh     && test ! -d /usr/lib/mysqlsh     && mysqld --version | grep '8.4.13'     && mysql --version\n#60 0.470 Package                          Repository     Size\n#60 0.470 Removing:                                           \n#60 0.470  mysql-shell-8.4.10-1.el9.x86_64 @System    514.3 MB\n#60 0.470 Transaction Summary:\n#60 0.470  Installing:        0 packages\n#60 0.470  Reinstalling:      0 packages\n#60 0.470  Upgrading:         0 packages\n#60 0.470  Obsoleting:        0 packages\n#60 0.470  Removing:          1 packages\n#60 0.470  Downgrading:       0 packages\n#60 0.495 Running transaction test...\n#60 0.763 Removing: mysql-shell;8.4.10-1.el9;x86_64;installed\n#60 ...\n\n#61 [mysql gosu 3/4] ADD --checksum=sha256:cd9719b775dbfedae53923c9b0dc792b66d42c51e0b36652ed6f747fbadc0164 https://codeload.github.com/tianon/gosu/tar.gz/refs/tags/1.19 /tmp/gosu.tar.gz\n#61 DONE 0.1s\n\n#62 [mysql gosu 4/4] RUN tar -xzf /tmp/gosu.tar.gz --strip-components=1 -C /src     && GOTOOLCHAIN=local CGO_ENABLED=0 go build -trimpath -buildvcs=false -o /out/gosu .\n#62 0.332 go: downloading github.com/moby/sys/user v0.1.0\n#62 0.333 go: downloading golang.org/x/sys v0.1.0\n#62 ...\n\n#60 [mysql stage-1 2/5] RUN microdnf remove -y mysql-shell     && microdnf clean all     && rm -rf -- /usr/lib/mysqlsh     && ! command -v mysqlsh     && test ! -d /usr/lib/mysqlsh     && mysqld --version | grep '8.4.13'     && mysql --version\n#60 2.084 Complete.\n#60 2.122 Complete.\n#60 2.269 /usr/sbin/mysqld  Ver 8.4.13 for Linux on x86_64 (MySQL Community Server - GPL)\n#60 2.276 mysql  Ver 8.4.13 for Linux on x86_64 (MySQL Community Server - GPL)\n#60 DONE 2.3s\n\n#62 [mysql gosu 4/4] RUN tar -xzf /tmp/gosu.tar.gz --strip-components=1 -C /src     && GOTOOLCHAIN=local CGO_ENABLED=0 go build -trimpath -buildvcs=false -o /out/gosu .\n#62 DONE 6.3s\n\n#63 [mysql stage-1 3/5] COPY --from=gosu /out/gosu /usr/local/bin/gosu\n#63 DONE 0.1s\n\n#64 [mysql stage-1 4/5] COPY --from=gosu /src/LICENSE /usr/share/licenses/campus-gosu/LICENSE\n#64 DONE 0.1s\n\n#65 [mysql stage-1 5/5] RUN gosu --version     && test \"$(gosu mysql id -u)\" = 999     && test \"$(gosu mysql id -g)\" = 999\n#65 0.269 1.19 (go1.27.3 on linux/amd64; gc)\n#65 DONE 0.3s\n\n#66 [mysql] exporting to image\n#66 exporting layers\n#66 exporting layers 0.6s done\n#66 exporting manifest sha256:c36594e516c61d13a67fa9459b5f4078b661b9f0cf644bc85eacb921f6c24496 0.0s done\n#66 exporting config sha256:bc651fff7cb3f51a2ab8d6dee64428707dc2aa7e56a4537e830e3d061a811d3a 0.0s done\n#66 exporting attestation manifest sha256:e131acd4c61013f5948901d58eaff38a274a67a345fc5cd8c64cb17c77b5968d 0.0s done\n#66 exporting manifest list sha256:fc3280acfc11d237fcc0f439fc06e1aa9c426b020a20020dff3f44258d9c8b42\n#66 exporting manifest list sha256:fc3280acfc11d237fcc0f439fc06e1aa9c426b020a20020dff3f44258d9c8b42 0.0s done\n#66 naming to docker.io/library/campus-wiring-6b77d12e3b91-mysql:latest done\n#66 unpacking to docker.io/library/campus-wiring-6b77d12e3b91-mysql:latest\n#66 unpacking to docker.io/library/campus-wiring-6b77d12e3b91-mysql:latest 0.2s done\n#66 DONE 1.0s\n\n#67 [mysql] resolving provenance for metadata file\n#67 DONE 0.0s\n Image campus-wiring-6b77d12e3b91-backend Building \n Image campus-wiring-6b77d12e3b91-frontend Building \n Image campus-wiring-6b77d12e3b91-document-parser Building \n Image campus-wiring-6b77d12e3b91-mysql Building \n Image campus-wiring-6b77d12e3b91-admin Building \n Image campus-wiring-6b77d12e3b91-document-parser Built \n Image campus-wiring-6b77d12e3b91-mysql Built \n Image campus-wiring-6b77d12e3b91-admin Built \n Image campus-wiring-6b77d12e3b91-backend Built \n Image campus-wiring-6b77d12e3b91-frontend Built \n"
+    },
+    {
+      "label": "start fresh persistent MySQL",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 12969,
+      "output": " Network campus-wiring-6b77d12e3b91_data Creating \n Volume campus-wiring-6b77d12e3b91_mysql-data Creating \n Volume campus-wiring-6b77d12e3b91_mysql-data Creating \n Network campus-wiring-6b77d12e3b91_data Creating \n Volume campus-wiring-6b77d12e3b91_mysql-data Created \n Volume campus-wiring-6b77d12e3b91_mysql-data Created \n Network campus-wiring-6b77d12e3b91_data Created \n Network campus-wiring-6b77d12e3b91_data Created \n Container campus-wiring-6b77d12e3b91-mysql-1 Creating \n Container campus-wiring-6b77d12e3b91-mysql-1 Created \n Container campus-wiring-6b77d12e3b91-mysql-1 Starting \n Container campus-wiring-6b77d12e3b91-mysql-1 Started \n Container campus-wiring-6b77d12e3b91-mysql-1 Waiting \n Container campus-wiring-6b77d12e3b91-mysql-1 Healthy \n"
+    },
+    {
+      "label": "offline migrations",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 1952,
+      "output": "identity administration completed\n Container campus-wiring-6b77d12e3b91-admin-run-7acb78d14a90 Creating \n Container campus-wiring-6b77d12e3b91-admin-run-7acb78d14a90 Created \n"
+    },
+    {
+      "label": "offline manifest/schema check",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 983,
+      "output": "identity administration completed\n Container campus-wiring-6b77d12e3b91-admin-run-82fd4048bac2 Creating \n Container campus-wiring-6b77d12e3b91-admin-run-82fd4048bac2 Created \n"
+    },
+    {
+      "label": "database CA file missing is rejected",
+      "exit_code": 2,
+      "expected": "nonzero",
+      "duration_ms": 780,
+      "output": " Container campus-wiring-6b77d12e3b91-admin-run-ee156c43619d Creating \n Container campus-wiring-6b77d12e3b91-admin-run-ee156c43619d Created \noffline configuration invalid\n\n"
+    },
+    {
+      "label": "valid but wrong database trust certificate is rejected",
+      "exit_code": 1,
+      "expected": "nonzero",
+      "duration_ms": 758,
+      "output": " Container campus-wiring-6b77d12e3b91-admin-run-72fde410b5fe Creating \n Container campus-wiring-6b77d12e3b91-admin-run-72fde410b5fe Created \ndatabase unavailable\n\n"
+    },
+    {
+      "label": "offline initialize via stdin",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 1106,
+      "output": "identity administration completed\n Container campus-wiring-6b77d12e3b91-admin-run-2deea37df77d Creating \n Container campus-wiring-6b77d12e3b91-admin-run-2deea37df77d Created \n"
+    },
+    {
+      "label": "repeat initialize does not replace existing password",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 1094,
+      "output": "identity administration completed\n Container campus-wiring-6b77d12e3b91-admin-run-9aed830b280b Creating \n Container campus-wiring-6b77d12e3b91-admin-run-9aed830b280b Created \n"
+    },
+    {
+      "label": "trusted fixture class lookup on database-only network",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 2711,
+      "output": "=== RUN   TestMFRequestLineEarlyResponse\n=== RUN   TestMFRequestLineEarlyResponse/early_414\n=== RUN   TestMFRequestLineEarlyResponse/incorrect_success\n=== RUN   TestMFRequestLineEarlyResponse/transport_close_without_status\n=== RUN   TestMFRequestLineEarlyResponse/incomplete_headers\n--- PASS: TestMFRequestLineEarlyResponse (0.00s)\n    --- PASS: TestMFRequestLineEarlyResponse/early_414 (0.00s)\n    --- PASS: TestMFRequestLineEarlyResponse/incorrect_success (0.00s)\n    --- PASS: TestMFRequestLineEarlyResponse/transport_close_without_status (0.00s)\n    --- PASS: TestMFRequestLineEarlyResponse/incomplete_headers (0.00s)\n=== RUN   TestIDFWiring\n--- PASS: TestIDFWiring (0.02s)\nPASS\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/integration/wiring\t0.028s\n"
+    },
+    {
+      "label": "start isolated Go and HTTPS frontend",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 11108,
+      "output": " Network campus-wiring-6b77d12e3b91_document_parse Creating \n Network campus-wiring-6b77d12e3b91_ingress Creating \n Network campus-wiring-6b77d12e3b91_document_parse Creating \n Network campus-wiring-6b77d12e3b91_ingress Creating \n Network campus-wiring-6b77d12e3b91_ingress Created \n Network campus-wiring-6b77d12e3b91_ingress Created \n Network campus-wiring-6b77d12e3b91_document_parse Created \n Network campus-wiring-6b77d12e3b91_document_parse Created \n Container campus-wiring-6b77d12e3b91-document-parser-1 Creating \n Container campus-wiring-6b77d12e3b91-backend-1 Creating \n Container campus-wiring-6b77d12e3b91-document-parser-1 Created \n Container campus-wiring-6b77d12e3b91-backend-1 Created \n Container campus-wiring-6b77d12e3b91-frontend-1 Creating \n Container campus-wiring-6b77d12e3b91-frontend-1 Created \n Container campus-wiring-6b77d12e3b91-backend-1 Starting \n Container campus-wiring-6b77d12e3b91-document-parser-1 Starting \n Container campus-wiring-6b77d12e3b91-backend-1 Started \n Container campus-wiring-6b77d12e3b91-backend-1 Waiting \n Container campus-wiring-6b77d12e3b91-document-parser-1 Started \n Container campus-wiring-6b77d12e3b91-backend-1 Healthy \n Container campus-wiring-6b77d12e3b91-frontend-1 Starting \n Container campus-wiring-6b77d12e3b91-frontend-1 Started \n Container campus-wiring-6b77d12e3b91-frontend-1 Waiting \n Container campus-wiring-6b77d12e3b91-document-parser-1 Waiting \n Container campus-wiring-6b77d12e3b91-backend-1 Waiting \n Container campus-wiring-6b77d12e3b91-document-parser-1 Healthy \n Container campus-wiring-6b77d12e3b91-backend-1 Healthy \n Container campus-wiring-6b77d12e3b91-frontend-1 Healthy \n"
+    },
+    {
+      "label": "resolve only this project HTTPS frontend",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 279,
+      "output": "d5c4cfb7fe59836723e9c35e39f79fd3be38f9ca7aaaa9ad4da8749442893047\n"
+    },
+    {
+      "label": "inspect only published HTTPS binding",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 120,
+      "output": "{\"443/tcp\":[{\"HostIp\":\"127.0.0.1\",\"HostPort\":\"32780\"}]}\n"
+    },
+    {
+      "label": "IDF-SC-18 actual host loopback HTTPS, CA/SAN and anonymous denial",
+      "exit_code": 0,
+      "health": 200,
+      "health_duration_ms": 36.98879999999917,
+      "page": 200,
+      "anonymous_me": 401,
+      "wrong_san_rejected": true,
+      "wrong_ca_rejected": true
+    },
+    {
+      "label": "resolve production backend image",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 270,
+      "output": "46d65ff2fbbb85dc8ec731410e9ef19da068b8a7603a459de1c947d580061cf5\n"
+    },
+    {
+      "label": "resolve own mysql for image validation",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 261,
+      "output": "2f70cc7cd1cf8fababd25f190b5b7d1a799f7253995d86ee44ea1c5f0f1dac73\n"
+    },
+    {
+      "label": "DO-SC-13 record actual mysql image",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 100,
+      "output": "sha256:fc3280acfc11d237fcc0f439fc06e1aa9c426b020a20020dff3f44258d9c8b42\n"
+    },
+    {
+      "label": "DO-SC-13 inspect mysql image configuration",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 121,
+      "output": "{\"ExposedPorts\":{\"3306/tcp\":{},\"33060/tcp\":{}},\"Env\":[\"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\",\"GOSU_VERSION=1.19\",\"MYSQL_MAJOR=8.4\",\"MYSQL_VERSION=8.4.13-1.el9\",\"MYSQL_SHELL_VERSION=8.4.10-1.el9\"],\"Entrypoint\":[\"docker-entrypoint.sh\"],\"Cmd\":[\"mysqld\"],\"Volumes\":{\"/var/lib/mysql\":{}},\"WorkingDir\":\"/\",\"Labels\":{\"com.docker.compose.project\":\"campus-wiring-6b77d12e3b91\",\"com.docker.compose.service\":\"mysql\",\"com.docker.compose.version\":\"5.5.1\"}}\n"
+    },
+    {
+      "label": "DO-SC-13 inspect mysql image history",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 118,
+      "output": "RUN /bin/sh -c gosu --version     && test \"$(gosu mysql id -u)\" = 999     && test \"$(gosu mysql id -g)\" = 999 # buildkit\nCOPY /src/LICENSE /usr/share/licenses/campus-gosu/LICENSE # buildkit\nCOPY /out/gosu /usr/local/bin/gosu # buildkit\nRUN /bin/sh -c microdnf remove -y mysql-shell     && microdnf clean all     && rm -rf -- /usr/lib/mysqlsh     && ! command -v mysqlsh     && test ! -d /usr/lib/mysqlsh     && mysqld --version | grep '8.4.13'     && mysql --version # buildkit\nCMD [\"mysqld\"]\nEXPOSE map[3306/tcp:{} 33060/tcp:{}]\nENTRYPOINT [\"docker-entrypoint.sh\"]\nCOPY docker-entrypoint.sh /usr/local/bin/ # buildkit\nVOLUME [/var/lib/mysql]\nRUN /bin/sh -c set -eux;  microdnf install -y \"mysql-shell-$MYSQL_SHELL_VERSION\";  microdnf clean all;   mysqlsh --version # buildkit\nENV MYSQL_SHELL_VERSION=8.4.10-1.el9\nRUN /bin/sh -c set -eu;  {   echo '[mysql-tools-community]';   echo 'name=MySQL Tools Community';   echo 'baseurl=https://repo.mysql.com/yum/mysql-tools-8.4-community/el/9/$basearch/';   echo 'enabled=1';   echo 'gpgcheck=1';   echo 'gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql';   echo 'module_hotfixes=true';  } | tee /etc/yum.repos.d/mysql-community-tools.repo # buildkit\nRUN /bin/sh -c set -eux;  microdnf install -y \"mysql-community-server-minimal-$MYSQL_VERSION\";  microdnf clean all;  grep -F 'socket=/var/lib/mysql/mysql.sock' /etc/my.cnf;  sed -i 's!^socket=.*!socket=/var/run/mysqld/mysqld.sock!' /etc/my.cnf;  grep -F 'socket=/var/run/mysqld/mysqld.sock' /etc/my.cnf;  { echo '[client]'; echo 'socket=/var/run/mysqld/mysqld.sock'; } >> /etc/my.cnf;   ! grep -F '!includedir' /etc/my.cnf;  { echo; echo '!includedir /etc/mysql/conf.d/'; } >> /etc/my.cnf;  mkdir -p /etc/mysql/conf.d;  mkdir -p /var/lib/mysql /var/run/mysqld;  chown mysql:mysql /var/lib/mysql /var/run/mysqld;  chmod 1777 /var/lib/mysql /var/run/mysqld;   mkdir /docker-entrypoint-initdb.d;   mysqld --version;  mysql --version # buildkit\nRUN /bin/sh -c set -eu;  {   echo '[mysql8.4-server-minimal]';   echo 'name=MySQL 8.4 Server Minimal';   echo 'enabled=1';   echo 'baseurl=https://repo.mysql.com/yum/mysql-8.4-community/docker/el/9/$basearch/';   echo 'gpgcheck=1';   echo 'gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-mysql';   echo 'module_hotfixes=true';  } | tee /etc/yum.repos.d/mysql-community-minimal.repo # buildkit\nENV MYSQL_VERSION=8.4.13-1.el9\nENV MYSQL_MAJOR=8.4\nRUN /bin/sh -c set -eux;  key='BCA4 3417 C3B4 85DD 128E C6D4 B7B3 B788 A8D3 785C';  export GNUPGHOME=\"$(mktemp -d)\";  gpg --batch --keyserver keyserver.ubuntu.com --recv-keys \"$key\";  gpg --batch --export --armor \"$key\" > /etc/pki/rpm-gpg/RPM-GPG-KEY-mysql;  rm -rf \"$GNUPGHOME\" # buildkit\nRUN /bin/sh -c set -eux;  microdnf install -y   bzip2   gzip   openssl   xz   zstd   findutils  ;  microdnf clean all # buildkit\nRUN /bin/sh -c set -eux;  arch=\"$(uname -m)\";  case \"$arch\" in   aarch64) gosuArch='arm64' ;;   x86_64) gosuArch='amd64' ;;   *) echo >&2 \"error: unsupported architecture: '$arch'\"; exit 1 ;;  esac;  curl -fL -o /usr/local/bin/gosu.asc \"https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$gosuArch.asc\";  curl -fL -o /usr/local/bin/gosu \"https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$gosuArch\";  export GNUPGHOME=\"$(mktemp -d)\";  gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4;  gpg --batch --verify /usr/local/bin/gosu.asc /usr/local/bin/gosu;  rm -rf \"$GNUPGHOME\" /usr/local/bin/gosu.asc;  chmod +x /usr/local/bin/gosu;  gosu --version;  gosu nobody true # buildkit\nENV GOSU_VERSION=1.19\nRUN /bin/sh -c set -eux;  groupadd --system --gid 999 mysql;  useradd --system --uid 999 --gid 999 --home-dir /var/lib/mysql --no-create-home mysql # buildkit\nCMD [\"/bin/bash\"]\nADD oraclelinux-9-slim-amd64-rootfs.tar.xz / # buildkit\n"
+    },
+    {
+      "label": "resolve own backend for image validation",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 243,
+      "output": "732dda0327d908c1b040067ae6856a657101cae6c2bfc4270d2fa5d14c51357e\n"
+    },
+    {
+      "label": "DO-SC-13 record actual backend image",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 100,
+      "output": "sha256:46d65ff2fbbb85dc8ec731410e9ef19da068b8a7603a459de1c947d580061cf5\n"
+    },
+    {
+      "label": "DO-SC-13 inspect backend image configuration",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 116,
+      "output": "{\"User\":\"65532:65532\",\"Env\":[\"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\"],\"Entrypoint\":[\"/server\"],\"WorkingDir\":\"/\",\"Labels\":{\"com.docker.compose.project\":\"campus-wiring-6b77d12e3b91\",\"com.docker.compose.service\":\"backend\",\"com.docker.compose.version\":\"5.5.1\"},\"Healthcheck\":{\"Test\":[\"CMD\",\"/server\",\"--healthcheck\"],\"Interval\":5000000000,\"Timeout\":3000000000,\"StartPeriod\":5000000000,\"Retries\":5}}\n"
+    },
+    {
+      "label": "DO-SC-13 inspect backend image history",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 106,
+      "output": "ENTRYPOINT [\"/server\"]\nHEALTHCHECK {Test:[CMD /server --healthcheck] Interval:5s Timeout:3s StartPeriod:5s StartInterval:0s Retries:5}\nUSER 65532:65532\nCOPY /out/server /server # buildkit\n"
+    },
+    {
+      "label": "resolve own frontend for image validation",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 263,
+      "output": "d5c4cfb7fe59836723e9c35e39f79fd3be38f9ca7aaaa9ad4da8749442893047\n"
+    },
+    {
+      "label": "DO-SC-13 record actual frontend image",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 109,
+      "output": "sha256:72ee0d2e18c57115d68b6071ad10dd17a3fd8366b9940ef3b1de4480d176e687\n"
+    },
+    {
+      "label": "DO-SC-13 inspect frontend image configuration",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 124,
+      "output": "{\"ExposedPorts\":{\"80/tcp\":{}},\"Env\":[\"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\",\"NGINX_VERSION=1.30.6\",\"PKG_RELEASE=1\",\"DYNPKG_RELEASE=1\",\"NJS_VERSION=1.0.2\",\"NJS_RELEASE=1\",\"ACME_VERSION=0.4.1\"],\"Cmd\":[\"nginx\",\"-g\",\"daemon off;\"],\"WorkingDir\":\"/\",\"Labels\":{\"com.docker.compose.project\":\"campus-wiring-6b77d12e3b91\",\"com.docker.compose.service\":\"frontend\",\"com.docker.compose.version\":\"5.5.1\",\"maintainer\":\"NGINX Docker Maintainers <docker-maint@nginx.com>\"},\"StopSignal\":\"SIGQUIT\",\"ArgsEscaped\":true}\n"
+    },
+    {
+      "label": "DO-SC-13 inspect frontend image history",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 113,
+      "output": "CMD [\"nginx\" \"-g\" \"daemon off;\"]\nENTRYPOINT []\nEXPOSE [80/tcp]\nCOPY /src/dist /usr/share/nginx/html # buildkit\nCOPY nginx.conf /etc/nginx/nginx.conf # buildkit\nRUN /bin/sh -c apk add --no-cache --upgrade libxslt=1.1.43-r4 # buildkit\nRUN /bin/sh -c set -x     && apkArch=\"$(cat /etc/apk/arch)\"     && nginxPackages=\"         nginx=${NGINX_VERSION}-r${PKG_RELEASE}         nginx-module-xslt=${NGINX_VERSION}-r${DYNPKG_RELEASE}         nginx-module-geoip=${NGINX_VERSION}-r${DYNPKG_RELEASE}         nginx-module-image-filter=${NGINX_VERSION}-r${DYNPKG_RELEASE}         nginx-module-njs=${NGINX_VERSION}.${NJS_VERSION}-r${NJS_RELEASE}         nginx-module-acme=${NGINX_VERSION}.${ACME_VERSION}-r${PKG_RELEASE}     \"     && apk add --no-cache --virtual .checksum-deps         openssl     && case \"$apkArch\" in         x86_64|aarch64)             apk add -X \"https://nginx.org/packages/alpine/v$(egrep -o '^[0-9]+\\.[0-9]+' /etc/alpine-release)/main\" --no-cache $nginxPackages             ;;         *)             set -x             && tempDir=\"$(mktemp -d)\"             && chown nobody:nobody $tempDir             && apk add --no-cache --virtual .build-deps                 gcc                 libc-dev                 make                 openssl-dev                 pcre2-dev                 zlib-dev                 linux-headers                 libxslt-dev                 gd-dev                 geoip-dev                 libedit-dev                 bash                 alpine-sdk                 findutils                 curl                 cargo                 clang-libclang             && su nobody -s /bin/sh -c \"                 export HOME=${tempDir}                 && cd ${tempDir}                 && curl -f -L -O https://github.com/nginx/pkg-oss/archive/${NGINX_VERSION}-${PKG_RELEASE}.tar.gz                 && PKGOSSCHECKSUM=\\\"c16280934a44f7358992d39bb1d876a58e978c58371b96fd212de3f58c7ba40c31a683c54ee46c85d0844ca18fd7addeafbb29a8e06a9d1e164a8628a4739eee *${NGINX_VERSION}-${PKG_RELEASE}.tar.gz\\\"                 && if [ \\\"\\$(openssl sha512 -r ${NGINX_VERSION}-${PKG_RELEASE}.tar.gz)\\\" = \\\"\\$PKGOSSCHECKSUM\\\" ]; then                     echo \\\"pkg-oss tarball checksum verification succeeded!\\\";                 else                     echo \\\"pkg-oss tarball checksum verification failed!\\\";                     exit 1;                 fi                 && tar xzvf ${NGINX_VERSION}-${PKG_RELEASE}.tar.gz                 && cd pkg-oss-${NGINX_VERSION}-${PKG_RELEASE}                 && cd alpine                 && export BUILDTARGET=\\\"module-geoip module-image-filter module-njs module-xslt module-acme\\\"                 && if [ \\\"\\$(apk --print-arch)\\\" = \\\"armhf\\\" ]; then BUILDTARGET=\\\"\\$( echo \\$BUILDTARGET | sed 's,module-acme,,' )\\\"; fi                 && make \\$BUILDTARGET                 && apk index --allow-untrusted -o ${tempDir}/packages/alpine/${apkArch}/APKINDEX.tar.gz ${tempDir}/packages/alpine/${apkArch}/*.apk                 && abuild-sign -k ${tempDir}/.abuild/abuild-key.rsa ${tempDir}/packages/alpine/${apkArch}/APKINDEX.tar.gz                 \"             && cp ${tempDir}/.abuild/abuild-key.rsa.pub /etc/apk/keys/             && apk del --no-network .build-deps             && if [ \"$apkArch\" = \"armhf\" ]; then nginxPackages=\"$( echo $nginxPackages | sed 's,nginx-module-acme=.*,,')\"; fi             && apk add -X ${tempDir}/packages/alpine/ --no-cache $nginxPackages             ;;     esac     && apk del --no-network .checksum-deps     && if [ -n \"$tempDir\" ]; then rm -rf \"$tempDir\"; fi     && if [ -f \"/etc/apk/keys/abuild-key.rsa.pub\" ]; then rm -f /etc/apk/keys/abuild-key.rsa.pub; fi     && apk add --no-cache curl ca-certificates # buildkit\nENV ACME_VERSION=0.4.1\nENV NJS_RELEASE=1\nENV NJS_VERSION=1.0.2\nCMD [\"nginx\" \"-g\" \"daemon off;\"]\nSTOPSIGNAL SIGQUIT\nEXPOSE map[80/tcp:{}]\nENTRYPOINT [\"/docker-entrypoint.sh\"]\nCOPY 30-tune-worker-processes.sh /docker-entrypoint.d # buildkit\nCOPY 20-envsubst-on-templates.sh /docker-entrypoint.d # buildkit\nCOPY 15-local-resolvers.envsh /docker-entrypoint.d # buildkit\nCOPY 10-listen-on-ipv6-by-default.sh /docker-entrypoint.d # buildkit\nCOPY docker-entrypoint.sh / # buildkit\nRUN /bin/sh -c set -x     && addgroup -g 101 -S nginx     && adduser -S -D -H -u 101 -h /var/cache/nginx -s /sbin/nologin -G nginx -g nginx nginx     && apkArch=\"$(cat /etc/apk/arch)\"     && nginxPackages=\"         nginx=${NGINX_VERSION}-r${PKG_RELEASE}     \"     && apk add --no-cache --virtual .checksum-deps         openssl     && case \"$apkArch\" in         x86_64|aarch64)             set -x             && KEY_SHA512=\"e09fa32f0a0eab2b879ccbbc4d0e4fb9751486eedda75e35fac65802cc9faa266425edf83e261137a2f4d16281ce2c1a5f4502930fe75154723da014214f0655\"             && wget -O /tmp/nginx_signing.rsa.pub https://nginx.org/keys/nginx_signing.rsa.pub             && if echo \"$KEY_SHA512 */tmp/nginx_signing.rsa.pub\" | sha512sum -c -; then                 echo \"key verification succeeded!\";                 mv /tmp/nginx_signing.rsa.pub /etc/apk/keys/;             else                 echo \"key verification failed!\";                 exit 1;             fi             && DEPS=$(apk query --summarize depends --recursive --no-cache                        --repository \"@nginxorg https://nginx.org/packages/alpine/v$(egrep -o '^[0-9]+\\.[0-9]+' /etc/alpine-release)/main\"                        ${nginxPackages/=/@nginxorg=})             && apk add --no-cache $DEPS             && apk add --repositories-file /dev/null -X \"https://nginx.org/packages/alpine/v$(egrep -o '^[0-9]+\\.[0-9]+' /etc/alpine-release)/main\" --no-cache $nginxPackages             ;;         *)             set -x             && tempDir=\"$(mktemp -d)\"             && chown nobody:nobody $tempDir             && apk add --no-cache --virtual .build-deps                 gcc                 libc-dev                 make                 openssl-dev                 pcre2-dev                 zlib-dev                 linux-headers                 bash                 alpine-sdk                 findutils                 curl             && su nobody -s /bin/sh -c \"                 export HOME=${tempDir}                 && cd ${tempDir}                 && curl -f -L -O https://github.com/nginx/pkg-oss/archive/${NGINX_VERSION}-${PKG_RELEASE}.tar.gz                 && PKGOSSCHECKSUM=\\\"c16280934a44f7358992d39bb1d876a58e978c58371b96fd212de3f58c7ba40c31a683c54ee46c85d0844ca18fd7addeafbb29a8e06a9d1e164a8628a4739eee *${NGINX_VERSION}-${PKG_RELEASE}.tar.gz\\\"                 && if [ \\\"\\$(openssl sha512 -r ${NGINX_VERSION}-${PKG_RELEASE}.tar.gz)\\\" = \\\"\\$PKGOSSCHECKSUM\\\" ]; then                     echo \\\"pkg-oss tarball checksum verification succeeded!\\\";                 else                     echo \\\"pkg-oss tarball checksum verification failed!\\\";                     exit 1;                 fi                 && tar xzvf ${NGINX_VERSION}-${PKG_RELEASE}.tar.gz                 && cd pkg-oss-${NGINX_VERSION}-${PKG_RELEASE}                 && cd alpine                 && make base                 && apk index --allow-untrusted -o ${tempDir}/packages/alpine/${apkArch}/APKINDEX.tar.gz ${tempDir}/packages/alpine/${apkArch}/*.apk                 && abuild-sign -k ${tempDir}/.abuild/abuild-key.rsa ${tempDir}/packages/alpine/${apkArch}/APKINDEX.tar.gz                 \"             && cp ${tempDir}/.abuild/abuild-key.rsa.pub /etc/apk/keys/             && apk del --no-network .build-deps             && DEPS=$(apk query --summarize depends --recursive --no-cache                        --repository \"@nginxorg ${tempDir}/packages/alpine/\"                        ${nginxPackages/=/@nginxorg=})             && apk add --no-cache $DEPS             && apk add --repositories-file /dev/null -X ${tempDir}/packages/alpine/ --no-cache $nginxPackages             ;;     esac     && apk del --no-network .checksum-deps     && if [ -n \"$tempDir\" ]; then rm -rf \"$tempDir\"; fi     && if [ -f \"/etc/apk/keys/abuild-key.rsa.pub\" ]; then rm -f /etc/apk/keys/abuild-key.rsa.pub; fi     && apk add --no-cache gettext-envsubst     && apk add --no-cache tzdata     && ln -sf /dev/stdout /var/log/nginx/access.log     && ln -sf /dev/stderr /var/log/nginx/error.log     && mkdir /docker-entrypoint.d # buildkit\nENV DYNPKG_RELEASE=1\nENV PKG_RELEASE=1\nENV NGINX_VERSION=1.30.6\nLABEL maintainer=NGINX Docker Maintainers <docker-maint@nginx.com>\nCMD [\"/bin/sh\"]\nADD alpine-minirootfs-3.24.4-x86_64.tar.gz / # buildkit\n"
+    },
+    {
+      "label": "resolve own document-parser for image validation",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 264,
+      "output": "48ab5f5a00506d3934316f0d00c6d70684754dbcd9ded9647832e2eb13a9bdf1\n"
+    },
+    {
+      "label": "DO-SC-13 record actual document-parser image",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 97,
+      "output": "sha256:53544639a0b5af7237d68258a9a3a849d0c914c2ff6ac9ffec9f2ebbf43a73a6\n"
+    },
+    {
+      "label": "DO-SC-13 inspect document-parser image configuration",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 120,
+      "output": "{\"User\":\"65532:65532\",\"Env\":[\"PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\",\"LANG=C.UTF-8\",\"PYTHON_VERSION=3.14.10\",\"PYTHON_SHA256=de414a57119abef52784d8993e341d53aed635fc2b05c2607d9f98a2c5b72032\",\"PYTHONDONTWRITEBYTECODE=1\",\"PYTHONUNBUFFERED=1\"],\"Entrypoint\":[\"python\",\"-B\",\"-I\",\"/app/runner.py\"],\"WorkingDir\":\"/app\",\"Labels\":{\"com.docker.compose.project\":\"campus-wiring-6b77d12e3b91\",\"com.docker.compose.service\":\"document-parser\",\"com.docker.compose.version\":\"5.5.1\"}}\n"
+    },
+    {
+      "label": "DO-SC-13 inspect document-parser image history",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 116,
+      "output": "ENTRYPOINT [\"python\" \"-B\" \"-I\" \"/app/runner.py\"]\nUSER 65532:65532\nCOPY core.py runner.py worker.py server.py health.py /app/ # buildkit\nCOPY /packages /usr/local/lib/python3.14/site-packages # buildkit\nRUN /bin/sh -c rm -rf /usr/local/lib/python3.14/ensurepip     /usr/local/lib/python3.14/site-packages/pip     /usr/local/lib/python3.14/site-packages/pip-*.dist-info /usr/local/bin/pip* # buildkit\nWORKDIR /app\nENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1\nCMD [\"python3\"]\nRUN /bin/sh -c set -eux;  for src in idle3 pip3 pydoc3 python3 python3-config; do   dst=\"$(echo \"$src\" | tr -d 3)\";   [ -s \"/usr/local/bin/$src\" ];   [ ! -e \"/usr/local/bin/$dst\" ];   ln -svT \"$src\" \"/usr/local/bin/$dst\";  done # buildkit\nRUN /bin/sh -c set -eux;   apk add --no-cache --virtual .build-deps   bluez-dev   bzip2-dev   dpkg-dev dpkg   findutils   g++   gcc   gdbm-dev   gnupg   libc-dev   libffi-dev   libnsl-dev   libtirpc-dev   linux-headers   make   ncurses-dev   openssl-dev   pax-utils   readline-dev   sqlite-dev   tar   tcl-dev   tk   tk-dev   util-linux-dev   xz   xz-dev   zlib-dev   zstd-dev  ;   wget -O python.tar.xz \"https://www.python.org/ftp/python/${PYTHON_VERSION%%[a-z]*}/Python-$PYTHON_VERSION.tar.xz\";  echo \"$PYTHON_SHA256 *python.tar.xz\" | sha256sum -c -;  mkdir -p /usr/src/python;  tar --extract --directory /usr/src/python --strip-components=1 --file python.tar.xz;  rm python.tar.xz;   cd /usr/src/python;  gnuArch=\"$(dpkg-architecture --query DEB_BUILD_GNU_TYPE)\";  ./configure   --build=\"$gnuArch\"   --enable-loadable-sqlite-extensions   --enable-option-checking=fatal   --enable-shared   $(test \"${gnuArch%%-*}\" != 'riscv64' && echo '--with-lto')   --with-ensurepip  ;  nproc=\"$(nproc)\";  EXTRA_CFLAGS=\"-DTHREAD_STACK_SIZE=0x100000\";  LDFLAGS=\"${LDFLAGS:-} -Wl,--strip-all\";  arch=\"$(apk --print-arch)\";  case \"$arch\" in   x86_64|aarch64)    EXTRA_CFLAGS=\"${EXTRA_CFLAGS:-} -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer\";    ;;   x86)    ;;   *)    EXTRA_CFLAGS=\"${EXTRA_CFLAGS:-} -fno-omit-frame-pointer\";    ;;  esac;  make -j \"$nproc\"   \"EXTRA_CFLAGS=${EXTRA_CFLAGS:-}\"   \"LDFLAGS=${LDFLAGS:-}\"  ;  rm python;  make -j \"$nproc\"   \"EXTRA_CFLAGS=${EXTRA_CFLAGS:-}\"   \"LDFLAGS=${LDFLAGS:-} -Wl,-rpath='\\$\\$ORIGIN/../lib'\"   python  ;  make install;   cd /;  rm -rf /usr/src/python;   find /usr/local -depth   \\(    \\( -type d -a \\( -name test -o -name tests -o -name idle_test \\) \\)    -o \\( -type f -a \\( -name '*.pyc' -o -name '*.pyo' -o -name 'libpython*.a' \\) \\)   \\) -exec rm -rf '{}' +  ;   find /usr/local -type f -executable -not \\( -name '*tkinter*' \\) -exec scanelf --needed --nobanner --format '%n#p' '{}' ';'   | tr ',' '\\n'   | sort -u   | awk 'system(\"[ -e /usr/local/lib/\" $1 \" ]\") == 0 { next } { print \"so:\" $1 }'   | xargs -rt apk add --no-network --virtual .python-rundeps  ;  apk del --no-network .build-deps;   export PYTHONDONTWRITEBYTECODE=1;  python3 --version;  pip3 --version # buildkit\nENV PYTHON_SHA256=de414a57119abef52784d8993e341d53aed635fc2b05c2607d9f98a2c5b72032\nENV PYTHON_VERSION=3.14.10\nRUN /bin/sh -c set -eux;  apk add --no-cache   ca-certificates   tzdata  ; # buildkit\nENV LANG=C.UTF-8\nENV PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\nCMD [\"/bin/sh\"]\nADD alpine-minirootfs-3.24.4-x86_64.tar.gz / # buildkit\n"
+    },
+    {
+      "label": "DO-SC-13 actual runtime images and frontend exclude generated credentials",
+      "exit_code": 0,
+      "images": [
+        {
+          "service": "mysql",
+          "image_id": "sha256:fc3280acfc11d237fcc0f439fc06e1aa9c426b020a20020dff3f44258d9c8b42"
+        },
+        {
+          "service": "backend",
+          "image_id": "sha256:46d65ff2fbbb85dc8ec731410e9ef19da068b8a7603a459de1c947d580061cf5"
+        },
+        {
+          "service": "frontend",
+          "image_id": "sha256:72ee0d2e18c57115d68b6071ad10dd17a3fd8366b9940ef3b1de4480d176e687"
+        },
+        {
+          "service": "document-parser",
+          "image_id": "sha256:53544639a0b5af7237d68258a9a3a849d0c914c2ff6ac9ffec9f2ebbf43a73a6"
+        }
+      ],
+      "output": "Image metadata/history and all served asset bytes checked; asset bytes omitted"
+    },
+    {
+      "label": "SC-04/05 production process missing",
+      "exit_code": 2,
+      "expected": "nonzero",
+      "duration_ms": 420,
+      "output": "{\"ts\":\"2026-11-14T15:04:47.278139056Z\",\"level\":\"error\",\"message\":\"HTTP_PORT is required\",\"module\":\"config\",\"request_id\":null}\n"
+    },
+    {
+      "label": "SC-04/05 production process empty",
+      "exit_code": 2,
+      "expected": "nonzero",
+      "duration_ms": 589,
+      "output": "{\"ts\":\"2026-11-14T15:04:47.902842487Z\",\"level\":\"error\",\"message\":\"HTTP_PORT is required\",\"module\":\"config\",\"request_id\":null}\n"
+    },
+    {
+      "label": "SC-04/05 production process whitespace",
+      "exit_code": 2,
+      "expected": "nonzero",
+      "duration_ms": 388,
+      "output": "{\"ts\":\"2026-11-14T15:04:48.294542302Z\",\"level\":\"error\",\"message\":\"HTTP_PORT is required\",\"module\":\"config\",\"request_id\":null}\n"
+    },
+    {
+      "label": "SC-04/05 production process letters",
+      "exit_code": 2,
+      "expected": "nonzero",
+      "duration_ms": 402,
+      "output": "{\"ts\":\"2026-11-14T15:04:48.677951311Z\",\"level\":\"error\",\"message\":\"HTTP_PORT must contain decimal digits only\",\"module\":\"config\",\"request_id\":null}\n"
+    },
+    {
+      "label": "SC-04/05 production process zero",
+      "exit_code": 2,
+      "expected": "nonzero",
+      "duration_ms": 418,
+      "output": "{\"ts\":\"2026-11-14T15:04:49.099001649Z\",\"level\":\"error\",\"message\":\"HTTP_PORT must be in range 1..65535\",\"module\":\"config\",\"request_id\":null}\n"
+    },
+    {
+      "label": "SC-04/05 production process negative",
+      "exit_code": 2,
+      "expected": "nonzero",
+      "duration_ms": 397,
+      "output": "{\"ts\":\"2026-11-14T15:04:49.501765013Z\",\"level\":\"error\",\"message\":\"HTTP_PORT must contain decimal digits only\",\"module\":\"config\",\"request_id\":null}\n"
+    },
+    {
+      "label": "SC-04/05 production process aboveMaximum",
+      "exit_code": 2,
+      "expected": "nonzero",
+      "duration_ms": 379,
+      "output": "{\"ts\":\"2026-11-14T15:04:49.881376403Z\",\"level\":\"error\",\"message\":\"HTTP_PORT must be in range 1..65535\",\"module\":\"config\",\"request_id\":null}\n"
+    },
+    {
+      "label": "DI-SC-14 actual backend invalid DOCUMENT_PARSER_URL rejects before listen",
+      "exit_code": 2,
+      "expected": "nonzero",
+      "duration_ms": 1068,
+      "output": "{\"ts\":\"2026-11-14T15:04:50.704707812Z\",\"level\":\"error\",\"message\":\"identity startup failed; check required configuration, TLS and offline migrations\",\"module\":\"config\",\"request_id\":null}\n Container campus-wiring-6b77d12e3b91-backend-run-0ad847b5f576 Creating \n Container campus-wiring-6b77d12e3b91-backend-run-0ad847b5f576 Created \n\n"
+    },
+    {
+      "label": "DI-SC-14 actual backend invalid DOCUMENT_PARSER_URL rejects before listen",
+      "exit_code": 2,
+      "expected": "nonzero",
+      "duration_ms": 1046,
+      "output": "{\"ts\":\"2026-11-14T15:04:51.690501718Z\",\"level\":\"error\",\"message\":\"identity startup failed; check required configuration, TLS and offline migrations\",\"module\":\"config\",\"request_id\":null}\n Container campus-wiring-6b77d12e3b91-backend-run-5b4c80ca1400 Creating \n Container campus-wiring-6b77d12e3b91-backend-run-5b4c80ca1400 Created \n\n"
+    },
+    {
+      "label": "DI-SC-14 actual backend invalid DOCUMENT_PARSER_TOKEN rejects before listen",
+      "exit_code": 2,
+      "expected": "nonzero",
+      "duration_ms": 1094,
+      "output": "{\"ts\":\"2026-11-14T15:04:52.781727317Z\",\"level\":\"error\",\"message\":\"identity startup failed; check required configuration, TLS and offline migrations\",\"module\":\"config\",\"request_id\":null}\n Container campus-wiring-6b77d12e3b91-backend-run-85674450d98a Creating \n Container campus-wiring-6b77d12e3b91-backend-run-85674450d98a Created \n\n"
+    },
+    {
+      "label": "DI-SC-14 actual backend invalid DOCUMENT_PARSER_TOKEN rejects before listen",
+      "exit_code": 2,
+      "expected": "nonzero",
+      "duration_ms": 1065,
+      "output": "{\"ts\":\"2026-11-14T15:04:53.842034874Z\",\"level\":\"error\",\"message\":\"identity startup failed; check required configuration, TLS and offline migrations\",\"module\":\"config\",\"request_id\":null}\n Container campus-wiring-6b77d12e3b91-backend-run-9c2003d9e6a0 Creating \n Container campus-wiring-6b77d12e3b91-backend-run-9c2003d9e6a0 Created \n\n"
+    },
+    {
+      "label": "SC-07 occupied port rejects second real server",
+      "exit_code": 1,
+      "expected": "nonzero",
+      "duration_ms": 456,
+      "output": "{\"ts\":\"2026-11-14T15:04:54.70611669Z\",\"level\":\"info\",\"message\":\"task executor is not bound; accepted tasks remain pending\",\"module\":\"assignments\",\"request_id\":null}\n{\"ts\":\"2026-11-14T15:04:54.709560467Z\",\"level\":\"error\",\"message\":\"HTTP_PORT listen failed\",\"module\":\"server\",\"request_id\":null}\n"
+    },
+    {
+      "label": "SC-06 start real server with trimmed valid port",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 657,
+      "output": "a88d292f770145a0876875f83ca5a1c6791520d165f4928df3ac6a4026a1cbb0\n Container campus-wiring-6b77d12e3b91-backend-run-4d9618b74083 Creating \n Container campus-wiring-6b77d12e3b91-backend-run-4d9618b74083 Created \n"
+    },
+    {
+      "label": "SC-06 inspect own trimmed-port instance",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 101,
+      "output": "starting\n"
+    },
+    {
+      "label": "SC-06 inspect own trimmed-port instance",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 95,
+      "output": "starting\n"
+    },
+    {
+      "label": "SC-06 inspect own trimmed-port instance",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 98,
+      "output": "starting\n"
+    },
+    {
+      "label": "SC-06 inspect own trimmed-port instance",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 96,
+      "output": "starting\n"
+    },
+    {
+      "label": "SC-06 inspect own trimmed-port instance",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 96,
+      "output": "starting\n"
+    },
+    {
+      "label": "SC-06 inspect own trimmed-port instance",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 111,
+      "output": "starting\n"
+    },
+    {
+      "label": "SC-06 inspect own trimmed-port instance",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 114,
+      "output": "starting\n"
+    },
+    {
+      "label": "SC-06 inspect own trimmed-port instance",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 103,
+      "output": "starting\n"
+    },
+    {
+      "label": "SC-06 inspect own trimmed-port instance",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 98,
+      "output": "healthy\n"
+    },
+    {
+      "label": "SC-06 active strict probe succeeds",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 153,
+      "output": ""
+    },
+    {
+      "label": "remove only trimmed-port test instance",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 513,
+      "output": "a88d292f770145a0876875f83ca5a1c6791520d165f4928df3ac6a4026a1cbb0\n"
+    },
+    {
+      "label": "SC-01/02/03 real same-origin HTTPS, unique health, TLS rejection, login and revoked access",
+      "exit_code": 1,
+      "expected": 0,
+      "duration_ms": 2657,
+      "output": "=== RUN   TestMFRequestLineEarlyResponse\n=== RUN   TestMFRequestLineEarlyResponse/early_414\n=== RUN   TestMFRequestLineEarlyResponse/incorrect_success\n=== RUN   TestMFRequestLineEarlyResponse/transport_close_without_status\n=== RUN   TestMFRequestLineEarlyResponse/incomplete_headers\n--- PASS: TestMFRequestLineEarlyResponse (0.00s)\n    --- PASS: TestMFRequestLineEarlyResponse/early_414 (0.00s)\n    --- PASS: TestMFRequestLineEarlyResponse/incorrect_success (0.00s)\n    --- PASS: TestMFRequestLineEarlyResponse/transport_close_without_status (0.00s)\n    --- PASS: TestMFRequestLineEarlyResponse/incomplete_headers (0.00s)\n=== RUN   TestIDFWiring\n    wiring_test.go:199: invalid JSON response\n--- FAIL: TestIDFWiring (0.10s)\nFAIL\nFAIL\tgithub.com/zwh9616/campus-claw-plus/backend/internal/integration/wiring\t0.117s\nFAIL\n"
+    },
+    {
+      "label": "failure diagnostics before cleanup",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 389,
+      "output": "2026-11-14T15:04:17.080392Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.\n2026-11-14T15:04:17.397554Z 0 [Warning] [MY-010068] [Server] CA certificate /run/mysql-tls/ca.pem is self signed.\n2026-11-14T15:04:17.397590Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.\n2026-11-14T15:04:17.400418Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.\n2026-11-14T15:04:17.417650Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Socket: /var/run/mysqld/mysqlx.sock\n2026-11-14T15:04:17.417719Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.4.13'  socket: '/var/run/mysqld/mysqld.sock'  port: 0  MySQL Community Server - GPL.\n2026-11-14 15:04:17+00:00 [Note] [Entrypoint]: Temporary server started.\n'/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'\n\n{\"request_id\": \"90027ade872949eb8f83b577942de1b6\", \"path\": \"/health\", \"status\": 200, \"duration_ms\": 0}\n2026-11-14 15:04:18+00:00 [Note] [Entrypoint]: /usr/local/bin/docker-entrypoint.sh: running /docker-entrypoint-initdb.d/initialize.sql\n\n/docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration\n{\"request_id\": \"789444c088e84a6aa325c7f5d187e608\", \"path\": \"/health\", \"status\": 200, \"duration_ms\": 1}\n{\"request_id\": \"8c50d8440d7b4f1a9a6e84d2f19c672b\", \"path\": \"/health\", \"status\": 200, \"duration_ms\": 0}\n\n2026-11-14 15:04:19+00:00 [Note] [Entrypoint]: Stopping temporary server\n2026-11-14T15:04:19.388002Z 11 [System] [MY-013172] [Server] Received SHUTDOWN from user root. Shutting down mysqld (Version: 8.4.13).\n2026-11-14T15:04:20.829559Z 0 [System] [MY-010910] [Server] /usr/sbin/mysqld: Shutdown complete (mysqld 8.4.13)  MySQL Community Server - GPL.\n2026-11-14T15:04:20.829582Z 0 [System] [MY-015016] [Server] MySQL Server - end.\n{\"request_id\": \"9c6d5df40c164bc1bf3b46047671ec3d\", \"path\": \"/health\", \"status\": 200, \"duration_ms\": 0}\n{\"request_id\": \"2b71e9b7e7554911ac3437bd5087e4f0\", \"path\": \"/health\", \"status\": 200, \"duration_ms\": 0}\n{\"request_id\": \"1bfcda7fad0047868287ed76461d4d7e\", \"path\": \"/health\", \"status\": 200, \"duration_ms\": 1}\n{\"ts\":\"2026-11-14T15:04:33.441309663Z\",\"level\":\"info\",\"message\":\"task executor is not bound; accepted tasks remain pending\",\"module\":\"assignments\",\"request_id\":null}\n2026-11-14 15:04:21+00:00 [Note] [Entrypoint]: Temporary server stopped\n{\"request_id\": \"832f470306d646d1a96a8001fb1aea71\", \"path\": \"/health\", \"status\": 200, \"duration_ms\": 1}\n\n{\"request_id\": \"793ba19f4bb34340a2fb1b620ce98dfe\", \"path\": \"/health\", \"status\": 200, \"duration_ms\": 0}\n{\"request_id\": \"43e20010b8704770b7077286077817c8\", \"path\": \"/health\", \"status\": 200, \"duration_ms\": 1}\n2026-11-14 15:04:21+00:00 [Note] [Entrypoint]: MySQL init process done. Ready for start up.\n/docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/\n{\"request_id\": \"8b501db17322439c8885e4a7807dd648\", \"path\": \"/health\", \"status\": 200, \"duration_ms\": 1}\n{\"request_id\": \"212baa98e6ea4af08a766b2f72b18ce6\", \"path\": \"/health\", \"status\": 200, \"duration_ms\": 0}\n{\"request_id\": \"01488f319e6a40e18771f51247e1157d\", \"path\": \"/health\", \"status\": 200, \"duration_ms\": 0}\n{\"request_id\": \"72cef3f586c744d392b627c0e107d653\", \"path\": \"/health\", \"status\": 200, \"duration_ms\": 0}\n{\"ts\":\"2026-11-14T15:04:33.446559463Z\",\"level\":\"info\",\"message\":\"server started\",\"module\":\"server\",\"request_id\":null}\n{\"request_id\": \"1f0b0d414bd741409943065763a0b8f1\", \"path\": \"/health\", \"status\": 200, \"duration_ms\": 0}\n{\"ts\":\"2026-11-14T15:04:38.081151811Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"f68e19529bcacd36c685ec78c2bd71cd\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.373}\n{\"ts\":\"2026-11-14T15:04:40.111789329Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"82317f3047026bef6c5d6c34ca075a86\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.923}\n{\"ts\":\"2026-11-14T15:04:42.141401334Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"ff3bed78d45c812413d2b77a3eae0d0e\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.271}\n{\"ts\":\"2026-11-14T15:04:44.022891517Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"7a9d03c373b3daaeb3aa0475d74fb8c1\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.294}\n/docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh\n10-listen-on-ipv6-by-default.sh: info: Getting the checksum of /etc/nginx/conf.d/default.conf\n10-listen-on-ipv6-by-default.sh: info: Enabled listen on IPv6 in /etc/nginx/conf.d/default.conf\n/docker-entrypoint.sh: Sourcing /docker-entrypoint.d/15-local-resolvers.envsh\n/docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh\n{\"ts\":\"2026-11-14T15:04:44.038148291Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"47588a736e0f2c97d6bbdc2d96265b42\",\"method\":\"GET\",\"path\":\"/api/v1/me\",\"status\":401,\"duration_ms\":0.739}\n20-envsubst-on-templates.sh: Running envsubst on /etc/nginx/templates/identity-proxy.conf.template to /etc/nginx/identity-proxy.conf\n20-envsubst-on-templates.sh: Running envsubst on /etc/nginx/templates/nginx.conf.template to /etc/nginx/nginx.conf\n/docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processes.sh\n/docker-entrypoint.sh: Configuration complete; ready for start up\n{\"ts\":\"2026-11-14T15:04:44.17231672Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"428f1dd614aa5a936cef579600afb219\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.274}\n\n{\"ts\":\"2026-11-14T15:04:46.206843124Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"50292692044af829aeb99c4f3bdcf395\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.413}\n2026-11-14T15:04:21.407844Z 0 [System] [MY-015015] [Server] MySQL Server - start.\n2026-11-14T15:04:21.655101Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.13) starting as process 1\n2026-11-14T15:04:21.655105Z 0 [System] [MY-015150] [Server] Server version with update: '8.4.13.0'\n2026-11-14T15:04:21.660184Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.\n2026-11-14T15:04:21.879860Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.\n2026-11-14T15:04:22.023923Z 0 [Warning] [MY-010068] [Server] CA certificate /run/mysql-tls/ca.pem is self signed.\n2026-11-14T15:04:22.023955Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.\n2026-11-14T15:04:22.026037Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.\n2026-11-14T15:04:22.053223Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock\n2026-11-14T15:04:22.053648Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '8.4.13'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.\n{\"ts\":\"2026-11-14T15:04:48.272694973Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"5e2a3b3962c274eb21f2db0095f01c01\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.565}\n{\"ts\":\"2026-11-14T15:04:50.304131843Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"3529133a6d6abb5217bbadee70a8926d\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.258}\n{\"ts\":\"2026-11-14T15:04:52.334113153Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"5802f16eb5eceaf8a2799ec36c435bc3\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.277}\n{\"ts\":\"2026-11-14T15:04:54.370837475Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"32fb04174e6cf5e9531c5a15ee1c64ba\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.445}\n{\"ts\":\"2026-11-14T15:04:56.39930958Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"02e6922290ce5258456f322392ab72eb\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.264}\n{\"ts\":\"2026-11-14T15:04:58.432167912Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"2ff2c1a7535cb89b688e11f73d4b07e1\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.264}\n{\"ts\":\"2026-11-14T15:05:00.464184226Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"2d653a0f4e4294512df31d4d2a60b9a7\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.267}\n{\"ts\":\"2026-11-14T15:05:02.49671009Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"6581fb9bf9da970da740c3d0ecf3aa77\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.378}\n{\"ts\":\"2026-11-14T15:05:03.285982786Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"c89b6865bcabeb5a5bb1f31c555e75f0\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.398}\n{\"ts\":\"2026-11-14T15:05:03.287210262Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"50a9fc4aeb450afff709bd5a578d0aeb\",\"method\":\"GET\",\"path\":\"/health\",\"status\":200,\"duration_ms\":0.31}\n{\"ts\":\"2026-11-14T15:05:03.306714224Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"c81d1ad97f0233ea5972dc67f2204f35\",\"method\":\"POST\",\"path\":\"/api/v1/auth/login\",\"status\":413,\"duration_ms\":0.199}\n{\"ts\":\"2026-11-14T15:05:03.359972384Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"5f179d173b5b70183822ef4afb9d9cc5\",\"method\":\"POST\",\"path\":\"/api/v1/auth/login\",\"status\":200,\"duration_ms\":52.468}\n{\"ts\":\"2026-11-14T15:05:03.373179182Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"68b4c9373e7efa35ee479f96e6207afe\",\"method\":\"GET\",\"path\":\"/api/v1/me\",\"status\":200,\"duration_ms\":3.081}\n{\"ts\":\"2026-11-14T15:05:03.37907062Z\",\"level\":\"info\",\"message\":\"request completed\",\"module\":\"http\",\"request_id\":\"981eddb0f4cb3c6750fdbdc07e7835cc\",\"method\":\"GET\",\"path\":\"/api/v1/documents\",\"status\":404,\"duration_ms\":0.019}\n"
+    },
+    {
+      "label": "remove only this disposable project and test data volume",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 16156,
+      "output": " Container campus-wiring-6b77d12e3b91-mysql-1 Stopping \n Container campus-wiring-6b77d12e3b91-frontend-1 Stopping \n Container campus-wiring-6b77d12e3b91-document-parser-1 Stopping \n Container campus-wiring-6b77d12e3b91-frontend-1 Stopped \n Container campus-wiring-6b77d12e3b91-frontend-1 Removing \n Container campus-wiring-6b77d12e3b91-frontend-1 Removed \n Container campus-wiring-6b77d12e3b91-backend-1 Stopping \n Container campus-wiring-6b77d12e3b91-backend-1 Stopped \n Container campus-wiring-6b77d12e3b91-backend-1 Removing \n Container campus-wiring-6b77d12e3b91-backend-1 Removed \n Container campus-wiring-6b77d12e3b91-mysql-1 Stopped \n Container campus-wiring-6b77d12e3b91-mysql-1 Removing \n Container campus-wiring-6b77d12e3b91-mysql-1 Removed \n Container campus-wiring-6b77d12e3b91-document-parser-1 Stopped \n Container campus-wiring-6b77d12e3b91-document-parser-1 Removing \n Container campus-wiring-6b77d12e3b91-document-parser-1 Removed \n Network campus-wiring-6b77d12e3b91_ingress Removing \n Network campus-wiring-6b77d12e3b91_data Removing \n Volume campus-wiring-6b77d12e3b91_mysql-data Removing \n Network campus-wiring-6b77d12e3b91_document_parse Removing \n Volume campus-wiring-6b77d12e3b91_mysql-data Removed \n Network campus-wiring-6b77d12e3b91_ingress Removed \n Network campus-wiring-6b77d12e3b91_data Removed \n Network campus-wiring-6b77d12e3b91_document_parse Removed \n"
+    },
+    {
+      "label": "remove dedicated proxy network",
+      "exit_code": 0,
+      "expected": 0,
+      "duration_ms": 248,
+      "output": "campus-wiring-6b77d12e3b91\n"
+    }
+  ],
+  "errors": [
+    "SC-01/02/03 real same-origin HTTPS, unique health, TLS rejection, login and revoked access: unexpected exit status; sanitized evidence saved"
+  ],
+  "exit_code": 1
+}

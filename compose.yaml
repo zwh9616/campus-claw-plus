@@ -72,6 +72,8 @@ services:
     environment:
       HTTP_PORT: ${HTTP_PORT:?Fill HTTP_PORT in the root .env}
       AUTH_TRUSTED_PROXY_CIDRS: ${IDENTITY_PROXY_IP:?Provide IDENTITY_PROXY_IP}/32
+      DOCUMENT_PARSER_URL: ${DOCUMENT_PARSER_URL:?Provide DOCUMENT_PARSER_URL}
+      DOCUMENT_PARSER_TOKEN: ${DOCUMENT_PARSER_TOKEN:?Provide DOCUMENT_PARSER_TOKEN}
     volumes:
       - type: bind
         source: ${IDENTITY_STATE_DIR:?Provide IDENTITY_STATE_DIR}/ca.pem
@@ -82,6 +84,7 @@ services:
     networks:
       - data
       - proxy
+      - document_parse
     read_only: true
     cap_drop:
       - ALL
@@ -145,6 +148,42 @@ services:
       interval: 5s
       timeout: 2s
       retries: 5
+  document-parser:
+    build:
+      context: ./document-parser
+    entrypoint:
+      - python
+      - -B
+      - -I
+      - /app/server.py
+    environment:
+      DOCUMENT_PARSER_TOKEN: ${DOCUMENT_PARSER_TOKEN:?Provide DOCUMENT_PARSER_TOKEN}
+    networks:
+      - document_parse
+    read_only: true
+    user: 65532:65532
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 512m
+    memswap_limit: 512m
+    cpus: 1
+    pids_limit: 32
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=64m
+    stop_grace_period: 15s
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -B
+        - -I
+        - /app/health.py
+      interval: 2s
+      timeout: 1s
+      retries: 15
+      start_period: 2s
 volumes:
   mysql-data: {}
 networks:
@@ -156,3 +195,5 @@ networks:
   proxy:
     external: true
     name: ${IDENTITY_PROXY_NETWORK:?Provide IDENTITY_PROXY_NETWORK}
+  document_parse:
+    internal: true

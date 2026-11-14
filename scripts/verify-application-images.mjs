@@ -11,7 +11,7 @@ const parent = resolve('output/application-image-verify')
 const directory = resolve(parent, id)
 if (dirname(directory) !== parent) throw new Error('Invalid audit directory')
 mkdirSync(directory, { recursive: true })
-for (const name of ['results', 'backend', 'admin', 'frontend']) rmSync(resolve(parent, name + '.json'), { force: true })
+for (const name of ['results', 'backend', 'admin', 'frontend', 'document-parser']) rmSync(resolve(parent, name + '.json'), { force: true })
 const { volume: cacheVolume, owned: ownsCache } = auditCache(id)
 const results = [], images = [], summaries = []
 const retainImages = process.argv.includes('--retain-images')
@@ -27,6 +27,7 @@ const inputs = [
   { service: 'backend', context: 'backend', dockerfile: 'backend/Dockerfile', args: [] },
   { service: 'admin', context: 'backend', dockerfile: 'backend/Dockerfile.identity', args: ['--target', 'admin'] },
   { service: 'frontend', context: 'frontend', dockerfile: 'frontend/Dockerfile', args: [] },
+  { service: 'document-parser', context: 'document-parser', dockerfile: 'document-parser/Dockerfile', args: [] },
 ]
 try {
   for (const { service, context, dockerfile, args } of inputs) {

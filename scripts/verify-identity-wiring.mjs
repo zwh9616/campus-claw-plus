@@ -8,6 +8,7 @@ import { validateWiringInputs } from './identity-compose.mjs'
 import { hostRequest, verifyHostIngress } from './identity-host-ingress.mjs'
 import { verificationSubnets } from './verification-subnets.mjs'
 import { auditedImageServices, validateBatch, loadBatchInputs } from './service-batches.mjs'
+import { verifyDocumentRuntime } from './document-runtime.mjs'
 
 const useAuditedImages = process.argv.includes('--audited-images')
 
@@ -42,6 +43,8 @@ try {
   run('generate disposable wiring credentials/certificates', [...goArgs, '--network', 'none', '--mount', `type=bind,source=${directory},target=/fixtures`, goImage, 'go', 'run', './internal/integration/fixture', '/fixtures'])
   const app = parseEnv(readFileSync(resolve(directory, 'test.env'), 'utf8'))
   secrets = [...Object.values(app).flatMap(s => [...s.matchAll(/idf_(?:app|migration):([^@]+)@/g)].map(m => m[1])), readFileSync(resolve(directory, 'root-password'), 'utf8')]
+  assert.ok(app.DOCUMENT_PARSER_TOKEN)
+  secrets.push(app.DOCUMENT_PARSER_TOKEN)
   const password = randomBytes(24).toString('hex')
   const secondPassword = randomBytes(24).toString('hex')
   secrets.push(password, secondPassword)
@@ -60,7 +63,7 @@ try {
   const start = (octets[0]*2**24 + octets[1]*2**16 + octets[2]*256 + octets[3]) >>> 0
   const address = ((start | (2 ** (32 - Number(prefix)) - 1)) - 1) >>> 0
   const ip = [address>>>24, address>>>16&255, address>>>8&255, address&255].join('.')
-  env = { HTTP_PORT: '18080', IDENTITY_STATE_DIR: directory, IDENTITY_PROXY_NETWORK: id, IDENTITY_PROXY_IP: ip, IDENTITY_HTTPS_HOST: 'campus.test', IDENTITY_HTTPS_PORT: '0', HTTPS_CERT_FILE: resolve(directory, 'https.pem'), HTTPS_KEY_FILE: resolve(directory, 'https.key') }
+  env = { HTTP_PORT: '18080', IDENTITY_STATE_DIR: directory, IDENTITY_PROXY_NETWORK: id, IDENTITY_PROXY_IP: ip, IDENTITY_HTTPS_HOST: 'campus.test', IDENTITY_HTTPS_PORT: '0', HTTPS_CERT_FILE: resolve(directory, 'https.pem'), HTTPS_KEY_FILE: resolve(directory, 'https.key'), DOCUMENT_PARSER_URL: app.DOCUMENT_PARSER_URL, DOCUMENT_PARSER_TOKEN: app.DOCUMENT_PARSER_TOKEN }
   // A host may have exhausted Docker's automatic pools. Override only this
   // disposable project's internal data subnet; preserve services and policy.
   const ids=spawnSync('docker',['network','ls','-q'],{encoding:'utf8',timeout:30000})
@@ -68,28 +71,32 @@ try {
   const inventory=spawnSync('docker',['network','inspect','--format','{{range .IPAM.Config}}{{.Subnet}} {{end}}',...ids.stdout.trim().split(/\s+/)],{encoding:'utf8',timeout:30000})
   if(inventory.status!==0)throw new Error('Network prefix inventory unavailable')
   const occupied = [...inventory.stdout.matchAll(/(\d+\.\d+\.\d+\.\d+)\/(\d+)/g)].map(m => m[0])
-  const [dataSubnet, ingressSubnet] = verificationSubnets(occupied)
+  const [dataSubnet, ingressSubnet, documentSubnet] = verificationSubnets(occupied,3)
   writeFileSync(resolve(directory,'network-override.json'),JSON.stringify({networks:{
     data:{ipam:{config:[{subnet:dataSubnet}]}},
     ingress:{ipam:{config:[{subnet:ingressSubnet}]}},
+    document_parse:{ipam:{config:[{subnet:documentSubnet}]}},
   }}))
   validateWiringInputs(env, { ephemeral: true })
   const envText = object => Object.entries(object).map(([k,v]) => `${k}=${JSON.stringify(v)}`).join('\n') + '\n'
   writeFileSync(resolve(directory, 'compose.env'), envText(env), { mode: 0o600 })
-  writeFileSync(resolve(directory, 'admin.env'), envText(app), { mode: 0o600 })
+  writeFileSync(resolve(directory, 'admin.env'), envText(Object.fromEntries(['MYSQL_DSN','MYSQL_MIGRATION_DSN','MYSQL_CA_FILE'].map(k=>[k,app[k]]))), { mode: 0o600 })
   const backend = { MYSQL_DSN: app.MYSQL_DSN, MYSQL_CA_FILE: app.MYSQL_CA_FILE, AUTH_TRUSTED_ORIGIN: 'https://campus.test' }
   writeFileSync(resolve(directory, 'backend.env'), envText(backend), { mode: 0o600 })
   configured = true
   compose('validate explicit candidate compose', ['--profile', 'tools', 'config', '--quiet'])
   compose('SC-09 missing HTTP_PORT is rejected before startup', ['config', '--quiet'], { expected: 'nonzero', overrides: { HTTP_PORT: '' } })
   compose('missing HTTPS key is rejected before startup', [ 'config', '--quiet'], { expected: 'nonzero', overrides: { HTTPS_KEY_FILE: '' } })
+  for(const key of ['DOCUMENT_PARSER_URL','DOCUMENT_PARSER_TOKEN']) {
+    compose('DI-SC-14 missing '+key+' rejects Compose', ['config','--quiet'], {expected:'nonzero',overrides:{[key]:''}})
+  }
 } catch (error) {
   failed = true; errors.push(redact(error.message)); console.error(redact(error.message))
 }
 // Continue below only after fixture/config preparation; all failures still clean up.
 try {
   if (failed) throw new Error('Wiring preparation failed')
-  compose('build pinned MySQL, offline admin and production applications', ['--profile', 'tools', 'build', 'mysql', 'admin', 'backend', 'frontend'])
+  compose('build pinned MySQL, offline admin and production applications', ['--profile', 'tools', 'build', 'mysql', 'admin', 'backend', 'frontend','document-parser'])
   if (useAuditedImages) {
     const services = auditedImageServices(JSON.parse(readFileSync('output/mysql-image-verify/results.json')),
       JSON.parse(readFileSync('output/application-image-verify/results.json')), validateBatch(loadBatchInputs()))
@@ -121,7 +128,7 @@ try {
   seed.users[0].password = secrets.at(-1)
   compose('repeat initialize does not replace existing password', ['run', '--rm', '-T', 'admin', 'initialize'], { input: JSON.stringify(seed) })
   client('lookup', 'trusted fixture class lookup on database-only network')
-  compose('start isolated Go and HTTPS frontend', [ 'up', '-d', '--wait', '--wait-timeout', '90', 'backend', 'frontend'])
+  compose('start isolated Go and HTTPS frontend', [ 'up', '-d', '--wait', '--wait-timeout', '90', 'backend', 'frontend','document-parser'])
   const frontend = compose('resolve only this project HTTPS frontend', ['ps', '-q', 'frontend']).trim()
   assert.match(frontend, /^[a-f0-9]{64}$/)
   const ports = JSON.parse(run('inspect only published HTTPS binding', ['inspect', '--format', '{{json .NetworkSettings.Ports}}', frontend]))
@@ -138,7 +145,7 @@ try {
   const image = compose('resolve production backend image', ['images', '-q', 'backend']).trim()
   assert.match(image, /^(sha256:)?[a-f0-9]{12,64}$/)
   const runtimeImages = []
-  for (const service of ['mysql', 'backend', 'frontend']) {
+  for (const service of ['mysql', 'backend', 'frontend','document-parser']) {
     const container = compose('resolve own ' + service + ' for image validation', ['ps', '-q', service]).trim()
     assert.match(container, /^[a-f0-9]{64}$/)
     const imageId = run('DO-SC-13 record actual ' + service + ' image', ['inspect', '--format', '{{.Image}}', container]).trim()
@@ -163,6 +170,13 @@ try {
     assert.ok(lines.length && lines.every(x=>x.module==='config' && x.request_id===null))
     assert.match(output,/HTTP_PORT/)
   }
+  for(const [key,value] of [['DOCUMENT_PARSER_URL',''],['DOCUMENT_PARSER_URL','http://127.0.0.1:8091'],
+    ['DOCUMENT_PARSER_TOKEN',''],['DOCUMENT_PARSER_TOKEN','invalid-private-input']]) {
+    const output=compose('DI-SC-14 actual backend invalid '+key+' rejects before listen',
+      ['run','--rm','--no-deps','-e',key+'='+value,'backend'],{expected:'nonzero',timeout:15000})
+    assert.ok(output.trim().split(/\r?\n/).map(x=>JSON.parse(x)).every(x=>x.module==='config'&&x.request_id===null))
+    assert.ok(!output.includes('invalid-private-input'))
+  }
   const occupied = compose('SC-07 occupied port rejects second real server', ['exec','-T','backend','/server'], {expected:'nonzero'})
   assert.match(occupied,/HTTP_PORT listen failed/)
   validContainer = compose('SC-06 start real server with trimmed valid port', ['run','-d','--no-deps','-e','HTTP_PORT= 18081 ','backend']).trim()
@@ -186,6 +200,7 @@ try {
   assert.ok(parsedLogs.some(row=>row.message==='server started' && row.request_id===null))
   assert.ok(!logs.includes('untrusted-client-value') && !logs.includes('verification-private'))
   if (secrets.some(secret => logs.includes(secret))) throw new Error('secret appeared in application log')
+  await verifyDocumentRuntime({ id, directory, compose, run, client, goArgs, goImage, evidence })
   compose('stop database only', ['stop', '--timeout', '15', 'mysql'])
   client('down', 'real database-down health 503 and login 503 without credentials')
   const downProbeStarted = performance.now()
@@ -208,7 +223,7 @@ try {
   evidence.push({ label: 'SC-10 stopped host published HTTPS is unreachable', exit_code: 0 })
   compose('recreate MySQL on retained volume', ['up', '-d', '--wait', '--wait-timeout', '90', 'mysql'])
   compose('recreated database migration state unchanged', ['run', '--rm', '-T', 'admin', 'check'])
-  compose('recreate isolated HTTPS path', [ 'up', '-d', '--wait', '--wait-timeout', '90', 'backend', 'frontend'])
+  compose('recreate isolated HTTPS path', [ 'up', '-d', '--wait', '--wait-timeout', '90', 'backend', 'frontend','document-parser'])
   const recreated = compose('resolve recreated HTTPS frontend', ['ps', '-q', 'frontend']).trim()
   const recreatedPorts = JSON.parse(run('inspect recreated host binding', ['inspect', '--format', '{{json .NetworkSettings.Ports}}', recreated]))
   assert.equal(recreatedPorts['443/tcp'][0].HostIp, '127.0.0.1')

@@ -1,4 +1,10 @@
-# PDF / DOCX offline extraction core (04E A)
+# PDF / DOCX extraction core and private service (04E A)
+
+Current branch candidate (2026-11-14): default Compose starts the private server and the Go default process starts the durable document worker after exact Target6 checks. The two approved parser settings are active; 15 sample keys remain empty. Production verification requires all five immutable images. Six public Document operations remain frozen and the existing22 public operations stay unchanged. #52/#53/#54 and this dependent candidate still require actual review/integration; no operator deployment is claimed. See [runtime evidence and remaining work](../reports/changes/04E/document-runtime-2026-11-14.md).
+
+Compose explicitly launches `python -B -I /app/server.py`; the image's standalone entrypoint remains the offline runner. The service gets only DOCUMENT_PARSER_TOKEN, no database/model credentials, no host ports and only the dedicated internal backend/parser network. The authenticated fixed loopback probe runs `python -B -I /app/health.py` with a500ms total budget. Backend starts without a parser dependency; old identity/TXT/health/task reads remain available during actual parser outage. All original core/RPC/client tests and additional standalone scanner checks remain mandatory. Production tests add persisted real40-file/195-location extraction and real worker outage/restart recovery; trusted fixture insertion does not prove authorized upload HTTP/UI.
+
+The sections below retain historical component milestones. Their unactivated/four-service/Target5 statements describe those earlier milestones; the current branch candidate above takes precedence.
 
 This is the first isolated A component. The six Document HTTP operations remain frozen, current production remains 22 operations / Target5 / four images. No Compose service, upload UI, RPC, active configuration, SQL or persistent parse queue is activated by this component. 小张 owns implementation and acceptance. Contract approval and main verification are recorded in [the component report](../reports/changes/04E/parser-core-2026-11-13.md).
 

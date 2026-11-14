@@ -38,7 +38,7 @@ async function main(args) {
       // If preparation fails, earlier reports cannot stand in for this run.
       for (const path of ['mysql-image-verify/results.json', 'mysql-image-verify/mysql.json',
         'application-image-verify/results.json', 'application-image-verify/backend.json',
-        'application-image-verify/admin.json', 'application-image-verify/frontend.json']) {
+        'application-image-verify/admin.json', 'application-image-verify/frontend.json', 'application-image-verify/document-parser.json']) {
         rmSync(resolve('output', path), { force: true })
       }
       for (const script of ['verify-mysql-image.mjs', 'verify-application-images.mjs']) {

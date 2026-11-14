@@ -46,6 +46,9 @@ try {
   const env = readFileSync(resolve(directory, 'test.env'), 'utf8')
   secrets = [...env.matchAll(/idf_(?:app|migration):([^@]+)@/g)].map(m => m[1])
   secrets.push(readFileSync(resolve(directory, 'root-password'), 'utf8'))
+  const parserSecret=env.match(/^DOCUMENT_PARSER_TOKEN=(.+)$/m)?.[1]
+  if(!parserSecret)throw new Error('Parser fixture credential missing')
+  secrets.push(parserSecret)
   run('isolated network', ['network', 'create', '--internal', id])
   run('isolated MySQL', ['run', '-d', '--name', id, '--network', id, '--network-alias', 'mysql', '--mount', `type=bind,source=${directory},target=/fixtures,readonly`, '--mount', `type=bind,source=${resolve(directory, 'initialize.sql')},target=/docker-entrypoint-initdb.d/initialize.sql,readonly`, '-e', 'MYSQL_ROOT_PASSWORD_FILE=/fixtures/root-password', mysqlImage, '--require-secure-transport=ON', '--ssl-ca=/fixtures/ca.pem', '--ssl-cert=/fixtures/server.pem', '--ssl-key=/fixtures/server.key'])
   run('real MySQL identity scenarios', [...goArgs, '--network', id, '--env-file', resolve(directory, 'test.env'), '--mount', `type=bind,source=${directory},target=/fixtures,readonly`, goImage, 'go', 'test', '-count=1', '-tags=integration', '-timeout=240s', '-v', './internal/integration'])

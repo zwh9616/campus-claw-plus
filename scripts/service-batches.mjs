@@ -50,7 +50,7 @@ export function auditedImageServices(mysql, applications, inventory) {
   assert.equal(applications.exit_code, 0, 'Application scans must pass before runtime')
   assert.equal(mysql.source_dockerfile_sha256, inventory.sources.find(s => s.service === 'mysql').dockerfile_sha256)
   const images = [{ service: 'mysql', ...mysql.summary }, ...applications.summaries.filter(s => s.service)]
-  assert.deepEqual(images.map(s => s.service).sort(), ['admin', 'backend', 'frontend', 'mysql'])
+  assert.deepEqual(images.map(s => s.service).sort(), ['admin', 'backend', 'document-parser', 'frontend', 'mysql'])
   return Object.fromEntries(images.map(image => {
     assert.match(image.image_id ?? '', /^sha256:[a-f0-9]{64}$/, 'Only immutable audited image IDs may run')
     assert.equal(image.HIGH, 0)
@@ -66,7 +66,7 @@ export function retainedImageTags(reports, started) {
     const report = reports[path]
     if (!report || Date.parse(report.time) < started || !Number.isFinite(Date.parse(report.time))) continue
     for (const tag of report.retained_tags ?? []) {
-      assert.match(tag, /^campus-(?:mysql-audit-[a-f0-9]{12}|app-audit-[a-f0-9]{12}-(?:backend|admin|frontend)):verification$/, 'Cleanup is limited to this verification image tag format')
+      assert.match(tag, /^campus-(?:mysql-audit-[a-f0-9]{12}|app-audit-[a-f0-9]{12}-(?:backend|admin|frontend|document-parser)):verification$/, 'Cleanup is limited to this verification image tag format')
       tags.push(tag)
     }
   }
@@ -81,11 +81,11 @@ export function validateBatch({ registry, compose, config, dockerfiles }) {
   assert.ok(['pending_ge_review', 'reviewed'].includes(registry.review_status))
   const names = registry.services.map(s => s.name)
   assert.equal(new Set(names).size, names.length, 'Duplicate registered service')
-  assert.deepEqual([...names].sort(), ['admin', 'backend', 'frontend', 'mysql'], 'This batch does not authorize new services')
+  assert.deepEqual([...names].sort(), ['admin', 'backend', 'document-parser', 'frontend', 'mysql'], 'Only the exact private parser service may be added')
   assert.deepEqual([...names].sort(), Object.keys(compose.services).sort(), 'Compose service inventory differs from batch')
   const changes = new Set(registry.changes.map(c => c.id))
   assert.equal(changes.size, registry.changes.length)
-  assert.deepEqual([...changes].sort(), ['01', '02', '04', '05', '06'], 'Batch approval scope differs')
+  assert.deepEqual([...changes].sort(), ['01', '02', '04', '04E', '05', '06'], 'Batch approval scope differs')
   for (const change of registry.changes) {
     assert.ok(existsSync(change.spec), 'Approved spec link missing')
     assert.match(change.integrated_commit, /^[a-f0-9]{40}$/, 'Integration commit must be explicit')
@@ -95,8 +95,27 @@ export function validateBatch({ registry, compose, config, dockerfiles }) {
   const declared = new Map(registry.services.map(s => [s.name, s]))
   assert.deepEqual([...declared.get('frontend').changes].sort(), ['01', '02', '06'], 'Frontend must include the integrated materials pages')
   for (const name of ['mysql', 'backend', 'admin']) {
-    assert.deepEqual([...declared.get(name).changes].sort(), ['01', '04', '05'], 'Each database consumer must cover identity/materials and accepted assignment/tasks')
+    assert.deepEqual([...declared.get(name).changes].sort(), ['01', '04', '04E', '05'], 'Database consumers must cover accepted business and the exact document migration')
   }
+  assert.deepEqual(declared.get('document-parser').changes, ['04E'])
+  const parser = compose.services['document-parser']
+  assert.deepEqual(parser.networks, ['document_parse'])
+  assert.deepEqual(compose.networks.document_parse, { internal: true })
+  assert.equal(parser.ports, undefined); assert.equal(parser.expose, undefined); assert.equal(parser.env_file, undefined)
+  assert.equal(parser.volumes,undefined);assert.equal(parser.command,undefined)
+  assert.equal(parser.healthcheck.timeout,'1s')
+  assert.deepEqual(Object.keys(parser.environment), ['DOCUMENT_PARSER_TOKEN'])
+  assert.equal(parser.environment.DOCUMENT_PARSER_TOKEN, '${DOCUMENT_PARSER_TOKEN:?Provide DOCUMENT_PARSER_TOKEN}')
+  assert.deepEqual(parser.entrypoint, ['python','-B','-I','/app/server.py'])
+  assert.equal(parser.read_only,true); assert.equal(parser.user,'65532:65532')
+  assert.equal(parser.mem_limit,'512m'); assert.equal(parser.memswap_limit,'512m'); assert.equal(parser.cpus,1); assert.equal(parser.pids_limit,32)
+  assert.deepEqual(parser.cap_drop,['ALL']); assert.deepEqual(parser.security_opt,['no-new-privileges:true'])
+  assert.deepEqual(parser.tmpfs,['/tmp:rw,noexec,nosuid,size=64m'])
+  assert.deepEqual(declared.get('document-parser').config_keys,['DOCUMENT_PARSER_TOKEN'])
+  assert.deepEqual(declared.get('backend').optional_dependencies,['document-parser'])
+  const backendDependencies=compose.services.backend.depends_on??{}
+  assert.ok(!(Array.isArray(backendDependencies)?backendDependencies:Object.keys(backendDependencies)).includes('document-parser'), 'Old HTTP must start independently of parser availability')
+  assert.ok(!compose.services.frontend.networks.document_parse && !compose.services.mysql.networks.includes('document_parse') && !compose.services.admin.networks.includes('document_parse'))
   const owner = { backend: 'backend', migration: 'admin', initializer: 'admin', nginx: 'frontend' }
   for (const key of config.active) for (const consumer of key.consumers ?? []) {
     if (owner[consumer]) assert.ok(declared.get(owner[consumer]).config_keys.includes(key.name), 'Per-process configuration not covered')
@@ -170,7 +189,7 @@ export function validateRuntimeEvidence(reports, started, finished, inventory) {
   assert.deepEqual(wire.errors, [], 'Wiring errors block batch')
   const runtime = wire.results.find(s => s.label === 'DO-SC-13 actual runtime images and frontend exclude generated credentials' && s.exit_code === 0)
   assert.ok(runtime, 'Runtime image/privacy evidence missing')
-  for (const service of ['mysql', 'backend', 'frontend']) {
+  for (const service of ['mysql', 'backend', 'frontend', 'document-parser']) {
     assert.equal(runtime.images?.find(s => s.service === service)?.image_id, images.find(s => s.service === service).image_id,
       'Running image differs from the scanned image')
   }

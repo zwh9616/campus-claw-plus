@@ -18,6 +18,17 @@ import (
 )
 
 func New(ctx context.Context, lookup func(string) (string, bool), logger *slog.Logger) (http.Handler, func() error, error) {
+	handler, repo, e := NewWithStore(ctx, lookup, logger)
+	if e != nil {
+		return nil, nil, e
+	}
+	return handler, repo.DB.Close, nil
+}
+
+// NewWithStore shares the verified DML pool with default runtime assembly.
+// It preserves the identity-only constructor used by component tests; neither
+// path reads offline migration credentials or performs DDL.
+func NewWithStore(ctx context.Context, lookup func(string) (string, bool), logger *slog.Logger) (http.Handler, *mysqlstore.Store, error) {
 	cfg, e := config.ReadIdentity(lookup)
 	if e != nil {
 		return nil, nil, e
@@ -26,7 +37,7 @@ func New(ctx context.Context, lookup func(string) (string, bool), logger *slog.L
 	if e != nil {
 		return nil, nil, e
 	}
-	fail := func() (http.Handler, func() error, error) {
+	fail := func() (http.Handler, *mysqlstore.Store, error) {
 		db.Close()
 		return nil, nil, errors.New("identity database startup check failed")
 	}
@@ -47,5 +58,5 @@ func New(ctx context.Context, lookup func(string) (string, bool), logger *slog.L
 	base := httpserver.IdentityHandler(logger, service, repo, cfg, identity.NewLimiter(nil))
 	base = httpserver.MaterialsHandler(logger, service, &materials.Service{Repo: repo}, cfg.Origin, materials.NewLimiter(nil), base)
 	logger.Info("task executor is not bound; accepted tasks remain pending", "module", "assignments", "request_id", nil)
-	return httpserver.AssignmentsHandler(logger, service, &assignments.Service{Repo: repo, Limiter: assignments.NewLimiter(nil)}, cfg.Origin, base), db.Close, nil
+	return httpserver.AssignmentsHandler(logger, service, &assignments.Service{Repo: repo, Limiter: assignments.NewLimiter(nil)}, cfg.Origin, base), repo, nil
 }

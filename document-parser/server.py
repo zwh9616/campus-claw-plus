@@ -11,6 +11,7 @@ import tempfile
 import threading
 import time
 import uuid
+from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -189,12 +190,17 @@ class Handler(socketserver.BaseRequestHandler):
 
 def main():
     try:
+        if len(sys.argv) != 1:
+            raise ValueError('unsupported parser argument')
         token = os.environ.get('DOCUMENT_PARSER_TOKEN')
         validate_token(token)
         with ParserServer(('0.0.0.0', 8091), token) as server:
             server.serve_forever(poll_interval=.2)
     except (ValueError, OSError):
-        print('Parser startup failed: validate token and private listener', file=sys.stderr)
+        print(json.dumps({'ts': datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z'),
+                          'level': 'ERROR', 'module': 'document_parser',
+                          'message': 'Private parser startup rejected; check token and listener',
+                          'request_id': None}), file=sys.stderr)
         return 1
     return 0
 

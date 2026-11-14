@@ -12,7 +12,7 @@ type Parse func(context.Context, string, []byte) Result
 
 // Run processes one document at a time. Cancellation leaves an unfinished lease
 // for database-clock recovery; it never publishes a result after cancellation.
-// Production assembly does not start this worker until migration/config gates.
+// Default assembly starts this worker only after exact migration/config checks.
 func (s *Store) Run(ctx context.Context, parse Parse) error {
 	return s.run(ctx, parse, time.Second, 20*time.Second)
 }
