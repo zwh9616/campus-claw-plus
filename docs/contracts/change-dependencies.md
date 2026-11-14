@@ -45,4 +45,6 @@
 
 ## 2026-11-13 04E正式恢复与统一负责人
 
+本次A1后半由小张提交[接线冻结候选](../../openspec/changes/2026-11-13-materials-document-intelligence/integration-contract.md)：准确私有RPC/配置/DDL及恢复规则先获真实审查、正常合入并复验，再做A1.2b/A1.3b及持久HTTP。原G2/G3、04E统一负责人和六个公开frozen边界保留；本批独立SQL探针不授权运行迁移6或生产接线，不复用05 Task执行器。
+
 组长明确A优先PDF/Word，B OCR、C语义/混合检索，全部小张负责，覆盖04E历史暂缓但不恢复07教学生成/08成绩。依赖01/02/04/06既有验收及G2/G3；05只保留现有Task，不承载资料解析作业。A规约/六个frozen机器合同获真实批准、正常合入/集成复验后apply；A真实验收后进入B，B验收后进入C，各自先冻结模型/配置/迁移/接口再接线。[具体任务](../../openspec/changes/2026-11-13-materials-document-intelligence/tasks.md) · [验收标准](../../openspec/changes/2026-11-13-materials-document-intelligence/acceptance.md)。规约/实现/测试/收口两列均小张，按[本次角色例外](../standards/collaboration.md)执行；远端真实批准不豁免。

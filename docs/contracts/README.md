@@ -32,6 +32,8 @@
 
 ## 本机与CI使用同一入口
 
+04E A后半候选：独立[私有解析OpenAPI](document-parser/openapi.json)、[三个单源Schema与机器接线合同](document-integration.json)及[准确候选DDL/恢复规则](../../openspec/changes/2026-11-13-materials-document-intelligence/integration-contract.md)本次一并送审。DOCUMENT_PARSER_URL/TOKEN只进入frozen，不进active或.env.example；私有两个操作不加入公开paths，仍22 current+六个公开frozen。候选SQL位于docs而非backend embed，Target5、已发布SQL和四默认生产镜像不变。检查追加双路径/语义/配置与漂移反例，并实际在独占临时MySQL验证五DDL/六FK/十一CHECK；这不是迁移6、RPC或持有人恢复验收。获审合入后才实施接线。
+
 ```text
 npm ci
 npm run setup

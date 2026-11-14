@@ -1,0 +1,135 @@
+{
+  "run_id": "campus-di-ddl-3e028bef19c7",
+  "time": "2026-11-13T11:20:34.122Z",
+  "exit_code": 1,
+  "source": {
+    "commit": "9263d21de054909856a9b4b3b7d17d54c90addb9",
+    "dirty": true
+  },
+  "candidate_sql": {
+    "000006_documents.down.sql": "bcd282b537db970249565148410f67a18737d5350055df20dd6efd51c8db5756",
+    "000006_documents.up.sql": "30b80e8b10b47d972123d48551b2e7caa5edd5b0ca39c23157a9c43e1d602e13"
+  },
+  "scope": "isolated candidate SQL syntax/constraints only; no Target6/dirty/repair/backup/RPC/runtime activation claim",
+  "image_id": "sha256:792b7df41a5d4b0b3492a74e01c191863c50f000b7b9896ec9a9136177d80af3",
+  "error": "ready PDF cannot omit page count must reject",
+  "cleanup": [
+    {
+      "resource": "campus-di-ddl-3e028bef19c7-mysql",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "resource": "campus-di-ddl-3e028bef19c7:probe",
+      "exit_code": 0,
+      "ok": true
+    }
+  ],
+  "secret_file_removed": true,
+  "finished_at": "2026-11-13T11:20:47.415Z",
+  "results": [
+    {
+      "label": "build pinned reviewed MySQL candidate-probe image",
+      "exit_code": 0
+    },
+    {
+      "label": "record exact probe image",
+      "exit_code": 0
+    },
+    {
+      "label": "start only isolated temporary MySQL",
+      "exit_code": 0
+    },
+    {
+      "label": "actual database version",
+      "exit_code": 0,
+      "expected_rejection": false
+    },
+    {
+      "label": "fresh isolated schema only",
+      "exit_code": 0,
+      "expected_rejection": false
+    },
+    {
+      "label": "published table baseline 000001_identity_users_classes.up.sql",
+      "exit_code": 0,
+      "expected_rejection": false
+    },
+    {
+      "label": "published table baseline 000002_identity_sessions.up.sql",
+      "exit_code": 0,
+      "expected_rejection": false
+    },
+    {
+      "label": "published table baseline 000003_identity_auth_audit.up.sql",
+      "exit_code": 0,
+      "expected_rejection": false
+    },
+    {
+      "label": "published table baseline 000004_materials_retrieval.up.sql",
+      "exit_code": 0,
+      "expected_rejection": false
+    },
+    {
+      "label": "published table baseline 000005_assignment_tasks.up.sql",
+      "exit_code": 0,
+      "expected_rejection": false
+    },
+    {
+      "label": "inspect isolated table count",
+      "exit_code": 0,
+      "expected_rejection": false
+    },
+    {
+      "label": "exact five candidate DDL",
+      "exit_code": 0,
+      "expected_rejection": false
+    },
+    {
+      "label": "inspect isolated table count",
+      "exit_code": 0,
+      "expected_rejection": false
+    },
+    {
+      "label": "inspect six candidate FK constraints",
+      "exit_code": 0,
+      "expected_rejection": false
+    },
+    {
+      "label": "inspect eleven enforced candidate CHECK constraints",
+      "exit_code": 0,
+      "expected_rejection": false
+    },
+    {
+      "label": "synthetic identity keys only",
+      "exit_code": 0,
+      "expected_rejection": false
+    },
+    {
+      "label": "queued documents for two distinct classes",
+      "exit_code": 0,
+      "expected_rejection": false
+    },
+    {
+      "label": "Unicode codepoint body and valid ready state",
+      "exit_code": 0,
+      "expected_rejection": false
+    },
+    {
+      "label": "non-BMP page positions and chunk",
+      "exit_code": 0,
+      "expected_rejection": false
+    },
+    {
+      "label": "actual MySQL counts emoji as one codepoint",
+      "exit_code": 0,
+      "expected_rejection": false
+    },
+    {
+      "label": "ready PDF cannot omit page count",
+      "exit_code": 0,
+      "expected_rejection": true,
+      "error_code": 3819
+    }
+  ]
+}

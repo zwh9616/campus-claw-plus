@@ -56,3 +56,5 @@ config-register.json中仅登记http://mcp:8090/mcp，enabled=false。须03/07C�
 ## 04E资料扩展候选边界
 
 组长2026-11-13恢复04E并统一小张负责，按[DI设计D0—D9](../../openspec/changes/2026-11-13-materials-document-intelligence/design.md)执行。六个frozen合同不授权运行；原22 current、健康及active配置保持。A要求有界PDF/DOCX、隔离无外网解析、ZIP/XML拒绝实体/外链、原件与出处逐资源授权；B OCR/C真实嵌入仅正式列任务，模型出站/数据去向/配置及预算另冻结，不开放通用URL、宏或公网附件。
+
+04E A后半[I1/I2](../../openspec/changes/2026-11-13-materials-document-intelligence/integration-contract.md)仅冻结精确内部origin http://document-parser:8091与私有Bearer协议，不激活出站例外。未来只在backend/parser专属internal网络、无主机端口/数据库秘密/互联网的条件下启用；拒绝重定向/环境代理和任何用户URL。32随机字节canonical base64url令牌的两个候选键只在frozen，缺失/空白/非法激活后启动非零且不回显。公开MySQL健康和旧TXT/ready读取不依赖解析器；原202重放先重新授权、查快照，再对新上传预检。合同引用解析也只能读显式本地Schema白名单，禁止HTTP与越界文件。

@@ -1,0 +1,21 @@
+{
+  "label": "sample-first-ci",
+  "zip_sha256": "4d06fd74daaae52a5c74777374cf3cd8dd48386b95bdda3c5de390933acf350f",
+  "source": {
+    "commit": "ae94e7da2d49f20b2c9954994d913efcacd5303f",
+    "dirty": false,
+    "fingerprint": "bca6dc591a3aa479dbc2c87561530164dea8af4c289c7a5d7a0565cc6d94170a"
+  },
+  "production_images": 4,
+  "offline_candidate_images": 1,
+  "candidate_image": "sha256:dfa0dd552a51f3212c25b9b42d5bbdc1785e2203bb0513f2bbeec80a6fce4f7e",
+  "tests_image_is_exported_and_scanned_image": true,
+  "clear_documents": 40,
+  "negative_classes": 25,
+  "locations": 195,
+  "critical_phrases": 45,
+  "max_cer": 0,
+  "max_document_ms": 939,
+  "all_cleanup_passed": true,
+  "scope": "offline parsing and original runtime regression; no RPC/SQL/HTTP/UI/OCR/semantic delivery claim"
+}

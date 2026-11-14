@@ -1,0 +1,17 @@
+{
+  "scenario": "DI-SC-15 actual MySQL rejects ready PDF without page count",
+  "mutation": "remove explicit non-NULL guard; SQL CHECK UNKNOWN must not silently admit ready",
+  "original_sql_sha256": "ae898e2c8166ac8e201102e6077ad5cf71a89259fb16553d3f5a1a0380e022ef",
+  "original_contract_sha256": "39a90f4b6ef488a4e8815f12177c4060ab3c1b5f7c21f644380a3804c108fcb0",
+  "red_exit_code": 1,
+  "restored_sql_sha256": "ae898e2c8166ac8e201102e6077ad5cf71a89259fb16553d3f5a1a0380e022ef",
+  "restored_contract_sha256": "39a90f4b6ef488a4e8815f12177c4060ab3c1b5f7c21f644380a3804c108fcb0",
+  "green_exit_code": 0,
+  "green_commands": [
+    "npm run check",
+    "npm run check:contracts",
+    "npm run check:document-storage-contract"
+  ],
+  "final_probe_sha256": "bcb0824ad209e9e4adb6c2cd01c40ad80875fadd1276488e4091904af82a4b78",
+  "scope": "candidate SQL only; later changes tighten final TCP readiness, measured error-code evidence and JSON/reference rules; restored SQL bytes unchanged"
+}

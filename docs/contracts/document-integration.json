@@ -1,0 +1,165 @@
+{
+  "version": 1,
+  "status": "frozen",
+  "owner": "04E",
+  "introduced_by": "openspec/changes/2026-11-13-materials-document-intelligence",
+  "baseline_commit": "9263d21de054909856a9b4b3b7d17d54c90addb9",
+  "runtime_activation": false,
+  "config_keys": [
+    "DOCUMENT_PARSER_URL",
+    "DOCUMENT_PARSER_TOKEN"
+  ],
+  "network": {
+    "origin": "http://document-parser:8091",
+    "internal": true,
+    "host_ports": false,
+    "members": [
+      "backend",
+      "document-parser"
+    ],
+    "egress": false,
+    "database_credentials": false,
+    "enabled": false,
+    "redirects": false,
+    "environment_proxy": false
+  },
+  "rpc": {
+    "schema": "document-parser/ParseResult.schema.json",
+    "openapi": "document-parser/openapi.json",
+    "request_bytes": 10485760,
+    "response_bytes": 8388608,
+    "header_bytes": 8192,
+    "content_length_required": true,
+    "transfer_encoding": false,
+    "health_preflight_ms": 500,
+    "connect_ms": 1000,
+    "response_header_ms": 32000,
+    "total_ms": 35000,
+    "parse_ms": 30000,
+    "read_header_ms": 5000,
+    "read_body_ms": 5000,
+    "concurrency": 1,
+    "memory_bytes": 536870912,
+    "child_address_bytes": 402653184,
+    "cpus": 1,
+    "pids": 32,
+    "tmpfs_bytes": 67108864,
+    "json_rules": {
+      "encoding": "strict_utf8",
+      "duplicate_keys": "reject",
+      "surrogates": "paired",
+      "max_depth": 16,
+      "unknown_fields": "reject"
+    },
+    "upload_order": [
+      "authenticate",
+      "authorize",
+      "validate_and_hash",
+      "lookup_committed_snapshot",
+      "preflight_new_only",
+      "transaction_create"
+    ],
+    "error_mapping": {
+      "deterministic": 422,
+      "parse_timeout": 504,
+      "worker_interrupted": 503,
+      "internal_failure": 503,
+      "busy": 503,
+      "transport_interrupted": "worker_interrupted",
+      "invalid_result": "internal_failure",
+      "deadline": "parse_timeout"
+    }
+  },
+  "worker": {
+    "poll_ms": 1000,
+    "heartbeat_ms": 20000,
+    "lease_ms": 60000,
+    "max_attempts": 3,
+    "concurrency": 1,
+    "clock": "database_utc",
+    "publish_cas": [
+      "owner",
+      "epoch",
+      "processing",
+      "lease_not_expired"
+    ],
+    "retry_reasons": [
+      "parse_timeout",
+      "worker_interrupted",
+      "internal_failure"
+    ]
+  },
+  "migration": {
+    "number": 6,
+    "current_target": 5,
+    "status": "frozen_not_embedded",
+    "files": {
+      "000006_documents.down.sql": "bcd282b537db970249565148410f67a18737d5350055df20dd6efd51c8db5756",
+      "000006_documents.up.sql": "ae898e2c8166ac8e201102e6077ad5cf71a89259fb16553d3f5a1a0380e022ef"
+    },
+    "tables": [
+      "documents",
+      "document_locations",
+      "document_chunks",
+      "document_parse_jobs",
+      "document_idempotency"
+    ],
+    "ddl_steps": 5,
+    "down": "empty_disposable_test_database_only",
+    "restore_target": 5,
+    "published_files": [
+      {
+        "name": "000001_identity_users_classes.up.sql",
+        "sha256": "07947f4fd66c751eb549c07917266eb65d8e4e9352d26506fb8002b5e65e05c7"
+      },
+      {
+        "name": "000003_identity_auth_audit.up.sql",
+        "sha256": "b83195b44f354ba2909b01a5aceb5b18954e04b075a68095039d4849e5f99c1e"
+      },
+      {
+        "name": "000003_identity_auth_audit.down.sql",
+        "sha256": "2b2562162a904817521e01a0482d0665eaabfff88df0a86e71237c7fb08372b4"
+      },
+      {
+        "name": "000001_identity_users_classes.down.sql",
+        "sha256": "4aeb5022ed2575818082d6e4880b2f83a524c7cc7038d7b49b3debadfdd532da"
+      },
+      {
+        "name": "000002_identity_sessions.down.sql",
+        "sha256": "b44b4528eb1aa3bfddfea588249da54509871972f6febe26b2d448faf45a9773"
+      },
+      {
+        "name": "000002_identity_sessions.up.sql",
+        "sha256": "c600e1133f8ace63565fca713e13dd33a187f670d10bc94b028d66db351baeb0"
+      },
+      {
+        "name": "000004_materials_retrieval.up.sql",
+        "sha256": "6bad8d66dbfa671c3bc603467837580ff4336cd3417313b1556920e0299ae830"
+      },
+      {
+        "name": "000004_materials_retrieval.down.sql",
+        "sha256": "d73567bd3c5318c1cde9f0f677e865982eb738004236437bdbdf258d8791bdac"
+      },
+      {
+        "name": "000005_assignment_tasks.up.sql",
+        "sha256": "ad2f53dc0e9960b153fa9058c568e22d23150118d134dea5d293fcf1e7acd21c"
+      },
+      {
+        "name": "000005_assignment_tasks.down.sql",
+        "sha256": "f0e9e62df01fcd6f3eddc9912dfa2fa21e22c2430e6146a4cc0b271fbf6f39eb"
+      }
+    ]
+  },
+  "baseline": {
+    "active_config_digest": "c48156ca79be7b9ccdd5cba656c76d8cd57316cdd000182d6116836ed3d27be6",
+    "protected_files": {
+      ".env.example": "088a606b93b84cd6f941c2363fcceed7529ff704699d47b8b241bf00ef234d54",
+      "compose.yaml": "3c43969f6a8c2c85fc44d9f914ccd3398c370f6b71e89119a3e8f484f00856f4",
+      "docs/contracts/identity-phase.json": "8abfb25274643de4746bdfefb956b60c044b3763012b8ab64f41bac185f78a64",
+      "docs/contracts/endpoint-register.json": "a34410c7ef9ceba545a9d84ebcd848f9f2dd029b57ad253697097c2c23030e80",
+      "deploy/service-batches.json": "53ecb5c17e81e50acb49b6b4b9dd04f3dd1f67c2210e29f3a104820201a51f84",
+      "backend/internal/migrations/target.go": "eb2751348fd021db70eaf23391aa16b6a4fbc97251d94352f7d4d3cf55c58452",
+      "backend/internal/migrations/manifest.json": "bc8e740c8cccdcc33fcaae0fe1b844cf28d7b9725c83a0f1b5ad39a44704ab58"
+    }
+  }
+}

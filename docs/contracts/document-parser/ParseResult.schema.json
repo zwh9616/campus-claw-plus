@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://campusclaw.invalid/contracts/internal/v1/ParseResult.schema.json",
+  "title": "PrivateParseResult",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "status": {
+          "const": "ready"
+        },
+        "body": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2097152,
+          "pattern": "^[^\\r\\u0000-\\u0008\\u000b\\u000c\\u000e-\\u001f\\u007f-\\u009f\\p{Cs}]+$"
+        },
+        "locations": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 20000,
+          "items": {
+            "$ref": "https://campusclaw.invalid/contracts/v1/DocumentLocation.schema.json"
+          }
+        },
+        "source_page_count": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 200
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "body",
+        "locations",
+        "source_page_count"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "status": {
+          "const": "needs_ocr"
+        },
+        "source_page_count": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 200
+        }
+      },
+      "required": [
+        "status",
+        "source_page_count"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "status": {
+          "const": "failed"
+        },
+        "failure_reason": {
+          "type": "string",
+          "enum": [
+            "corrupt",
+            "encrypted",
+            "unsupported_content",
+            "resource_limit",
+            "parse_timeout",
+            "worker_interrupted",
+            "internal_failure"
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "failure_reason"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

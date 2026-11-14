@@ -44,3 +44,17 @@
 初轮原生缩放的Playwright fullPage物理截图裁切[原件](document-sample/initial-zoom-capture.zip)保留；改用既有06 CDP真实视口截图。新增严格可达检查另发现nearest滚动在200%下的设备取整令底边450.078125略超450，见[原失败](document-sample/scroll-rounding-failure.txt)；仅将测试滚动方式改为center并等两次动画帧，完整边界断言保留不放宽，6例再过。实际逐张查看桌面列表/PDF正文/Word逻辑块/手机上传/学生列表/200%主操作，未见横向溢出或遮挡；不代表用户已确认方向。
 
 完整门禁将以干净代码提交执行；当前未预填。公开同日Trivy DB从既有已验收缓存只读复制到本新工作树独立卷，源/目标SHA均15982ae74263f22790b348c89b181c9edfd21d70b08b2364aedcf0f7ef8fab29，NextUpdate仍有效；[来源](document-sample/database-cache-provenance.txt)。正常扫描仍允许更新、无skip/漏洞忽略，仅操作自身临时项目，不碰现有预览或持有人数据库。
+
+## 2026-11-14收口：已执行结果与主干同步
+
+#48最终77f956f获小陈/Kevcco真实APPROVED5901659072后正常合入main39018c1，精确main CI43557491212实际success；小陈另在#50补主干原件。本样板#49原分支同步此main，README及共享表冲突逐块保留双方事实，未覆盖同伴审查/合同或其他负责人行。旧“#48未合并”文字属于11月13日开工快照，当前前置已解除。
+
+原代码9317b81干净完整gate四段0，check127956ms/audit13804ms/secret12038ms/verify389550ms，notRun空。[本机15文件原件](document-sample/local-runtime.zip) SHA f9c027a33ff05a51d83edd0750af8e9a3fdc3d405571ed605e0ce6483371f98e；[运行核对](document-sample/local-runtime-verified.json)/[解析核对](document-sample/local-parser-verified.json)。[完整CI43433147376](https://github.com/zwh9616/campus-claw-plus/actions/runs/43433147376)实际success，[15文件原件](document-sample/ci-runtime.zip) SHA4d06fd74daaae52a5c74777374cf3cd8dd48386b95bdda3c5de390933acf350f等于GitHub artifact14043395035摘要；[运行](document-sample/ci-runtime-verified.json)/[解析](document-sample/ci-parser-verified.json)独立核验四段0/verify264450ms、18组05/五恢复/三HTTPS、四生产镜像+离线候选零HIGH/CRITICAL、40清晰/25负例/195位置/45关键句及全部清理。此轮早于合入#48，不含其新增SQL探针，不混称为新main全检查。
+
+同一干净9317b81浏览器78视觉/6原生200%可达/9交互组通过，零API/外部请求与页面异常。[浏览器manifest](document-sample/browser-manifest.json)、[92张原始PNG与manifest](document-sample/browser-screenshots.zip)、[每图SHA及封包摘要](document-sample/browser-proof.json)，ZIP SHA221a3416c0eb44775fc43faa2d6c5c250a4033a5529f3b1730066a6bf92c90ac。已实看[桌面列表](document-sample/list-desktop.png)、[手机上传](document-sample/upload-mobile.png)、[PDF正文](document-sample/detail-desktop.png)、Word块及原生200%操作截图。此次主干同步后九个UI/测试输入逐文件SHA与截图manifest仍完全相同，不冒称为新截图或另一机器。
+
+本提交同步主干并补原件/进度，合并后完整check/audit/秘密扫描及自身最终CI按实际结果另核。#49由草稿交审，不代表批准或合并；用户样板方向仍未确认，A3.1/A3.1b不勾，不接真实页面。下一步小张可依获审主干实施私有RPC/真实迁移与恢复，持久队列/上传HTTP随后推进；本批仍非A全链路或B/C交付。
+
+11月14日本次复验：audit根/前端均0、全历史215/暂存秘密扫描0、CI原件解包秘密扫描0；合并后check在缺Docker engine的Go步骤退出1，[原失败](document-sample/merged-check-docker-unavailable.txt)保留，不标为完整通过。已按实际安装路径启动Docker Desktop，恢复后重跑；该环境变化不改写11月13日干净完整gate成功。
+
+Docker29.8.0正常恢复后，合并工作树原完整check重跑退出0，合同40组/strict11/11/类型/构建/Go与隔离解析和真实SQL候选均通过，[重跑输出](document-sample/merged-check-retry.txt)、[候选SQL报告](document-sample/merged-ddl-results.json)。这是合并工作树dirty=true的提交前检查，不把它冒称新的干净完整gate；运行源码/配置/镜像/SQL均继承获审main，样板九个输入与干净截图版本仍逐字一致。补证提交自身完整CI推送后核对。

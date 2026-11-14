@@ -1,0 +1,49 @@
+{
+  "run_id": "campus-di-ddl-4bc771590eea",
+  "time": "2026-11-13T11:24:35.110Z",
+  "exit_code": 1,
+  "source": {
+    "commit": "9263d21de054909856a9b4b3b7d17d54c90addb9",
+    "dirty": true
+  },
+  "candidate_sql": {
+    "000006_documents.down.sql": "bcd282b537db970249565148410f67a18737d5350055df20dd6efd51c8db5756",
+    "000006_documents.up.sql": "ae898e2c8166ac8e201102e6077ad5cf71a89259fb16553d3f5a1a0380e022ef"
+  },
+  "scope": "isolated candidate SQL syntax/constraints only; no Target6/dirty/repair/backup/RPC/runtime activation claim",
+  "image_id": "sha256:4da29ba27a10c98c9ac2ca3ea22706c49734d08ecd1f41458ede5e621ef283d8",
+  "error": "actual database version failed: ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)\n",
+  "cleanup": [
+    {
+      "resource": "campus-di-ddl-4bc771590eea-mysql",
+      "exit_code": 0,
+      "ok": true
+    },
+    {
+      "resource": "campus-di-ddl-4bc771590eea:probe",
+      "exit_code": 0,
+      "ok": true
+    }
+  ],
+  "secret_file_removed": true,
+  "finished_at": "2026-11-13T11:24:48.928Z",
+  "results": [
+    {
+      "label": "build pinned reviewed MySQL candidate-probe image",
+      "exit_code": 0
+    },
+    {
+      "label": "record exact probe image",
+      "exit_code": 0
+    },
+    {
+      "label": "start only isolated temporary MySQL",
+      "exit_code": 0
+    },
+    {
+      "label": "actual database version",
+      "exit_code": 1,
+      "expected_rejection": false
+    }
+  ]
+}

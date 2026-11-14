@@ -1,0 +1,24 @@
+{
+  "label": "final-local",
+  "zip_sha256": "d22f19d8f65f2af552a86dfae400eb82688df646c6367423e4ca87aaf16d065e",
+  "source": {
+    "commit": "ed1c18f453b6b8832803d29a5bcfc085b2fcec21",
+    "dirty": false,
+    "fingerprint": "e225ce54ad2a3691f3f859c6b3123e21493bfa09a2f55ba4f203cb7d434c3f60"
+  },
+  "candidate_sql": {
+    "000006_documents.down.sql": "bcd282b537db970249565148410f67a18737d5350055df20dd6efd51c8db5756",
+    "000006_documents.up.sql": "ae898e2c8166ac8e201102e6077ad5cf71a89259fb16553d3f5a1a0380e022ef"
+  },
+  "mysql": "8.4.13",
+  "tables": 5,
+  "foreign_keys": 6,
+  "enforced_checks": 11,
+  "actual_error_rejections": 16,
+  "unicode_measurements": [
+    8,
+    21
+  ],
+  "all_candidate_cleanup": true,
+  "scope": "exact candidate DDL plus original runtime/parser regression; no migration6/RPC/backup implementation claim"
+}
