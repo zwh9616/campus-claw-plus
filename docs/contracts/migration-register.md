@@ -38,3 +38,7 @@
 ## 04E候选号预留（未发布、未激活）
 
 小张负责的[04E](../../openspec/changes/2026-11-13-materials-document-intelligence/design.md)候选000006用于独立Document原件、页/逻辑块、片段、解析作业及幂等。本批准确上下行SQL仅在[合同目录](document-parser/migration/000006_documents.up.sql)，[候选SHA/顺序登记](document-integration.json)绑定五DDL；未进入backend embed/manifest/identity-phase，当前Target5不变。候选的六复合/身份FK、十一CHECK与UTF-8码点/原键/跨班版本错误在独占临时MySQL探针验证，不能称作实际admin迁移/dirty/repair6或备份恢复。实际实施前先审定合入[I1—I4及恢复方案](../../openspec/changes/2026-11-13-materials-document-intelligence/integration-contract.md)，再在同一实现提交原子升级server/admin目标6、追加真实清单与前向修复、空库down门禁和全部故障实测。旧000001..000005与既有库不改，持有人升级/隔离恢复5未执行。
+
+## 04E准确000006已进入实施候选（未部署）
+
+本轮小张按已批准#48的I3逐字复制上下行至backend embed，并追加真实manifest/identity-phase available，server/admin共用精确Target6；上文候选号段为冻结当时快照。全部旧SQL字节保持，当前四服务/13 active/22 current不改，资料六操作仍frozen。结构使用锁定MySQL8.4.13对已获审SQL一次性生成并提交的完整定义快照，运行检查不从待验库学习预期；逐列/索引/复合FK schema和列序/CHECK及执行性/引擎/字符集/排序均须一致。当前正在执行五DDL中断、前向修复及真实5制品/停写备份/隔离恢复5；尚无完整验收或生产升级结论。

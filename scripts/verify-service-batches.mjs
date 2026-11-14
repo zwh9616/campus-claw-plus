@@ -2,6 +2,7 @@ import { execFileSync, spawnSync } from 'node:child_process'
 import { mkdirSync, readFileSync, writeFileSync, rmSync } from 'node:fs'
 import { runSequence } from './gate-runner.mjs'
 import { runtimeSteps, evidencePaths, loadBatchInputs, validateBatch, validateRuntimeEvidence, sha256, retainedImageTags } from './service-batches.mjs'
+import { validateDocumentMigrationEvidence } from './document-migration-evidence.mjs'
 
 const directory = 'output/service-batches'
 mkdirSync(directory, { recursive: true })
@@ -29,6 +30,7 @@ try {
   const bytes = Object.fromEntries(evidencePaths.map(path => [path, readFileSync(path)]))
   const reports = Object.fromEntries(evidencePaths.map(path => [path, JSON.parse(bytes[path])]))
   output.images = validateRuntimeEvidence(reports, started, Date.now(), inventory)
+  output.document_migration6 = validateDocumentMigrationEvidence(reports['output/identity/results.json'])
   output.evidence = evidencePaths.map(path => ({ path, sha256: sha256(bytes[path]) }))
   // DI-SC-14: retain all original current-service validation and then scan the
   // offline parser candidate separately. It is not a fifth current service.

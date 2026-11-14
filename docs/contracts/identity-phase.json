@@ -87,6 +87,21 @@
       ],
       "checksum": "ad2f53dc0e9960b153fa9058c568e22d23150118d134dea5d293fcf1e7acd21c",
       "down_checksum": "f0e9e62df01fcd6f3eddc9912dfa2fa21e22c2430e6146a4cc0b271fbf6f39eb"
+    },
+    {
+      "number": "000006",
+      "name": "documents",
+      "owner": "04E",
+      "status": "available",
+      "depends_on": [
+        "000001",
+        "000002",
+        "000003",
+        "000004",
+        "000005"
+      ],
+      "checksum": "ae898e2c8166ac8e201102e6077ad5cf71a89259fb16553d3f5a1a0380e022ef",
+      "down_checksum": "bcd282b537db970249565148410f67a18737d5350055df20dd6efd51c8db5756"
     }
   ],
   "previous_phase": "skeleton"

@@ -60,3 +60,7 @@ JSON日志正式验收对象为Go应用输出，HTTP完成日志使用duration_m
 04E首组件补记：#45获审合入并经main复验后，新增document-parser离线候选镜像，不加入默认Compose或服务批次。check实际应用network=none/read-only/nonroot/cap_drop/no-new-privileges/512MiB无swap/1CPU/32PIDs/64MiB tmpfs，内部子进程384MiB/30秒并回收进程组；verify保留原四镜像和运行验收，结束后另外扫描此候选的实际不可变镜像与pypdf包并清理自身资源。该候选扫描与未来五生产镜像/真实RPC健康/持久恢复验收分列，不能据此启用active配置或Target6。见[组件边界及命令](../../document-parser/README.md)。
 
 04E本批只冻结[I1—I4](../../openspec/changes/2026-11-13-materials-document-intelligence/integration-contract.md)和两个候选键，默认Compose/active配置不变；私有健康不替代公开MySQL健康。check追加独占临时MySQL候选DDL探针，使用已锁定同源MySQL镜像、network=none/不发布端口、临时内存数据盘和随机本机临时秘密，结束只清理自身容器/tag/秘密文件；不接持有人库、不写runtime schema_migrations，不冒称目标6/dirty/修复/隔离恢复完成。正式升级仍须真实5备份、五DDL中断、前向repair6及隔离恢复5后再验收。
+
+## 04E迁移6实施候选（本轮待审）
+
+依据已批准#48的I3，本候选逐字追加000006，server/admin共享精确Target6，000001..000005字节不改。available只表示嵌入代码，持有人库未升级；仍须停写/一致备份、离线migrate，dirty/摘要/完整结构漂移阻断，仅显式前向repair6。五新增表全部空且明确可丢弃集成库才允许测试down；方法仅integration构建存在，无生产CLI或force/down入口。当前22 current、13 active与两frozen键、四默认生产服务和MySQL健康保持，解析服务未生产装配。实际五DDL/备份恢复与完整门禁结果见共享表，未验不记通过。

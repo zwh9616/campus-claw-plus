@@ -62,10 +62,12 @@ func TestATBackupRestoreAndActualTargetMatrix(t *testing.T) {
 		t.Fatal("isolated4 dump restore lost identity/history")
 	}
 	runOld("pre05-admin", restoredName, true, "check")
-	runOld("identity-admin", restoredName, false, "check")
-	runOld("identity-admin", restoredName, false, "initialize")
-	runOld("server", restoredName, false)
-	runOld("identity-admin", name, true, "check")
+	// Preserve the original exact4/5 artifact matrix after current Target6.
+	// The schema5 binary comes from accepted main, not an edited Target constant.
+	runOld("pre06-admin", restoredName, false, "check")
+	runOld("pre06-admin", restoredName, false, "initialize")
+	runOld("pre06-server", restoredName, false)
+	runOld("pre06-admin", name, true, "check")
 	// Prove the same server/config can actually start against the restored v4
 	// database. Otherwise a missing configuration could falsely pass rejection.
 	oldServer := exec.Command("/fixtures/pre05-server")

@@ -36,11 +36,11 @@ export function validateIdentityPhase(api, config, phase, exists = existsSync) {
  assert.deepEqual(Object.keys(h.responses),['200','503'])
  assert.deepEqual(phase.health,{path:'/health',method:'get',anonymous:true,probe_timeout_ms:3000,success_schema:'IdentityHealthUp',failure_schema:'IdentityHealthDown',success_status:200,failure_status:503,probe:'每次请求真实MySQL Ping；超时或失败统一down，不缓存成功、不回退空依赖'})
  for(const [code,schema] of [[200,'IdentityHealthUp'],[503,'IdentityHealthDown']])assert.deepEqual(h.responses[code].content['application/json'].schema,{$ref:`#/components/schemas/${schema}`})
- const names=['identity_users_classes','identity_sessions','identity_auth_audit','materials_retrieval','assignment_tasks']
+ const names=['identity_users_classes','identity_sessions','identity_auth_audit','materials_retrieval','assignment_tasks','documents']
  assert.equal(phase.migrations.length,names.length)
  const manifest=JSON.parse(readFileSync('backend/internal/migrations/manifest.json','utf8'))
  phase.migrations.forEach((m,i)=>{
-  assert.equal(m.number,String(i+1).padStart(6,'0'));assert.equal(m.name,names[i]);assert.equal(m.owner,i===4?'05':i===3?'04':'01')
+  assert.equal(m.number,String(i+1).padStart(6,'0'));assert.equal(m.name,names[i]);assert.equal(m.owner,i===5?'04E':i===4?'05':i===3?'04':'01')
   assert.equal(m.status,'available') // Embedded SQL, never a global deployment claim.
   assert.deepEqual(m.depends_on,names.slice(0,i).map((_,n)=>String(n+1).padStart(6,'0')))
   for(const direction of ['up','down']){

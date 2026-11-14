@@ -1,0 +1,145 @@
+{
+  "time": "2026-11-14T13:24:47.758Z",
+  "mysqlImage": "campus-idf-dfda1d99a3f3-mysql:verification",
+  "results": [
+    {
+      "label": "build reviewed MySQL runtime without mysqlsh and with current Go gosu",
+      "exit_code": 0,
+      "output": "#0 building with \"desktop-linux\" instance using docker driver\n\n#1 [internal] load build definition from Dockerfile\n#1 transferring dockerfile: 1.37kB done\n#1 DONE 0.0s\n\n#2 [internal] load metadata for docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb\n#2 DONE 0.0s\n\n#3 [internal] load metadata for docker.io/library/mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902\n#3 DONE 0.0s\n\n#4 [internal] load .dockerignore\n#4 transferring context: 2B done\n#4 DONE 0.0s\n\n#5 [gosu 3/4] ADD --checksum=sha256:cd9719b775dbfedae53923c9b0dc792b66d42c51e0b36652ed6f747fbadc0164 https://codeload.github.com/tianon/gosu/tar.gz/refs/tags/1.19 /tmp/gosu.tar.gz\n#5 DONE 0.0s\n\n#6 [stage-1 1/5] FROM docker.io/library/mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902\n#6 resolve docker.io/library/mysql@sha256:a81d043930e51745522bd5c430961cf8286f0a23f0a9a2a6e0108f7ea71b0902 0.0s done\n#6 DONE 0.0s\n\n#7 [gosu 1/4] FROM docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb\n#7 resolve docker.io/library/golang@sha256:d200d2dd76b03a99b52651fd1325aff7dcd35422c35c01bac56571b0507f3deb 0.0s done\n#7 DONE 0.0s\n\n#8 [stage-1 2/5] RUN microdnf remove -y mysql-shell     && microdnf clean all     && rm -rf -- /usr/lib/mysqlsh     && ! command -v mysqlsh     && test ! -d /usr/lib/mysqlsh     && mysqld --version | grep '8.4.13'     && mysql --version\n#8 CACHED\n\n#9 [gosu 3/4] ADD --checksum=sha256:cd9719b775dbfedae53923c9b0dc792b66d42c51e0b36652ed6f747fbadc0164 https://codeload.github.com/tianon/gosu/tar.gz/refs/tags/1.19 /tmp/gosu.tar.gz\n#9 CACHED\n\n#10 [stage-1 3/5] COPY --from=gosu /out/gosu /usr/local/bin/gosu\n#10 CACHED\n\n#11 [stage-1 4/5] COPY --from=gosu /src/LICENSE /usr/share/licenses/campus-gosu/LICENSE\n#11 CACHED\n\n#12 [gosu 4/4] RUN tar -xzf /tmp/gosu.tar.gz --strip-components=1 -C /src     && GOTOOLCHAIN=local CGO_ENABLED=0 go build -trimpath -buildvcs=false -o /out/gosu .\n#12 CACHED\n\n#13 [gosu 2/4] WORKDIR /src\n#13 CACHED\n\n#14 [stage-1 5/5] RUN gosu --version     && test \"$(gosu mysql id -u)\" = 999     && test \"$(gosu mysql id -g)\" = 999\n#14 CACHED\n\n#15 exporting to image\n#15 exporting layers done\n#15 exporting manifest sha256:02649e1627390ac4d3390f1830c1cb2fca68ca03e8ea48e3d069c640c11356a9 0.0s done\n#15 exporting config sha256:470eb9e79c456b909db1436386bdf25100ef10d5b2fc6c9f1341cc0a7709d857 done\n#15 exporting attestation manifest sha256:3955addbc9289cf7c428eaad662a8ea2de4bddf20f4da597da3dd40a4f50a493 0.0s done\n#15 exporting manifest list sha256:75e9f2363669b63d2da7ef7e067687ca1f80ad527f2d9a0cbd1ed67657488bd3 0.0s done\n#15 naming to docker.io/library/campus-idf-dfda1d99a3f3-mysql:verification done\n#15 unpacking to docker.io/library/campus-idf-dfda1d99a3f3-mysql:verification 0.0s done\n#15 DONE 0.1s\n\nView build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/jxbkmu1aduam0ezi3dqq3q5vr\n"
+    },
+    {
+      "label": "test fixtures",
+      "exit_code": 0,
+      "output": "Disposable credentials and CA generated; values omitted\n"
+    },
+    {
+      "label": "build actual accepted pre-04 artifacts",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "label": "AT-SC-20 build actual accepted schema4 artifacts",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "label": "DI-SC-15 build actual accepted schema5 artifacts",
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "label": "DI-SC-15 record actual accepted5 and candidate6 artifact IDs",
+      "exit_code": 0,
+      "output": "55704b6ad8564f01cbd704460c446e81576435947be0959d55a87e5890206d59  /fixtures/pre06-server\n07605b774b31eb62a8ac7ad5855969632315dfe1e9d1c354ec6dca500cfc36d9  /fixtures/pre06-admin\n0a9800fdec2c83ad63880686295db0d42fc2413426367628b18c5ff55c698047  /fixtures/server\n913fd05443e75b8ca02b4c5ecf9d5a7b1a104e6697c3e3344d3b2ff7473f8aa2  /fixtures/identity-admin\n"
+    },
+    {
+      "label": "isolated network",
+      "exit_code": 0,
+      "output": "940f2bb2a10bff3287975efbe01cc722bf07676e2743d2eacff1ff1db8b76688\n"
+    },
+    {
+      "label": "isolated MySQL",
+      "exit_code": 0,
+      "output": "de5c6888529deb4967689b899c0ce664fdaacb8103fbac9a08d4808ddfb53383\n"
+    },
+    {
+      "label": "focused DI real MySQL migration groups",
+      "exit_code": 0,
+      "output": "=== RUN   TestDIMigration6FreshUpgradeAndHistory\n=== RUN   TestDIMigration6FreshUpgradeAndHistory/0\n=== RUN   TestDIMigration6FreshUpgradeAndHistory/5\n--- PASS: TestDIMigration6FreshUpgradeAndHistory (10.11s)\n    --- PASS: TestDIMigration6FreshUpgradeAndHistory/0 (8.32s)\n    --- PASS: TestDIMigration6FreshUpgradeAndHistory/5 (1.79s)\n=== RUN   TestDIFiveDDLInterruptionAndForwardRepair\n=== RUN   TestDIFiveDDLInterruptionAndForwardRepair/1\n=== RUN   TestDIFiveDDLInterruptionAndForwardRepair/2\n=== RUN   TestDIFiveDDLInterruptionAndForwardRepair/3\n=== RUN   TestDIFiveDDLInterruptionAndForwardRepair/4\n=== RUN   TestDIFiveDDLInterruptionAndForwardRepair/5\n--- PASS: TestDIFiveDDLInterruptionAndForwardRepair (7.89s)\n    --- PASS: TestDIFiveDDLInterruptionAndForwardRepair/1 (1.56s)\n    --- PASS: TestDIFiveDDLInterruptionAndForwardRepair/2 (1.53s)\n    --- PASS: TestDIFiveDDLInterruptionAndForwardRepair/3 (1.63s)\n    --- PASS: TestDIFiveDDLInterruptionAndForwardRepair/4 (1.60s)\n    --- PASS: TestDIFiveDDLInterruptionAndForwardRepair/5 (1.57s)\n=== RUN   TestDIExactStructureDrift\n=== RUN   TestDIExactStructureDrift/column\n=== RUN   TestDIExactStructureDrift/default\n=== RUN   TestDIExactStructureDrift/collation\n=== RUN   TestDIExactStructureDrift/index-order\n=== RUN   TestDIExactStructureDrift/index-prefix\n=== RUN   TestDIExactStructureDrift/check-expression\n=== RUN   TestDIExactStructureDrift/check-enforcement\n=== RUN   TestDIExactStructureDrift/engine\n=== RUN   TestDIExactStructureDrift/binary-key\n=== RUN   TestDIExactStructureDrift/lease-predicate\n--- PASS: TestDIExactStructureDrift (5.29s)\n    --- PASS: TestDIExactStructureDrift/column (0.29s)\n    --- PASS: TestDIExactStructureDrift/default (0.23s)\n    --- PASS: TestDIExactStructureDrift/collation (0.36s)\n    --- PASS: TestDIExactStructureDrift/index-order (0.22s)\n    --- PASS: TestDIExactStructureDrift/index-prefix (0.23s)\n    --- PASS: TestDIExactStructureDrift/check-expression (0.31s)\n    --- PASS: TestDIExactStructureDrift/check-enforcement (0.25s)\n    --- PASS: TestDIExactStructureDrift/engine (0.28s)\n    --- PASS: TestDIExactStructureDrift/binary-key (0.26s)\n    --- PASS: TestDIExactStructureDrift/lease-predicate (0.58s)\n=== RUN   TestDIEmptyDisposableDownOnly\n--- PASS: TestDIEmptyDisposableDownOnly (1.30s)\nPASS\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/integration\t24.608s\n"
+    },
+    {
+      "label": "prepare real pre-upgrade v3 backup",
+      "exit_code": 0,
+      "output": "=== RUN   TestMRBackupRestoreAndOldArtifact\n--- PASS: TestMRBackupRestoreAndOldArtifact (0.38s)\nPASS\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/integration\t0.389s\n"
+    },
+    {
+      "label": "real consistent v3 mysqldump",
+      "exit_code": 0,
+      "output": "Dump and client credentials omitted"
+    },
+    {
+      "label": "restore into independent v3 database",
+      "exit_code": 0,
+      "output": "Restore data omitted"
+    },
+    {
+      "label": "actual old artifact rejection and restored identities",
+      "exit_code": 0,
+      "output": "=== RUN   TestMRBackupRestoreAndOldArtifact\n    materials_backup_test.go:126: MR-SC-08 real v3 dump/isolated restore, five identities and actual pre-04 artifact rejection passed; source v4 preserved\n--- PASS: TestMRBackupRestoreAndOldArtifact (0.95s)\nPASS\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/integration\t0.963s\n"
+    },
+    {
+      "label": "AT-SC-20 prepare real pre-upgrade4 backup",
+      "exit_code": 0,
+      "output": "=== RUN   TestATBackupRestoreAndActualTargetMatrix\n--- PASS: TestATBackupRestoreAndActualTargetMatrix (0.55s)\nPASS\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/integration\t0.560s\n"
+    },
+    {
+      "label": "AT-SC-20 real consistent v4 mysqldump",
+      "exit_code": 0,
+      "output": "Dump and client credentials omitted"
+    },
+    {
+      "label": "AT-SC-20 restore into independent v4 database",
+      "exit_code": 0,
+      "output": "Restore data omitted"
+    },
+    {
+      "label": "AT-SC-20 actual schema4/5 artifacts and restored identity/material bytes",
+      "exit_code": 0,
+      "output": "=== RUN   TestATBackupRestoreAndActualTargetMatrix\n    assignments_backup_test.go:154: AT-SC-20 real v4 dump/isolated restore, five identities/original material and actual4/5 artifact matrix passed; upgraded5 preserved\n--- PASS: TestATBackupRestoreAndActualTargetMatrix (1.43s)\nPASS\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/integration\t1.445s\n"
+    },
+    {
+      "label": "DI-SC-15 prepare5 data and stop actual accepted5 writer",
+      "exit_code": 0,
+      "output": "=== RUN   TestDIBackupRestoreAndActualFiveSixMatrix\n--- PASS: TestDIBackupRestoreAndActualFiveSixMatrix (1.31s)\nPASS\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/integration\t1.322s\n"
+    },
+    {
+      "label": "DI-SC-15 actual stopped5 consistent mysqldump",
+      "exit_code": 0,
+      "output": "Dump bytes, saved session and credentials omitted",
+      "backup_utc": "2026-11-14T13:24:38.684Z",
+      "accepted5_commit": "c1ac4213580df1fcc03520b8dddcfbece2a3344d",
+      "dump_bytes": 21500,
+      "dump_sha256": "45cff339819c4e767a06e80a08f78073484e7765cf9e979d3a3cfbfbdf749050"
+    },
+    {
+      "label": "DI-SC-15 actual migration6 interruption preserves dirty source",
+      "exit_code": 0,
+      "output": "=== RUN   TestDIBackupRestoreAndActualFiveSixMatrix\n--- PASS: TestDIBackupRestoreAndActualFiveSixMatrix (0.22s)\nPASS\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/integration\t0.229s\n"
+    },
+    {
+      "label": "DI-SC-15 restore5 into separate database after failed6",
+      "exit_code": 0,
+      "output": "Restore bytes omitted"
+    },
+    {
+      "label": "DI-SC-15 actual5/6 recovery saved session TXT pending replay and forward repair",
+      "exit_code": 0,
+      "output": "=== RUN   TestDIBackupRestoreAndActualFiveSixMatrix\n    documents_backup_test.go:272: DI-SC-15 real stopped5 dump, interrupted6 preserved, isolated5 recovery, actual5/6 rejection matrix, five identities/saved session/TXT/pending/original202, forward repair and post-backup boundary passed\n--- PASS: TestDIBackupRestoreAndActualFiveSixMatrix (2.06s)\nPASS\nok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/integration\t2.073s\n"
+    },
+    {
+      "label": "DI-SC-15 measured recovery and data boundary",
+      "exit_code": 0,
+      "output": "Restored5 uses accepted5 artifacts; preserved6 is separate; no promise to restore post-backup6 writes",
+      "restore_started_utc": "2026-11-14T13:24:41.374Z",
+      "finished_utc": "2026-11-14T13:24:46.704Z",
+      "observed_rto_upper_bound_ms": 5330,
+      "source": "idf_test_63",
+      "restore": "idf_test_64"
+    },
+    {
+      "label": "remove test container and its anonymous volume",
+      "exit_code": 0,
+      "output": "campus-idf-dfda1d99a3f3\n"
+    },
+    {
+      "label": "remove test network",
+      "exit_code": 0,
+      "output": "campus-idf-dfda1d99a3f3\n"
+    },
+    {
+      "label": "remove only own MySQL image tag",
+      "exit_code": 0,
+      "output": "Untagged: campus-idf-dfda1d99a3f3-mysql:verification\nDeleted: sha256:75e9f2363669b63d2da7ef7e067687ca1f80ad527f2d9a0cbd1ed67657488bd3\n"
+    }
+  ]
+}
