@@ -1,0 +1,21 @@
+-test.shuffle 1794645175149606292
+=== RUN   TestDI14PreflightDeadlineAndCallerCancellation
+--- PASS: TestDI14PreflightDeadlineAndCallerCancellation (0.53s)
+=== RUN   TestDI14InputAndOutputBounds
+--- PASS: TestDI14InputAndOutputBounds (0.02s)
+=== RUN   TestDI14RejectsAmbiguousAndInconsistentResults
+--- PASS: TestDI14RejectsAmbiguousAndInconsistentResults (0.00s)
+=== RUN   TestDI14StatusAndReasonMapping
+--- PASS: TestDI14StatusAndReasonMapping (0.00s)
+=== RUN   TestDI14NoRedirectOrEnvironmentProxy
+--- PASS: TestDI14NoRedirectOrEnvironmentProxy (0.00s)
+=== RUN   TestDI14RealHTTPAndUnicodeLocations
+=== RUN   TestDI14RealHTTPAndUnicodeLocations/pdf
+=== RUN   TestDI14RealHTTPAndUnicodeLocations/docx
+--- PASS: TestDI14RealHTTPAndUnicodeLocations (0.00s)
+    --- PASS: TestDI14RealHTTPAndUnicodeLocations/pdf (0.00s)
+    --- PASS: TestDI14RealHTTPAndUnicodeLocations/docx (0.00s)
+=== RUN   TestDI14ConfigurationAndBudgets
+--- PASS: TestDI14ConfigurationAndBudgets (0.00s)
+PASS
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/documentparser	0.562s

@@ -1,0 +1,7 @@
+{
+  "scenario": "DI-SC-14 fixed origin",
+  "red_exit": 1,
+  "green_exit": 0,
+  "source_unchanged": true,
+  "source_sha256": "37b99b388be1ab0d03af1ae4277933c996a7456b2478b70ba4771955102ade53"
+}

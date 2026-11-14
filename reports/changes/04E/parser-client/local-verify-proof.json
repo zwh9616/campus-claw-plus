@@ -1,0 +1,19 @@
+{
+  "source": {
+    "commit": "d9665ed3bbed92a9d05e246ccfdc1e9deb1e74bc",
+    "dirty": false,
+    "fingerprint": "6ab4c8cbfd142e3a5fb93fb3198779819610df08f90b722f179f9fc2843cb541"
+  },
+  "verify_exit": 0,
+  "zip_sha256": "29a9e344aee0fd04a90e32b5c962db5ef3e44f3ee77a8c997f979a19e780b605",
+  "files": 12,
+  "client_documents": 40,
+  "client_locations": 195,
+  "actual_outage": {
+    "health": false,
+    "reason": "worker_interrupted",
+    "unavailable": true
+  },
+  "all_cleanup": true,
+  "scope": "clean local verify and scan only; precommit check/audit are separate, not a fabricated complete native gate"
+}
