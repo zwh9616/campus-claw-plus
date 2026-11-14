@@ -37,4 +37,10 @@
 
 生产接线可在独立候选中继续准备，但最终集成必须满足#52/#53、本迁移和接线自身的真实批准/检查；未部署持有人库，六个资料HTTP/页面和整个A/B/C仍未交付。
 
-暂存秘密扫描曾对manifest JSON重排扩大差异上下文中的既有000003 down公开SQL SHA误报；已逐个重算原十SQL并与原manifest核对，保留原manifest字节前缀后只追加6，未新增豁免/关规则/缩小全历史范围。初次红acted finding、失败日志及前缀证明保留，修复后的扫描另验。
+暂存秘密扫描曾对manifest JSON重排扩大差异上下文中的既有000003 down公开SQL SHA误报；已逐个重算原十SQL并与原manifest核对，保留原manifest字节前缀后只追加6，未新增豁免/关规则/缩小全历史范围。初次脱敏finding、失败日志及前缀证明保留，修复后的扫描另验。
+
+## 首提交CI阻断与LF修复
+
+2026-11-14迁移6首提交3b2ec51本机干净原完整gate四段0，真实引擎/全部结构边界、新5备份恢复与原完整回归及扫描通过；但CI43601155201在精确摘要处发现本机CRLF与Git/CI LF不一致，check1、后三段未运行，原件保留。已逐字统一三个登记文件为仓库LF、重算并与Git blob核对，加反例禁止本机重算CRLF摘要后放行；不归一化检查或绕过摘要。本提交修复后的完整gate/CI仍待，#54保持draft，A1.3b不勾。
+
+本机原件见[migration6-first-local-gate.zip](migration6/migration6-first-local-gate.zip)，首轮CI原件[migration6-initial-ci.zip](migration6/migration6-initial-ci.zip) SHA-256 `8b516ba707a30224ce722eb9d981f7a723ba33e265c71bf8be02e0811b65786d` 与GitHub artifact14116546566一致；本机成功不能替代CI失败。三个文件的旧本机SHA、CRLF数量、仓库LF SHA和Git blob逐字一致证明见[runtime-lf-proof.json](migration6/runtime-lf-proof.json)。新校验仍逐字比摘要，并额外拒绝CR；不把CRLF静默转换成另一种成功合同。修复后的干净全门禁及CI另验。
