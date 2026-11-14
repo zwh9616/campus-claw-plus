@@ -155,3 +155,4 @@ npm run samples --prefix frontend
 打开 `http://127.0.0.1:5174/samples.html?page=documents`；通过“上传资料”或资料标题查看上传/详情。添加`role=student`查看学生只读视图，`state=loading|empty|error`查看各态，`long=1`查看长内容边界。列表检索“瞬时变化率”可演示页/逻辑块出处定位；上传只检查所选文件的名称和大小，不读取或发送文件内容。普通dev/生产不开放samples或候选业务路由，不需要提供真实账号/证书/文件。
 
 04E真实迁移6实施候选：当前分支已逐字嵌入已批准000006并令server/admin精确要求6，旧SQL不改。已有5库须停写、一致备份、离线迁移；默认启动不执行DDL，dirty/摘要/完整结构漂移阻断。实际故障与隔离恢复5正在验证，持有人库未升级；解析服务生产接线和新资料HTTP/页面仍待。上文Target5段保留各批历史状态，当前候选进展以共享表为准。
+04E持久队列组件：`internal/documentqueue`提供独立资料作业事务和租约/原子结果机制；`npm run check:document-storage-contract`在独占候选schema实际执行10组MySQL并发、回滚、租约和杀进程恢复测试，并保留原SQL探针。它尚未装配到生产server，Target5/22 current/13 active保持；真实迁移6/恢复、私有服务生产激活、授权上传HTTP和页面仍待完成。[本批实际证据](reports/changes/04E/document-queue-2026-11-14.md)。
