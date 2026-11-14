@@ -1,0 +1,5 @@
+--- FAIL: TestResultBoundaries (0.00s)
+    result_test.go:24: open failure enum
+FAIL
+FAIL	github.com/zwh9616/campus-claw-plus/backend/internal/documentqueue	0.009s
+FAIL

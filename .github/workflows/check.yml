@@ -51,4 +51,5 @@ jobs:
             output/document-parser/scan/tests.json
             output/document-parser/scan/parser.json
             output/document-storage-contract/results.json
+            output/document-storage-contract/queue-test.log
           if-no-files-found: ignore
