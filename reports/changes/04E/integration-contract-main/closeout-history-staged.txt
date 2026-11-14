@@ -1,0 +1,10 @@
+
+> campus-claw-plus@0.0.1 secret-scan
+> node scripts/check-secrets.mjs
+
+12:48PM INF 215 commits scanned.
+12:48PM INF scanned ~6908398 bytes (6.91 MB) in 1.63s
+12:48PM INF no leaks found
+12:48PM INF scanned ~43351 bytes (43.35 KB) in 124ms
+12:48PM INF no leaks found
+Full-history and staged-content secret scans passed.
