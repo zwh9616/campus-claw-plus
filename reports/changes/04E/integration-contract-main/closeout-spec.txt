@@ -1,0 +1,17 @@
+
+> campus-claw-plus@0.0.1 check:spec
+> openspec validate --all --strict
+
+- Validating...
+✓ change/2026-11-04-business-contracts
+✓ change/2026-11-05-delivery-observability
+✓ change/2026-11-05-reviewer-fix-workflow
+✓ change/2026-11-06-identity-public-contracts
+✓ change/2026-11-13-materials-document-intelligence
+✓ spec/assignment-tasks
+✓ spec/frontend-foundation
+✓ spec/identity-foundation
+✓ spec/materials-frontend
+✓ spec/materials-retrieval
+✓ spec/project-bootstrap
+Totals: 11 passed, 0 failed (11 items)
