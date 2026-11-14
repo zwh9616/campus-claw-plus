@@ -1,0 +1,21 @@
+{
+  "label": "rpc-first-ci",
+  "zip_sha256": "81648eed21afb0da0d0fe1522bc76dead99c82e4001782dd5a526272fe8c216b",
+  "source": {
+    "commit": "adc3f8e1b90b2e6ecc6e3f3a77951330431096e0",
+    "dirty": false,
+    "fingerprint": "4ccfdfbf55acbc4662bb39553cca92db66ff6397a889fd5cff65d2b285087bd0"
+  },
+  "production_images": 4,
+  "offline_candidate_images": 1,
+  "candidate_image": "sha256:8bd1968cadd356de38f2374ab40533b18e210b78e5247cff15fb3805b0fe918e",
+  "tests_image_is_exported_and_scanned_image": true,
+  "clear_documents": 40,
+  "negative_classes": 25,
+  "locations": 195,
+  "critical_phrases": 45,
+  "max_cer": 0,
+  "max_document_ms": 1100,
+  "all_cleanup_passed": true,
+  "scope": "offline parsing and original runtime regression; no RPC/SQL/HTTP/UI/OCR/semantic delivery claim"
+}

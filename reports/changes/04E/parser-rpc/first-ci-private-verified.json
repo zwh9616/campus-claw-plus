@@ -1,0 +1,9 @@
+{
+  "source": "adc3f8e1b90b2e6ecc6e3f3a77951330431096e0",
+  "zip_sha256": "81648eed21afb0da0d0fe1522bc76dead99c82e4001782dd5a526272fe8c216b",
+  "private_http_check_and_scan_groups": 7,
+  "real_http_documents_each": 40,
+  "safe_logs": true,
+  "candidate_sql_rejections": 16,
+  "scope": "real private HTTP component plus original runtime regression; no Compose/config activation, migration6, database queue or public Document delivery claim"
+}

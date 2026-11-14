@@ -1,0 +1,9 @@
+{
+  "scenario": "DI-SC-14 authentication before body",
+  "red_exit": 1,
+  "green_exit": 0,
+  "source_sha256": "f3cc9572c9266066f4004ea1300aee66c70cfca8863e0fcec9300f8679ccc5c6",
+  "source_restored_exact": true,
+  "cleanup_exit": 0,
+  "scope": "one real HTTP auth regression, mutant mounted only in owned isolated container"
+}

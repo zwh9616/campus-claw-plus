@@ -1,0 +1,27 @@
+{
+  "reviewer": "小陈 / Kevcco (AI辅助)",
+  "checked_at": "2026-11-14T08:25:11.454Z",
+  "pr": 51,
+  "head": "97d4f0802b9c0654876a7e755f9931bcb7305583",
+  "approval": {
+    "id": 5903073379,
+    "user": "Kevcco",
+    "head": "97d4f0802b9c0654876a7e755f9931bcb7305583",
+    "url": "https://github.com/zwh9616/campus-claw-plus/pull/51#pullrequestreview-5903073379"
+  },
+  "merge": "97f25b9d4624cd811020b564423704239f7a5e0a",
+  "main_protected": true,
+  "tree": "02073998959f785787b4ec3ab7037cc5eac38307",
+  "ci": {
+    "id": 43575033114,
+    "url": "https://github.com/zwh9616/campus-claw-plus/actions/runs/43575033114",
+    "head": "97f25b9d4624cd811020b564423704239f7a5e0a",
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "artifact": {
+    "id": 14106087660,
+    "digest": "sha256:3411e6865e0222029291446e94c4cf74bbadf2679b01626a522ecfa2ce515982"
+  },
+  "scope": "Private HTTP component only. No default activation, Target6, persistent upload or whole A/B/C acceptance"
+}

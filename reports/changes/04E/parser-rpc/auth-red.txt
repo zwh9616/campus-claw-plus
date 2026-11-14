@@ -1,0 +1,23 @@
+{"request_id": "c07af056f12c4bc49dd766bf47ba2f4a", "path": "/health", "status": 200, "duration_ms": 1}
+{"request_id": "27fde8dc3dfa4191a98a1838919ec220", "path": "/health", "status": 200, "duration_ms": 0}
+F
+======================================================================
+FAIL: test_health_and_auth_before_body (test_rpc.RpcTests.test_health_and_auth_before_body)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tests/test_rpc.py", line 70, in test_health_and_auth_before_body
+    self.assertEqual(self.request(auth=False), (401, {'error': 'unauthenticated'}))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Tuples differ: (200, {'status': 'ok'}) != (401, {'error': 'unauthenticated'})
+
+First differing element 0:
+200
+401
+
+- (200, {'status': 'ok'})
++ (401, {'error': 'unauthenticated'})
+
+----------------------------------------------------------------------
+Ran 1 test in 0.517s
+
+FAILED (failures=1)

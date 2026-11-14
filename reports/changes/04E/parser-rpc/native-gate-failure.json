@@ -1,0 +1,25 @@
+{
+  "time": "2026-11-14T07:43:58.673Z",
+  "node": "v25.2.1",
+  "exitCode": 1,
+  "results": [
+    {
+      "name": "check",
+      "exitCode": 0,
+      "reason": "passed",
+      "signal": null,
+      "durationMs": 158073
+    },
+    {
+      "name": "audit",
+      "exitCode": 1,
+      "reason": "failed",
+      "signal": null,
+      "durationMs": 7604
+    }
+  ],
+  "notRun": [
+    "secret-scan",
+    "verify"
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "command": "npm run check",
+  "exit_code": 1,
+  "head": "97d4f0802b9c0654876a7e755f9931bcb7305583",
+  "scope": "Local; Docker and SQL not claimed"
+}
