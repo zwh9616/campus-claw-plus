@@ -7,6 +7,7 @@ test('IDF-SC-17 complete application coverage accepts a clean actual runtime rep
     assert.deepEqual(validateApplicationScan({ Results: [{ Target: target, Packages: [{ Name: 'stdlib', Version: 'v1.27.3' }] }] }, service), { HIGH: 0, CRITICAL: 0 })
   }
   validateApplicationScan({ Results: [{ Packages: [{ Name: 'nginx', Version: '1.30.6-r1' }] }] }, 'frontend')
+  validateApplicationScan({ Metadata: { OS: { Family: 'alpine' } }, Results: [{ Class: 'os-pkgs', Packages: [] }, { Packages: [{ Name: 'pypdf', Version: '7.0.1' }] }] }, 'document-parser')
 })
 
 test('IDF-SC-17 a vulnerability or absent binary coverage cannot become a scan pass', () => {
@@ -20,4 +21,5 @@ test('IDF-SC-17 a vulnerability or absent binary coverage cannot become a scan p
     assert.throws(() => validateApplicationScan(report, 'backend'))
   }
   assert.throws(() => validateApplicationScan(clean, 'frontend'), /Nginx/)
+  for (const report of [clean, { Metadata: { OS: { Family: 'alpine' } }, Results: [{ Class: 'os-pkgs', Packages: [{ Name: 'pypdf', Version: '6.0.0' }] }] }]) assert.throws(() => validateApplicationScan(report,'document-parser'))
 })

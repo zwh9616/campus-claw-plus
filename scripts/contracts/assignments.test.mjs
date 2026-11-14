@@ -16,11 +16,13 @@ const cancel=a=>a.paths['/api/v1/tasks/{id}/cancel'].post
 const task=a=>a.paths['/api/v1/tasks/{id}'].get
 function rejects(mutate){const bad=copy(api);mutate(bad);assert.throws(()=>validateOperationBoundary(bad,register))}
 
-test('AT-SC-01 nine implemented business operations activate atomically with exact migration5',()=>{
+test('AT-SC-01 nine operations retain their migration5 prefix with exact appended DI migration6',()=>{
  validateOperationBoundary(api,register)
  assert.equal(register.operations.filter(o=>o.status==='current').length,22)
  const phase=JSON.parse(readFileSync('docs/contracts/identity-phase.json','utf8'))
- assert.deepEqual(phase.migrations.map(m=>m.number),['000001','000002','000003','000004','000005'])
+ assert.deepEqual(phase.migrations.map(m=>m.number),['000001','000002','000003','000004','000005','000006'])
+ assert.equal(phase.migrations[4].owner,'05')
+ assert.equal(phase.migrations[5].owner,'04E')
  assert.equal(register.operations.filter(o=>o.owner==='05'&&o.status==='current').length,9)
  for(const [m,p] of assignmentOperations)rejects(a=>a.paths[p][m.toLowerCase()]['x-contract-status']='frozen')
  for(const mutate of [a=>delete a.paths['/api/v1/tasks/{id}'],a=>a.paths['/api/v1/assignments'].delete=copy(submit(a))])rejects(mutate)

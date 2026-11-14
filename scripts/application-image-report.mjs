@@ -5,7 +5,11 @@ export function validateApplicationScan(report, service) {
   assert.ok(Array.isArray(report.Results) && report.Results.length > 0, 'Scanner must recognize image contents')
   const findings = report.Results.flatMap(result => result.Vulnerabilities ?? [])
   assert.equal(findings.length, 0, 'HIGH/CRITICAL findings must block the gate')
-  if (service === 'frontend') {
+  if (service === 'document-parser') {
+    assert.equal(report.Metadata?.OS?.Family, 'alpine', 'Parser OS must be recognized')
+    assert.ok(report.Results.some(result => result.Class === 'os-pkgs'), 'Parser OS packages must be analyzed')
+    assert.ok(report.Results.some(result => result.Packages?.some(pkg => pkg.Name === 'pypdf' && pkg.Version === '7.0.1')), 'Pinned parser library must be recognized')
+  } else if (service === 'frontend') {
     assert.ok(report.Results.some(result => result.Packages?.some(pkg => pkg.Name === 'nginx' && pkg.Version.startsWith('1.30.6'))), 'Scanner must identify the pinned Nginx runtime')
   } else {
     assert.ok(['backend', 'admin'].includes(service), 'Unknown application image')

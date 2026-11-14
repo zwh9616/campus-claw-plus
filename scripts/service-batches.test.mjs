@@ -19,7 +19,7 @@ const valid = () => {
     'same account and original password after full container recreation',
     'DO-SC-12 DB-down host503 and independent static homepage200'].map(label => ({ label, exit_code: 0 }))
   reports[evidencePaths[2]].results.push({ label: 'DO-SC-13 actual runtime images and frontend exclude generated credentials', exit_code: 0,
-    images: ['mysql', 'backend', 'frontend'].map(service => ({ service, image_id: id })) })
+    images: ['mysql', 'backend', 'frontend', 'document-parser'].map(service => ({ service, image_id: id })) })
   reports[evidencePaths[3]].results = ['real MySQL identity scenarios', 'real consistent v3 mysqldump',
     'actual old artifact rejection and restored identities'].map(label => ({ label, exit_code: 0 }))
   // These reports only exercise the validator. Real05 output is still produced by the original Docker programs.
@@ -39,7 +39,7 @@ const valid = () => {
 
 test('DO-SC-11/13 current batch covers only real approved services/configuration and pinned sources', () => {
   const batch = validateBatch(inputs())
-  assert.equal(batch.sources.length, 4)
+  assert.equal(batch.sources.length, 5)
   assert.ok(['pending_ge_review', 'reviewed'].includes(batch.review_status))
   assert.equal(batch.sources.find(s => s.service === 'backend').from.at(-1), 'scratch')
   assert.ok(inputs().registry.services.find(s => s.name === 'frontend').changes.includes('06'))
@@ -69,9 +69,24 @@ test('DO-SC-12 exactly3s probes pass while4s/image drift and unpinned base fail'
   ]) { const x = inputs(); mutate(x); assert.throws(() => validateBatch(x)) }
 })
 
+test('DI-SC-14 private parser cannot gain ports, DB secrets, public network, extra resources or startup dependency',()=>{
+  for(const mutate of [
+    x=>x.compose.services['document-parser'].ports=['8091:8091'],
+    x=>x.compose.services['document-parser'].environment.MYSQL_DSN='forbidden',
+    x=>x.compose.services['document-parser'].env_file=['backend.env'],
+    x=>x.compose.services['document-parser'].volumes=['./private:/secrets:ro'],
+    x=>x.compose.services['document-parser'].networks.push('data'),
+    x=>x.compose.networks.document_parse.internal=false,
+    x=>x.compose.services['document-parser'].cpus=2,
+    x=>x.compose.services['document-parser'].memswap_limit='1g',
+    x=>x.compose.services['document-parser'].read_only=false,
+    x=>x.compose.services.backend.depends_on={'document-parser':{condition:'service_healthy'}},
+  ]) {const x=inputs();mutate(x);assert.throws(()=>validateBatch(x))}
+})
+
 test('DO-SC-11/12 current real reports produce four immutable artifact IDs; fixtures are structural tests only', () => {
   const { reports, inventory } = valid()
-  assert.equal(validateRuntimeEvidence(reports, 1000, 3000, inventory).length, 4)
+  assert.equal(validateRuntimeEvidence(reports, 1000, 3000, inventory).length, 5)
 })
 
 test('DO-SC-11/13 stale/missing/failed evidence, source mismatch and high vulnerabilities block', () => {
@@ -165,7 +180,7 @@ test('DO-SC-11 exact audited IDs are selected with no pulls; incomplete/unsafe s
   const { reports, inventory } = valid()
   const select = () => auditedImageServices(reports[evidencePaths[0]], reports[evidencePaths[1]], inventory)
   const services = select()
-  assert.equal(Object.keys(services).length, 4)
+  assert.equal(Object.keys(services).length, 5)
   assert.equal(services.mysql.image, reports[evidencePaths[0]].summary.image_id)
   assert.ok(Object.values(services).every(s => s.pull_policy === 'never'))
   for (const mutate of [

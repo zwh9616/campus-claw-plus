@@ -23,15 +23,16 @@ test('DI-SC-14 canonical exact internal URL and random token examples; no runtim
   assert.throws(() => validatePrivateConfigExample(missing))
 })
 
-test('DI-SC-01/14 replay before dependency preflight, bounded RPC and no activation cannot drift', () => {
+test('DI-SC-01/14 exact private activation, replay ordering and bounded RPC cannot drift', () => {
   validateIntegrationProfile(contract(), register())
-  for (const mutate of [c => c.runtime_activation = true, c => c.network.host_ports = true, c => c.network.egress = true,
+  for (const mutate of [c => c.runtime_activation = false, c => c.network.host_ports = true, c => c.network.egress = true,
     c => c.network.environment_proxy = true, c => c.rpc.total_ms = 36000, c => c.rpc.response_bytes++,
     c => c.rpc.concurrency = 2, c => c.rpc.upload_order.reverse(), c => c.worker.publish_cas.pop(),
-    c => c.worker.max_attempts = 4, c => c.migration.current_target = 6, c => c.migration.restore_target = 4]) {
+    c => c.worker.max_attempts = 4, c => c.migration.current_target = 5, c => c.migration.restore_target = 4,
+    c => c.migration.status = 'frozen_not_embedded', c => delete c.migration.runtime_files]) {
     const candidate = contract(); mutate(candidate); assert.throws(() => validateIntegrationProfile(candidate, register()))
   }
-  const activated = register(); activated.active.push(activated.frozen[0])
+  const activated = register(); activated.frozen.push(activated.active.pop())
   assert.throws(() => validateIntegrationProfile(contract(), activated))
   assert.throws(() => validateIntegrationProfile(contract(), register(), undefined, ['000006_documents.up.sql']))
 })
@@ -50,8 +51,46 @@ test('DI-SC-15 candidate exact DDL/hash and composite owner/location FKs remain 
   }
 })
 
+test('DI-SC-14 private activation binds all four LF inputs, original thirteen keys and exact unapproved dependencies',()=>{
+  for(const mutate of [c=>c.activation.scope='public',c=>c.activation.public_document_operations='current',
+    c=>c.activation.required_pull_requests.pop(),c=>c.activation.files['.env']='0'.repeat(64),
+    c=>c.activation.active_config_digest='0'.repeat(64)]) {
+    const c=contract();mutate(c);assert.throws(()=>validateIntegrationProfile(c,register()))
+  }
+  for(const path of Object.keys(contract().activation.files)){
+    const bytes=Buffer.concat([readFileSync(path),Buffer.from('\n')])
+    assert.throws(()=>validateIntegrationProfile(contract(),register(),p=>p===path?bytes:readFileSync(p)))
+  }
+})
+
 test('DI-SC-02..06/14 private Schema/OpenAPI dual paths and semantic failures', async () => {
   await validateDocumentIntegration()
+})
+
+test('DI-SC-15 exact6 runtime metadata cannot weaken old SQL, entry-point target or restore boundary by rehashing', () => {
+  for (const [path, mutate] of [
+    ['backend/internal/migrations/target.go', s => s.replace('const Target = 6', 'const Target = 5')],
+    ['backend/internal/migrations/manifest.json', s => { const m = JSON.parse(s); m['000001_identity_users_classes.up.sql'] = '0'.repeat(64); return JSON.stringify(m) }],
+    ['docs/contracts/identity-phase.json', s => { const p = JSON.parse(s); p.migrations[5].owner = '05'; return JSON.stringify(p) }],
+  ]) {
+    const changed = Buffer.from(mutate(readFileSync(path, 'utf8')))
+    const c = contract(); c.migration.runtime_files[path] = createHash('sha256').update(changed).digest('hex')
+    assert.throws(() => validateIntegrationProfile(c, register(), name => name === path ? changed : readFileSync(name)))
+  }
+  const c = contract(); c.migration.runtime_files['.env'] = '0'.repeat(64)
+  const reads = []
+  assert.throws(() => validateIntegrationProfile(c, register(), name => { reads.push(name); return readFileSync(name) }))
+  assert.ok(!reads.includes('.env'), 'Unknown migration runtime path rejected before read')
+})
+
+test('DI-SC-15 migration runtime SHA binds portable LF bytes even when CRLF is rehashed locally', () => {
+  for (const path of Object.keys(contract().migration.runtime_files)) {
+    const original = readFileSync(path)
+    assert.ok(!original.includes(13))
+    const crlf = Buffer.from(original.toString('utf8').replaceAll('\n', '\r\n'))
+    const c = contract(); c.migration.runtime_files[path] = createHash('sha256').update(crlf).digest('hex')
+    assert.throws(() => validateIntegrationProfile(c, register(), name => name === path ? crlf : readFileSync(name)))
+  }
 })
 
 test('DI-SC-14 contract references cannot fetch URLs or escape local Schema files', async () => {

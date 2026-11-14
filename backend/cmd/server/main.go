@@ -9,9 +9,9 @@ import (
 
 	"github.com/zwh9616/campus-claw-plus/backend/internal/config"
 	"github.com/zwh9616/campus-claw-plus/backend/internal/httpserver"
-	"github.com/zwh9616/campus-claw-plus/backend/internal/identityapp"
 	"github.com/zwh9616/campus-claw-plus/backend/internal/observability"
 	"github.com/zwh9616/campus-claw-plus/backend/internal/probe"
+	"github.com/zwh9616/campus-claw-plus/backend/internal/runtimeapp"
 )
 
 func main() { os.Exit(run()) }
@@ -34,7 +34,9 @@ func run() int {
 		}
 		return 0
 	}
-	handler, closeDB, err := identityapp.New(context.Background(), os.LookupEnv, logger)
+	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
+	defer cancel()
+	handler, closeDB, err := runtimeapp.New(ctx, os.LookupEnv, logger)
 	if err != nil {
 		logger.Error("identity startup failed; check required configuration, TLS and offline migrations", "module", "config", "request_id", nil)
 		return 2
@@ -46,8 +48,6 @@ func run() int {
 		return 1
 	}
 	defer listener.Close()
-	ctx, cancel := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
-	defer cancel()
 	logger.Info("server started", "module", "server", "request_id", nil)
 	if err := httpserver.Serve(ctx, listener, handler, logger); err != nil {
 		logger.Error("server stopped with error", "module", "server", "request_id", nil)

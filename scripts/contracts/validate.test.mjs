@@ -80,6 +80,14 @@ test('BC-SC-09 registered empty keys only; no weakening historical HTTP_PORT req
   validateConfigSample(sample+'DB_URL=', future, () => true)
 })
 
+test('DI-SC-14 exact parser outbound exception cannot widen origin, approvals, redirect or network constraints',()=>{
+  for(const mutate of [r=>r.outbound_exceptions[1].url+='/',r=>r.outbound_exceptions[1].url='http://127.0.0.1:8091',
+    r=>r.outbound_exceptions[1].enabled=false,r=>r.outbound_exceptions[1].constraints.pop(),
+    r=>r.outbound_exceptions[1].required_approvals=[],r=>r.outbound_exceptions[1].cidr='10.0.0.0/8']) {
+    const r=copy(register);mutate(r);assert.throws(()=>validateOutboundCandidate(r))
+  }
+})
+
 test('BC-SC-18 planned operations and anonymous auth bypass cannot enter OpenAPI', () => {
   const api = parse(readFileSync('docs/contracts/openapi.yaml', 'utf8'))
   const endpoints = JSON.parse(readFileSync('docs/contracts/endpoint-register.json', 'utf8'))

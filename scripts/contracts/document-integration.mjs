@@ -26,13 +26,13 @@ export function validatePrivateConfigExample(values) {
 
 export function validateIntegrationProfile(contract, register, read = p => readFileSync(p), names = readdirSync('backend/internal/migrations/sql')) {
   assert.equal(contract.version, 1)
-  assert.equal(contract.status, 'frozen')
+  assert.equal(contract.status, 'active')
   assert.equal(contract.owner, '04E')
   assert.equal(contract.introduced_by, documentChange)
-  assert.equal(contract.runtime_activation, false)
+  assert.equal(contract.runtime_activation, true)
   assert.deepEqual(contract.config_keys, keys)
   assert.deepEqual(contract.network, { origin: 'http://document-parser:8091', internal: true, host_ports: false,
-    members: ['backend', 'document-parser'], egress: false, database_credentials: false, enabled: false, redirects: false, environment_proxy: false })
+    members: ['backend', 'document-parser'], egress: false, database_credentials: false, enabled: true, redirects: false, environment_proxy: false })
   assert.deepEqual(contract.rpc, {
     schema: 'document-parser/ParseResult.schema.json', openapi: 'document-parser/openapi.json',
     request_bytes: 10485760, response_bytes: 8388608, header_bytes: 8192, content_length_required: true, transfer_encoding: false,
@@ -46,31 +46,64 @@ export function validateIntegrationProfile(contract, register, read = p => readF
   })
   assert.deepEqual(contract.worker, { poll_ms: 1000, heartbeat_ms: 20000, lease_ms: 60000, max_attempts: 3,
     concurrency: 1, clock: 'database_utc', publish_cas: ['owner', 'epoch', 'processing', 'lease_not_expired'], retry_reasons: reasons.slice(4) })
-  assert.equal(sha(JSON.stringify(register.active)), contract.baseline.active_config_digest, 'Existing active configuration changed')
-  assert.deepEqual(register.frozen.map(c => c.name), keys)
-  for (const config of register.frozen) {
-    assert.equal(config.owner, '04E'); assert.equal(config.status, 'frozen'); assert.equal(config.required, true)
+  const activation = contract.activation
+  assert.deepEqual(Object.keys(activation).sort(), ['scope','public_document_operations','required_pull_requests','approved_contract_commit','active_config_digest','files'].sort())
+  assert.equal(activation.scope, 'private_parser_worker_only')
+  assert.equal(activation.public_document_operations, 'frozen')
+  assert.deepEqual(activation.required_pull_requests, [52,53,54])
+  assert.equal(activation.approved_contract_commit, '39018c1b8d2555cfebe8fd75fb4a761558edad68')
+  assert.equal(sha(JSON.stringify(register.active)), activation.active_config_digest)
+  assert.deepEqual(Object.keys(activation.files).sort(), ['.env.example','compose.yaml','deploy/service-batches.json','docs/contracts/config-register.json'].sort())
+  for (const [path,digest] of Object.entries(activation.files)) {
+    const bytes=read(path); assert.ok(!bytes.includes(13), 'Activation inputs must use portable LF bytes')
+    assert.equal(sha(bytes),digest,'Atomic activation drift: '+path)
+  }
+  assert.equal(sha(JSON.stringify(register.active.slice(0,13))), contract.baseline.active_config_digest, 'Original thirteen active inputs changed')
+  assert.deepEqual(register.frozen, [])
+  assert.equal(register.active.length, 15)
+  const configs = register.active.filter(c=>keys.includes(c.name))
+  assert.deepEqual(configs.map(c=>c.name),keys)
+  for (const config of configs) {
+    assert.equal(config.owner, '04E'); assert.equal(config.status, 'active'); assert.equal(config.required, true)
     assert.equal(config.introduced_by, documentChange)
+    assert.equal(config.activation_change, documentChange)
     assert.equal(config.secret, config.name === keys[1])
     assert.deepEqual(config.consumers, config.secret ? ['backend', 'document-parser', 'compose'] : ['backend', 'compose'])
-    for (const field of ['validation', 'missing_behavior', 'timeout', 'activation_requires']) assert.ok(config[field]?.length > 0)
-    assert.ok(!register.active.some(c => c.name === config.name))
+    for (const field of ['validation', 'missing_behavior', 'timeout']) assert.ok(config[field]?.length > 0)
   }
   assert.deepEqual(Object.keys(contract.baseline.protected_files).sort(), ['.env.example', 'compose.yaml',
     'docs/contracts/identity-phase.json', 'docs/contracts/endpoint-register.json', 'deploy/service-batches.json',
     'backend/internal/migrations/target.go', 'backend/internal/migrations/manifest.json'].sort(), 'Protected file paths must be an exact local allowlist')
-  for (const [path, digest] of Object.entries(contract.baseline.protected_files)) assert.equal(sha(read(path)), digest, 'Activation/protected baseline changed: ' + path)
+  const runtimeFiles = ['backend/internal/migrations/target.go', 'backend/internal/migrations/manifest.json', 'docs/contracts/identity-phase.json']
+  for (const [path, digest] of Object.entries(contract.baseline.protected_files)) {
+    if (!runtimeFiles.includes(path) && !(path in activation.files)) assert.equal(sha(read(path)), digest, 'Protected baseline changed: ' + path)
+  }
   const migration = contract.migration
-  assert.equal(migration.number, 6); assert.equal(migration.current_target, 5)
-  assert.equal(migration.status, 'frozen_not_embedded'); assert.equal(migration.ddl_steps, 5)
+  assert.equal(migration.number, 6); assert.equal(migration.current_target, 6)
+  assert.equal(migration.status, 'available_embedded'); assert.equal(migration.ddl_steps, 5)
+  assert.deepEqual(Object.keys(migration.runtime_files).sort(), runtimeFiles.sort(), 'Exact migration-only runtime allowlist')
+  for (const [path, digest] of Object.entries(migration.runtime_files)) {
+    const bytes = read(path)
+    assert.ok(!bytes.includes(13), 'Migration runtime inputs must use repository LF bytes: ' + path)
+    assert.equal(sha(bytes), digest, 'Migration runtime drift: ' + path)
+  }
+  assert.match(read('backend/internal/migrations/target.go').toString('utf8'), /\bconst Target = 6\b/)
   assert.equal(migration.restore_target, 5); assert.equal(migration.down, 'empty_disposable_test_database_only')
   assert.deepEqual(migration.tables, ['documents', 'document_locations', 'document_chunks', 'document_parse_jobs', 'document_idempotency'])
   assert.deepEqual(Object.keys(migration.files).sort(), ['000006_documents.down.sql', '000006_documents.up.sql'])
-  for (const [name, digest] of Object.entries(migration.files)) assert.equal(sha(read(`${directory}/migration/${name}`)), digest, 'Candidate SQL drift')
-  assert.ok(names.every(n => !n.startsWith('000006')), 'Frozen candidate must not become an embedded migration')
+  for (const [name, digest] of Object.entries(migration.files)) {
+    assert.equal(sha(read(`${directory}/migration/${name}`)), digest, 'Reviewed SQL drift')
+    assert.equal(sha(read(`backend/internal/migrations/sql/${name}`)), digest, 'Embedded SQL must be byte-identical to reviewed SQL')
+  }
   assert.equal(migration.published_files.length, 10)
   for (const entry of migration.published_files) assert.deepEqual(Object.keys(entry).sort(), ['name', 'sha256'])
-  assert.deepEqual(json('backend/internal/migrations/manifest.json'), Object.fromEntries(migration.published_files.map(e => [e.name, e.sha256])))
+  const expectedManifest = { ...Object.fromEntries(migration.published_files.map(e => [e.name, e.sha256])), ...migration.files }
+  assert.deepEqual(JSON.parse(read('backend/internal/migrations/manifest.json')), expectedManifest)
+  assert.deepEqual([...names].sort(), Object.keys(expectedManifest).sort(), 'Exact twelve embedded SQL files')
+  const phase = JSON.parse(read('docs/contracts/identity-phase.json'))
+  assert.equal(phase.migrations.length, 6)
+  assert.deepEqual(phase.migrations[5], { number: '000006', name: 'documents', owner: '04E', status: 'available',
+    depends_on: ['000001','000002','000003','000004','000005'], checksum: migration.files['000006_documents.up.sql'], down_checksum: migration.files['000006_documents.down.sql'] })
   for (const { name, sha256: digest } of migration.published_files) assert.equal(sha(read(`backend/internal/migrations/sql/${name}`)), digest, 'Published SQL changed')
   const up = read(`${directory}/migration/000006_documents.up.sql`).toString('utf8')
   const down = read(`${directory}/migration/000006_documents.down.sql`).toString('utf8')
@@ -225,5 +258,5 @@ export async function validateDocumentIntegration() {
     const check = new Ajv2020({ strict: true, strictRequired: false }).compile(stripIds(parsed.paths['/health'].get.responses[status].content['application/json'].schema))
     for (const value of ['invalid_request', 'unauthenticated', 'not_found', 'method_not_allowed', 'busy']) assert.equal(check({ error: value }), value === error)
   }
-  console.log(`DI-SC-02..06/14/15: ${fixtures.length} private dual-path cases, frozen RPC/config/candidate five-DDL; no runtime activation.`)
+  console.log(`DI-SC-02..06/14/15: ${fixtures.length} private dual-path cases; exact private parser/worker activation and embedded migration6; six public Document operations remain frozen.`)
 }

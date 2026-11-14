@@ -1,10 +1,10 @@
 {
   "version": 1,
-  "status": "frozen",
+  "status": "active",
   "owner": "04E",
   "introduced_by": "openspec/changes/2026-11-13-materials-document-intelligence",
   "baseline_commit": "9263d21de054909856a9b4b3b7d17d54c90addb9",
-  "runtime_activation": false,
+  "runtime_activation": true,
   "config_keys": [
     "DOCUMENT_PARSER_URL",
     "DOCUMENT_PARSER_TOKEN"
@@ -19,7 +19,7 @@
     ],
     "egress": false,
     "database_credentials": false,
-    "enabled": false,
+    "enabled": true,
     "redirects": false,
     "environment_proxy": false
   },
@@ -91,8 +91,8 @@
   },
   "migration": {
     "number": 6,
-    "current_target": 5,
-    "status": "frozen_not_embedded",
+    "current_target": 6,
+    "status": "available_embedded",
     "files": {
       "000006_documents.down.sql": "bcd282b537db970249565148410f67a18737d5350055df20dd6efd51c8db5756",
       "000006_documents.up.sql": "ae898e2c8166ac8e201102e6077ad5cf71a89259fb16553d3f5a1a0380e022ef"
@@ -148,7 +148,12 @@
         "name": "000005_assignment_tasks.down.sql",
         "sha256": "f0e9e62df01fcd6f3eddc9912dfa2fa21e22c2430e6146a4cc0b271fbf6f39eb"
       }
-    ]
+    ],
+    "runtime_files": {
+      "backend/internal/migrations/target.go": "02058e6fc3b068bcba5ca9b2077c237a5262df24bbd131ea3bc7ab0d735d364b",
+      "backend/internal/migrations/manifest.json": "5d88572a78c7060130aa6077b8aceaf71305404a5b09086bb28fb5fa6877b87b",
+      "docs/contracts/identity-phase.json": "f03096a9f1397051f6d0f4bcc257cb8f81a82622797dd62d873eab4d395f2ca1"
+    }
   },
   "baseline": {
     "active_config_digest": "c48156ca79be7b9ccdd5cba656c76d8cd57316cdd000182d6116836ed3d27be6",
@@ -160,6 +165,23 @@
       "deploy/service-batches.json": "53ecb5c17e81e50acb49b6b4b9dd04f3dd1f67c2210e29f3a104820201a51f84",
       "backend/internal/migrations/target.go": "eb2751348fd021db70eaf23391aa16b6a4fbc97251d94352f7d4d3cf55c58452",
       "backend/internal/migrations/manifest.json": "bc8e740c8cccdcc33fcaae0fe1b844cf28d7b9725c83a0f1b5ad39a44704ab58"
+    }
+  },
+  "activation": {
+    "scope": "private_parser_worker_only",
+    "public_document_operations": "frozen",
+    "required_pull_requests": [
+      52,
+      53,
+      54
+    ],
+    "approved_contract_commit": "39018c1b8d2555cfebe8fd75fb4a761558edad68",
+    "active_config_digest": "de0ab4754c74b33408d5fdec828ab68d308c4190eeffc9fc0fb5b335303b511b",
+    "files": {
+      ".env.example": "b00faebdd05b6e7cde5df680224b4ec966707e775eac4481380513b4caa40cfd",
+      "compose.yaml": "d46827ecea8d28cee54f85f9e7594f00fc9db5629d99c67b3944e64a6da1084a",
+      "deploy/service-batches.json": "b44a48647c7ce9e97a7fa2160d26ae41cdf8e7a21d66ccf81939895bb7e4512f",
+      "docs/contracts/config-register.json": "0710ff564c52186bef19e2c6f9fe4316e198cfeb3e2cc9ed48fe567e017bb329"
     }
   }
 }

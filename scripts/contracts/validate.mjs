@@ -36,7 +36,7 @@ export const expectedOperations = [
 
 // BC-SC-10: registration is not permission to enable an outbound exception.
 export function validateOutboundCandidate(register) {
-  assert.equal(register.outbound_exceptions.length, 1)
+  assert.equal(register.outbound_exceptions.length, 2)
   const entry = register.outbound_exceptions[0]
   assert.deepEqual(Object.keys(entry).sort(), ['url', 'enabled', 'required_approvals', 'constraints', 'removal'].sort())
   assert.equal(entry.url, 'http://mcp:8090/mcp')
@@ -46,6 +46,15 @@ export function validateOutboundCandidate(register) {
     '精确scheme/服务/端口/path', '无userinfo/query/fragment/redirect', '解析目标为本项目网络服务',
   ])
   assert.ok(typeof entry.removal === 'string' && entry.removal.length > 0)
+  const parser = register.outbound_exceptions[1]
+  assert.deepEqual(Object.keys(parser).sort(), ['url', 'enabled', 'required_approvals', 'constraints', 'removal'].sort())
+  assert.equal(parser.url, 'http://document-parser:8091')
+  assert.equal(parser.enabled, true)
+  assert.deepEqual(parser.required_approvals, ['04E'])
+  assert.deepEqual(parser.constraints, ['精确origin及GET /health、POST /v1/parse',
+    '仅backend/parser独占internal网络，无宿主端口/数据库或模型秘密/互联网',
+    '无userinfo/query/fragment/redirect/环境代理，禁止用户URL'])
+  assert.ok(parser.removal?.trim())
 }
 
 // BC-SC-18: the list is intentionally independent of the endpoint register.

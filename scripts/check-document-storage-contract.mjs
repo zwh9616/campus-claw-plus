@@ -4,8 +4,8 @@ import { randomBytes, createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, readdirSync, unlinkSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 
-// DI-SC-07/09/15: candidate DDL contract probe only. No runtime migration6,
-// server/admin/repair6 or holder database is used or claimed by this program.
+// DI-SC-07/09/15: reviewed DDL constraints only. Real embedded migration6,
+// interruption/repair/backup tests run separately in verify-identity.mjs.
 const runId = 'campus-di-ddl-' + randomBytes(6).toString('hex')
 const image = runId + ':probe'
 const container = runId + '-mysql'
@@ -20,14 +20,15 @@ const candidate = 'docs/contracts/document-parser/migration/'
 const sources = Object.fromEntries(Object.keys(contract.migration.files).map(n => [n, sha(readFileSync(candidate + n))]))
 assert.deepEqual(sources, contract.migration.files)
 const targetSource = readFileSync('backend/internal/migrations/target.go')
-assert.equal(sha(targetSource), contract.baseline.protected_files['backend/internal/migrations/target.go'])
+assert.equal(sha(targetSource), contract.migration.runtime_files['backend/internal/migrations/target.go'])
 const runtimeTarget = Number(targetSource.toString('utf8').match(/\bconst\s+Target\s*=\s*(\d+)/)?.[1])
-assert.equal(runtimeTarget, 5)
+assert.equal(runtimeTarget, 6)
 assert.equal(runtimeTarget, contract.migration.current_target)
 const results = []
 const report = { run_id: runId, time: new Date().toISOString(), exit_code: 1,
   source: { commit: git(['rev-parse', 'HEAD']), dirty: git(['status', '--porcelain']) !== '' },
-  candidate_sql: sources, scope: 'isolated candidate SQL syntax/constraints only; no Target6/dirty/repair/backup/RPC/runtime activation claim' }
+  candidate_sql: sources, scope: 'isolated reviewed SQL constraints and actual Go queue with Target6 registered; migration/repair/backup are separate identity suite; no holder database or RPC activation claim' }
+
 
 function docker(args, input, timeout = 30000) {
   return spawnSync('docker', args, { input, encoding: 'utf8', timeout, maxBuffer: 4 * 1024 * 1024,
@@ -74,7 +75,7 @@ try {
   report.mysql_version = sql('actual database version', 'SELECT VERSION();', { database: null })
   assert.match(report.mysql_version, /^8\.4\.13(?:[-.]|$)/)
   sql('fresh isolated schema only', 'CREATE DATABASE di_contract_probe CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_bin;', { database: null })
-  const old = readdirSync('backend/internal/migrations/sql').filter(n => n.endsWith('.up.sql')).sort()
+  const old = readdirSync('backend/internal/migrations/sql').filter(n => n.endsWith('.up.sql') && !n.startsWith('000006')).sort()
   assert.equal(old.length, 5)
   for (const name of old) sql('published table baseline ' + name, readFileSync('backend/internal/migrations/sql/' + name, 'utf8'))
   const count = () => Number(sql('inspect isolated table count', "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema='di_contract_probe';"))
@@ -118,6 +119,31 @@ try {
   sql('same-length wrong quote requires application recheck (rolled back)', "START TRANSACTION;UPDATE document_chunks SET quote='错错错' WHERE id=1;ROLLBACK;")
   assert.equal(sql('original quote survived rollback', 'SELECT quote FROM document_chunks WHERE id=1;'), '课程😀')
   sql('remove only synthetic candidate rows', 'DELETE FROM document_idempotency;DELETE FROM document_parse_jobs;DELETE FROM document_chunks;DELETE FROM document_locations;DELETE FROM documents;')
+  // DI-SC-07..10: real Go persistence/worker implementation on this exact
+  // approved candidate schema. This is still not the runtime migration6.
+  const queueFiles = readdirSync('backend/internal/documentqueue').sort()
+  const queueSources = Object.fromEntries(queueFiles.map(name => [name, sha(readFileSync('backend/internal/documentqueue/' + name))]))
+  const { goImage } = JSON.parse(readFileSync('scripts/toolchain.json', 'utf8'))
+  const queueRun = docker(['run', '--rm',
+    '--network', 'container:' + container, '--memory', '512m', '--memory-swap', '512m', '--cpus', '1',
+    '-e', 'MYSQL_PWD', '-e', 'GOTOOLCHAIN=local',
+    '--mount', `type=bind,source=${resolve('backend')},target=/src,readonly`,
+    '-v', 'campus-claw-plus-go-cache:/root/.cache/go-build', '-w', '/src', goImage,
+    'go', 'test', '-tags=documentqueue', '-shuffle=on', '-count=1', '-timeout=90s', '-v', './internal/documentqueue'], undefined, 150000)
+  const queueOutput = ((queueRun.stdout ?? '') + (queueRun.stderr ?? '')).replaceAll(password, '<redacted>')
+  writeFileSync(resolve(directory, 'queue-test.log'), queueOutput + '\n')
+  results.push({ label: 'actual Go durable document queue on isolated MySQL', exit_code: queueRun.status })
+  report.document_queue = { exit_code: queueRun.status, source_files: queueSources,
+    log_sha256: sha(readFileSync(resolve(directory, 'queue-test.log'))) }
+  assert.equal(queueRun.status, 0, 'actual queue tests failed; original output retained in queue-test.log')
+  const actualGroups = [...queueOutput.matchAll(/^--- PASS: (TestMySQL\w+) /gm)].map(m => m[1])
+  assert.equal(actualGroups.length, 10, 'all real database queue groups must execute')
+  assert.equal(new Set(actualGroups).size, 10)
+  assert.ok(!queueOutput.includes('--- SKIP:'))
+  assert.deepEqual(Object.fromEntries(queueFiles.map(name => [name, sha(readFileSync('backend/internal/documentqueue/' + name))])), queueSources)
+  report.document_queue = { exit_code: 0, groups: actualGroups, source_files: queueSources,
+    log_sha256: sha(readFileSync(resolve(directory, 'queue-test.log'))),
+    scope: 'actual isolated MySQL queue transactions, 20-way races, leases, atomic publication, explicit retry, single worker and killed process; no production activation/HTTP/migration6 claim' }
   sql('candidate reverse DDL only after all five are empty', readFileSync(candidate + '000006_documents.down.sql', 'utf8'))
   assert.equal(count(), 14)
   report.exit_code = 0

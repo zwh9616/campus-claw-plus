@@ -1,0 +1,7 @@
+{
+  "old_manifest_sha256": "bc8e740c8cccdcc33fcaae0fe1b844cf28d7b9725c83a0f1b5ad39a44704ab58",
+  "new_manifest_sha256": "5d88572a78c7060130aa6077b8aceaf71305404a5b09086bb28fb5fa6877b87b",
+  "old_sql_files_rehashed": 10,
+  "old_manifest_prefix_preserved": true,
+  "reason": "Default scanner matched pre-existing public 000003 down SQL SHA in expanded diff context after JSON formatting. Preserved reviewed manifest byte prefix and appended only migration6; no ignore/rule or scan scope changes."
+}

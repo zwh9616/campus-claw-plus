@@ -1,0 +1,16 @@
+{
+  "source_sha256": "0312a5b5aa02ece421387e64f613576fe9f17e7779a32cd1d9ab0976f2772bdf",
+  "restored_exactly": true,
+  "results": [
+    {
+      "phase": "fixed-origin guard removed",
+      "exit_code": 1,
+      "output": "--- FAIL: TestDocumentParserRequiredCanonicalConfiguration (0.00s)\n    document_test.go:31: invalid input accepted/echoed DOCUMENT_PARSER_URL\nFAIL\nFAIL\tgithub.com/zwh9616/campus-claw-plus/backend/internal/config\t0.015s\nFAIL\n"
+    },
+    {
+      "phase": "byte-identical config restored",
+      "exit_code": 0,
+      "output": "ok  \tgithub.com/zwh9616/campus-claw-plus/backend/internal/config\t0.006s\n"
+    }
+  ]
+}

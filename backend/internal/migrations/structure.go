@@ -100,6 +100,9 @@ func (e Executor) structure(ctx context.Context, version int, partial bool) erro
 	if version >= 5 {
 		tables = append(tables, "assignments", "submissions", "tasks", "task_outbox", "submission_idempotency")
 	}
+	if version >= 6 {
+		tables = append(tables, documentTables...)
+	}
 	for _, table := range tables {
 		var engine string
 		err := e.DB.QueryRowContext(ctx, "SELECT ENGINE FROM information_schema.TABLES WHERE TABLE_SCHEMA=? AND TABLE_NAME=?", e.Database, table).Scan(&engine)
@@ -108,6 +111,20 @@ func (e Executor) structure(ctx context.Context, version int, partial bool) erro
 		}
 		if err != nil || engine != "InnoDB" {
 			return ErrState
+		}
+		if version >= 6 {
+			var document bool
+			for _, name := range documentTables {
+				if name == table {
+					document = true
+				}
+			}
+			if document {
+				if err := e.documentStructure(ctx, table); err != nil {
+					return err
+				}
+				continue
+			}
 		}
 		cols, err := e.strings(ctx, "SELECT CONCAT(COLUMN_NAME,':',COLUMN_TYPE,':',IS_NULLABLE) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=? AND TABLE_NAME=? ORDER BY ORDINAL_POSITION", table)
 		if err != nil || strings.Join(cols, ",") != columns[table] {

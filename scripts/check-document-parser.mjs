@@ -15,8 +15,9 @@ const directory = resolve('output/document-parser', scan ? 'scan' : 'check')
 mkdirSync(directory, { recursive: true })
 const sha = value => createHash('sha256').update(value).digest('hex')
 const git = args => spawnSync('git', args, { encoding: 'utf8' }).stdout.trim()
-const inputs = ['core.py', 'worker.py', 'runner.py', 'server.py', 'test_rpc.py', 'requirements.lock', 'Dockerfile', '.dockerignore']
-const fingerprint = () => sha(inputs.map(p => p + ':' + sha(readFileSync('document-parser/' + p))).join('\n'))
+const inputs = ['core.py', 'worker.py', 'runner.py', 'server.py', 'health.py', 'test_rpc.py', 'test_health.py', 'requirements.lock', 'Dockerfile', '.dockerignore']
+const clientInputs = ['backend/internal/documentparser/client.go', 'backend/internal/documentparser/client_test.go', 'scripts/check-document-parser-client.mjs']
+const fingerprint = () => sha([...inputs.map(p => 'document-parser/' + p), ...clientInputs].map(p => p + ':' + sha(readFileSync(p))).join('\n'))
 const source = { commit: git(['rev-parse', 'HEAD']), dirty: git(['status', '--porcelain']) !== '', fingerprint: fingerprint() }
 const toolchain = JSON.parse(readFileSync('scripts/toolchain.json'))
 assert.ok(readFileSync('document-parser/Dockerfile', 'utf8').split('\n').filter(l => l.startsWith('FROM '))
@@ -24,7 +25,7 @@ assert.ok(readFileSync('document-parser/Dockerfile', 'utf8').split('\n').filter(
 assert.equal(readFileSync('document-parser/requirements.lock', 'utf8').trim(),
   `pypdf==${toolchain.documentPypdfVersion} --hash=sha256:${toolchain.documentPypdfWheelSha256}`)
 const results = []
-let report = { time: new Date().toISOString(), run_id: id, scope: '04E offline parser and private HTTP component; current production batch remains four images', source, exit_code: 1 }
+let report = { time: new Date().toISOString(), run_id: id, scope: '04E core/private HTTP/client/probe component tests; five-service production wiring is validated separately', source, exit_code: 1 }
 function run(label, args, timeout = 180000) {
   const child = spawnSync('docker', args, { encoding: 'utf8', timeout, maxBuffer: 16 * 1024 * 1024 })
   results.push({ label, exit_code: child.status, error: child.error?.message,
@@ -74,6 +75,19 @@ try {
     assert.equal(rpc.safe_logs, true)
     assert.equal(rpc.documents.length, 40)
     report.private_http = rpc
+    const healthRaw = run('actual authenticated health and startup process tests', ['run', '--rm', '--name', container,
+      '--network', 'none', '--read-only', '--cap-drop', 'ALL', '--security-opt', 'no-new-privileges',
+      '--memory', '512m', '--memory-swap', '512m', '--cpus', '1', '--pids-limit', '32',
+      '--tmpfs', '/tmp:rw,noexec,nosuid,size=64m', '--mount', `type=bind,source=${resolve('document-parser')},target=/tests,readonly`,
+      '--entrypoint', 'python', imageId, '-B', '-I', '/tests/test_health.py'], 30000)
+    report.private_health = JSON.parse(healthRaw)
+    assert.equal(report.private_health.exit_code,0); assert.equal(report.private_health.groups,3); assert.equal(report.private_health.safe_logs,true)
+    const client = spawnSync(process.execPath, ['scripts/check-document-parser-client.mjs', '--image', imageId],
+      { encoding: 'utf8', timeout: 240000, maxBuffer: 16 * 1024 * 1024 })
+    assert.equal(client.status, 0, 'Real Go/private HTTP interoperability failed: ' + (client.stdout ?? '') + (client.stderr ?? ''))
+    report.private_client = JSON.parse(client.stdout)
+    assert.equal(report.private_client.actual.documents.length, 40)
+    assert.equal(report.private_client.secret_file_removed, true)
   }
   if (scan) {
     const workspace = realpathSync('.')

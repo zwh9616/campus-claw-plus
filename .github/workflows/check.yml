@@ -41,6 +41,7 @@ jobs:
             output/application-image-verify/backend.json
             output/application-image-verify/admin.json
             output/application-image-verify/frontend.json
+            output/application-image-verify/document-parser.json
             output/identity/results.json
             output/identity-wiring/results.json
             output/verification/gate-results.json
@@ -51,4 +52,5 @@ jobs:
             output/document-parser/scan/tests.json
             output/document-parser/scan/parser.json
             output/document-storage-contract/results.json
+            output/document-storage-contract/queue-test.log
           if-no-files-found: ignore

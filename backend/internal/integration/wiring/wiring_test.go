@@ -190,6 +190,25 @@ func TestIDFWiring(t *testing.T) {
 		t.Fatal("persistence proof write")
 	}
 	call("GET", "/api/v1/me", "", access, "", 200)
+	// DI-SC-01: a privately wired worker never opens these frozen public routes.
+	for _, route := range []struct{ method, path string }{
+		{"GET", "/api/v1/documents"}, {"POST", "/api/v1/documents"},
+		{"GET", "/api/v1/documents/1"}, {"GET", "/api/v1/documents/1/download"},
+		{"POST", "/api/v1/documents/1/retry"}, {"GET", "/api/v1/document-search"},
+	} {
+		req, _ := http.NewRequest(route.method, "https://campus.test"+route.path, strings.NewReader("{}"))
+		req.Header.Set("Authorization", "Bearer "+access)
+		req.Header.Set("Origin", "https://campus.test")
+		res, e := client.Do(req)
+		if e != nil {
+			t.Fatal("frozen route request failed")
+		}
+		io.Copy(io.Discard, io.LimitReader(res.Body, 8192))
+		res.Body.Close()
+		if res.StatusCode != 404 {
+			t.Fatal("frozen Document route became callable")
+		}
+	}
 	if os.Getenv("WIRING_EXPECT") != "down" {
 		verifyMRWiring(t, client, access)
 		verifyATWiring(t, client, access, &observedSecrets)

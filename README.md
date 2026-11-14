@@ -6,11 +6,13 @@
 
 2026-11-13下一阶段已正式安排[04E资料能力扩展](openspec/changes/2026-11-13-materials-document-intelligence/proposal.md)，全部由小张负责。先实现文本PDF/.docx的真实上传、解析、出处与页面；OCR和语义/混合检索有[明确任务](openspec/changes/2026-11-13-materials-document-intelligence/tasks.md)及[量化验收](openspec/changes/2026-11-13-materials-document-intelligence/acceptance.md)。本候选提交A规约与六个frozen合同，尚未部署或启用新操作；运行仍22 current、Target5、仅原TXT资料功能。PDF不等于OCR，持久受理不等于解析完成；后续教学生成/成绩仍按独立前置推进。
 
+2026-11-14本分支私有接线候选：Target6、两个解析键active（共15）、默认document-parser与持久worker、五镜像验收；#52/#53/#54及本候选仍待真实审查/集成，持有人库未升级。公开仍22 current，六个新Document接口和真实PDF/Word页面尚未接线。较早段落是历史快照，现状见[接线报告](reports/changes/04E/document-runtime-2026-11-14.md)和共享表。
+
 ## 当前运行范围
 
 - GET /health匿名，逐请求真实Ping MySQL，3秒预算；200为status=ok/mysql=up，失败503为status=error/mysql=down，均有服务端X-Request-ID。
 - 六个身份接口：登录、CSRF、刷新、me、登出、切班。04后端已随#26合入main6634e51并复验，另提供列表、详情、原文下载、教师上传、索引重试和keyword检索；具体输入/权限/失败响应见[公共合同](docs/contracts/README.md)及[资料运行交接](docs/materials-runtime.md)。本06候选已接资料页面，小张独立复验已通过，最终合入与主干复验见共享表；05九个作业/提交/任务接口已通过#40/#41终审合入，共22 current；生产尚无批改执行器，受理只表示持久pending，无AI/MCP/成绩接口或作业页面。
-- 默认服务为frontend/backend/mysql；admin仅在tools profile用于离线操作。只向本机发布HTTPS，后端与数据库不发布主机端口；数据使用命名卷，server不自动DDL/初始化。
+- 本候选默认服务为frontend/backend/mysql/document-parser；admin仅在tools profile用于离线操作。只向本机发布HTTPS，后端与数据库不发布主机端口；数据使用命名卷，server不自动DDL/初始化。
 - frontend单独加入Compose自管ingress bridge，负责本机端口入口；backend/MySQL/admin仍使用内部网络，后端只信任内部proxy中Nginx的精确/32。验收同时检查实际主机发布端口与容器内链路。
 
 本分支包含[#18主机入口修复](reports/changes/01/host-ingress-review-2026-11-08.md)：小张已在原Windows平台独立完整门禁通过，真实批准后正常合入main 0596505，同SHA CI42453041413成功。02已在原Windows默认入口完成正常证书信任的真实浏览器12项联验，含跨标签和并发刷新，见[独立联验](reports/changes/02/zhang-final-2026-11-08.md)；最终head90976b9完整CI通过并经小张真实批准，#15正常合入main3ef79f4；main复验结果见[合入记录](reports/changes/02/main-integration-2026-11-08.md)。
@@ -30,13 +32,13 @@
 
 需要Docker、Node>=22.19及持有人提供的数据库/HTTPS可信证书和本机秘密文件。无默认证书或账号口令；不把测试临时CA安装到系统，不跳过TLS校验。准备细节见[身份部署步骤](deploy/identity/README.md)。
 
-1. 获取受审版本；已有目录先保留未提交修改，不能强制覆盖。本05迁移基础候选精确要求数据库版本5，已有版本4须先停止写流量并保存一致备份，再离线升级；旧程序拒绝数据库5、新程序拒绝4，回退须隔离恢复版本4备份，见[迁移恢复](docs/identity-migrations.md)。
+1. 获取受审版本；已有目录先保留未提交修改，不能强制覆盖。本04E候选精确要求数据库版本6，已有版本5须先停止写流量并保存一致备份，再离线升级；旧5拒绝数据库6、新6拒绝5，回退须隔离恢复版本5备份，见[迁移恢复](docs/identity-migrations.md)。
 2. 在忽略的output/identity-local准备root-password、initialize.sql、数据库TLS材料、backend.env、admin.env和seed.json。应用DML账号与离线DDL账号分离；秘密不发群、不进Git/镜像/截图。
-3. 按部署步骤创建本项目独占internal代理网络，选择未占用静态地址。把根.env.example复制为本机.env（已有文件不要覆盖），填写HTTP_PORT、五个IDENTITY_*及HTTPS_CERT_FILE/HTTPS_KEY_FILE。MYSQL_*和AUTH_TRUSTED_ORIGIN由对应进程env文件提供；AUTH_TRUSTED_PROXY_CIDRS由Compose从代理IP派生为精确/32，不再在多个地方复制秘密。
+3. 按部署步骤创建本项目独占internal代理网络，选择未占用静态地址。把根.env.example复制为本机.env（已有文件不要覆盖），填写HTTP_PORT、五个IDENTITY_*及HTTPS_CERT_FILE/HTTPS_KEY_FILE；本候选还须在根本机.env填写固定DOCUMENT_PARSER_URL=http://document-parser:8091和用密码学随机32字节生成的无padding base64url DOCUMENT_PARSER_TOKEN，不输出或提交令牌。MYSQL_*和AUTH_TRUSTED_ORIGIN由对应进程env文件提供；AUTH_TRUSTED_PROXY_CIDRS由Compose从代理IP派生为精确/32，不再在多个地方复制秘密。
 4. 按顺序构建、迁移、初始化、启动。以下均从仓库根执行，wrapper只校验键与文件，不打印配置值。
 
 ```text
-node scripts/identity-compose.mjs .env --profile tools build mysql admin backend frontend
+node scripts/identity-compose.mjs .env --profile tools build mysql admin backend frontend document-parser
 node scripts/identity-compose.mjs .env up -d --wait --wait-timeout 120 mysql
 node scripts/identity-compose.mjs .env run --rm -T admin migrate
 node scripts/identity-compose.mjs .env run --rm -T admin check
@@ -46,7 +48,7 @@ PowerShell经标准输入初始化，口令不作为命令行参数：
 
 ```powershell
 Get-Content -Raw output/identity-local/seed.json | node scripts/identity-compose.mjs .env run --rm -T admin initialize
-node scripts/identity-compose.mjs .env up -d --wait --wait-timeout 90 backend frontend
+node scripts/identity-compose.mjs .env up -d --wait --wait-timeout 90 backend frontend document-parser
 ```
 
 准备完成后，直接docker compose up --build -d --wait也运行同一默认身份入口。访问配置的HTTPS主机/端口；客户端必须信任证书且SAN匹配。/health应为mysql up；浏览器可从首页进入真实登录，登录后进入最小工作台与账号页。使用持有人本机初始化的真实账号；教师可切换其所属班级，学生不能越权，刷新恢复与退出按02身份客户端处理。
@@ -153,3 +155,6 @@ npm run samples --prefix frontend
 ```
 
 打开 `http://127.0.0.1:5174/samples.html?page=documents`；通过“上传资料”或资料标题查看上传/详情。添加`role=student`查看学生只读视图，`state=loading|empty|error`查看各态，`long=1`查看长内容边界。列表检索“瞬时变化率”可演示页/逻辑块出处定位；上传只检查所选文件的名称和大小，不读取或发送文件内容。普通dev/生产不开放samples或候选业务路由，不需要提供真实账号/证书/文件。
+
+04E真实迁移6实施候选：当前分支已逐字嵌入已批准000006并令server/admin精确要求6，旧SQL不改。已有5库须停写、一致备份、离线迁移；默认启动不执行DDL，dirty/摘要/完整结构漂移阻断。实际故障与隔离恢复5正在验证，持有人库未升级；解析服务生产接线和新资料HTTP/页面仍待。上文Target5段保留各批历史状态，当前候选进展以共享表为准。
+04E持久队列组件：`internal/documentqueue`提供独立资料作业事务和租约/原子结果机制；`npm run check:document-storage-contract`在独占候选schema实际执行10组MySQL并发、回滚、租约和杀进程恢复测试，并保留原SQL探针。它尚未装配到生产server，Target5/22 current/13 active保持；真实迁移6/恢复、私有服务生产激活、授权上传HTTP和页面仍待完成。[本批实际证据](reports/changes/04E/document-queue-2026-11-14.md)。

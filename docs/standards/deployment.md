@@ -60,3 +60,18 @@ JSON日志正式验收对象为Go应用输出，HTTP完成日志使用duration_m
 04E首组件补记：#45获审合入并经main复验后，新增document-parser离线候选镜像，不加入默认Compose或服务批次。check实际应用network=none/read-only/nonroot/cap_drop/no-new-privileges/512MiB无swap/1CPU/32PIDs/64MiB tmpfs，内部子进程384MiB/30秒并回收进程组；verify保留原四镜像和运行验收，结束后另外扫描此候选的实际不可变镜像与pypdf包并清理自身资源。该候选扫描与未来五生产镜像/真实RPC健康/持久恢复验收分列，不能据此启用active配置或Target6。见[组件边界及命令](../../document-parser/README.md)。
 
 04E本批只冻结[I1—I4](../../openspec/changes/2026-11-13-materials-document-intelligence/integration-contract.md)和两个候选键，默认Compose/active配置不变；私有健康不替代公开MySQL健康。check追加独占临时MySQL候选DDL探针，使用已锁定同源MySQL镜像、network=none/不发布端口、临时内存数据盘和随机本机临时秘密，结束只清理自身容器/tag/秘密文件；不接持有人库、不写runtime schema_migrations，不冒称目标6/dirty/修复/隔离恢复完成。正式升级仍须真实5备份、五DDL中断、前向repair6及隔离恢复5后再验收。
+
+## 04E迁移6实施候选（本轮待审）
+
+依据已批准#48的I3，本候选逐字追加000006，server/admin共享精确Target6，000001..000005字节不改。available只表示嵌入代码，持有人库未升级；仍须停写/一致备份、离线migrate，dirty/摘要/完整结构漂移阻断，仅显式前向repair6。五新增表全部空且明确可丢弃集成库才允许测试down；方法仅integration构建存在，无生产CLI或force/down入口。当前22 current、13 active与两frozen键、四默认生产服务和MySQL健康保持，解析服务未生产装配。实际五DDL/备份恢复与完整门禁结果见共享表，未验不记通过。
+
+
+## 04E私有生产接线候选（2026-11-14，本分支优先）
+
+本分支组合待审#52客户端、#53队列、#54迁移6，默认server在精确Target6/TLS/DML连接检查后启动独立资料worker；不自动DDL，不绑定05批改执行器。仅新增DOCUMENT_PARSER_URL和DOCUMENT_PARSER_TOKEN两active键（共15，样例全部空值），固定origin http://document-parser:8091，32随机字节canonical base64url令牌，非法/缺失启动非零且不回显。原身份12键及HTTP_PORT不变；两个新值在根本机.env，Compose只给backend两个键、parser仅TOKEN，admin/MySQL/frontend不取得它们。旧backend.env和admin.env仍严格分离。
+
+默认Compose新增document-parser及backend/parser专属internal document_parse网络，无宿主端口/数据网络/数据库或模型秘密/外网；nonroot65532、read-only、ALL cap-drop、no-new-privileges、512MiB无swap/1CPU/32PIDs/64MiB tmpfs。私有认证探针仅自己环回、500ms总预算，Compose timeout1秒；公开健康仍只真实MySQL Ping、3秒预算。backend不depends_on解析器，解析器缺席时旧身份/TXT/ready/05功能可启动和读取。私有HTTP 35秒独立于5秒SQL；worker并发1、数据库UTC60秒租约/20秒心跳/1秒轮询/三次上限，SIGTERM取消不发布半结果，数据库失败后监督恢复而非永久停工。
+
+四生产制品的原门禁原样保留并扩为精确五制品扫描/同ID运行；原内核/RPC互通及离线扫描另保留。新增队列入库验收只使用可信测试夹具，不声称六个公开Document HTTP或UI已实现：这六个操作仍frozen、当前公开22个，后续授权上传/预检/重放/搜索/下载另交。原TXT资料功能保持。OCR与语义/模型配置未启用，MCP出站例外仍disabled。迁移/停写备份/隔离恢复5仍按#54规则，持有人库未升级。
+
+本节替代下方历史04E段落中“生产未接线/13 active/四默认服务/Target5”的本分支现状描述；main实际状态、验证/待审及最终依赖以共享表和[本批报告](../../reports/changes/04E/document-runtime-2026-11-14.md)为准。候选实施不表示已获审或可绕过#52/#53/#54真实批准。

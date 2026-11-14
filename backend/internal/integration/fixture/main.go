@@ -6,6 +6,7 @@ import (
 	"crypto/rsa"
 	"crypto/x509"
 	"crypto/x509/pkix"
+	"encoding/base64"
 	"encoding/hex"
 	"encoding/pem"
 	"fmt"
@@ -55,14 +56,19 @@ func main() {
 	write("https.pem", pem.EncodeToMemory(&pem.Block{Type: "CERTIFICATE", Bytes: httpsDER}))
 	write("https.key", pem.EncodeToMemory(&pem.Block{Type: "RSA PRIVATE KEY", Bytes: x509.MarshalPKCS1PrivateKey(httpsKey)}))
 	root, app, migration := secret(), secret(), secret()
+	parserBytes := make([]byte, 32)
+	if _, err := rand.Read(parserBytes); err != nil {
+		panic("parser fixture random source")
+	}
+	parserToken := base64.RawURLEncoding.EncodeToString(parserBytes)
 	write("root-password", []byte(root))
 	write("backup-client.cnf", []byte("[client]\nuser=root\npassword="+root+"\nprotocol=SOCKET\n"))
 	sql := fmt.Sprintf("CREATE USER 'idf_app'@'%%' IDENTIFIED BY '%s' REQUIRE SSL;\nCREATE USER 'idf_migration'@'%%' IDENTIFIED BY '%s' REQUIRE SSL;\n", app, migration)
-	for i := 0; i < 48; i++ {
+	for i := 0; i < 65; i++ {
 		db := fmt.Sprintf("idf_test_%d", i)
 		sql += fmt.Sprintf("CREATE DATABASE %s CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_bin;\nGRANT SELECT,INSERT,UPDATE,DELETE ON %s.* TO 'idf_app'@'%%';\nGRANT SELECT,INSERT,UPDATE,DELETE,CREATE,ALTER,DROP,INDEX,REFERENCES ON %s.* TO 'idf_migration'@'%%';\n", db, db, db)
 	}
 	write("initialize.sql", []byte(sql))
-	write("test.env", []byte(fmt.Sprintf("MYSQL_DSN=idf_app:%s@tcp(mysql:3306)/idf_test_0?tls=true\nMYSQL_MIGRATION_DSN=idf_migration:%s@tcp(mysql:3306)/idf_test_0?tls=true&multiStatements=true\nMYSQL_CA_FILE=/fixtures/ca.pem\n", app, migration)))
+	write("test.env", []byte(fmt.Sprintf("MYSQL_DSN=idf_app:%s@tcp(mysql:3306)/idf_test_0?tls=true\nMYSQL_MIGRATION_DSN=idf_migration:%s@tcp(mysql:3306)/idf_test_0?tls=true&multiStatements=true\nMYSQL_CA_FILE=/fixtures/ca.pem\nDOCUMENT_PARSER_URL=http://document-parser:8091\nDOCUMENT_PARSER_TOKEN=%s\n", app, migration, parserToken)))
 	fmt.Println("Disposable credentials and CA generated; values omitted")
 }

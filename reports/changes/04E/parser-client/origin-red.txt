@@ -1,0 +1,5 @@
+--- FAIL: TestDI14ConfigurationAndBudgets (0.00s)
+    client_test.go:40: origin accepted or leaked: <nil>
+FAIL
+FAIL	github.com/zwh9616/campus-claw-plus/backend/internal/documentparser	0.003s
+FAIL

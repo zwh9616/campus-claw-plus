@@ -182,6 +182,39 @@
       "validation": "Host loopback port 1..65535; verifier alone may use 0 for Docker allocated port",
       "missing_behavior": "preflight and Compose fail nonzero",
       "timeout": "Docker bind fails nonzero"
+    },
+    {
+      "name": "DOCUMENT_PARSER_URL",
+      "owner": "04E",
+      "required": true,
+      "secret": false,
+      "consumers": [
+        "backend",
+        "compose"
+      ],
+      "introduced_by": "openspec/changes/2026-11-13-materials-document-intelligence",
+      "status": "active",
+      "validation": "精确http://document-parser:8091；无userinfo/path/query/fragment/redirect/环境代理",
+      "missing_behavior": "缺失、空白或非法启动非零，日志不回显值；服务暂不可达不阻断已有身份/TXT/健康",
+      "timeout": "RPC总35秒，连接1秒、响应头32秒；上传前健康预检500ms",
+      "activation_change": "openspec/changes/2026-11-13-materials-document-intelligence"
+    },
+    {
+      "name": "DOCUMENT_PARSER_TOKEN",
+      "owner": "04E",
+      "required": true,
+      "secret": true,
+      "consumers": [
+        "backend",
+        "document-parser",
+        "compose"
+      ],
+      "introduced_by": "openspec/changes/2026-11-13-materials-document-intelligence",
+      "status": "active",
+      "validation": "32随机字节canonical无填充base64url，恰好43ASCII字符，首尾空白也拒绝",
+      "missing_behavior": "缺失、空白或非法启动非零，日志不回显值；服务暂不可达不阻断已有身份/TXT/健康",
+      "timeout": "仅认证恒定时间比较，无网络操作",
+      "activation_change": "openspec/changes/2026-11-13-materials-document-intelligence"
     }
   ],
   "planned": [
@@ -215,41 +248,20 @@
         "解析目标为本项目网络服务"
       ],
       "removal": "不再使用受控MCP服务时移除"
-    }
-  ],
-  "frozen": [
-    {
-      "name": "DOCUMENT_PARSER_URL",
-      "owner": "04E",
-      "required": true,
-      "secret": false,
-      "consumers": [
-        "backend",
-        "compose"
-      ],
-      "introduced_by": "openspec/changes/2026-11-13-materials-document-intelligence",
-      "status": "frozen",
-      "validation": "精确http://document-parser:8091；无userinfo/path/query/fragment/redirect/环境代理",
-      "missing_behavior": "激活后缺失/空白/非法启动非零，日志不回显值；当前不读取",
-      "timeout": "RPC总35秒，连接1秒、响应头32秒；上传前健康预检500ms",
-      "activation_requires": "本合同获真实审查合入及接线实现同提交激活；不写入当前空样例"
     },
     {
-      "name": "DOCUMENT_PARSER_TOKEN",
-      "owner": "04E",
-      "required": true,
-      "secret": true,
-      "consumers": [
-        "backend",
-        "document-parser",
-        "compose"
+      "url": "http://document-parser:8091",
+      "enabled": true,
+      "required_approvals": [
+        "04E"
       ],
-      "introduced_by": "openspec/changes/2026-11-13-materials-document-intelligence",
-      "status": "frozen",
-      "validation": "32随机字节canonical无填充base64url，恰好43ASCII字符，首尾空白也拒绝",
-      "missing_behavior": "激活后缺失/空白/非法启动非零，日志不回显值；当前不读取",
-      "timeout": "仅认证恒定时间比较，无网络操作",
-      "activation_requires": "本合同获真实审查合入及接线实现同提交激活；不写入当前空样例"
+      "constraints": [
+        "精确origin及GET /health、POST /v1/parse",
+        "仅backend/parser独占internal网络，无宿主端口/数据库或模型秘密/互联网",
+        "无userinfo/query/fragment/redirect/环境代理，禁止用户URL"
+      ],
+      "removal": "停用私有解析服务时移除本精确例外"
     }
-  ]
+  ],
+  "frozen": []
 }

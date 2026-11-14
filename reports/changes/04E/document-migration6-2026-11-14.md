@@ -1,0 +1,52 @@
+# 04E真实迁移6与隔离恢复 — 2026-11-14
+
+小张 / zwh9616（AI辅助）统一负责。基线已验收main `c1ac4213580df1fcc03520b8dddcfbece2a3344d`，实施准入是已获审合入的#48/I3及原G2/G3，不把待审#52/#53当作已批准依赖。
+
+## 实施内容与部署边界
+
+000006两个SQL从已批准合同目录逐字复制到backend embed；up SHA-256 `ae898e2c8166ac8e201102e6077ad5cf71a89259fb16553d3f5a1a0380e022ef`，down `bcd282b537db970249565148410f67a18737d5350055df20dd6efd51c8db5756`。manifest追加真实摘要，identity-phase追加available，server/admin共享精确Target6。000001..000005字节和原十个摘要保持；默认启动不执行DDL，不向CLI添加force/down。
+
+新增精确结构快照：在锁定MySQL8.4.13上，由已获审、已核SHA的SQL一次性生成完整SHOW CREATE TABLE定义并提交；运行检查从embed读取固定预期，不向待验库学习。比较保留列顺序、类型/可空/默认值、字符集/排序、各索引/FK内部列序及目标schema、完整CHECK表达式/执行性、引擎及ROW_FORMAT。只忽略下一自动ID、无语义的全局索引/约束声明顺序及显式默认DYNAMIC；不抹掉CHECK括号或规范化逻辑。MyISAM、前缀/倒序/不可见索引、跨库/错序FK、CHECK失效等均须拒绝。
+
+既有Up/Repair机制扩到6：五个DDL逐步执行，dirty6保留；repair先检查旧1..5及每个已有新表，再只补齐缺失表，完整结构/原历史与新摘要一致后才清dirty。测试down方法仅integration构建存在，明确确认可丢弃idf_test库且五表逐表完全空才执行逆序DDL；操作留下dirty6，不能冒充生产回退，不存在生产CLI入口。
+
+机器合同只原子激活准确迁移元数据；三个受影响文件有精确白名单/摘要，校验硬要求Target6、十二SQL、旧十文件不改、phase第六号及回退目标5。重算摘要不能放行错误目标/旧SQL/owner，新增反例。原13 active、两个frozen键、公开22 current和六Document frozen、四默认生产服务、MySQL3秒健康与5秒业务预算保持，私有解析服务尚未生产装配。
+
+## 实际测试与恢复过程
+
+| DI-SC-15范围 | 验证 |
+| --- | --- |
+| 空库/升级/重复/摘要历史 | 新建6及真实5→6，身份/TXT保持；重复Up6、精确目标、摘要篡改/缺失与显式repair |
+| 五DDL中断 | 第1..5条后分别中断，dirty6及启动/继续升级阻断；漂移不能被repair洗白，恢复准确结构后幂等前向修复 |
+| 结构 | 列宽/默认值/列与表排序、索引列序/前缀/倒序/不可见、CHECK表达式/执行性、ROW_FORMAT与真实引擎、跨库和错序复合FK |
+| 空down | 显式可丢弃库确认；五表分别单独非空均拒绝，包括人为孤立的job/幂等行；空库逆序后旧1..5结构保持且dirty6留存 |
+| 真备份与恢复 | 实际已验收5制品启动并停止→一致mysqldump→第3DDL真实升级中断/保留dirty6→独立库恢复5→原5制品验证旧会话、五账号、TXT原字节、pending及原202幂等重放→保留源6库并前向repair |
+| 数据边界 | 记录备份UTC、dump字节与SHA、真实5/候选6二进制SHA、源/恢复库与实测RTO；修复后的6库新增资料不出现在5恢复库 |
+
+已验收5制品从精确mainc1ac421的源码归档构建，使用锁定Go工具链；没有改Target常量伪造旧程序。原4/5恢复矩阵现在也使用该真实5制品，保持原断言；原3恢复、18组05、五恢复及三阶段HTTPS门禁不删除。新恢复的4个实际二进制SHA随原运行报告保存；备份仅驻留内存、恢复后清零，不把dump、私有状态或凭据进报告。恢复前确实停止原5进程并验证不可访问，恢复使用独立库，原dirty6库保留。
+
+聚焦真实MySQL运行四组迁移测试和新恢复全部通过，实测首次RTO上界5330ms（隔离本机演练，含恢复与完整功能核验；不代表持有人生产RTO）。结构关键条件临时失效时真实数据库测试退出1并命中漂移放行，逐字恢复后聚焦运行退出0，前后源码SHA相同，见[受控证明](migration6/controlled-proof.json)。该聚焦运行只证明本批及原恢复步骤，不冒称完整gate。
+
+初轮真实MySQL发现测试夹具单条ALTER中DROP/ADD同名FK被MySQL1826拒绝；拆分并清理测试产生的辅助索引。第二轮原正常集成与旧恢复都通过，但新恢复夹具误用`/api/v1/auth/me`而404，改为既有`/api/v1/me`后聚焦链路通过；没有改业务路由或放宽状态断言。首次合同测试仍精确要求五号而失败，按已批准新增6同步为精确六号，原05前缀/owner保持，新增反例拒绝回退到5或伪改owner。原失败均保留。
+
+本机npm ci/setup、普通Go vet/全包test、工作树完整check、41组合同行为、额外3组迁移证据守卫与原生npm audit两树均0。证据守卫追加原verify：缺失/失败/重复/嵌套/skip、少一个DDL中断、无真实二进制/dump标识、阶段乱序或伪造RTO/同库恢复都阻断，不用标签成功替代运行。部分新增引擎/索引边界在随后干净完整gate复验；本提交的干净完整gate/制品扫描、最终CI/实际他人批准和合并仍待，A1.3b不提前勾。
+
+## #52/#53同步情况
+
+#52/#53开工核对均无review/comment/thread，不满足远端真实批准，未合并。#52已在原分支只同步main50的文档/证据，保留双方台账，客户端与脚本相对79adef5逐字不变；新head808b02e完整CI43597345884成功，artifact14114993742原ZIP SHA `ef62dc85fccd0bf7d91e65a7961c78cbf852ab34ccaacbfb8a84fa22e85f6a4b` 已下载核验四段0/原回归、两轮实际Go→Python各40文件/195位置、实际断连/日志和凭据清理/四生产镜像+候选扫描与全部清理，解包秘密扫描0。新head与CI预演b301fe49树均82b76f132011662e181ef3bdeaccf856748f5900。#53保持34defc1及已核验最终完整CI43595089231；本轮不重复创建其PR或冒充他人批准。
+
+生产接线可在独立候选中继续准备，但最终集成必须满足#52/#53、本迁移和接线自身的真实批准/检查；未部署持有人库，六个资料HTTP/页面和整个A/B/C仍未交付。
+
+暂存秘密扫描曾对manifest JSON重排扩大差异上下文中的既有000003 down公开SQL SHA误报；已逐个重算原十SQL并与原manifest核对，保留原manifest字节前缀后只追加6，未新增豁免/关规则/缩小全历史范围。初次脱敏finding、失败日志及前缀证明保留，修复后的扫描另验。
+
+## 首提交CI阻断与LF修复
+
+2026-11-14迁移6首提交3b2ec51本机干净原完整gate四段0，真实引擎/全部结构边界、新5备份恢复与原完整回归及扫描通过；但CI43601155201在精确摘要处发现本机CRLF与Git/CI LF不一致，check1、后三段未运行，原件保留。已逐字统一三个登记文件为仓库LF、重算并与Git blob核对，加反例禁止本机重算CRLF摘要后放行；不归一化检查或绕过摘要。本提交修复后的完整gate/CI仍待，#54保持draft，A1.3b不勾。
+
+本机原件见[migration6-first-local-gate.zip](migration6/migration6-first-local-gate.zip)，首轮CI原件[migration6-initial-ci.zip](migration6/migration6-initial-ci.zip) SHA-256 `8b516ba707a30224ce722eb9d981f7a723ba33e265c71bf8be02e0811b65786d` 与GitHub artifact14116546566一致；本机成功不能替代CI失败。三个文件的旧本机SHA、CRLF数量、仓库LF SHA和Git blob逐字一致证明见[runtime-lf-proof.json](migration6/runtime-lf-proof.json)。新校验仍逐字比摘要，并额外拒绝CR；不把CRLF静默转换成另一种成功合同。修复后的干净全门禁及CI另验。
+
+2026-11-14迁移6 LF修复91ac1d7本机干净原完整gate四段再次0，CI43602397354前三段0，但verify在Linux runner读取容器root创建的0600私有恢复文件时EACCES退出1；原件保留。修复为宿主wx预创建0600文件，容器只截断写入保留宿主所有权，Linux再断言owner和0600后读取，不把权限改成公开可读。新CI/完整门禁待结果，#54继续draft，不预填验收。
+
+2026-11-14迁移6修复2241b38原完整本机gate四段0，最新CI43604614545四段0，artifact14118356836已下载，ZIP SHA-256 2a92161d4a357c2d97811894c8386746cdbd0bee6601461e9b83315d7cb6fa7b与GitHub一致。独立核验16原件、四组真实DI/五DDL中断/八恢复阶段、实际旧5与新6四二进制、隔离恢复5及源6保留、原18组05/五恢复/三HTTPS/四镜像和候选零HIGH/CRITICAL/清理，解包秘密扫描0；恢复上界本机5360ms、CI2137ms。原本机dirty=true如实保留，两个stat误标路径工作字节与Git blob逐字相同，刷新index后无源码差异；CI整树干净。最新仅补证/台账，最终head CI及Kevcco实际批准另核；#52/#53仍无真实review，三PR均未合并，生产接线在独立本地依赖候选继续。A1.3b及A整体不提前勾选。
+
+本次成功原件：[CI ZIP](migration6/migration6-success-ci.zip)、[本机 ZIP](migration6/migration6-ownership-local-gate.zip)、[独立摘要及范围核验](migration6/migration6-success-proof.json)。前两轮CI失败保留，未替换为成功。与2241b38相比本提交不改代码、测试、配置或脚本；本机原件含stat标识误差不冒称dirty=false。公开Document六操作仍frozen、持有人库未升级、生产解析未激活。

@@ -1,0 +1,4 @@
+-test.shuffle 1794644846853771074
+=== RUN   TestDI14PreflightDeadlineAndCallerCancellation
+2026/11/14 08:27:32 httptest.Server blocked in Close after 5 seconds, waiting for connections:
+  *net.TCPConn 0x3e3ec0e0e008 127.0.0.1:46434 in state active

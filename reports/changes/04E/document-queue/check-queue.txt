@@ -1,0 +1,26 @@
+-test.shuffle 1794658091486068658
+=== RUN   TestMySQLConcurrentAcceptance
+--- PASS: TestMySQLConcurrentAcceptance (0.05s)
+=== RUN   TestResultBoundaries
+--- PASS: TestResultBoundaries (0.00s)
+=== RUN   TestMySQLAcceptanceRollbackAndMixedPayload
+--- PASS: TestMySQLAcceptanceRollbackAndMixedPayload (0.02s)
+=== RUN   TestMySQLLeaseExpiryDuringPublication
+--- PASS: TestMySQLLeaseExpiryDuringPublication (0.37s)
+=== RUN   TestMySQLLeaseCASAndExhaustion
+--- PASS: TestMySQLLeaseCASAndExhaustion (0.04s)
+=== RUN   TestMySQLProcessCrashRecovery
+--- PASS: TestMySQLProcessCrashRecovery (0.01s)
+=== RUN   TestMySQLStorageDeadline
+--- PASS: TestMySQLStorageDeadline (0.08s)
+=== RUN   TestMySQLWorkerSingleFlightAndCancellation
+--- PASS: TestMySQLWorkerSingleFlightAndCancellation (0.17s)
+=== RUN   TestMySQLClaimAndRetryRollback
+--- PASS: TestMySQLClaimAndRetryRollback (0.03s)
+=== RUN   TestMySQLLongChunksAndRetry
+--- PASS: TestMySQLLongChunksAndRetry (0.06s)
+=== RUN   TestMySQLAtomicPublicationAndSource
+--- PASS: TestMySQLAtomicPublicationAndSource (0.02s)
+PASS
+ok  	github.com/zwh9616/campus-claw-plus/backend/internal/documentqueue	0.851s
+
