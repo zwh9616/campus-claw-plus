@@ -46,3 +46,7 @@
 本机原件见[migration6-first-local-gate.zip](migration6/migration6-first-local-gate.zip)，首轮CI原件[migration6-initial-ci.zip](migration6/migration6-initial-ci.zip) SHA-256 `8b516ba707a30224ce722eb9d981f7a723ba33e265c71bf8be02e0811b65786d` 与GitHub artifact14116546566一致；本机成功不能替代CI失败。三个文件的旧本机SHA、CRLF数量、仓库LF SHA和Git blob逐字一致证明见[runtime-lf-proof.json](migration6/runtime-lf-proof.json)。新校验仍逐字比摘要，并额外拒绝CR；不把CRLF静默转换成另一种成功合同。修复后的干净全门禁及CI另验。
 
 2026-11-14迁移6 LF修复91ac1d7本机干净原完整gate四段再次0，CI43602397354前三段0，但verify在Linux runner读取容器root创建的0600私有恢复文件时EACCES退出1；原件保留。修复为宿主wx预创建0600文件，容器只截断写入保留宿主所有权，Linux再断言owner和0600后读取，不把权限改成公开可读。新CI/完整门禁待结果，#54继续draft，不预填验收。
+
+2026-11-14迁移6修复2241b38原完整本机gate四段0，最新CI43604614545四段0，artifact14118356836已下载，ZIP SHA-256 2a92161d4a357c2d97811894c8386746cdbd0bee6601461e9b83315d7cb6fa7b与GitHub一致。独立核验16原件、四组真实DI/五DDL中断/八恢复阶段、实际旧5与新6四二进制、隔离恢复5及源6保留、原18组05/五恢复/三HTTPS/四镜像和候选零HIGH/CRITICAL/清理，解包秘密扫描0；恢复上界本机5360ms、CI2137ms。原本机dirty=true如实保留，两个stat误标路径工作字节与Git blob逐字相同，刷新index后无源码差异；CI整树干净。最新仅补证/台账，最终head CI及Kevcco实际批准另核；#52/#53仍无真实review，三PR均未合并，生产接线在独立本地依赖候选继续。A1.3b及A整体不提前勾选。
+
+本次成功原件：[CI ZIP](migration6/migration6-success-ci.zip)、[本机 ZIP](migration6/migration6-ownership-local-gate.zip)、[独立摘要及范围核验](migration6/migration6-success-proof.json)。前两轮CI失败保留，未替换为成功。与2241b38相比本提交不改代码、测试、配置或脚本；本机原件含stat标识误差不冒称dirty=false。公开Document六操作仍frozen、持有人库未升级、生产解析未激活。
