@@ -11,7 +11,7 @@ function inspect(directory) {
     else {
       assert.notEqual(entry.name, 'samples.html', 'Test entry emitted into production')
       const text = readFileSync(path, 'utf8')
-      for (const marker of ['样板审查', '隔离合成数据', 'LoginSample', 'AccountSample', 'MaterialSample', '资料样板边界标题', '当前显示合成样板结果']) assert.ok(!text.includes(marker), 'Sample fixture leaked into production: ' + marker)
+      for (const marker of ['样板审查', '隔离合成数据', 'LoginSample', 'AccountSample', 'MaterialSample', '资料样板边界标题', '当前显示合成样板结果', 'DocumentSample', '提交后流程预览', '本班资料长标题与非BMP字符']) assert.ok(!text.includes(marker), 'Sample fixture leaked into production: ' + marker)
     }
   }
 }
@@ -28,6 +28,11 @@ for (const mode of ['development', 'samples']) {
     // MF-SC-10: direct fixture source access is also rejected outside samples mode.
     const fixture = await fetch(`http://127.0.0.1:${address.port}/src/samples/MaterialSamples.tsx`)
     assert.equal(fixture.status, mode === 'samples' ? 200 : 404)
+    // DI-SC-13: new PDF/Word fixtures and styles share the same isolation boundary.
+    for (const path of ['DocumentSamples.tsx', 'document-samples.css']) {
+      const documentFixture = await fetch(`http://127.0.0.1:${address.port}/src/samples/${path}`)
+      assert.equal(documentFixture.status, mode === 'samples' ? 200 : 404)
+    }
   } finally { await server.close() }
 }
 console.log('FEF-SC-13: production excludes samples; normal dev rejects test entry; explicit samples mode serves it.')

@@ -142,4 +142,14 @@ go run ./cmd/server
 
 2026-11-13下一阶段04E全部由小张负责，A优先PDF/Word，B OCR和C向量/混合检索已正式列出[任务](openspec/changes/2026-11-13-materials-document-intelligence/tasks.md)与[验收阈值](openspec/changes/2026-11-13-materials-document-intelligence/acceptance.md)。首批合同#45已获实际批准合入main25484d5并复验通过。本组件开始[离线解析核心](document-parser/README.md)：`npm run check:document-parser`实际测试固定40份文件/25类负例并接入原check，verify保留原完整集成后另扫候选解析镜像。当前仍22 current/Target5/四个默认生产镜像；PDF/Word上传HTTP、持久作业和真实页面、OCR/语义检索均未启用，阶段状态见[共享表](docs/project-status.md)。
 
-04E离线核心#46及收口#47已获审合入，main9263d21完整CI通过。当前小张推进[内部接线/配置/候选迁移冻结](openspec/changes/2026-11-13-materials-document-intelligence/integration-contract.md)，`npm run check:document-storage-contract`在独占临时MySQL实测五表/六FK/十一CHECK；此项追加原check且不代替完整gate。冻结候选尚未授权RPC/迁移6/持久HTTP/页面实施，所有原功能和active配置保持。
+04E离线核心#46及收口#47已获审合入，main9263d21完整CI通过。当前小张推进[内部接线/配置/候选迁移冻结](openspec/changes/2026-11-13-materials-document-intelligence/integration-contract.md)，`npm run check:document-storage-contract`在独占临时MySQL实测五表/六FK/十一CHECK；此项追加原check且不代替完整gate。冻结#48已获真实批准合入main39018c1，精确main CI43557491212通过；接下来实施RPC/迁移6/持久HTTP，当前仍未交付这些运行功能，所有原功能和active配置保持。
+
+## PDF 与 Word 资料页面样板（04E）
+
+本轮只提供隔离合成样板，真实PDF/Word页面尚未接线；当前生产TXT资料功能保持。[说明与验收](reports/changes/04E/document-sample-2026-11-13.md)。在仓库根执行：
+
+```text
+npm run samples --prefix frontend
+```
+
+打开 `http://127.0.0.1:5174/samples.html?page=documents`；通过“上传资料”或资料标题查看上传/详情。添加`role=student`查看学生只读视图，`state=loading|empty|error`查看各态，`long=1`查看长内容边界。列表检索“瞬时变化率”可演示页/逻辑块出处定位；上传只检查所选文件的名称和大小，不读取或发送文件内容。普通dev/生产不开放samples或候选业务路由，不需要提供真实账号/证书/文件。

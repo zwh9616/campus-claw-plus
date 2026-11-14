@@ -1,0 +1,12 @@
+{
+  "scenario": "DI-SC-13 student sample hides nonready",
+  "mutation": "remove list role/status filter only",
+  "red_exit_code": 1,
+  "actual_error": "Students see only ready records in sample\n\n8 !== 2\n",
+  "restored_sha256": "b2fbde41a340131ddcef3f9baf8b751dbd4c0792d3c01174b36e16ecb6aa67a6",
+  "restored_exact_bytes": true,
+  "green_exit_code": 0,
+  "green_browser_cases": 78,
+  "green_native_action_cases": 6,
+  "green_interaction_groups": 9
+}

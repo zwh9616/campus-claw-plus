@@ -1,0 +1,15 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: {"left":16,"right":704,"top":406.078125,"bottom":450.078125,"height":44,"layoutWidth":720,"layoutHeight":450}
+    at file:///C:/Users/lenovo/Desktop/SoftwareDevelopment/group_project/output/04-document-page-sample-2026-11-13/reports/changes/04E/document-sample-browser-check.mjs:110:20 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v25.2.1
