@@ -1,21 +1,30 @@
-# 04E 私有生产接线候选 2026-11-14
+# 04E 私有生产解析服务与持久worker接线 2026-11-14
 
-执行/实施/验收负责人：小张/zwh9616。独立本地依赖组合，不是main合入或另一成员批准。
+负责人/实际执行：小张/zwh9616。代码8d3d8210822ec981605e5a65bba92a78d5b90041已通过干净本机完整gate和完整CI，当前[#55](https://github.com/zwh9616/campus-claw-plus/pull/55)待真实批准；依赖#52客户端、#53队列、#54迁移6的实际批准与正常集成，尚未合入main或升级持有人库。六个公开Document操作仍frozen/实际404，公开22操作保持。此报告不把可信夹具入队当作授权上传/搜索/下载或真实页面交付，A/B/C父项不勾。
 
-2026-11-14小张在独立codex/04-document-runtime-2026-11-14组合待审#52/#53/#54候选，未合入main、未部署持有人库。本提交实现默认Go→私有解析RPC的持久worker、SIGTERM取消与数据库恢复监督；原子激活准确两个配置键/空样例/专属internal网络/私有认证探针与第五生产镜像扫描，六Document公开操作仍frozen。新增真实默认制品40份持久正文/195位置/逐字quote、实际停解析器而旧HTTPS/TXT/原pending保持、显式retry/停worker后入队重建/实际SIGKILL租约接管验证及证据拒绝守卫；目前Go普通全包/vet及带tag编译、43合同、私有健康3组/原核心与HTTP/Go互通、结构守卫测试通过，真实生产链路和干净完整gate/CI尚未执行，不预填通过。首次新测试夹具depends_on未创建及旧四服务清单断言失败已修正、原断言原子扩充精确五服务。#52/#53仍无实际review/批准；#54迁移代码2241b38完整CI43604614545及原件已核验，最新补证c242a51已交真实审查，最终CI另核。A1.2b/A1.3b/A2父项及A整体仍不勾。
+## 实现及Requirement/Scenario
 
-## 实现与测试映射
+- DI-SC-01/14：默认cmd/server装配runtimeapp，验证精确Target6/TLS后共享DML池，独立单worker/35秒事务外RPC/60秒数据库UTC租约与20秒心跳；SIGTERM取消不发布半结果，SQL故障后监督恢复。backend无parser启动依赖，旧身份/TXT/ready/05不依赖解析器健康；05批改执行器仍未绑定，真实pending。
+- DI-SC-14：原子激活两个既审配置键（15active/样例全空）、精确origin与backend/parser专属internal网络；TOKEN为canonical32字节base64url，缺失/非法启动非零无回显。parser仅取得TOKEN，无宿主端口、数据库或模型秘密、外网/额外挂载；nonroot65532/read-only/cap-drop/no-new-privileges/512MiB无swap/1CPU/32PIDs/64MiB tmpfs。固定环回认证probe500ms，公开MySQL健康仍3秒。MCP例外保持disabled。
+- DI-SC-03..07/10/14：实际默认Go制品→真实Python子进程→MySQL，40份固定PDF/DOCX的195位置和196片段入库；gold正文/页块kind与unit一致，quote逐字匹配持久正文Unicode码点，片段完整覆盖/2000上限/200重叠，原件SHA与原202快照保持。真实停parser，旧HTTPS/TXT/pending保持且backend独立重建；worker_interrupted后显式retry、停worker入队后重建、实际SIGKILL处理中进程保留租约/新epoch2接管；另实际MySQL停机恢复后成功处理新文件，防止监督器永久停工。租约到期仅隔离测试库显式推进，不冒称等满生产60秒。
+- DI-SC-15：继承#54四组真实迁移6/五DDL中断/严格结构/空down和八阶段实际5制品停写备份→中断6→隔离恢复5/旧会话、五账号、TXT、原pending/202→保留源6前向修复。旧十SQL字节不改，无生产force/down/自动DDL。原18组05、五恢复、三HTTPS、身份/TXT、10组真实队列、16 SQL拒绝均保留。
 
-DI-SC-01/14：精确两键/旧13对象保持/四LF激活输入摘要、backend/parser专属internal网络与出站、MCP保持禁用、六公开Document仍404；配置边界Go测试和实际进程拒绝测试。Python实际固定端口认证/忙时健康/500ms总预算/缺令牌和未知参数非零三组已通过。实际测试数量以原始输出为准。
+## 实际结果与原件
 
-DI-SC-03..07/10/14：新增documentruntime构建标签的可信夹具，只在数据库网络入队；实际默认server worker→Python→数据库产生正文/195位置/2000码点与200重叠片段，原件摘要及原202不变。真实停parser保持旧HTTPS，故障worker_interrupted后显式retry；停worker时入队再重建；实际SIGKILL处理中的worker保留DB租约，测试仅在隔离库强制推进租约到期，新进程epoch2恢复。未声称等满生产60秒，未放松生产常量。不证明公共授权上传/搜索/原文下载或UI。
+2026-11-14私有生产接线#55代码8d3d821已完成干净本机原完整gate四段0/verify572497ms及完整CI43610413611四段0/verify397334ms；下载artifact14120805655原18文件ZIP SHA-256 57a73a7ebc97736197922ee0945d04363280f71ecfc86b3f0b896a03421a23e9与GitHub一致。独立核验五精确镜像零HIGH/CRITICAL、40文件/195位置/196片段/原202、九阶段含真实parser故障/实际SIGKILL和MySQL恢复后新文件处理、四组迁移6/五DDL中断/隔离恢复5、原18组05/五恢复/三HTTPS、10组队列/16 SQL拒绝、两轮实际Go/Python/原内核/探针、同轮ID/全部清理及解包秘密扫描；Windows与CI全跟踪输入指纹同80f9c0ba71f8884405d7c6898f5576093b643d206be73e7e87d47aa173b439a3，head与CI预演36e3d947整树均21d96813c373d9e02b72d0cddee06dd3ea2df02c。本提交仅补报告/原件/对应共享行，运行输入保持，最终head检查绑定PR。#52/#53/#54及#55仍待其他账号实际批准，未合入main/未部署持有人库；六新Document HTTP与真实页面、OCR/语义及A父项仍待。
 
-DI-SC-15：原迁移6/备份恢复守卫及四组真实迁移保留；完整gate继续原18组05/五恢复/三HTTPS/身份与TXT，不改历史SQL或通过阈值。原四生产镜像扩成准确五镜像，actual pypdf7.0.1和Alpine包覆盖必需；同一已审计image ID运行，清理只针对本项目随机label/tag/目录。秘密只在忽略目录与进程，JSON日志排除生成秘密和原文。
+| 原件 | 本机 | GitHub CI |
+| --- | --- | --- |
+| 完整gate/18文件 | [原ZIP](document-runtime/runtime-recovery-local-gate.zip)，四段0、verify572497ms | [原ZIP](document-runtime/runtime-recovery-ci.zip)，run43610413611/artifact14120805655、四段0、verify397334ms |
+| 独立核验/各文件SHA | [本机摘要](document-runtime/runtime-recovery-local-proof.json) | [CI摘要](document-runtime/runtime-recovery-ci-proof.json) |
+| 五准确生产制品 | MySQL/backend/admin/frontend/document-parser，同ID实扫运行，HIGH/CRITICAL均0 | 五制品同ID运行及原始扫描全部核验，pypdf7.0.1/Alpine覆盖必需 |
+| 解析与边界 | 核心40清晰/25负例、CER0；私有HTTP7组/40实际文件；健康3组；Go真实互通40文件/195位置/实际失联 | check/scan两轮同规模实际执行，秘密/日志/凭据/容器/网络/镜像清理均0 |
+| 持久恢复 | 九实际阶段/40文件/195位置/196片段，数据库恢复后新文件ready/原202保持 | 九阶段、全部原回归及迁移恢复原始输出独立核验 |
 
-## 尚待验证与交接
+#54最终c242a51完整CI43607095712、artifact14119141710的[原16文件ZIP](document-runtime/migration6-final-ci.zip)另保存，SHA-256 d83a09ea16e92184b96e1d289717687dc7976f94b3182ac8e3c01e54d7c3e7f6与GitHub一致；真实迁移/原回归/四镜像/清理及整树593d9a92核验通过，CI恢复上界1390ms，仅为隔离演练。并非持有人生产RTO承诺。
 
-本提交尚未跑真实默认40文件/持久恢复或干净完整gate/CI，不能标完成。后续在本PR修复真实发现、保留失败与成功原件、更新共享表。#52/#53/#54均须真实批准才能集成；A1.2b/A1.3b/A2.3/A2.4及A/B/C父项仍未交付。生产数据库、用户样板方向确认和六公开接口/页面另验。
+## 失败、受控反例与验证边界
 
-本提交补充：第二轮实际默认worker八阶段已通过，40文件/195位置/196片段、原202、停解析器旧HTTPS、显式retry/停机入队重建/实际SIGKILL与epoch2接管均通过；原整体wiring随后因先重建容器丢失旧request-id日志证据而失败1，已把原日志断言放回重建之前，未删断言。第一轮普通404误按JSON解析失败也保留。固定origin校验受控红1→逐字恢复绿0，当前19组批次/证据守卫和44合同预期另以完整结果为准；干净完整gate/五制品实扫/CI待执行。#54最终c242a51完整CI43607095712/原16文件ZIP及源码树核验通过，恢复上界1390ms；三PR仍待真实批准。
+固定origin校验受控移除，真实Go测试退出1；逐字恢复后退出0，[原件](document-runtime/config-controlled.json)。初轮测试夹具未先创建depends_on对象及旧四服务清单断言已原子修正精确五服务；未删原用例。第一轮真实wiring将关闭路由的普通404误按JSON解析，[失败原件](document-runtime/first-wiring-failure.json)保留；第二轮九阶段中的原八阶段已通过，但先重建容器导致旧request-id日志不在当前容器，原日志关联断言失败，[原件](document-runtime/second-wiring-failure.json)保留。修复为在重建之前执行原日志断言；随后874a428本机完整gate和CI43609050688均四段0，[本机原件](document-runtime/runtime-first-local-gate.zip)、[CI原件](document-runtime/runtime-code-ci.zip)、[CI摘要](document-runtime/runtime-code-ci-proof.json)保留，未覆盖为本轮结果。
 
-2026-11-14私有生产接线已交draft PR #55，干净874a428本机原完整gate四段0/verify574883ms、完整CI43609050688四段0/verify396589ms，已下载artifact14119960687原18文件ZIP SHA-256 04024891f1cb2ee704c9080903a7558afbedfdb8b5203866654e2c3b82813073并与GitHub核对。五精确生产镜像零HIGH/CRITICAL、真实40文件/195位置/196片段/原202/八恢复阶段、原05/身份/TXT/3和4和5恢复、10组队列/16 SQL拒绝、check/scan两轮真实互通/内核/探针及全部清理/秘密扫描独立核验；Windows与CI全跟踪输入指纹同a6f5ece269ed83f9638e0325117899559761052c2aaffc7be5bf649e104b5c09。本提交只补一项尚未被原回归证明的边界：实际MySQL停机恢复后，默认worker继续处理新文件并保留原202，防止监督器永久停工仍靠旧健康检查通过；新增第九阶段及严格顺序/结果守卫、带tag编译和守卫单测0，新阶段完整运行与本提交CI待验。#52/#53无review/comment/thread，#54最终c242a51完整CI43607095712/原件已核验，均未获真实批准或合入；保持#55 draft及所有A父项待办。
+本提交只补证/报告/共享表与tasks，运行输入相对8d3d821保持；最终补证head检查仍绑定其自身PR结果。最终其他账号实际批准、各依赖正常合入与精确main复验均尚未完成。六个公开Document HTTP/真实PDF和Word页面、处理中的SIGTERM/OOM等A剩余验收、用户样板方向确认、OCR与语义阶段及持有人部署另验，不能以本报告勾父任务或宣称用户已能在页面上传PDF/Word。
