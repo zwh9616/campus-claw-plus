@@ -1,5 +1,5 @@
 import { spawnSync } from 'node:child_process'
-import { readFileSync, mkdirSync, rmSync, writeFileSync } from 'node:fs'
+import { readFileSync, mkdirSync, rmSync, writeFileSync, statSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { randomBytes } from 'node:crypto'
 import { createHash } from 'node:crypto'
@@ -73,8 +73,15 @@ try {
   run('AT-SC-20 actual schema4/5 artifacts and restored identity/material bytes', assignmentBackupGo('verify'))
 
   const documentBackupGo = stage => [...goArgs, '--network', id, '--env-file', resolve(directory, 'test.env'), '-e', `DI_BACKUP_STAGE=${stage}`, '--mount', `type=bind,source=${directory},target=/fixtures${stage === 'prepare' ? '' : ',readonly'}`, goImage, 'go', 'test', '-count=1', '-tags=integration,dibackup', '-timeout=120s', '-run', '^TestDIBackupRestoreAndActualFiveSixMatrix$', '-v', './internal/integration']
+  // Keep the saved session private AND readable by the unprivileged host
+  // runner. Root in the test container truncates this existing file without
+  // changing its host ownership; creating it there would leave root:0600.
+  const recoveryFile = resolve(directory, 'di-recovery-state.json')
+  writeFileSync(recoveryFile, '', { mode: 0o600, flag: 'wx' })
   run('DI-SC-15 prepare5 data and stop actual accepted5 writer', documentBackupGo('prepare'))
-  const recovery = JSON.parse(readFileSync(resolve(directory, 'di-recovery-state.json')))
+  const recoveryStat = statSync(recoveryFile)
+  if (process.platform !== 'win32' && (recoveryStat.uid !== process.getuid() || (recoveryStat.mode & 0o777) !== 0o600)) throw new Error('Private recovery state ownership/mode invalid')
+  const recovery = JSON.parse(readFileSync(recoveryFile))
   secrets.push(recovery.TeacherToken)
   const backupTime = new Date().toISOString()
   const dump06 = spawnSync('docker', ['exec', id, 'mysqldump', '--defaults-extra-file=/fixtures/backup-client.cnf', '--single-transaction', '--no-tablespaces', '--set-gtid-purged=OFF', '--skip-comments', 'idf_test_63'], { timeout: 60000, maxBuffer: 8 * 1024 * 1024 })
